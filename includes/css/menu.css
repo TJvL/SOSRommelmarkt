@@ -1,9 +1,18 @@
+/*Logo*/
+#logo{
+    position:absolute;
+    
+    width:190px;
+}
+
 /*Important! Lowering or removing the line-height, causes hovering bugs on the dropdown items*/
 nav{line-height:1.5em;}
 
 nav{display:block;
 margin-top: 100px;
+margin-left:130px;    
 background:#120000;
+
 }
 
 .menu{display:block;}
@@ -12,7 +21,7 @@ background:#120000;
 position: relative;
 z-index:100;}
 
-.menu li:first-child{margin-left:0;}
+.menu li:first-child{margin-left:0px;}
 
 .menu li a {font-weight:600;
 text-decoration:none;
@@ -80,13 +89,11 @@ text-decoration:none;
 
 .mainWrap{width:768px;}
 .menu ul {top:37px;}
-.menu li a{font-size:12px;
+.menu li a{font-size:11px;
 padding:8px;}
 }
 
 @media (max-width: 767px) {
-
-.mainWrap{width:auto;padding:50px 20px;}
 
 .menu{display:none;}
 
@@ -98,6 +105,8 @@ background:none;}
 
 .menu li{display:block;
 margin:0;}
+    
+.menu li:first-child{margin-left:0px;}    
 
 .menu li a {background:#ffffff;
 color:#797979;
@@ -115,18 +124,22 @@ top:0;
 left:0;
 width:100%;}
 
-.menu ul ul {left:0;}
+.menu ul ul {left:0;}  
+
+#logo{
+    position:absolute;
+    width:100px;
+}    
 
 }
 
 @media (max-width: 480px) {
 
+  
 }
 
 
 @media (max-width: 320px) {
 }
 
-a:visited, a:link{
-  color:white;
-}
+
