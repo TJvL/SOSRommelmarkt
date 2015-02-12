@@ -1,4 +1,6 @@
-
+<!DOCTYPE html>
+<html>
+    
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
@@ -19,8 +21,13 @@
     <![endif]-->    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="/SOSRommelmarkt/includes/js/menu.js" type="text/javascript"></script>
+    <script src="/SOSRommelmarkt/includes/js/shopfilter.js" type="text/javascript"></script>
     <script src="/SOSRommelmarkt/includes/js/shoppingcart.js" type="text/javascript"></script>
     <script src="/SOSrommelmarkt/includes/js/bootstrap.js"></script>
+    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+      <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
     
     
 </head>
@@ -29,8 +36,8 @@
     <div class="container">
     
         
-    <div class="col-sm-3 col-md-6"></div>
-    <div class="col-sm-3 col-md-3">
+    <div class="col-sm-6"></div>
+    <div class="col-md-3">
             <form class="navbar-form" role="search">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Zoeken" name="srch-term" id="srch-term">
@@ -41,7 +48,7 @@
             </form>
     </div>
             
-    <div class="col-sm-3 col-md-3">
+    <div class="col-md-3">
         
             <div id="cart_details_3">
               <div class="cart_btn">
@@ -132,7 +139,3 @@
         
     </div>
     
-    
-    
-    
-</body>
