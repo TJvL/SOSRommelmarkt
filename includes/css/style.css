@@ -19,8 +19,18 @@ div .grey{
     font-size: 20px;
 }
 
+
+
 div .grey p{
     font-size: 24px;
     margin:auto;
    
+}
+
+@media (max-width: 767px) {
+       
+    div .grey p{
+        font-size: 13px;        
+    }
+    
 }
