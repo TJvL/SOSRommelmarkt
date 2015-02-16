@@ -1,6 +1,9 @@
 body{
     
-    background-image: url("/SOSRommelmarkt/img/background.jpg"); background-attachment:fixed;
+    background-image: url("/SOSRommelmarkt/img/background.jpg"); 
+    background-attachment:fixed;
+    background-size: cover;
+  
     
 }
 

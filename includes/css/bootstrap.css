@@ -4424,10 +4424,14 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-toggle {
   border-color: #ddd;
 }
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {
-  background-color: rgb(60,63,54);
+.navbar-default .navbar-toggle:hover{
+    background-color: #fff;
 }
+
+.navbar-default .navbar-toggle:focus {
+    background-color: rgb(60,63,54);
+}
+
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #888;
 }

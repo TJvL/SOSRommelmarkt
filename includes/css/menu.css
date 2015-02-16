@@ -112,6 +112,11 @@ padding:8px;}
 
 .mobile-menu{display:block;
 margin-top:0px;}
+    
+.mobile-menu:focus{
+ 
+    color:rgb(60,63,54);
+}
 
 subnav{
     margin:0;
