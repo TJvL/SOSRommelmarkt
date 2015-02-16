@@ -1,0 +1,26 @@
+body{
+    
+    background-image: url("/SOSRommelmarkt/img/background.jpg"); background-attachment:fixed;
+    
+}
+
+div .white{
+ 
+    margin-top:10px;
+    padding:2em;
+    background-color: #FFF;
+}
+
+div .grey{
+    margin-top:30px;
+    padding:2em;
+    background-color: rgba(60,63,54, 0.7);
+    color:#fff;
+    font-size: 20px;
+}
+
+div .grey p{
+    font-size: 24px;
+    margin:auto;
+   
+}

@@ -1,17 +1,25 @@
 /*Logo*/
 #logo{
-    position:absolute;
+    position:relative;
+    margin-top:10px;
+    margin-left: 30px;
+    width:100%;
+}
+
+#headerdiv{
     
-    width:190px;
+    background-color: #fff;
+    margin-top:0;
 }
 
 /*Important! Lowering or removing the line-height, causes hovering bugs on the dropdown items*/
-nav{line-height:1.5em;}
+subnav{line-height:1.5em;}
 
-nav{display:block;
-margin-top: 100px;
-margin-left:130px;    
-background:#120000;
+subnav{display:block;
+margin-top: 70px; 
+margin-left:70px;    
+background:#fff;
+font-size: 16px;    
 
 }
 
@@ -27,7 +35,7 @@ z-index:100;}
 text-decoration:none;
 padding:11px;
 display:block;
-color:#ffffff;
+color:#707366;
 
 -webkit-transition: all 0.2s ease-in-out 0s;
    -moz-transition: all 0.2s ease-in-out 0s;
@@ -36,8 +44,8 @@ color:#ffffff;
    transition: all 0.2s ease-in-out 0s;
 }
 
-.menu li a:hover, .menu li:hover > a{color:#ffffff;
-background:#B20000;}
+.menu li a:hover, .menu li:hover > a{color:#B20000;
+background:#fff;}
 
 .menu ul {display: none;
 margin: 0;
@@ -53,9 +61,9 @@ background: #ffffff;
 float: none;
 background:none;
 margin:0;
-padding:0;
+padding:0;    
 }
-.menu ul li a {font-size:12px;
+.menu ul li a {font-size:14px;
 font-weight:normal;
 display:block;
 color:#797979;
@@ -65,7 +73,7 @@ background:#ffffff;}
 .menu ul li a:hover, .menu ul li:hover > a{
 background:#f0f0f0;
 border-left:3px solid #B20000;
-color:#797979;
+color:#797979;    
 }
 
 .menu li:hover > ul{ display: block;}
@@ -73,7 +81,7 @@ color:#797979;
 	top: 0px;
 }
 
-.mobile-menu{display:none;
+.mobile-menu{display:none;   
 width:100%;
 padding:11px;
 background:#120000;
@@ -89,8 +97,13 @@ text-decoration:none;
 
 .mainWrap{width:768px;}
 .menu ul {top:37px;}
-.menu li a{font-size:11px;
+.menu li a{font-size:13px;
 padding:8px;}
+    
+    subnav{
+    margin-top:70px;
+    background:none;
+}
 }
 
 @media (max-width: 767px) {
@@ -98,10 +111,12 @@ padding:8px;}
 .menu{display:none;}
 
 .mobile-menu{display:block;
-margin-top:100px;}
+margin-top:0px;}
 
-nav{margin:0;
-background:none;}
+subnav{
+    margin:0;
+    background:none;
+}
 
 .menu li{display:block;
 margin:0;}
@@ -127,8 +142,10 @@ width:100%;}
 .menu ul ul {left:0;}  
 
 #logo{
-    position:absolute;
-    width:100px;
+    position:relative;
+    margin:auto;
+    margin-bottom: 0;
+    width:50%;
 }    
 
 }

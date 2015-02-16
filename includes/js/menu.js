@@ -1,4 +1,8 @@
 $(document).ready(function(){ 
+    
+      //Image slider
+    $('.bxslider').bxSlider();
+    
 	var touch 	= $('#touch-menu');
 	var menu 	= $('.menu');
 
@@ -13,5 +17,7 @@ $(document).ready(function(){
 			menu.removeAttr('style');
 		}
 	});
+    
+  
 	
 });

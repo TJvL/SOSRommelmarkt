@@ -3,7 +3,7 @@
 	{
         margin-top:10px;
 		overflow: hidden;
-		padding: 5em 0em;
+		padding: 1em;
 		background: #1E1B1A;
 	}
 
@@ -48,8 +48,10 @@
 #copyright
 	{
 		overflow: hidden;
-		padding: 2em 0em;
+		padding: 1em;
+        padding-bottom: 0em;
 		text-align: center;
+        background-color: #fff;
 	}
 	
 	#copyright p

@@ -39,7 +39,7 @@
 </div>    
 		
 
-<div id="copyright" class="container">
+<div id="copyright">
 	<p>&copy; SOSrommelmarkt. All rights reserved. | Design by 42IN07SOe</a>.</p>
 </div>
 
