@@ -156,7 +156,7 @@
                             <li><a  href="#"><i class="fa fa-suitcase"></i> SOS</a></li>
                             <li><a  href="#"><i class="fa fa-envelope"></i> Contact</a></li>
                       </ul>
-                    </nav>
+                    </subnav>
                 </div>
                 
             </div>
