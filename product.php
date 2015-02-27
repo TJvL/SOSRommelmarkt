@@ -13,11 +13,6 @@ class Product
 	public $name;
 	public $description;
 	
-	public function setImage($imageFilePath)
-	{
-	
-	}
-	
 	public function getImage()
 	{
 	
@@ -57,7 +52,7 @@ function insertProduct($colorCode, $addedBy, $name, $description)
 	$query = "INSERT INTO Product (colorCode, addedBy, name, description) VALUES (?, ?, ?, ?)";
 	
 	// Insert the product.
-	$id = Database::insert($query, "isssb", $colorCode, $addedBy, $name, $description);
+	$id = Database::insert($query, "isss", $colorCode, $addedBy, $name, $description);
 
 	$product = new Product();
 	$product->id = $id;
