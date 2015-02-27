@@ -4,7 +4,7 @@ include("database.php");
 
 class Product
 {
-	const MAX_IMAGE_SIZE	= 1000000;
+	const MAX_IMAGE_SIZE	= 10000000;			// Maximum image size in bytes.
 	const IMAGES_DIRECTORY	= "img/products/";
 	
 	public $id;
@@ -13,9 +13,13 @@ class Product
 	public $name;
 	public $description;
 	
-	public function getImage()
+	public function getImagePath()
 	{
-	
+		$result = glob(Product::IMAGES_DIRECTORY . $this->id . '*');
+		if ($result)
+			return $result[0];
+		else
+			return null;
 	}
 }
 
