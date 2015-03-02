@@ -15,6 +15,7 @@
     <link href = "/SOSRommelmarkt/includes/css/footer.css" rel = "stylesheet">
     <link href=  "/SOSRommelmarkt/includes/css/jquery.bxslider.css" rel="stylesheet">
     <link href=  "/SOSRommelmarkt/includes/css/style.css" rel="stylesheet">
+    <link href=  "/SOSRommelmarkt/includes/css/vitrine.css" rel="stylesheet">
     
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -28,6 +29,7 @@
     <script src="/SOSrommelmarkt/includes/js/bootstrap.js"></script>
     <script src="/SOSRommelmarkt/includes/js/jquery.bxslider.min.js"></script>
     <script src="/SOSRommelmarkt/includes/js/menu.js" type="text/javascript"></script>
+    <script src="/SOSRommelmarkt/includes/js/vitrine.js" type="text/javascript"></script>
     
     <!--Product filter slider -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">

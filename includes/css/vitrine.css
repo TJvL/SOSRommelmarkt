@@ -1,0 +1,46 @@
+.product
+{
+    border: solid 1px red;
+    height: 300px;
+    padding:10px;
+    
+}
+
+.filter
+{
+   
+    border: solid 1px red; 
+    padding:3px;
+}
+
+.filterContainer li
+{
+    list-style-type: none;
+}
+
+.filterHeadings
+{
+    
+    cursor:pointer;
+    border-bottom-color: #cdcdcd;
+    border-bottom: 1px solid;
+    padding-bottom: 3px;
+}
+
+
+.filterListings, .filterListings ul
+{
+    
+}
+
+.category-plus
+{
+ 
+    float:right;
+}
+
+
+
+
+
+
