@@ -5,7 +5,7 @@
  * <form action="productimageupload.php" method="post" enctype="multipart/form-data">
  * Select image to upload:
  * <input type="file" name="productImage">
- * <input type="hidden" name="productId" value="1">
+ * <input type="hidden" name="productId" value="PRODUCT ID HERE">
  * <input type="submit" name="submit" value="Upload Image">
  * </form>
  */

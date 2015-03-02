@@ -4,7 +4,7 @@ include("database.php");
 
 class Product
 {
-	const MAX_IMAGE_SIZE	= 10000000;			// Maximum image size in bytes.
+	const MAX_IMAGE_SIZE	= 10000000;			// Maximum image size in bytes. 10 MB right now.
 	const IMAGES_DIRECTORY	= "img/products/";
 	
 	public $id;
@@ -23,6 +23,18 @@ class Product
 	}
 }
 
+function createProductObject($row)
+{
+	$product = new Product();
+	$product->id = $row["id"];
+	$product->colorCode = $row["colorCode"];
+	$product->addedBy = $row["addedBy"];
+	$product->name = $row["name"];
+	$product->description = $row["description"];
+	
+	return $product;
+}
+
 function fetchAllProducts()
 {
 	$query = "SELECT * FROM Product";
@@ -37,18 +49,40 @@ function fetchAllProducts()
 	{
 		$row = $result->fetch_assoc();
 
-		$products[$i] = new Product();
-		$products[$i]->id = $row["id"];
-		$products[$i]->colorCode = $row["colorCode"];
-		$products[$i]->addedBy = $row["addedBy"];
-		$products[$i]->name = $row["name"];
-		$products[$i]->description = $row["description"];
+		$products[$i] = createProductObject($row);
 	}
 
 	// Free the result set.
 	$result->close();
 
 	return $products;
+}
+
+function fetchProductById($id)
+{
+	$query = "SELECT * FROM Product WHERE id = ?";
+	
+	// Execute the query.
+	$result = Database::fetch($query, "i", array($id));
+
+	// Put the results of the query into a product object.
+	$row = $result->fetch_assoc();
+	
+	$product = createProductObject($row);
+
+	// Free the result set.
+	$result->close();
+
+	return $product;
+}
+
+// TODO: Maybe implement only updating what needs to be updated. But that's probably too much work for performance we probably won't need.
+function updateProduct($product)
+{
+	$query = "UPDATE Product SET colorCode = ?, addedBy = ?, name = ?, description = ? WHERE id = ?";
+	
+	// Execute the update query.
+	Database::update($query, "isssi", array($product->colorCode, $product->addedBy, $product->name, $product->description, $product->id));
 }
 
 function insertProduct($colorCode, $addedBy, $name, $description)

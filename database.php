@@ -9,9 +9,9 @@ class Database
 	const PORT		= 3306;
 	
 	/**
-	 * Helper method which returns a reference to the given variable
+	 * Helper method which returns a reference to the given array.
 	 *
-	 * @return A reference to the given variable.
+	 * @return A reference to the given array.
 	 */
 	private static function makeValuesReferenced(&$arr)
 	{
@@ -62,7 +62,7 @@ class Database
 			// Bind the parameters.
 			array_unshift($parameters, $parameterTypes);
 			
-			if (!call_user_func_array(array($preparedStatement, 'bind_param'), makeValuesReferenced($parameters)))
+			if (!call_user_func_array(array($preparedStatement, 'bind_param'), Database::makeValuesReferenced($parameters)))
 				die("Binding parameters to the prepared statement failed with: " . $preparedStatement->errno . ": " . $preparedStatement->error);
 		}
 	
@@ -98,12 +98,16 @@ class Database
 		if (!$preparedStatement->prepare($query))
 			die("Preparing the query failed with: " . $preparedStatement->errno . ": " . $preparedStatement->error);
 	
-		// Bind the parameters.
-		array_unshift($parameters, $parameterTypes);
-	
-		if (!call_user_func_array(array($preparedStatement, 'bind_param'), makeValuesReferenced($parameters)))
-			die("Binding parameters to the prepared statement failed with: " . $preparedStatement->errno . ": " . $preparedStatement->error);
-	
+		// If there are parameters.
+		if (func_num_args() > 1)
+		{
+			// Bind the parameters.
+			array_unshift($parameters, $parameterTypes);
+			
+			if (!call_user_func_array(array($preparedStatement, 'bind_param'), Database::makeValuesReferenced($parameters)))
+				die("Binding parameters to the prepared statement failed with: " . $preparedStatement->errno . ": " . $preparedStatement->error);
+		}
+			
 		// Excecute the statement
 		if (!$preparedStatement->execute())
 			die("Executing the prepared statement failed with: " . $preparedStatement->errno . ": " . $preparedStatement->error);
@@ -130,11 +134,15 @@ class Database
 		if (!$preparedStatement->prepare($query))
 			die("Preparing the query failed with: " . $preparedStatement->errno . ": " . $preparedStatement->error);
 		
-		// Bind the parameters.
-		array_unshift($parameters, $parameterTypes);
-		
-		if (!call_user_func_array(array($preparedStatement, 'bind_param'), makeValuesReferenced($parameters)))
-			die("Binding parameters to the prepared statement failed with: " . $preparedStatement->errno . ": " . $preparedStatement->error);
+		// If there are parameters.
+		if (func_num_args() > 1)
+		{
+			// Bind the parameters.
+			array_unshift($parameters, $parameterTypes);
+			
+			if (!call_user_func_array(array($preparedStatement, 'bind_param'), Database::makeValuesReferenced($parameters)))
+				die("Binding parameters to the prepared statement failed with: " . $preparedStatement->errno . ": " . $preparedStatement->error);
+		}
 		
 		// Excecute the statement
 		if (!$preparedStatement->execute())
