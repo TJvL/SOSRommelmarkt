@@ -8,6 +8,11 @@ class Database
 	const DATABASE	= "sosRommel";
 	const PORT		= 3306;
 	
+	/**
+	 * Helper method which returns a reference to the given variable
+	 *
+	 * @return A reference to the given variable.
+	 */
 	private static function makeValuesReferenced(&$arr)
 	{
 		$refs = array();
@@ -16,6 +21,11 @@ class Database
 		return $refs;
 	}
 	
+	/**
+	 * Makes a connection with the database and returns it.
+	 *
+	 * @return A mysqli object with a valid connection to the database.
+	 */
 	private static function connect()
 	{
 		// Connect to the database
@@ -29,6 +39,14 @@ class Database
 	}
 	
 	// TODO: Cleanly close mysql connection after error.
+	/**
+	 * Executes a given select query (which it prepares based on the parameters) on the database and returns the resultset.
+	 *
+	 * @param $query			The query to execute.
+	 * @param $parameterTypes	The types of the parameters that are given.
+	 * @param $parameters		The parameters to prepare into the query.
+	 * @return A mysqli_result object with the results.
+	 */
 	public static function fetch($query, $parameterTypes, $parameters)
 	{
 		$connection = Database::connect();
@@ -63,6 +81,14 @@ class Database
 	}
 	
 	// TODO: Cleanly close mysql connection after error.
+	/**
+	 * Executes a given insert query (which it prepares based on the parameters) on the database and returns the auto incremented key if any.
+	 * 
+	 * @param $query			The query to execute.
+	 * @param $parameterTypes	The types of the parameters that are given.
+	 * @param $parameters		The parameters to prepare into the query.
+	 * @return The auto incremented ID of the new row in the table if any.
+	 */
 	public static function insert($query, $parameterTypes, $parameters)
 	{
 		$connection = Database::connect();
