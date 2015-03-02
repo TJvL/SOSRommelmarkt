@@ -82,6 +82,38 @@ class Database
 	
 	// TODO: Cleanly close mysql connection after error.
 	/**
+	 * Executes a given update query (which it prepares based on the parameters) on the database.
+	 *
+	 * @param $query			The query to execute.
+	 * @param $parameterTypes	The types of the parameters that are given.
+	 * @param $parameters		The parameters to prepare into the query.
+	 * @return The auto incremented ID of the new row in the table if any.
+	 */
+	public static function update($query, $parameterTypes, $parameters)
+	{
+		$connection = Database::connect();
+	
+		// Prepare the query.
+		$preparedStatement = $connection->stmt_init();
+		if (!$preparedStatement->prepare($query))
+			die("Preparing the query failed with: " . $preparedStatement->errno . ": " . $preparedStatement->error);
+	
+		// Bind the parameters.
+		array_unshift($parameters, $parameterTypes);
+	
+		if (!call_user_func_array(array($preparedStatement, 'bind_param'), makeValuesReferenced($parameters)))
+			die("Binding parameters to the prepared statement failed with: " . $preparedStatement->errno . ": " . $preparedStatement->error);
+	
+		// Excecute the statement
+		if (!$preparedStatement->execute())
+			die("Executing the prepared statement failed with: " . $preparedStatement->errno . ": " . $preparedStatement->error);
+		
+		$preparedStatement->close();
+		$connection->close();
+	}
+	
+	// TODO: Cleanly close mysql connection after error.
+	/**
 	 * Executes a given insert query (which it prepares based on the parameters) on the database and returns the auto incremented key if any.
 	 * 
 	 * @param $query			The query to execute.
@@ -108,9 +140,12 @@ class Database
 		if (!$preparedStatement->execute())
 			die("Executing the prepared statement failed with: " . $preparedStatement->errno . ": " . $preparedStatement->error);
 		
+		$insertId = $preparedStatement->insert_id;
+		
+		$preparedStatement->close();
 		$connection->close();
 		
-		return $preparedStatement->insert_id;
+		return $insertId;
 	}
 }
 
