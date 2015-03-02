@@ -2,3 +2,6 @@
 .project
 .buildpath
 .settings/
+
+# IntelliJ Idea project files.
+.idea/
