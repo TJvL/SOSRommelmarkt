@@ -7,57 +7,9 @@
 		
 		<div class="container">
             
-            <div class="grey">
-                
-                <div class="row">	
-				
-                    <div class= "col-md-3">
-
-                    <img class="img-responsive" src="/SOSRommelmarkt/img/headerdiv.png">
-
-
-                    </div>
-
-                    <div class="col-md-9">
-
-                        <p>Alles wat verkoopbaar is krijgt bij klanten een nieuw leven.</p>
-                        <p>Het restafval wordt gescheiden aangeleverd bij verwerkingsbedrijven.</p>
-
-                    </div>    
-                                
-                </div>
-            </div>
-            
 			<div class="white">
             <!--Placeholders for relevant content-->
-			<div class="row">	
-				
-				<div class= "col-md-3">
-				
-					<img class="img-responsive" src="/SOSRommelmarkt/img/exampleProduct.png">
-					
-				</div>
-				
-				<div class= "col-md-3">
-				
-					<img class="img-responsive" src="/SOSRommelmarkt/img/exampleProduct.png">
-					
-				</div>
-				
-				<div class= "col-md-3">
-				
-				<img class="img-responsive" src="/SOSRommelmarkt/img/exampleProduct.png">
-					
-				</div>
-				
-				<div class= "col-md-3">
-				
-				<img class="img-responsive" src="/SOSRommelmarkt/img/exampleProduct.png">
-					
-				</div>
-				
-					
-			</div>
+
             </div>
 				
 		</div>

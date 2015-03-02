@@ -49,36 +49,16 @@
 
             </div>
             <div class="col-md-9">
-
-
                 <div>
                     <a id="touch-menu" class="mobile-menu" href="#"><i class="fa fa-bars"></i></a>
 
                     <subnav>
                         <ul class="menu">
-                            <li><a href="#"><i class="fa fa-home"></i> Home</a>
-                            </li>
+                            <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
                             <li><a  href="#"><i class="fa fa-cubes"></i> Producten</a></li>
-                            <ul class="sub-menu">
-                                <li><a href="#">Sub-Menu 1</a></li>
-                                <li><a href="#">Sub-Menu 2</a></li>
-                                <li><a href="#">Sub-Menu 3</a></li>
-                            </ul>
-                            <li><a  href="#"><i class="fa fa-newspaper-o"></i> Activiteiten</a>
-                                <ul class="sub-menu">
-                                    <li><a href="#">Sub-Menu 1</a></li>
-                                    <li><a href="#">Level 3 Menu</a>
-                                        <ul>
-                                            <li><a href="#">Sub-Menu 4</a></li>
-                                            <li><a href="#">Sub-Menu 5</a></li>
-                                            <li><a href="#">Sub-Menu 6</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a  href="#"><i class="fa fa-group"></i> Over ons</a></li>
-                            <li><a  href="#"><i class="fa fa-suitcase"></i> SOS</a></li>
-                            <li><a  href="#"><i class="fa fa-envelope"></i> Contact</a></li>
+                            <li><a  href="#"><i class="fa fa-newspaper-o"></i> Placeholder3</a></li>
+                            <li><a  href="#"><i class="fa fa-group"></i> Placeholder4</a></li>
+                            <li><a  href="#"><i class="fa fa-suitcase"></i> Placeholder5</a></li>
                         </ul>
                     </subnav>
                 </div>
