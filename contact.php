@@ -1,11 +1,30 @@
 <!--For best practice on includes, a config php file is required which defines the root, so absolute paths can be created from $root/includes/markup for example..-->
 <?php include("includes/markup/header.php"); ?> 
 
+<?php 
+if(isset($_POST['submit'])){
+    $to	= "ihendrik1@avans.nl"; // Should be info@sosrommelmarkt.nl 
+    $from = $_POST['email']; // this is the sender's Email address
+    $name = $_POST['name'];
+    $phone = $_POST['phone'];
+    $subject = "Contactformulier: " . $_POST['subject'];
+    $subject2 = "Kopie van uw contactformulier: " . $_POST['subject'];
+    $message = $name . "\n" . "Tel: " . $phone . "\n\n" . $_POST['message'];
+    $message2 = "Dit is een kopie van uw contactformulier." . "\n\n" . $message;
+
+    $headers = "From:" . $from;
+    $headers2 = "From:" . $to;
+    mail($to,$subject,$message,$headers);
+    mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
+    //header('Location: thank_you.php'); // Use this to redirect to a thankyou page or something
+    }
+?>
+
 <div class="container">
 	<div class="row white margin-hor-0">
 		<!-- Contact form -->
 		<div class="col-sm-9">
-			<form role="form" action="contactform-action.php" id="contactForm" method="post">
+			<form role="form" action="" method="post">
 				<div class="form-group">
 					<h2>Contact:</h2>
 					
@@ -20,12 +39,12 @@
 					</div>
 					
 					<div class="row">
-						<div class="col-sm-12 padding-sm"><textarea class="form-control" required="required" name="contents" rows="10"></textarea></div>
+						<div class="col-sm-12 padding-sm"><textarea class="form-control" required="required" name="message" rows="10"></textarea></div>
 					</div>
 					
 					<div class="row">
 						<div class="col-sm-10 padding-sm"></div>
-						<div class="col-sm-2 padding-sm"><input type="submit" value="Verstuur" class="form-control"></div>
+						<div class="col-sm-2 padding-sm"><input type="submit" name="submit" value="Verstuur" class="form-control"></div>
 					</div>
 				</div>
 			</form>
