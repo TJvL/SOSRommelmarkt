@@ -1,45 +1,31 @@
-//$(document).ready(function({ 
-//
-//$( ".filter-category" ).click(function() {
-//  $( ".filter-category" ).slideToggle( "slow", function() {
-//    
-////        $(this).toggleClass( "filter-category-show" );
-//    
-//  });
-//});
-//    
-//    
-//});
-
 $(document).ready(function(){ 
+    
+    $(function(){
+//      $("ul.filterListings").hide();
 
-$( "#clickme" ).click(function() {
-  $( "#book" ).slideToggle( "slow", function() {
-    // Animation complete.
+      $(".filterHeadings").click(function() {
+        $(this).next().find('ul.filterListings').slideToggle(400);
+        $(this).find('i').toggleClass('category-plus-open category-plus-closed')
+        $(this).find('i').toggleClass('fa-plus fa-minus')     
+  
+        return false;
+      });
+    });    
+    
+    $(function() {
+    $( "#slider-range" ).slider({
+      range: true,
+      min: 0,
+      max: 700,
+      values: [ 75, 300 ],
+      slide: function( event, ui ) {
+        $( "#amount" ).val( "€" + ui.values[ 0 ] + " - €" + ui.values[ 1 ] );
+      }
+    });
+    $( "#amount" ).val( "€" + $( "#slider-range" ).slider( "values", 0 ) +
+      " - €" + $( "#slider-range" ).slider( "values", 1 ) );
   });
-});
-    
-//$( ".filter-category" ).click(function() {
-//  $( ".filter-category" ).slideToggle( "slow", function() {
-//    
-//$(this).toggleClass( "filter-category-show" );
-//    
-//  });
-//});
-    
-$(".filter-category").click(function() {
-    $(this).next().children('ul.categories').slideToggle(300);
-    return false;
-});    
-    
-$(function(){
-  $("ul.filterListings").hide();
-
-  $(".filterHeadings").click(function() {
-    $(this).next().find('ul.filterListings').slideToggle(600);
-    return false;
-  });
-});    
     
     
+       
 });

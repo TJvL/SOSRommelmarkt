@@ -4,7 +4,7 @@
 
     <div class="white">
         
-        <center><img class="img-responsive" src="/SOSRommelmarkt/img/content/VitrineHeader.jpg"></center>
+       
         
         <div class="row">
         
@@ -12,31 +12,36 @@
             
                 <!--Filters-->
                 <!-- Browse: categories, Filter by price, Reset filters -->
-                <div class="col-sm-12 filter">
+                <div class="col-md-12 filter">
                     
                     <ul class="filterContainer">
-                        <li class="filterHeadings"><h3>Browse <i class="fa fa-plus-circle category-plus"></i></h3></li>
+                        <li class="filterHeadings"><h3>Categori&euml;en <i class="fa fa-minus category-plus-open"></i></h3></li>
                         <li>
                             <ul class="filterListings ">
-                                <li><p>Manual over ride</p></li>
-                                <li><p>High security options (LPCB &amp; SEAP)</p></li>
-                                <li><p>5 year warranty can be provided on motor parts</p></li>
+                                <li>Electronica <small class="category-count">[10]</small></li>
+                                <li>Meubels <small class="category-count">[33]</small></li>
+                                <li>Shit <small class="category-count">[99]</small></li>
                             </ul>
                         </li>
-                        <li class="filterHeadings">Options</li>
+                        <li class="filterHeadings"><h3>Kwaliteit <i class="fa fa-minus category-plus-open"></i></h3></li>
                         <li>
                             <ul class="filterListings ">
-                                <li><p>High security</p></li>
-                                <li><p>Versatile fixing system to suit almost any opening</p></li>
-                                <li><p>Wide range of infill’s available</p></li>
+                                <li>Z.G.A.N<i class="product-filter-quality green" title="Z.G.A.N"></i></li>
+                                <li>Gebruikt<i class="product-filter-quality blue" title="Gebruikt"></i></li>
+                                <li>Shit<i class="product-filter-quality red" title="Shit"></i></li>
                             </ul>
                         </li>
-                        <li class="filterHeadings">Curtain Options</li>
+                        <li class="filterHeadings"><h3>Prijs <i class="fa fa-minus category-plus-open"></i></h3></li>
                         <li>
                             <ul class="filterListings ">
-                                <li><p>Punched curtains options</p></li>
-                                <li><p>Perforated curtain options</p></li>
-                                <li><p>Solid curtains</p></li>
+                                <li>
+                                    <div class="price-slider">
+                                        <p>                                     
+                                          <input type="text" id="amount" readonly style="border:0; color:#b20000; font-weight:bold;">
+                                        </p>
+                                        <div id="slider-range"></div>
+                                    </div>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -53,14 +58,135 @@
             
                 <!--Products-->
                 <!-- height : 300px, 4 on a row -->
-                <div class="col-sm-3 product">Test item</div>
-                <div class="col-sm-3 product">Test item</div>
-                <div class="col-sm-3 product">Test item</div>
-                <div class="col-sm-3 product">Test item</div>
-                <div class="col-sm-3 product">Test item</div>
-                <div class="col-sm-3 product">Test item</div>
-                <div class="col-sm-3 product">Test item</div>
-                <div class="col-sm-3 product">Test item</div>
+                <div class="col-sm-3 product">
+                
+                    <div class="view view-first">  
+                         <img class="img-responsive" src="img/Content/item1.jpg" />  
+                         <div class="mask">  
+                         <h2>Title</h2>  
+                         <p>Your Text</p>  
+                             <a href="#" class="info"><i class="fa fa-cart-plus fa-2x"></i></a>  
+                         </div>  
+                    </div> 
+                    
+                    <div class="product-info">
+                    
+                        <div class="product-info-left">
+                        
+                            <h4>Item 2</h4>
+                            <i class="product-info-quality green" title="Z.G.A.N"></i>
+                            
+                        </div>
+                        <div class="product-info-right">
+                        
+                            <p class="price">&euro; 49,99</p>
+                            <p class="reserved">Gereserveerd</p>
+                            
+                        </div>
+                        
+                        
+                    
+                    </div>
+                    
+                
+                </div>
+                
+                <div class="col-sm-3 product">
+                
+                    <div class="view view-first">  
+                         <img class="img-responsive" src="img/Content/item2.jpg" />  
+                         <div class="mask">  
+                         <h2>Title</h2>  
+                         <p>Your Text</p>  
+                             <a href="#" class="info"><i class="fa fa-cart-plus fa-2x"></i></a>  
+                         </div>  
+                    </div> 
+                    
+                    <div class="product-info">
+                    
+                        <div class="product-info-left">
+                        
+                            <h4>Item 2</h4>
+                            <i class="product-info-quality green" title="Z.G.A.N"></i>
+                            
+                        </div>
+                        <div class="product-info-right">
+                        
+                            <p class="price">&euro; 49,99</p>
+                            <p class="reserved"></p>
+                            
+                        </div>
+                        
+                        
+                    
+                    </div>
+                    
+                
+                </div>
+                <div class="col-sm-3 product">
+                
+                    <div class="view view-first">  
+                         <img class="img-responsive" src="img/Content/item3.jpg" />  
+                         <div class="mask">  
+                         <h2>Title</h2>  
+                         <p>Your Text</p>  
+                             <a href="#" class="info"><i class="fa fa-cart-plus fa-2x"></i></a>  
+                         </div>  
+                    </div> 
+                    
+                    <div class="product-info">
+                    
+                        <div class="product-info-left">
+                        
+                            <h4>Item 2</h4>
+                            <i class="product-info-quality green" title="Z.G.A.N"></i>
+                            
+                        </div>
+                        <div class="product-info-right">
+                        
+                            <p class="price">&euro; 49,99</p>
+                            <p class="reserved">Gereserveerd</p>
+                            
+                        </div>
+                        
+                        
+                    
+                    </div>
+                    
+                
+                </div>
+                <div class="col-sm-3 product">
+                
+                    <div class="view view-first">  
+                         <img class="img-responsive" src="img/Content/item4.jpg" />  
+                         <div class="mask">  
+                         <h2>Title</h2>  
+                         <p>Your Text</p>  
+                             <a href="#" class="info"><i class="fa fa-cart-plus fa-2x"></i></a>  
+                         </div>  
+                    </div> 
+                    
+                    <div class="product-info">
+                    
+                        <div class="product-info-left">
+                        
+                            <h4>Te gek awesum shit 2</h4>
+                            <i class="product-info-quality red" title="Z.G.A.N"></i>
+                            
+                        </div>
+                        <div class="product-info-right">
+                        
+                            <p class="price">&euro; 49,99</p>
+                            <p class="reserved">Gereserveerd</p>
+                            
+                        </div>
+                        
+                        
+                    
+                    </div>
+                    
+                
+                </div>
                 
             
             </div>
