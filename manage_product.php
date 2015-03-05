@@ -11,7 +11,8 @@ include("product.php")
                     $products = fetchAllProducts();
                     foreach ($products as $product){
                         echo "<tr>";
-                        echo "<td>" . "placeholder" . "</td>";
+                        echo "<td><img class='img-responsive' src=" . $product->getImagePath() . " ></td>";
+                        //echo "<td>" . $product->getImagePath() . "</td>";
                         echo "<td>" . $product->id . "</td>";
                         echo "<td>" . $product->name . "</td>";
                         echo "<td>" . $product->colorCode . "</td>";
