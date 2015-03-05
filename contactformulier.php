@@ -61,6 +61,7 @@
             </div>
         </form>
     </div>
+    <button onclick="window.location.href='contact_action.php'"> Test </button>
 </div>
 
 
