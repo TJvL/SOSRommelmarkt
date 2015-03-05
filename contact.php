@@ -3,7 +3,7 @@
 
 <?php 
 if(isset($_POST['submit'])){
-    $to	= "ihendrik1@avans.nl"; // Should be info@sosrommelmarkt.nl 
+    $to	= "ihendrik1@avans.nl"; // Should be info@sosrommelmarkt.nl
     $from = $_POST['email']; // this is the sender's Email address
     $name = $_POST['name'];
     $phone = $_POST['phone'];
