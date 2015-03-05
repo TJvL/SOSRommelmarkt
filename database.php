@@ -44,10 +44,10 @@ class Database
 	 *
 	 * @param $query			The query to execute.
 	 * @param $parameterTypes	The types of the parameters that are given.
-	 * @param $parameters		The parameters to prepare into the query.
+	 * @param $parameters		An array of parameters to prepare into the query.
 	 * @return A mysqli_result object with the results.
 	 */
-	public static function fetch($query, $parameterTypes, $parameters)
+	public static function fetch($query, $parameterTypes = null, $parameters = null)
 	{
 		$connection = Database::connect();
 		
@@ -57,7 +57,7 @@ class Database
 			die("Preparing the query failed with: " . $preparedStatement->errno . ": " . $preparedStatement->error);
 		
 		// If there are parameters.
-		if (func_num_args() > 1)
+		if ($parameters !== null)
 		{
 			// Bind the parameters.
 			array_unshift($parameters, $parameterTypes);
@@ -86,10 +86,10 @@ class Database
 	 *
 	 * @param $query			The query to execute.
 	 * @param $parameterTypes	The types of the parameters that are given.
-	 * @param $parameters		The parameters to prepare into the query.
+	 * @param $parameters		An array of parameters to prepare into the query.
 	 * @return The auto incremented ID of the new row in the table if any.
 	 */
-	public static function update($query, $parameterTypes, $parameters)
+	public static function update($query, $parameterTypes = null, $parameters = null)
 	{
 		$connection = Database::connect();
 	
@@ -99,7 +99,7 @@ class Database
 			die("Preparing the query failed with: " . $preparedStatement->errno . ": " . $preparedStatement->error);
 	
 		// If there are parameters.
-		if (func_num_args() > 1)
+		if ($parameters !== null)
 		{
 			// Bind the parameters.
 			array_unshift($parameters, $parameterTypes);
@@ -122,10 +122,10 @@ class Database
 	 * 
 	 * @param $query			The query to execute.
 	 * @param $parameterTypes	The types of the parameters that are given.
-	 * @param $parameters		The parameters to prepare into the query.
+	 * @param $parameters		An array of parameters to prepare into the query.
 	 * @return The auto incremented ID of the new row in the table if any.
 	 */
-	public static function insert($query, $parameterTypes, $parameters)
+	public static function insert($query, $parameterTypes = null, $parameters = null)
 	{
 		$connection = Database::connect();
 		
@@ -135,7 +135,7 @@ class Database
 			die("Preparing the query failed with: " . $preparedStatement->errno . ": " . $preparedStatement->error);
 		
 		// If there are parameters.
-		if (func_num_args() > 1)
+		if ($parameters !== null)
 		{
 			// Bind the parameters.
 			array_unshift($parameters, $parameterTypes);
