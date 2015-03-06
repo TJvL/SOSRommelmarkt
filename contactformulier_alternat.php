@@ -7,7 +7,7 @@
 
     <link href=  "/SOSRommelmarkt/includes/css/contactformulier_normalize.css" rel="stylesheet">
     <link href=  "/SOSRommelmarkt/includes/css/contactformulier_jq_form.css" rel="stylesheet">
-<!--    <link href=  "/SOSRommelmarkt/includes/css/contactformulier.css" rel="stylesheet"> -->
+    <link href=  "/SOSRommelmarkt/includes/css/contactformulier.css" rel="stylesheet">
 
 </head>
 
@@ -18,7 +18,7 @@
 
         <nav class="idealsteps-nav"></nav>
 
-        <form method="POST" action="email.php"  class="idealforms" name="reserveren">
+        <form method="POST" action="contact_action.php"  class="idealforms" name="aanvraag">
 
             <div class="idealsteps-wrap">
 
@@ -28,33 +28,26 @@
 
 
                     <div class="field">
-                        <label class="main">Van</label>
-                        <input name="van" type="text" placeholder="Van... bv. Oranje Nassaulaan 2, Den Bosch">
+                        <label class="main">voornaam</label>
+                        <input name="name" type="text" placeholder="Uw voornaam">
                         <span class="error"></span>
                     </div>
 
                     <div class="field">
-                        <label class="main">Postcode</label>
-                        <input name="zip" type="text" placeholder="0000AA">
+                        <label class="main">Achternaam</label>
+                        <input name="name" type="text" placeholder="Uw achternaam">
                         <span class="error"></span>
                     </div>
 
                     <div class="field">
-                        <label class="main">Naar</label>
-                        <input name="naar" type="text" placeholder="Naar... bv. Danrak 3, Amsterdam">
-                        <i class="fa fa-map-marker"></i>
+                        <label class="main">Bedrijfsnaam</label>
+                        <input name="bedrijfsnaam" type="text" placeholder="De naam van uw bedrijf">
                         <span class="error"></span>
                     </div>
 
                     <div class="field">
-                        <label class="main">Postcode</label>
-                        <input name="zip" type="text" placeholder="0000AA">
-                        <span class="error"></span>
-                    </div>
-
-                    <div class="field">
-                        <label class="main">Datum</label>
-                        <input name="date" type="text" placeholder="dd/mm/yyyy">
+                        <label class="main">KVK nummer</label>
+                        <input name="kvknr" type="text" placeholder="Uw KVK-nummer">
                         <span class="error"></span>
                     </div>
 
@@ -63,27 +56,58 @@
                         <button type="button" class="next">Volgende &raquo;</button>
                     </div>
 
+
                 </section>
 
                 <!-- Step 2 -->
 
                 <section class="idealsteps-step">
 
-
                     <div class="field">
-                        <label class="main">Voornaam</label>
-                        <input name="name" type="text">
+                        <label class="main">Straatnaam</label>
+                        <input name="straatnaam" type="text" placeholder="Uw straatnaam met huisnummer">
                         <span class="error"></span>
                     </div>
 
                     <div class="field">
-                        <label class="main">Achternaam</label>
-                        <input name="lname" type="text">
+                        <label class="main">Postcode</label>
+                        <input name="zip" type="text" placeholder="0000AA">
                         <span class="error"></span>
                     </div>
+
+                    <div class="field">
+                        <label class="main">Plaats</label>
+                        <input name="name" type="text" placeholder="Uw woonplaats">
+                        <span class="error"></span>
+                    </div>
+
+                    <div class="field buttons">
+                        <label class="main">&nbsp;</label>
+                        <button type="button" class="prev">&laquo; Vorige</button>
+                        <button type="button" class="next">Volgende &raquo;</button>
+                    </div>
+
+
+                </section>
+
+                <!-- step 3 -->
+
+                <section class="idealsteps-step">
 
                     <div class="field">
                         <label class="main">Telefoon</label>
+                        <input name="phone" type="text" placeholder="000-000-0000">
+                        <span class="error"></span>
+                    </div>
+
+                    <div class="field">
+                        <label class="main">Mobiel</label>
+                        <input name="phone" type="text" placeholder="000-000-0000">
+                        <span class="error"></span>
+                    </div>
+
+                    <div class="field">
+                        <label class="main">Fax</label>
                         <input name="phone" type="text" placeholder="000-000-0000">
                         <span class="error"></span>
                     </div>
@@ -100,15 +124,16 @@
                         <button type="button" class="next">Volgende &raquo;</button>
                     </div>
 
+
                 </section>
 
-                <!-- Step 3 -->
+                <!-- Step 4 -->
 
                 <section class="idealsteps-step">
 
                     <div class="field">
-                        <label class="main">Opmerkingen</label>
-                        <textarea name="comments" cols="30" rows="10"></textarea>
+                        <label class="main">Toelichting</label>
+                        <textarea name="comments" cols="30" rows="10" placeholder="Graag invullen waarom u een subsidie nodig heeft. Geef een beschijving van de beoogde activiteiten en een beschrijving van de beoogde resultaten."></textarea>
                         <span class="error"></span>
                     </div>
 

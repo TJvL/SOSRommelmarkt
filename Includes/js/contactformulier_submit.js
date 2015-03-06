@@ -5,6 +5,8 @@ $('form.idealforms').idealforms({
     rules: {
         'username': 'required username ajax',
         'name': 'required name',
+        'kvknr': 'required kvknr',
+        'straatnaam': 'required straatnaam',
         'van': 'required van',
         'naar': 'required naar',
         'lname': 'required lname',
@@ -18,6 +20,7 @@ $('form.idealforms').idealforms({
         'phone': 'required phone',
         'zip': 'required zip',
         'options': 'select:default',
+        'bedrijfsnaam': 'required bedrijfsnaam'
     },
 
 
