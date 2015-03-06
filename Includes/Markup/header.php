@@ -32,6 +32,7 @@
     <script src="/SOSRommelmarkt/includes/js/menu.js" type="text/javascript"></script>
     <script src="/SOSRommelmarkt/includes/js/vitrine.js" type="text/javascript"></script>
     <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+    <script src="/SOSRommelmarkt/includes/js/edit_product.js" typpe="text/javascript"></script>
     
     <!--Product filter slider -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
