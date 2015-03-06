@@ -37,7 +37,7 @@
 
                         <div class="field">
                             <label class="main">Achternaam</label>
-                            <input name="name" type="text" placeholder="Uw achternaam">
+                            <input name="lname" type="text" placeholder="Uw achternaam">
                             <span class="error"></span>
                         </div>
 
@@ -79,7 +79,7 @@
 
                         <div class="field">
                             <label class="main">Plaats</label>
-                            <input name="name" type="text" placeholder="Uw woonplaats">
+                            <input name="plaats" type="text" placeholder="Uw woonplaats">
                             <span class="error"></span>
                         </div>
 
@@ -98,19 +98,19 @@
 
                         <div class="field">
                             <label class="main">Telefoon</label>
-                            <input name="phone" type="text" placeholder="000-000-0000">
+                            <input name="phone" type="text" placeholder="1234567890">
                             <span class="error"></span>
                         </div>
 
                         <div class="field">
                             <label class="main">Mobiel</label>
-                            <input name="phone" type="text" placeholder="000-000-0000">
+                            <input name="gsm" type="text" placeholder="1234567890">
                             <span class="error"></span>
                         </div>
 
                         <div class="field">
                             <label class="main">Fax</label>
-                            <input name="phone" type="text" placeholder="000-000-0000">
+                            <input name="fax" type="text" placeholder="1234567890">
                             <span class="error"></span>
                         </div>
 
@@ -142,7 +142,7 @@
                         <div class="field buttons">
                             <label class="main">&nbsp;</label>
                             <button type="button" class="prev">&laquo; Vorige</button>
-                            <button type="submit" class="submit">Versturen</button>
+                            <button type="submit" class="submit">Versturenn</button>
                         </div>
 
                     </section>
