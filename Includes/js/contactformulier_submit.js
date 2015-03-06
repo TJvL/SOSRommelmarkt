@@ -10,6 +10,7 @@ $('form.idealforms').idealforms({
         'van': 'required van',
         'naar': 'required naar',
         'lname': 'required lname',
+        'plaats': 'required plaats',
         'email': 'required email',
         'password': 'required pass',
         'confirmpass': 'required equalto:password',
@@ -18,6 +19,8 @@ $('form.idealforms').idealforms({
         'website': 'url',
         'hobbies[]': 'minoption:2 maxoption:3',
         'phone': 'required phone',
+        'fax': 'required fax',
+        'gsm': 'required fax',
         'zip': 'required zip',
         'options': 'select:default',
         'bedrijfsnaam': 'required bedrijfsnaam'

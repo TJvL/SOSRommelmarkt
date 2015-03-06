@@ -5,3 +5,6 @@
 
 # IntelliJ Idea project files.
 .idea/
+
+# Product images.
+.img/products/
