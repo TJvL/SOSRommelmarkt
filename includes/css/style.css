@@ -4,6 +4,7 @@ body{
     background-image: url("/img/background.jpg");
     background-attachment:fixed;
     background-size: cover;
+    height: 100%;
   
     
 }
@@ -37,6 +38,21 @@ div .grey p{
     }
     
 }
+
+.wrapper 
+{
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -63px;
+}
+
+.push {
+    height: 63px;
+}
+
+
+
 
 /* Nodig voor resizing googlemaps iframe op contact pagina. */
 iframe, object, embed{
