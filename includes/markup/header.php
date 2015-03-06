@@ -6,16 +6,15 @@
     <meta charset="utf-8">
     <title>SOS Rommelmarkt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    
-    <link rel="stylesheet" href="/SOSRommelmarkt/includes/css/menu.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="/SOSRommelmarkt/includes/fonts/font-awesome/css/font-awesome.min.css" >
-    <link href = "/SOSRommelmarkt/includes/css/bootstrap.css" rel = "stylesheet">
-    <link href = "/SOSRommelmarkt/includes/css/shoppingcart.css" rel = "stylesheet">
-    <link href = "/SOSRommelmarkt/includes/css/footer.css" rel = "stylesheet">
-    <link href=  "/SOSRommelmarkt/includes/css/jquery.bxslider.css" rel="stylesheet">
-    <link href=  "/SOSRommelmarkt/includes/css/style.css" rel="stylesheet">
-    <link href=  "/SOSRommelmarkt/includes/css/vitrine.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="<?php echo ROOT_DIR; ?>/includes/css/menu.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="<?php echo ROOT_DIR; ?>/includes/fonts/font-awesome/css/font-awesome.min.css" >
+    <link href = "<?php echo ROOT_DIR; ?>/includes/css/bootstrap.css" rel = "stylesheet">
+    <link href = "<?php echo ROOT_DIR; ?>/includes/css/shoppingcart.css" rel = "stylesheet">
+    <link href = "<?php echo ROOT_DIR; ?>/includes/css/footer.css" rel = "stylesheet">
+    <link href=  "<?php echo ROOT_DIR; ?>/includes/css/jquery.bxslider.css" rel="stylesheet">
+    <link href=  "<?php echo ROOT_DIR; ?>/includes/css/style.css" rel="stylesheet">
+    <link href=  "<?php echo ROOT_DIR; ?>/includes/css/vitrine.css" rel="stylesheet">
     <link href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
     
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -24,13 +23,13 @@
       <script src="http://css3-mediaqueries-js.googlecode.com/files/css3-mediaqueries.js"></script>
     <![endif]-->    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    
-    <script src="/SOSRommelmarkt/includes/js/shopfilter.js" type="text/javascript"></script>
-    <script src="/SOSRommelmarkt/includes/js/shoppingcart.js" type="text/javascript"></script>
-    <script src="/SOSrommelmarkt/includes/js/bootstrap.js"></script>
-    <script src="/SOSRommelmarkt/includes/js/jquery.bxslider.min.js"></script>
-    <script src="/SOSRommelmarkt/includes/js/menu.js" type="text/javascript"></script>
-    <script src="/SOSRommelmarkt/includes/js/vitrine.js" type="text/javascript"></script>
+
+    <script src="<?php echo ROOT_DIR; ?>/includes/js/shopfilter.js" type="text/javascript"></script>
+    <script src="<?php echo ROOT_DIR; ?>/includes/js/shoppingcart.js" type="text/javascript"></script>
+    <script src="<?php echo ROOT_DIR; ?>/includes/js/bootstrap.js"></script>
+    <script src="<?php echo ROOT_DIR; ?>/includes/js/jquery.bxslider.min.js"></script>
+    <script src="<?php echo ROOT_DIR; ?>/includes/js/menu.js" type="text/javascript"></script>
+    <script src="<?php echo ROOT_DIR; ?>/includes/js/vitrine.js" type="text/javascript"></script>
     <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
     
     <!--Product filter slider -->
@@ -125,7 +124,7 @@
         
             <div class="col-sm-3">
                 
-                   <img class="img-responsive" id="logo" src="/SOSRommelmarkt/img/logo2.png" />   
+                   <img class="img-responsive" id="logo" src="<?php echo ROOT_DIR; ?>/img/logo2.png" />
                 
             </div>            
             <div class="col-md-9">
