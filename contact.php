@@ -1,5 +1,7 @@
-<!--For best practice on includes, a config php file is required which defines the root, so absolute paths can be created from $root/includes/markup for example..-->
-<?php include("includes/markup/header.php"); ?> 
+<?php 
+include("includes/config.inc.php");
+include("includes/markup/header.php"); 
+?> 
 
 <?php 
 if(isset($_POST['submit'])){

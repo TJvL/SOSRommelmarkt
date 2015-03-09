@@ -7,9 +7,9 @@
 </div>
 -->
 	
-<div class="push"><!--//--></div>
+<div id ="footerContainer">
 
-<footer>
+
 <div id="footer-wrapper">
     <div id="footer" class="container">
         <div class="col-sm-3 col-md-6">
@@ -45,7 +45,8 @@
 <div id="copyright">
 	<p>&copy; SOSrommelmarkt. All rights reserved. | Design by 42IN07SOe</a>.</p>
 </div>
-</footer>
+
+</div>
 
 </body>
 </html>

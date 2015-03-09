@@ -136,29 +136,11 @@
 
                     <subnav>
                         <ul class="menu">
-                            <li><a href="#"><i class="fa fa-home"></i> Home</a>             
-                            </li>
-                            <li><a  href="#"><i class="fa fa-cubes"></i> Producten</a></li>
-                                <ul class="sub-menu">
-                                    <li><a href="#">Sub-Menu 1</a></li>
-                                    <li><a href="#">Sub-Menu 2</a></li>
-                                    <li><a href="#">Sub-Menu 3</a></li>
-                                </ul>
-                            <li><a  href="#"><i class="fa fa-newspaper-o"></i> Activiteiten</a>
-                                <ul class="sub-menu">
-                                    <li><a href="#">Sub-Menu 1</a></li>
-                                    <li><a href="#">Level 3 Menu</a>
-                                        <ul>
-                                            <li><a href="#">Sub-Menu 4</a></li>
-                                            <li><a href="#">Sub-Menu 5</a></li>
-                                            <li><a href="#">Sub-Menu 6</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a  href="#"><i class="fa fa-group"></i> Over ons</a></li>
-                            <li><a  href="#"><i class="fa fa-suitcase"></i> SOS</a></li>
-                            <li><a  href="#"><i class="fa fa-envelope"></i> Contact</a></li>
+                            <li><a href="<?php echo ROOT_DIR; ?>/index.php"><i class="fa fa-home"></i> Home</a></li>
+                            <li><a  href="<?php echo ROOT_DIR; ?>/vitrine.php"><i class="fa fa-cubes"></i> Producten</a></li>
+                            <li><a href="<?php echo ROOT_DIR; ?>/contactformulier_alternat.php"><i class="fa fa-money"></i> Subsidie</a></li>
+                            <li><a  href="#"><i class="fa fa-group"></i> Over ons</a></li>                            
+                            <li><a  href="<?php echo ROOT_DIR; ?>/contact.php"><i class="fa fa-envelope"></i> Contact</a></li>
                       </ul>
                     </subnav>
                 </div>
