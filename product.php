@@ -88,7 +88,7 @@ function updateProduct($product)
 function insertProduct($colorCode, $addedBy, $name, $description)
 {
 	$query = "INSERT INTO Product (colorCode, addedBy, name, description) VALUES (?, ?, ?, ?)";
-	
+
 	// Insert the product and get back the auto incremented key.
 	$id = Database::insert($query, "isss", array($colorCode, $addedBy, $name, $description));
 
