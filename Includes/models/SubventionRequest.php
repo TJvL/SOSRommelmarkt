@@ -2,7 +2,7 @@
 /**
  * Model klasse voor de subsidieaanvraag.
  */
-
+include("database.php");
 class SubventionRequest {
     //alle waardes die we straks door moeten krijgen van het formulier, het kan zijn dat er lege waardes bij zitten, ligt eraan hoe de w
     //INSERT AFMAKEN, ZORGEN DAT ER EEN OBJECT WORDT AANGEMAAKT EN WORDT GETRETURNED
@@ -49,29 +49,41 @@ class SubventionRequest {
         return $sv;
     }
 //dit werkte eerst maar volgensmij is de insert methoe veranderd
+
+    //insert object in de database.
+    function insertSubventionRequest($contactpersoon,$onderneming,$kvk,$adres,$postcode,$plaats,$telefoonnummer1
+        ,$telefoonnummer2,$fax,$email,$toelichting,$activiteiten,$resultaten)
+    {
+        //construct query
+        $query = "
+INSERT INTO SubventionRequest(contactpersoon,onderneming,kvk,adres,postcode,plaats,telefoonnummer1,telefoonnummer2,fax,email,toelichting,activiteiten,resultaten)
+VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+        //execute
+       $id= Database::insert($query,"sssssssssssss",array($contactpersoon,$onderneming,$kvk,$adres,$postcode,$plaats,$telefoonnummer1
+        ,$telefoonnummer2,$fax,$email,$toelichting,$activiteiten,$resultaten));
+
+    return $this->createSubventionRequest($id,$contactpersoon,$onderneming,$kvk,$adres,$postcode,$plaats,$telefoonnummer1
+        ,$telefoonnummer2,$fax,$email,$toelichting,$activiteiten,$resultaten);
+
+
+    }
+
+
+
 //
-//    //insert object in de database.
-//    function insertSubventionRequest($contactpersoon,$onderneming,$kvk,$adres,$postcode,$plaats,$telefoonnummer1
-//        ,$telefoonnummer2,$fax,$email,$toelichting,$activiteiten,$resultaten)
-//    {
-//                  //construct query
-//                  $query = "
+//    //construct query
+//$query = "
 //                  INSERT INTO SubventionRequest(contactpersoon,onderneming,kvk,adres,postcode,plaats,telefoonnummer1,telefoonnummer2,fax,email,toelichting,activiteiten,resultaten)
 //                  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 //
-//        //insert given data into database and return auto incremented key
-//        Database::insert($query,"sssssssssssss",array($contactpersoon,$onderneming,$kvk,$adres,$postcode,$plaats,$telefoonnummer1
-//        ,$telefoonnummer2,$fax,$email,$toelichting,$activiteiten,$resultaten));
+//    //insert given data into database and return auto incremented key
+//Database::insert($query,"sssssssssssss",array($contactpersoon,$onderneming,$kvk,$adres,$postcode,$plaats,$telefoonnummer1
+//,$telefoonnummer2,$fax,$email,$toelichting,$activiteiten,$resultaten));
 //
-//        //return a SV object
-//    createSubsentionRequest($id,$contactpersoon,$onderneming,$kvk,$adres,$postcode,$plaats,$telefoonnummer1
-//        ,$telefoonnummer2,$fax,$email,$toelichting,$activiteiten,$resultaten);
-//    }
-
-
-
-
-
+//    //return a SV object
+//createSubsentionRequest($id,$contactpersoon,$onderneming,$kvk,$adres,$postcode,$plaats,$telefoonnummer1
+//,$telefoonnummer2,$fax,$email,$toelichting,$activiteiten,$resultaten);
 
 
 
