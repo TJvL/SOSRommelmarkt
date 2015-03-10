@@ -15,14 +15,19 @@
     <link href=  "/SOSRommelmarkt/includes/css/jquery.bxslider.css" rel="stylesheet">
     <link href=  "/SOSRommelmarkt/includes/css/style.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="/SOSRommelmarkt/includes/css/cropper.css>
-
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
+    <!--[if lt IE 9] -->
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <script src="http://css3-mediaqueries-js.googlecode.com/files/css3-mediaqueries.js"></script>
     <![endif]-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.5/css/jquery.dataTables.css">
+
+    <!-- DataTables -->
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.js">
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js">
 
     <script src="/SOSrommelmarkt/includes/js/bootstrap.js"></script>
     <script src="/SOSRommelmarkt/includes/js/jquery.bxslider.min.js"></script>

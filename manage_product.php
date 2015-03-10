@@ -4,23 +4,38 @@ include("product.php")
 ?>
 
 <div class="container">
-    <div class="grey">
+    <div class="white">
         <div class="table-responsive">
-            <table class="table">
+            <table id="productTable" class="display">
+                <thead>
+                <tr>
+                    <th>product id</th>
+                    <th>naam</th>
+                    <th>kleur code</th>
+                    <th>toegevoegd door</th>
+                    <th>optie</th>
+                </tr>
+                </thead>
+                <tbody>
                 <?php
                     $products = fetchAllProducts();
                     foreach ($products as $product){
                         echo "<tr>";
-                        echo "<td><img class='img-responsive' src=" . $product->getImagePath() . " ></td>";
                         echo "<td>" . $product->id . "</td>";
                         echo "<td>" . $product->name . "</td>";
                         echo "<td>" . $product->colorCode . "</td>";
                         echo "<td>" . $product->addedBy . "</td>";
-                        echo "<td> <a href='#'>" . "Bewerk.." . "</a> </td>";
+                        echo "<td><a href='#'>details</a></td>";
                         echo "</tr>";
                     }
                 ?>
+                </tbody>
             </table>
         </div>
     </div>
 </div>
+<script>
+    $(document).ready( function () {
+        $('#productTable').DataTable();
+    } );
+</script>
