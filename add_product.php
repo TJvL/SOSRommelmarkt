@@ -19,13 +19,10 @@
                 </div>
 
                 <div class="row">
-                    <!-- Afbeelding verplaatsen & alt tekst veranderen & src veranderen -->
-                    <div class="col-sm-2 padding-sm">
-                     <img class="form-control" id="productImagePreview" src="#" alt="Product Afbeelding"></div>
                     <div class="col-sm-6 padding-sm">
                      <input type="file" class="form-control" required="required" name="productImage" onchange="readURL(this);">
                     </div>
-                    <div class="col-sm-2 padding-sm">
+                    <div class="col-sm-3 padding-sm">
                         <select name="productColorCode" class="form-control" required="required">
                             <option value="" default selected>Kies...</option>
                             <option value="rood">Rood</option>
@@ -33,9 +30,11 @@
                             <option value="geel">Geel</option>
                         </select>
                     </div>
-                    <div class="col-sm-2 padding-sm">
+                    <div class="col-sm-3 padding-sm">
                      <input type="submit" name="submit" value="Opslaan" class="form-control">
                     </div>
+                    <div class="col-sm-12 padding-sm">
+                        <img class="img-responsive" id="productImagePreview" src="img\products\2.png" alt="Product Afbeelding"></div>
                     <!-- formulier aanpassen zodat het goed wordt verstuurd naar Simon's backend -->
                 </div>
             </div>
@@ -53,12 +52,21 @@
 </div>
 
 <script>
+    document.getElementById('productImagePreview').onload = function () {
+        new Cropper(this, {
+            min_width: 220,
+            min_height: 220
+            //max_width: 50,
+            //max_height: 50
+        });
+    }
+
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
             reader.onload = function (e) {
-                $('#productImagePreview').attr('src', e.target.result).width(150).height(200); // TODO: width/height shit aanpassen...
+                $('#productImagePreview').attr('src', e.target.result); // TODO: width/height shit aanpassen...
             };
 
             reader.readAsDataURL(input.files[0]);

@@ -1,10 +1,16 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body{
     
-    background-image: url("/SOSRommelmarkt/img/background.jpg");
-    background-image: url("/img/background.jpg");
+/*    background-image: url("/SOSRommelmarkt/img/background.jpg");*/
+    background-image: url("../../img/background.jpg");
     background-attachment:fixed;
     background-size: cover;
-  
+    margin: 0 0 267px; /* bottom = footer height */
+    height:100%;
     
 }
 
@@ -12,6 +18,8 @@ div .white{
     margin-top:10px;
     padding:2em;
     background-color: #FFF;
+    height: 100%;
+    
 }
 
 div .grey{
@@ -21,7 +29,6 @@ div .grey{
     color:#fff;
     font-size: 20px;
 }
-
 
 
 div .grey p{
