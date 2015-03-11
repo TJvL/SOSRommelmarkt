@@ -57,140 +57,45 @@ include("includes/markup/header.php");
                 </div>
             
             </div>
-            <div class="col-sm-9">
-            
-                <!--Products-->
-                <!-- height : 300px, 4 on a row -->
-                <div class="col-sm-3 product">
-                
-                    <div class="view view-first">  
-                         <img class="img-responsive" src="img/Content/item1.jpg" />  
-                         <div class="mask">  
-                         <h2>Title</h2>  
-                         <p>Your Text</p>  
-                             <a href="#" class="info"><i class="fa fa-cart-plus fa-2x"></i></a>  
-                         </div>  
-                    </div> 
-                    
-                    <div class="product-info">
-                    
-                        <div class="product-info-left">
-                        
-                            <h4>Item 2</h4>
-                            <i class="product-info-quality green" title="Z.G.A.N"></i>
-                            
+            <div class="col-sm-9 ">
+
+                <?php include('product.class.php'); ?>
+
+                <?php foreach(Product::fetchAllProducts() as $product) { ?>
+
+                    <div class="col-sm-3 product padding-lg">
+
+                        <div class="view view-first">
+                            <img class="img-responsive" src="<?php echo $product->getImagePath() ?>" />
+                            <div class="mask">
+                                <h2><?php echo $product->name; ?></h2>
+                                <p>Gereserveerd</p>
+                                <a href="#" class="info"><i class="fa fa-cart-plus fa-2x"></i></a>
+                            </div>
                         </div>
-                        <div class="product-info-right">
-                        
-                            <p class="price">&euro; 49,99</p>
-                            <p class="reserved">Gereserveerd</p>
-                            
+
+                        <div class="product-info">
+
+                            <div class="product-info-left">
+
+                                <h4><?php echo $product->name; ?></h4>
+                                <i class="product-info-quality <?php echo $product->colorCode; ?>" title="Z.G.A.N"></i>
+
+                            </div>
+                            <div class="product-info-right">
+
+                                <p class="price">&euro; <?php echo $product->price; ?></p>
+                                <p class="reserved"><?php if($product->isReserved){echo ("Gereserveed");} ?></p>
+
+                            </div>
+
                         </div>
-                        
-                        
-                    
+
+
                     </div>
-                    
-                
-                </div>
-                
-                <div class="col-sm-3 product">
-                
-                    <div class="view view-first">  
-                         <img class="img-responsive" src="img/Content/item2.jpg" />  
-                         <div class="mask">  
-                         <h2>Title</h2>  
-                         <p>Your Text</p>  
-                             <a href="#" class="info"><i class="fa fa-cart-plus fa-2x"></i></a>  
-                         </div>  
-                    </div> 
-                    
-                    <div class="product-info">
-                    
-                        <div class="product-info-left">
-                        
-                            <h4>Item 2</h4>
-                            <i class="product-info-quality green" title="Z.G.A.N"></i>
-                            
-                        </div>
-                        <div class="product-info-right">
-                        
-                            <p class="price">&euro; 49,99</p>
-                            <p class="reserved"></p>
-                            
-                        </div>
-                        
-                        
-                    
-                    </div>
-                    
-                
-                </div>
-                <div class="col-sm-3 product">
-                
-                    <div class="view view-first">  
-                         <img class="img-responsive" src="img/Content/item3.jpg" />  
-                         <div class="mask">  
-                         <h2>Title</h2>  
-                         <p>Your Text</p>  
-                             <a href="#" class="info"><i class="fa fa-cart-plus fa-2x"></i></a>  
-                         </div>  
-                    </div> 
-                    
-                    <div class="product-info">
-                    
-                        <div class="product-info-left">
-                        
-                            <h4>Item 2</h4>
-                            <i class="product-info-quality green" title="Z.G.A.N"></i>
-                            
-                        </div>
-                        <div class="product-info-right">
-                        
-                            <p class="price">&euro; 49,99</p>
-                            <p class="reserved">Gereserveerd</p>
-                            
-                        </div>
-                        
-                        
-                    
-                    </div>
-                    
-                
-                </div>
-                <div class="col-sm-3 product">
-                
-                    <div class="view view-first">  
-                         <img class="img-responsive" src="img/Content/item4.jpg" />  
-                         <div class="mask">  
-                         <h2>Title</h2>  
-                         <p>Your Text</p>  
-                             <a href="#" class="info"><i class="fa fa-cart-plus fa-2x"></i></a>  
-                         </div>  
-                    </div> 
-                    
-                    <div class="product-info">
-                    
-                        <div class="product-info-left">
-                        
-                            <h4>Te gek awesum shit 2</h4>
-                            <i class="product-info-quality red" title="Z.G.A.N"></i>
-                            
-                        </div>
-                        <div class="product-info-right">
-                        
-                            <p class="price">&euro; 49,99</p>
-                            <p class="reserved">Gereserveerd</p>
-                            
-                        </div>
-                        
-                        
-                    
-                    </div>
-                    
-                
-                </div>
-                
+
+                <?php } ?>
+
             
             </div>
         

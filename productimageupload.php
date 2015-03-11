@@ -10,7 +10,7 @@
  * </form>
  */
 
-include("product.php");
+include("product.class.php");
 
 // Check if a file was actually uploaded.
 if (!isset($_POST["submit"]))

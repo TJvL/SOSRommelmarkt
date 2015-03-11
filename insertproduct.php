@@ -1,6 +1,6 @@
 <?php
 
-include("product.php");
+include("product.class.php");
 
 // Check if all necessary variables have been given.
 if (isset($_POST["productName"]) && isset($_POST["productDescription"]) && isset($_FILES["productImage"]) && isset($_POST["productColorCode"]))

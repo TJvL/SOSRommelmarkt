@@ -15,6 +15,8 @@ if(in_array("SOSRommelmarkt", scandir($_SERVER['DOCUMENT_ROOT'])))
 }
 define("ROOT_DIR", $root);
 
+require("database.php");
+
 //Include everything here, in the right order.
 require("/controller/Controller.php");
 require("/controller/homeController.php");

@@ -1,6 +1,6 @@
 <?php
 include("includes/markup/manage_header.php");
-include("product.php")
+include("product.class.php")
 ?>
 
 <div class="container">

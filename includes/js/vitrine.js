@@ -25,6 +25,13 @@ $(document).ready(function(){
     $( "#amount" ).val( "€" + $( "#slider-range" ).slider( "values", 0 ) +
       " - €" + $( "#slider-range" ).slider( "values", 1 ) );
   });
+
+    boxes = $('.product');
+    maxHeight = Math.max.apply(
+        Math, boxes.map(function() {
+            return $(this).height();
+        }).get());
+    boxes.height(maxHeight);
     
     
        
