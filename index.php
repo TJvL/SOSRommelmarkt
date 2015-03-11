@@ -6,8 +6,8 @@
  * Time: 09:29
  */
 
-include("includes/config.inc.php");
-include("includes/markup/header.php");
+include("/includes/config.inc.php");
+include("/includes/markup/header.php");
 
 
     //MVC structure
@@ -41,7 +41,7 @@ include("includes/markup/header.php");
     $method = $_SERVER['REQUEST_METHOD'];
 
     //Show the called path.
-    echo "DEBUG: /".$controller."/".$action." > ".$method . "<br />";
+    echo "DEBUG: /".$controller."/".$action."/".$id." > ".$method . "<br />";
 
     $ctrl = new $controller();
     $ctrl->{$action . "_" . $method}($id);
