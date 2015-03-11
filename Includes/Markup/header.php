@@ -31,7 +31,7 @@
     <script src="<?php echo ROOT_DIR; ?>/includes/js/menu.js" type="text/javascript"></script>
     <script src="<?php echo ROOT_DIR; ?>/includes/js/vitrine.js" type="text/javascript"></script>
     <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
-    <script src="/SOSRommelmarkt/includes/js/edit_product.js" typpe="text/javascript"></script>
+    <script src="<?php echo ROOT_DIR; ?>/includes/js/edit_product.js" typpe="text/javascript"></script>
     
     <!--Product filter slider -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
@@ -136,8 +136,8 @@
 
                     <subnav>
                         <ul class="menu">
-                            <li><a href="<?php echo ROOT_DIR; ?>/index.php"><i class="fa fa-home"></i> Home</a></li>
-                            <li><a  href="<?php echo ROOT_DIR; ?>/vitrine.php"><i class="fa fa-cubes"></i> Producten</a></li>
+                            <li><a href="<?php echo ROOT_DIR; ?>/home/index"><i class="fa fa-home"></i> Home</a></li>
+                            <li><a  href="<?php echo ROOT_DIR; ?>/shop/index"><i class="fa fa-cubes"></i> Producten</a></li>
                             <li><a href="<?php echo ROOT_DIR; ?>/contactformulier_alternat.php"><i class="fa fa-money"></i> Subsidie</a></li>
                             <li><a  href="#"><i class="fa fa-group"></i> Over ons</a></li>                            
                             <li><a  href="<?php echo ROOT_DIR; ?>/contact.php"><i class="fa fa-envelope"></i> Contact</a></li>

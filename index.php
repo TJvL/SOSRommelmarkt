@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Conno
- * Date: 6-3-2015
- * Time: 09:29
- */
 
 include("/includes/config.inc.php");
 include("/includes/markup/header.php");

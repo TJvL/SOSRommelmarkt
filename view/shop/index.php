@@ -62,7 +62,7 @@
                         <img class="img-responsive" src="<?php echo $product->getImagePath() ?>" />
                         <div class="mask">
                             <h2><?php echo $product->name; ?></h2>
-                            <p>Gereserveerd</p>
+                            <p><?php if($product->isReserved){echo ("Gereserveed");} ?></p>
                             <a href="#" class="info"><i class="fa fa-cart-plus fa-2x"></i></a>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                         <div class="product-info-left">
 
                             <h4><?php echo $product->name; ?></h4>
-                            <i class="product-info-quality <?php echo $product->colorCode; ?>" title="Z.G.A.N"></i>
+                            <i class="product-info-quality <?php echo $product->colorCode; ?>" title="<?php echo $product->colorCode; ?>"></i>
 
                         </div>
                         <div class="product-info-right">
