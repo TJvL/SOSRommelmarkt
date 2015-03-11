@@ -15,13 +15,40 @@ if(in_array("SOSRommelmarkt", scandir($_SERVER['DOCUMENT_ROOT'])))
 }
 define("ROOT_DIR", $root);
 
-//Include everything here, in the right order.
-require("/controller/Controller.php");
-require("/controller/homeController.php");
-require("/controller/shopController.php");
 
-//get some useful extras
-require("includes/utility/form.php");
-require("includes/utility/type.php");
+require_once("/controller/Controller.php");
+function loadControllers($class)
+{
+    $loc = "/controller/";
+    $file = $loc . $class . ".php";
+    if(file_exists($_SERVER['DOCUMENT_ROOT']. "/SOSRommelmarkt/" . $file))
+    {
+        require_once($file);
+    }
+}
+
+function loadModels($class)
+{
+    $loc = "/model/";
+    $file = $loc . $class . ".class.php";
+    if(file_exists($_SERVER['DOCUMENT_ROOT']. "/SOSRommelmarkt/" . $file))
+    {
+        require_once($file);
+    }
+}
+
+function loadUtilities($class)
+{
+    $loc = "/includes/utility/";
+    $file = $loc . $class . ".php";
+    if(file_exists($_SERVER['DOCUMENT_ROOT']. "/SOSRommelmarkt/" . $file))
+    {
+        require_once($file);
+    }
+}
+
+spl_autoload_register('loadControllers');
+spl_autoload_register('loadModels');
+spl_autoload_register('loadUtilities');
 
 ?>
