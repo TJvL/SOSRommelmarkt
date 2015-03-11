@@ -85,7 +85,65 @@ VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 //createSubsentionRequest($id,$contactpersoon,$onderneming,$kvk,$adres,$postcode,$plaats,$telefoonnummer1
 //,$telefoonnummer2,$fax,$email,$toelichting,$activiteiten,$resultaten);
 
+	static private function createSubventionRequestObjectFromDatabaseRow($row)
+	{
+		$subventionRequest = new SubventionRequest();
+        $subventionRequest->id = $row["id"];
+        $subventionRequest->contactpersoon = $row["contactpersoon"];
+        $subventionRequest->onderneming = $row["onderneming"];
+        $subventionRequest->kvk = $row["kvk"];
+        $subventionRequest->adres = $row["adres"];
+        $subventionRequest->postcode = $row["postcode"];
+        $subventionRequest->plaats = $row["plaats"];
+        $subventionRequest->telefoonnummer1 = $row["telefoonnummer1"];
+        $subventionRequest->telefoonnummer2 = $row["telefoonnummer2"];
+        $subventionRequest->fax = $row["fax"];
+        $subventionRequest->email = $row["email"];
+        $subventionRequest->toelichting = $row["toelichting"];
+        $subventionRequest->activiteiten = $row["activiteiten"];
+        $subventionRequest->resultaten = $row["resultaten"];
+        
+        return $subventionRequest;
+	}
 
-
-
+    static public function fetchAllSubventionRequests()
+    {
+    	$query = "SELECT * FROM SubventionRequest";
+    	
+    	// Execute the query.
+    	$result = Database::fetch($query);
+    	
+    	// Put the results of the query into an aray of subvention request objects.
+    	$subventionRequests = array();
+    	
+    	for ($i = 0; $i < $result->num_rows; $i++)
+    	{
+	    	$row = $result->fetch_assoc();
+	    	
+	    	$subventionRequests[$i] = SubventionRequest::createSubventionRequestObjectFromDatabaseRow($row);
+    	}
+    	
+    	// Free the result set.
+    	$result->close();
+    	
+    	return $subventionRequests;
+    }
+    
+    static public function fetchSubventionRequestById($id)
+    {
+    	$query = "SELECT * FROM SubventionRequest WHERE id = ?";
+    	 
+    	// Execute the query.
+    	$result = Database::fetch($query, "i", array($id));
+    	
+    	// Put the results of the query into a subvention request object.
+    	$row = $result->fetch_assoc();
+    	 
+    	$subventionRequest = SubventionRequest::createSubventionRequestObjectFromDatabaseRow($row);
+    	
+    	// Free the result set.
+    	$result->close();
+    	 
+    	return $subventionRequest;
+    }
 }
