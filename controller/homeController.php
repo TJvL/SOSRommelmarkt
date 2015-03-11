@@ -12,14 +12,5 @@ class HomeController extends Controller
         $this->renderView("index");
     }
 
-    public function about_GET()
-    {
-        $this->renderView("about");
-    }
-
-    public function product_GET()
-    {
-        $this->renderView("product");
-    }
 }
 ?>

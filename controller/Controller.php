@@ -9,11 +9,32 @@ class Controller
 		$this->name = $name;
         $this->viewbag = array();
 	}
-	
-	public function renderView($action)
-	{
+
+    protected function render()
+    {
+        if(func_num_args() ==1)
+        {
+            $this->renderView(func_get_arg(0));
+        }
+        elseif(func_num_args() == 2)
+        {
+            $this->renderStrongView(func_get_arg(0), func_get_arg(1));
+        }
+        else
+        {
+            throw new BadFunctionCallException("Invalid argument count");
+        }
+    }
+
+    protected function renderView($action)
+    {
         $viewbag = $this->viewbag;
-		include("/view/" . $this->name. "/" . $action . ".php");
-	}
+        include("/view/" . $this->name . "/" . $action . ".php");
+    }
+    protected function renderStrongView($action, $model)
+    {
+        $viewbag = $this->viewbag;
+        include("/view/" . $this->name . "/" . $action . ".php");
+    }
 }
 ?>
