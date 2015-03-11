@@ -1,11 +1,8 @@
 <?php
 
-include("database.php");
-
 class Product
 {
     const MAX_IMAGE_SIZE = 10000000;            // Maximum image size in bytes. 10 MB right now.
-    const IMAGES_DIRECTORY = "img/products/";
 
     public $id;
     public $colorCode;
@@ -17,9 +14,9 @@ class Product
 
     public function getImagePath()
     {
-        $result = glob(Product::IMAGES_DIRECTORY . $this->id . '*');
+        $result = glob("img/products/". $this->id . '*');
         if ($result)
-            return $result[0];
+            return ROOT_DIR . "/" . $result[0];
         else
             return null;
     }

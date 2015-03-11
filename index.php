@@ -41,7 +41,7 @@ include("/includes/markup/header.php");
     $method = $_SERVER['REQUEST_METHOD'];
 
     //Show the called path.
-    echo "DEBUG: /".$controller."/".$action."/".$id." > ".$method . "<br />";
+//    echo "DEBUG: /".$controller."/".$action."/".$id." > ".$method . "<br />";
 
     $ctrl = new $controller();
     $ctrl->{$action . "_" . $method}($id);

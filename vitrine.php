@@ -59,14 +59,14 @@ include("includes/markup/header.php");
             </div>
             <div class="col-sm-9 ">
 
-                <?php include('product.class.php'); ?>
+
 
                 <?php foreach(Product::fetchAllProducts() as $product) { ?>
 
                     <div class="col-sm-3 product padding-lg">
 
                         <div class="view view-first">
-                            <img class="img-responsive" src="<?php echo $product->getImagePath() ?>" />
+                            <img class="img-responsive" src="<?php echo $product->getImagePath(); ?>" />
                             <div class="mask">
                                 <h2><?php echo $product->name; ?></h2>
                                 <p>Gereserveerd</p>

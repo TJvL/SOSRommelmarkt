@@ -1,7 +1,3 @@
-<?php
-    include('/SOSRommelmarkt/model/product.class.php');
-    Type::check("Product", $model);
-?>
 
 <div class="container">
 
