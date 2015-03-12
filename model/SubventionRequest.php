@@ -2,10 +2,8 @@
 /**
  * Model klasse voor de subsidieaanvraag.
  */
-include("database.php");
 class SubventionRequest {
     //alle waardes die we straks door moeten krijgen van het formulier, het kan zijn dat er lege waardes bij zitten, ligt eraan hoe de w
-    //INSERT AFMAKEN, ZORGEN DAT ER EEN OBJECT WORDT AANGEMAAKT EN WORDT GETRETURNED
     public $id;
     public $contactpersoon;
     public $onderneming;
@@ -48,7 +46,7 @@ class SubventionRequest {
         $sv ->resultaten = $r;
         return $sv;
     }
-//dit werkte eerst maar volgensmij is de insert methoe veranderd
+
 
     //insert object in de database.
     function insertSubventionRequest($contactpersoon,$onderneming,$kvk,$adres,$postcode,$plaats,$telefoonnummer1
