@@ -1,26 +1,26 @@
 <?php include("includes/markup/manage_header.php"); ?>
 
 <div class="container">
-    <div class="grey">
+    <div class="white">
         <form action="insertproduct.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <h2>Product Aanmaken:</h2>
 
                 <div class="row">
                 	<div class="col-sm-12 padding-sm">
-               		 <input type="text" class="form-control" required="required" name="productName" placeholder="Product naam...">
+                        <input type="text" class="form-control" required="required" name="productName" placeholder="Product naam...">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-sm-12 padding-sm">
-                     <textarea class="form-control" required="required" name="productDescription" placeholder="Omschrijving..." rows="5"></textarea>
+                        <textarea class="form-control" required="required" name="productDescription" placeholder="Omschrijving..." rows="5"></textarea>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-sm-6 padding-sm">
-                     <input type="file" class="form-control" required="required" name="productImage" onchange="readURL(this);">
+                        <input id="imageInput" type="file" class="form-control" required="required" name="productImage" onchange="renderImage(this)">
                     </div>
                     <div class="col-sm-3 padding-sm">
                         <select name="productColorCode" class="form-control" required="required">
@@ -31,45 +31,36 @@
                         </select>
                     </div>
                     <div class="col-sm-3 padding-sm">
-                     <input type="submit" name="submit" value="Opslaan" class="form-control">
+                        <input type="submit" name="submit" value="Opslaan" class="form-control">
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-sm-12 padding-sm">
-                        <img class="img-responsive" id="productImagePreview" src="img\products\2.png" alt="Product Afbeelding"></div>
-                    <!-- formulier aanpassen zodat het goed wordt verstuurd naar Simon's backend -->
+                        <canvas id="imagePreview"></canvas>
+                    </div>
                 </div>
             </div>
         </form>
-
-
-        <!--
-        <form action="productimageupload.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="productImage">
-        <input type="hidden" name="productId" value="1">
-        <input type="submit" name="submit" value="Upload Image">
-        </form>
-         -->
     </div>
 </div>
 
 <script>
-    document.getElementById('productImagePreview').onload = function () {
-        new Cropper(this, {
-            min_width: 220,
-            min_height: 220
-            //max_width: 50,
-            //max_height: 50
-        });
-    }
+    function renderImage(file){
 
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+        console.log(file.files);
 
-            reader.onload = function (e) {
-                $('#productImagePreview').attr('src', e.target.result); // TODO: width/height shit aanpassen...
-            };
+        var reader = new FileReader();
 
-            reader.readAsDataURL(input.files[0]);
-        }
+        reader.onload = function(event) {
+            the_url = event.target.result;
+            var canvas = document.getElementById("imagePreview");
+            var context = canvas.getContext("2d");
+            var image = new Image();
+            image.src = the_url;
+
+            context.drawImage(image, 0, 0);
+        };
+
+        reader.readAsDataURL(file.files[0]);
     }
 </script>
