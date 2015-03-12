@@ -14,7 +14,7 @@ class Product
 
     public function getImagePath()
     {
-        $result = glob("img/products/". $this->id . '*');
+        $result = glob("img/content/item". $this->id . '*');
         if ($result)
             return ROOT_DIR . "/" . $result[0];
         else
@@ -22,7 +22,7 @@ class Product
     }
 
 
-    private function createProductObject($row)
+    private static function createProductObject($row)
     {
         $product = new Product();
         $product->id = $row["id"];
