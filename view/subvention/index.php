@@ -1,6 +1,5 @@
-<!--For best practice on includes, a config php file is required which defines the root, so absolute paths can be created from $root/includes/markup for example..-->
-<?php //include("includes/markup/header.php"); ?>
-<!--i'm not sure if this belongs here or in the shared header.-->
+
+
 <div class= "container">
     <div class="grey" >
 
@@ -24,7 +23,7 @@
         <h2><b>Online subsidieaanvraag</b></h2>
 
         <!--		   all data is labeled with a name, a reference will be  in the action page like this : $_POST["onderneming"];-->
-        <form role="form" action="../../contact_action.php" id="contactForm" method="post">
+        <form role="form" action="" method="post">
             <div class="form-group">
 
                 Algemene gegevens onderneming
@@ -59,21 +58,12 @@
                     <div class="col-md-3"> <textarea name="resultaten" class="form-control"  placeholder="Beschrijven van de beoogde resultaten" required></textarea></div>
                 </div>
                 <br>
-                <input  type="submit" value="Submit" style="width: 30%" class="form-control">
+                <input type="submit" name="submit" value="Verstuur" class="form-control">
+<!--                <input  type="submit" value="Submit" style="width: 30%" class="form-control">-->
             </div>
         </form>
 
     </div>
 s</div>
 
-
-
-
-
-
-
-
-<?php
-//include("includes/markup/footer.php");
-?>
 

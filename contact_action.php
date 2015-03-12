@@ -9,3 +9,4 @@ $sv ->insertSubventionRequest($_POST["contactpersoon"],$_POST["onderneming"],$_P
     $_POST["telefoonnummer2"],$_POST["fax"],$_POST["email"],$_POST["toelichting"],
     $_POST["activiteiten"],$_POST["resultaten"]);
 
+?>
