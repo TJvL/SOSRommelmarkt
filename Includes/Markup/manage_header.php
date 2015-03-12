@@ -15,6 +15,10 @@
     <link href=  "/SOSRommelmarkt/includes/css/jquery.bxslider.css" rel="stylesheet">
     <link href=  "/SOSRommelmarkt/includes/css/style.css" rel="stylesheet">
 
+    <!-- JCROP -->
+    <script src="/SOSRommelmarkt/includes/js/jquery.Jcrop.min.js"></script>
+    <link href=  "/SOSRommelmarkt/includes/css/jquery.Jcrop.css" rel="stylesheet">
+
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9] -->
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
