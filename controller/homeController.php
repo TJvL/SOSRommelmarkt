@@ -11,13 +11,5 @@ class HomeController extends Controller
         $this->viewbag['voorbeeld'] = "hello, greetings from the viewbag";
         $this->render("index");
     }
-
-    public function strong_GET()
-    {
-        $prodlist = new ArrayList("Product");
-        $prodlist->addAll(Product::fetchAllProducts());
-
-        $this->render("strong", $prodlist);
-    }
 }
 ?>
