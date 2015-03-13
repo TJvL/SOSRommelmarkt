@@ -2,7 +2,8 @@
 
 class Product
 {
-    const MAX_IMAGE_SIZE = 10000000;            // Maximum image size in bytes. 10 MB right now.
+    const MAX_IMAGE_SIZE = 10000000;            	// Maximum image size in bytes. 10 MB right now.
+    const IMAGES_DIRECTORY = "img/content/item";	// The directory the images for the products are placed.
 
     public $id;
     public $colorCode;
@@ -14,15 +15,22 @@ class Product
 
     public function getImagePath()
     {
-        $result = glob("img/content/item". $this->id . '*');
+        $result = glob(Product::IMAGES_DIRECTORY. $this->id . '*');
         if ($result)
             return ROOT_DIR . "/" . $result[0];
         else
             return null;
     }
+    
+    public function update()
+    {
+    	$query = "UPDATE Product SET colorCode = ?, addedBy = ?, name = ?, description = ?, price = ?, isReserved = ? WHERE id = ?";
+    
+    	// Execute the update query.
+    	Database::update($query, "isssdii", array($product->colorCode, $product->addedBy, $product->name, $product->description, $product->price, $product->isReserved, $product->id));
+    }
 
-
-    private static function createProductObject($row)
+    private static function createObjectFromDatabaseRow($row)
     {
         $product = new Product();
         $product->id = $row["id"];
@@ -36,7 +44,7 @@ class Product
         return $product;
     }
 
-    public static function fetchAllProducts()
+    public static function fetchAll()
     {
         $query = "SELECT * FROM Product";
 
@@ -46,10 +54,11 @@ class Product
         // Put the results of the query into an array of Product objects.
         $products = array();
 
-        for ($i = 0; $i < $result->num_rows; $i++) {
+        for ($i = 0; $i < $result->num_rows; $i++)
+        {
             $row = $result->fetch_assoc();
-
-            $products[$i] = self::createProductObject($row);
+			
+            $products[$i] = self::createObjectFromDatabaseRow($row);
         }
 
         // Free the result set.
@@ -58,7 +67,7 @@ class Product
         return $products;
     }
 
-    function fetchProductById($id)
+    public static function fetchById($id)
     {
         $query = "SELECT * FROM Product WHERE id = ?";
 
@@ -68,7 +77,7 @@ class Product
         // Put the results of the query into a product object.
         $row = $result->fetch_assoc();
 
-        $product = createProductObject($row);
+        $product = createObjectFromDatabaseRow($row);
 
         // Free the result set.
         $result->close();
@@ -76,21 +85,12 @@ class Product
         return $product;
     }
 
-// TODO: Maybe implement only updating what needs to be updated. But that's probably too much work for performance we probably won't need.
-    function updateProduct($product)
+    public static function insertProduct($colorCode, $addedBy, $name, $description, $price, $isReserved)
     {
-        $query = "UPDATE Product SET colorCode = ?, addedBy = ?, name = ?, description = ? WHERE id = ?";
-
-        // Execute the update query.
-        Database::update($query, "isssi", array($product->colorCode, $product->addedBy, $product->name, $product->description, $product->id));
-    }
-
-    function insertProduct($colorCode, $addedBy, $name, $description)
-    {
-        $query = "INSERT INTO Product (colorCode, addedBy, name, description) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO Product (colorCode, addedBy, name, description, price, isReserved) VALUES (?, ?, ?, ?, ?, ?)";
 
         // Insert the product and get back the auto incremented key.
-        $id = Database::insert($query, "isss", array($colorCode, $addedBy, $name, $description));
+        $id = Database::insert($query, "isssdi", array($colorCode, $addedBy, $name, $description, $price, $isReserved));
 
         $product = new Product();
         $product->id = $id;
@@ -98,6 +98,8 @@ class Product
         $product->addedBy = $addedBy;
         $product->name = $name;
         $product->description = $description;
+        $product->price = $price;
+        $product->isReserved = $isReserved;
 
         // Return an object of the inserted product.
         return $product;
