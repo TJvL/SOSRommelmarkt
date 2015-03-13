@@ -4,24 +4,24 @@
      */
     module.exports = {
 
-        required: 'This field is required',
+        required: 'Dit veld is verplicht',
         digits: 'Must be only digits',
-        name: 'Must be at least 3 characters long and must only contain letters',
-        lname : 'Must be at least 3 characters long and must only contain letters',
-        bedrijfsnaam: 'Must be at least 3 characters long and must only contain letters',
-        kvknr: 'Must be 8 characters long and must only contain numbers',
-        straatnaam: 'Street name with house number',
-        email: 'Must be a valid email',
-        plaats: 'Must be at least 3 characters long and must only contain letters',
+        name: 'Moet minimaal 3 karakters lang zijn en moet alleen bestaan uit letters',
+        lname : 'Moet minimaal 3 karakters lang zijn en moet alleen bestaan uit letters',
+        bedrijfsnaam: 'Moet minimaal 3 karakters lang zijn en moet alleen bestaan uit letters',
+        kvknr: 'Moet 8 karakters lang zijn en moet alleen nummers bevatten',
+        straatnaam: 'Straatnaam met huisnummer',
+        email: 'Moet een geldig e-mailadres zijn',
+        plaats: 'Moet minimaal 3 karakters lang zijn en moet alleen bestaan uit letters',
         username: 'Must be at between 4 and 32 characters long and start with a letter. You may use letters, numbers, underscores, and one dot',
         pass: 'Must be at least 6 characters long, and contain at least one number, one uppercase and one lowercase letter',
         strongpass: 'Must be at least 8 characters long and contain at least one uppercase and one lowercase letter and one number or special character',
-        phone: 'Must be a valid phone number',
-        fax: 'Must be a valid fax number',
-        gsm: 'Must be a valid mobile phone number',
-        zip: 'Must be a valid zip code',
+        phone: 'Moet een geldig telefoonnummer zijn',
+        fax: 'Moet een geldig faxnummer zijn',
+        gsm: 'Moet een geldig gsm zijn',
+        zip: 'Moet een geldig postcode zijn',
         url: 'Must be a valid URL',
-        number: 'Must be a number',
+        number: 'Moet een nummer zijnr',
         range: 'Must be a number between {0} and {1}',
         min: 'Must be at least {0} characters long',
         max: 'Must be under {0} characters',
@@ -31,7 +31,7 @@
         select: 'Select an option',
         extension: 'File(s) must have a valid extension ({*})',
         equalto: 'Must have the same value as the "{0}" field',
-        date: 'Must be a valid date {0}'
+        date: 'Moet een geldig datum zijn'
 
     };
 
