@@ -36,5 +36,10 @@ class Controller
         $viewbag = $this->viewbag;
         include("/view/" . $this->name . "/" . $action . ".php");
     }
+
+    protected function redirectTo($target)
+    {
+        header('Location: ' . ROOT_DIR . $target);
+    }
 }
 ?>

@@ -12,5 +12,10 @@ class HomeController extends Controller
         $this->renderView("index");
     }
 
+    public function redirect_GET()
+    {
+        $this->redirectTo('/home/index');
+    }
+
 }
 ?>
