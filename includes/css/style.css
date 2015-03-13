@@ -30,6 +30,14 @@ div .grey{
     font-size: 20px;
 }
 
+div .grey_subvention{
+	margin-top:30px;
+	padding:2em;
+	background-color: rgba(60,63,54, 0.7);
+	color:#fff;
+	font-size: 1em;
+}
+
 
 div .grey p{
     font-size: 24px;
@@ -59,7 +67,7 @@ iframe, object, embed{
 }
 
 .margin-md {
-	margin: 5px: !important;
+	margin: 5px !important;
 }
 
 .margin-lg {

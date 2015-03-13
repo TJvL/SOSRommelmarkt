@@ -6,19 +6,19 @@ include_once "database.php";
 class SubventionRequest {
     //alle waardes die we straks door moeten krijgen van het formulier, het kan zijn dat er lege waardes bij zitten, ligt eraan hoe de w
     public $id;
-    public $contactpersoon;
-    public $onderneming;
+    public $contactperson;
+    public $firm;
     public $kvk;
-    public $adres;
-    public $postcode;
-    public $plaats;
-    public $telefoonnummer1;
-    public $telefoonnummer2;
+    public $adress;
+    public $postalcode;
+    public $city;
+    public $phonenumber1;
+    public $phonenumber2;
     public $fax;
     public $email;
-    public $toelichting;
-    public $activiteiten;
-    public $resultaten;
+    public $elucidation;
+    public $activities;
+    public $results;
 
 
 
@@ -33,74 +33,60 @@ class SubventionRequest {
         $sv = new SubventionRequest();
         //sla alle input op
         $sv->id = $id;
-        $sv ->contactpersoon = $c;
-        $sv ->onderneming = $o;
+        $sv ->contactperson = $c;
+        $sv ->firm = $o;
         $sv -> kvk = $k;
-        $sv ->adres = $a;
-        $sv ->postcode = $po;
-        $sv ->plaats = $pl;
-        $sv ->telefoonnummer1 = $t1;
-        $sv ->telefoonnummer2 = $t2;
+        $sv ->adress = $a;
+        $sv ->postalcode = $po;
+        $sv ->city = $pl;
+        $sv ->phonenumber1 = $t1;
+        $sv ->phonenumber2 = $t2;
         $sv ->fax = $f;
         $sv ->email = $e;
-        $sv ->toelichting = $t;
-        $sv ->resultaten = $r;
+        $sv ->elucidation = $t;
+        $sv ->results = $r;
         return $sv;
     }
 
 
     //insert object in de database.
-    function insertSubventionRequest($contactpersoon,$onderneming,$kvk,$adres,$postcode,$plaats,$telefoonnummer1
-        ,$telefoonnummer2,$fax,$email,$toelichting,$activiteiten,$resultaten)
+    function insertSubventionRequest($contactperson,$firm,$kvk,$adress,$postalcode,$city,$phonenumber1
+        ,$phonenumber2,$fax,$email,$elucidation,$activities,$results)
     {
         //construct query
         $query = "
-INSERT INTO SubventionRequest(contactpersoon,onderneming,kvk,adres,postcode,plaats,telefoonnummer1,telefoonnummer2,fax,email,toelichting,activiteiten,resultaten)
+INSERT INTO SubventionRequest(contactperson,firm,kvk,adress,postalcode,city,phonenumber1,phonenumber2,fax,email,elucidation,activities,results)
 VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         //execute
-       $id= Database::insert($query,"sssssssssssss",array($contactpersoon,$onderneming,$kvk,$adres,$postcode,$plaats,$telefoonnummer1
-        ,$telefoonnummer2,$fax,$email,$toelichting,$activiteiten,$resultaten));
+       $id= Database::insert($query,"sssssssssssss",array($contactperson,$firm,$kvk,$adress,$postalcode,$city,$phonenumber1
+        ,$phonenumber2,$fax,$email,$elucidation,$activities,$results));
 
-    return $this->createSubventionRequest($id,$contactpersoon,$onderneming,$kvk,$adres,$postcode,$plaats,$telefoonnummer1
-        ,$telefoonnummer2,$fax,$email,$toelichting,$activiteiten,$resultaten);
+    return $this->createSubventionRequest($id,$contactperson,$firm,$kvk,$adress,$postalcode,$city,$phonenumber1
+        ,$phonenumber2,$fax,$email,$elucidation,$activities,$results);
 
 
     }
 
 
 
-//
-//    //construct query
-//$query = "
-//                  INSERT INTO SubventionRequest(contactpersoon,onderneming,kvk,adres,postcode,plaats,telefoonnummer1,telefoonnummer2,fax,email,toelichting,activiteiten,resultaten)
-//                  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-//
-//    //insert given data into database and return auto incremented key
-//Database::insert($query,"sssssssssssss",array($contactpersoon,$onderneming,$kvk,$adres,$postcode,$plaats,$telefoonnummer1
-//,$telefoonnummer2,$fax,$email,$toelichting,$activiteiten,$resultaten));
-//
-//    //return a SV object
-//createSubsentionRequest($id,$contactpersoon,$onderneming,$kvk,$adres,$postcode,$plaats,$telefoonnummer1
-//,$telefoonnummer2,$fax,$email,$toelichting,$activiteiten,$resultaten);
-
 	static private function createSubventionRequestObjectFromDatabaseRow($row)
 	{
 		$subventionRequest = new SubventionRequest();
         $subventionRequest->id = $row["id"];
-        $subventionRequest->contactpersoon = $row["contactpersoon"];
-        $subventionRequest->onderneming = $row["onderneming"];
+        $subventionRequest->contactperson = $row["contactperson"];
+        $subventionRequest->firm = $row["firm"];
         $subventionRequest->kvk = $row["kvk"];
-        $subventionRequest->adres = $row["adres"];
-        $subventionRequest->postcode = $row["postcode"];
-        $subventionRequest->plaats = $row["plaats"];
-        $subventionRequest->telefoonnummer1 = $row["telefoonnummer1"];
-        $subventionRequest->telefoonnummer2 = $row["telefoonnummer2"];
+        $subventionRequest->adress = $row["adress"];
+        $subventionRequest->postalcode = $row["postalcode"];
+        $subventionRequest->city = $row["city"];
+        $subventionRequest->phonenumber1 = $row["phonenumber1"];
+        $subventionRequest->phonenumber2 = $row["phonenumber2"];
         $subventionRequest->fax = $row["fax"];
         $subventionRequest->email = $row["email"];
-        $subventionRequest->toelichting = $row["toelichting"];
-        $subventionRequest->activiteiten = $row["activiteiten"];
-        $subventionRequest->resultaten = $row["resultaten"];
+        $subventionRequest->elucidation = $row["elucidation"];
+        $subventionRequest->activities = $row["activities"];
+        $subventionRequest->results = $row["results"];
         
         return $subventionRequest;
 	}

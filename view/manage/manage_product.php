@@ -8,7 +8,7 @@
                     <th>naam</th>
                     <th>kleur code</th>
                     <th>toegevoegd door</th>
-                    <th>optie</th>
+                    <th>opties</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -20,7 +20,11 @@
                         echo "<td>" . $product->name . "</td>";
                         echo "<td>" . $product->colorCode . "</td>";
                         echo "<td>" . $product->addedBy . "</td>";
-                        echo "<td><a href='#'>details</a></td>";
+                        echo "<td>
+                                <a href='#'><button class='btn btn-default'><i class='fa fa-info'></i></button></a>
+                                <a href='#'><button class='btn btn-default'><i class='fa fa-pencil'></i></button></a>
+                                <a href='#'><button class='btn btn-default'><i class='fa fa-trash'></i></button></a>
+                              </td>";
                         echo "</tr>";
                     }
                 ?>

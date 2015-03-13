@@ -6,23 +6,25 @@
 	<div class="white">
 		<div class="row">
 			<div class="col-sm-12">
-				<div class="list-group">					
+				<div class="list-group collapse-group">
 					<?php foreach(SubventionRequest::fetchAllSubventionRequests() as $subventionRequest) { ?>
-					<a class="list-group-item">
-						<h4 class="list-group-item-heading"><?php echo $subventionRequest->onderneming; ?></h4>
-						<p class="list-group-item-text"><?php echo $subventionRequest->toelichting ?></p>
+					<a class="list-group-item collapse-group-item">
+						<div class="collapse-button">
+							<h4 class="list-group-item-heading"><?php echo $subventionRequest->firm; ?> <i class="fa fa-expand pull-right"></i></h4>
+							<p class="list-group-item-text"><?php echo $subventionRequest->elucidation ?></p>
+						</div>
 						<div class="collapse">
 							<table class="table table-condensed">
 								<tbody>
 									<tr>
 										<th scope="row">Contactpersoon</th>
-										<td><?php echo $subventionRequest->contactpersoon ?></td>
+										<td><?php echo $subventionRequest->contactperson ?></td>
 									</tr>
 								</tbody>
 								<tbody>
 									<tr>
 										<th scope="row">Onderneming</th>
-										<td><?php echo $subventionRequest->onderneming ?></td>
+										<td><?php echo $subventionRequest->firm ?></td>
 									</tr>
 								</tbody>
 								<tbody>
@@ -34,31 +36,31 @@
 								<tbody>
 									<tr>
 										<th scope="row">Adres</th>
-										<td><?php echo $subventionRequest->adres ?></td>
+										<td><?php echo $subventionRequest->adress ?></td>
 									</tr>
 								</tbody>
 								<tbody>
 									<tr>
 										<th scope="row">Postcode</th>
-										<td><?php echo $subventionRequest->postcode ?></td>
+										<td><?php echo $subventionRequest->postalcode ?></td>
 									</tr>
 								</tbody>
 								<tbody>
 									<tr>
 										<th scope="row">Plaats</th>
-										<td><?php echo $subventionRequest->plaats ?></td>
+										<td><?php echo $subventionRequest->city ?></td>
 									</tr>
 								</tbody>
 								<tbody>
 									<tr>
 										<th scope="row">Telefoon (1)</th>
-										<td><?php echo $subventionRequest->telefoonnummer1 ?></td>
+										<td><?php echo $subventionRequest->phonenumber1 ?></td>
 									</tr>
 								</tbody>
 								<tbody>
 									<tr>
 										<th scope="row">Telefoon (2)</th>
-										<td><?php echo $subventionRequest->telefoonnummer2 ?></td>
+										<td><?php echo $subventionRequest->phonenumber2 ?></td>
 									</tr>
 								</tbody>
 								<tbody>
@@ -76,26 +78,26 @@
 								<tbody>
 									<tr>
 										<th scope="row">Toelichting</th>
-										<td><?php echo $subventionRequest->toelichting ?></td>
+										<td><?php echo $subventionRequest->elucidation ?></td>
 									</tr>
 								</tbody>
 								<tbody>
 									<tr>
 										<th scope="row">Activiteiten</th>
-										<td><?php echo $subventionRequest->activiteiten ?></td>
+										<td><?php echo $subventionRequest->activities ?></td>
 									</tr>
 								</tbody>
 								<tbody>
 									<tr>
 										<th scope="row">Resultaten</th>
-										<td><?php echo $subventionRequest->resultaten ?></td>
+										<td><?php echo $subventionRequest->results ?></td>
 									</tr>
 								</tbody>
 							</table>
 							<div class="row">
 								<div class="col-sm-8"><!-- just a spacer --></div>
-								<div class="col-sm-2"><button type="button" class="btn btn-default btn-block btn-success"><span class="glyphicon glyphicon-ok-circle"></span> Accepteer</button></div>
-								<div class="col-sm-2"><button type="button" class="btn btn-default btn-block btn-danger"><span class="glyphicon glyphicon-ban-circle"></span> Weiger</button></div>
+								<div class="col-md-2"><button type="button" class="btn btn-default btn-block btn-success"><i class="fa fa-check"></i> Accepteer</button></div>
+								<div class="col-md-2"><button type="button" class="btn btn-default btn-block btn-danger"><i class="fa fa-remove"></i> Weiger</button></div>
 							</div>
 						</div>
 					</a>
