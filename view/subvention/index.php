@@ -1,11 +1,11 @@
 
 
 <div class= "container">
-    <div class="grey" >
+    <div class="grey_subvention" >
 
 
-        <h1><b>Contactformulier subsidieaanvraag</b></h1>
-        <p>Ken jij een project in een ontwikkelingsland dat steun kan gebruiken dan kun je bij SOS Rommelmarkt een aanvraag voor subsidie indienen.</p><br>
+        <h2><b>Contactformulier subsidieaanvraag</b></h2>
+        <p>Ken jij een project in een ontwikkelingsland dat steun kan gebruiken dan kun je bij SOS Rommelmarkt een aanvraag voor subsidie indienen.</p>
         <p>Om in aanmerking te komen voor subsidie, toetst onze Beleidsgroep Subsidies de aanvragen. Er wordt gekeken of de aanvraag voldoet aan onderstaande criteria:</p><br>
         <p>• De aanvrager moet rechtspersoon zijn.<br>
             • De aanvraag moet passen binnen een vooraf bepaald budget op jaarbasis.<br>
@@ -64,6 +64,6 @@
         </form>
 
     </div>
-s</div>
+</div>
 
 
