@@ -1,4 +1,6 @@
 <?php
+//ob_start: buffers output and only displays after calling ob_end_flush. Enables dynamic redirect.
+ob_start();
 
 include("/includes/config.inc.php");
 include("/includes/markup/header.php");
@@ -41,4 +43,5 @@ include("/includes/markup/header.php");
     $ctrl->{$action . "_" . $method}($id);
 
 include("includes/markup/footer.php");
+ob_end_flush();
 ?>
