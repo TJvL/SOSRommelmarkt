@@ -6,11 +6,18 @@
 	<div class="white">
 		<div class="row">
 			<div class="col-sm-12">
-				<div class="list-group">					
+				<div class="list-group collapse-group">					
 					<?php foreach(SubventionRequest::fetchAllSubventionRequests() as $subventionRequest) { ?>
-					<a class="list-group-item">
-						<h4 class="list-group-item-heading"><?php echo $subventionRequest->onderneming; ?></h4>
-						<p class="list-group-item-text"><?php echo $subventionRequest->toelichting ?></p>
+					<a class="list-group-item collapse-group-item">
+						<div class="collapse-button">
+							<div class="row">
+								<div class="col-sm-11">
+									<h4 class="list-group-item-heading"><?php echo $subventionRequest->onderneming; ?></h4>
+									<p class="list-group-item-text"><?php echo $subventionRequest->toelichting ?></p>
+								</div>
+								<div class="col-sm-1"><span class="glyphicon glyphicon-resize-full"></span></div>
+							</div>
+						</div>
 						<div class="collapse">
 							<table class="table table-condensed">
 								<tbody>
