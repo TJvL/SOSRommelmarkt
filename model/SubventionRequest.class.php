@@ -9,7 +9,7 @@ class SubventionRequest {
     public $contactperson;
     public $firm;
     public $kvk;
-    public $adresss;
+    public $adress;
     public $postalcode;
     public $city;
     public $phonenumber1;
