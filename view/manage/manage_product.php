@@ -1,11 +1,6 @@
-<?php
-include("includes/markup/manage_header.php");
-include("product.class.php")
-?>
-
 <div class="container">
     <div class="white">
-        <div class="table-responsive">
+        <div class="table-responsive padding-sm">
             <table id="productTable" class="display">
                 <thead>
                 <tr>
@@ -18,7 +13,7 @@ include("product.class.php")
                 </thead>
                 <tbody>
                 <?php
-                    $products = fetchAllProducts();
+                    $products = Product::fetchAllProducts();
                     foreach ($products as $product){
                         echo "<tr>";
                         echo "<td>" . $product->id . "</td>";

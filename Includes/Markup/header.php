@@ -16,6 +16,7 @@
     <link href=  "<?php echo ROOT_DIR; ?>/includes/css/style.css" rel="stylesheet">
     <link href=  "<?php echo ROOT_DIR; ?>/includes/css/vitrine.css" rel="stylesheet">
     <link href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.5/css/jquery.dataTables.css">
     
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -30,9 +31,11 @@
     <script src="<?php echo ROOT_DIR; ?>/includes/js/jquery.bxslider.min.js"></script>
     <script src="<?php echo ROOT_DIR; ?>/includes/js/menu.js" type="text/javascript"></script>
     <script src="<?php echo ROOT_DIR; ?>/includes/js/vitrine.js" type="text/javascript"></script>
-    <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
-    <script src="<?php echo ROOT_DIR; ?>/includes/js/edit_product.js" typpe="text/javascript"></script>
-    
+    <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js" type="text/javascript"></script>
+    <script src="<?php echo ROOT_DIR; ?>/includes/js/edit_product.js" type="text/javascript"></script>
+    <script src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
+
     <!--Product filter slider -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
       

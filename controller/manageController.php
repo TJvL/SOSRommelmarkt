@@ -15,5 +15,10 @@ class ManageController extends Controller
     {
         $this->render("subventions");
     }
+
+    public function productList_GET()
+    {
+        $this->render("manage_product");
+    }
 }
 ?>
