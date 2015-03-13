@@ -26,12 +26,12 @@ class Controller
         }
     }
 
-    protected function renderView($action)
+    private function renderView($action)
     {
         $viewbag = $this->viewbag;
         include("/view/" . $this->name . "/" . $action . ".php");
     }
-    protected function renderStrongView($action, $model)
+    private function renderStrongView($action, $model)
     {
         $viewbag = $this->viewbag;
         include("/view/" . $this->name . "/" . $action . ".php");
