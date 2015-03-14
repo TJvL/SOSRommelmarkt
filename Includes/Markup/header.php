@@ -38,8 +38,7 @@
 
     <!--Product filter slider -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
-      
-      <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+    <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
 
 </head>
 <body>
@@ -143,7 +142,7 @@
                             <li><a  href="<?php echo ROOT_DIR; ?>/shop/index"><i class="fa fa-cubes"></i> Producten</a></li>
                             <li><a href="<?php echo ROOT_DIR; ?>/subvention/index"><i class="fa fa-money"></i> Subsidie</a></li>
                             <li><a  href="#"><i class="fa fa-group"></i> Over ons</a></li>                            
-                            <li><a  href="<?php echo ROOT_DIR; ?>/contact.php"><i class="fa fa-envelope"></i> Contact</a></li>
+                            <li><a  href="<?php echo ROOT_DIR; ?>/contact/index"><i class="fa fa-envelope"></i> Contact</a></li>
                       </ul>
                     </subnav>
                 </div>

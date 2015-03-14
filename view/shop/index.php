@@ -54,7 +54,7 @@
             <div class="col-sm-9 ">
 
 
-            <?php foreach(Product::fetchAllProducts() as $product) { ?>
+            <?php foreach(Product::fetchAll() as $product) { ?>
 
                 <div class="col-sm-3 product padding-lg">
 
