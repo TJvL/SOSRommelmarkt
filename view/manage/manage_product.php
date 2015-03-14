@@ -13,7 +13,7 @@
                 </thead>
                 <tbody>
                 <?php
-                    $products = Product::fetchAllProducts();
+                    $products = Product::fetchAll();
                     foreach ($products as $product){
                         echo "<tr>";
                         echo "<td>" . $product->id . "</td>";
