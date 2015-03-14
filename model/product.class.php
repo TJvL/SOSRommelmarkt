@@ -85,7 +85,7 @@ class Product
         return $product;
     }
 
-    public static function insertProduct($colorCode, $addedBy, $name, $description, $price, $isReserved)
+    public static function insert($colorCode, $addedBy, $name, $description, $price, $isReserved)
     {
         $query = "INSERT INTO Product (colorCode, addedBy, name, description, price, isReserved) VALUES (?, ?, ?, ?, ?, ?)";
 
