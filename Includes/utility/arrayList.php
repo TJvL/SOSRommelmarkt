@@ -1,6 +1,10 @@
 <?php
-class ArrayList
+class ArrayList implements Iterator
 {
+    //Iterator implementation variables
+    private $curr;
+
+    //Arraylist variables
     private $type;
     private $array;
 
@@ -8,8 +12,13 @@ class ArrayList
     {
         $this->type = $type;
         $this->array = Array();
+        $this->curr = 0;
     }
 
+    public function size()
+    {
+        return count($this->array);
+    }
     public function get($index)
     {
         return $this->array[$index];
@@ -60,5 +69,31 @@ class ArrayList
     public function getType()
     {
         return $this->type;
+    }
+
+    //Iteraror Implementation Classes
+    public function current()
+    {
+        return $this->array[$this->curr];
+    }
+
+    public function next()
+    {
+        $this->curr = $this->curr + 1;
+    }
+
+    public function key()
+    {
+        return $this->curr;
+    }
+
+    public function valid()
+    {
+        return isset($this->array[$this->curr]);
+    }
+
+    public function rewind()
+    {
+        $this->curr = 0;
     }
 }
