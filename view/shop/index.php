@@ -1,7 +1,10 @@
+<?php Type::check("ArrayList:Product", $model) ?>
 
 <div class="container">
 
     <div class="white">
+
+        <h1>Webshop</h1>
 
         <div class="row">
 
@@ -17,15 +20,15 @@
                             <ul class="filterListings ">
                                 <li>Electronica <small class="category-count">[10]</small></li>
                                 <li>Meubels <small class="category-count">[33]</small></li>
-                                <li>Shit <small class="category-count">[99]</small></li>
+                                <li>Kleding <small class="category-count">[99]</small></li>
                             </ul>
                         </li>
                         <li class="filterHeadings"><h3>Kwaliteit <i class="fa fa-minus category-plus-open"></i></h3></li>
                         <li>
                             <ul class="filterListings ">
-                                <li>Z.G.A.N<i class="product-filter-quality green" title="Z.G.A.N"></i></li>
-                                <li>Gebruikt<i class="product-filter-quality blue" title="Gebruikt"></i></li>
-                                <li>Shit<i class="product-filter-quality red" title="Shit"></i></li>
+                                <li>Z.G.A.N<i class="product-filter-quality filter-green" title="Z.G.A.N"></i></li>
+                                <li>Gebruikt<i class="product-filter-quality filter-blue" title="Gebruikt"></i></li>
+                                <li>Kleding<i class="product-filter-quality filter-red" title="Kleding"></i></li>
                             </ul>
                         </li>
                         <li class="filterHeadings"><h3>Prijs <i class="fa fa-minus category-plus-open"></i></h3></li>
@@ -54,10 +57,11 @@
             <div class="col-sm-9 ">
 
 
-            <?php foreach(Product::fetchAll() as $product) { ?>
+            <?php foreach($model as $product) { ?>
 
                 <div class="col-sm-3 product padding-lg">
 
+                    <i class="product-info-quality <?php echo $product->colorCode; ?>" title="<?php echo $product->colorCode; ?>"></i>
                     <div class="view view-first">
                         <img class="img-responsive" src="<?php echo $product->getImagePath() ?>" />
                         <div class="mask">
@@ -69,16 +73,21 @@
 
                     <div class="product-info">
 
+
+                            <h4 class="product-name"><?php echo $product->name; ?></h4>
+
+
                         <div class="product-info-left">
 
-                            <h4><?php echo $product->name; ?></h4>
-                            <i class="product-info-quality <?php echo $product->colorCode; ?>" title="<?php echo $product->colorCode; ?>"></i>
+                            <p class="price">&euro; <?php echo $product->price; ?></p>
+
+
 
                         </div>
                         <div class="product-info-right">
 
-                            <p class="price">&euro; <?php echo $product->price; ?></p>
                             <p class="reserved"><?php if($product->isReserved){echo ("Gereserveed");} ?></p>
+
 
                         </div>
 

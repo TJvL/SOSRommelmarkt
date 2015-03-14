@@ -169,3 +169,30 @@ iframe, object, embed{
 	padding-top: 10px !important;
 	padding-bottom: 10px !important;
 }
+
+.manage-title {
+
+    background-color: #B20000;
+    color:#fff;
+}
+
+h1.manage-title{
+
+    padding:15px;
+}
+
+.manage-subtitle {
+
+    background-color: #333;
+    color:#fff;
+    margin-bottom: 15px;
+    margin-top:15px;
+    padding-top:10px;
+}
+
+.manage-subtitle p {
+
+    font-size: 20px;
+
+}
+

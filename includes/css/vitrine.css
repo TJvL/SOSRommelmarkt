@@ -76,25 +76,40 @@
     border: 1px solid #d6d3d3;
     float:right;
     margin-right:5px;
-    display:block;   
+    display:block;
 }
 
 .red
 {
-    background-color: #b20000;
+
+    border-color: #B20000 transparent transparent transparent;
 }
 
 .blue
 {
-    background-color: #394775;
+    border-color: #394775 transparent transparent transparent;
 }
 
 .green
 {
-    background-color: #3E963B;
+    border-color: #3E963B transparent transparent transparent;
 }
 
+.filter-red
+{
 
+    background: #B20000
+}
+
+.filter-blue
+{
+    background: #394775;
+}
+
+.filter-green
+{
+    background: #3E963B;
+}
 
 .product
 {    
@@ -118,6 +133,7 @@
     padding-top: 5px;
     width:50%;
     height:auto;
+    font-size: 20px;
 }
 
 .product-info-right
@@ -132,26 +148,52 @@
   
 }
 
+
+.product-name
+{
+    margin-left: 5px;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .product-info-quality
 {
-    width: 27px;
-    height: 27px;
-    border: 1px solid #d6d3d3;
-    display:block; 
-    margin-bottom: 15px;
+    position: absolute;
+    /*-webkit-transform:rotate(45deg);*/
+    /*transform:rotate(45deg);*/
+    /*width:40px;*/
+    /*height:40px;*/
+    /*left:20px;*/
+    /*background:black;*/
+    /*z-index: 20;*/
+    /*width: 27px;*/
+    /*height: 27px;*/
+    /*border: 0px solid #d6d3d3;*/
+    display:block;
+    z-index:20;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 40px 40px 0 0;
+
+
 }
 
 .view {
    
     width:100%; 
-    
+    z-index:0;
     overflow: hidden;
     position: relative;
     text-align: center;
     box-shadow: 1px 1px 2px #e6e6e6;
     cursor: default;
+
 /*    background: #fff url(../images/bgimg.jpg) no-repeat center center*/
 }
+
 .view .mask, .view .content {
     width: 100%;
     height: 200px;
@@ -243,7 +285,7 @@
 .reserved {
   color:#b20000;
   font-weight: bold;
-    font-size:14px;
+    font-size:13px;
 }
 
 

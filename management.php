@@ -1,4 +1,5 @@
-<?php include("includes/markup/header.php"); ?> 
+<?php include("includes/config.inc.php"); ?>
+<?php include("includes/markup/header.php"); ?>
 
 <div class= "container">
   

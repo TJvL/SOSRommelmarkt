@@ -32,7 +32,9 @@ $(document).ready(function(){
             return $(this).height();
         }).get());
     boxes.height(maxHeight);
-    
-    
+
+    $("#myDiv").text().length;
+
+    product-name
        
 });
