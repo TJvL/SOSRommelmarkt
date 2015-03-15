@@ -136,7 +136,7 @@
                             <div class="field buttons">
                                 <label class="main">&nbsp;</label>
                                 <button type="button" class="prev">&laquo; Vorige</button>
-                                <button type="submit" class="submit">Versturenn</button>
+                                <button type="submit" class="submit">Versturen</button>
                             </div>
 
                         </section>
