@@ -35,6 +35,6 @@ $(document).ready(function(){
 
     $("#myDiv").text().length;
 
-    product-name
+    //product-name
        
 });
