@@ -96,8 +96,17 @@
 							</table>
 							<div class="row">
 								<div class="col-sm-8"><!-- just a spacer --></div>
-								<div class="col-md-2"><button type="button" class="btn btn-default btn-block btn-success"><i class="fa fa-check"></i> Accepteer</button></div>
-								<div class="col-md-2"><button type="button" class="btn btn-default btn-block btn-danger"><i class="fa fa-remove"></i> Weiger</button></div>
+								<div class="col-md-1"><button type="button" title="Print" class="btn btn-default">
+										<span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+									</button></div>
+
+								<div class="col-md-1"><button type="button" title="Archiveer" class="btn btn-default">
+										<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+									</button></div>
+
+								<div class="col-md-1"><button type="button" title="Verwijder" class="btn btn-default">
+										<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+									</button></div>
 							</div>
 						</div>
 					</a>
