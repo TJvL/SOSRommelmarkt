@@ -93,6 +93,12 @@ color:#ffffff;
 text-decoration:none;
 }
 
+.mobile-menu a:{
+background:#B20000;
+color:#ffffff;
+
+}
+
 @media (min-width: 768px) and (max-width: 979px) {
 
 .mainWrap{width:768px;}
