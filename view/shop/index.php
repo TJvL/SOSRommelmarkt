@@ -66,7 +66,7 @@
                         <img class="img-responsive" src="<?php echo $product->getImagePath() ?>" />
                         <div class="mask">
                             <h2><?php echo $product->name; ?></h2>
-                            <p><?php if($product->isReserved){echo ("Gereserveed");} ?></p>
+                            <p><?php if($product->isReserved){echo ("Gereserveerd");} ?></p>
                             <a href="#" class="info"><i class="fa fa-cart-plus fa-2x"></i></a>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                         </div>
                         <div class="product-info-right">
 
-                            <p class="reserved"><?php if($product->isReserved){echo ("Gereserveed");} ?></p>
+                            <p class="reserved"><?php if($product->isReserved){echo ("Gereserveerd");} ?></p>
 
 
                         </div>

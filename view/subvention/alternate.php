@@ -14,7 +14,7 @@
 
                 <nav class="idealsteps-nav"></nav>
 
-                <form method="POST" action="contact_action.php"  class="idealforms" name="aanvraag">
+                <form method="POST" action="contact_action.php" class="idealforms" name="aanvraag">
 
                     <div class="idealsteps-wrap">
 
