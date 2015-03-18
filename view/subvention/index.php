@@ -59,7 +59,6 @@
                 </div>
                 <br>
                 <input type="submit" name="submit" value="Verstuur" class="form-control">
-<!--                <input  type="submit" value="Submit" style="width: 30%" class="form-control">-->
             </div>
         </form>
 

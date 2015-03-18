@@ -14,7 +14,7 @@
 
                 <nav class="idealsteps-nav"></nav>
 
-                <form method="POST" action="contact_action.php"  class="idealforms" name="aanvraag">
+                <form method="POST" action="contact_action.php" class="idealforms" name="aanvraag">
 
                     <div class="idealsteps-wrap">
 
@@ -136,7 +136,7 @@
                             <div class="field buttons">
                                 <label class="main">&nbsp;</label>
                                 <button type="button" class="prev">&laquo; Vorige</button>
-                                <button type="submit" class="submit">Versturenn</button>
+                                <button type="submit" class="submit">Versturen</button>
                             </div>
 
                         </section>

@@ -134,7 +134,7 @@
                 
                 
                  <div>  
-                    <a id="touch-menu" class="mobile-menu" href="#"><i class="fa fa-bars"></i></a>
+                    <a id="touch-menu" class="mobile-menu" href="#">Menu<i class="fa fa-angle-double-down fa-lg"></i></a>
 
                     <subnav>
                         <ul class="menu">

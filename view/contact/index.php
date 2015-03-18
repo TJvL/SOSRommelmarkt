@@ -22,11 +22,13 @@ if(isset($_POST['submit'])){
 		<!-- Contact form -->
 		<div class="col-sm-9">
 			<form role="form" action="" method="post">
+
 				<div class="form-group">
+
 					<h2>Contact:</h2>
 					
 					<div class="row">
-						<div class="col-sm-4 padding-sm"><input type="text" class="form-control" required="required" name="name" placeholder="Naam..."></div>
+						<div class="col-sm-4 padding-sm"><input type="text" class="form-control" name="name" placeholder="Naam..."><span class="error"></span></div>
 						<div class="col-sm-4 padding-sm"><input type="text" class="form-control" required="required" name="email" placeholder="E-mail adres.."></div>
 						<div class="col-sm-4 padding-sm"><input type="text" class="form-control" name="phone" placeholder="Telefoonnummer..."></div>
 					</div>
@@ -36,14 +38,18 @@ if(isset($_POST['submit'])){
 					</div>
 						
 					<div class="row">
-						<div class="col-sm-12 padding-sm"><textarea class="form-control" required="required" name="message" rows="10"></textarea></div>
+						<div class="col-sm-12 padding-sm"><textarea class="form-control" required="required" name="comments" rows="10"></textarea></div>
 					</div>
 									
 					<div class="row">
 						<div class="col-sm-10 padding-sm"></div>
 						<div class="col-sm-2 padding-sm"><input type="submit" name="submit" value="Verstuur" class="form-control"></div>
 					</div>
+
 				</div>
+
+                <span id="invalid"></span>
+
 			</form>
 		</div>
 
@@ -63,3 +69,6 @@ if(isset($_POST['submit'])){
 		</div>
 	</div>
 </div>
+
+<script src="/SOSRommelmarkt/includes/js/contactformulier.js" type="text/javascript"></script>
+<script src="/SOSRommelmarkt/includes/js/contactformulier_submit.js" type="text/javascript"></script>
