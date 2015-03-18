@@ -70,6 +70,8 @@ class Database
 		if (!$preparedStatement->execute())
 			die("Executing the prepared statement failed with: " . $preparedStatement->errno . ": " . $preparedStatement->error);
 		
+		var_dump($preparedStatement);
+
 		// Get the results.
 		if (!$result = $preparedStatement->get_result())
 			die("Binding the results failed with: " . $preparedStatement->errno . ": " . $preparedStatement->error);

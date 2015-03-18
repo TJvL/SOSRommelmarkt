@@ -29,12 +29,12 @@ class Controller
     private function renderView($action)
     {
         $viewbag = $this->viewbag;
-        include("/view/" . $this->name . "/" . $action . ".php");
+        include("view/" . $this->name . "/" . $action . ".php");
     }
     private function renderStrongView($action, $model)
     {
         $viewbag = $this->viewbag;
-        include("/view/" . $this->name . "/" . $action . ".php");
+        include("view/" . $this->name . "/" . $action . ".php");
     }
 
     protected function redirectTo($target)
