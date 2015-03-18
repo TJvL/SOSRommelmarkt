@@ -1,12 +1,11 @@
 <?php
 
 include("product.class.php");
-include("database.php");
 
 class ShopProduct extends Product
 {
 	// The directory the images for the shop products are placed.
-	const IMAGES_DIRECTORY = "img/content/shopproducts";
+	const IMAGES_DIRECTORY = "img/content/shopproducts/";
 	
 	public $colorCode;
 	public $price;

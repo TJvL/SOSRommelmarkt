@@ -14,7 +14,7 @@ abstract class Product
 
 	public function getImagePath()
 	{
-		$result = glob(getImagesDirectory(). $this->id . '*');
+		$result = glob($this->getImagesDirectory(). $this->id . '*');
 		if ($result)
 			return ROOT_DIR . "/" . $result[0];
 		else

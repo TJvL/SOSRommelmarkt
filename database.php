@@ -69,8 +69,6 @@ class Database
 		// Excecute the statement
 		if (!$preparedStatement->execute())
 			die("Executing the prepared statement failed with: " . $preparedStatement->errno . ": " . $preparedStatement->error);
-		
-		var_dump($preparedStatement);
 
 		// Get the results.
 		if (!$result = $preparedStatement->get_result())

@@ -1,7 +1,6 @@
 <?php
 
 include("product.class.php");
-include("database.php");
 
 class AuctionProduct extends Product
 {
