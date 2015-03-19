@@ -20,5 +20,10 @@ class ManageController extends Controller
     {
         $this->render("manage_product");
     }
+
+        public function instellingen_GET()
+    {
+        $this->render("instellingen");
+    }
 }
 ?>

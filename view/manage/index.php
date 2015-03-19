@@ -46,6 +46,14 @@
                 </button>
                 </a>
             </div>
+            <div class="col-md-2">
+                <a href="<?php echo ROOT_DIR; ?>/manage/instellingen">
+                <button class="btn btn-red">
+                    <i class="fa fa-cogs fa-5x fa-fw"></i>
+                    <br /><b>Instellingen</b>
+                </button>
+                </a>
+            </div>
         </div>
     </div>
 </div>
