@@ -111,6 +111,31 @@ class ShopProduct extends Product
 		// Execute the update query.
 		Database::update($query, "sdii", array($this->colorCode, $this->price, $this->isReserved, $this->id));
 	}
+
+    public static function getPriceRanges()
+    {
+        $query = "SELECT MIN(price) as lowestPrice, MAX(price) as highestPrice FROM ShopProduct";
+
+        // Execute the query.
+        $result = Database::fetch($query);
+
+        // Put the results of the query into an array of Product objects.
+        $prices = array();
+
+        for ($i = 0; $i < $result->num_rows; $i++)
+        {
+            $row = $result->fetch_assoc();
+
+            $prices[$i] = $row["lowestPrice"];
+            $prices[$i+1] = $row["highestPrice"];
+
+        }
+
+        // Free the result set.
+        $result->close();
+
+        return $prices;
+    }
 }
 
 ?>

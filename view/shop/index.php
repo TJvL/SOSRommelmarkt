@@ -38,7 +38,7 @@
                             <ul class="filterListings ">
                                 <li>
                                     <div class="price-slider">
-                                        <div id="priceRanges" data-prices="<?php $prices = Product::getPriceRanges(); echo $prices[0] . "," . $prices[1]; ?>">
+                                        <div id="priceRanges" data-prices="<?php $prices = ShopProduct::getPriceRanges(); echo $prices[0] . "," . $prices[1]; ?>">
                                         <p>
                                           <input type="text" id="amount" readonly style="border:0; color:#b20000; font-weight:bold;">
                                         </p>
