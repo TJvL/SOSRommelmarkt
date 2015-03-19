@@ -2,8 +2,8 @@
 //ob_start: buffers output and only displays after calling ob_end_flush. Enables dynamic redirect.
 ob_start();
 
-include("/includes/config.inc.php");
-include("/includes/markup/header.php");
+include("includes/config.inc.php");
+include("includes/markup/header.php");
 
 
     //MVC structure

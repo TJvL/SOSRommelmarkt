@@ -11,10 +11,10 @@ define("ROOT_DIR", $root);
 
 require("database.php");
 
-require_once("/controller/Controller.php");
+//require_once("/controller/Controller.php");
 function loadControllers($class)
 {
-    $loc = "/controller/";
+    $loc = "controller/";
     $file = $loc . $class . ".php";
     if(file_exists($_SERVER['DOCUMENT_ROOT']. "/SOSRommelmarkt/" . $file))
     {
@@ -24,7 +24,7 @@ function loadControllers($class)
 
 function loadModels($class)
 {
-    $loc = "/model/";
+    $loc = "model/";
     $file = $loc . $class . ".class.php";
     if(file_exists($_SERVER['DOCUMENT_ROOT']. "/SOSRommelmarkt/" . $file))
     {
@@ -34,7 +34,7 @@ function loadModels($class)
 
 function loadUtilities($class)
 {
-    $loc = "/includes/utility/";
+    $loc = "includes/utility/";
     $file = $loc . $class . ".php";
     if(file_exists($_SERVER['DOCUMENT_ROOT']. "/SOSRommelmarkt/" . $file))
     {

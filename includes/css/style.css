@@ -192,8 +192,32 @@ h1.manage-title{
 }
 
 .manage-subtitle p {
-
     font-size: 20px;
-
 }
 
+.contact-info{
+	margin-top: 15px;
+    color: #fff;
+    width: 427px;
+}
+
+.contact-mail{
+	float: left;
+	margin-right: 8px;
+}
+
+.contact-phone{
+	float: left;
+	margin-right: 8px;
+}
+
+
+.contact-info .icon {
+ 	 float: left;
+ 	 height: 34px;
+ 	 width: 35px;
+ 	 color: #FFF;
+ 	 text-align: center;
+ 	 font-size: 18px;
+ 	 border-radius: 3px;
+}

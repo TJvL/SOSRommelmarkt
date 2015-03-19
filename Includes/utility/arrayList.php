@@ -7,12 +7,14 @@ class ArrayList implements Iterator
     //Arraylist variables
     private $type;
     private $array;
+    private $size;
 
     public function __construct($type)
     {
         $this->type = $type;
         $this->array = Array();
         $this->curr = 0;
+        $this->size = 0;
     }
 
     public function size()
@@ -32,6 +34,7 @@ class ArrayList implements Iterator
         else
         {
             $this->array[] = $obj;
+            $this->size = $this->size+1;
         }
     }
     public function addAll($objArray)
@@ -45,11 +48,13 @@ class ArrayList implements Iterator
             else
             {
                 $this->array[] = $toAdd;
+                $this->size = $this->size+1;
             }
         }
     }
     public function remove($index)
     {
+        if($this->array[$index] != null){ $this->size = $this->size-1; }
         $this->array[$index] = null;
         $this->array = array_values($this->array);
     }
@@ -61,6 +66,7 @@ class ArrayList implements Iterator
             if($result !== false)
             {
                 $this->array[$result] = null;
+                $this->size = $this->size-1;
             }
         }
         $this->array = array_values($this->array);
