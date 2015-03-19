@@ -57,8 +57,22 @@
 				
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
-					                     
+					  <ul class = "nav navbar-nav navbar-left">
+              <li>
+               <div class="contact-info">
+              <span class="icon"><i class="fa fa-phone"></i></span>
+               <div class="contact-phone"><span>073 613 3774</span> </div>
+               <span class="icon"><i class="fa fa-envelope"></i></span>
+               <div class="contact-mail"><span>info@sosrommelmarkt.nl </span></div>
+               </div>
+              </li>
+            </ul>
+            
+              
+
 						<ul class = "nav navbar-nav navbar-right">
+
+             
 												
 							<li> 
                                 <form class="navbar-form" role="search">
@@ -114,7 +128,7 @@
                                 </div>
                             </li>
                         </ul>
-					
+					 
 					</div> 
 			</div>
 		
