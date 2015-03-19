@@ -25,6 +25,19 @@
     padding:0;
 }
 
+.filterListings a {
+
+    color:#000000;
+
+}
+
+.filterListings a:hover {
+
+    color:#B20000;
+    text-decoration: none;
+
+}
+
 .category-plus-open
 {
     float: right;

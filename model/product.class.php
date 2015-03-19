@@ -104,6 +104,31 @@ class Product
         // Return an object of the inserted product.
         return $product;
     }
+
+    public static function getPriceRanges()
+    {
+        $query = "SELECT MIN(price) as lowestPrice, MAX(price) as highestPrice FROM Product";
+
+        // Execute the query.
+        $result = Database::fetch($query);
+
+        // Put the results of the query into an array of Product objects.
+        $prices = array();
+
+        for ($i = 0; $i < $result->num_rows; $i++)
+        {
+            $row = $result->fetch_assoc();
+
+            $prices[$i] = $row["lowestPrice"];
+            $prices[$i+1] = $row["highestPrice"];
+
+        }
+
+        // Free the result set.
+        $result->close();
+
+        return $prices;
+    }
 }
 
 ?>
