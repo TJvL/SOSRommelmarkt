@@ -39,6 +39,7 @@
     <script src="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js"></script>
     <script src="<?php echo ROOT_DIR; ?>/includes/js/angular.rangeSlider.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-animate.js"></script>
 
 </head>
 <body>

@@ -48,9 +48,8 @@
 
             </div>
             <div class="col-sm-9 ">
-                <p>{{selectedLowestPrice}}</p>
 
-                <div class="col-sm-3 product padding-lg " ng-repeat="x in shopProducts | filter:colorFilter | rangeFilter:sliderRanges">
+                <div ng-repeat="x in shopProducts | filter:colorFilter | rangeFilter:sliderRanges" class="col-sm-3 product padding-lg animation ">
 
                     <i class="product-info-quality {{x.colorCode}}"></i>
                     <div class="view view-first">
@@ -76,7 +75,7 @@
 
             <script>
 
-                var app = angular.module('shopApp', ['ui-rangeSlider']);
+                var app = angular.module('shopApp', ['ngAnimate', 'ui-rangeSlider']);
                 app.controller('shopController', function($scope){
                     $scope.shopProducts = <?php echo $model->getJSON(); ?>;
                     $scope.sliderRanges = {
