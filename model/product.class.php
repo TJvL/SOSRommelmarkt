@@ -38,7 +38,12 @@ abstract class Product
         Database::update($query, "sssi", array($this->name, $this->description, $this->addedBy, $this->id));
     }
 
-
+	protected static function deleteById($id)
+	{
+		$query = "DELETE FROM Product WHERE id = ?";
+		
+		Database::update($query, "i", array($id));
+	}
 }
 
 ?>

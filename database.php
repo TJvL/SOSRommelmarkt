@@ -82,12 +82,11 @@ class Database
 	
 	// TODO: Cleanly close mysql connection after error.
 	/**
-	 * Executes a given update query (which it prepares based on the parameters) on the database.
+	 * Executes a given update or delete query (which it prepares based on the parameters) on the database.
 	 *
 	 * @param $query			The query to execute.
 	 * @param $parameterTypes	The types of the parameters that are given.
 	 * @param $parameters		An array of parameters to prepare into the query.
-	 * @return The auto incremented ID of the new row in the table if any.
 	 */
 	public static function update($query, $parameterTypes = null, $parameters = null)
 	{

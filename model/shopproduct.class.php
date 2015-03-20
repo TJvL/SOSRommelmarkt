@@ -111,6 +111,15 @@ class ShopProduct extends Product
 		// Execute the update query.
 		Database::update($query, "sdii", array($this->colorCode, $this->price, $this->isReserved, $this->id));
 	}
+	
+	public static function deleteById($id)
+	{
+		$query = "DELETE FROM ShopProduct WHERE id = ?";
+		
+		Database::update($query, "i", array($id));
+		
+		parent::deleteById($id);
+	}
 
     public static function getPriceRanges()
     {
