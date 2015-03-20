@@ -1,14 +1,4 @@
-<!--
-<div class = "navbar navbar-default navbar-fixed-bottom">
-    <div class= "container">
-				<p class="navbar-text pull-left">Site built by Erik Vink</p>
-				<a class= "navbar-btn btn-primary btn pull-right"> Subscribe on Youtube</a>
-    </div>
-</div>
--->
-	
 <div id ="footerContainer">
-
 
 <div id="footer-wrapper">
     <div id="footer" class="container">
@@ -19,11 +9,10 @@
 			</div>
 			<ul class="style1">
 				<li>
-                    Vughterstraat 264-A</br>
-                    5211 GR 's Hertogenbosch </br>
+                    Ridderspoorstraat 2</br>
+                    5212 XP 's-Hertogenbosch </br>
                     tel: 073 613 3774 </br>
-                    email: info@sosrommelmarkt.nl             
-                
+                    email: info@sosrommelmarkt.nl
                 </li>
 			</ul>
         </div>	
@@ -37,10 +26,8 @@
                     <li><a href="#">Amet ornare in hendrerit in lectus</a></li>
                 </ul>
         </div>
-				
     </div>
 </div>    
-		
 
 <div id="copyright">
 	<p>&copy; SOSrommelmarkt. All rights reserved. | Design by 42IN07SOe</a>.</p>

@@ -9,6 +9,7 @@ abstract class Product
     public $name;
     public $description;
     public $addedBy;
+    public $imagePath;
 
     abstract static public function getImagesDirectory();
 
