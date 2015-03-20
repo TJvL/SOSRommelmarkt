@@ -8,10 +8,10 @@ class ShopController extends Controller
 
     public function index_GET()
     {
-//        $productList = new ArrayList("Product");
-//        $productList->addAll(ShopProduct::selectAll());
+        $productList = new ArrayList("Product");
+        $productList->addAll(ShopProduct::selectAll());
 
-        $this->render("index", ShopProduct::selectAll());
+        $this->render("index", $productList);
     }
 
     public function detail_GET()

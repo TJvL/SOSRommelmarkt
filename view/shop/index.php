@@ -1,3 +1,5 @@
+<?php Type::check("ArrayList:Product", $model) ?>
+
 <div class="container" data-ng-app="shopApp" ng-controller="shopController">
 
     <div class="white">
@@ -23,12 +25,21 @@
                         <li>
                             <ul class="filterListings ">
                                 <li>
-                                    <div class="price-slider">
 
-                                        <p><input type="text" class="form-control" ng-model="sliderRanges.min"><input type="text" class="form-control" ng-model="sliderRanges.max"></p>
-                                        <div range-slider min="0" max="100" model-min="sliderRanges.min" model-max="sliderRanges.max"></div>
+                                        <?php $priceRanges = ShopProduct::getPriceRanges();?>
 
-                                    </div>
+                                        <div class="col-lg-12 margin-ver-md">
+                                            <div class="row">
+                                                <div class="col-sm-5"><input type="text" class="form-control" ng-model="sliderRanges.min"></div>
+                                                <div class="col-lg-2"></div>
+                                                <div class="col-sm-5"><input type="text" class="form-control" ng-model="sliderRanges.max"></div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div range-slider min=<?php echo floor($priceRanges[0]);?> max=<?php echo ceil($priceRanges[1]);?> model-min="sliderRanges.min" model-max="sliderRanges.max" disabled="false" filter="currency:'€'"></div>
+                                        </div>
+
                                 </li>
                             </ul>
                         </li>
@@ -67,11 +78,11 @@
 
                 var app = angular.module('shopApp', ['ui-rangeSlider']);
                 app.controller('shopController', function($scope){
-                    $scope.shopProducts = <?php echo json_encode($model); ?>;
+                    $scope.shopProducts = <?php echo $model->getJSON(); ?>;
                     $scope.sliderRanges = {
 
-                      min: 0,
-                      max: 80
+                      min: <?php echo floor($priceRanges[0]);?>,
+                      max: <?php echo ceil($priceRanges[1]);?>
                     };
 
                 });
