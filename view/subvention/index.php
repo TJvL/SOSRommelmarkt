@@ -1,68 +1,159 @@
+<!--For best practice on includes, a config php file is required which defines the root, so absolute paths can be created from $root/includes/markup for example..-->
+
+<head>
+    <link href=  "/SOSRommelmarkt/includes/css/contactformulier_normalize.css" rel="stylesheet">
+    <link href=  "/SOSRommelmarkt/includes/css/contactformulier_jq_form.css" rel="stylesheet">
+    <link href=  "/SOSRommelmarkt/includes/css/contactformulier.css" rel="stylesheet">
+</head>
+
+<div class="container">
+    <div class="white">
+        <div class="content">
+
+            <div class="idealsteps-container">
+
+                <nav class="idealsteps-nav"></nav>
+
+                <form method="POST" action="contact_action.php" class="idealforms" name="aanvraag">
+
+                    <div class="idealsteps-wrap">
+
+                        <!-- Step 1 -->
+
+                        <section class="idealsteps-step">
 
 
-<div class= "container">
-    <div class="grey_subvention" >
+                            <div class="field">
+                                <label class="main">voornaam</label>
+                                <input name="name" type="text" placeholder="Uw voornaam">
+                                <span class="error"></span>
+                            </div>
+
+                            <div class="field">
+                                <label class="main">Achternaam</label>
+                                <input name="lname" type="text" placeholder="Uw achternaam">
+                                <span class="error"></span>
+                            </div>
+
+                            <div class="field">
+                                <label class="main">Bedrijfsnaam</label>
+                                <input name="bedrijfsnaam" type="text" placeholder="De naam van uw bedrijf">
+                                <span class="error"></span>
+                            </div>
+
+                            <div class="field">
+                                <label class="main">KVK nummer</label>
+                                <input name="kvknr" type="text" placeholder="Uw KVK-nummer">
+                                <span class="error"></span>
+                            </div>
+
+                            <div class="field buttons">
+                                <label class="main">&nbsp;</label>
+                                <button type="button" class="next">Volgende &raquo;</button>
+                            </div>
 
 
-        <h2><b>Contactformulier subsidieaanvraag</b></h2>
-        <p>Ken jij een project in een ontwikkelingsland dat steun kan gebruiken dan kun je bij SOS Rommelmarkt een aanvraag voor subsidie indienen.</p>
-        <p>Om in aanmerking te komen voor subsidie, toetst onze Beleidsgroep Subsidies de aanvragen. Er wordt gekeken of de aanvraag voldoet aan onderstaande criteria:</p><br>
-        <p>• De aanvrager moet rechtspersoon zijn.<br>
-            • De aanvraag moet passen binnen een vooraf bepaald budget op jaarbasis.<br>
-            • Het aanvraagformulier (incl. begroting) moet volledig en leesbaar zijn ingevuld.<br>
-            • Bij toekenning geven we in principe voorkeur aan kleinschalige projecten (vanwege ons beperkt budget en onze wens meerdere projecten te steunen).<br>
-            • De subsidies dienen in principe eenmalig te zijn.<br>
-            • Het te subsidiëren project moet bijdragen aan verbetering van kwaliteit en duurzaamheid van de betreffende organisatie.<br>
-            • Het te subsidiëren project moet voldoen aan één van de volgende millenniumdoelen:</p>
-        <p>    Doel 1: Extreme armoede en honger zijn uitgebannen.<br>
-            Doel 2: Alle jongens en meisjes gaan naar school.<br>
-            Doel 7: Er leven meer mensen in een duurzaam leefmilieu.<br>
-            Doel 8: Er is meer eerlijke handel, schuldverlichting en hulp.</p>
-        <p>• De aanvrager moet bereid zijn een verantwoordingsrapportage te maken.<br>
-            • De aanvragen van buitenlandse organisaties laten toetsen door een nader te bepalen Nederlandse hulpinstelling.</p>
-        <h2><b>Online subsidieaanvraag</b></h2>
+                        </section>
 
-        <!--		   all data is labeled with a name, a reference will be  in the action page like this : $_POST["onderneming"];-->
-        <form role="form" action="" method="post">
-            <div class="form-group">
+                        <!-- Step 2 -->
 
-                Algemene gegevens onderneming
-                <div class="row">
-                    <div class="col-md-3"><input type="text" name="contactpersoon" placeholder="Naam contactpersoon.." class="form-control" required></div>
-                    <div class="col-md-3"><input type="text" name="onderneming" placeholder="Naam bedrijf.." class="form-control" required></div>
-                    <div class="col-md-3"><input type="text" name="kvk" placeholder="KVK nummer.." class="form-control" required></div>
-                    <br><br>
-                </div>
+                        <section class="idealsteps-step">
 
-                Adresgegevens
-                <div class="row">
-                    <div class="col-md-3"><input type="text" name="adres" placeholder="Adres.." class="form-control" required></div>
-                    <div class="col-md-3"><input type="text" name="postcode" placeholder="Postcode.." class="form-control"></div>
-                    <div class="col-md-3"><input type="text" name="plaats" placeholder="Plaats.." class="form-control" required></div>
-                    <br><br>
-                </div>
+                            <div class="field">
+                                <label class="main">Straatnaam</label>
+                                <input name="straatnaam" type="text" placeholder="Uw straatnaam met huisnummer">
+                                <span class="error"></span>
+                            </div>
 
-                Contactinformatie
-                <div class="row">
-                    <div class="col-md-3"><input type="text" name="telefoonnummer1" placeholder="Telefoonnummer.." class="form-control" required></div>
-                    <div class="col-md-3"><input type="text" name="telefoonnummer2" placeholder="Telefoonnummer.." class="form-control"></div>
-                    <div class="col-md-3"><input type="text" name="fax" placeholder="Fax.." class="form-control"></div>
-                    <div class="col-md-3"><input type="text" name="email" placeholder="E-mail adres.." class="form-control" required></div>
-                    <br><br>
-                </div>
+                            <div class="field">
+                                <label class="main">Postcode</label>
+                                <input name="zip" type="text" placeholder="0000AA">
+                                <span class="error"></span>
+                            </div>
 
-                Toelichting
-                <div class="row">
-                    <div class="col-md-3"> <textarea name="toelichting" class="form-control" placeholder="Gevraagde subsidie, met toelichting" required></textarea> </div>
-                    <div class="col-md-3"> <textarea name="activiteiten" class="form-control"  placeholder="Beschrijving van de beoogde activiteiten" required></textarea></div>
-                    <div class="col-md-3"> <textarea name="resultaten" class="form-control"  placeholder="Beschrijven van de beoogde resultaten" required></textarea></div>
-                </div>
-                <br>
-                <input type="submit" name="submit" value="Verstuur" class="form-control">
+                            <div class="field">
+                                <label class="main">Plaats</label>
+                                <input name="plaats" type="text" placeholder="Uw woonplaats">
+                                <span class="error"></span>
+                            </div>
+
+                            <div class="field buttons">
+                                <label class="main">&nbsp;</label>
+                                <button type="button" class="prev">&laquo; Vorige</button>
+                                <button type="button" class="next">Volgende &raquo;</button>
+                            </div>
+
+
+                        </section>
+
+                        <!-- step 3 -->
+
+                        <section class="idealsteps-step">
+
+                            <div class="field">
+                                <label class="main">Telefoon</label>
+                                <input name="phone" type="text" placeholder="1234567890">
+                                <span class="error"></span>
+                            </div>
+
+                            <div class="field">
+                                <label class="main">Mobiel</label>
+                                <input name="gsm" type="text" placeholder="1234567890">
+                                <span class="error"></span>
+                            </div>
+
+                            <div class="field">
+                                <label class="main">Fax</label>
+                                <input name="fax" type="text" placeholder="1234567890">
+                                <span class="error"></span>
+                            </div>
+
+                            <div class="field">
+                                <label class="main">E-Mail</label>
+                                <input name="email" type="email">
+                                <span class="error"></span>
+                            </div>
+
+                            <div class="field buttons">
+                                <label class="main">&nbsp;</label>
+                                <button type="button" class="prev">&laquo; Vorige</button>
+                                <button type="button" class="next">Volgende &raquo;</button>
+                            </div>
+
+
+                        </section>
+
+                        <!-- Step 4 -->
+
+                        <section class="idealsteps-step">
+
+                            <div class="field">
+                                <label class="main">Toelichting</label>
+                                <textarea name="comments" cols="30" rows="10" placeholder="Graag invullen waarom u een subsidie nodig heeft. Geef een beschijving van de beoogde activiteiten en een beschrijving van de beoogde resultaten."></textarea>
+                                <span class="error"></span>
+                            </div>
+
+                            <div class="field buttons">
+                                <label class="main">&nbsp;</label>
+                                <button type="button" class="prev">&laquo; Vorige</button>
+                                <button type="submit" class="submit">Versturen</button>
+                            </div>
+
+                        </section>
+
+                    </div>
+
+                    <span id="invalid"></span>
+
+                </form>
+
             </div>
-        </form>
 
+        </div>
     </div>
+
+
 </div>
 
-
+<script src="/SOSRommelmarkt/includes/js/contactformulier.js" type="text/javascript"></script>
+<script src="/SOSRommelmarkt/includes/js/contactformulier_submit.js" type="text/javascript"></script>
