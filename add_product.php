@@ -59,8 +59,9 @@
                             </div>
 
                             <div class="field">
-                                <label class="main">Foto bij snijden</label>
-                                <img src="" class="img-responsive" id="cropArea" alt="Crop area" />
+                                <div id="cropSection">
+                                    <img class="img-responsive" id="cropArea" alt="Crop area" />
+                                </div>
                             </div>
                             <input id="xCoord" type="hidden">
                             <input id="yCoord" type="hidden">
@@ -96,13 +97,12 @@
 
     function loadImage(file){
 
-        console.log(file.files);
-
         var reader = new FileReader();
 
         reader.onload = function(event) {
             cropper = null;
             the_url = event.target.result;
+            document.getElementById("cropSection").innerHTML = "<img class='img-responsive' id='cropArea' alt='Crop area' />";
             document.getElementById("cropArea").setAttribute("src", the_url);
 
             cropper = new Cropper(document.getElementById("cropArea"),{
