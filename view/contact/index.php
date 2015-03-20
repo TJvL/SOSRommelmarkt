@@ -21,14 +21,14 @@ if(isset($_POST['submit'])){
 	<div class="row white margin-hor-0">
 		<!-- Contact form -->
 		<div class="col-sm-9">
-			<form role="form" action="" method="post">
+			<form role="form" action="" class="idealforms" method="post">
 
 				<div class="form-group">
 
 					<h2>Contact:</h2>
 					
 					<div class="row">
-						<div class="col-sm-4 padding-sm"><input type="text" class="form-control" name="name" placeholder="Naam..."><span class="error"></span></div>
+						<div class="col-sm-4 padding-sm"><input type="text" class="form-control" required="required" name="name" placeholder="Naam..."><span class="error"></span></div>
 						<div class="col-sm-4 padding-sm"><input type="text" class="form-control" required="required" name="email" placeholder="E-mail adres.."></div>
 						<div class="col-sm-4 padding-sm"><input type="text" class="form-control" name="phone" placeholder="Telefoonnummer..."></div>
 					</div>
@@ -57,15 +57,15 @@ if(isset($_POST['submit'])){
 		<div class="col-sm-3">
 			<h2 class="title">Adres:</h2>
 			<p>
-				Vughterstraat 264-A<br>
-				5211 GR 's Hertogenbosch<br>
+                Ridderspoorstraat 2<br>
+				5212 XP 's Hertogenbosch<br>
 				<!-- <a href="tel:0736133774">0736133774</a><br> Doesn't seem to work very well... -->
 				073 613 3774<br>
 				<a href="mailto:info@sosrommelmarkt.nl" target="_top">info@sosrommelmarkt.nl</a>
 			</p>
 					
 			<!-- google map -->
-			<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1236.8377129717414!2d5.295767490592149!3d51.68408392860844!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6ee8cb8421907%3A0x5361570b663c1abd!2sStg.+Ontwikkelingssamenwerking+Rommelmarkt!5e0!3m2!1sen!2snl!4v1426184880380" frameborder="0" style="border:0"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4945.754735084947!2d5.30305697168822!3d51.69868920698085!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6ee5d3cbe3817%3A0xc2bc3b36e7e3416f!2sRidderspoorstraat+2%2C+De+Orthenpoort%2C+5212+XP+&#39;s-Hertogenbosch!5e0!3m2!1sen!2snl!4v1426840575196" frameborder="0" style="border:0"></iframe>
 		</div>
 	</div>
 </div>
