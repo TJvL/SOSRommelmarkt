@@ -104,9 +104,16 @@
 										<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
 									</button></div>
 
-								<div class="col-md-1"><button type="button" title="Verwijder" class="btn btn-default">
-										<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-									</button></div>
+
+
+								<form role="form" action="" method="post">
+										<input type="hidden" name="id" value="<?php echo $subventionRequest->id  ?>">
+										<div class="col-md-1"><button type="submit" title="Verwijder" class="btn btn-default">
+												<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+											</button></div>
+								</form>
+
+
 							</div>
 						</div>
 					</a>
