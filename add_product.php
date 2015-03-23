@@ -10,7 +10,7 @@
             <div class="idealsteps-container">
                 <nav class="idealssteps-nav"></nav>
 
-                <form class="idealforms" action="insertproduct.php" method="post" enctype="multipart/form-data">
+                <form class="idealforms" action="<?php ROOT_DIR . '/createproduct.php' ?>" method="post" enctype="multipart/form-data">
 
                     <div class="idealsteps-wrap">
 
@@ -26,7 +26,25 @@
 
                             <div class="field">
                                 <label class="main">Product omschrijving</label>
-                                <input name="" type="text" placeholder="Product omschrijving">
+                                <input name="productDesc" type="text" placeholder="Product omschrijving">
+                                <span class="error"></span>
+                            </div>
+
+                            <div class="field buttons">
+                                <label class="main">&nbsp;</label>
+                                <button type="button" class="prev">&laquo; Vorige</button>
+                                <button type="button" class="next">Volgende &raquo;</button>
+                            </div>
+
+                        </section>
+
+                        <!-- Step 2 -->
+
+                        <section class="idealsteps-step">
+
+                            <div class="field">
+                                <label class="main">Product prijs</label>
+                                <input name="productPrice" type="text" placeholder="Product prijs">
                                 <span class="error"></span>
                             </div>
 
@@ -48,7 +66,7 @@
 
                         </section>
 
-                        <!-- Step 2 -->
+                        <!-- Step 3 -->
 
                         <section class="idealsteps-step">
 
@@ -63,10 +81,10 @@
                                     <img class="img-responsive" id="cropArea" alt="Crop area" />
                                 </div>
                             </div>
-                            <input id="xCoord" type="hidden">
-                            <input id="yCoord" type="hidden">
-                            <input id="width" type="hidden">
-                            <input id="height" type="hidden">
+                            <input id="xCoord" name="xCoord" type="hidden">
+                            <input id="yCoord" name="yCoord" type="hidden">
+                            <input id="width" name="width" type="hidden">
+                            <input id="height" name="height" type="hidden">
 
                             <div class="field buttons">
                                 <label class="main">&nbsp;</label>
@@ -75,8 +93,8 @@
                             </div>
 
                         </section>
-
                     </div>
+                    <input type="submit" value="submit">
                 </form>
             </div>
         </div>
@@ -100,7 +118,6 @@
         var reader = new FileReader();
 
         reader.onload = function(event) {
-            cropper = null;
             the_url = event.target.result;
             document.getElementById("cropSection").innerHTML = "<img class='img-responsive' id='cropArea' alt='Crop area' />";
             document.getElementById("cropArea").setAttribute("src", the_url);
@@ -115,9 +132,6 @@
                     document.getElementById("yCoord").setAttribute("value", data.y);
                     document.getElementById("width").setAttribute("value", data.width);
                     document.getElementById("height").setAttribute("value", data.height);
-
-                    console.log(document.getElementById("xCoord"),document.getElementById("yCoord"));
-
                 }
             });
 
