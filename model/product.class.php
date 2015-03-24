@@ -9,7 +9,7 @@ abstract class Product
     public $name;
     public $description;
     public $addedBy;
-    public $imagePath;
+    public $colorCode;
 
     abstract static public function getImagesDirectory();
 
@@ -22,21 +22,21 @@ abstract class Product
             return null;
     }
 
-    protected static function insert($name, $description, $addedBy)
+    protected static function insert($name, $description, $addedBy, $colorCode)
     {
-        $query = "INSERT INTO Product (name, description, addedBy)
-                                VALUES (?, ?, ?)";
+        $query = "INSERT INTO Product (name, description, addedBy, colorCode)
+                                VALUES (?, ?, ?, ?)";
 
         // Insert the product and get back the auto incremented key.
-        return Database::insert($query, "sss", array($name, $description, $addedBy));
+        return Database::insert($query, "ssss", array($name, $description, $addedBy, $colorCode));
     }
 
     protected function update()
     {
-        $query = "UPDATE Product SET name = ?, description = ?, addedBy = ? WHERE id = ?";
+        $query = "UPDATE Product SET name = ?, description = ?, addedBy = ?, colorCode = ? WHERE id = ?";
 
         // Execute the update query.
-        Database::update($query, "sssi", array($this->name, $this->description, $this->addedBy, $this->id));
+        Database::update($query, "ssssi", array($this->name, $this->description, $this->addedBy, $this->colorCode, $this->id));
     }
 
 	protected static function deleteById($id)
