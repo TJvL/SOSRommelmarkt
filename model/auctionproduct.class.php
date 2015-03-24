@@ -20,6 +20,7 @@ class AuctionProduct extends Product
 		$auctionProduct->description = $row["description"];
 		$auctionProduct->addedBy = $row["addedBy"];
 		$auctionProduct->colorCode = $row["colorCode"];
+		$auctionProduct->imagePath = $auctionProduct->getImagePath();
 	
 		return $auctionProduct;
 	}

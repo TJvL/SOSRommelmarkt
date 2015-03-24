@@ -10,6 +10,7 @@ abstract class Product
     public $description;
     public $addedBy;
     public $colorCode;
+    public $imagePath;
 
     abstract static public function getImagesDirectory();
 
