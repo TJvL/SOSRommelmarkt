@@ -1,4 +1,24 @@
 
+<?php
+
+    // Declaration.
+    $servername = "samwise.technotive.nl";
+    $username = "sosAdmin";
+    $password = "shadowrend";
+    $database = "sosRommel";
+    $port = 3306;
+
+    $connection = new mysqli($servername, $username, $password, $database, $port);
+
+    // Check connection.
+    if ($connection->connect_error)
+    {
+        die("Connection failed: " . $connection->connect_error);
+    }
+
+?>
+
+
 
 <!--echo $viewbag['voorbeeld'];-->
 <div class="container">
@@ -64,16 +84,22 @@
 
                     <table class="table">
 
-                        <h2>Openingstijden</h2>
-                        <tr><td>Maandag</td><td>gesloten</td></tr>
-                        <tr><td>Dinsdag</td><td>10.00-17:00 uur</td></tr>
-                        <tr><td>Woensdag</td><td>10.00-17:00 uur</td></tr>
-                        <tr><td>Donderdag</td><td>10.00-17:00 uur</td></tr>
-                        <tr><td>Vrijdag</td><td>10.00-17:00 uur</td></tr>
-                        <tr><td>Zaterdag</td><td>10.00-17:00 uur</td></tr>
-                        <tr><td>Zondag</td><td>10.00-17:00 uur</td></tr>
-
+                        <?php
+     $query =  mysqli_query($connection,"SELECT * FROM Openingstijden");
+    while ($row = mysqli_fetch_assoc($query)) {
+        ?>
+        <table>
+                    <h2>Openingstijden</h2>
+                        <tr><td>Maandag</td><td> <?php echo $row['Maandag']; ?></td></tr>
+                        <tr><td>Dinsdag</td><td> <?php echo $row['Dinsdag']; ?></td></tr>
+                        <tr><td>Woensdag</td><td> <?php echo $row['Woensdag']; ?></td></tr>
+                        <tr><td>Donderdag</td><td> <?php echo $row['Donderdag']; ?></td></tr>
+                        <tr><td>Vrijdag</td><td> <?php echo $row['Vrijdag']; ?></td></tr>
+                        <tr><td>Zaterdag</td><td> <?php echo $row['Zaterdag']; ?></td></tr>
+                        <tr><td>Zondag</td><td> <?php echo $row['Zondag']; ?></td></tr>
                     </table>
+        </table>
+        <?php } ?>
 
                 </div>
 

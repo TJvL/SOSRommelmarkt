@@ -1,3 +1,25 @@
+
+<?php
+
+    // Declaration.
+    $servername = "samwise.technotive.nl";
+    $username = "sosAdmin";
+    $password = "shadowrend";
+    $database = "sosRommel";
+    $port = 3306;
+
+    $connection = new mysqli($servername, $username, $password, $database, $port);
+
+    // Check connection.
+    if ($connection->connect_error)
+    {
+        die("Connection failed: " . $connection->connect_error);
+    }
+
+?>
+
+
+
 <!DOCTYPE html>
 <html>
     
@@ -6,6 +28,9 @@
     <meta charset="utf-8">
     <title>SOS Rommelmarkt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href = "<?php echo ROOT_DIR; ?>/database.php" rel = "database">
 
     <link rel="stylesheet" href="<?php echo ROOT_DIR; ?>/includes/css/menu.css" type="text/css" media="screen">
     <link rel="stylesheet" href="<?php echo ROOT_DIR; ?>/includes/fonts/font-awesome/css/font-awesome.min.css" >
@@ -56,20 +81,26 @@
 					</button>
 					
 				
+<?php
+     $query =  mysqli_query($connection,"SELECT * FROM Info");
+    while ($row = mysqli_fetch_assoc($query)) {
+        ?>
+
+
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
 					  <ul class = "nav navbar-nav navbar-left">
               <li>
                <div class="contact-info">
               <span class="icon"><i class="fa fa-phone"></i></span>
-               <div class="contact-phone"><span>073 613 3774</span> </div>
+               <div class="contact-phone"><span><?php echo $row['Telefoon']; ?></span> </div>
                <span class="icon"><i class="fa fa-envelope"></i></span>
-               <div class="contact-mail"><span>info@sosrommelmarkt.nl </span></div>
+               <div class="contact-mail"><span><?php echo $row['Email']; ?> </span></div>
                </div>
               </li>
             </ul>
             
-              
+               <?php } ?>
 
 						<ul class = "nav navbar-nav navbar-right">
 
