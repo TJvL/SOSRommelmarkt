@@ -15,17 +15,16 @@
                         <li class="filterHeadings"><h3>Kwaliteit <i class="fa fa-minus category-plus-open"></i></h3></li>
                         <li>
                             <ul id="filterOptions" class="filterListings ">
-                                <li ng-click="colorFilter = null"><a href="#">Alle</a></li>
-                                <li ng-click="colorFilter = {colorCode: 'green'}"><a href="#" class="green">Z.G.A.N <i class="product-filter-quality filter-green" title="Z.G.A.N"></i></a></li>
-                                <li ng-click="colorFilter = {colorCode: 'blue'}"><a href="#" class="blue">Gebruikt <i class="product-filter-quality filter-blue" title="Z.G.A.N"></i></a></li>
-                                <li ng-click="colorFilter = {colorCode: 'red'}"><a href="#" class="red">Lichte schade <i class="product-filter-quality filter-red" title="Z.G.A.N"></i></a></li>
+                                <li><input type="checkbox" ng-click="selectAll(master)" ng-model="master" ng-init="master=true"><span> Alle</span></li>
+                                <li><input type="checkbox" ng-click="includeColor('green')" ng-checked="master"/> <span >Z.G.A.N <i class="product-filter-quality filter-green" title="Z.G.A.N"></i><span></li>
+                                <li><input type="checkbox" ng-click="includeColor('blue')" ng-checked="master"/> <span>Gebruikt <i class="product-filter-quality filter-blue" title="Z.G.A.N"></i></span></li>
+                                <li><input type="checkbox" ng-click="includeColor('red')" ng-checked="master"/> <span>Lichte schade <i class="product-filter-quality filter-red" title="Z.G.A.N"></i></span></li>
                             </ul>
                         </li>
                         <li class="filterHeadings"><h3>Prijs <i class="fa fa-minus category-plus-open"></i></h3></li>
                         <li>
                             <ul class="filterListings ">
                                 <li>
-
                                         <?php $priceRanges = ShopProduct::getPriceRanges();?>
 
                                         <div class="col-lg-12 margin-ver-md">
@@ -48,6 +47,7 @@
 
             </div>
             <div class="col-sm-9 ">
+
 
                 <div ng-repeat="x in shopProducts | filter:colorFilter | rangeFilter:sliderRanges" class="col-sm-3 product padding-lg animation ">
 
@@ -84,6 +84,37 @@
                       max: <?php echo ceil($priceRanges[1]);?>
                     };
 
+                    $scope.colorIncludes = ["green", "red", "blue"];
+
+                    $scope.includeColor = function(color) {
+
+                        var i = $.inArray(color, $scope.colorIncludes);
+                        if (i > -1) {
+                            $scope.colorIncludes.splice(i, 1);
+                            if($scope.colorIncludes.length < 1){
+                                $scope.colorIncludes = [""];
+                            }
+                        } else {
+                            $scope.colorIncludes.push(color);
+                        }
+                    }
+
+                    $scope.colorFilter = function(x) {
+                        if ($scope.colorIncludes.length > 0) {
+                            if ($.inArray(x.colorCode, $scope.colorIncludes) < 0)
+                                return;
+                        }
+                        return x;
+                    }
+
+                    $scope.selectAll = function(master){
+                        if(master){
+                            $scope.colorIncludes = [""];
+                        }
+                        else{
+                            $scope.colorIncludes = ["green", "red", "blue"];
+                        }
+                    }
                 });
 
                 app.filter('rangeFilter', function() {
