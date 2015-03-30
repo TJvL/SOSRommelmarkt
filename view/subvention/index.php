@@ -13,8 +13,8 @@
             <div class="idealsteps-container">
 
                 <nav class="idealsteps-nav"></nav>
-
-                <form method="POST" action="contact_action.php" class="idealforms" name="aanvraag">
+<!--TODO: namen gelijk maken aan namen in post actie->controller, of de model zo aanpassen dat deze aansluit-->
+                <form method="post" action="" role="form" class="idealforms" name="aanvraag">
 
                     <div class="idealsteps-wrap">
 

@@ -1,5 +1,6 @@
 <head>
 	<script src="<?php echo ROOT_DIR; ?>/includes/js/subvention_overview.js" type="text/javascript"></script>
+	<script src="<?php echo ROOT_DIR; ?>/includes/js/jquery.deletesub.js" type="text/javascript"></script>
 </head>
 
 <div class="container">
@@ -104,13 +105,14 @@
 										<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
 									</button></div>
 
-
-
+<!--								create a hidden form, with one field filled with the relevant ID -->
+<!--								when our user clicks delete, and confirms, a jquery function will call the click event of the hidden submit button-->
 								<form role="form" action="" method="post">
-										<input type="hidden" name="id" value="<?php echo $subventionRequest->id  ?>">
-										<div class="col-md-1"><button type="submit" title="Verwijder" class="btn btn-default">
-												<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-											</button></div>
+									<input type="hidden" name="id" value="<?php echo $subventionRequest->id  ?>">
+									<button type="submit" id="confirmButton" style="display: none"></button>
+									<div class="col-md-1"><button id="deleteButton" type="button" title="Verwijder" class="btn btn-default">
+											<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+										</button></div>
 								</form>
 
 
@@ -123,3 +125,9 @@
 		</div>
 	</div>
 </div>
+<?php
+
+
+
+?>
+

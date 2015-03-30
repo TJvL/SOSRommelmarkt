@@ -32,21 +32,23 @@ class SubventionController extends Controller
         $this->render("index");
     }
 
-    public function alternate_GET()
-    {
-        $this->render("alternate");
-    }
 
-    public function alternate_POST()
-    {
-        include_once "/model/SubventionRequest.class.php";
+//    TODO: kijken of dit nog nodig is
+//    public function alternate_GET()
+//    {
+//        $this->render("alternate");
+//    }
 
-
-        $sv = new SubventionRequest();
-        $sv ->insertSubventionRequest($_POST["contactpersoon"],$_POST["onderneming"],$_POST["kvk"],
-            $_POST["adres"],$_POST["postcode"],$_POST["plaats"],$_POST["telefoonnummer1"],
-            $_POST["telefoonnummer2"],$_POST["fax"],$_POST["email"],$_POST["toelichting"],
-            $_POST["activiteiten"],$_POST["resultaten"]);
-        $this->render("index");
-    }
+//    public function alternate_POST()
+//    {
+//        include_once "/model/SubventionRequest.class.php";
+//
+//
+//        $sv = new SubventionRequest();
+//        $sv ->insertSubventionRequest($_POST["contactpersoon"],$_POST["onderneming"],$_POST["kvk"],
+//            $_POST["adres"],$_POST["postcode"],$_POST["plaats"],$_POST["telefoonnummer1"],
+//            $_POST["telefoonnummer2"],$_POST["fax"],$_POST["email"],$_POST["toelichting"],
+//            $_POST["activiteiten"],$_POST["resultaten"]);
+//        $this->render("index");
+//    }
 }
