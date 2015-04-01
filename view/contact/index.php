@@ -26,7 +26,7 @@ if(isset($_POST['submit'])){
 				<div class="form-group">
 
 					<h2>Contact:</h2>
-					
+
 					<div class="row">
 						<div class="col-sm-4 padding-sm"><input type="text" class="form-control" required="required" name="name" placeholder="Naam..."><span class="error"></span></div>
 						<div class="col-sm-4 padding-sm"><input type="text" class="form-control" required="required" name="email" placeholder="E-mail adres.."></div>
@@ -69,6 +69,7 @@ if(isset($_POST['submit'])){
 		</div>
 	</div>
 </div>
+
 
 <script src="/SOSRommelmarkt/includes/js/contactformulier.js" type="text/javascript"></script>
 <script src="/SOSRommelmarkt/includes/js/contactformulier_submit.js" type="text/javascript"></script>

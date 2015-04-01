@@ -97,9 +97,18 @@
 							</table>
 							<div class="row">
 								<div class="col-sm-8"><!-- just a spacer --></div>
-								<div class="col-md-1"><button type="button" title="Print" class="btn btn-default">
-										<span class="glyphicon glyphicon-print" aria-hidden="true"></span>
-									</button></div>
+
+
+<!--								hidden print form-->
+								<form role="form" action="" method="post">
+									<input type="hidden" name="id" value="<?php echo $subventionRequest->id  ?>">
+									<input type="hidden" name="post_type" value="print">
+									<button type="submit" id="confirmButtonPrint" style="display: none"></button>
+									<div class="col-md-1"><button id="printButton" type="button" title="Print" class="btn btn-default">
+											<span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+										</button></div>
+								</form>
+
 
 								<div class="col-md-1"><button type="button" title="Archiveer" class="btn btn-default">
 										<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
@@ -109,7 +118,8 @@
 <!--								when our user clicks delete, and confirms, a jquery function will call the click event of the hidden submit button-->
 								<form role="form" action="" method="post">
 									<input type="hidden" name="id" value="<?php echo $subventionRequest->id  ?>">
-									<button type="submit" id="confirmButton" style="display: none"></button>
+									<input type="hidden" name="post_type" value="delete">
+									<button type="submit" id="confirmButtonDel" style="display: none"></button>
 									<div class="col-md-1"><button id="deleteButton" type="button" title="Verwijder" class="btn btn-default">
 											<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 										</button></div>
