@@ -99,8 +99,13 @@
 								<div class="col-sm-8"><!-- just a spacer --></div>
 
 
+
+
+
+
+
 <!--								hidden print form-->
-								<form role="form" action="" method="post">
+								<form role="form" action="../../SOSRommelmarkt/printsubvention.php" method="post">
 									<input type="hidden" name="id" value="<?php echo $subventionRequest->id  ?>">
 									<input type="hidden" name="post_type" value="print">
 									<button type="submit" id="confirmButtonPrint" style="display: none"></button>
