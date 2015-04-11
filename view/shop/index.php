@@ -49,23 +49,18 @@
                             </ul>
                         </li>
                     </ul>
-
-
-
-
-
-
                 </div>
-
             </div>
+
             <div id="ourHolder" class="col-sm-9 ">
-
-
+                <!-- Product rendering start -->
             <?php foreach($model as $product) { ?>
 
+                <button class="btn btn-default" data-toggle="modal" data-target=".bs-<?php echo $product->id; ?>-modal-lg">
                 <div class="col-sm-3 product padding-lg item <?php echo $product->colorCode; ?>">
 
                     <i class="product-info-quality <?php echo $product->colorCode; ?>" title="<?php echo $product->colorCode; ?>"></i>
+
                     <div class="view view-first">
                         <img class="img-responsive" src="<?php echo $product->getImagePath() ?>" />
                         <div class="mask">
@@ -76,39 +71,49 @@
                     </div>
 
                     <div class="product-info">
-
-
-                            <h4 class="product-name"><?php echo $product->name; ?></h4>
-
+                        <h4 class="product-name"><?php echo $product->name; ?></h4>
 
                         <div class="product-info-left">
-
                             <p class="price">&euro; <?php echo $product->price; ?></p>
-
-
-
                         </div>
+
                         <div class="product-info-right">
-
                             <p class="reserved"><?php if($product->isReserved){echo ("Gereserveerd");} ?></p>
-
-
                         </div>
-
                     </div>
-
-
                 </div>
+                </button>
+
+                <!-- modal start -->
+                <div class="modal fade bs-<?php echo $product->id; ?>-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div style="padding-left:12px;">
+                                <h3><?php echo $product->name; ?></h3>
+                                <img class="img" src="<?php echo $product->getImagePath() ?>" alt="image for <?php echo $product->name; ?>"/>
+                                <!-- <p><?php echo $product->price; ?></p> -->
+                                <p>
+                                    <b>Beschrijving</b><br />
+                                    <?php
+                                    if(isset($product->desc))
+                                    {
+                                        echo $product->desc;
+                                    }
+                                    else
+                                    {
+                                        echo "Beschrijving ontbreekt";
+                                    }
+                                    ?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- modal end -->
 
             <?php } ?>
-
-
+                <!-- Product redering end -->
             </div>
-
-
-
         </div>
-
     </div>
-
 </div>
