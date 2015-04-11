@@ -44,7 +44,44 @@
         </div>
     </div>
 
-
+    <div class="grey">
+    	<div class="row">
+    		<div class="col-md-12">
+	    		<div id="vitrine-carousel" class="carousel slide" data-ride="carousel">
+			    	<ol class="carousel-indicators">
+			    		<li data-target="#vitrine-carousel" data-slide-to="1"></li>
+			    		<li data-target="#vitrine-carousel" data-slide-to="2"></li>
+			    	</ol>
+			    
+				    <div class="carousel-inner" role="listbox">
+				    	<div class="item active">
+				    		<img src="<?php echo ROOT_DIR;?>/img/tempslideshow" alt="Slide 1">
+				    		<div class="carousel-caption">
+				    			<h3>$_productNaam</h3>
+				    			<p>$_productText</p>
+				    		</div>
+				    	</div>
+				    	<div class="item">
+				    		<img src="<?php echo ROOT_DIR;?>/imge/slide2.png" alt="Slide 2">
+				    		<div class="carousel-caption">
+				    			<h3>$_productNaam</h3>
+				    			<p>$_productText</p>
+				    		</div>
+				    	</div>
+				    </div>
+				    
+				    <a class="left carousel-control" href="#vitrine-carousel" role="button" data-slide="prev">
+				    	<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				    	<span class="sr-only">Vorige</span>
+				    </a>
+				    <a class="right carousel-control" href="#vitrine-carousel" role="button" data-slide="next">
+				    	<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				    	<span class="sr-only">Volgende</span>
+				    </a>
+			    </div>
+    		</div>
+    	</div>
+    </div>
 
     <div class="padding-lg">
 
