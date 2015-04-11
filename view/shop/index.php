@@ -48,11 +48,7 @@
             </div>
             <div class="col-sm-9 ">
 
-
                 <div ng-repeat="x in shopProducts | filter:colorFilter | rangeFilter:sliderRanges" class="col-sm-3 product padding-lg animation ">
-                    <!-- Deze button -->
-                    <button type="button" class="btn btn-block" data-toggle="modal" data-target=".bs-{{x.id}}-modal-lg"></button>
-                    <!-- Moet om de divs heironder heen -->
                     <i class="product-info-quality {{x.colorCode}}"></i>
                     <div class="view view-first">
                         <img class="img-responsive" src="{{x.imagePath}}" />
@@ -60,11 +56,14 @@
                             <h2>{{x.name}}</h2>
                             <p ng-show="{{x.isReserved}}">Gereserveerd</p>
                             <p ng-hide="{{x.isReserved}}"></p>
-                            <a href="#" class="info"><i class="fa fa-cart-plus fa-2x"></i></a>
+                            <button type="button" class="btn-clear" data-toggle="modal" data-target=".bs-{{x.id}}-modal-lg">
+                                <a href="#" class="info"><i class="fa fa-cart-plus fa-2x"></i></a>
+                            </button>
                         </div>
                     </div>
 
                     <div class="product-info">
+
                         <h4 class="product-name">{{x.name}}</h4>
                         <div class="product-info-left">
                             <p class="price">&euro; {{x.price}}</p>
@@ -73,7 +72,6 @@
                             <p class="reserved" ng-show="{{x.isReserved}}">Gereserveerd</p>
                         </div>
                     </div>
-                    <!-- En hier weer gesloten worden -->
 
                     <!-- modal start -->
                     <div class="modal fade bs-{{x.id}}-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -93,7 +91,6 @@
                     </div>
                     <!-- modal end -->
                 </div>
-
             <script>
 
                 var app = angular.module('shopApp', ['ngAnimate', 'ui-rangeSlider']);
