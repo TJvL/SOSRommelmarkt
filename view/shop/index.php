@@ -50,8 +50,9 @@
 
 
                 <div ng-repeat="x in shopProducts | filter:colorFilter | rangeFilter:sliderRanges" class="col-sm-3 product padding-lg animation ">
+                    <!-- Deze button -->
                     <button type="button" class="btn btn-block" data-toggle="modal" data-target=".bs-{{x.id}}-modal-lg"></button>
-
+                    <!-- Moet om de divs heironder heen -->
                     <i class="product-info-quality {{x.colorCode}}"></i>
                     <div class="view view-first">
                         <img class="img-responsive" src="{{x.imagePath}}" />
@@ -72,6 +73,7 @@
                             <p class="reserved" ng-show="{{x.isReserved}}">Gereserveerd</p>
                         </div>
                     </div>
+                    <!-- En hier weer gesloten worden -->
 
                     <!-- modal start -->
                     <div class="modal fade bs-{{x.id}}-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
