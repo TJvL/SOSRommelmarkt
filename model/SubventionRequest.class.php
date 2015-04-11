@@ -26,31 +26,8 @@ class SubventionRequest {
 
 
 
-    //creeert en returned een SR object
-    //op dit moment worden alle attributen individueel vanuit de sessie of de post apart meegegeven.
-    //deze functie wordt op dit moment nog niet gebruikt maar kan van pas komen bij het referen/ophalen van aanvragen.
-    function createSubventionRequest($id,$c,$o,$k,$a,$po,$pl,$t1,$t2,$f,$e,$t,$a,$r) {
-        $sv = new SubventionRequest();
-        //sla alle input op
-        $sv->id = $id;
-        $sv ->contactperson = $c;
-        $sv ->firm = $o;
-        $sv -> kvk = $k;
-        $sv ->adress = $a;
-        $sv ->postalcode = $po;
-        $sv ->city = $pl;
-        $sv ->phonenumber1 = $t1;
-        $sv ->phonenumber2 = $t2;
-        $sv ->fax = $f;
-        $sv ->email = $e;
-        $sv ->elucidation = $t;
-        $sv ->results = $r;
-        return $sv;
-    }
 
-
-    //insert object in de database.
-    function insertSubventionRequest($contactperson,$firm,$kvk,$adress,$postalcode,$city,$phonenumber1
+   static function insertSubventionRequest($contactperson,$firm,$kvk,$adress,$postalcode,$city,$phonenumber1
         ,$phonenumber2,$fax,$email,$elucidation,$activities,$results)
     {
         //construct query
@@ -62,13 +39,9 @@ VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
        $id= Database::insert($query,"sssssssssssss",array($contactperson,$firm,$kvk,$adress,$postalcode,$city,$phonenumber1
         ,$phonenumber2,$fax,$email,$elucidation,$activities,$results));
 
-    return $this->createSubventionRequest($id,$contactperson,$firm,$kvk,$adress,$postalcode,$city,$phonenumber1
-        ,$phonenumber2,$fax,$email,$elucidation,$activities,$results);
 
 
     }
-
-
 
 	static private function createSubventionRequestObjectFromDatabaseRow($row)
 	{
@@ -130,5 +103,12 @@ VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
     	$result->close();
     	 
     	return $subventionRequest;
+    }
+
+    static public function deleteById($id)
+    {
+        $query = "DELETE FROM SubventionRequest WHERE id = ?";
+
+        Database::update($query, "i", array($id));
     }
 }

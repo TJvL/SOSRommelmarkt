@@ -102,4 +102,9 @@ class ArrayList implements Iterator
     {
         $this->curr = 0;
     }
+
+    public function getJSON()
+    {
+        return json_encode($this->array);
+    }
 }

@@ -1,3 +1,25 @@
+
+<?php
+
+    // Declaration.
+    $servername = "samwise.technotive.nl";
+    $username = "sosAdmin";
+    $password = "shadowrend";
+    $database = "sosRommel";
+    $port = 3306;
+
+    $connection = new mysqli($servername, $username, $password, $database, $port);
+
+    // Check connection.
+    if ($connection->connect_error)
+    {
+        die("Connection failed: " . $connection->connect_error);
+    }
+
+?>
+
+
+
 <!DOCTYPE html>
 <html>
     
@@ -7,6 +29,9 @@
     <title>SOS Rommelmarkt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+    <link href = "<?php echo ROOT_DIR; ?>/database.php" rel = "database">
+
     <link rel="stylesheet" href="<?php echo ROOT_DIR; ?>/includes/css/menu.css" type="text/css" media="screen">
     <link rel="stylesheet" href="<?php echo ROOT_DIR; ?>/includes/fonts/font-awesome/css/font-awesome.min.css" >
     <link href = "<?php echo ROOT_DIR; ?>/includes/css/bootstrap.css" rel = "stylesheet">
@@ -15,9 +40,11 @@
     <link href=  "<?php echo ROOT_DIR; ?>/includes/css/jquery.bxslider.css" rel="stylesheet">
     <link href=  "<?php echo ROOT_DIR; ?>/includes/css/style.css" rel="stylesheet">
     <link href=  "<?php echo ROOT_DIR; ?>/includes/css/vitrine.css" rel="stylesheet">
+    <link href=  "<?php echo ROOT_DIR; ?>/includes/css/angular.rangeSlider.css" rel="stylesheet">
     <link href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.5/css/jquery.dataTables.css">
-    
+
+
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -32,13 +59,12 @@
     <script src="<?php echo ROOT_DIR; ?>/includes/js/menu.js" type="text/javascript"></script>
     <script src="<?php echo ROOT_DIR; ?>/includes/js/vitrine.js" type="text/javascript"></script>
     <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js" type="text/javascript"></script>
-    <script src="<?php echo ROOT_DIR; ?>/includes/js/edit_product.js" type="text/javascript"></script>
+   <!--  <script src="<?php echo ROOT_DIR; ?>/includes/js/edit_product.js" type="text/javascript"></script>-->  
     <script src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.js" type="text/javascript"></script>
     <script src="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
-
-    <!--Product filter slider -->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js"></script>
+    <script src="<?php echo ROOT_DIR; ?>/includes/js/angular.rangeSlider.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-animate.js"></script>
 
 </head>
 <body>
@@ -55,20 +81,26 @@
 					</button>
 					
 				
+<?php
+     $query =  mysqli_query($connection,"SELECT * FROM Info");
+    while ($row = mysqli_fetch_assoc($query)) {
+        ?>
+
+
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
 					  <ul class = "nav navbar-nav navbar-left">
               <li>
                <div class="contact-info">
               <span class="icon"><i class="fa fa-phone"></i></span>
-               <div class="contact-phone"><span>073 613 3774</span> </div>
+               <div class="contact-phone"><span><?php echo $row['Telefoon']; ?></span> </div>
                <span class="icon"><i class="fa fa-envelope"></i></span>
-               <div class="contact-mail"><span>info@sosrommelmarkt.nl </span></div>
+               <div class="contact-mail"><span><?php echo $row['Email']; ?> </span></div>
                </div>
               </li>
             </ul>
             
-              
+               <?php } ?>
 
 						<ul class = "nav navbar-nav navbar-right">
 

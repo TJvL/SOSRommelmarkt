@@ -1,6 +1,6 @@
 <?php Type::check("ArrayList:Product", $model) ?>
 
-<div class="container">
+<div class="container" data-ng-app="shopApp" ng-controller="shopController">
 
     <div class="white">
 
@@ -10,109 +10,150 @@
 
             <div class="col-sm-3">
 
-                <!--Filters-->
-                <!-- Browse: categories, Filter by price, Reset filters -->
                 <div class="col-md-12 filter">
-
                     <ul class="filterContainer">
-<!--                        <li class="filterHeadings"><h3>Categori&euml;en <i class="fa fa-minus category-plus-open"></i></h3></li>-->
-<!--                        <li>-->
-<!--                            <ul class="filterListings ">-->
-<!--                                <li>Electronica <small class="category-count">[10]</small></li>-->
-<!--                                <li>Meubels <small class="category-count">[33]</small></li>-->
-<!--                                <li>Kleding <small class="category-count">[99]</small></li>-->
-<!--                            </ul>-->
-<!--                        </li>-->
                         <li class="filterHeadings"><h3>Kwaliteit <i class="fa fa-minus category-plus-open"></i></h3></li>
                         <li>
                             <ul id="filterOptions" class="filterListings ">
-                                <li class="active"><a href="#" class="all">Alle</a></li>
-                                <li><a href="#" class="green">Z.G.A.N <i class="product-filter-quality filter-green" title="Z.G.A.N"></i></a></li>
-                                <li><a href="#" class="blue">Gebruikt <i class="product-filter-quality filter-blue" title="Z.G.A.N"></i></a></li>
-                                <li><a href="#" class="red">Lichte schade <i class="product-filter-quality filter-red" title="Z.G.A.N"></i></a></li>
-
+                                <li><input type="checkbox" ng-click="selectAll(master)" ng-model="master" ng-init="master=true"><span> Alle</span></li>
+                                <li><input type="checkbox" ng-click="includeColor('green')" ng-checked="master"/> <span >Z.G.A.N <i class="product-filter-quality filter-green" title="Z.G.A.N"></i><span></li>
+                                <li><input type="checkbox" ng-click="includeColor('blue')" ng-checked="master"/> <span>Gebruikt <i class="product-filter-quality filter-blue" title="Z.G.A.N"></i></span></li>
+                                <li><input type="checkbox" ng-click="includeColor('red')" ng-checked="master"/> <span>Lichte schade <i class="product-filter-quality filter-red" title="Z.G.A.N"></i></span></li>
                             </ul>
                         </li>
                         <li class="filterHeadings"><h3>Prijs <i class="fa fa-minus category-plus-open"></i></h3></li>
                         <li>
                             <ul class="filterListings ">
                                 <li>
-                                    <div class="price-slider">
-                                        <div id="priceRanges" data-prices="<?php $prices = ShopProduct::getPriceRanges(); echo $prices[0] . "," . $prices[1]; ?>">
-                                        <p>
-                                          <input type="text" id="amount" readonly style="border:0; color:#b20000; font-weight:bold;">
-                                        </p>
-                                        <div id="slider-range"></div>
+                                        <?php $priceRanges = ShopProduct::getPriceRanges();?>
 
-                                    </div>
+                                        <div class="col-lg-12 margin-ver-md">
+                                            <div class="row">
+                                                <div class="col-sm-5"><input type="text" class="form-control" ng-model="sliderRanges.min"></div>
+                                                <div class="col-lg-2"></div>
+                                                <div class="col-sm-5"><input type="text" class="form-control" ng-model="sliderRanges.max"></div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div range-slider min=<?php echo floor($priceRanges[0]);?> max=<?php echo ceil($priceRanges[1]);?> model-min="sliderRanges.min" model-max="sliderRanges.max" disabled="false" filter="currency:'€'"></div>
+                                        </div>
+
                                 </li>
                             </ul>
                         </li>
                     </ul>
                 </div>
+
             </div>
+            <div class="col-sm-9 ">
 
-            <div id="ourHolder" class="col-sm-9 ">
-                <!-- Product rendering start -->
-            <?php foreach($model as $product) { ?>
 
-                <button class="btn btn-default" data-toggle="modal" data-target=".bs-<?php echo $product->id; ?>-modal-lg">
-                <div class="col-sm-3 product padding-lg item <?php echo $product->colorCode; ?>">
+                <div ng-repeat="x in shopProducts | filter:colorFilter | rangeFilter:sliderRanges" class="col-sm-3 product padding-lg animation ">
+                    <button type="button" class="btn btn-block" data-toggle="modal" data-target=".bs-{{x.id}}-modal-lg"></button>
 
-                    <i class="product-info-quality <?php echo $product->colorCode; ?>" title="<?php echo $product->colorCode; ?>"></i>
-
+                    <i class="product-info-quality {{x.colorCode}}"></i>
                     <div class="view view-first">
-                        <img class="img-responsive" src="<?php echo $product->getImagePath() ?>" />
+                        <img class="img-responsive" src="{{x.imagePath}}" />
                         <div class="mask">
-                            <h2><?php echo $product->name; ?></h2>
-                            <p><?php if($product->isReserved){echo ("Gereserveerd");} ?></p>
+                            <h2>{{x.name}}</h2>
+                            <p ng-show="{{x.isReserved}}">Gereserveerd</p>
+                            <p ng-hide="{{x.isReserved}}"></p>
                             <a href="#" class="info"><i class="fa fa-cart-plus fa-2x"></i></a>
                         </div>
                     </div>
 
                     <div class="product-info">
-                        <h4 class="product-name"><?php echo $product->name; ?></h4>
-
+                        <h4 class="product-name">{{x.name}}</h4>
                         <div class="product-info-left">
-                            <p class="price">&euro; <?php echo $product->price; ?></p>
+                            <p class="price">&euro; {{x.price}}</p>
                         </div>
-
                         <div class="product-info-right">
-                            <p class="reserved"><?php if($product->isReserved){echo ("Gereserveerd");} ?></p>
+                            <p class="reserved" ng-show="{{x.isReserved}}">Gereserveerd</p>
                         </div>
                     </div>
-                </div>
-                </button>
 
-                <!-- modal start -->
-                <div class="modal fade bs-<?php echo $product->id; ?>-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div style="padding-left:12px;">
-                                <h3><?php echo $product->name; ?></h3>
-                                <img class="img" src="<?php echo $product->getImagePath() ?>" alt="image for <?php echo $product->name; ?>"/>
-                                <!-- <p><?php echo $product->price; ?></p> -->
-                                <p>
-                                    <b>Beschrijving</b><br />
-                                    <?php
-                                    if(isset($product->desc))
-                                    {
-                                        echo $product->desc;
-                                    }
-                                    else
-                                    {
-                                        echo "Beschrijving ontbreekt";
-                                    }
-                                    ?>
-                                </p>
+                    <!-- modal start -->
+                    <div class="modal fade bs-{{x.id}}-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div style="padding-left:12px;">
+                                    <h3>{{x.name}}</h3>
+                                    <img class="img" src="{{x.imagePath}}" alt="image for {{x.name}}"/>
+                                    <p>&euro; {{x.price}}</p>
+                                    <p>
+                                        <b>Beschrijving</b><br />
+                                        {{x.desc}}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <!-- modal end -->
                 </div>
-                <!-- modal end -->
 
-            <?php } ?>
-                <!-- Product redering end -->
+            <script>
+
+                var app = angular.module('shopApp', ['ngAnimate', 'ui-rangeSlider']);
+                app.controller('shopController', function($scope){
+                    $scope.shopProducts = <?php echo $model->getJSON(); ?>;
+                    $scope.sliderRanges = {
+
+                      min: <?php echo floor($priceRanges[0]);?>,
+                      max: <?php echo ceil($priceRanges[1]);?>
+                    };
+
+                    $scope.colorIncludes = ["green", "red", "blue"];
+
+                    $scope.includeColor = function(color) {
+
+                        var i = $.inArray(color, $scope.colorIncludes);
+                        if (i > -1) {
+                            $scope.colorIncludes.splice(i, 1);
+                            if($scope.colorIncludes.length < 1){
+                                $scope.colorIncludes = [""];
+                            }
+                        } else {
+                            $scope.colorIncludes.push(color);
+                        }
+                    }
+
+                    $scope.colorFilter = function(x) {
+                        if ($scope.colorIncludes.length > 0) {
+                            if ($.inArray(x.colorCode, $scope.colorIncludes) < 0)
+                                return;
+                        }
+                        return x;
+                    }
+
+                    $scope.selectAll = function(master){
+                        if(master){
+                            $scope.colorIncludes = [""];
+                        }
+                        else{
+                            $scope.colorIncludes = ["green", "red", "blue"];
+                        }
+                    }
+                });
+
+                app.filter('rangeFilter', function() {
+                    return function(items, sliderRanges ) {
+
+                        var filtered = [];
+                        var priceMin = parseInt(sliderRanges.min);
+                        var priceMax = parseInt(sliderRanges.max);
+
+                        angular.forEach(items, function(item) {
+                            if((item.price >= priceMin && item.price <= priceMax)) {
+                                filtered.push(item);
+                            }
+                        });
+                        return filtered;
+                    };
+                });
+
+            </script>
+
             </div>
         </div>
     </div>

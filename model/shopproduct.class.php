@@ -1,13 +1,12 @@
 <?php
 
-include("product.class.php");
+include_once("product.class.php");
 
 class ShopProduct extends Product
 {
 	// The directory the images for the shop products are placed.
 	const IMAGES_DIRECTORY = "img/content/shopproducts/";
 	
-	public $colorCode;
 	public $price;
 	public $isReserved;
 	
@@ -26,20 +25,21 @@ class ShopProduct extends Product
 		$shopProduct->colorCode = $row["colorCode"];
 		$shopProduct->price = $row["price"];
 		$shopProduct->isReserved = $row["isReserved"];
-	
+		$shopProduct->imagePath = $shopProduct->getImagePath();
+
 		return $shopProduct;
 	}
 	
 	public static function insert($name, $description, $addedBy, $colorCode, $price, $isReserved)
 	{
 		// Insert the product and get back the auto incremented key.
-		$id = parent::insert($name, $description, $addedBy);
+		$id = parent::insert($name, $description, $addedBy, $colorCode);
 		
-		$query = "INSERT INTO ShopProduct (id, colorCode, price, isReserved)
-				VALUES (?, ?, ?, ?)";
+		$query = "INSERT INTO ShopProduct (id, price, isReserved)
+				VALUES (?, ?, ?)";
 		
 		// Insert the shop product.
-		Database::insert($query, "isdi", array($id, $colorCode, $price, $isReserved));
+		Database::insert($query, "idi", array($id, $price, $isReserved));
 	
 		$shopProduct = new ShopProduct();
 		$shopProduct->id = $id;
@@ -106,10 +106,10 @@ class ShopProduct extends Product
 	{
 		parent::update();
 		
-		$query = "UPDATE ShopProduct SET colorCode = ?, price = ?, isReserved = ? WHERE id = ?";
+		$query = "UPDATE ShopProduct SET price = ?, isReserved = ? WHERE id = ?";
 	
 		// Execute the update query.
-		Database::update($query, "sdii", array($this->colorCode, $this->price, $this->isReserved, $this->id));
+		Database::update($query, "dii", array($this->price, $this->isReserved, $this->id));
 	}
 	
 	public static function deleteById($id)
