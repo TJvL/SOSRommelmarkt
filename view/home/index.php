@@ -44,27 +44,40 @@
         </div>
     </div>
 
+    <!-- new carousel -->
     <div class="grey padding-sm">
     	<div class="row">
-    		<div class="col-md-6">
+    		<div class="col-md-12">
 	    		<div id="vitrine-carousel" class="carousel slide" data-ride="carousel">
 			    	<ol class="carousel-indicators">
+			    		<li data-target="#vitrine-carousel" data-slide-to="0" class="active"></li>
 			    		<li data-target="#vitrine-carousel" data-slide-to="1"></li>
-			    		<li data-target="#vitrine-carousel" data-slide-to="2"></li>
-			    		<li data-target="#vitrini-carousel" data-slide-to="3"></li>
+			    		<li data-target="#vitrini-carousel" data-slide-to="2"></li>
 			    	</ol>
 			    
 				    <div class="carousel-inner" role="listbox">
-				    	<div class="item active">
+				    	<div class="item active carousel-overlay">
 				    		<img src="<?php echo ROOT_DIR;?>/img/tempslideshow/slideshow_1140x456_1.jpg" alt="Slide 1">
+				    		<div class="carousel-caption">
+				    			<h2>Title</h2>
+				    			<p>Description</p>
+				    		</div>
 				    	</div>
 				    	
 				    	<div class="item">
 				    		<img src="<?php echo ROOT_DIR;?>/img/tempslideshow/slideshow_1140x456_2.jpg" alt="Slide 2">
+				    		<div class="carousel-caption">
+				    			<h2>Title</h2>
+				    			<p>Description</p>
+				    		</div>
 				    	</div>
 				    	
 				    	<div class="item">
 				    		<img src="<?php echo ROOT_DIR;?>/img/tempslideshow/slideshow_1140x456_3.jpg" alt="Slide 3">
+				    		<div class="carousel-caption">
+				    			<h2>Title</h2>
+				    			<p>Description</p>
+				    		</div>
 				    	</div>
 			    	</div>
 				    
@@ -77,11 +90,6 @@
 				    	<span class="sr-only">Volgende</span>
 				    </a>
 			    </div>
-    		</div>
-    		<div class="col-md-6">
-    			<h1>Veiling</h1>
-    			<h2>$_productNaam</h2>
-    			<p>$_productBeschrijving</p>
     		</div>
     	</div>
     </div>
