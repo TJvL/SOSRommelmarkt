@@ -1,4 +1,4 @@
-
+<?php Type::check("ArrayList:AuctionProduct", $model) ?>
 <?php
 
     // Declaration.
@@ -44,7 +44,7 @@
         </div>
     </div>
 
-    <!-- new carousel -->
+    <!-- carousel -->
     <div class="grey padding-sm">
     	<div class="row">
     		<div class="col-md-12">
@@ -52,14 +52,14 @@
 			    	<ol class="carousel-indicators">
 			    		<li data-target="#vitrine-carousel" data-slide-to="0" class="active"></li>
 			    		<li data-target="#vitrine-carousel" data-slide-to="1"></li>
-			    		<li data-target="#vitrini-carousel" data-slide-to="2"></li>
+			    		<li data-target="#vitrine-carousel" data-slide-to="2"></li>
 			    	</ol>
 			    
 				    <div class="carousel-inner" role="listbox">
 				    	<div class="item active carousel-overlay">
 				    		<img src="<?php echo ROOT_DIR;?>/img/tempslideshow/slideshow_1140x456_1.jpg" alt="Slide 1">
 				    		<div class="carousel-caption">
-				    			<h2>Title</h2>
+				    			<h2><?php $model->get(0)->name ?></h2>
 				    			<p>Description</p>
 				    		</div>
 				    	</div>
