@@ -42,6 +42,12 @@ include("includes/markup/header.php");
     $ctrl = new $controller();
     $ctrl->{$action . "_" . $method}($id);
 
-include("includes/markup/footer.php");
+if($controller == "manageController"){
+    include("includes/markup/manage_footer.php");
+}
+else{
+    include("includes/markup/footer.php");
+}
+
 ob_end_flush();
 ?>

@@ -15,7 +15,7 @@
 //$product = ShopProduct::insert($_POST["productName"], $_POST["productDesc"], "PLACEHOLDER", $_POST["productColorCode"], $_POST["productPrice"], "0");
 
 //Get the posted image file and crop data to create our final cropped image for storage.
-$image = imagecreatefromjpeg($_POST["productImage"]);
+$image = imagecreatefromjpeg($_FILES["productImage"]["tmp_name"]);
 
 $cropRectangle = array("x" => $_POST["xCoord"], "y" => $_POST["yCoord"], "height" => $_POST["height"], "width" => $_POST["width"]);
 
