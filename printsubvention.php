@@ -11,13 +11,10 @@ class PDF extends FPDF
 // Page header
     function Header()
     {
-        $sv = SubventionRequest::fetchSubventionRequestById($_POST["id"]);
-        // Logo
-        //$this->Image("../../../logo2.png",10,6,30);
-        // Arial bold 15
+        $sv = SubventionRequest::fetchSubventionRequestById($_GET["id"]);
         $this->SetFont('Arial','B',18);
         // Move to the right
-       $this->Cell(50);
+        $this->Cell(50);
         // Title
         $this->Cell(100,10,'Subsidie aanvraag: '.$sv->firm,1,0,'C');
         // Line break
@@ -37,13 +34,64 @@ class PDF extends FPDF
 }
 
 
-
-
+$sv = SubventionRequest::fetchSubventionRequestById($_GET["id"]);
 $pdf = new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
-$pdf->SetFont('Times','',12);
-for($i=1;$i<=40;$i++)
-    $pdf->Cell(0,10,'Printing line number '.$i,0,1);
+
+
+$pdf->SetFont('Arial','B',18);
+$pdf->Cell(0,10,'Contactgegevens',0,1);
+
+$pdf->SetFont('Arial','B',15);
+$pdf->Cell(0,10,'Contactpersoon:',0,1);
+$pdf->SetFont('Arial','I',15);
+$pdf->Cell(0,6,$sv->contactperson,0,1);
+
+$pdf->SetFont('Arial','B',15);
+$pdf->Cell(0,10,'Adres:',0,1);
+$pdf->SetFont('Arial','I',15);
+$pdf->Cell(0,6,$sv->adress.'      '.$sv->postalcode.'     '.$sv->city,0,1);
+
+$pdf->SetFont('Arial','B',15);
+$pdf->Cell(0,10,'Telefoonnummer(s):',0,1);
+$pdf->SetFont('Arial','I',15);
+$pdf->Cell(0,6,$sv->phonenumber1 .'     '.$sv->phonenumber2,0,1);
+
+$pdf->SetFont('Arial','B',15);
+$pdf->Cell(0,10,'Fax:',0,1);
+$pdf->SetFont('Arial','I',15);
+$pdf->Cell(0,6,$sv->fax,0,1);
+
+$pdf->SetFont('Arial','B',15);
+$pdf->Cell(0,10,'E-mail:',0,1);
+$pdf->SetFont('Arial','I',15);
+$pdf->Cell(0,6,$sv->email,0,1);
+
+$pdf->SetFont('Arial','B',15);
+$pdf->Cell(0,10,'Kvk:',0,1);
+$pdf->SetFont('Arial','I',15);
+$pdf->Cell(0,6,$sv->kvk,0,1);
+
+$pdf->SetFont('Arial','B',18);
+$pdf->Cell(0,10,'Aanvraag',0,1);
+
+$pdf->SetFont('Arial','B',15);
+$pdf->Cell(0,10,'Toelichting:',0,1);
+$pdf->SetFont('Arial','I',15);
+$pdf->Cell(0,6,$sv->elucidation,0,1);
+
+$pdf->SetFont('Arial','B',15);
+$pdf->Cell(0,10,'Geplande activiteiten:',0,1);
+$pdf->SetFont('Arial','I',15);
+$pdf->Cell(0,6,$sv->activities,0,1);
+
+$pdf->SetFont('Arial','B',15);
+$pdf->Cell(0,10,'Gewenste resultaten',0,1);
+$pdf->SetFont('Arial','I',15);
+$pdf->Cell(0,6,$sv->results,0,1);
+
+
+
 $pdf->Output();
 ?>
