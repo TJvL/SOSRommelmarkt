@@ -5,7 +5,7 @@ include_once("product.class.php");
 class AuctionProduct extends Product
 {
 	// The directory the images for the auction products are placed.
-	const IMAGES_DIRECTORY = "img/content/auctionproducts";
+	const IMAGES_DIRECTORY = "img/content/auctionproducts/";
 	
 	static public function getImagesDirectory()
 	{
@@ -15,7 +15,7 @@ class AuctionProduct extends Product
 	private static function createObjectFromDatabaseRow($row)
 	{
 		$auctionProduct = new AuctionProduct();
-		$auctionProduct->id = $row["id"];
+		$auctionProduct->id = $row["Product_id"];
 		$auctionProduct->name = $row["name"];
 		$auctionProduct->description = $row["description"];
 		$auctionProduct->addedBy = $row["addedBy"];
@@ -49,10 +49,10 @@ class AuctionProduct extends Product
 	
 	public static function selectAll()
 	{
-		$query = "SELECT AuctionProduct.id, name, description, addedBy, colorCode
+		$query = "SELECT AuctionProduct.Product_id, name, description, addedBy, colorCode
 			FROM AuctionProduct
 			LEFT JOIN Product
-			ON AuctionProduct.id = Product.id";
+			ON AuctionProduct.Product_id = Product.id";
 	
 		// Execute the query.
 		$result = Database::fetch($query);
@@ -72,6 +72,34 @@ class AuctionProduct extends Product
 	
 		return $auctionProducts;
 	}
+
+    public static function selectCurrentAuction()
+    {
+        $query = "SELECT AuctionProduct.Product_id, name, description, addedBy, colorCode
+			FROM AuctionProduct
+			LEFT JOIN Product
+			ON AuctionProduct.Product_id = Product.id
+			WHERE AuctionProduct.Auction_id = (SELECT MAX(id) FROM Auction)
+			";
+
+        // Execute the query.
+        $result = Database::fetch($query);
+
+        // Put the results of the query into an array of Product objects.
+        $auctionProducts = array();
+
+        for ($i = 0; $i < $result->num_rows; $i++)
+        {
+            $row = $result->fetch_assoc();
+
+            $auctionProducts[$i] = AuctionProduct::createObjectFromDatabaseRow($row);
+        }
+
+        // Free the result set.
+        $result->close();
+
+        return $auctionProducts;
+    }
 	
 	public static function selectById($id)
 	{
@@ -108,6 +136,33 @@ class AuctionProduct extends Product
 		
 		parent::deleteById($id);
 	}
+
+    public static function getCurrentAuctionDates()
+    {
+        $query = "SELECT startDate, endDate
+			FROM Auction
+			WHERE Auction.id = (SELECT MAX(id) FROM Auction)";
+
+        // Execute the query.
+        $result = Database::fetch($query);
+
+        // Put the results of the query into an array of Product objects.
+        $dates = array();
+
+        for ($i = 0; $i < $result->num_rows; $i++)
+        {
+            $row = $result->fetch_assoc();
+
+            $dates[$i] = $row["startDate"];
+            $dates[$i+1] = $row["endDate"];
+
+        }
+
+        // Free the result set.
+        $result->close();
+
+        return $dates;
+    }
 }
 
 ?>
