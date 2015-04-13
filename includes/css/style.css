@@ -4,14 +4,12 @@ html {
 }
 
 body{
-    
 /*    background-image: url("/SOSRommelmarkt/img/background.jpg");*/
     background-image: url("../../img/background.jpg");
     background-attachment:fixed;
     background-size: cover;
-    margin: 0 0 267px; /* bottom = footer height */
+    margin-bottom: 250px; /* bottom = footer height */
     height:100%;
-    
 }
 
 div .white{
@@ -182,7 +180,7 @@ h1.manage-title{
     padding:15px;
 }
 
-.manage-subtitle {
+.manage-subtitle, #auction-timer, .auction-info {
 
     background-color: #333;
     color:#fff;
@@ -191,8 +189,27 @@ h1.manage-title{
     padding-top:10px;
 }
 
-.manage-subtitle p {
+#auction-timer p{
+    font-size: 27px;
+    line-height: 30px;
+}
+
+.manage-subtitle p  {
     font-size: 20px;
+}
+
+.auction-info a{
+    font-size: 15px;
+    color: #fff;
+}
+
+.auction-product-info{
+    color: #B20000;
+    margin-left: 5px;
+}
+
+.auction-product-info:hover{
+    color: #333;
 }
 
 .contact-info{

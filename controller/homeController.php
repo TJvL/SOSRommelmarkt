@@ -9,7 +9,9 @@ class HomeController extends Controller
     public function index_GET()
     {
         $this->viewbag['voorbeeld'] = "hello, greetings from the viewbag";
-        $this->render("index");
+        $productList = new ArrayList("AuctionProduct");
+        $productList->addAll(AuctionProduct::selectCurrentAuction());
+        $this->render("index", $productList);
     }
 }
 ?>

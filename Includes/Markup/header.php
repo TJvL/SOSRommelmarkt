@@ -41,9 +41,10 @@
     <link href=  "<?php echo ROOT_DIR; ?>/includes/css/style.css" rel="stylesheet">
     <link href=  "<?php echo ROOT_DIR; ?>/includes/css/vitrine.css" rel="stylesheet">
     <link href=  "<?php echo ROOT_DIR; ?>/includes/css/angular.rangeSlider.css" rel="stylesheet">
+    <link href = "<?php echo ROOT_DIR; ?>/includes/css/carousel.css" rel="stylesheet">
     <link href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.5/css/jquery.dataTables.css">
-
+    <link href=  "<?php echo ROOT_DIR; ?>/includes/css/override-bootstrap.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>

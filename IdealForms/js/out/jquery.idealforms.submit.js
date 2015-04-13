@@ -6,11 +6,11 @@ $('form.idealforms').idealforms({
         'username': 'required username ajax',
         'name': 'required name',
         'kvknr': 'required kvknr',
-        'straatnaam': 'required straatnaam',
-        'van': 'required van',
-        'naar': 'required naar',
-        'lname': 'required lname',
-        'plaats': 'required plaats',
+        'street': 'required street',
+        'from': 'required from',
+        'to': 'required to',
+        'lastname': 'required lastname',
+        'place': 'required place',
         'email': 'required email',
         'password': 'required pass',
         'confirmpass': 'required equalto:password',
@@ -23,7 +23,7 @@ $('form.idealforms').idealforms({
         'gsm': 'required fax',
         'zip': 'required zip',
         'options': 'select:default',
-        'bedrijfsnaam': 'required bedrijfsnaam'
+        'companyname': 'required companyname'
     },
 
 
@@ -32,7 +32,7 @@ $('form.idealforms').idealforms({
         $('#invalid')
             .show()
             .toggleClass('valid', ! invalid)
-            .text(invalid ? (invalid +' invalid fields') : 'All good!');
+            .text(invalid ? (invalid +' ongeldige velden!') : 'Alles correct!');
     }
 });
 

@@ -1,7 +1,5 @@
 <?php
 
-include_once("product.class.php");
-
 class ShopProduct extends Product
 {
 	// The directory the images for the shop products are placed.
