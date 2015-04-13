@@ -19,6 +19,13 @@ class SubventionController extends Controller
         $this->render("index");
     }
 
+    //Example for IdealForm usage - Can be deleted!
+    public function example_GET()
+    {
+        $this->render("example");
+    }
+    //End Example
+
     public function index_POST()
     {
         include_once "/model/SubventionRequest.class.php";
