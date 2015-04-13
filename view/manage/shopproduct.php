@@ -13,7 +13,7 @@ $(document).ready(function()
 		// Reset status message.
 		$("#status").text("");
         $("#status").css("color", "none");
-		
+
 	    var data =
 		{
 	    	productId:			$("#productId").val(),
@@ -21,7 +21,7 @@ $(document).ready(function()
 	    	productDescription:	$("#productDescription").text(),
 	    	productColorCode:	$("#productColorCode option:selected").text(),
 	    	productPrice:		$("#productPrice").val(),
-	    	productIsReserved:	$("#productIsReserved").is(":checked")
+	    	productIsReserved:	($("#productIsReserved").is(":checked") == false ? 0: 1)
 		};
 
 	    $.ajax(

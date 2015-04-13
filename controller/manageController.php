@@ -74,10 +74,7 @@ class ManageController extends Controller
     				$shopProduct->description = $_POST["productDescription"];
     				$shopProduct->colorCode = $_POST["productColorCode"];
     				$shopProduct->price = $_POST["productPrice"];
-    				if ($_POST["productIsReserved"] == "true")
-    					$shopProduct->isReserved = 1;
-    				else
-    					$shopProduct->isReserved = 0;
+    				$shopProduct->isReserved = $_POST["productIsReserved"];
     				$shopProduct->update();
     				
     				// Return 0 for great success.
