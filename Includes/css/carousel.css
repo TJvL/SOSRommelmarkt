@@ -1,0 +1,24 @@
+.carousel-overlay
+{
+	position: relative;
+	/* max-width: 500px; */
+}
+
+.carousel-caption
+{
+	position: absolute;
+	top: 0;
+	left: 55%;
+	width: 30%;
+	height: 100%;
+	background: -webkit-linear-gradient(rgba(142, 199, 255, .1), rgba(142, 199, 255, .5) 10%, rgba(142, 199, 255, 1) 50%, rgba(142, 199, 255, .9) 80%, rgba(142, 199, 255, 0));
+	background: -o-linear-gradient(		rgba(142, 199, 255, .1), rgba(142, 199, 255, .5) 10%, rgba(142, 199, 255, 1) 50%, rgba(142, 199, 255, .9) 80%, rgba(142, 199, 255, 0));
+	background: -moz-linear-gradient(	rgba(142, 199, 255, .1), rgba(142, 199, 255, .5) 10%, rgba(142, 199, 255, 1) 50%, rgba(142, 199, 255, .9) 80%, rgba(142, 199, 255, 0));
+	background: linear-gradient(		rgba(142, 199, 255, .1), rgba(142, 199, 255, .5) 10%, rgba(142, 199, 255, 1) 50%, rgba(142, 199, 255, .9) 80%, rgba(142, 199, 255, 0));
+	color: #CBCBCB;
+}
+
+#vitrine-carousel, #vitrine-carousel .carousel-inner, #vitrine-carousel .carousel-inner .item
+{
+	height: 456px;
+}

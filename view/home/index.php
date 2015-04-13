@@ -1,4 +1,4 @@
-
+<?php Type::check("ArrayList:AuctionProduct", $model) ?>
 <?php
 
     // Declaration.
@@ -44,7 +44,42 @@
         </div>
     </div>
 
-
+    <!-- carousel -->
+    <div class="grey padding-sm">
+    	<div class="row">
+    		<div class="col-md-12">
+	    		<div id="vitrine-carousel" class="carousel slide" data-ride="carousel">
+			    	<ol class="carousel-indicators">
+			    		<?php for ($i = 0; $i < $model->size(); $i++) { ?>
+			    		<li data-target="#vitrine-carousel" data-slide-to="<?php echo $i ?>" <?php if ($i == 0) echo 'class="active"' ?>></li>
+			    		<?php } ?>
+			    	</ol>
+			    
+				    <div class="carousel-inner" role="listbox">
+				    	<?php for ($i = 0; $i < $model->size(); $i++) { ?>
+				    	<div class="item <?php if ($i == 0) echo 'active' ?> carousel-overlay">
+				    		<img class="img-responsive" src="<?php echo $model->get($i)->imagePath ?>" alt="Slide">
+				    		<div class="carousel-caption">
+				    			<br>
+				    			<h2><?php echo $model->get($i)->name ?></h2>
+				    			<p><?php echo $model->get($i)->description ?></p>
+				    		</div>
+				    	</div>
+				    	<?php } ?>
+			    	</div>
+				    
+				    <a class="left carousel-control" href="#vitrine-carousel" role="button" data-slide="prev">
+				    	<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				    	<span class="sr-only">Vorige</span>
+				    </a>
+				    <a class="right carousel-control" href="#vitrine-carousel" role="button" data-slide="next">
+				    	<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				    	<span class="sr-only">Volgende</span>
+				    </a>
+			    </div>
+    		</div>
+    	</div>
+    </div>
 
     <div class="padding-lg">
 
