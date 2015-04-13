@@ -16,4 +16,9 @@
 	background: -moz-linear-gradient(	rgba(142, 199, 255, .1), rgba(142, 199, 255, .5) 10%, rgba(142, 199, 255, 1) 50%, rgba(142, 199, 255, .9) 80%, rgba(142, 199, 255, 0));
 	background: linear-gradient(		rgba(142, 199, 255, .1), rgba(142, 199, 255, .5) 10%, rgba(142, 199, 255, 1) 50%, rgba(142, 199, 255, .9) 80%, rgba(142, 199, 255, 0));
 	color: #CBCBCB;
-} 
+}
+
+#vitrine-carousel, #vitrine-carousel .carousel-inner, #vitrine-carousel .carousel-inner .item
+{
+	height: 456px;
+}

@@ -50,35 +50,22 @@
     		<div class="col-md-12">
 	    		<div id="vitrine-carousel" class="carousel slide" data-ride="carousel">
 			    	<ol class="carousel-indicators">
-			    		<li data-target="#vitrine-carousel" data-slide-to="0" class="active"></li>
-			    		<li data-target="#vitrine-carousel" data-slide-to="1"></li>
-			    		<li data-target="#vitrine-carousel" data-slide-to="2"></li>
+			    		<?php for ($i = 0; $i < $model->size(); $i++) { ?>
+			    		<li data-target="#vitrine-carousel" data-slide-to="<?php echo $i ?>" <?php if ($i == 0) echo 'class="active"' ?>></li>
+			    		<?php } ?>
 			    	</ol>
 			    
 				    <div class="carousel-inner" role="listbox">
-				    	<div class="item active carousel-overlay">
-				    		<img src="<?php echo ROOT_DIR;?>/img/tempslideshow/slideshow_1140x456_1.jpg" alt="Slide 1">
+				    	<?php for ($i = 0; $i < $model->size(); $i++) { ?>
+				    	<div class="item <?php if ($i == 0) echo 'active' ?> carousel-overlay">
+				    		<img class="img-responsive" src="<?php echo $model->get($i)->imagePath ?>" alt="Slide">
 				    		<div class="carousel-caption">
-				    			<h2><?php $model->get(0)->name ?></h2>
-				    			<p>Description</p>
+				    			<br>
+				    			<h2><?php echo $model->get($i)->name ?></h2>
+				    			<p><?php echo $model->get($i)->description ?></p>
 				    		</div>
 				    	</div>
-				    	
-				    	<div class="item">
-				    		<img src="<?php echo ROOT_DIR;?>/img/tempslideshow/slideshow_1140x456_2.jpg" alt="Slide 2">
-				    		<div class="carousel-caption">
-				    			<h2>Title</h2>
-				    			<p>Description</p>
-				    		</div>
-				    	</div>
-				    	
-				    	<div class="item">
-				    		<img src="<?php echo ROOT_DIR;?>/img/tempslideshow/slideshow_1140x456_3.jpg" alt="Slide 3">
-				    		<div class="carousel-caption">
-				    			<h2>Title</h2>
-				    			<p>Description</p>
-				    		</div>
-				    	</div>
+				    	<?php } ?>
 			    	</div>
 				    
 				    <a class="left carousel-control" href="#vitrine-carousel" role="button" data-slide="prev">
