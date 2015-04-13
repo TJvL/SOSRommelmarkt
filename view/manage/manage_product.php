@@ -14,18 +14,21 @@
                 <tbody>
                 <?php
                     $products = ShopProduct::selectAll();
-                    foreach ($products as $product){
-                        echo "<tr>";
-                        echo "<td>" . $product->id . "</td>";
-                        echo "<td>" . $product->name . "</td>";
-                        echo "<td>" . $product->colorCode . "</td>";
-                        echo "<td>" . $product->addedBy . "</td>";
-                        echo "<td>
-                                <a href='#'><button class='btn btn-default'><i class='fa fa-info'></i></button></a>
-                                <a href='#'><button class='btn btn-default'><i class='fa fa-pencil'></i></button></a>
-                                <a href='#'><button class='btn btn-default'><i class='fa fa-trash'></i></button></a>
-                              </td>";
-                        echo "</tr>";
+                    foreach ($products as $product)
+                    {
+                    	?>
+                        <tr>
+	                        <td><?php echo $product->id ?></td>
+	                        <td><?php echo $product->name ?></td>
+	                        <td><?php echo $product->colorCode ?></td>
+	                        <td><?php echo $product->addedBy ?></td>
+	                        <td>
+								<a href="shopproduct/<?php echo $product->id ?>"><button class="btn btn-default"><i class="fa fa-info"></i></button></a>
+								<a href="shopproduct/<?php echo $product->id ?>"><button class="btn btn-default"><i class="fa fa-pencil"></i></button></a>
+								<a href="shopproduct/<?php echo $product->id ?>"><button class="btn btn-default"><i class="fa fa-trash"></i></button></a>
+							</td>
+						</tr>
+						<?php
                     }
                 ?>
                 </tbody>
