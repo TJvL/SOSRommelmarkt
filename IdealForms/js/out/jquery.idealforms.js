@@ -5,32 +5,32 @@
     module.exports = {
 
         required: 'Dit veld is verplicht',
-        digits: 'Must be only digits',
+        digits: 'Moet enkel getallen zijn',
         name: 'Moet minimaal 3 karakters lang zijn en moet alleen bestaan uit letters',
-        lname : 'Moet minimaal 3 karakters lang zijn en moet alleen bestaan uit letters',
-        bedrijfsnaam: 'Moet minimaal 3 karakters lang zijn en moet alleen bestaan uit letters',
+        lastname : 'Moet minimaal 3 karakters lang zijn en moet alleen bestaan uit letters',
+        companyname: 'Moet minimaal 3 karakters lang zijn en moet alleen bestaan uit letters',
         kvknr: 'Moet 8 karakters lang zijn en moet alleen nummers bevatten',
-        straatnaam: 'Straatnaam met huisnummer',
+        street: 'Straatnaam met huisnummer',
         email: 'Moet een geldig e-mailadres zijn',
-        plaats: 'Moet minimaal 3 karakters lang zijn en moet alleen bestaan uit letters',
-        username: 'Must be at between 4 and 32 characters long and start with a letter. You may use letters, numbers, underscores, and one dot',
-        pass: 'Must be at least 6 characters long, and contain at least one number, one uppercase and one lowercase letter',
-        strongpass: 'Must be at least 8 characters long and contain at least one uppercase and one lowercase letter and one number or special character',
+        place: 'Moet minimaal 3 karakters lang zijn en moet alleen bestaan uit letters',
+        username: 'Moet bestaan uit 4 tot 32 karakters. Het moet beginnen met een letter. Je mag letters, nummers, underscores en één punt gebruiken.',
+        pass: 'Moet bestaan uit ten minste 6 karakters, op z\'n minst één nummer, één hoofdletter en één kleine letter.',
+        strongpass: 'Moet bestaan uit ten minste 8 karakters, op z\'n minst één nummer, één hoofdletter, één kleine letter en één speciaal karakter.',
         phone: 'Moet een geldig telefoonnummer zijn',
         fax: 'Moet een geldig faxnummer zijn',
         gsm: 'Moet een geldig gsm zijn',
         zip: 'Moet een geldig postcode zijn',
-        url: 'Must be a valid URL',
-        number: 'Moet een nummer zijnr',
-        range: 'Must be a number between {0} and {1}',
-        min: 'Must be at least {0} characters long',
-        max: 'Must be under {0} characters',
-        minoption: 'Select at least {0} options',
-        maxoption: 'Select no more than {0} options',
-        minmax: 'Must be between {0} and {1} characters long',
-        select: 'Select an option',
-        extension: 'File(s) must have a valid extension ({*})',
-        equalto: 'Must have the same value as the "{0}" field',
+        url: 'Moet een geldig URL zijn',
+        number: 'Moet een nummer zijn',
+        range: 'Moet een nummer tussen {0} en {1} zijn',
+        min: 'Moet op z\'n minst {0} karakters lang zijn',
+        max: 'Moet onder de {0} karakters zijn',
+        minoption: 'Selecteer op z\'n minst {0} opties',
+        maxoption: 'Selecteer niet meer dan {0} opties',
+        minmax: 'Moet tussen de {0} en {1} karakters lang zijn',
+        select: 'Selecteer een optie',
+        extension: 'Bestand(en) moeten een geldige extensie hebben ({*})',
+        equalto: 'Moet dezelfde waarde hebben als het "{0}" veld',
         date: 'Moet een geldig datum zijn'
 
     };
@@ -657,7 +657,7 @@
                 fadeSpeed: 0,
 
                 i18n: {
-                    step: 'Step'
+                    step: 'Stap'
                 }
             }
         },
@@ -1277,11 +1277,11 @@
         email: /^[^@]+@[^@]+\..{2,6}$/,
         username: /^[a-z](?=[\w.]{3,31}$)\w*\.?\w*$/i,
         name: /^([A-z\s]{3,10})+$/,
-        lname: /^([A-z\s]{3,10})+$/,
-        plaats: /^([A-z\s]{3,10})+$/,
-        bedrijfsnaam: /^([A-z\s]{3,10})+$/,
+        lastname: /^([A-z\s]{3,10})+$/,
+        place: /^([A-z\s]{3,10})+$/,
+        companyname: /^([A-z\s]{3,10})+$/,
         kvknr: /^([0-9]{8})+$/,
-        straatnaam: /^([1-9][e][\s])*([a-zA-Z]+(([\.][\s])|([\s]))?)+[1-9][0-9]*(([-][1-9][0-9]*)|([\s]?[a-zA-Z]+))?$/i,
+        street: /^([1-9][e][\s])*([a-zA-Z]+(([\.][\s])|([\s]))?)+[1-9][0-9]*(([-][1-9][0-9]*)|([\s]?[a-zA-Z]+))?$/i,
         pass: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/,
         strongpass: /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
         phone: /(^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0)([0-9]{9}$|[0-9\-\s]{10}$)/,
@@ -1370,8 +1370,8 @@
                 if (!m || !d || !y) return false;
 
                 return m > 0 && m < 13 &&
-                y && y.length == 4 &&
-                d > 0 && d <= (new Date(y, m, 0)).getDate();
+                    y && y.length == 4 &&
+                    d > 0 && d <= (new Date(y, m, 0)).getDate();
             }
 
             return isDate(theDate, theFormat);
