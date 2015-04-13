@@ -125,19 +125,19 @@ $(document).ready(function()
 					<label class="control-label col-xs-2">Is gereserveerd</label>
 					<div class="col-xs-10">
 						<div class="input-group">
-							<div class="checkbox" id="productIsReserved">
+							<div class="checkbox">
 								<label>
 									<?php 
 									if ($model->isReserved)
 									{
 										?>
-										<input type="checkbox" checked>
+										<input id="productIsReserved" type="checkbox" checked>
 										<?php
 									}
 									else
 									{
 										?>
-										<input type="checkbox">
+										<input id="productIsReserved" type="checkbox">
 										<?php
 									}
 									?>

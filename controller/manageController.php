@@ -68,15 +68,16 @@ class ManageController extends Controller
     			// Check if all the necessary data has been sent with the request.
     			if (isset($_POST["productId"]) && isset($_POST["productName"]) && isset($_POST["productDescription"]) && isset($_POST["productColorCode"]) && isset($_POST["productPrice"]) && isset($_POST["productIsReserved"]))
     			{
-    				file_put_contents("debuglogfile.txt", "1", FILE_APPEND | LOCK_EX);
-    				
     				// Get the product, set the data and update.
     				$shopProduct = ShopProduct::selectById($_POST["productId"]);
     				$shopProduct->name = $_POST["productName"];
     				$shopProduct->description = $_POST["productDescription"];
     				$shopProduct->colorCode = $_POST["productColorCode"];
     				$shopProduct->price = $_POST["productPrice"];
-    				$shopProduct->isReserved = $_POST["productIsReserved"];
+    				if ($_POST["productIsReserved"] == "true")
+    					$shopProduct->isReserved = 1;
+    				else
+    					$shopProduct->isReserved = 0;
     				$shopProduct->update();
     				
     				// Return 0 for great success.
