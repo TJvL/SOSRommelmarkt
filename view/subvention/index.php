@@ -142,7 +142,6 @@
                     </div>
 
                     <span id="invalid"></span>
-
                 </form>
 
             </div>
