@@ -4,14 +4,12 @@ html {
 }
 
 body{
-    
 /*    background-image: url("/SOSRommelmarkt/img/background.jpg");*/
     background-image: url("../../img/background.jpg");
     background-attachment:fixed;
     background-size: cover;
-    margin: 0 0 267px; /* bottom = footer height */
+    margin-bottom: 250px; /* bottom = footer height */
     height:100%;
-    
 }
 
 div .white{

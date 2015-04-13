@@ -103,11 +103,11 @@ class AuctionProduct extends Product
 	
 	public static function selectById($id)
 	{
-		$query = "SELECT AuctionProduct.id, name, description, addedBy, colorCode
+		$query = "SELECT AuctionProduct.Product_id, name, description, addedBy, colorCode
 			FROM AuctionProduct
 			LEFT JOIN Product
-			ON AuctionProduct.id = Product.id
-			WHERE AuctionProduct.id = ?";
+			ON AuctionProduct.Product_id = Product.id
+			WHERE AuctionProduct.Product_id = ?";
 		
 		// Execute the query.
 		$result = Database::fetch($query, "i", array($id));
