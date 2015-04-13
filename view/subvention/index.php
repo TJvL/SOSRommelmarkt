@@ -1,9 +1,7 @@
 <!--For best practice on includes, a config php file is required which defines the root, so absolute paths can be created from $root/includes/markup for example..-->
 
 <head>
-    <link href=  "/SOSRommelmarkt/includes/css/contactformulier_normalize.css" rel="stylesheet">
-    <link href=  "/SOSRommelmarkt/includes/css/contactformulier_jq_form.css" rel="stylesheet">
-    <link href=  "/SOSRommelmarkt/includes/css/contactformulier.css" rel="stylesheet">
+    <link href=  "/SOSRommelmarkt/IdealForms/css/jquery.idealforms.css" rel="stylesheet">
 </head>
 
 <div class="container">
@@ -31,13 +29,13 @@
 
                             <div class="field">
                                 <label class="main">Achternaam</label>
-                                <input name="lname" type="text" placeholder="Uw achternaam">
+                                <input name="lastname" type="text" placeholder="Uw achternaam">
                                 <span class="error"></span>
                             </div>
 
                             <div class="field">
                                 <label class="main">Bedrijfsnaam</label>
-                                <input name="bedrijfsnaam" type="text" placeholder="De naam van uw bedrijf">
+                                <input name="companyname" type="text" placeholder="De naam van uw bedrijf">
                                 <span class="error"></span>
                             </div>
 
@@ -61,7 +59,7 @@
 
                             <div class="field">
                                 <label class="main">Straatnaam</label>
-                                <input name="straatnaam" type="text" placeholder="Uw straatnaam met huisnummer">
+                                <input name="street" type="text" placeholder="Uw straatnaam met huisnummer">
                                 <span class="error"></span>
                             </div>
 
@@ -73,7 +71,7 @@
 
                             <div class="field">
                                 <label class="main">Plaats</label>
-                                <input name="plaats" type="text" placeholder="Uw woonplaats">
+                                <input name="place" type="text" placeholder="Uw woonplaats">
                                 <span class="error"></span>
                             </div>
 
@@ -110,7 +108,7 @@
 
                             <div class="field">
                                 <label class="main">E-Mail</label>
-                                <input name="email" type="email">
+                                <input name="email" type="email" placeholder="iemand@email.com">
                                 <span class="error"></span>
                             </div>
 
@@ -155,5 +153,5 @@
 
 </div>
 
-<script src="/SOSRommelmarkt/includes/js/contactformulier.js" type="text/javascript"></script>
-<script src="/SOSRommelmarkt/includes/js/contactformulier_submit.js" type="text/javascript"></script>
+<script src="/SOSRommelmarkt/IdealForms/js/out/jquery.idealforms.js" type="text/javascript"></script>
+<script src="/SOSRommelmarkt/IdealForms/js/out/jquery.idealforms.submit.js" type="text/javascript"></script>
