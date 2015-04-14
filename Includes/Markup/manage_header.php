@@ -15,6 +15,7 @@
     <link href=  "/SOSRommelmarkt/includes/css/jquery.bxslider.css" rel="stylesheet">
     <link href=  "/SOSRommelmarkt/includes/css/style.css" rel="stylesheet">
     <link href=  "/SOSRommelmarkt/includes/css/cropper.css" rel="stylesheet">
+    <link href=  "/SOSRommelmarkt/IdealForms/css/jquery.idealforms.css" rel="stylesheet">
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 

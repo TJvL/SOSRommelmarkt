@@ -1,27 +1,21 @@
 <?php
-
-//$_POST["productName"];
-//$_POST["productDesc"];
-//
-//$_POST["productColorCode"];
-//$_POST["productPrice"];
-//
-//$_POST["xCoord"];
-//$_POST["yCoord"];
-//$_POST["width"];
-//$_POST["heigth"];
-
+include("includes/utility/imagemanipulator.php");
 //Insert data into database and create a product variable for later use.
 //$product = ShopProduct::insert($_POST["productName"], $_POST["productDesc"], "PLACEHOLDER", $_POST["productColorCode"], $_POST["productPrice"], "0");
 
-//Get the posted image file and crop data to create our final cropped image for storage.
-$image = imagecreatefromjpeg($_FILES["productImage"]["tmp_name"]);
+$xScale = $_POST["originalWidth"] / $_POST["clientWidth"];
 
-$cropRectangle = array("x" => $_POST["xCoord"], "y" => $_POST["yCoord"], "height" => $_POST["height"], "width" => $_POST["width"]);
+$x1 = $_POST["xCoord"] * $xScale;
+$x2 = ($x1 + $_POST["width"]) * $xScale;
 
-$croppedImage = imagecrop($image, $cropRectangle);
+$yScale = $_POST["originalHeight"] / $_POST["clientHeight"];
 
-$imageTargetFilePath = Product::IMAGES_DIRECTORY . $product->id . "jpeg";
-move_uploaded_file($croppedImage, $imageTargetFilePath); die ("error!!11!!");
+$y1 = $_POST["yCoord"] * $yScale;
+$y2 = ($y1 + $_POST["height"]) * $yScale;
+
+$manipulator = new ImageManipulator($_FILES["picture"]["tmp_name"]);
+$manipulator = $manipulator->crop($x1, $y1, $x2, $y2);
+$imageTargetFilePath = "img/TESTER.jpeg";
+$manipulator->save($imageTargetFilePath, IMAGETYPE_JPEG);
 
 
