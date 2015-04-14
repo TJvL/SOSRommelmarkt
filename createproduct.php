@@ -6,12 +6,12 @@ include("includes/utility/imagemanipulator.php");
 $xScale = $_POST["originalWidth"] / $_POST["clientWidth"];
 
 $x1 = $_POST["xCoord"] * $xScale;
-$x2 = ($x1 + $_POST["width"]) * $xScale;
+$x2 = $x1 + ($_POST["width"] * $xScale);
 
 $yScale = $_POST["originalHeight"] / $_POST["clientHeight"];
 
 $y1 = $_POST["yCoord"] * $yScale;
-$y2 = ($y1 + $_POST["height"]) * $yScale;
+$y2 = $y1 + ($_POST["height"] * $yScale);
 
 $manipulator = new ImageManipulator($_FILES["picture"]["tmp_name"]);
 $manipulator = $manipulator->crop($x1, $y1, $x2, $y2);
