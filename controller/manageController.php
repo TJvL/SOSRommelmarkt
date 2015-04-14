@@ -83,5 +83,31 @@ class ManageController extends Controller
     	// TODO: Error or some shit
     	exit(json_encode(1));
     }
+
+
+
+    public function instellingen_POST()
+    {
+
+        
+
+
+                // Check if all the necessary data has been sent with the request.
+                if (isset($_POST["Maandag"]) && isset($_POST["Dinsdag"]) && isset($_POST["Woensdag"]) && isset($_POST["Donderdag"]) && isset($_POST["Vrijdag"]) && isset($_POST["Zaterdag"]) && isset($_POST["Zondag"]))
+                {
+                    echo "tss1f";
+                    // Get the product, set the data and update.
+                    VisitingHours::update($_POST["Maandag"],$_POST["Dinsdag"],$_POST["Woensdag"], $_POST["Donderdag"],$_POST["Vrijdag"],$_POST["Zaterdag"],$_POST["Zondag"] );
+                    
+
+                }
+
+                echo "tss2f";
+            
+        
+
+    }
+
+    
 }
 ?>

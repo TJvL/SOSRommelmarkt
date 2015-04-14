@@ -6,8 +6,7 @@
     {
 		$query = "UPDATE Openingstijden SET Maandag = ?, Dinsdag = ?, Woensdag = ?, Donderdag = ?, Vrijdag = ?, Zaterdag = ?, Zondag = ?";
         // Execute the update query.
-        Database::update($query, "iiiiiii", array($Maandag, $Dinsdag, $Woensdag, $Donderdag, $Vrijdag, $Zaterdag, $Zondag ));
-
+        Database::update($query, "sssssss", array($Maandag, $Dinsdag, $Woensdag, $Donderdag, $Vrijdag, $Zaterdag, $Zondag ));
     }
 }
 ?>
