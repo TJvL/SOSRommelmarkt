@@ -16,7 +16,7 @@ class Partner
 		return $partner;
 	}
 	
-	protected static function insert($name, $website)
+	public static function insert($name, $website)
 	{
 		$query = "INSERT INTO partners (name, website)
 					VALUES (?, ?)";
@@ -24,7 +24,7 @@ class Partner
 		return Database::insert($query, "ss", array($name, $website));
 	}
 	
-	protected function update()
+	public function update()
 	{
 		$query = "UPDATE partners
 					SET name = ?, website = ?
@@ -32,7 +32,7 @@ class Partner
 		Database::update($query, "ssi", array($this->name, $this->website, $this->id));
 	}
 	
-	protected static function deleteById($id)
+	public static function deleteById($id)
 	{
 		$query = "DELETE FROM partners WHERE id = ?";
 		
