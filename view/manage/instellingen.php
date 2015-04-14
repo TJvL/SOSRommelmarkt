@@ -1,3 +1,4 @@
+
 <div class="container">
 	<div class="white">
 
@@ -67,97 +68,26 @@
 
                    </div> 
 
-<?php
 
-
-    $servername = "samwise.technotive.nl";
-    $username = "sosAdmin";
-    $password = "shadowrend";
-    $database = "sosRommel";
-    $port = 3306;
-
-    $connection = new mysqli($servername, $username, $password, $database, $port);
-
-    // Check connection.
-    if ($connection->connect_error)
-    {
-        die("Connection failed: " . $connection->connect_error);
-    }
-
-
-// Retrieve data from database
-    // $sql =  mysqli_query($connection,"SELECT * FROM Openingstijden");
-
-
-      
-//             $Maandag ="Maandag";
-//             $Dinsdag ="Dinsdag";
-//             $Woensdag ="Woensdag"; 
-//             $Donderdag ="Donderdag";
-//             $Vrijdag ="Vrijdag";
-//             $Zaterdag ="Zaterdag";
-//             $Zondag ="Zondag";
-
-// $sql = "UPDATE Openingstijden SET Maandag = $Maandag";
-// $sql = "UPDATE Openingstijden SET Dinsdag = $Dinsdag ";
-// $sql = "UPDATE Openingstijden SET Woensdag = $Woensdag ";
-// $sql = "UPDATE Openingstijden SET Donderdag = $Donderdag ";
-// $sql = "UPDATE Openingstijden SET Vrijdag = $Vrijdag ";
-// $sql = "UPDATE Openingstijden SET Zaterdag = $Zaterdag ";
-// $sql = "UPDATE Openingstijden SET Zondag = $Zondag ";
-
-
-
-
-?>
-
-<?php
-     $query =  mysqli_query($connection,"SELECT * FROM Openingstijden");
-    while ($row = mysqli_fetch_assoc($query)) {
-        ?>
-<?php
-//Create a query
-$sql = "SELECT * FROM Openingstijden";
-
-        if(isset($_POST['Submit'])){//if the submit button is clicked
-            
-            $Maandag = $_POST['Maandag'];
-            $Dinsdag = $_POST['Dinsdag'];
-            $Woensdag = $_POST['Woensdag'];
-            $Donderdag = $_POST['Donderdag'];
-            $Vrijdag = $_POST['Vrijdag'];
-            $Zaterdag = $_POST['Zondag'];
-            $Zondag = $_POST['Zondag'];
-
-            $update = "UPDATE Openingstijden SET Maandag='$Maandag', Dinsdag='$Dinsdag', Woensdag='$Woensdag', 
-            Donderdag='$Donderdag', Vrijdag='$Vrijdag', Zaterdag='$Zaterdag', 
-            Zondag='$Zondag'";
-
-
-    $connection->query($update) or die("Cannot update");//update or error
-    }
-?>
 
 
 <?php
 //Create a query
-$sql = "SELECT * FROM Openingstijden ";
+$query = "SELECT * FROM Openingstijden ";
 //submit the query and capture the result
-$result = $connection->query($sql) or die(mysql_error());
-// $query=getenv(QUERY_STRING);
-// parse_str($query);
-//$ud_title = $_POST['Title'];
-//$ud_pub = $_POST['Publisher'];
-//$ud_pubdate = $_POST['PublishDate'];
-//$ud_img = $_POST['Image'];
+ $result = Database::fetch($query);
+$query=getenv("QUERY_STRING");
+parse_str($query);
+
+       // VisitingHours::update(Maandag );
+
 ?>
 
                     <div class="col-md-4">
                     <h2> Openingstijden:</h2>
                     <form class="form-horizontal" action="" method="post">
                         <?php
-    
-    
+
     while ($row = $result->fetch_assoc()) {?>
                         <div class="form-group">
                             <label class="col-xs-2 control-label" >Maandag</label>
@@ -204,8 +134,8 @@ $result = $connection->query($sql) or die(mysql_error());
                         <td>
                         <input name="add" type="submit" id="submit" value="Update Tijd">
                         </td>
-                        <?php   }
-    ?>
+                       
+                           
                     </form>
                 </div>
 
@@ -217,11 +147,6 @@ $result = $connection->query($sql) or die(mysql_error());
                             <div class="tab-pane active" id="profile">
                             </div>
                         </div>
-<?php
-    if ($connection->query($sql))
-   echo "connection Successful.";
-else die("Cannot update");
 
-?>
 
                                             
