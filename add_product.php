@@ -1,3 +1,4 @@
+<?php include("includes/config.inc.php"); ?>
 <?php include("includes/markup/manageHeader.php"); ?>
 
 <div class="container">
@@ -121,10 +122,7 @@
     }
 </style>
 
-<script src="/SOSRommelmarkt/IdealForms/js/out/jquery.idealforms.js" type="text/javascript"></script>
-
 <script type="text/javascript">
-
     $('#product_add').idealforms({
 
         silentLoad: true,
@@ -207,5 +205,4 @@
 
         reader.readAsDataURL(file.files[0]);
     }
-
 </script>
