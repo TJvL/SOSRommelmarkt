@@ -12,7 +12,14 @@ class Controller
 
     protected function render()
     {
-    	include("includes/markup/header.php");
+        if ($_GET["controller"] == "manage")
+        {
+            include("includes/markup/manageHeader.php");
+        }
+        else
+        {
+            include("includes/markup/header.php");
+        }
     	
         if (func_num_args() ==1)
         {
@@ -29,7 +36,7 @@ class Controller
         
         if ($_GET["controller"] == "manage")
         {
-        	include("includes/markup/manage_footer.php");
+        	include("includes/markup/manageFooter.php");
         }
         else
         {
