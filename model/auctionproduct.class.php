@@ -3,15 +3,7 @@
 include_once("product.class.php");
 
 class AuctionProduct extends Product
-{
-	// The directory the images for the auction products are placed.
-	const IMAGES_DIRECTORY = "img/content/auctionproducts/";
-	
-	static public function getImagesDirectory()
-	{
-		return AuctionProduct::IMAGES_DIRECTORY;
-	}
-	
+{	
 	private static function createObjectFromDatabaseRow($row)
 	{
 		$auctionProduct = new AuctionProduct();
@@ -20,7 +12,7 @@ class AuctionProduct extends Product
 		$auctionProduct->description = $row["description"];
 		$auctionProduct->addedBy = $row["addedBy"];
 		$auctionProduct->colorCode = $row["colorCode"];
-		$auctionProduct->imagePath = $auctionProduct->getImagePath();
+		$auctionProduct->imagePath = $auctionProduct->getMainImagePath();
 	
 		return $auctionProduct;
 	}

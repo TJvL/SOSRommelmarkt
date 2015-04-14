@@ -2,6 +2,9 @@
 
 abstract class Product
 {
+	// The directory the images for the products are placed.
+	const IMAGES_DIRECTORY = "img/content/products";
+	
     // Maximum image size in bytes. 10 MB right now.
     const MAX_IMAGE_SIZE = 10000000;
 
@@ -12,15 +15,31 @@ abstract class Product
     public $colorCode;
     public $imagePath;
 
-    abstract static public function getImagesDirectory();
-
-    public function getImagePath()
+    public function getMainImagePath()
     {
-        $result = glob($this->getImagesDirectory(). $this->id . '*');
+        $result = glob(Product::IMAGES_DIRECTORY . "/" . $this->id . "/" . "main.*");
         if ($result)
             return ROOT_DIR . "/" . $result[0];
         else
             return null;
+    }
+    
+    public function getImagePaths()
+    {
+    	$result = glob(Product::IMAGES_DIRECTORY . "/" . $this->id . "/" . "*");
+    	if ($result)
+    	{
+    		$imagePaths = array();
+    		
+    		foreach ($result as $key => $imagePath)
+    		{
+    			$imagePaths[$key] = ROOT_DIR . "/" . $imagePath;
+    		}
+    		
+    		return $imagePaths;
+    	}
+    	else
+    		return null;
     }
 
     protected static function insert($name, $description, $addedBy, $colorCode)
