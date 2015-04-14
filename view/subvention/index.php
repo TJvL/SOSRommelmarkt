@@ -127,7 +127,19 @@
 
                             <div class="field">
                                 <label class="main">Toelichting</label>
-                                <textarea name="comments" cols="30" rows="10" style="resize: none" placeholder="Graag invullen waarom u een subsidie nodig heeft. Geef een beschijving van de beoogde activiteiten en een beschrijving van de beoogde resultaten."></textarea>
+                                <textarea name="explanation" cols="30" rows="7" style="resize: none" placeholder="Graag invullen waarom u een subsidie nodig heeft."></textarea>
+                                <span class="error"></span>
+                            </div>
+
+                            <div class="field">
+                                <label class="main">Geplande activiteiten</label>
+                                <textarea name="planned_activities" cols="30" rows="7" style="resize: none" placeholder="Geef een beschijving van beoogde activiteiten."></textarea>
+                                <span class="error"></span>
+                            </div>
+
+                            <div class="field">
+                                <label class="main">Beoogde resultaten</label>
+                                <textarea name="intended_results" cols="30" rows="7" style="resize: none" placeholder="Geef een beschijving van de beoogde resultaten."></textarea>
                                 <span class="error"></span>
                             </div>
 
