@@ -1,3 +1,8 @@
+<?php 
+	$partnerArray = new ArrayList("Partner");
+	$partnerArray->addAll(Partner::selectAll());
+?>
+
 <div id ="footerContainer">
 
 <div id="footer-wrapper">
@@ -24,22 +29,17 @@
         </div>
         <div class="col-sm-3 col-md-4">
             <ul class="style1">
-                <li><a href="http://www.cvtb.nl">CVTB (Centrum voor Trajecten en Bemoeizorg)</a></li>
-                <li><a href="http://www.sosrommelmarkt.nl/organisatie/samenwerkingen/www.cwinet.nl=">CWI (Centrum voor Werk en Inkomen)</a></li>
-                <li><a href="http://www.modenbosch.nl/">SMO (Stichting Maatschappelijke Opvang)</a></li>
-                <li><a href="http://www.weenerxl.nl/">Weenergoep</a></li>
-                <li><a href="http://www.lokaalloket.nl/s-hertogenbosch">WMO loket</a></li>
-
+            	<?php for ($i = 0; $i < ceil($partnerArray->size()/2); $i++) { ?>
+            	<li><a href="<?php echo $partnerArray->get($i)->website ?>"><?php echo $partnerArray->get($i)->name ?></a></li>
+				<?php } ?>
             </ul>
         </div>
         <div class="col-sm-3 col-md-4">
             <ul class="style1">
-                <li><a href="http://http://www.juvans.nl/index.php?p=183">Juvans (maatschappelijk werk ‘s-Hertogenbosch)</a></li>
-                <li><a href="http://www.giralisgroep.nl/">GS (Geestelijke Gezondheidszorg)</a></li>
-                <li><a href="http://www.novadic-kentron.nl/">Novadic-Kentron Verslavingszorg</a></li>
-                <li><a href="http://www.uwv.nl/particulieren/">UWV</a></li>
-                <li><a href="http://www.ambitie.org/">Ambitie</a></li>
-                <li><a href="http://www.s-hertogenbosch.nl/">Sociale dienst</a></li>
+                <?php for ($i = ceil($partnerArray->size()/2); $i < $partnerArray->size(); $i++) { ?>
+            	<li><a href="<?php echo $partnerArray->get($i)->website ?>"><?php echo $partnerArray->get($i)->name ?></a></li>
+            	<?php } ?>
+                
             </ul>
         </div>
     </div>
