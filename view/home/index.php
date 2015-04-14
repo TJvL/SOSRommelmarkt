@@ -58,7 +58,7 @@
 				    <div class="carousel-inner" role="listbox">
 				    	<?php for ($i = 0; $i < $model->size(); $i++) { ?>
 				    	<div class="item <?php if ($i == 0) echo 'active' ?> carousel-overlay">
-				    		<img class="img-responsive" src="<?php echo $model->get($i)->imagePath ?>" alt="Slide">
+				    		<a href="<?php echo ROOT_DIR; ?>/auction/index"><img class="img-responsive" src="<?php echo $model->get($i)->imagePath ?>" alt="Slide"></a>
 				    		<div class="carousel-caption">
 				    			<br>
 				    			<h2><?php echo $model->get($i)->name ?></h2>
