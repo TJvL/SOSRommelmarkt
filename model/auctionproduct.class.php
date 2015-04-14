@@ -3,24 +3,16 @@
 include_once("product.class.php");
 
 class AuctionProduct extends Product
-{
-	// The directory the images for the auction products are placed.
-	const IMAGES_DIRECTORY = "img/content/auctionproducts/";
-	
-	static public function getImagesDirectory()
-	{
-		return AuctionProduct::IMAGES_DIRECTORY;
-	}
-	
+{	
 	private static function createObjectFromDatabaseRow($row)
 	{
 		$auctionProduct = new AuctionProduct();
-		$auctionProduct->id = $row["Product_id"];
+		$auctionProduct->id = $row["AuctionProduct_id"];
 		$auctionProduct->name = $row["name"];
 		$auctionProduct->description = $row["description"];
 		$auctionProduct->addedBy = $row["addedBy"];
 		$auctionProduct->colorCode = $row["colorCode"];
-		$auctionProduct->imagePath = $auctionProduct->getImagePath();
+		$auctionProduct->imagePath = $auctionProduct->getMainImagePath();
 	
 		return $auctionProduct;
 	}
@@ -49,10 +41,11 @@ class AuctionProduct extends Product
 	
 	public static function selectAll()
 	{
-		$query = "SELECT AuctionProduct.Product_id, name, description, addedBy, colorCode
+		$query = "SELECT AuctionProductList.AuctionProduct_id, name, description, addedBy, colorCode
 			FROM AuctionProduct
-			LEFT JOIN Product
-			ON AuctionProduct.Product_id = Product.id";
+			LEFT JOIN AuctionProduct ON AuctionProduct.id = AuctionProductList.AuctionProduct_id
+			LEFT JOIN Product ON AuctionProduct.Product_id = Product.id
+			";
 	
 		// Execute the query.
 		$result = Database::fetch($query);
@@ -75,11 +68,11 @@ class AuctionProduct extends Product
 
     public static function selectCurrentAuction()
     {
-        $query = "SELECT AuctionProduct.Product_id, name, description, addedBy, colorCode
-			FROM AuctionProduct
-			LEFT JOIN Product
-			ON AuctionProduct.Product_id = Product.id
-			WHERE AuctionProduct.Auction_id = (SELECT MAX(id) FROM Auction)
+        $query = "SELECT AuctionProductList.AuctionProduct_id, name, description, addedBy, colorCode
+			FROM AuctionProductList
+			JOIN AuctionProduct ON AuctionProduct.id = AuctionProductList.AuctionProduct_id
+			JOIN Product ON AuctionProduct.id = Product.id
+			WHERE AuctionProductList.Auction_id = (SELECT MAX(id) FROM Auction)
 			";
 
         // Execute the query.
@@ -103,11 +96,11 @@ class AuctionProduct extends Product
 	
 	public static function selectById($id)
 	{
-		$query = "SELECT AuctionProduct.Product_id, name, description, addedBy, colorCode
-			FROM AuctionProduct
-			LEFT JOIN Product
-			ON AuctionProduct.Product_id = Product.id
-			WHERE AuctionProduct.Product_id = ?";
+		$query = "SELECT AuctionProductList.AuctionProduct_id, name, description, addedBy, colorCode
+			FROM AuctionProductList
+			JOIN AuctionProduct ON AuctionProduct.id = AuctionProductList.AuctionProduct_id
+			JOIN Product ON AuctionProduct.id = Product.id
+			WHERE AuctionProduct.AuctionProduct_id = ?";
 		
 		// Execute the query.
 		$result = Database::fetch($query, "i", array($id));

@@ -1,25 +1,3 @@
-
-<?php
-
-    // Declaration.
-    $servername = "samwise.technotive.nl";
-    $username = "sosAdmin";
-    $password = "shadowrend";
-    $database = "sosRommel";
-    $port = 3306;
-
-    $connection = new mysqli($servername, $username, $password, $database, $port);
-
-    // Check connection.
-    if ($connection->connect_error)
-    {
-        die("Connection failed: " . $connection->connect_error);
-    }
-
-?>
-
-
-
 <!DOCTYPE html>
 <html>
     
@@ -45,7 +23,7 @@
     <link href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.5/css/jquery.dataTables.css">
     <link href=  "/SOSRommelmarkt/IdealForms/css/jquery.idealforms.css" rel="stylesheet">
-
+    <link href=  "<?php echo ROOT_DIR; ?>/includes/css/override-bootstrap.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -82,12 +60,15 @@
 						<span class="icon-bar"></span>
 					</button>
 					
-				
-<?php
-     $query =  mysqli_query($connection,"SELECT * FROM Info");
-    while ($row = mysqli_fetch_assoc($query)) {
-        ?>
 
+<?php
+        $query = "SELECT * FROM Info ";
+        //submit the query and capture the result
+         $result = Database::fetch($query);
+        $query=getenv("QUERY_STRING");
+        parse_str($query);
+        while ($row = $result->fetch_assoc()) {
+?>
 
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">

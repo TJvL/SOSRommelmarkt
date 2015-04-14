@@ -1,4 +1,4 @@
-<?php include("includes/markup/manage_header.php"); ?>
+<?php include("includes/markup/manageHeader.php"); ?>
 
 <div class="container">
     <div class="white">

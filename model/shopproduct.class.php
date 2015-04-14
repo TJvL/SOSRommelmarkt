@@ -1,19 +1,9 @@
 <?php
 
-include_once("product.class.php");
-
 class ShopProduct extends Product
 {
-	// The directory the images for the shop products are placed.
-	const IMAGES_DIRECTORY = "img/content/shopproducts/";
-	
 	public $price;
 	public $isReserved;
-	
-	static public function getImagesDirectory()
-	{
-		return ShopProduct::IMAGES_DIRECTORY;
-	}
 	
 	private static function createObjectFromDatabaseRow($row)
 	{
@@ -25,7 +15,7 @@ class ShopProduct extends Product
 		$shopProduct->colorCode = $row["colorCode"];
 		$shopProduct->price = $row["price"];
 		$shopProduct->isReserved = $row["isReserved"];
-		$shopProduct->imagePath = $shopProduct->getImagePath();
+		$shopProduct->imagePath = $shopProduct->getMainImagePath();
 
 		return $shopProduct;
 	}

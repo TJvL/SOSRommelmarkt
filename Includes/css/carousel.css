@@ -8,17 +8,22 @@
 {
 	position: absolute;
 	top: 0;
-	left: 55%;
+	left: 70%;
 	width: 30%;
 	height: 100%;
-	background: -webkit-linear-gradient(rgba(142, 199, 255, .1), rgba(142, 199, 255, .5) 10%, rgba(142, 199, 255, 1) 50%, rgba(142, 199, 255, .9) 80%, rgba(142, 199, 255, 0));
-	background: -o-linear-gradient(		rgba(142, 199, 255, .1), rgba(142, 199, 255, .5) 10%, rgba(142, 199, 255, 1) 50%, rgba(142, 199, 255, .9) 80%, rgba(142, 199, 255, 0));
-	background: -moz-linear-gradient(	rgba(142, 199, 255, .1), rgba(142, 199, 255, .5) 10%, rgba(142, 199, 255, 1) 50%, rgba(142, 199, 255, .9) 80%, rgba(142, 199, 255, 0));
-	background: linear-gradient(		rgba(142, 199, 255, .1), rgba(142, 199, 255, .5) 10%, rgba(142, 199, 255, 1) 50%, rgba(142, 199, 255, .9) 80%, rgba(142, 199, 255, 0));
+	background: -webkit-linear-gradient(right, rgba(142, 199, 255, 1), rgba(142, 199, 255, 1) 50%, rgba(142, 199, 255, .8) 75%, rgba(142, 199, 255, 0));
+	background: -o-linear-gradient(		right, rgba(142, 199, 255, 1), rgba(142, 199, 255, 1) 50%, rgba(142, 199, 255, .8) 75%, rgba(142, 199, 255, 0));
+	background: -moz-linear-gradient(	right, rgba(142, 199, 255, 1), rgba(142, 199, 255, 1) 50%, rgba(142, 199, 255, .8) 75%, rgba(142, 199, 255, 0));
+	background: linear-gradient(		right, rgba(142, 199, 255, 1), rgba(142, 199, 255, 1) 50%, rgba(142, 199, 255, .8) 75%, rgba(142, 199, 255, 0));
 	color: #CBCBCB;
 }
 
-#vitrine-carousel, #vitrine-carousel .carousel-inner, #vitrine-carousel .carousel-inner .item
+.height-fix
 {
-	height: 456px;
+	height: 356px;
+}
+
+.full-height
+{
+	height: 100% !important;
 }

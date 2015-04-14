@@ -2,7 +2,7 @@
 RewriteEngine on
 
 #Fix for the Xampp users
-RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/([0-9]+)/?$ /SOSRommelmarkt/index.php?controller=$1&action=$2&id=$3 [L]
+RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/?$ /SOSRommelmarkt/index.php?controller=$1&action=$2&id=$3 [L]
 RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/?$ /SOSRommelmarkt/index.php?controller=$1&action=$2 [L]
 RewriteRule ^([A-Za-z0-9-]+)/?$ /SOSRommelmarkt/index.php?controller=$1 [L]
 
