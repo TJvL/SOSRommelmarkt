@@ -127,7 +127,7 @@
 
                             <div class="field">
                                 <label class="main">Toelichting</label>
-                                <textarea name="comments" cols="30" rows="10" placeholder="Graag invullen waarom u een subsidie nodig heeft. Geef een beschijving van de beoogde activiteiten en een beschrijving van de beoogde resultaten."></textarea>
+                                <textarea name="comments" cols="30" rows="10" style="resize: none" placeholder="Graag invullen waarom u een subsidie nodig heeft. Geef een beschijving van de beoogde activiteiten en een beschrijving van de beoogde resultaten."></textarea>
                                 <span class="error"></span>
                             </div>
 
