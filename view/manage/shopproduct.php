@@ -6,54 +6,51 @@ Type::check("ShopProduct", $model);
 <head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script>
-$(document).ready(function()
+function handleUpdate()
 {
-	$("#updateButton").click(function()
+	// Reset status message.
+	$("#status").text("");
+	$("#status").css("color", "none");
+
+    var data =
 	{
-		// Reset status message.
-		$("#status").text("");
-        $("#status").css("color", "none");
+    	productId:			$("#productId").val(),
+    	productName:		$("#productName").val(),
+    	productDescription:	$("#productDescription").text(),
+    	productColorCode:	$("#productColorCode option:selected").text(),
+    	productPrice:		$("#productPrice").val(),
+    	productIsReserved:	($("#productIsReserved").is(":checked") == false ? 0: 1)
+	};
 
-	    var data =
-		{
-	    	productId:			$("#productId").val(),
-	    	productName:		$("#productName").val(),
-	    	productDescription:	$("#productDescription").text(),
-	    	productColorCode:	$("#productColorCode option:selected").text(),
-	    	productPrice:		$("#productPrice").val(),
-	    	productIsReserved:	($("#productIsReserved").is(":checked") == false ? 0: 1)
-		};
-
-	    $.ajax(
-		{
-			url: "update",
-	        type: "POST",
-	        data: data,
-	        async: true,
-	        success: function(result)
+    $.ajax(
+	{
+		url: "update",
+        type: "POST",
+        data: data,
+        async: true,
+        success: function(result)
+        {
+	        // Check if it went alright.
+	        if (result == 0)
 	        {
-		        // Check if it went alright.
-		        if (result == 0)
-		        {
-		        	$("#status").text("  Succes");
-		        	$("#status").css("color", "green");
-		        }
-		        else
-		        {
-		        	$("#status").text("  Er is iets verkeerd gegaan");
-		        	$("#status").css("color", "red");
-		        }
+	        	$("#status").text("  Succes");
+	        	$("#status").css("color", "green");
 	        }
-		});
+	        else
+	        {
+	        	$("#status").text("  Er is iets verkeerd gegaan");
+	        	$("#status").css("color", "red");
+	        }
+        }
 	});
-});
+}
 </script>
 </head>
 
 <div class="container">
 	<div class="white">
 		<div class="row">
-			<div class="form-horizontal">
+			<form class="form-horizontal" action="javascript:handleUpdate()">
 				<div class="form-group">
 					<label class="control-label col-xs-2">ID</label>
 					<div class="col-xs-10">
@@ -150,12 +147,12 @@ $(document).ready(function()
 					<label class="control-label col-xs-2"></label>
 					<div class="col-xs-10">
 						<div class="input-group">
-							<button class="btn btn-default" id="updateButton" type="button">Update</button>
+							<button class="btn btn-default" type="submit">Update</button>
 							<span id="status"></span>
 						</div>
 					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 	</div>
 </div>
