@@ -29,7 +29,12 @@ class ManageController extends Controller
 
     public function productList_GET()
     {
-        $this->render("manage_product");
+        $this->render("manageproduct");
+    }
+
+    public function addproduct_GET()
+    {
+        $this->render("addproduct");
     }
 
 	public function instellingen_GET()

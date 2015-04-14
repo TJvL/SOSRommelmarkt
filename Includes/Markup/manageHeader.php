@@ -18,15 +18,16 @@
     <link href = "<?php echo ROOT_DIR; ?>/includes/css/carousel.css" rel="stylesheet">
     <link href = "//cdn.datatables.net/1.10.5/css/jquery.dataTables.css" rel="stylesheet" type="text/css" >
     <link href = "<?php echo ROOT_DIR; ?>/includes/css/override-bootstrap.css" rel="stylesheet">
-    <link href=  "<?php echo ROOT_DIR; ?>/IdealForms/css/jquery.idealforms.css" rel="stylesheet">
+    <link href = "<?php echo ROOT_DIR; ?>/IdealForms/css/jquery.idealforms.css" rel="stylesheet">
     <link href = "<?php echo ROOT_DIR; ?>/includes/css/cropper.css" rel="stylesheet">
-    <script src="<?php echo ROOT_DIR; ?>/includes/js/cropper.min.js"></script>
+
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="<?php echo ROOT_DIR; ?>/includes/js/bootstrap.js"></script>
-    <script src="<?php echo ROOT_DIR; ?>/includes/js/menu.js" type="text/javascript"></script>
+    <script src="<?php echo ROOT_DIR; ?>/includes/js/cropper.min.js"></script>
+    <script src="<?php echo ROOT_DIR; ?>/IdealForms/js/out/jquery.idealforms.js" type="text/javascript"></script>
     <script src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.js" type="text/javascript"></script>
     <script src="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
-    <script src="/SOSRommelmarkt/IdealForms/js/out/jquery.idealforms.js" type="text/javascript"></script>
 
 </head>
 <body>
