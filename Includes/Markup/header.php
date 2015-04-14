@@ -1,25 +1,3 @@
-
-<?php
-
-    // Declaration.
-    $servername = "samwise.technotive.nl";
-    $username = "sosAdmin";
-    $password = "shadowrend";
-    $database = "sosRommel";
-    $port = 3306;
-
-    $connection = new mysqli($servername, $username, $password, $database, $port);
-
-    // Check connection.
-    if ($connection->connect_error)
-    {
-        die("Connection failed: " . $connection->connect_error);
-    }
-
-?>
-
-
-
 <!DOCTYPE html>
 <html>
     
@@ -81,12 +59,15 @@
 						<span class="icon-bar"></span>
 					</button>
 					
-				
-<?php
-     $query =  mysqli_query($connection,"SELECT * FROM Info");
-    while ($row = mysqli_fetch_assoc($query)) {
-        ?>
 
+<?php
+        $query = "SELECT * FROM Info ";
+        //submit the query and capture the result
+         $result = Database::fetch($query);
+        $query=getenv("QUERY_STRING");
+        parse_str($query);
+        while ($row = $result->fetch_assoc()) {
+?>
 
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">

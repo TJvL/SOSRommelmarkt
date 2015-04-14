@@ -30,41 +30,56 @@
                     
                    
                    <div class="row"> 
+<?php
+        //Create a query
+        $query = "SELECT * FROM Info ";
+        //submit the query and capture the result
+         $result = Database::fetch($query);
+        $query=getenv("QUERY_STRING");
+        parse_str($query);
+?>
 
                   <div class="col-md-4">
                     <h2> Adres:</h2>
 
-                         <form class="form-horizontal">
+                         <form class="form-horizontal"  action="<?php echo ROOT_DIR;?>/manage/companyInfomation" method="Post">
+                            <?php
+                        while ($row = $result->fetch_assoc()) {?>
                         <div class="form-group">
                             <label class="col-xs-2 control-label" >Adres</label>
                             <div class="col-xs-10">
-                                <input type="adres" name="time" />
+                                <input type="Adres" name="Adres" value="<?php echo $row['Adres']; ?>" />
                                 <!-- <input type="text" id="day" class="form-control" > -->
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-2 control-label" >Plaats</label>
                             <div class="col-xs-10">
-                                <input type="place" name="time" />
+                                <input type="Plaats" name="Plaats" value="<?php echo $row['Plaats']; ?>"/>
                                 <!-- <input type="text" id="day" class="form-control" > -->
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-2 control-label" >Telefoon</label>
                             <div class="col-xs-10">
-                                <input type="phone" name="time" />
+                                <input type="Telefoon" name="Telefoon" value="<?php echo $row['Telefoon']; ?>" />
                                 <!-- <input type="text" id="day" class="form-control" > -->
                          </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-2 control-label" >Email</label>
                             <div class="col-xs-10">
-                                <input type="mail" name="time" />
+                                <input type="Email" name="Email" value="<?php echo $row['Email']; ?>" />
                                 <!-- <input type="text" id="day" class="form-control" > -->
                          </div>
-                        </div>
+                         </div>
+                        <td>
+                        <input name="add" type="submit" id="submit" value="Update Gegevens">
+                        
+                        </td>
+                       
                     </form>
-                
+                    <?php } ?>
 
                    </div> 
 
@@ -84,7 +99,7 @@
 
                     <div class="col-md-4">
                     <h2> Openingstijden:</h2>
-                    <form class="form-horizontal" action="" method="post">
+                    <form class="form-horizontal" action="<?php echo ROOT_DIR;?>/manage/instellingen" method="Post">
                         <?php
                         while ($row = $result->fetch_assoc()) {?>
                         <div class="form-group">
