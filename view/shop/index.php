@@ -15,10 +15,10 @@
                         <li class="filterHeadings"><h3>Kwaliteit <i class="fa fa-minus category-plus-open"></i></h3></li>
                         <li>
                             <ul id="filterOptions" class="filterListings ">
-                                <li><input type="checkbox" ng-click="selectAll(master)" ng-model="master" ng-init="master=true"><span> Alle</span></li>
-                                <li><input type="checkbox" ng-click="includeColor('green')" ng-checked="master"/> <span >Z.G.A.N <i class="product-filter-quality filter-green" title="Z.G.A.N"></i><span></li>
-                                <li><input type="checkbox" ng-click="includeColor('blue')" ng-checked="master"/> <span>Gebruikt <i class="product-filter-quality filter-blue" title="Z.G.A.N"></i></span></li>
-                                <li><input type="checkbox" ng-click="includeColor('red')" ng-checked="master"/> <span>Lichte schade <i class="product-filter-quality filter-red" title="Z.G.A.N"></i></span></li>
+                                <li><input type="checkbox" ng-click="selectAll(master)" ng-model="master" ng-init="master=true"><span> Alles</span></li>
+                                <li><input type="checkbox" ng-click="includeColor('green')" ng-checked="master"/> <span >Als nieuw<i class="product-filter-quality filter-green" title="Als nieuw"></i><span></li>
+                                <li><input type="checkbox" ng-click="includeColor('blue')" ng-checked="master"/> <span>Gebruikt <i class="product-filter-quality filter-blue" title="Gebruikt"></i></span></li>
+                                <li><input type="checkbox" ng-click="includeColor('red')" ng-checked="master"/> <span>Lichte schade <i class="product-filter-quality filter-red" title="Lichte schade"></i></span></li>
                             </ul>
                         </li>
                         <li class="filterHeadings"><h3>Prijs <i class="fa fa-minus category-plus-open"></i></h3></li>
