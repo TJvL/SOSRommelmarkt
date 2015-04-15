@@ -19,7 +19,6 @@
                 <p>• De aanvrager moet bereid zijn een verantwoordingsrapportage te maken.<br>
              • De aanvragen van buitenlandse organisaties laten toetsen door een nader te bepalen Nederlandse hulpinstelling.</p>
 
-        <button type="button" class="btn btn-red btn-lg">Aanvragen<i class="fa fa-chevron-right"></i></button>
 
     </div>
 </div>
