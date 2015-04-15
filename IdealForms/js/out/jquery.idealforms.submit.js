@@ -28,12 +28,26 @@ $('form.idealforms').idealforms({
 
 
     onSubmit: function(invalid, e) {
-        e.preventDefault();
-        $('#invalid')
-            .show()
-            .toggleClass('valid', ! invalid)
-            .text(invalid ? (invalid +' ongeldige velden!') : 'Alles correct!');
+        //e.preventDefault();
+        //$('#invalid')
+        //    .show()
+        //    .toggleClass('valid', ! invalid)
+        //    .text(invalid ? (invalid +' ongeldige velden!') : 'Alles correct!');
+        //if(!invalid)
+        //{
+        //   alert("asdasadasd");
+        //}
+
+        if (invalid > 0) {
+            event.preventDefault();
+            $('#invalid').show().text(invalid +' ongeldige velden!');
+        } else {
+            $('#invalid').hide();
+        }
+
+
     }
+
 });
 
 $('form.idealforms').find('input, select, textarea').on('change keyup', function() {
