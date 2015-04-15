@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="col-sm-4"><p>Status: {{subventionRequest.status}}<i class="fa fa-expand fa-2x pull-right"></i></p></div>
                             </div>
-                            <div class="collapse">
+                            <div class="collapse col-md-12">
                                 <table class="table table-condensed">
                                     <tbody>
                                         <tr>
