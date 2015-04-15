@@ -38,7 +38,7 @@ class SubventionController extends Controller
     }
 
 
-    public function index_POST()
+    public function landing_POST()
     {
         include_once "/model/SubventionRequest.class.php";
 

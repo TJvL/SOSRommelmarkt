@@ -21,11 +21,97 @@
                     <div class="col-sm-3 product padding-lg">
 
                         <i class="product-info-quality <?php echo $product->colorCode?>"></i>
-                        <a href=""><img class="img-responsive" src="<?php echo $product->imagePath ?>" /></a>
+                        <a href="#" data-toggle="modal" data-target=".bs-<?php echo $product->id; ?>-modal-lg"><img class="img-responsive" src="<?php echo $product->imagePath ?>" /></a>
 
                         <div class="product-info">
                             <h4 class="product-name"><?php echo $product->name ?></h4>
-                            <a href="" class="auction-product-info">Bekijk product...</a>
+                            <button type="button" class="btn-clear" data-toggle="modal" data-target=".bs-<?php echo $product->id; ?>-modal-lg">
+                                <a href="#" class="auction-product-info">Bekijk product...</a>
+                            </button>
+
+                            <!-- modal start -->
+                            <div class="modal fade bs-<?php echo $product->id; ?>-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div style="padding:12px;">
+                                            <!-- Carousel start -->
+                                            <div id="prod-<?php echo $product->id; ?>-carousel" class="carousel slide" style="display:inline-table;" data-ride="carousel">
+
+                                                <!-- Indicators -->
+                                                <ol class="carousel-indicators">
+                                                    <?php
+                                                    $count = 0;
+                                                    foreach($product->getImagePaths() as $path)
+                                                    {
+                                                        if($count == 0)
+                                                        {
+                                                            echo '<li data-target="#prod-' . $product->id . '-carousel" data-slide-to="' . $count . '" class="active"></li>';
+                                                        }
+                                                        echo '<li data-target="#prod-' . $product->id . '-carousel" data-slide-to="' . $count . '"></li>';
+                                                        $count = $count + 1;
+                                                    }
+                                                    ?>
+                                                </ol>
+
+                                                <!-- Data -->
+                                                <div class="carousel-inner" role="listbox">
+                                                    <?php
+                                                    $count = 0;
+                                                    foreach($product->getImagePaths() as $path)
+                                                    {
+                                                        if($count == 0)
+                                                        {
+                                                            echo '<div class="item active"><img class="img" src="' . $path . '" alt="image for {{x.name}}"/></div>';
+                                                        }
+                                                        echo '<div class="item"><img class="img" src="' . $path . '" alt="image for {{x.name}}"/></div>';
+                                                        $count = $count + 1;
+                                                    }
+                                                    ?>
+                                                </div>
+
+                                                <!-- Controls -->
+                                                <a class="left carousel-control" href="#prod-<?php echo $product->id; ?>-carousel" role="button" data-slide="prev">
+                                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                                <a class="right carousel-control" href="#prod-<?php echo $product->id; ?>-carousel" role="button" data-slide="next">
+                                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+
+                                            </div>
+                                            <!-- Carousel end -->
+                                            <div style="display: inline-block; width: 65%; vertical-align: top;">
+                                                <div class="row margin-sm">
+
+                                                    <div class="col-md-12 margin-lg black-bar">
+
+                                                        <h1><?php echo $product->name; ?></h1>
+
+                                                    </div>
+                                                    <div class="col-md-12 margin-lg padding-hor-lg red-bar">
+
+                                                        <h3>Beschrijving</h3>
+
+                                                    </div>
+                                                    <div class="col-md-12 margin-lg padding-sm">
+
+                                                        <p>
+                                                            <?php echo $product->description; ?>
+                                                        </p>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- modal end -->
 
                         </div>
                     </div>

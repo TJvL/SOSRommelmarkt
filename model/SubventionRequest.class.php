@@ -1,5 +1,4 @@
 <?php
-include_once "database.php";
 /**
  * Model klasse voor de subsidieaanvraag.
  */
@@ -19,25 +18,19 @@ class SubventionRequest {
     public $elucidation;
     public $activities;
     public $results;
-
-
-
-
-
-
-
+    public $status;
 
    static function insertSubventionRequest($contactperson,$firm,$kvk,$adress,$postalcode,$city,$phonenumber1
         ,$phonenumber2,$fax,$email,$elucidation,$activities,$results)
     {
         //construct query
         $query = "
-INSERT INTO SubventionRequest(contactperson,firm,kvk,adress,postalcode,city,phonenumber1,phonenumber2,fax,email,elucidation,activities,results)
-VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+INSERT INTO SubventionRequest(contactperson,firm,kvk,adress,postalcode,city,phonenumber1,phonenumber2,fax,email,elucidation,activities,results,status)
+VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         //execute
-       $id= Database::insert($query,"sssssssssssss",array($contactperson,$firm,$kvk,$adress,$postalcode,$city,$phonenumber1
-        ,$phonenumber2,$fax,$email,$elucidation,$activities,$results));
+       $id= Database::insert($query,"ssssssssssssss",array($contactperson,$firm,$kvk,$adress,$postalcode,$city,$phonenumber1
+        ,$phonenumber2,$fax,$email,$elucidation,$activities,$results,"nieuw"));
 
 
 
@@ -60,6 +53,7 @@ VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $subventionRequest->elucidation = $row["elucidation"];
         $subventionRequest->activities = $row["activities"];
         $subventionRequest->results = $row["results"];
+        $subventionRequest->status = $row["status"];
         
         return $subventionRequest;
 	}
@@ -110,5 +104,34 @@ VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $query = "DELETE FROM SubventionRequest WHERE id = ?";
 
         Database::update($query, "i", array($id));
+    }
+
+    static public function getAllStatuses()
+    {
+        $query = "SELECT * FROM SubventionStatus";
+
+        // Execute the query.
+        $result = Database::fetch($query);
+
+        $statuses = array();
+
+        for ($i = 0; $i < $result->num_rows; $i++)
+        {
+            $row = $result->fetch_assoc();
+
+            $statuses[] = $row["status"];
+        }
+
+        // Free the result set.
+        $result->close();
+
+        return $statuses;
+    }
+
+    static public function updateStatus($id, $status)
+    {
+        $query = "UPDATE SubventionRequest SET status = ? WHERE id = ?";
+        // Execute the update query.
+        Database::update($query, "ss", array($status, $id));
     }
 }
