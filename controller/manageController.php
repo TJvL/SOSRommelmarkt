@@ -25,7 +25,10 @@ class ManageController extends Controller
     {
                 include_once "/model/SubventionRequest.class.php";
                 SubventionRequest::deleteById($_POST["id"]);
-                $this->render("subventions");
+        $subventionList = new ArrayList("SubventionRequest");
+        $subventionList->addAll(SubventionRequest::fetchAllSubventionRequests());
+
+        $this->render("subventions", $subventionList);
 
     }
 
