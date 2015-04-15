@@ -34,7 +34,7 @@ class ManageController extends Controller
 
     public function addshopproduct_GET()
     {
-        $this->render("addproduct");
+        $this->render("addshopproduct");
     }
 
 	public function instellingen_GET()
@@ -67,7 +67,8 @@ class ManageController extends Controller
     		if ($_GET["id"] == "update")
     		{
     			// Check if all the necessary data has been sent with the request.
-    			if (isset($_POST["productId"]) && isset($_POST["productName"]) && isset($_POST["productDescription"]) && isset($_POST["productColorCode"]) && isset($_POST["productPrice"]) && isset($_POST["productIsReserved"]))
+    			if (isset($_POST["productId"]) && isset($_POST["productName"]) && isset($_POST["productDescription"]) && isset($_POST["productColorCode"]) &&
+    					isset($_POST["productPrice"]) && isset($_POST["productIsReserved"]))
     			{
     				// Get the product, set the data and update.
     				$shopProduct = ShopProduct::selectById($_POST["productId"]);
@@ -83,11 +84,39 @@ class ManageController extends Controller
     				exit(json_encode(0));
     			}
     		}
+    		else if ($_GET["id"] == "addImage")
+    		{
+    			if (isset($_POST["productId"]) && isset($_POST["originalWidth"]) && isset($_POST["clientWidth"]) && isset($_POST["xCoord"]) && isset($_POST["width"]) &&
+    					isset($_POST["originalHeight"]) && isset($_POST["clientHeight"]) && isset($_POST["yCoord"]) && isset($_POST["height"]) && isset($_FILES["file"]))
+    			{
+    				$xScale = $_POST["originalWidth"] / $_POST["clientWidth"];
+    				
+    				$x1 = $_POST["xCoord"] * $xScale;
+    				$x2 = $x1 + ($_POST["width"] * $xScale);
+    				
+    				$yScale = $_POST["originalHeight"] / $_POST["clientHeight"];
+    				
+    				$y1 = $_POST["yCoord"] * $yScale;
+    				$y2 = $y1 + ($_POST["height"] * $yScale);
+    				
+    				// Generate numbah.
+    				for ($i = 1; file_exists(Product::IMAGES_DIRECTORY . "/" . $_POST["productId"] . "/" . $i . ".jpg"); $i++) {}
+					
+					$manipulator = new ImageManipulator($_FILES["file"]["tmp_name"]);
+					$manipulator = $manipulator->crop($x1, $y1, $x2, $y2);
+					$imageTargetFilePath = Product::IMAGES_DIRECTORY . "/" . $_POST["productId"] . "/" . $i . ".jpg";
+					$manipulator->save($imageTargetFilePath, IMAGETYPE_JPEG);
+					
+					header('Content-Type: application/json');
+					exit(json_encode(0));
+    			}
+    		}
     	}
     	
     	// TODO: Error or some shit
     	exit(json_encode(1));
     }
+    
     public function instellingen_POST()
     {
                 // Check if all the necessary data has been sent with the request.

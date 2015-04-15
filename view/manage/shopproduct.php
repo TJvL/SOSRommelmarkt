@@ -4,10 +4,6 @@ Type::check("ShopProduct", $model);
 ?>
 
 <head>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="<?php echo ROOT_DIR; ?>/includes/js/bootstrap.js"></script>
-<link href="<?php echo ROOT_DIR ?>/includes/css/cropper.css" rel="stylesheet">
-<script src="<?php echo ROOT_DIR ?>/includes/js/cropper.js"></script>
 <script>
 function handleUpdate()
 {
@@ -48,6 +44,38 @@ function handleUpdate()
 	});
 }
 
+function handleNewImage()
+{
+	var formData = new FormData(document.getElementById("imageDataForm"));
+	console.log(formData);
+
+    $.ajax(
+	{
+		url: "addImage",
+        type: "POST",
+        data: formData,
+        async: true,
+        contentType: false,
+        processData: false,
+        success: function(result)
+        {
+	        // Check if it went alright.
+	        if (result == 0)
+	        {
+	        	alert("success");
+	        }
+	        else
+	        {
+	        	alert("fail");
+	        }
+        }
+	});
+
+	// Reset the image and hide the image cropper div.
+	$("#image").html("<img id='image'>");
+    $("#cropperDiv").addClass("hidden");
+}
+
 $(document).ready(function()
 {
 	$("#addImageButton").click(function()
@@ -57,41 +85,38 @@ $(document).ready(function()
 
 	$("#fileInput").change(function()
 	{
+		$("#cropperDiv").removeClass("hidden");
 		showImage(this);
 
 		$("#image").load(function()
 		{
-			jQuery("#cropperModal").modal("show");
-
-			$("#cropperContainer > img").cropper(
+			// Init a new cropper object for this image.
+			var cropper;
+			cropper = new Cropper(document.getElementById("image"),
 			{
-				aspectRatio: 16 / 9,
-				autoCropArea: 0.65,
-				guides: false,
-				strict: false,
-				crop: function(data)
+				//Define aspect ratio for the crop box
+                ratio:
 				{
-					$("#dataX").text(Math.round(data.x));
-					$("#dataY").text(Math.round(data.y));
-					
+					width:1,
+					height:1
 				},
-				dragmove: function(e)
+				update: function(data)
 				{
-					var $this = $(this);
-					var canvasData = $this.cropper("getCanvasData");
-					var cropBoxData = $this.cropper("getCropBoxData");
-					
-					if (canvasData.top > cropBoxData.top)
-					{
-						canvasData.top = cropBoxData.top;
-						setCanvasData(canvasData);
-					}
-					else if (canvasData.left > cropBoxData.left)
-					{
-						canvasData.left = cropBoxData.left;
-						setCanvasData(canvasData);
-					}
-				}
+					$("#xCoord").val(data.x);
+					$("#yCoord").val(data.y);
+					$("#width").val(data.width);
+					$("#height").val(data.height);
+
+					var clientWidth = document.getElementById("image").clientWidth;
+                    var clientHeight = document.getElementById("image").clientHeight;
+                    $("#clientWidth").val(clientWidth.toString());
+                    $("#clientHeight").val(clientHeight.toString());
+
+					var originalWidth = document.getElementById("image").naturalWidth;
+                    var originalHeight = document.getElementById("image").naturalHeight;
+                    $("#originalWidth").val(originalWidth.toString());
+                    $("#originalHeight").val(originalHeight.toString());
+                }
 			});
 		});
 	});
@@ -104,7 +129,11 @@ $(document).ready(function()
 			
 			reader.onload = function(e)
 			{
+				// Reset the image.
+				$("#image").html("<img id='image'>");
 				$("#image").attr("src", e.target.result);
+				$("#image").css("width", "100%");
+				$("#image").css("height", "100%");
             }
 			reader.readAsDataURL(input.files[0]);
 		}
@@ -220,9 +249,19 @@ $(document).ready(function()
 							<div class="alert" id="status" role="alert"></div>
 						</div>
 					</div>
-					
 				</div>
 			</form>
+		</div>
+		<div class="hidden" id="cropperDiv">
+			<div class="row">
+				<hr>
+				<div id="cropperContainer">
+					<img id="image">
+				</div>
+			</div>
+			<div class="row">
+				<button class="btn btn-default" onClick="handleNewImage()">Maak afbeelding</button>
+			</div>
 		</div>
 		<div class="row">
 			<hr>
@@ -254,18 +293,15 @@ $(document).ready(function()
 	</div>
 </div>
 
-<input class="hidden" id="fileInput" type="file">
-
-<div class="modal fade" id="cropperModal">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-body">
-				<h4 id="dataX"></h4>
-				<h4 id="dataY"></h4>
-				<div id="cropperContainer">
-					<img id="image">
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+<form id="imageDataForm" enctype="multipart/form-data">
+	<input class="hidden" id="fileInput" name="file" type="file">
+	<input name="productId" type="hidden" value="<?php echo $model->id ?>">
+	<input id="xCoord" name="xCoord" type="hidden">
+	<input id="yCoord" name="yCoord" type="hidden">
+	<input id="width" name="width" type="hidden">
+	<input id="height" name="height" type="hidden">
+	<input id="clientWidth" name="clientWidth" type="hidden">
+	<input id="clientHeight" name="clientHeight" type="hidden">
+	<input id="originalWidth" name="originalWidth" type="hidden">
+	<input id="originalHeight" name="originalHeight" type="hidden">
+</form>
