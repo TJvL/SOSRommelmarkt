@@ -40,7 +40,22 @@ class ManageController extends Controller
 
     public function deleteshopproduct_POST()
     {
-        ShopProduct::deleteById($_POST["id"]);
+        $id = $_POST["id"];
+        ShopProduct::deleteById($id);
+
+        $dir = ROOT_DIR . "/img/Content/products/" . $id;
+        $it = new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS);
+        $files = new RecursiveIteratorIterator($it,
+            RecursiveIteratorIterator::CHILD_FIRST);
+        foreach($files as $file) {
+            if ($file->isDir()){
+                rmdir($file->getRealPath());
+            } else {
+                unlink($file->getRealPath());
+            }
+        }
+        rmdir($dir);
+
         $this->redirectTo("/manage/productList");
     }
 

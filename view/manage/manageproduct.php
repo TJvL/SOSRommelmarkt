@@ -53,7 +53,6 @@
                                     <input form="delete" name="id" type="hidden" value="<?php echo $product->id ?>">
 								    <button form="delete" type="submit" class="btn btn-default" onsubmit="deletePressed()"><i class="fa fa-trash"></i></button>
                                 </form>
-                                <a href="shopproduct/<?php echo $product->id ?>"><button class="btn btn-default"><i class="fa fa-picture-o"></i></button></a>
 							</td>
 						</tr>
 						<?php
