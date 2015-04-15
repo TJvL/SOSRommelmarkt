@@ -39,7 +39,7 @@ abstract class Product
     		return $imagePaths;
     	}
     	else
-    		return null;
+    		return array();
     }
 
     protected static function insert($name, $description, $addedBy, $colorCode)

@@ -254,3 +254,6 @@ h1.manage-title{
     padding-left:5px;
 }
 
+.hidden {
+	display: none;
+}
