@@ -21,12 +21,12 @@
                     <div class="col-sm-3 product padding-lg">
 
                         <i class="product-info-quality <?php echo $product->colorCode?>"></i>
-                        <a href=""><img class="img-responsive" src="<?php echo $product->imagePath ?>" /></a>
+                        <a href="#" data-toggle="modal" data-target=".bs-<?php echo $product->id; ?>-modal-lg"><img class="img-responsive" src="<?php echo $product->imagePath ?>" /></a>
 
                         <div class="product-info">
                             <h4 class="product-name"><?php echo $product->name ?></h4>
                             <button type="button" class="btn-clear" data-toggle="modal" data-target=".bs-<?php echo $product->id; ?>-modal-lg">
-                                <a href="" class="auction-product-info">Bekijk product...</a>
+                                <a href="#" class="auction-product-info">Bekijk product...</a>
                             </button>
 
                             <!-- modal start -->
@@ -81,11 +81,30 @@
 
                                             </div>
                                             <!-- Carousel end -->
-                                            <div style="display: inline-block; vertical-align: top;">
-                                                <p>
-                                                    <b><?php echo $product->name; ?></b><br />
-                                                    <?php echo $product->description; ?>
-                                                </p>
+                                            <div style="display: inline-block; width: 65%; vertical-align: top;">
+                                                <div class="row margin-sm">
+
+                                                    <div class="col-md-12 margin-lg black-bar">
+
+                                                        <h1><?php echo $product->name; ?></h1>
+
+                                                    </div>
+                                                    <div class="col-md-12 margin-lg padding-hor-lg red-bar">
+
+                                                        <h3>Beschrijving</h3>
+
+                                                    </div>
+                                                    <div class="col-md-12 margin-lg padding-sm">
+
+                                                        <p>
+                                                            <?php echo $product->description; ?>
+                                                        </p>
+
+                                                    </div>
+
+                                                </div>
+
+
                                             </div>
 
                                         </div>

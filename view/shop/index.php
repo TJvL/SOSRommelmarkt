@@ -112,15 +112,42 @@
 
                                     </div>
                                     <!-- Carousel end -->
-                                    <div style="display: inline-block; vertical-align: top;">
-                                        <p>
-                                            <b>{{x.name}}</b><br />
-                                            {{x.description}}
-                                        </p>
-                                        <p>
-                                            <b>Prijs</b><br />
-                                            &euro; {{x.price}}
-                                        </p>
+                                    <div style="display: inline-block; width: 65%; vertical-align: top;">
+                                        <div class="row margin-sm">
+
+                                            <div class="col-md-12 margin-sm black-bar">
+
+                                                <h1>{{x.name}}</h1>
+
+                                            </div>
+                                            <div class="col-md-12 margin-sm padding-hor-lg red-bar">
+
+                                                <h3>Beschrijving</h3>
+
+                                            </div>
+                                            <div class="col-md-12 margin-lg padding-sm">
+
+                                                <p>
+                                                    {{x.description}}
+                                                </p>
+
+                                            </div>
+                                            <div class="col-md-12 margin-sm padding-hor-lg red-bar">
+
+                                                <h3>Prijs</h3>
+
+                                            </div>
+                                            <div class="col-md-12 margin-lg padding-sm">
+
+                                                <p>
+                                                    <b>&euro;{{x.price}}</b>
+                                                </p>
+
+                                            </div>
+
+
+
+                                        </div>
 
                                     </div>
 
