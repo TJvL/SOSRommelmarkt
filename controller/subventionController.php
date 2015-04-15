@@ -19,6 +19,11 @@ class SubventionController extends Controller
         $this->render("index");
     }
 
+    public function landing_GET()
+    {
+        $this->render("landing");
+    }
+
     //Example for IdealForm usage - Can be deleted!
     public function example_GET()
     {
@@ -26,17 +31,25 @@ class SubventionController extends Controller
     }
     //End Example
 
+    public function aanvraagSucces_GET()
+    {
+        $this->viewbag['voorbeeld'] = "hello, greetings from the viewbag";
+        $this->render("aanvraagSucces");
+    }
+
+
     public function index_POST()
     {
         include_once "/model/SubventionRequest.class.php";
 
 
         $sv = new SubventionRequest();
-        $sv ->insertSubventionRequest($_POST["contactpersoon"],$_POST["onderneming"],$_POST["kvk"],
-            $_POST["adres"],$_POST["postcode"],$_POST["plaats"],$_POST["telefoonnummer1"],
-            $_POST["telefoonnummer2"],$_POST["fax"],$_POST["email"],$_POST["toelichting"],
-            $_POST["activiteiten"],$_POST["resultaten"]);
-        $this->render("index");
+        $sv ->insertSubventionRequest($_POST["name"]. " ".$_POST["lastname"],$_POST["companyname"],$_POST["kvknr"],
+            $_POST["street"],$_POST["zip"],$_POST["place"],$_POST["phone"],
+            $_POST["gsm"],$_POST["fax"],$_POST["email"],$_POST["explanation"],
+            $_POST["planned_activities"],$_POST["intended_results"]);
+        $this->viewbag['voorbeeld'] = "hello, greetings from the viewbag";
+        $this->render("aanvraagSucces");
     }
 
 

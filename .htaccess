@@ -7,8 +7,8 @@ RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/?$ /SOSRommelmarkt/index.php?contro
 RewriteRule ^([A-Za-z0-9-]+)/?$ /SOSRommelmarkt/index.php?controller=$1 [L]
 
 #Full Match /A/B/C
-#RewriteRule ^/SOSRommelmarkt/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/([0-9]+)/?$ /SOSRommelmarkt/index.php?controller=$1&action=$2&id=$3
+#RewriteRule ^/SOSRommelmarkt/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/([0-9]+)/?$ /SOSRommelmarkt/landing.php?controller=$1&action=$2&id=$3
 #Controller + Action Match /A/B
-#RewriteRule ^/SOSRommelmarkt/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/?$ /SOSRommelmarkt/index.php?controller=$1&action=$2
+#RewriteRule ^/SOSRommelmarkt/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/?$ /SOSRommelmarkt/landing.php?controller=$1&action=$2
 #Controller Match/A
-#RewriteRule ^/SOSRommelmarkt/([A-Za-z0-9-]+)/?$ /SOSRommelmarkt/index.php?controller=$1
+#RewriteRule ^/SOSRommelmarkt/([A-Za-z0-9-]+)/?$ /SOSRommelmarkt/landing.php?controller=$1
