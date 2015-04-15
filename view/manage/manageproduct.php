@@ -13,8 +13,8 @@
                     <th>naam</th>
                     <th>kleur code</th>
                     <th>prijs</th>
-                    <th>is gereserveerd</th>
                     <th>toegevoegd door</th>
+                    <th>is gereserveerd</th>
                     <th>opties</th>
                 </tr>
                 </thead>
@@ -29,12 +29,28 @@
 	                        <td><?php echo $product->name ?></td>
 	                        <td><?php echo $product->colorCode ?></td>
 	                        <td><?php echo $product->price ?></td>
-                            <td><?php echo $product->isReserved ?></td>
                             <td><?php echo $product->addedBy ?></td>
+                            <td>
+                                <?php
+                                if($product->isReserved == 1)
+                                {
+                                ?>
+                                    <p>Ja</p>
+                                <?php
+                                }
+                                else
+                                {
+                                ?>
+                                    <p>Nee</p>
+                                <?php
+                                }
+                                ?>
+                            </td>
 	                        <td>
 								<a href="shopproduct/<?php echo $product->id ?>"><button class="btn btn-default"><i class="fa fa-info"></i></button></a>
 								<a href="shopproduct/<?php echo $product->id ?>"><button class="btn btn-default"><i class="fa fa-pencil"></i></button></a>
 								<a href="shopproduct/<?php echo $product->id ?>"><button class="btn btn-default"><i class="fa fa-trash"></i></button></a>
+                                <a href="shopproduct/<?php echo $product->id ?>"><button class="btn btn-default"><i class="fa fa-picture-o"></i></button></a>
 							</td>
 						</tr>
 						<?php
