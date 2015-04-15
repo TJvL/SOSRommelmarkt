@@ -115,7 +115,7 @@
                                     <div style="display: inline-block; vertical-align: top;">
                                         <p>
                                             <b>{{x.name}}</b><br />
-                                            {{x.desc}}
+                                            {{x.description}}
                                         </p>
                                         <p>
                                             <b>Prijs</b><br />
