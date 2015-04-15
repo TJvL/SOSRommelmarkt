@@ -32,7 +32,7 @@ class ManageController extends Controller
         $this->render("manageproduct");
     }
 
-    public function addproduct_GET()
+    public function addshopproduct_GET()
     {
         $this->render("addproduct");
     }

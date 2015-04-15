@@ -126,10 +126,13 @@
 </style>
 
 <script type="text/javascript">
+    //Initialize ideal forms
     $('#product_add').idealforms({
 
+        // Do not select the first input field and show error message.
         silentLoad: true,
 
+        //Add rules for the input fields
         rules: {
             'name': 'required name',
             'description': 'required max:500',
@@ -139,45 +142,66 @@
         },
 
 
+        //When submit is pressed catch the event.
         onSubmit: function(invalid,event) {
+
+            // if the form is invalid (everything is not filled in correctly) then show an error and prevent submit.
             if (invalid > 0) {
                 event.preventDefault();
                 $('#invalid').show().text(invalid +' ongeldige velden!');
+            // else submit the form in a POST request
             } else {
                 $('#invalid').hide();
             }
         }
     });
 
+    //Checks input fields and show message on bottom after every user input.
     $('#product_add').find('input, select, textarea').on('change keyup', function() {
         $('#invalid').hide();
     });
 
+    //Prompts idealforms to show the next step in the form.
     $('.prev').click(function(){
         $('.prev').show();
         $('form.idealforms').idealforms('prevStep');
     });
+    //Prompts idealforms to show the previous step in the form.
     $('.next').click(function(){
         $('.next').show();
         $('form.idealforms').idealforms('nextStep');
     });
 
+    //Create something to hold the cropper object.
     var cropper;
 
+
+    //When the file input field is loaded with a file call this function.
     function loadImage(file){
 
+        //Init a filereader.
         var reader = new FileReader();
 
+        //When the file reader loads the file from the file input element.
         reader.onload = function(event) {
+            //Get the path to the file.
             the_url = event.target.result;
+
+            //Change the crop area div so the picture in the created file path can be loaded for viewing.
             document.getElementById("cropSection").innerHTML = "<img class='img-responsive' id='cropArea' alt='Crop area' />";
             document.getElementById("cropArea").setAttribute("src", the_url);
 
+            //Init a new cropper object for this image.
             cropper = new Cropper(document.getElementById("cropArea"),{
+
+                //Define aspect ratio for the crop box
                 ratio:{
                     width:1,
                     height:1
                 },
+
+                //When the crop box is moved/resized the update event is called inside the cropper.
+                //An extra function is attached to the update function that adds crop box coordinates and img resolution info to a form hidden field.
                 update:function(data){
                     document.getElementById("xCoord").setAttribute("value", data.x);
                     document.getElementById("yCoord").setAttribute("value", data.y);
@@ -196,12 +220,14 @@
                     document.getElementById("originalWidth").setAttribute("value", originalWidth.toString());
                     document.getElementById("originalHeight").setAttribute("value", originalHeight.toString());
 
-                    console.log("x: " + data.x, "y: " + data.y, "width: " + data.width, "height: " + data.height)
+                    //Debug console log.
+                    //console.log("x: " + data.x, "y: " + data.y, "width: " + data.width, "height: " + data.height)
                 }
             });
 
         };
 
+        //This causes the filereader to be load and it reads the currently selected file from the html input element.
         reader.readAsDataURL(file.files[0]);
     }
 </script>
