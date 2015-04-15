@@ -48,6 +48,9 @@
             </div>
             <div class="col-sm-9 ">
 
+                {{shopProducts}}
+                {{imageFilter}}
+
                 <div ng-repeat="x in shopProducts | filter:colorFilter | rangeFilter:sliderRanges" class="col-sm-3 product padding-lg animation ">
                     <i class="product-info-quality {{x.colorCode}}"></i>
                     <div class="view view-first">
@@ -81,19 +84,38 @@
                                     <!-- Carousel start -->
                                     <div id="prod-{{x.id}}-carousel" class="carousel slide" style="display:inline-table;" data-ride="carousel">
                                         <!-- Indicators -->
-                                        <ol class="carousel-indicators">
-                                            <li data-target="#prod-{{x.id}}-carousel" data-slide-to="0" class="active"></li>
-                                            <li data-target="#prod-{{x.id}}-carousel" data-slide-to="1"></li>
-                                        </ol>
+<!--                                        <ol class="carousel-indicators">-->
+<!--                                            <li data-target="#prod-{{x.imagePaths[0]}}-carousel"</li>-->
+<!--                                            <li data-target="#prod-{{x.id}}-carousel" data-slide-to="1"></li>-->
+<!--                                        </ol>-->
 
                                         <!-- Data -->
-                                        <div class="carousel-inner" role="listbox">
-                                            <div class="item active">
-                                                <img class="img" src="{{x.imagePath}}" alt="image for {{x.name}}"/>
-                                            </div>
-                                            <div class="item">
-                                                <img class="img" src="{{x.imagePath}}" alt="image for {{x.name}}"/>
-                                            </div>
+                                        <div class="carousel-inner" role="listbox" ng-repeat="image in x.imagePaths">
+
+                                            <!--Repeat for all product images-->
+
+                                            {{image}}
+                                            {{$first}}
+<!--                                                <div ng-if="$first"> hoi first {{image}} </div>-->
+                                                <div class="item active" ng-if="$first == true">
+                                                    <img class="img" src="{{image}}" alt="image for {{x.name}}"/>
+                                                </div>
+<!--                                                <div > hoi second {{image}} </div>-->
+                                                <div class="item" ng-if="$first == false">
+                                                    <img class="img" src="{{image}}" alt="image for {{x.name}}"/>
+                                                </div>
+
+
+
+
+
+
+<!--                                            <div class="item active">-->
+<!--                                                <img class="img" src="{{x.imagePaths[0]}}" alt="image for {{x.name}}"/>-->
+<!--                                            </div>-->
+<!--                                            <div class="item">-->
+<!--                                                <img class="img" src="{{x.imagePath}}" alt="image for {{x.name}}"/>-->
+<!--                                            </div>-->
                                         </div>
 
                                         <!-- Controls -->

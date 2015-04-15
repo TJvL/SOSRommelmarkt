@@ -16,6 +16,7 @@ class ShopProduct extends Product
 		$shopProduct->price = $row["price"];
 		$shopProduct->isReserved = $row["isReserved"];
 		$shopProduct->imagePath = $shopProduct->getMainImagePath();
+        $shopProduct->imagePaths = $shopProduct->getImagePaths();
 
 		return $shopProduct;
 	}

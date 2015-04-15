@@ -14,6 +14,7 @@ abstract class Product
     public $addedBy;
     public $colorCode;
     public $imagePath;
+    public $imagePaths;
 
     public function getMainImagePath()
     {
