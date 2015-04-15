@@ -41,7 +41,10 @@ $('form.idealforms').find('input, select, textarea').on('change keyup', function
 });
 
 $('form.idealforms').idealforms('addRules', {
-    'comments': 'required minmax:50:200'
+    'explanation': 'required minmax:50:200',
+    'planned_activities': 'required minmax:50:200',
+    'intended_results': 'required minmax:50:200'
+
 });
 
 $('.prev').click(function(){

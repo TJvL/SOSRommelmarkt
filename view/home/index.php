@@ -90,14 +90,14 @@
 	</div>
 	
 	<div class="row padding-lg">
-		<div class="col-md-6 padding-hor-md">
+		<div class="col-md-6-custom padding-hor-md">
 			<div class="white margin-ver-lg">
 				<h2>Subsidie</h2>
 				<p>Kent u een project in een ontwikkelingsland dat steun kan gebruiken dan kunt u bij SOS Rommelmarkt een aanvraag voor subsidie indienen.</p>
-				<button type="button" class="btn btn-red btn-lg">Vraag subsidie aan <i class="fa fa-chevron-right"></i></button>
+				<button type="button" class="btn btn-red btn-lg" style="border-top-width: 40px;">Vraag subsidie aan <i class="fa fa-chevron-right"></i></button> <!--Style used -> Hacky I know..-->
 			</div>
 		</div>
-		<div class="col-md-6 padding-hor-md">
+		<div class="col-md-6-custom padding-hor-md">
 			<div class="white margin-ver-lg">
 				<h2>Webshop</h2>
 				<p>In de kringloopwinkel van SOS Rommelmarkt in de Vughterstraat van ’s-Hertogenbosch worden al dertig jaar tweedehands spullen verkocht. Je vindt in onze opgeruimde en overzichtelijke winkel kringloopgoederen voor een kleine prijs. Een deel van de collectie wordt ook online aangeboden.</p>
