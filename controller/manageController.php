@@ -13,7 +13,10 @@ class ManageController extends Controller
 
     public function subventions_GET()
     {
-        $this->render("subventions");
+        $subventionList = new ArrayList("SubventionRequest");
+        $subventionList->addAll(SubventionRequest::fetchAllSubventionRequests());
+
+        $this->render("subventions", $subventionList);
     }
 
 
@@ -88,6 +91,7 @@ class ManageController extends Controller
     	// TODO: Error or some shit
     	exit(json_encode(1));
     }
+
     public function instellingen_POST()
     {
                 // Check if all the necessary data has been sent with the request.
@@ -108,6 +112,22 @@ class ManageController extends Controller
                     companyInfomation::update($_POST["Telefoon"],$_POST["Email"],$_POST["Adres"], $_POST["Plaats"]);
                 }
                 echo "update geslaagd1";
+    }
+
+    public function changeSubventionStatus_POST()
+    {
+        // Check if all the necessary data has been sent with the request.
+        if (isset($_POST["id"]) && isset($_POST["status"]))
+        {
+            // Get the product, set the data and update.
+            SubventionRequest::updateStatus($_POST["id"], $_POST["status"]);
+
+            $this->subventions_GET();
+        }
+        else{
+            //TODO: error handling
+        }
+
     }
 
 
