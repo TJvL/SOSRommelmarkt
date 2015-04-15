@@ -35,13 +35,13 @@
                                 if($product->isReserved == 1)
                                 {
                                 ?>
-                                    <p>Ja</p>
+                                    Ja
                                 <?php
                                 }
                                 else
                                 {
                                 ?>
-                                    <p>Nee</p>
+                                    Nee
                                 <?php
                                 }
                                 ?>
