@@ -130,9 +130,22 @@ class ManageController extends Controller
 
     }
 
+	public function auctions_GET()
+	{
+		$auctionList = new ArrayList("Auction");
+		$auctionList->addAll(Auction::selectAll());
+		
+		$this->render("auctions", $auctionList);
+	}
 
-
-
-    
+	public function addauction_GET()
+	{
+		$this->render("addauction");
+	}
+	
+	public function editauction_GET()
+	{
+		$this->render("editauction");
+	}
 }
 ?>
