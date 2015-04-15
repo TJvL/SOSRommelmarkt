@@ -77,14 +77,49 @@
                     <div class="modal fade bs-{{x.id}}-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
-                                <div style="padding-left:12px;">
-                                    <h3>{{x.name}}</h3>
-                                    <img class="img" src="{{x.imagePath}}" alt="image for {{x.name}}"/>
-                                    <p>&euro; {{x.price}}</p>
-                                    <p>
-                                        <b>Beschrijving</b><br />
-                                        {{x.desc}}
-                                    </p>
+                                <div style="padding:12px;">
+                                    <!-- Carousel start -->
+                                    <div id="prod-{{x.id}}-carousel" class="carousel slide" style="display:inline-table;" data-ride="carousel">
+                                        <!-- Indicators -->
+                                        <ol class="carousel-indicators">
+                                            <li data-target="#prod-{{x.id}}-carousel" data-slide-to="0" class="active"></li>
+                                            <li data-target="#prod-{{x.id}}-carousel" data-slide-to="1"></li>
+                                        </ol>
+
+                                        <!-- Data -->
+                                        <div class="carousel-inner" role="listbox">
+                                            <div class="item active">
+                                                <img class="img" src="{{x.imagePath}}" alt="image for {{x.name}}"/>
+                                            </div>
+                                            <div class="item">
+                                                <img class="img" src="{{x.imagePath}}" alt="image for {{x.name}}"/>
+                                            </div>
+                                        </div>
+
+                                        <!-- Controls -->
+                                        <a class="left carousel-control" href="#prod-{{x.id}}-carousel" role="button" data-slide="prev">
+                                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="right carousel-control" href="#prod-{{x.id}}-carousel" role="button" data-slide="next">
+                                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+
+                                    </div>
+                                    <!-- Carousel end -->
+                                    <div style="display: inline-block; vertical-align: top;">
+                                        <p>
+                                            <b>{{x.name}}</b><br />
+                                            {{x.desc}}
+                                        </p>
+                                        <p>
+                                            <b>Prijs</b><br />
+                                            &euro; {{x.price}}
+                                        </p>
+
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
