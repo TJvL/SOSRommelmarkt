@@ -86,19 +86,6 @@
                <?php } ?>
 
 						<ul class = "nav navbar-nav navbar-right">
-
-             
-												
-							<li> 
-                                <form class="navbar-form" role="search">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Zoeken" name="srch-term" id="srch-term">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                                    </div>
-                                </div>
-                                </form>
-                            </li>											
 						
                             <li>
                                 <div id="cart_details_3">

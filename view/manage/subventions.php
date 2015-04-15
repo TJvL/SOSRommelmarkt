@@ -36,86 +36,79 @@
                                 <div class="col-sm-4"><p>Status: {{subventionRequest.status}}<i class="fa fa-expand fa-2x pull-right"></i></p></div>
                             </div>
                             <div class="collapse col-md-12">
-                                <table class="table table-condensed">
+                             <div class="table-responsive">
+                                <table class="table table-condensed col-md-8">
                                     <tbody>
                                         <tr>
                                             <th scope="row">Contactpersoon</th>
                                             <td>{{subventionRequest.contactperson}}</td>
                                         </tr>
-                                    </tbody>
-                                    <tbody>
+
+
                                         <tr>
                                             <th scope="row">Onderneming</th>
                                             <td>{{subventionRequest.firm}}</td>
                                         </tr>
-                                    </tbody>
-                                    <tbody>
+
+
                                         <tr>
                                             <th scope="row">KVK</th>
                                             <td>{{subventionRequest.kvk}}</td>
                                         </tr>
-                                    </tbody>
-                                    <tbody>
+
+
                                         <tr>
                                             <th scope="row">Adres</th>
                                             <td>{{subventionRequest.adress}}</td>
                                         </tr>
-                                    </tbody>
-                                    <tbody>
+
                                         <tr>
                                             <th scope="row">Postcode</th>
                                             <td>{{subventionRequest.postalcode}}</td>
                                         </tr>
-                                    </tbody>
-                                    <tbody>
+
                                         <tr>
                                             <th scope="row">Plaats</th>
                                             <td>{{subventionRequest.city}}</td>
                                         </tr>
-                                    </tbody>
-                                    <tbody>
+
                                         <tr>
                                             <th scope="row">Telefoon (1)</th>
                                             <td>{{subventionRequest.phonenumber1}}</td>
                                         </tr>
-                                    </tbody>
-                                    <tbody>
+
                                         <tr>
                                             <th scope="row">Telefoon (2)</th>
                                             <td>{{subventionRequest.phonenumber2}}</td>
                                         </tr>
-                                    </tbody>
-                                    <tbody>
+
                                         <tr>
                                             <th scope="row">Fax</th>
                                             <td>{{subventionRequest.fax}}</td>
                                         </tr>
-                                    </tbody>
-                                    <tbody>
+
                                         <tr>
                                             <th scope="row">E-Mail</th>
                                             <td>{{subventionRequest.email}}</td>
                                         </tr>
-                                    </tbody>
-                                    <tbody>
+
                                         <tr>
-                                            <th scope="row">Toelichting</th>
+                                            <th>Toelichting</th>
                                             <td>{{subventionRequest.elucidation}}</td>
                                         </tr>
-                                    </tbody>
-                                    <tbody>
+
                                         <tr>
                                             <th scope="row">Activiteiten</th>
                                             <td>{{subventionRequest.activities}}</td>
                                         </tr>
-                                    </tbody>
-                                    <tbody>
+
                                         <tr>
                                             <th scope="row">Resultaten</th>
                                             <td>{{subventionRequest.results}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
+                                 </div>
 
                                 <div class="row">
                                     <div class="col-sm-8"><!-- just a spacer --></div>
