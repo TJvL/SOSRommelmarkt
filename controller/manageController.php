@@ -38,6 +38,12 @@ class ManageController extends Controller
         $this->render("manageproduct");
     }
 
+    public function deleteshopproduct_POST()
+    {
+        ShopProduct::deleteById($_POST["id"]);
+        $this->redirectTo("/manage/productList");
+    }
+
     public function addshopproduct_GET()
     {
         $this->render("addproduct");
