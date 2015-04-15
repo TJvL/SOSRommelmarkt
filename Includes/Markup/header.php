@@ -87,48 +87,48 @@
 
 						<ul class = "nav navbar-nav navbar-right">
 						
-                            <li>
-                                <div id="cart_details_3">
-                                      <div class="cart_btn">
-                                        <span class="icon"><i class="fa fa-shopping-cart"></i></span>
-                                        <div class="items"><span>2 producten</span></div>
-                                        <div class="price"><span>&euro; 27,95</span></div>
-                                      </div>
-                                      <div class="details">
-                                        <div class="product_row">
-                                          <div class="image">
-                                             <img id="cart_image" src="http://i.imgur.com/gJsXvHB.jpg"/>
-                                          </div>
-                                          <div class="info">
-                                            <span class="title">Pink Halter Small</span>
-                                            <span class="price">$27.95</span>
-                                            <div class="qty"><input id="qty" placeholder="1" disabled></input></div>
-                                            <div class="remove"><i class="fa fa-times-circle"></i></div>
-                                          </div>
-                                        </div>
-                                        <div class="product_row">
-                                          <div class="image">
-                                            <img id="cart_image" src="http://i.imgur.com/gJsXvHB.jpg"/>
-                                          </div>
-                                          <div class="info">
-                                            <span class="title">Pink Halter Small</span>
-                                            <span class="price">$27.95</span>
-                                            <div class="qty"><input id="qty" placeholder="1" disabled></input></div>
-                                            <div class="remove"><i class="fa fa-times-circle"></i></div>
-                                          </div>
-                                        </div>
-                                        <div class="bottom">
-                                          <div class="left">
-                                              <p>Totaal: &euro; 27,95</p>
-
-                                          </div>
-                                          <div class="right">
-                                            <a class="checkout" href="#">Bestellen <i class="fa fa-chevron-right"></i></a>
-                                          </div>
-                                       </div>
-                                    </div>
-                                </div>
-                            </li>
+<!--                            <li>-->
+<!--                                <div id="cart_details_3">-->
+<!--                                      <div class="cart_btn">-->
+<!--                                        <span class="icon"><i class="fa fa-shopping-cart"></i></span>-->
+<!--                                        <div class="items"><span>2 producten</span></div>-->
+<!--                                        <div class="price"><span>&euro; 27,95</span></div>-->
+<!--                                      </div>-->
+<!--                                      <div class="details">-->
+<!--                                        <div class="product_row">-->
+<!--                                          <div class="image">-->
+<!--                                             <img id="cart_image" src="http://i.imgur.com/gJsXvHB.jpg"/>-->
+<!--                                          </div>-->
+<!--                                          <div class="info">-->
+<!--                                            <span class="title">Pink Halter Small</span>-->
+<!--                                            <span class="price">$27.95</span>-->
+<!--                                            <div class="qty"><input id="qty" placeholder="1" disabled></input></div>-->
+<!--                                            <div class="remove"><i class="fa fa-times-circle"></i></div>-->
+<!--                                          </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="product_row">-->
+<!--                                          <div class="image">-->
+<!--                                            <img id="cart_image" src="http://i.imgur.com/gJsXvHB.jpg"/>-->
+<!--                                          </div>-->
+<!--                                          <div class="info">-->
+<!--                                            <span class="title">Pink Halter Small</span>-->
+<!--                                            <span class="price">$27.95</span>-->
+<!--                                            <div class="qty"><input id="qty" placeholder="1" disabled></input></div>-->
+<!--                                            <div class="remove"><i class="fa fa-times-circle"></i></div>-->
+<!--                                          </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="bottom">-->
+<!--                                          <div class="left">-->
+<!--                                              <p>Totaal: &euro; 27,95</p>-->
+<!---->
+<!--                                          </div>-->
+<!--                                          <div class="right">-->
+<!--                                            <a class="checkout" href="#">Bestellen <i class="fa fa-chevron-right"></i></a>-->
+<!--                                          </div>-->
+<!--                                       </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </li>-->
                         </ul>
 					 
 					</div> 

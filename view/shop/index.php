@@ -60,7 +60,7 @@
                             <p ng-show="{{x.isReserved}}">Gereserveerd</p>
                             <p ng-hide="{{x.isReserved}}"></p>
                             <button type="button" class="btn-clear" data-toggle="modal" data-target=".bs-{{x.id}}-modal-lg">
-                                <a href="#" class="info"><i class="fa fa-cart-plus fa-2x"></i></a>
+                                <a href="#" class="info"><i class="glyphicon glyphicon-new-window glyphicon fa-2x"></i></a>
                             </button>
                         </div>
                     </div>
