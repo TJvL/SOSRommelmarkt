@@ -43,16 +43,11 @@ class ManageController extends Controller
         $id = $_POST["id"];
         ShopProduct::deleteById($id);
 
-        $dir = ROOT_DIR . "/img/Content/products/" . $id;
-        $it = new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS);
-        $files = new RecursiveIteratorIterator($it,
-            RecursiveIteratorIterator::CHILD_FIRST);
-        foreach($files as $file) {
-            if ($file->isDir()){
-                rmdir($file->getRealPath());
-            } else {
-                unlink($file->getRealPath());
-            }
+        $dir = ShopProduct::IMAGES_DIRECTORY . "/" . $id;
+
+        $scan = glob(rtrim($dir,'/').'/*');
+        foreach($scan as $index=>$path){
+            unlink($path);
         }
         rmdir($dir);
 
