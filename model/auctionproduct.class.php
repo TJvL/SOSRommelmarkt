@@ -148,10 +148,15 @@ class AuctionProduct extends Product
 	
 	public static function deleteById($id)
 	{
-		$query = "DELETE FROM AuctionProduct WHERE id = ?";
+		// delete from auctionproductlist table
+		$query1 = "DELETE FROM AuctionProductList WHERE AuctionProduct_id = ?";
+		Database::update($query1, "i", array($id));
 		
-		Database::update($query, "i", array($id));
+		// delete from auctionproduct table
+		$query2 = "DELETE FROM AuctionProduct WHERE id = ?";
+		Database::update($query2, "i", array($id));
 		
+		// delete from procuct table
 		parent::deleteById($id);
 	}
 

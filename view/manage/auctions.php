@@ -36,7 +36,6 @@
 					$scope.auctions = <?php echo $model->getJSON(); ?>;
 					$scope.deleteAuction = function(AuctionID)
 					{
-// 						alert(AuctionID);
 						deleteAuction(AuctionID);
 					}
 				}]);
@@ -60,25 +59,25 @@
 			};
 
 			$.ajax(
+			{
+				url: "/SOSRommelmarkt/manage/auctions/delete",
+				type: "POST",
+				data: data,
+				async: true,
+				success: function(result)
+				{
+					if (result == 0)
 					{
-						url: "/SOSRommelmarkt/manage/auctions/delete",
-						type: "POST",
-						data: data,
-						async: true,
-						success: function(result)
-						{
-							if (result == 0)
-							{
-								// OK
-							}
-							else
-							{
-								alert("Auction could not be removed.");
-							}
+						// OK
+					}
+					else
+					{
+						alert("Deze veiling kan niet worden verwijderd.");
+					}
 
-							document.location.href = "./auctions";
-						}
-					});
+					document.location.href = "./auctions";
+				}
+			});
 		}
 	}
 </script>

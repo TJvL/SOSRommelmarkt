@@ -29,7 +29,7 @@
 						<td>{{AuctionProduct.addedBy}}</td>
 						<td>
 							<a href="#"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
-							<a href="#"><button class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i></button></a>
+							<button class="btn btn-default" title="Verwijderen" ng-click="deleteAuctionProduct(AuctionProduct.id)"><i class="fa fa-trash"></i></button>
 						</td>
 					</tr>
 				</tbody>
@@ -37,9 +37,13 @@
 			
 			<script>
 				var app = angular.module("auctionProductApp", []);
-				app.controller("auctionProductController", function($scope) {
+				app.controller("auctionProductController", ['$scope', '$http', function($scope, $http) {
 					$scope.auctionProducts = <?php echo $model->getJSON(); ?>;
-				});
+					$scope.deleteAuctionProduct = function(AuctionProductID)
+					{
+						deleteAuctionProduct(AuctionProductID);
+					}
+				}]);
 			</script>
 		</div>
 	</div>
@@ -49,4 +53,36 @@
 	$(document).ready( function () {
 		$('#auctionProductTable').DataTable();
 	} );
+
+	function deleteAuctionProduct($auctionProductId)
+	{
+		if (confirm("Weet u zeker dat u dit product uit de veiling wilt verwijderen?"))
+		{
+			var data = 
+			{
+					auctionProductId: $auctionProductId
+			};
+
+			$.ajax(
+			{
+				url: "/SOSRommelmarkt/manage/editauction/delete",
+				type: "POST",
+				data: data,
+				async: true,
+				success: function(result)
+				{
+					if (result == 0)
+					{
+						// OK
+					}
+					else
+					{
+						alert("Dit product kan niet worden verwijderd.");
+					}
+
+					document.location.href = "./auctions";
+				}
+			});
+		}
+	}
 </script>
