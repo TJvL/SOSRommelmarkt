@@ -24,7 +24,7 @@
 						<td>{{Auction.endDate}}</td>
 						<td>
 							<a href="editauction/{{Auction.id}}"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
-							<a href="deleteauction/{{Auction.id}}"><button class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i></button></a>
+							<button class="btn btn-default" title="Verwijderen" ng-click="deleteAuction(Auction.id)"><i class="fa fa-trash"></i></button>
 						</td>
 					</tr>
 				</tbody>
@@ -34,6 +34,39 @@
 				var app = angular.module("auctionApp", []);
 				app.controller("auctionController", function($scope) {
 					$scope.auctions = <?php echo $model->getJSON(); ?>;
+					$scope.deleteAuction = function(auctionId)
+					{
+						if (confirm("Weet u zeker dat u deze veiling wilt verwijderen?"))
+						{
+							var data =
+							{
+									auctionId: auctionId,
+							};
+							
+							$.ajax(
+							{
+								url: "delete",
+								type: "POST",
+								data: auctionId,
+								async: true,
+								success: function(result)
+								{
+									// check if it went alright
+									if (result == 0)
+									{
+										alert("Success");
+									}
+									else
+									{
+										alert("Fail");
+									}
+
+									// Go to the auction list
+									document.location.href = "./auctions";
+								}
+							});
+						}
+					}
 				});
 			</script>
 		</div>

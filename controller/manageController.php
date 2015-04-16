@@ -217,6 +217,31 @@ class ManageController extends Controller
 		
 		$this->render("auctions", $auctionList);
 	}
+	
+	public function auctions_POST()
+	{
+		if (isset($_GET["id"]))
+		{
+			if ($_GET["id"] == "delete")
+			{
+				if (isset($_POST["auctionId"]))
+				{
+					$auction = Auction::deleteById($_POST["auctionId"]);
+					
+					// return 0 for success
+					header("Content-Type: application/json");
+					exit(json_encode(0));
+				}
+			}
+			else if ($_GET["id"] == "update")
+			{
+				// TODO: Implement update function
+			}
+		}
+		
+		// TODO: deal with errors
+		exit(json_encode(1));
+	}
 
 	public function addauction_GET()
 	{
