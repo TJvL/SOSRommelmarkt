@@ -169,7 +169,7 @@ iframe, object, embed {
 	padding-bottom: 10px !important;
 }
 
-.manage-title {
+.manage-title, .red-bar {
 
     background-color: #B20000;
     color:#fff;
@@ -180,13 +180,18 @@ h1.manage-title{
     padding:15px;
 }
 
-.manage-subtitle, #auction-timer, .auction-info {
+.manage-subtitle, #auction-timer, .auction-info  {
 
     background-color: #333;
     color:#fff;
     margin-bottom: 15px;
     margin-top:15px;
     padding-top:10px;
+}
+
+.black-bar{
+    background-color: #333;
+    color:#fff;
 }
 
 #auction-timer p{
@@ -256,4 +261,9 @@ h1.manage-title{
 
 .hidden {
 	display: none;
+}
+
+.timeCss, #Maandag, #Dinsdag, #Woensdag, #Donderdag, #Vrijdag, #Zaterdag, #Zondag{
+
+  margin-left: 30px !important;
 }

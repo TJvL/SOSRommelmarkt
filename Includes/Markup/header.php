@@ -86,62 +86,49 @@
                <?php } ?>
 
 						<ul class = "nav navbar-nav navbar-right">
-
-             
-												
-							<li> 
-                                <form class="navbar-form" role="search">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Zoeken" name="srch-term" id="srch-term">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                                    </div>
-                                </div>
-                                </form>
-                            </li>											
 						
-                            <li>
-                                <div id="cart_details_3">
-                                      <div class="cart_btn">
-                                        <span class="icon"><i class="fa fa-shopping-cart"></i></span>
-                                        <div class="items"><span>2 producten</span></div>
-                                        <div class="price"><span>&euro; 27,95</span></div>
-                                      </div>
-                                      <div class="details">
-                                        <div class="product_row">
-                                          <div class="image">
-                                             <img id="cart_image" src="http://i.imgur.com/gJsXvHB.jpg"/>
-                                          </div>
-                                          <div class="info">
-                                            <span class="title">Pink Halter Small</span>
-                                            <span class="price">$27.95</span>
-                                            <div class="qty"><input id="qty" placeholder="1" disabled></input></div>
-                                            <div class="remove"><i class="fa fa-times-circle"></i></div>
-                                          </div>
-                                        </div>
-                                        <div class="product_row">
-                                          <div class="image">
-                                            <img id="cart_image" src="http://i.imgur.com/gJsXvHB.jpg"/>
-                                          </div>
-                                          <div class="info">
-                                            <span class="title">Pink Halter Small</span>
-                                            <span class="price">$27.95</span>
-                                            <div class="qty"><input id="qty" placeholder="1" disabled></input></div>
-                                            <div class="remove"><i class="fa fa-times-circle"></i></div>
-                                          </div>
-                                        </div>
-                                        <div class="bottom">
-                                          <div class="left">
-                                              <p>Totaal: &euro; 27,95</p>
-
-                                          </div>
-                                          <div class="right">
-                                            <a class="checkout" href="#">Bestellen <i class="fa fa-chevron-right"></i></a>
-                                          </div>
-                                       </div>
-                                    </div>
-                                </div>
-                            </li>
+<!--                            <li>-->
+<!--                                <div id="cart_details_3">-->
+<!--                                      <div class="cart_btn">-->
+<!--                                        <span class="icon"><i class="fa fa-shopping-cart"></i></span>-->
+<!--                                        <div class="items"><span>2 producten</span></div>-->
+<!--                                        <div class="price"><span>&euro; 27,95</span></div>-->
+<!--                                      </div>-->
+<!--                                      <div class="details">-->
+<!--                                        <div class="product_row">-->
+<!--                                          <div class="image">-->
+<!--                                             <img id="cart_image" src="http://i.imgur.com/gJsXvHB.jpg"/>-->
+<!--                                          </div>-->
+<!--                                          <div class="info">-->
+<!--                                            <span class="title">Pink Halter Small</span>-->
+<!--                                            <span class="price">$27.95</span>-->
+<!--                                            <div class="qty"><input id="qty" placeholder="1" disabled></input></div>-->
+<!--                                            <div class="remove"><i class="fa fa-times-circle"></i></div>-->
+<!--                                          </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="product_row">-->
+<!--                                          <div class="image">-->
+<!--                                            <img id="cart_image" src="http://i.imgur.com/gJsXvHB.jpg"/>-->
+<!--                                          </div>-->
+<!--                                          <div class="info">-->
+<!--                                            <span class="title">Pink Halter Small</span>-->
+<!--                                            <span class="price">$27.95</span>-->
+<!--                                            <div class="qty"><input id="qty" placeholder="1" disabled></input></div>-->
+<!--                                            <div class="remove"><i class="fa fa-times-circle"></i></div>-->
+<!--                                          </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="bottom">-->
+<!--                                          <div class="left">-->
+<!--                                              <p>Totaal: &euro; 27,95</p>-->
+<!---->
+<!--                                          </div>-->
+<!--                                          <div class="right">-->
+<!--                                            <a class="checkout" href="#">Bestellen <i class="fa fa-chevron-right"></i></a>-->
+<!--                                          </div>-->
+<!--                                       </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </li>-->
                         </ul>
 					 
 					</div> 
@@ -156,7 +143,9 @@
         
             <div class="col-sm-3">
                 
-                   <img class="img-responsive" id="logo" src="<?php echo ROOT_DIR; ?>/img/logo2.png" />
+                   <a href="<?php echo ROOT_DIR; ?>/home/index">
+                    <img class="img-responsive" id="logo" src="<?php echo ROOT_DIR; ?>/img/logo2.png" />
+                  </a>
                 
             </div>            
             <div class="col-md-9">
@@ -170,7 +159,7 @@
                             <li><a href="<?php echo ROOT_DIR; ?>/home/index"><i class="fa fa-home"></i> Home</a></li>
                             <li><a  href="<?php echo ROOT_DIR; ?>/shop/index"><i class="fa fa-cubes"></i> Producten</a></li>
                             <li><a href="<?php echo ROOT_DIR; ?>/subvention/index"><i class="fa fa-money"></i> Subsidie</a></li>
-                            <li><a  href="#"><i class="fa fa-group"></i> Over ons</a></li>                            
+<!--                            <li><a  href="#"><i class="fa fa-group"></i> Over ons</a></li>                            -->
                             <li><a  href="<?php echo ROOT_DIR; ?>/contact/index"><i class="fa fa-envelope"></i> Contact</a></li>
                       </ul>
                     </subnav>

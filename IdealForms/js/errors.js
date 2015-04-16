@@ -5,6 +5,7 @@ module.exports = {
 
     required: 'Dit veld is verplicht',
     digits: 'Moet enkel getallen zijn',
+    price: 'Moet een geldig prijs zijn in de form van x.00',
     name: 'Moet minimaal 3 karakters lang zijn en moet alleen bestaan uit letters',
     lastname : 'Moet minimaal 3 karakters lang zijn en moet alleen bestaan uit letters',
     companyname: 'Moet minimaal 3 karakters lang zijn en moet alleen bestaan uit letters',

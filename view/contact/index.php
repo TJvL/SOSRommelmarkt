@@ -21,7 +21,8 @@ if(isset($_POST['submit'])){
 	<div class="row white margin-hor-0">
 		<!-- Contact form -->
 		<div class="col-sm-9">
-			<form role="form" action="" class="idealforms" method="post">
+			<form role="form" action="" method="post">
+<!--                <form role="form" action="" class="idealforms" method="post">-->
 
 				<div class="form-group">
 

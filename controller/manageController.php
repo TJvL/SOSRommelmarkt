@@ -25,7 +25,10 @@ class ManageController extends Controller
     {
                 include_once "/model/SubventionRequest.class.php";
                 SubventionRequest::deleteById($_POST["id"]);
-                $this->render("subventions");
+        $subventionList = new ArrayList("SubventionRequest");
+        $subventionList->addAll(SubventionRequest::fetchAllSubventionRequests());
+
+        $this->render("subventions", $subventionList);
 
     }
 
@@ -35,9 +38,37 @@ class ManageController extends Controller
         $this->render("manageproduct");
     }
 
+    public function deleteshopproduct_POST()
+    {
+        $id = $_POST["id"];
+        ShopProduct::deleteById($id);
+
+        $dir = ROOT_DIR . "/img/Content/products/" . $id;
+        $it = new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS);
+        $files = new RecursiveIteratorIterator($it,
+            RecursiveIteratorIterator::CHILD_FIRST);
+        foreach($files as $file) {
+            if ($file->isDir()){
+                rmdir($file->getRealPath());
+            } else {
+                unlink($file->getRealPath());
+            }
+        }
+        rmdir($dir);
+
+        $this->redirectTo("/manage/productList");
+    }
+
     public function addshopproduct_GET()
     {
-        $this->render("addproduct");
+        $this->render("addshopproduct");
+    }
+
+    public function addshopproduct_POST()
+    {
+        $shopProduct = ShopProduct::insert($_POST["name"], $_POST["description"], "Administrator", $_POST["colorCode"], $_POST["price"], 0);
+
+        $this->redirectTo("/manage/shopproduct/$shopProduct->id");
     }
 
 	public function instellingen_GET()
@@ -70,7 +101,8 @@ class ManageController extends Controller
     		if ($_GET["id"] == "update")
     		{
     			// Check if all the necessary data has been sent with the request.
-    			if (isset($_POST["productId"]) && isset($_POST["productName"]) && isset($_POST["productDescription"]) && isset($_POST["productColorCode"]) && isset($_POST["productPrice"]) && isset($_POST["productIsReserved"]))
+    			if (isset($_POST["productId"]) && isset($_POST["productName"]) && isset($_POST["productDescription"]) && isset($_POST["productColorCode"]) &&
+    					isset($_POST["productPrice"]) && isset($_POST["productIsReserved"]))
     			{
     				// Get the product, set the data and update.
     				$shopProduct = ShopProduct::selectById($_POST["productId"]);
@@ -82,7 +114,44 @@ class ManageController extends Controller
     				$shopProduct->update();
     				
     				// Return 0 for great success.
-    				header('Content-Type: application/json');
+    				header("Content-Type: application/json");
+    				exit(json_encode(0));
+    			}
+    		}
+    		else if ($_GET["id"] == "addImage")
+    		{
+    			if (isset($_POST["productId"]) && isset($_POST["originalWidth"]) && isset($_POST["clientWidth"]) && isset($_POST["xCoord"]) && isset($_POST["width"]) &&
+    					isset($_POST["originalHeight"]) && isset($_POST["clientHeight"]) && isset($_POST["yCoord"]) && isset($_POST["height"]) && isset($_FILES["file"]))
+    			{
+    				$xScale = $_POST["originalWidth"] / $_POST["clientWidth"];
+    				
+    				$x1 = $_POST["xCoord"] * $xScale;
+    				$x2 = $x1 + ($_POST["width"] * $xScale);
+    				
+    				$yScale = $_POST["originalHeight"] / $_POST["clientHeight"];
+    				
+    				$y1 = $_POST["yCoord"] * $yScale;
+    				$y2 = $y1 + ($_POST["height"] * $yScale);
+    				
+    				// Generate numbah.
+    				for ($i = 1; file_exists(Product::IMAGES_DIRECTORY . "/" . $_POST["productId"] . "/" . $i . ".jpg"); $i++) {}
+					
+					$manipulator = new ImageManipulator($_FILES["file"]["tmp_name"]);
+					$manipulator = $manipulator->crop($x1, $y1, $x2, $y2);
+					$imageTargetFilePath = Product::IMAGES_DIRECTORY . "/" . $_POST["productId"] . "/" . $i . ".jpg";
+					$manipulator->save($imageTargetFilePath, IMAGETYPE_JPEG);
+					
+					header("Content-Type: application/json");
+					exit(json_encode(0));
+    			}
+    		}
+    		else if ($_GET["id"] == "deleteImage")
+    		{
+    			if (isset($_POST["productId"]) && isset($_POST["imageName"]))
+    			{
+    				unlink(Product::IMAGES_DIRECTORY . "/" . $_POST["productId"] . "/" . $_POST["imageName"]);
+    				
+    				header("Content-Type: application/json");
     				exit(json_encode(0));
     			}
     		}
@@ -91,7 +160,7 @@ class ManageController extends Controller
     	// TODO: Error or some shit
     	exit(json_encode(1));
     }
-
+    
     public function instellingen_POST()
     {
                 // Check if all the necessary data has been sent with the request.
@@ -100,7 +169,7 @@ class ManageController extends Controller
                     // Get the product, set the data and update.
                     VisitingHours::update($_POST["Maandag"],$_POST["Dinsdag"],$_POST["Woensdag"], $_POST["Donderdag"],$_POST["Vrijdag"],$_POST["Zaterdag"],$_POST["Zondag"]);
                 }
-                echo "update geslaagd";
+               $this->redirectTo("/manage/instellingen");
     }
 
     public function companyInfomation_POST()
