@@ -238,7 +238,7 @@ class ManageController extends Controller
 			
 			// get the auctionproducts
 			$auctionProductList = new ArrayList("AuctionProduct");
-			$auctionProductList->addAll();
+			//$auctionProductList->addAll();
 			
 			// render
 			$this->render("editauction", $auctionProductList);
@@ -246,5 +246,24 @@ class ManageController extends Controller
 		
 		// TODO: error catching
 	}
+
+    public function partners_GET()
+    {
+        $partnerArray = new ArrayList("Partner");
+        $partnerArray->addAll(Partner::selectAll());
+
+        $this->render("partners", $partnerArray);
+    }
+
+    public function addpartner_GET()
+    {
+        $this->render("addpartner");
+    }
+
+    public function addpartner_POST()
+    {
+        $partner = Partner::insert($_POST["name"], $_POST['website']);
+        $this->redirectTo("manage/editpartner/$partner->id");
+    }
 }
 ?>
