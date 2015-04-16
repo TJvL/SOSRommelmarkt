@@ -98,8 +98,13 @@ class AuctionProduct extends Product
 			FROM AuctionProductList
 			JOIN AuctionProduct ON AuctionProduct.id = AuctionProductList.AuctionProduct_id
 			JOIN Product ON AuctionProduct.id = Product.id
-			WHERE AuctionProductList.Auction_id = (SELECT MAX(id) FROM Auction)
-			";
+			WHERE AuctionProductList.Auction_id = (
+				SELECT id FROM Auction
+				WHERE startDate <= CURDATE()
+				AND endDate > CURDATE()
+				ORDER BY id ASC
+				LIMIT 1
+			)";
 
         // Execute the query.
         $result = Database::fetch($query);
@@ -149,10 +154,15 @@ class AuctionProduct extends Product
 	
 	public static function deleteById($id)
 	{
-		$query = "DELETE FROM AuctionProduct WHERE id = ?";
+		// delete from auctionproductlist table
+		$query1 = "DELETE FROM AuctionProductList WHERE AuctionProduct_id = ?";
+		Database::update($query1, "i", array($id));
 		
-		Database::update($query, "i", array($id));
+		// delete from auctionproduct table
+		$query2 = "DELETE FROM AuctionProduct WHERE id = ?";
+		Database::update($query2, "i", array($id));
 		
+		// delete from procuct table
 		parent::deleteById($id);
 	}
 

@@ -385,5 +385,30 @@ class ManageController extends Controller
 		// TODO: Error or some shit
 		exit(json_encode(1));
 	}
+	
+	public function editauction_POST()
+	{
+		if (isset($_GET["id"]))
+		{
+			if ($_GET["id"] == "delete")
+			{
+				if (isset($_POST["auctionProductId"]))
+				{
+					$auctionProduct = AuctionProduct::deleteById($_POST["auctionProductId"]);
+     
+					// return 0 for success
+					header("Content-Type: application/json");
+					exit(json_encode(o));
+				}
+			}
+			else if ($_GET["id"] == "update")
+			{
+				// TODO: Implement update function
+			}
+		}
+	
+	// TODO: Deal with errors
+	exit(json_encode(1));
+	}
 }
 ?>
