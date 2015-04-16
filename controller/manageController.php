@@ -251,7 +251,8 @@ class ManageController extends Controller
 	public function addauction_POST()
 	{
 		$auction = Auction::insert($_POST["startDate"], $_POST['endDate']);
-		$this->redirectTo("manage/editauction/$auction->id");
+		//$this->redirectTo("/manage/editauction/$auction->id");
+		$this->redirectTo("/manage/auctions"); // tijdelijk totdat editauction compleet is
 	}
 	
 	public function editauction_GET()
