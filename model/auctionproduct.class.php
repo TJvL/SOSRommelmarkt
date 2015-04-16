@@ -65,6 +65,26 @@ class AuctionProduct extends Product
 	
 		return $auctionProducts;
 	}
+	
+	public static function selectByAuctionId($id)
+	{
+		$query = "SELECT Product.id, Product.name, Product.description, Product.addedBy, Product.colorCode
+		FROM AuctionProductList
+		LEFT JOIN Product ON AuctionProductList.AuctionProduct_id = Product.id
+		WHERE AuctionProductList.Auction_id = ?";
+		
+		// execute the query
+		$result = Database.fetch($query, "i", array($id));
+		
+		// put results in an array
+		$row = $result->fetch_assoc();
+		$auctionProduct = AuctionProduct::createObjectFromDatabaseRow($row);
+		
+		// free the result
+		$result->close();
+		
+		return $auctionProduct;
+	}
 
     public static function selectCurrentAuction()
     {

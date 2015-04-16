@@ -83,7 +83,7 @@ class ManageController extends Controller
     			if (isset($_POST["productId"]))
     			{
     				// Delete the product.
-    				$shopProduct = ShopProduct::deleteById($_POST["productId"]);
+    				ShopProduct::deleteById($_POST["productId"]);
     				
     				// Delete the product images recursively.
     				$dir = Product::IMAGES_DIRECTORY . "/" . $_POST["productId"];
@@ -210,9 +210,103 @@ class ManageController extends Controller
 
     }
 
+	public function auctions_GET()
+	{
+		$auctionList = new ArrayList("Auction");
+		$auctionList->addAll(Auction::selectAll());
+		
+		$this->render("auctions", $auctionList);
+	}
 
+	public function addauction_GET()
+	{
+		$this->render("addauction");
+	}
+	
+	public function addauction_POST()
+	{
+		$auction = Auction::insert($_POST["startDate"], $_POST['endDate']);
+		$this->redirectTo("manage/editauction/$auction->id");
+	}
+	
+	public function editauction_GET()
+	{
+		if (isset($_GET["id"]))
+		{
+			// get the auction
+			$auction = Auction::selectById($_GET["id"]);
+			
+			// get the auctionproducts
+			$auctionProductList = new ArrayList("AuctionProduct");
+			//$auctionProductList->addAll();
+			
+			// render
+			$this->render("editauction", $auctionProductList);
+		}
+		
+		// TODO: error catching
+	}
 
+    public function partners_GET()
+    {
+        $partnerArray = new ArrayList("Partner");
+        $partnerArray->addAll(Partner::selectAll());
 
-    
+        $this->render("partners", $partnerArray);
+    }
+
+    public function addpartner_GET()
+    {
+        $this->render("addpartner");
+    }
+
+    public function partner_GET()
+    {
+        if (isset($_GET["id"]))
+        {
+            $this->render("partner", Partner::selectById($_GET["id"]));
+        }
+
+    }
+	
+    public function partner_POST()
+    {
+    	// Check if the partner id is set.
+    	if (isset($_GET["id"]))
+    	{
+    		if ($_GET["id"] == "delete")
+    		{
+    			// Check if all the necessary data has been sent with the request.
+    			if (isset($_POST["id"]))
+    			{
+    				// Delete the partner.
+    				Partner::deleteById($_POST["id"]);
+    	
+    				// Return 0 for great success.
+    				header("Content-Type: application/json");
+    				exit(json_encode(0));
+    			}
+    		}
+    		else if ($_GET["id"] == "update")
+    		{
+    			// Check if all the necessary data has been sent with the request.
+    			if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["website"]))
+    			{
+    				// Get the partner, set the data and update.
+    				$partner = Partner::selectById($_POST["id"]);
+    				$partner->name = $_POST["name"];
+    				$partner->website = $_POST["website"];
+    				$partner->update();
+    	
+    				// Return 0 for great success.
+    				header("Content-Type: application/json");
+    				exit(json_encode(0));
+    			}
+    		}
+    	}
+    	
+    	// TODO: Error or some shit
+    	exit(json_encode(1));
+    }
 }
 ?>

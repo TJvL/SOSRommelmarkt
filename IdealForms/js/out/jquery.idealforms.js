@@ -32,7 +32,7 @@
         select: 'Selecteer een optie',
         extension: 'Bestand(en) moeten een geldige extensie hebben ({*})',
         equalto: 'Moet dezelfde waarde hebben als het "{0}" veld',
-        date: 'Moet een geldig datum zijn'
+        date: 'Moet een geldige datum zijn'
 
     };
 

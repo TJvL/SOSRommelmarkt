@@ -23,6 +23,7 @@
 
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js" type="text/javascript"></script>
     <script src="<?php echo ROOT_DIR; ?>/includes/js/bootstrap.js"></script>
     <script src="<?php echo ROOT_DIR; ?>/includes/js/cropper.min.js"></script>
     <script src="<?php echo ROOT_DIR; ?>/IdealForms/js/out/jquery.idealforms.js" type="text/javascript"></script>
@@ -78,7 +79,24 @@
                             </button>
                         </a>
                     </div>
-
+                    <div class="col-md-1"></div><!--spacer-->
+                    <div class="col-md-2">
+                        <a href="<?php echo ROOT_DIR; ?>/manage/auctions">
+                            <button class="btn btn-red">
+                                <i class="fa fa-gavel fa-5x fa-fw"></i>
+                                <br /><b>Veilingen</b>
+                            </button>
+                        </a>
+                    </div>
+					<div class="col-md-1"></div><!--spacer-->
+                    <div class="col-md-2">
+                        <a href="<?php echo ROOT_DIR; ?>/manage/partners">
+                            <button class="btn btn-red">
+                                <i class="fa fa-users fa-5x fa-fw"></i>
+                                <br /><b>Partners</b>
+                            </button>
+                        </a>
+                    </div>
             
 
 
