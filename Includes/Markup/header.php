@@ -143,7 +143,9 @@
         
             <div class="col-sm-3">
                 
-                   <img class="img-responsive" id="logo" src="<?php echo ROOT_DIR; ?>/img/logo2.png" />
+                   <a href="<?php echo ROOT_DIR; ?>/home/index">
+                    <img class="img-responsive" id="logo" src="<?php echo ROOT_DIR; ?>/img/logo2.png" />
+                  </a>
                 
             </div>            
             <div class="col-md-9">
