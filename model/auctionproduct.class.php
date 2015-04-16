@@ -65,6 +65,15 @@ class AuctionProduct extends Product
 	
 		return $auctionProducts;
 	}
+	
+	public static function selectByAuctionId($id)
+	{
+		$query = "SELECT AuctionProductList.AuctionProduct_id, name, description, addedBy, colorCode
+			FROM AuctionProductList
+			JOIN AuctionProduct ON AuctionProduct.id = AuctionProductList.AuctionProduct_id
+			JOIN Product ON AuctionProduct.id = Product.id
+			WHERE AuctionProduct.AuctionProduct_id = ?";
+	}
 
     public static function selectCurrentAuction()
     {
