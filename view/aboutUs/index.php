@@ -1,5 +1,5 @@
 <div class="container">
-	<div class="row white margin-hor-0">
+	<div style="margin-bottom:5%" class="row white margin-hor-0">
 		<!-- Contact form -->
 		<div class="col-sm-12">
 			<h1>Over ons</h1>
