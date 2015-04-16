@@ -1,5 +1,10 @@
 <div class="container">
     <div class="white">
+
+        <div class="row">
+            <h1>Winkel producten</h1>
+        </div>
+
         <div class="row">
             <div class="col-md-1">
                 <a href="<?php echo ROOT_DIR . '/manage/addshopproduct'?>" class="btn btn-default">Product toevoegen...</a>
