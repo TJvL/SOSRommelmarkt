@@ -220,12 +220,17 @@ class ManageController extends Controller
 	
 	public function auctions_POST()
 	{
+		alert("0");
 		if (isset($_GET["id"]))
 		{
+			alert("1");
 			if ($_GET["id"] == "delete")
 			{
+				alert("2");
 				if (isset($_POST["auctionId"]))
 				{
+					
+					alert("3");
 					$auction = Auction::deleteById($_POST["auctionId"]);
 					
 					// return 0 for success

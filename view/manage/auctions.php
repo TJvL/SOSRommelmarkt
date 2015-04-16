@@ -32,42 +32,14 @@
 			
 			<script>
 				var app = angular.module("auctionApp", []);
-				app.controller("auctionController", function($scope) {
+				app.controller("auctionController", ['$scope', '$http', function($scope, $http) {
 					$scope.auctions = <?php echo $model->getJSON(); ?>;
-					$scope.deleteAuction = function(auctionId)
+					$scope.deleteAuction = function(AuctionID)
 					{
-						if (confirm("Weet u zeker dat u deze veiling wilt verwijderen?"))
-						{
-							var data =
-							{
-									auctionId: auctionId,
-							};
-							
-							$.ajax(
-							{
-								url: "delete",
-								type: "POST",
-								data: auctionId,
-								async: true,
-								success: function(result)
-								{
-									// check if it went alright
-									if (result == 0)
-									{
-										alert("Success");
-									}
-									else
-									{
-										alert("Fail");
-									}
-
-									// Go to the auction list
-									document.location.href = "./auctions";
-								}
-							});
-						}
+// 						alert(AuctionID);
+						deleteAuction(AuctionID);
 					}
-				});
+				}]);
 			</script>
 		</div>
 	</div>
@@ -77,4 +49,37 @@
 	$(document).ready( function () {
 		$('#auctionTable').DataTable();
 	} );
+
+	function deleteAuction($auctionId)
+	{
+		alert($auctionId);
+		if (confirm("Weet u zeker dat u deze veiling wilt verwijderen?"))
+		{
+			var data =
+			{
+					id: $auctionId
+			};
+
+			$.ajax(
+					{
+						url: "delete",
+						type: "POST",
+						data: data,
+						async: true,
+						success: function(result)
+						{
+							if (result == 0)
+							{
+								alert("Success");
+							}
+							else
+							{
+								alert("Fail");
+							}
+
+// 							document.location.href = "./auctions";
+						}
+					});
+		}
+	}
 </script>
