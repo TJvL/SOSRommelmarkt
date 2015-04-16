@@ -68,22 +68,27 @@ class AuctionProduct extends Product
 	
 	public static function selectByAuctionId($id)
 	{
-		$query = "SELECT Product.id, Product.name, Product.description, Product.addedBy, Product.colorCode
+		$query = "SELECT Product.id AS AuctionProduct_id, Product.name, Product.description, Product.addedBy, Product.colorCode
 		FROM AuctionProductList
 		LEFT JOIN Product ON AuctionProductList.AuctionProduct_id = Product.id
 		WHERE AuctionProductList.Auction_id = ?";
 		
 		// execute the query
-		$result = Database.fetch($query, "i", array($id));
+		$result = Database::fetch($query, "i", array($id));
 		
 		// put results in an array
-		$row = $result->fetch_assoc();
-		$auctionProduct = AuctionProduct::createObjectFromDatabaseRow($row);
+		$auctionProducts = array();
+		
+		for ($i = 0; $i < $result->num_rows; $i++)
+		{
+			$row = $result->fetch_assoc();
+			$auctionProducts[$i] = AuctionProduct::createObjectFromDatabaseRow($row);
+		}
 		
 		// free the result
 		$result->close();
 		
-		return $auctionProduct;
+		return $auctionProducts;
 	}
 
     public static function selectCurrentAuction()

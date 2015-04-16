@@ -234,11 +234,11 @@ class ManageController extends Controller
 		if (isset($_GET["id"]))
 		{
 			// get the auction
-			$auction = Auction::selectById($_GET["id"]);
-			
+			$auctionId = Auction::selectById($_GET["id"])->id;
+
 			// get the auctionproducts
 			$auctionProductList = new ArrayList("AuctionProduct");
-			$auctionProductList->addAll();
+			$auctionProductList->addAll(AuctionProduct::selectByAuctionId($auctionId));
 			
 			// render
 			$this->render("editauction", $auctionProductList);
