@@ -27,7 +27,7 @@
 
                             <div class="field">
                                 <label class="main">Product omschrijving:</label>
-                                <textarea form="product_add" name="description" cols="10" rows="5"></textarea>
+                                <textarea form="product_add" name="description" cols="10" rows="5" style="resize: none"></textarea>
                                 <span class="error"></span>
                             </div>
 
@@ -135,8 +135,8 @@
         //Add rules for the input fields
         rules: {
             'name': 'required name',
-            'description': 'required max:500',
-            'price': 'required digits',
+            'description': 'required minmax:20:500',
+            'price': 'required price',
             'colorCode': 'select:default',
             'picture': 'extension:jpg'
         },
