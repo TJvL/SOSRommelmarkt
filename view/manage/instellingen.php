@@ -16,20 +16,16 @@
                 <div class="widget-content">
                     
                     
-                    
-                    <div class="tabbable">
-                    <ul class="nav nav-tabs">
-                      <li class="active">
-                        <a href="#profile" data-toggle="tab">Openingstijden</a>
-              
-                      </li>
-                      <li><a href="#settings" data-toggle="tab">Settings</a></li>
-                    </ul>
-                    
-                    <br />
-                    
-                   
-                   <div class="row"> 
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+<ul class="nav nav-tabs">
+<li class="active"><a href="#tab1" data-toggle="tab">Instellingen</a></li>
+<li><a href="#tab2" data-toggle="tab">Openingstijden</a></li>
+<li><a href="#tab3" data-toggle="tab">optie 1</a></li>
+<li><a href="#tab3" data-toggle="tab">optie 2</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane fade in active" id="tab1">
+
 <?php
 //TODO implementeer database.php
         //Create a query
@@ -85,8 +81,8 @@
                    </div> 
 
 
-
-
+</div>
+<div class="tab-pane fade" id="tab2">
 <?php
 //TODO implementeer database.php
         //Create a query
@@ -154,12 +150,12 @@
 
                   <?php } ?>
 
-                </div>
-         
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="profile">
-                            </div>
-                        </div>
+</div>
+<div class="tab-pane" id="tab3">
+<p>This is section 3.</p>
+</div>
 
+</div>
+</div>
 
-                                            
+        
