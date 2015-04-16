@@ -152,7 +152,7 @@ class ManageController extends Controller
                     // Get the product, set the data and update.
                     VisitingHours::update($_POST["Maandag"],$_POST["Dinsdag"],$_POST["Woensdag"], $_POST["Donderdag"],$_POST["Vrijdag"],$_POST["Zaterdag"],$_POST["Zondag"]);
                 }
-                echo "update geslaagd";
+               $this->redirectTo("/manage/instellingen");
     }
 
     public function companyInfomation_POST()

@@ -31,6 +31,7 @@
                    
                    <div class="row"> 
 <?php
+//TODO implementeer database.php
         //Create a query
         $query = "SELECT * FROM Info ";
         //submit the query and capture the result
@@ -87,6 +88,7 @@
 
 
 <?php
+//TODO implementeer database.php
         //Create a query
         $query = "SELECT * FROM Openingstijden ";
         //submit the query and capture the result
