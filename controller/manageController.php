@@ -38,22 +38,6 @@ class ManageController extends Controller
         $this->render("manageproduct");
     }
 
-    public function deleteshopproduct_POST()
-    {
-        $id = $_POST["id"];
-        ShopProduct::deleteById($id);
-
-        $dir = ShopProduct::IMAGES_DIRECTORY . "/" . $id;
-
-        $scan = glob(rtrim($dir,'/').'/*');
-        foreach($scan as $index=>$path){
-            unlink($path);
-        }
-        rmdir($dir);
-
-        $this->redirectTo("/manage/productList");
-    }
-
     public function addshopproduct_GET()
     {
         $this->render("addshopproduct");
