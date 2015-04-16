@@ -47,7 +47,6 @@ function handleUpdate()
 function handleNewImage()
 {
 	var formData = new FormData(document.getElementById("imageDataForm"));
-	console.log(formData);
 
     $.ajax(
 	{
@@ -62,25 +61,23 @@ function handleNewImage()
 	        // Check if it went alright.
 	        if (result == 0)
 	        {
-	        	alert("success");
+	        	alert("Success");
 	        }
 	        else
 	        {
 	        	alert("fail");
 	        }
+
+	     	// Reload the page.
+        	location.reload();
         }
 	});
-
-	// Reset the image and hide the image cropper div.
-	$("#image").html("<img id='image'>");
-    $("#cropperDiv").addClass("hidden");
 }
 
 function handleDeleteImage(imagePath)
 {
 	imageName = imagePath.substring(imagePath.lastIndexOf("/") + 1);
-	alert(imageName);
-	
+
 	var data =
 	{
 		productId: $("#productId").val(),
@@ -95,15 +92,18 @@ function handleDeleteImage(imagePath)
         async: true,
         success: function(result)
         {
-	        // Check if it went alright.
+        	// Check if it went alright.
 	        if (result == 0)
 	        {
-	        	alert("success");
+	        	alert("Success");
 	        }
 	        else
 	        {
 	        	alert("fail");
 	        }
+
+	     	// Reload the page.
+        	location.reload();
         }
 	});
 }
@@ -120,8 +120,15 @@ $(document).ready(function()
 		$("#cropperDiv").removeClass("hidden");
 		showImage(this);
 
+		// Once the image is loaded start up the cropper.
 		$("#image").load(function()
 		{
+			// Get the original width and height.
+			var originalWidth = document.getElementById("image").naturalWidth;
+            var originalHeight = document.getElementById("image").naturalHeight;
+            $("#originalWidth").val(originalWidth.toString());
+            $("#originalHeight").val(originalHeight.toString());
+			
 			// Init a new cropper object for this image.
 			var cropper;
 			cropper = new Cropper(document.getElementById("image"),
@@ -143,11 +150,6 @@ $(document).ready(function()
                     var clientHeight = document.getElementById("image").clientHeight;
                     $("#clientWidth").val(clientWidth.toString());
                     $("#clientHeight").val(clientHeight.toString());
-
-					var originalWidth = document.getElementById("image").naturalWidth;
-                    var originalHeight = document.getElementById("image").naturalHeight;
-                    $("#originalWidth").val(originalWidth.toString());
-                    $("#originalHeight").val(originalHeight.toString());
                 }
 			});
 		});
@@ -298,7 +300,19 @@ $(document).ready(function()
 				</div>
 			</div>
 			<div class="row">
-				<button class="btn btn-default" onClick="handleNewImage()">Maak afbeelding</button>
+				<form id="imageDataForm" enctype="multipart/form-data" action="javascript:handleNewImage()">
+					<button class="btn btn-default" type="submit">Maak afbeelding</button>
+					<input class="hidden" id="fileInput" name="file" type="file">
+					<input name="productId" type="hidden" value="<?php echo $model->id ?>">
+					<input id="xCoord" name="xCoord" type="hidden">
+					<input id="yCoord" name="yCoord" type="hidden">
+					<input id="width" name="width" type="hidden">
+					<input id="height" name="height" type="hidden">
+					<input id="clientWidth" name="clientWidth" type="hidden">
+					<input id="clientHeight" name="clientHeight" type="hidden">
+					<input id="originalWidth" name="originalWidth" type="hidden">
+					<input id="originalHeight" name="originalHeight" type="hidden">
+				</form>
 			</div>
 		</div>
 		<div class="row">
@@ -317,7 +331,7 @@ $(document).ready(function()
 				?>
 				<div class="col-sm-2">
 					<div class="thumbnail">
-						<img src="<?php echo $imagePath ?>" alt="">
+						<img src="<?php echo $imagePath ?>">
 						<div class="caption text-center">
 							<a class="btn btn-danger" onClick="handleDeleteImage('<?php echo $imagePath ?>')">Verwijder</a>
 						</div>
@@ -330,16 +344,3 @@ $(document).ready(function()
 		</div>
 	</div>
 </div>
-
-<form id="imageDataForm" enctype="multipart/form-data">
-	<input class="hidden" id="fileInput" name="file" type="file">
-	<input name="productId" type="hidden" value="<?php echo $model->id ?>">
-	<input id="xCoord" name="xCoord" type="hidden">
-	<input id="yCoord" name="yCoord" type="hidden">
-	<input id="width" name="width" type="hidden">
-	<input id="height" name="height" type="hidden">
-	<input id="clientWidth" name="clientWidth" type="hidden">
-	<input id="clientHeight" name="clientHeight" type="hidden">
-	<input id="originalWidth" name="originalWidth" type="hidden">
-	<input id="originalHeight" name="originalHeight" type="hidden">
-</form>
