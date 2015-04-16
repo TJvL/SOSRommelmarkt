@@ -83,7 +83,7 @@ class ManageController extends Controller
     			if (isset($_POST["productId"]))
     			{
     				// Delete the product.
-    				$shopProduct = ShopProduct::deleteById($_POST["productId"]);
+    				ShopProduct::deleteById($_POST["productId"]);
     				
     				// Delete the product images recursively.
     				$dir = Product::IMAGES_DIRECTORY . "/" . $_POST["productId"];
@@ -260,14 +260,53 @@ class ManageController extends Controller
         $this->render("addpartner");
     }
 
-    public function editpartner_GET()
+    public function partner_GET()
     {
         if (isset($_GET["id"]))
         {
-            $this->render("editpartner", Partner::selectById($_GET["id"]));
+            $this->render("partner", Partner::selectById($_GET["id"]));
         }
 
     }
-
+	
+    public function partner_POST()
+    {
+    	// Check if the partner id is set.
+    	if (isset($_GET["id"]))
+    	{
+    		if ($_GET["id"] == "delete")
+    		{
+    			// Check if all the necessary data has been sent with the request.
+    			if (isset($_POST["id"]))
+    			{
+    				// Delete the partner.
+    				Partner::deleteById($_POST["id"]);
+    	
+    				// Return 0 for great success.
+    				header("Content-Type: application/json");
+    				exit(json_encode(0));
+    			}
+    		}
+    		else if ($_GET["id"] == "update")
+    		{
+    			// Check if all the necessary data has been sent with the request.
+    			if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["website"]))
+    			{
+    				// Get the partner, set the data and update.
+    				$partner = Partner::selectById($_POST["id"]);
+    				$partner->name = $_POST["name"];
+    				$partner->website = $_POST["website"];
+    				$partner->update();
+    	
+    				// Return 0 for great success.
+    				header("Content-Type: application/json");
+    				exit(json_encode(0));
+    			}
+    		}
+    	}
+    	
+    	// TODO: Error or some shit
+    	exit(json_encode(1));
+    }
 }
 ?>
