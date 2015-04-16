@@ -119,6 +119,7 @@ iframe, object, embed {
 
 .padding-sm {
 	padding: 2px !important;
+    padding-left: 40px !important;
 }
 
 .padding-md {
