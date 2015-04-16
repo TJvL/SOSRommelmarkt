@@ -1,13 +1,11 @@
 <?php
 
-include_once("product.class.php");
-
 class AuctionProduct extends Product
 {	
 	private static function createObjectFromDatabaseRow($row)
 	{
 		$auctionProduct = new AuctionProduct();
-		$auctionProduct->id = $row["AuctionProduct_id"];
+		$auctionProduct->id = $row["id"];
 		$auctionProduct->name = $row["name"];
 		$auctionProduct->description = $row["description"];
 		$auctionProduct->addedBy = $row["addedBy"];
@@ -68,32 +66,47 @@ class AuctionProduct extends Product
 	
 	public static function selectByAuctionId($id)
 	{
-		$query = "SELECT Product.id, Product.name, Product.description, Product.addedBy, Product.colorCode
-		FROM AuctionProductList
-		LEFT JOIN Product ON AuctionProductList.AuctionProduct_id = Product.id
-		WHERE AuctionProductList.Auction_id = ?";
+		$query = "SELECT AuctionProduct.id, name, description, addedBy, colorCode
+			FROM AuctionProductList
+			JOIN AuctionProduct
+			ON AuctionProduct.id = AuctionProductList.AuctionProduct_id
+			JOIN Product
+			ON AuctionProduct.id = Product.id
+			WHERE Auction_id = ?";
 		
 		// execute the query
-		$result = Database.fetch($query, "i", array($id));
+		$result = Database::fetch($query, "i", array($id));
 		
 		// put results in an array
-		$row = $result->fetch_assoc();
-		$auctionProduct = AuctionProduct::createObjectFromDatabaseRow($row);
+		$auctionProducts = array();
+		
+		for ($i = 0; $i < $result->num_rows; $i++)
+		{
+			$row = $result->fetch_assoc();
+			$auctionProducts[$i] = AuctionProduct::createObjectFromDatabaseRow($row);
+		}
 		
 		// free the result
 		$result->close();
 		
-		return $auctionProduct;
+		return $auctionProducts;
 	}
 
     public static function selectCurrentAuction()
     {
-        $query = "SELECT AuctionProductList.AuctionProduct_id, name, description, addedBy, colorCode
+        $query = "SELECT AuctionProduct.id, name, description, addedBy, colorCode
 			FROM AuctionProductList
-			JOIN AuctionProduct ON AuctionProduct.id = AuctionProductList.AuctionProduct_id
-			JOIN Product ON AuctionProduct.id = Product.id
-			WHERE AuctionProductList.Auction_id = (SELECT MAX(id) FROM Auction)
-			";
+			JOIN AuctionProduct
+        	ON AuctionProduct.id = AuctionProductList.AuctionProduct_id
+			JOIN Product
+        	ON AuctionProduct.id = Product.id
+			WHERE AuctionProductList.Auction_id = (
+				SELECT id FROM Auction
+				WHERE startDate <= CURDATE()
+				AND endDate > CURDATE()
+				ORDER BY id ASC
+				LIMIT 1
+			)";
 
         // Execute the query.
         $result = Database::fetch($query);
@@ -116,11 +129,11 @@ class AuctionProduct extends Product
 	
 	public static function selectById($id)
 	{
-		$query = "SELECT AuctionProductList.AuctionProduct_id, name, description, addedBy, colorCode
-			FROM AuctionProductList
-			JOIN AuctionProduct ON AuctionProduct.id = AuctionProductList.AuctionProduct_id
-			JOIN Product ON AuctionProduct.id = Product.id
-			WHERE AuctionProduct.AuctionProduct_id = ?";
+		$query = "SELECT AuctionProduct.id, name, description, addedBy, colorCode
+			FROM AuctionProduct
+			LEFT JOIN Product
+			ON AuctionProduct.id = Product.id
+			WHERE AuctionProduct.id = ?";
 		
 		// Execute the query.
 		$result = Database::fetch($query, "i", array($id));
@@ -143,10 +156,15 @@ class AuctionProduct extends Product
 	
 	public static function deleteById($id)
 	{
-		$query = "DELETE FROM AuctionProduct WHERE id = ?";
+		// delete from auctionproductlist table
+		$query1 = "DELETE FROM AuctionProductList WHERE AuctionProduct_id = ?";
+		Database::update($query1, "i", array($id));
 		
-		Database::update($query, "i", array($id));
+		// delete from auctionproduct table
+		$query2 = "DELETE FROM AuctionProduct WHERE id = ?";
+		Database::update($query2, "i", array($id));
 		
+		// delete from procuct table
 		parent::deleteById($id);
 	}
 

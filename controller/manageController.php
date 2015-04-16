@@ -217,6 +217,31 @@ class ManageController extends Controller
 		
 		$this->render("auctions", $auctionList);
 	}
+	
+	public function auctions_POST()
+	{
+		if (isset($_GET["id"]))
+		{
+			if ($_GET["id"] == "delete")
+			{
+				if (isset($_POST["auctionId"]))
+				{
+					$auction = Auction::deleteById($_POST["auctionId"]);
+					
+					// return 0 for success
+					header("Content-Type: application/json");
+					exit(json_encode(0));
+				}
+			}
+			else if ($_GET["id"] == "update")
+			{
+				// TODO: Implement update function
+			}
+		}
+		
+		// TODO: deal with errors
+		exit(json_encode(1));
+	}
 
 	public function addauction_GET()
 	{
@@ -226,19 +251,17 @@ class ManageController extends Controller
 	public function addauction_POST()
 	{
 		$auction = Auction::insert($_POST["startDate"], $_POST['endDate']);
-		$this->redirectTo("manage/editauction/$auction->id");
+		//$this->redirectTo("/manage/editauction/$auction->id");
+		$this->redirectTo("/manage/auctions"); // tijdelijk totdat editauction compleet is
 	}
 	
 	public function editauction_GET()
 	{
 		if (isset($_GET["id"]))
 		{
-			// get the auction
-			$auction = Auction::selectById($_GET["id"]);
-			
 			// get the auctionproducts
 			$auctionProductList = new ArrayList("AuctionProduct");
-			//$auctionProductList->addAll();
+			$auctionProductList->addAll(AuctionProduct::selectByAuctionId($_GET["id"]));
 			
 			// render
 			$this->render("editauction", $auctionProductList);
@@ -308,5 +331,119 @@ class ManageController extends Controller
     	// TODO: Error or some shit
     	exit(json_encode(1));
     }
+	
+	public function auctionproduct_GET()
+	{
+		// Check if the id is set.
+		if (isset($_GET["id"]))
+		{
+			// Get the product.
+			$auctionProduct = AuctionProduct::selectById($_GET["id"]);
+		
+			// Render the view.
+			$this->render("auctionproduct", $auctionProduct);
+		}
+		 
+		// TODO: Error or some shit
+	}
+	
+	public function auctionproduct_POST()
+	{
+		// Check if the id is set.
+		if (isset($_GET["id"]))
+		{
+			// TODO: weird ass workaround t'll I know the best way to do this... w/e
+			// If the id equals update a post request for updating a product has been sent.
+			if ($_GET["id"] == "delete")
+			{
+				// Check if all the necessary data has been sent with the request.
+				if (isset($_POST["id"]))
+				{
+					// Delete the product.
+					AuctionProduct::deleteById($_POST["id"]);
+	
+					// Delete the product images recursively.
+					$dir = Product::IMAGES_DIRECTORY . "/" . $_POST["id"];
+					if (is_dir($dir))
+					{
+						$objects = scandir($dir);
+						foreach ($objects as $object)
+						{
+							if ($object != "." && $object != "..")
+							{
+								if (filetype($dir . "/" . $object) == "dir")
+									rrmdir($dir . "/" . $object);
+								else
+									unlink($dir . "/" . $object);
+							}
+						}
+						reset($objects);
+						rmdir($dir);
+					}
+	
+					// Return 0 for great success.
+					header("Content-Type: application/json");
+					exit(json_encode(0));
+				}
+			}
+			else if ($_GET["id"] == "update")
+			{
+				// Check if all the necessary data has been sent with the request.
+				if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["colorCode"]))
+				{
+					// Get the product, set the data and update.
+					$auctionProduct = AuctionProduct::selectById($_POST["id"]);
+					$auctionProduct->name = $_POST["name"];
+					$auctionProduct->description = $_POST["description"];
+					$auctionProduct->colorCode = $_POST["colorCode"];
+					$auctionProduct->update();
+	
+					// Return 0 for great success.
+					header("Content-Type: application/json");
+					exit(json_encode(0));
+				}
+			}
+			else if ($_GET["id"] == "addImage")
+			{
+				if (isset($_POST["id"]) && isset($_POST["originalWidth"]) && isset($_POST["clientWidth"]) && isset($_POST["xCoord"]) && isset($_POST["width"]) &&
+						isset($_POST["originalHeight"]) && isset($_POST["clientHeight"]) && isset($_POST["yCoord"]) && isset($_POST["height"]) && isset($_FILES["file"]))
+				{
+					$xScale = $_POST["originalWidth"] / $_POST["clientWidth"];
+	
+					$x1 = $_POST["xCoord"] * $xScale;
+					$x2 = $x1 + ($_POST["width"] * $xScale);
+	
+					$yScale = $_POST["originalHeight"] / $_POST["clientHeight"];
+	
+					$y1 = $_POST["yCoord"] * $yScale;
+					$y2 = $y1 + ($_POST["height"] * $yScale);
+	
+					// Generate numbah.
+					for ($i = 1; file_exists(Product::IMAGES_DIRECTORY . "/" . $_POST["id"] . "/" . $i . ".jpg"); $i++) {}
+						
+					$manipulator = new ImageManipulator($_FILES["file"]["tmp_name"]);
+					$manipulator = $manipulator->crop($x1, $y1, $x2, $y2);
+					$imageTargetFilePath = Product::IMAGES_DIRECTORY . "/" . $_POST["id"] . "/" . $i . ".jpg";
+					$manipulator->save($imageTargetFilePath, IMAGETYPE_JPEG);
+						
+					header("Content-Type: application/json");
+					exit(json_encode(0));
+				}
+			}
+			else if ($_GET["id"] == "deleteImage")
+			{
+				if (isset($_POST["id"]) && isset($_POST["imageName"]))
+				{
+					unlink(Product::IMAGES_DIRECTORY . "/" . $_POST["id"] . "/" . $_POST["imageName"]);
+	
+					header("Content-Type: application/json");
+					exit(json_encode(0));
+				}
+			}
+		}
+		
+		// TODO: Error or some shit
+		exit(json_encode(1));
+	}
 }
 ?>
