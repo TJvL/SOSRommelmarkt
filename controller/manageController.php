@@ -38,27 +38,6 @@ class ManageController extends Controller
         $this->render("manageproduct");
     }
 
-    public function deleteshopproduct_POST()
-    {
-        $id = $_POST["id"];
-        ShopProduct::deleteById($id);
-
-        $dir = ROOT_DIR . "/img/Content/products/" . $id;
-        $it = new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS);
-        $files = new RecursiveIteratorIterator($it,
-            RecursiveIteratorIterator::CHILD_FIRST);
-        foreach($files as $file) {
-            if ($file->isDir()){
-                rmdir($file->getRealPath());
-            } else {
-                unlink($file->getRealPath());
-            }
-        }
-        rmdir($dir);
-
-        $this->redirectTo("/manage/productList");
-    }
-
     public function addshopproduct_GET()
     {
         $this->render("addshopproduct");
@@ -98,7 +77,39 @@ class ManageController extends Controller
     	{
     		// TODO: weird ass workaround t'll I know the best way to do this... w/e
     		// If the id equals update a post request for updating a product has been sent.
-    		if ($_GET["id"] == "update")
+    		if ($_GET["id"] == "delete")
+    		{
+    			// Check if all the necessary data has been sent with the request.
+    			if (isset($_POST["productId"]))
+    			{
+    				// Delete the product.
+    				$shopProduct = ShopProduct::deleteById($_POST["productId"]);
+    				
+    				// Delete the product images recursively.
+    				$dir = Product::IMAGES_DIRECTORY . "/" . $_POST["productId"];
+    				if (is_dir($dir))
+    				{
+    					$objects = scandir($dir);
+    					foreach ($objects as $object)
+    					{
+    						if ($object != "." && $object != "..")
+    						{
+    							if (filetype($dir . "/" . $object) == "dir")
+    								rrmdir($dir . "/" . $object);
+    							else
+    								unlink($dir . "/" . $object);
+    						}
+    					}
+    					reset($objects);
+    					rmdir($dir);
+    				}
+    				
+    				// Return 0 for great success.
+    				header("Content-Type: application/json");
+    				exit(json_encode(0));
+    			}
+    		}
+    		else if ($_GET["id"] == "update")
     		{
     			// Check if all the necessary data has been sent with the request.
     			if (isset($_POST["productId"]) && isset($_POST["productName"]) && isset($_POST["productDescription"]) && isset($_POST["productColorCode"]) &&

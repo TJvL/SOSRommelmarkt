@@ -12,7 +12,7 @@ class Controller
 
     protected function render()
     {
-        if ($_GET["controller"] == "manage")
+        if ($this->name === "manage")
         {
             include("includes/markup/manageHeader.php");
         }
@@ -21,7 +21,7 @@ class Controller
             include("includes/markup/header.php");
         }
     	
-        if (func_num_args() ==1)
+        if (func_num_args() == 1)
         {
             $this->renderView(func_get_arg(0));
         }
@@ -34,7 +34,7 @@ class Controller
             throw new BadFunctionCallException("Invalid argument count");
         }
         
-        if ($_GET["controller"] == "manage")
+        if ($this->name === "manage")
         {
         	include("includes/markup/manageFooter.php");
         }
