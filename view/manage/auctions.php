@@ -12,8 +12,8 @@
 				<thead>
 					<tr>
 						<th>Veiling ID</th>
-						<th>Start Datum</th>
-						<th>Eind Datum</th>
+						<th>Startdatum</th>
+						<th>Einddatum</th>
 						<th>Opties</th>
 					</tr>
 				</thead>

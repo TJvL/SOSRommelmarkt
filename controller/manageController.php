@@ -212,6 +212,12 @@ class ManageController extends Controller
 		$this->render("addauction");
 	}
 	
+	public function addauction_POST()
+	{
+		$auction = Auction::insert($_POST["startDate"], $_POST['endDate']);
+		$this->redirectTo("manage/editauction/$auction->id");
+	}
+	
 	public function editauction_GET()
 	{
 		$this->render("editauction");
