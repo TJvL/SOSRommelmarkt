@@ -21,18 +21,19 @@
 <li class="active"><a href="#tab1" data-toggle="tab">Adres</a></li>
 <li><a href="#tab2" data-toggle="tab">Openingstijden</a></li>
 </ul>
-<div class="tab-content">
-<div class="tab-pane fade in active" id="tab1">
 
-<?php
-//TODO implementeer database.php
-        //Create a query
-        $query = "SELECT * FROM Info ";
-        //submit the query and capture the result
-         $result = Database::fetch($query);
-        $query=getenv("QUERY_STRING");
-        parse_str($query);
-?>
+<div class="tab-content">
+    <div class="tab-pane fade in active" id="tab1">
+
+        <?php
+        //TODO implementeer database.php
+                //Create a query
+                $query = "SELECT * FROM Info ";
+                //submit the query and capture the result
+                 $result = Database::fetch($query);
+                $query=getenv("QUERY_STRING");
+                parse_str($query);
+        ?>
 
                   <div class="col-md-4">
                     <h2> Adres:</h2>
@@ -70,30 +71,23 @@
                          </div>
                         <td>
                         <input name="add" type="submit" id="submit" value="Update Gegevens">
-                        
                         </td>
-                       
                     </form>
                     <?php } ?>
-
                    </div> 
+     </div>
+    <div class="tab-pane fade" id="tab2">
+                <?php
+                //TODO implementeer database.php
+                        //Create a query
+                        $query = "SELECT * FROM Openingstijden ";
+                        //submit the query and capture the result
+                         $result = Database::fetch($query);
+                        $query=getenv("QUERY_STRING");
+                        parse_str($query);
+                ?>
 
-
-</div>
-<div class="tab-pane fade" id="tab2">
-<?php
-//TODO implementeer database.php
-        //Create a query
-        $query = "SELECT * FROM Openingstijden ";
-        //submit the query and capture the result
-         $result = Database::fetch($query);
-        $query=getenv("QUERY_STRING");
-        parse_str($query);
-
-
-?>
-
-                    <div class="col-md-4">
+                <div class="col-md-4">
                     <h2> Openingstijden:</h2>
                     <form class="form-horizontal" action="<?php echo ROOT_DIR;?>/manage/instellingen" method="Post">
                         <?php
@@ -144,14 +138,17 @@
                         <input name="add" type="submit" id="submit" value="Update Tijd">
                         </td>
                     </form>
+                <?php } ?>
                 </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+ </div>
+ </div>
+ </div>
 
-                  <?php } ?>
-
-</div>
-
-
-</div>
-</div>
 
         
