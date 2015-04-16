@@ -4,7 +4,10 @@
 	<div class="white">
 		<div class="row">
 			<div class="col-md-1">
-				<a href="./auctions" class="btn btn-default">Terug</a><a href="./addauction" class="btn btn-default">Nieuwe Veiling</a>
+				<a href="../auctions" class="btn btn-default">Terug</a>
+			</div>
+			<div class="col-md-1">
+				<a href="./addauction" class="btn btn-default">Product Toevoegen</a>
 			</div>
 		</div>
 		<div class="table-responsive padding-sm">
@@ -19,7 +22,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="AuctionProduct in AuctionProducts">
+					<tr ng-repeat="AuctionProduct in auctionProducts">
 						<td>{{AuctionProduct.id}}</td>
 						<td>{{AuctionProduct.name}}</td>
 						<td>{{AuctionProduct.colorCode}}</td>
