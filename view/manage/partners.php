@@ -1,6 +1,6 @@
 <?php Type::check("ArrayList:Partner", $model) ?>
 
-<div class="container" ng-app="partnerApp" ng-controller="partnerController">
+<div class="container">
 	<div class="white">
 		<div class="row">
 			<div class="col-md-1">
@@ -17,25 +17,23 @@
 						<th>Opties</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr ng-repeat="Partner in partners">
-						<td>{{Partner.id}}</td>
-						<td>{{Partner.name}}</td>
-						<td>{{Partner.website}}</td>
-						<td>
-							<a href="editauction/{{Partner.id}}"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
-							<a href="deleteauction/{{Partner.id}}"><button class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i></button></a>
-						</td>
-					</tr>
-				</tbody>
+                <tbody>
+                <?php
+                foreach ($model as $m)
+                {
+                    ?>
+                    <tr>
+                        <td><?php echo $m->id ?></td>
+                        <td><?php echo $m->name ?></td>
+                        <td><?php echo $m->website ?></td>
+                        <td>
+                        </td>
+                    </tr>
+                <?php
+                }
+                ?>
+                </tbody>
 			</table>
-			
-			<script>
-				var app = angular.module("partnerApp", []);
-				app.controller("partnerController", function($scope) {
-					$scope.partners = <?php echo $model->getJSON(); ?>;
-				});
-			</script>
 		</div>
 	</div>
 </div>

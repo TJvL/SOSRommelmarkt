@@ -260,10 +260,17 @@ class ManageController extends Controller
         $this->render("addpartner");
     }
 
-    public function addpartner_POST()
+    public function editpartner_GET()
     {
-        $partner = Partner::insert($_POST["name"], $_POST['website']);
-        $this->redirectTo("manage/editpartner/$partner->id");
+        if (isset($_GET["id"]))
+        {
+            $partnerList = new ArrayList("Partner");
+            $partnerList->addAll(Partner::selectById($_GET["id"]));
+
+            $this->render("editpartner", $partnerList);
+        }
+
     }
+
 }
 ?>

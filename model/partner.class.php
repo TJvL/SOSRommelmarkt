@@ -31,6 +31,26 @@ class Partner
 					WHERE id = ?";
 		Database::update($query, "ssi", array($this->name, $this->website, $this->id));
 	}
+
+    public static function selectById($id)
+    {
+        $query = "SELECT *
+			FROM Partners
+			WHERE id = ?";
+
+        // Execute the query.
+        $result = Database::fetch($query, "i", array($id));
+
+        // Put the results of the query into a product object.
+        $row = $result->fetch_assoc();
+
+        $partners = Partner::createObjectFromDatabaseRow($row);
+
+        // Free the result set.
+        $result->close();
+
+        return $partners;
+    }
 	
 	public static function deleteById($id)
 	{
