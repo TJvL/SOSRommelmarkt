@@ -50,16 +50,16 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
 
-            <ul class = "nav navbar-nav navbar-right">
+<!--             <ul class = "nav navbar-nav navbar-right">
 
                 <li>
-                    <!--User data -->
+                   
                     <div id="userData" class="col-md-12">
                         <div class="col-sm-8"><i class="fa fa-user"></i> Admin</div>
                         <div class="col-sm-2"><i class="fa fa-sign-out"></i></div>
                     </div>
                 </li>
-            </ul>
+            </ul> -->
 
         </div>
     </div>
@@ -81,7 +81,7 @@
                 <div class="col-md-12 manage-subtitle">
                     <p><a href="<?php echo ROOT_DIR?>/manage">Beheer</a> </p>
                 </div>
-                <div class="row">
+             
 
 
 
@@ -112,7 +112,7 @@
                         </a>
                     </div>
 
-                </div>
+            
 
 
 

@@ -184,7 +184,7 @@ h1.manage-title{
 
     background-color: #333;
     color:#fff;
-    margin-bottom: 15px;
+    margin-bottom:22px;
     margin-top:15px;
     padding-top:10px;
 }
@@ -266,4 +266,21 @@ h1.manage-title{
 .timeCss, #Maandag, #Dinsdag, #Woensdag, #Donderdag, #Vrijdag, #Zaterdag, #Zondag{
 
   margin-left: 30px !important;
+}
+
+@media (min-width: 1200px)  {
+ .btn-red{
+width: auto !important;
+
+  }
+}
+
+@media (min-width: 450px)  {
+ .btn-red{
+width: 100%;
+
+  }
+
+
+  }
 }
