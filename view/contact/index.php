@@ -1,20 +1,21 @@
-<?php 
-if(isset($_POST['submit'])){
-    $to	= "ihendrik1@avans.nl"; // Should be info@sosrommelmarkt.nl
-    $from = $_POST['email']; // this is the sender's Email address
-    $name = $_POST['name'];
-    $phone = $_POST['phone'];
-    $subject = "Contactformulier: " . $_POST['subject'];
-    $subject2 = "Kopie van uw contactformulier: " . $_POST['subject'];
-    $message = $name . "\n" . "Tel: " . $phone . "\n\n" . $_POST['message'];
-    $message2 = "Dit is een kopie van uw contactformulier." . "\n\n" . $message;
+<?php
 
-    $headers = "From:" . $from;
-    $headers2 = "From:" . $to;
-    mail($to,$subject,$message,$headers);
-    mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
-    //header('Location: thank_you.php'); // Use this to redirect to a thankyou page or something
-    }
+//if(isset($_POST['submit'])){
+//    $to	= "ihendrik1@avans.nl"; // Should be info@sosrommelmarkt.nl
+//    $from = $_POST['email']; // this is the sender's Email address
+//    $name = $_POST['name'];
+//    $phone = $_POST['phone'];
+//    $subject = "Contactformulier: " . $_POST['subject'];
+//    $subject2 = "Kopie van uw contactformulier: " . $_POST['subject'];
+//    $message = $name . "\n" . "Tel: " . $phone . "\n\n" . $_POST['message'];
+//    $message2 = "Dit is een kopie van uw contactformulier." . "\n\n" . $message;
+//
+//    $headers = "From:" . $from;
+//    $headers2 = "From:" . $to;
+//    mail($to,$subject,$message,$headers);
+//    mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
+//    //header('Location: thank_you.php'); // Use this to redirect to a thankyou page or something
+//    }
 ?>
 
 <div class="container">
@@ -46,7 +47,12 @@ if(isset($_POST['submit'])){
 						<div class="col-sm-10 padding-sm"></div>
 						<div class="col-sm-2 padding-sm"><input type="submit" name="submit" value="Verstuur" class="form-control"></div>
 					</div>
-
+                    <?php
+                    if(isset($viewbag['message']))
+                    {
+                        echo $viewbag['message'];
+                    }
+                    ?>
 				</div>
 
                 <span id="invalid"></span>

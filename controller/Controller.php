@@ -12,7 +12,7 @@ class Controller
 
     protected function render()
     {
-        if ($_GET["controller"] == "manage")
+        if ($this->name == "manage")
         {
             include("includes/markup/manageHeader.php");
         }
@@ -34,7 +34,7 @@ class Controller
             throw new BadFunctionCallException("Invalid argument count");
         }
         
-        if ($_GET["controller"] == "manage")
+        if ($this->name == "manage")
         {
         	include("includes/markup/manageFooter.php");
         }
