@@ -31,8 +31,14 @@
                     </button>
                 </a>
             </div>
-
-
+			<div class="col-md-2">
+			    <a href="<?php echo ROOT_DIR; ?>/manage/auctions">
+			        <button class="btn btn-red">
+			            <i class="fa fa-gavel fa-5x fa-fw"></i>
+			            <br /><b>Veilingen</b>
+			        </button>
+			    </a>
+			</div>
         </div>
     </div>
 </div>
