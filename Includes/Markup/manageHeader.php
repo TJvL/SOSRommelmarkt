@@ -33,39 +33,6 @@
 </head>
 <body>
 
-<nav class= "navbar navbar-default navbar-static-top">
-
-    <div class="container">
-        <div class="navbar-header">
-
-            <button class = "navbar-toggle" data-toggle = "collapse" data-target = "#navbar">
-<!--                <span class="icon-bar">hoi</span>-->
-<!--                <span class="icon-bar"></span>-->
-<!--                <span class="icon-bar"></span>-->
-            </button>
-
-
-
-
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-
-<!--             <ul class = "nav navbar-nav navbar-right">
-
-                <li>
-                   
-                    <div id="userData" class="col-md-12">
-                        <div class="col-sm-8"><i class="fa fa-user"></i> Admin</div>
-                        <div class="col-sm-2"><i class="fa fa-sign-out"></i></div>
-                    </div>
-                </li>
-            </ul> -->
-
-        </div>
-    </div>
-
-</nav>
-
 <div class="container">
 
     <div id="headerdiv">

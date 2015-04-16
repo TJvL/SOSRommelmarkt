@@ -27,8 +27,8 @@
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-      <script src="http://css3-mediaqueries-js.googlecode.com/files/css3-mediaqueries.js"></script>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://css3-mediaqueries-js.googlecode.com/files/css3-mediaqueries.js"></script>
     <![endif]-->    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
@@ -48,127 +48,72 @@
 
 </head>
 <body>
-    
     <nav class= "navbar navbar-default navbar-static-top">
-		
-			<div class="container">
-				<div class="navbar-header">			
-					
-					<button class = "navbar-toggle" data-toggle = "collapse" data-target = "#navbar">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					
+        <div class="container">
+            <div class="navbar-header">
+                <button class = "navbar-toggle" data-toggle = "collapse" data-target = "#navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
 
-<?php
-        $query = "SELECT * FROM Info ";
-        //submit the query and capture the result
-         $result = Database::fetch($query);
-        $query=getenv("QUERY_STRING");
-        parse_str($query);
-        while ($row = $result->fetch_assoc()) {
-?>
+            <?php
+            $query = "SELECT * FROM Info ";
+            //submit the query and capture the result
+            $result = Database::fetch($query);
+            $query=getenv("QUERY_STRING");
+            parse_str($query);
 
-				</div>
-				<div id="navbar" class="collapse navbar-collapse">
-					  <ul class = "nav navbar-nav navbar-left">
-              <li>
-               <div class="contact-info">
-              <span class="icon"><i class="fa fa-phone"></i></span>
-               <div class="contact-phone"><span><?php echo $row['Telefoon']; ?></span> </div>
-               <span class="icon"><i class="fa fa-envelope"></i></span>
-               <div class="contact-mail"><span><?php echo $row['Email']; ?> </span></div>
-               </div>
-              </li>
-            </ul>
-            
-               <?php } ?>
-
-						<ul class = "nav navbar-nav navbar-right">
-						
-<!--                            <li>-->
-<!--                                <div id="cart_details_3">-->
-<!--                                      <div class="cart_btn">-->
-<!--                                        <span class="icon"><i class="fa fa-shopping-cart"></i></span>-->
-<!--                                        <div class="items"><span>2 producten</span></div>-->
-<!--                                        <div class="price"><span>&euro; 27,95</span></div>-->
-<!--                                      </div>-->
-<!--                                      <div class="details">-->
-<!--                                        <div class="product_row">-->
-<!--                                          <div class="image">-->
-<!--                                             <img id="cart_image" src="http://i.imgur.com/gJsXvHB.jpg"/>-->
-<!--                                          </div>-->
-<!--                                          <div class="info">-->
-<!--                                            <span class="title">Pink Halter Small</span>-->
-<!--                                            <span class="price">$27.95</span>-->
-<!--                                            <div class="qty"><input id="qty" placeholder="1" disabled></input></div>-->
-<!--                                            <div class="remove"><i class="fa fa-times-circle"></i></div>-->
-<!--                                          </div>-->
-<!--                                        </div>-->
-<!--                                        <div class="product_row">-->
-<!--                                          <div class="image">-->
-<!--                                            <img id="cart_image" src="http://i.imgur.com/gJsXvHB.jpg"/>-->
-<!--                                          </div>-->
-<!--                                          <div class="info">-->
-<!--                                            <span class="title">Pink Halter Small</span>-->
-<!--                                            <span class="price">$27.95</span>-->
-<!--                                            <div class="qty"><input id="qty" placeholder="1" disabled></input></div>-->
-<!--                                            <div class="remove"><i class="fa fa-times-circle"></i></div>-->
-<!--                                          </div>-->
-<!--                                        </div>-->
-<!--                                        <div class="bottom">-->
-<!--                                          <div class="left">-->
-<!--                                              <p>Totaal: &euro; 27,95</p>-->
-<!---->
-<!--                                          </div>-->
-<!--                                          <div class="right">-->
-<!--                                            <a class="checkout" href="#">Bestellen <i class="fa fa-chevron-right"></i></a>-->
-<!--                                          </div>-->
-<!--                                       </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </li>-->
-                        </ul>
-					 
-					</div> 
-			</div>
-		
-		</nav>
+            while ($row = $result->fetch_assoc())
+            {
+            ?>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class = "nav navbar-nav navbar-left">
+                    <li>
+                        <div class="contact-info">
+                            <span class="icon"><i class="fa fa-phone"></i></span>
+                            <div class="contact-phone"><span><?php echo $row['Telefoon']; ?></span></div>
+                            <span class="icon"><i class="fa fa-envelope"></i></span>
+                            <div class="contact-mail"><span><?php echo $row['Email']; ?> </span></div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a href="<?php echo ROOT_DIR; ?>/home/index"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a  href="<?php echo ROOT_DIR; ?>/shop/index"><i class="fa fa-cubes"></i> Producten</a></li>
+                    <li><a href="<?php echo ROOT_DIR; ?>/subvention/index"><i class="fa fa-money"></i> Subsidie</a></li>
+                    <li><a href="<?php echo ROOT_DIR; ?>/aboutUs/index"><i class="fa fa-group"></i> Over ons</a></li>
+                    <li><a  href="<?php echo ROOT_DIR; ?>/contact/index"><i class="fa fa-envelope"></i> Contact</a></li>
+                </ul>
+           <?php } ?>
+            </div>
+        </div>
+    </nav>
 
     <div class="container"> 
-        
         <div id="headerdiv">
-        <div class="row"> 
-        
-            <div class="col-sm-3">
-                
-                   <a href="<?php echo ROOT_DIR; ?>/home/index">
-                    <img class="img-responsive" id="logo" src="<?php echo ROOT_DIR; ?>/img/logo2.png" />
-                  </a>
-                
-            </div>            
-            <div class="col-md-9">
-                
-                
-                 <div>  
-                    <a id="touch-menu" class="mobile-menu" href="#">Menu<i class="fa fa-angle-double-down fa-lg"></i></a>
-
-                    <subnav>
-                        <ul class="menu">
-                            <li><a href="<?php echo ROOT_DIR; ?>/home/index"><i class="fa fa-home"></i> Home</a></li>
-                            <li><a  href="<?php echo ROOT_DIR; ?>/shop/index"><i class="fa fa-cubes"></i> Producten</a></li>
-                            <li><a href="<?php echo ROOT_DIR; ?>/subvention/index"><i class="fa fa-money"></i> Subsidie</a></li>
-                             <li><a href="<?php echo ROOT_DIR; ?>/aboutUs/index"><i class="fa fa-group"></i> Over ons</a></li>
-                            <li><a  href="<?php echo ROOT_DIR; ?>/contact/index"><i class="fa fa-envelope"></i> Contact</a></li>
-                      </ul>
-                    </subnav>
+            <div class="row">
+                <div class="col-sm-3">
+                    <a href="<?php echo ROOT_DIR; ?>/home/index">
+                        <img class="img-responsive" id="logo" src="<?php echo ROOT_DIR; ?>/img/logo2.png" />
+                    </a>
                 </div>
-                
+<!--                <div class="col-md-9">-->
+<!--                     <div>-->
+<!--                         <a id="touch-menu" class="mobile-menu" href="#">Menu<i class="fa fa-angle-double-down fa-lg"></i></a>-->
+<!--                         <subnav>-->
+<!--                             <ul class="menu">-->
+<!--                                 <li><a href="--><?php //echo ROOT_DIR; ?><!--/home/index"><i class="fa fa-home"></i> Home</a></li>-->
+<!--                                 <li><a  href="--><?php //echo ROOT_DIR; ?><!--/shop/index"><i class="fa fa-cubes"></i> Producten</a></li>-->
+<!--                                 <li><a href="--><?php //echo ROOT_DIR; ?><!--/subvention/index"><i class="fa fa-money"></i> Subsidie</a></li>-->
+<!--                                 <li><a href="--><?php //echo ROOT_DIR; ?><!--/aboutUs/index"><i class="fa fa-group"></i> Over ons</a></li>-->
+<!--                                 <li><a  href="--><?php //echo ROOT_DIR; ?><!--/contact/index"><i class="fa fa-envelope"></i> Contact</a></li>-->
+<!--                             </ul>-->
+<!--                        </subnav>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
-            
         </div>
-        </div>
-        
     </div>
     
