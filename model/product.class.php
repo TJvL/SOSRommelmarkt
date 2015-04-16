@@ -18,7 +18,7 @@ abstract class Product
 
     public function getMainImagePath()
     {
-        $result = glob(Product::IMAGES_DIRECTORY . "/" . $this->id . "/" . "main.*");
+        $result = glob(Product::IMAGES_DIRECTORY . "/" . $this->id . "/" . "*");
         if ($result)
             return ROOT_DIR . "/" . $result[0];
         else
