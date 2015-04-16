@@ -53,11 +53,11 @@
     <nav class= "navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
-                <button class = "navbar-toggle" data-toggle = "collapse" data-target = "#navbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+<!--                <button class = "navbar-toggle" data-toggle = "collapse" data-target = "#navbar">-->
+<!--                    <span class="icon-bar"></span>-->
+<!--                    <span class="icon-bar"></span>-->
+<!--                    <span class="icon-bar"></span>-->
+<!--                </button>-->
             </div>
 
             <?php
@@ -70,8 +70,8 @@
             while ($row = $result->fetch_assoc())
             {
             ?>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class = "nav navbar-nav navbar-left">
+            <div id="navbar" class=" navbar">
+                <ul class = "nav navbar-nav ">
                     <li>
                         <div class="contact-info">
                             <span class="icon"><i class="fa fa-phone"></i></span>
@@ -81,13 +81,13 @@
                         </div>
                     </li>
                 </ul>
-                <ul class="nav navbar-nav navbar-left">
-                    <li><a href="<?php echo ROOT_DIR; ?>/home/index"><i class="fa fa-home"></i> Home</a></li>
-                    <li><a  href="<?php echo ROOT_DIR; ?>/shop/index"><i class="fa fa-cubes"></i> Producten</a></li>
-                    <li><a href="<?php echo ROOT_DIR; ?>/subvention/index"><i class="fa fa-money"></i> Subsidie</a></li>
-                    <li><a href="<?php echo ROOT_DIR; ?>/aboutUs/index"><i class="fa fa-group"></i> Over ons</a></li>
-                    <li><a  href="<?php echo ROOT_DIR; ?>/contact/index"><i class="fa fa-envelope"></i> Contact</a></li>
-                </ul>
+<!--                <ul class="nav navbar-nav navbar-left">-->
+<!--                    <li><a href="--><?php //echo ROOT_DIR; ?><!--/home/index"><i class="fa fa-home"></i> Home</a></li>-->
+<!--                    <li><a  href="--><?php //echo ROOT_DIR; ?><!--/shop/index"><i class="fa fa-cubes"></i> Producten</a></li>-->
+<!--                    <li><a href="--><?php //echo ROOT_DIR; ?><!--/subvention/index"><i class="fa fa-money"></i> Subsidie</a></li>-->
+<!--                    <li><a href="--><?php //echo ROOT_DIR; ?><!--/aboutUs/index"><i class="fa fa-group"></i> Over ons</a></li>-->
+<!--                    <li><a  href="--><?php //echo ROOT_DIR; ?><!--/contact/index"><i class="fa fa-envelope"></i> Contact</a></li>-->
+<!--                </ul>-->
            <?php } ?>
             </div>
         </div>
@@ -101,20 +101,20 @@
                         <img class="img-responsive" id="logo" src="<?php echo ROOT_DIR; ?>/img/logo2.png" />
                     </a>
                 </div>
-<!--                <div class="col-md-9">-->
-<!--                     <div>-->
-<!--                         <a id="touch-menu" class="mobile-menu" href="#">Menu<i class="fa fa-angle-double-down fa-lg"></i></a>-->
-<!--                         <subnav>-->
-<!--                             <ul class="menu">-->
-<!--                                 <li><a href="--><?php //echo ROOT_DIR; ?><!--/home/index"><i class="fa fa-home"></i> Home</a></li>-->
-<!--                                 <li><a  href="--><?php //echo ROOT_DIR; ?><!--/shop/index"><i class="fa fa-cubes"></i> Producten</a></li>-->
-<!--                                 <li><a href="--><?php //echo ROOT_DIR; ?><!--/subvention/index"><i class="fa fa-money"></i> Subsidie</a></li>-->
-<!--                                 <li><a href="--><?php //echo ROOT_DIR; ?><!--/aboutUs/index"><i class="fa fa-group"></i> Over ons</a></li>-->
-<!--                                 <li><a  href="--><?php //echo ROOT_DIR; ?><!--/contact/index"><i class="fa fa-envelope"></i> Contact</a></li>-->
-<!--                             </ul>-->
-<!--                        </subnav>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <div class="col-md-9">
+                     <div>
+                         <a id="touch-menu" class="mobile-menu" href="#">Menu<i class="fa fa-angle-double-down fa-lg"></i></a>
+                         <subnav>
+                             <ul class="menu">
+                                 <li><a href="<?php echo ROOT_DIR; ?>/home/index"><i class="fa fa-home"></i> Home</a></li>
+                                 <li><a  href="<?php echo ROOT_DIR; ?>/shop/index"><i class="fa fa-cubes"></i> Producten</a></li>
+                                 <li><a href="<?php echo ROOT_DIR; ?>/subvention/index"><i class="fa fa-money"></i> Subsidie</a></li>
+                                 <li><a href="<?php echo ROOT_DIR; ?>/aboutUs/index"><i class="fa fa-group"></i> Over ons</a></li>
+                                 <li><a  href="<?php echo ROOT_DIR; ?>/contact/index"><i class="fa fa-envelope"></i> Contact</a></li>
+                             </ul>
+                        </subnav>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
