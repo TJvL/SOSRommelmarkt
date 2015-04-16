@@ -104,8 +104,6 @@ class ManageController extends Controller
     					rmdir($dir);
     				}
     				
-    				file_put_contents("debuglogfile.txt", "1", FILE_APPEND | LOCK_EX);
-    				
     				// Return 0 for great success.
     				header("Content-Type: application/json");
     				exit(json_encode(0));
