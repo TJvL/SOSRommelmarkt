@@ -95,43 +95,57 @@
                         <div class="form-group">
                             <label class="col-xs-2 control-label" >Maandag</label>
                             <div class="col-xs-10">
+                                <div calss ="timeCss">
                                 <input id="Maandag" type="text" name="Maandag" value="<?php echo $row['Maandag']; ?>"  />
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-2 control-label" >Dinsdag</label>
                             <div class="col-xs-10">
+                                <div calss ="timeCss">
                                  <input id="Dinsdag" type="text" name="Dinsdag" value="<?php echo $row['Dinsdag']; ?> "  />
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-2 control-label">Woensdag</label>
                             <div class="col-xs-10">
+                                <div calss ="timeCss">
                                <input id="Woensdag" type="text" name="Woensdag" value="<?php echo $row['Woensdag']; ?> "  />
+                                </div>
                             </div>
                         </div>
                             <div class="form-group">
                             <label class="col-xs-2 control-label">Donderdag</label>
                             <div class="col-xs-10">
+                                <div calss ="timeCss">
                                  <input id="Donderdag" type="text" name="Donderdag" value="<?php echo $row['Donderdag']; ?> "  />
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-2 control-label">Vrijdag</label>
                             <div class="col-xs-10">
+                                <div calss ="timeCss">
                                <input id="Vrijdag" type="text" name="Vrijdag" value="<?php echo $row['Vrijdag']; ?>" />
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-2 control-label">Zaterdag</label>
                             <div class="col-xs-10">
+                                <div calss ="timeCss">
                                  <input id="Zaterdag" type="text" name="Zaterdag" value="<?php echo $row['Zaterdag']; ?>" />
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-2 control-label">Zondag</label>
                             <div class="col-xs-10">
+                            <div calss ="timeCss">
                                 <input id="Zondag" type="text" name="Zondag" value="<?php echo $row['Zondag']; ?> " />
+                            </div>
                             </div>
                         </div>
                         <td>
