@@ -326,8 +326,6 @@ class ManageController extends Controller
 			}
 			else if ($_GET["id"] == "update")
 			{
-				file_put_contents("debuglogfile.txt", var_export($_POST, true), FILE_APPEND | LOCK_EX);
-				
 				// Check if all the necessary data has been sent with the request.
 				if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["colorCode"]))
 				{
@@ -384,31 +382,6 @@ class ManageController extends Controller
 		
 		// TODO: Error or some shit
 		exit(json_encode(1));
-	}
-	
-	public function editauction_POST()
-	{
-		if (isset($_GET["id"]))
-		{
-			if ($_GET["id"] == "delete")
-			{
-				if (isset($_POST["auctionProductId"]))
-				{
-					$auctionProduct = AuctionProduct::deleteById($_POST["auctionProductId"]);
-     
-					// return 0 for success
-					header("Content-Type: application/json");
-					exit(json_encode(o));
-				}
-			}
-			else if ($_GET["id"] == "update")
-			{
-				// TODO: Implement update function
-			}
-		}
-	
-	// TODO: Deal with errors
-	exit(json_encode(1));
 	}
 }
 ?>

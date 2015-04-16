@@ -60,12 +60,12 @@
 		{
 			var data = 
 			{
-					auctionProductId: $auctionProductId
+					id: $auctionProductId
 			};
 
 			$.ajax(
 			{
-				url: "/SOSRommelmarkt/manage/editauction/delete",
+				url: "../auctionproduct/delete",
 				type: "POST",
 				data: data,
 				async: true,
@@ -80,7 +80,7 @@
 						alert("Dit product kan niet worden verwijderd.");
 					}
 
-					document.location.href = "./auctions";
+					location.reload();
 				}
 			});
 		}

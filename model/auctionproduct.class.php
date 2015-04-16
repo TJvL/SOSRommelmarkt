@@ -94,10 +94,12 @@ class AuctionProduct extends Product
 
     public static function selectCurrentAuction()
     {
-        $query = "SELECT AuctionProductList.AuctionProduct_id, name, description, addedBy, colorCode
+        $query = "SELECT AuctionProduct.id, name, description, addedBy, colorCode
 			FROM AuctionProductList
-			JOIN AuctionProduct ON AuctionProduct.id = AuctionProductList.AuctionProduct_id
-			JOIN Product ON AuctionProduct.id = Product.id
+			JOIN AuctionProduct
+        	ON AuctionProduct.id = AuctionProductList.AuctionProduct_id
+			JOIN Product
+        	ON AuctionProduct.id = Product.id
 			WHERE AuctionProductList.Auction_id = (
 				SELECT id FROM Auction
 				WHERE startDate <= CURDATE()
