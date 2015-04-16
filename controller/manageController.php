@@ -77,7 +77,41 @@ class ManageController extends Controller
     	{
     		// TODO: weird ass workaround t'll I know the best way to do this... w/e
     		// If the id equals update a post request for updating a product has been sent.
-    		if ($_GET["id"] == "update")
+    		if ($_GET["id"] == "delete")
+    		{
+    			// Check if all the necessary data has been sent with the request.
+    			if (isset($_POST["productId"]))
+    			{
+    				// Delete the product.
+    				$shopProduct = ShopProduct::deleteById($_POST["productId"]);
+    				
+    				// Delete the product images recursively.
+    				$dir = Product::IMAGES_DIRECTORY . "/" . $_POST["productId"];
+    				if (is_dir($dir))
+    				{
+    					$objects = scandir($dir);
+    					foreach ($objects as $object)
+    					{
+    						if ($object != "." && $object != "..")
+    						{
+    							if (filetype($dir . "/" . $object) == "dir")
+    								rrmdir($dir . "/" . $object);
+    							else
+    								unlink($dir . "/" . $object);
+    						}
+    					}
+    					reset($objects);
+    					rmdir($dir);
+    				}
+    				
+    				file_put_contents("debuglogfile.txt", "1", FILE_APPEND | LOCK_EX);
+    				
+    				// Return 0 for great success.
+    				header("Content-Type: application/json");
+    				exit(json_encode(0));
+    			}
+    		}
+    		else if ($_GET["id"] == "update")
     		{
     			// Check if all the necessary data has been sent with the request.
     			if (isset($_POST["productId"]) && isset($_POST["productName"]) && isset($_POST["productDescription"]) && isset($_POST["productColorCode"]) &&
