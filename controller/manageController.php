@@ -264,10 +264,7 @@ class ManageController extends Controller
     {
         if (isset($_GET["id"]))
         {
-            $partnerList = new ArrayList("Partner");
-            $partnerList->addAll(Partner::selectById($_GET["id"]));
-
-            $this->render("editpartner", $partnerList);
+            $this->render("editpartner", Partner::selectById($_GET["id"]));
         }
 
     }

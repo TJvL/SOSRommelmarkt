@@ -27,6 +27,7 @@
                         <td><?php echo $m->name ?></td>
                         <td><?php echo $m->website ?></td>
                         <td>
+                       		<a href="editpartner/<?php echo $m->id ?>"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
                         </td>
                     </tr>
                 <?php

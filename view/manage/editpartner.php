@@ -1,4 +1,4 @@
-<?php Type::check("ArrayList:Partner", $model) ?>
+<?php Type::check("Partner", $model) ?>
 
 <head>
 
@@ -13,7 +13,7 @@
 
                 var data =
                 {
-                    partnerID:			<?php echo $model->id ?>,
+                    partnerID:	<?php echo $model->id ?>,
                     name:		$("#name").val(),
                     website:	$("#website").val()
                 };
