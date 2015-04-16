@@ -52,17 +52,16 @@
 
 	function deleteAuction($auctionId)
 	{
-		alert($auctionId);
 		if (confirm("Weet u zeker dat u deze veiling wilt verwijderen?"))
 		{
 			var data =
 			{
-					id: $auctionId
+					auctionId: $auctionId
 			};
 
 			$.ajax(
 					{
-						url: "delete",
+						url: "/SOSRommelmarkt/manage/auctions/delete",
 						type: "POST",
 						data: data,
 						async: true,
@@ -70,14 +69,14 @@
 						{
 							if (result == 0)
 							{
-								alert("Success");
+								// OK
 							}
 							else
 							{
-								alert("Fail");
+								alert("Auction could not be removed.");
 							}
 
-// 							document.location.href = "./auctions";
+							document.location.href = "./auctions";
 						}
 					});
 		}
