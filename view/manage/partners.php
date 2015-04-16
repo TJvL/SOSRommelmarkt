@@ -2,6 +2,9 @@
 
 <div class="container">
 	<div class="white">
+        <div class="row">
+            <h1>Partner beheer</h1>
+        </div>
 		<div class="row">
 			<div class="col-md-1">
 				<a href="./addpartner" class="btn btn-default">Nieuwe Partner</a>
