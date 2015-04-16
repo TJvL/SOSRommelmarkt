@@ -308,5 +308,12 @@ class ManageController extends Controller
     	// TODO: Error or some shit
     	exit(json_encode(1));
     }
+
+    public function addpartner_POST()
+    {
+        Partner::insert($_POST["name"], $_POST["website"]);
+
+        $this->redirectTo("/manage/partners");
+    }
 }
 ?>
