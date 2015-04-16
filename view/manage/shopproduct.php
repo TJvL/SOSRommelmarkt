@@ -368,7 +368,7 @@ $(document).ready(function()
 				</div>
 			</div>
 			<?php
-			foreach ($model->getImagePaths() as &$imagePath)
+			foreach ($model->getImagePaths() as $imagePath)
 			{
 				?>
 				<div class="col-sm-2">
