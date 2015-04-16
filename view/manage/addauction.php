@@ -89,5 +89,5 @@
         $('form.idealforms').idealforms('nextStep');
     });
 
-    $('.datepicker').datepicker('option', 'dateFormat', 'yyyy-mm-dd');
+    $('.datepicker').datepicker('option', 'dateFormat', 'yy-mm-dd');
 </script>
