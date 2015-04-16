@@ -1,13 +1,11 @@
 <?php
 
-include_once("product.class.php");
-
 class AuctionProduct extends Product
 {	
 	private static function createObjectFromDatabaseRow($row)
 	{
 		$auctionProduct = new AuctionProduct();
-		$auctionProduct->id = $row["AuctionProduct_id"];
+		$auctionProduct->id = $row["id"];
 		$auctionProduct->name = $row["name"];
 		$auctionProduct->description = $row["description"];
 		$auctionProduct->addedBy = $row["addedBy"];
@@ -68,10 +66,13 @@ class AuctionProduct extends Product
 	
 	public static function selectByAuctionId($id)
 	{
-		$query = "SELECT Product.id AS AuctionProduct_id, Product.name, Product.description, Product.addedBy, Product.colorCode
-		FROM AuctionProductList
-		LEFT JOIN Product ON AuctionProductList.AuctionProduct_id = Product.id
-		WHERE AuctionProductList.Auction_id = ?";
+		$query = "SELECT AuctionProduct.id, name, description, addedBy, colorCode
+			FROM AuctionProductList
+			JOIN AuctionProduct
+			ON AuctionProduct.id = AuctionProductList.AuctionProduct_id
+			JOIN Product
+			ON AuctionProduct.id = Product.id
+			WHERE Auction_id = ?";
 		
 		// execute the query
 		$result = Database::fetch($query, "i", array($id));
@@ -121,11 +122,11 @@ class AuctionProduct extends Product
 	
 	public static function selectById($id)
 	{
-		$query = "SELECT AuctionProductList.AuctionProduct_id, name, description, addedBy, colorCode
-			FROM AuctionProductList
-			JOIN AuctionProduct ON AuctionProduct.id = AuctionProductList.AuctionProduct_id
-			JOIN Product ON AuctionProduct.id = Product.id
-			WHERE AuctionProduct.AuctionProduct_id = ?";
+		$query = "SELECT AuctionProduct.id, name, description, addedBy, colorCode
+			FROM AuctionProduct
+			LEFT JOIN Product
+			ON AuctionProduct.id = Product.id
+			WHERE AuctionProduct.id = ?";
 		
 		// Execute the query.
 		$result = Database::fetch($query, "i", array($id));

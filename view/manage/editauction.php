@@ -28,7 +28,7 @@
 						<td>{{AuctionProduct.colorCode}}</td>
 						<td>{{AuctionProduct.addedBy}}</td>
 						<td>
-							<a href="#"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
+							<a href="../auctionproduct/{{AuctionProduct.id}}"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
 							<a href="#"><button class="btn btn-default" title="Verwijderen"><i class="fa fa-trash"></i></button></a>
 						</td>
 					</tr>
