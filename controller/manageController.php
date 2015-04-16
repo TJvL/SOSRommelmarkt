@@ -64,6 +64,13 @@ class ManageController extends Controller
         $this->render("addshopproduct");
     }
 
+    public function addshopproduct_POST()
+    {
+        $shopProduct = ShopProduct::insert($_POST["name"], $_POST["description"], "Administrator", $_POST["colorCode"], $_POST["price"], 0);
+
+        $this->redirectTo("/manage/shopproduct/$shopProduct->id");
+    }
+
 	public function instellingen_GET()
     {
         $this->render("instellingen");
