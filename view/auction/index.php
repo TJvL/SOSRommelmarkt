@@ -83,30 +83,19 @@
                                             <!-- Carousel end -->
                                             <div style="display: inline-block; width: 65%; vertical-align: top;">
                                                 <div class="row margin-sm">
-
                                                     <div class="col-md-12 margin-lg black-bar">
-
                                                         <h1><?php echo $product->name; ?></h1>
-
                                                     </div>
                                                     <div class="col-md-12 margin-lg padding-hor-lg red-bar">
-
                                                         <h3>Beschrijving</h3>
-
                                                     </div>
                                                     <div class="col-md-12 margin-lg padding-sm">
-
                                                         <p>
                                                             <?php echo $product->description; ?>
                                                         </p>
-
                                                     </div>
-
                                                 </div>
-
-
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -115,15 +104,24 @@
 
                         </div>
                     </div>
-
                 <?php }?>
 
         </div>
 
         <!--Auction info-->
         <div class="auction-info padding-lg">
-
-            <a href="">Meer weten over veilingen? <i class="fa fa-chevron-right"></i></a>
+            <a href="#" data-toggle="modal" data-target=".bs-auction-info-modal-lg">Meer weten over veilingen? <i class="fa fa-chevron-right"></i></a>
+            <div class="modal fade bs-auction-info-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <h3>Over de Veling</h3>
+                        <p style="color:black; margin-left: 12px">
+                            In de veiling bieden wij onze speciale selectie van producten aan.<br />
+                            U kunt bieden tot de tijd over is. Veel plezier.
+                        </p>
+                    </div>
+                </div>
+            </div>
 
         </div>
 

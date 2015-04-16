@@ -368,14 +368,14 @@ $(document).ready(function()
 				</div>
 			</div>
 			<?php
-			foreach ($model->getImagePaths() as &$imagePath)
+			foreach ($model->getImagePaths() as $imagePath)
 			{
 				?>
 				<div class="col-sm-2">
 					<div class="thumbnail">
-						<img src="<?php echo $imagePath ?>">
+						<img src="<?php echo $imagePath; ?>">
 						<div class="caption text-center">
-							<a class="btn btn-danger" onClick="handleDeleteImage('<?php echo $imagePath ?>')">Verwijder</a>
+							<a class="btn btn-danger" onClick="handleDeleteImage('<?php echo $imagePath; ?>')">Verwijder</a>
 						</div>
 					</div>
 				</div>
