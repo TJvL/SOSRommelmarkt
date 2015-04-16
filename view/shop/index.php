@@ -2,6 +2,16 @@
 
 <div class="container" data-ng-app="shopApp" ng-controller="shopController">
 
+    <div style="margin-bottom:2%" class="white">
+        <div class="row">
+            <div class="col-sm-12">
+                <p>Alle producten aangeboden in deze webshop zijn telefonisch te reserveren.</p>
+                <p>U kunt langs komen in onze winkel om uw reserveringen af te rekenen.</p>
+                <p>Telefoon nummer: 073 613 3774</p>
+            </div>
+        </div>
+    </div>
+
     <div style="margin-bottom:5%" class="white">
 
         <h1>Webshop</h1>
