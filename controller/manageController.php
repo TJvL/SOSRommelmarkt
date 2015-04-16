@@ -107,7 +107,7 @@ class ManageController extends Controller
     				$shopProduct->update();
     				
     				// Return 0 for great success.
-    				header('Content-Type: application/json');
+    				header("Content-Type: application/json");
     				exit(json_encode(0));
     			}
     		}
@@ -134,8 +134,18 @@ class ManageController extends Controller
 					$imageTargetFilePath = Product::IMAGES_DIRECTORY . "/" . $_POST["productId"] . "/" . $i . ".jpg";
 					$manipulator->save($imageTargetFilePath, IMAGETYPE_JPEG);
 					
-					header('Content-Type: application/json');
+					header("Content-Type: application/json");
 					exit(json_encode(0));
+    			}
+    		}
+    		else if ($_GET["id"] == "deleteImage")
+    		{
+    			if (isset($_POST["productId"]) && isset($_POST["imageName"]))
+    			{
+    				unlink(Product::IMAGES_DIRECTORY . "/" . $_POST["productId"] . "/" . $_POST["imageName"]);
+    				
+    				header("Content-Type: application/json");
+    				exit(json_encode(0));
     			}
     		}
     	}

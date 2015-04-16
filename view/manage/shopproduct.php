@@ -76,6 +76,38 @@ function handleNewImage()
     $("#cropperDiv").addClass("hidden");
 }
 
+function handleDeleteImage(imagePath)
+{
+	imageName = imagePath.substring(imagePath.lastIndexOf("/") + 1);
+	alert(imageName);
+	
+	var data =
+	{
+		productId: $("#productId").val(),
+    	imageName: imageName
+	};
+
+	$.ajax(
+	{
+		url: "deleteImage",
+        type: "POST",
+        data: data,
+        async: true,
+        success: function(result)
+        {
+	        // Check if it went alright.
+	        if (result == 0)
+	        {
+	        	alert("success");
+	        }
+	        else
+	        {
+	        	alert("fail");
+	        }
+        }
+	});
+}
+
 $(document).ready(function()
 {
 	$("#addImageButton").click(function()
@@ -281,7 +313,7 @@ $(document).ready(function()
 					<div class="thumbnail">
 						<img src="<?php echo $imagePath ?>" alt="">
 						<div class="caption text-center">
-							<a href="#" class="btn btn-danger" role="button">Verwijder</a>
+							<a class="btn btn-danger" onClick="handleDeleteImage('<?php echo $imagePath ?>')">Verwijder</a>
 						</div>
 					</div>
 				</div>
