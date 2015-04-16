@@ -238,7 +238,7 @@ class ManageController extends Controller
 			
 			// get the auctionproducts
 			$auctionProductList = new ArrayList("AuctionProduct");
-			$auctionProductList->addAll()
+			$auctionProductList->addAll();
 			
 			// render
 			$this->render("editauction", $auctionProductList);
