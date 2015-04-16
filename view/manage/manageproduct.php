@@ -14,13 +14,13 @@
             <table id="productTable" class="display">
                 <thead>
                 <tr>
-                    <th>product id</th>
-                    <th>naam</th>
-                    <th>kleur code</th>
-                    <th>prijs</th>
-                    <th>toegevoegd door</th>
-                    <th>is gereserveerd</th>
-                    <th>bewerken?</th>
+                    <th>Product ID</th>
+                    <th>Naam</th>
+                    <th>Kleur Code</th>
+                    <th>Prijs</th>
+                    <th>Toegevoegd Door</th>
+                    <th>Gereserveerd</th>
+                    <th>Bewerken?</th>
                 </tr>
                 </thead>
                 <tbody>
