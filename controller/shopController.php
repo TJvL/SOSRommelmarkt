@@ -16,8 +16,7 @@ class ShopController extends Controller
 
     public function detail_GET()
     {
-        //Hier komt logic met de GET data
-        $prod = Product::get($_GET['id']);
+        $prod = ShopProduct::selectById($_GET['id']);
 
         $this->render("detail", $prod);
     }
