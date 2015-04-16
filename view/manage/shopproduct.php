@@ -176,6 +176,12 @@ $(document).ready(function()
 
 <div class="container">
 	<div class="white">
+        <div class="row">
+            <div class="col-md-1">
+                <a href="<?php echo ROOT_DIR . '/manage/productList'?>" class="btn btn-default">Back</a>
+            </div>
+        </div>
+
 		<div class="row">
 			<hr>
 			<div class="col-sm-1"></div>
