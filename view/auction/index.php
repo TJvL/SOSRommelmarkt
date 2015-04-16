@@ -114,18 +114,26 @@
             <div class="modal fade bs-auction-info-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <h3>Over de Veling</h3>
-                        <p style="color:black; margin-left: 12px">
-                            In de veiling bieden wij onze speciale selectie van producten aan.<br />
-                            U kunt bieden tot de tijd over is. Veel plezier.
+                        <div style="margin-left: 12px; color:black;">
+                        <h3>Over de Veiling</h3>
+                        <p>
+                            Elke maand worden er bijzondere artikelen in onze vitrinekast geplaatst. Iedereen kan een bod op een van deze artikelen uitbrengen.<br />
+                            Bij de kassa in de winkel liggen biedbriefjes. Op het biedbriefje schrijf je:
+                        </p>
+                        <ul>
+                            <li>je naam</li>
+                            <li>je telefoonnummer</li>
+                            <li>welk bedrag je wilt betalen</li>
+                        </ul>
+                        <p>
+                            Je ingevulde briefje gaat in de vitrinebus naast de vitrinekast. elke laatste zaterdag van de maand worden alle biedbriefjes verzameld en de hoogste bieder wordt telefonisch benaderd.
                         </p>
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
+</div>
 
 </div>
 
