@@ -2,7 +2,7 @@
 
 <div class="container" data-ng-app="shopApp" ng-controller="shopController">
 
-    <div class="white">
+    <div style="margin-bottom:5%" class="white">
 
         <h1>Webshop</h1>
 

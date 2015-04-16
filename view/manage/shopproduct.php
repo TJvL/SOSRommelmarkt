@@ -5,49 +5,85 @@ Type::check("ShopProduct", $model);
 
 <head>
 <script>
-function handleUpdate()
+function handleUpdateProduct()
 {
-	// Reset status message.
-	$("#status").text("");
-	$("#status").removeClass("alert-success alert-danger");
-
-    var data =
+	if (confirm("Weet u zeker dat u de wijzigingen wilt toepassen?"))
 	{
-    	productId:			$("#productId").val(),
-    	productName:		$("#productName").val(),
-    	productDescription:	$("#productDescription").text(),
-    	productColorCode:	$("#productColorCode option:selected").text(),
-    	productPrice:		$("#productPrice").val(),
-    	productIsReserved:	($("#productIsReserved").is(":checked") == false ? 0: 1)
-	};
+		// Reset status message.
+		$("#status").text("");
+		$("#status").removeClass("alert-success alert-danger");
+	
+	    var data =
+		{
+	    	productId:			<?php echo $model->id ?>,
+	    	productName:		$("#productName").val(),
+	    	productDescription:	$("#productDescription").val(),
+	    	productColorCode:	$("#productColorCode option:selected").text(),
+	    	productPrice:		$("#productPrice").val(),
+	    	productIsReserved:	($("#productIsReserved").is(":checked") == false ? 0: 1)
+		};
+		
+	    $.ajax(
+		{
+			url: "update",
+	        type: "POST",
+	        data: data,
+	        async: true,
+	        success: function(result)
+	        {
+		        // Check if it went alright.
+		        if (result == 0)
+		        {
+		        	$("#status").text("  Succes!");
+		        	$("#status").addClass("alert-success");
+		        }
+		        else
+		        {
+		        	$("#status").text("  Er is iets verkeerd gegaan");
+		        	$("#status").addClass("alert-danger");
+		        }
+	        }
+		});
+	}
+}
 
-    $.ajax(
+function handleDeleteProduct()
+{
+	if (confirm("Weet u zeker dat u dit product wilt verwijderen?"))
 	{
-		url: "update",
-        type: "POST",
-        data: data,
-        async: true,
-        success: function(result)
-        {
-	        // Check if it went alright.
-	        if (result == 0)
+		var data =
+		{
+			productId: <?php echo $model->id ?>,
+		};
+	
+		$.ajax(
+		{
+			url: "delete",
+	        type: "POST",
+	        data: data,
+	        async: true,
+	        success: function(result)
 	        {
-	        	$("#status").text("  Succes!");
-	        	$("#status").addClass("alert-success");
+	        	// Check if it went alright.
+		        if (result == 0)
+		        {
+		        	alert("Success");
+		        }
+		        else
+		        {
+		        	alert("fail");
+		        }
+	
+		     	// Go to the product management page.
+		        document.location.href = "../productList";
 	        }
-	        else
-	        {
-	        	$("#status").text("  Er is iets verkeerd gegaan");
-	        	$("#status").addClass("alert-danger");
-	        }
-        }
-	});
+		});
+	}
 }
 
 function handleNewImage()
 {
 	var formData = new FormData(document.getElementById("imageDataForm"));
-	console.log(formData);
 
     $.ajax(
 	{
@@ -62,18 +98,54 @@ function handleNewImage()
 	        // Check if it went alright.
 	        if (result == 0)
 	        {
-	        	alert("success");
+	        	alert("Success");
 	        }
 	        else
 	        {
 	        	alert("fail");
 	        }
+
+	     	// Reload the page.
+        	location.reload();
         }
 	});
+}
 
-	// Reset the image and hide the image cropper div.
-	$("#image").html("<img id='image'>");
-    $("#cropperDiv").addClass("hidden");
+function handleDeleteImage(imagePath)
+{
+	if (confirm("Weet u zeker dat u deze afbeelding wilt verwijderen?"))
+	{
+		imageName = imagePath.substring(imagePath.lastIndexOf("/") + 1);
+	
+		var data =
+		{
+			productId: <?php echo $model->id ?>,
+	    	imageName: imageName
+		};
+	
+		$.ajax(
+		{
+			url: "deleteImage",
+	        type: "POST",
+	        data: data,
+	        async: true,
+	        success: function(result)
+	        {
+	        	// Check if it went alright.
+		        if (result == 0)
+		        {
+		        	alert("Success");
+		        }
+		        else
+		        {
+		        	alert("fail");
+		        }
+	
+		     	// Reload the page.
+	        	location.reload();
+	        }
+		});
+	}
 }
 
 $(document).ready(function()
@@ -88,8 +160,15 @@ $(document).ready(function()
 		$("#cropperDiv").removeClass("hidden");
 		showImage(this);
 
+		// Once the image is loaded start up the cropper.
 		$("#image").load(function()
 		{
+			// Get the original width and height.
+			var originalWidth = document.getElementById("image").naturalWidth;
+            var originalHeight = document.getElementById("image").naturalHeight;
+            $("#originalWidth").val(originalWidth.toString());
+            $("#originalHeight").val(originalHeight.toString());
+			
 			// Init a new cropper object for this image.
 			var cropper;
 			cropper = new Cropper(document.getElementById("image"),
@@ -111,11 +190,6 @@ $(document).ready(function()
                     var clientHeight = document.getElementById("image").clientHeight;
                     $("#clientWidth").val(clientWidth.toString());
                     $("#clientHeight").val(clientHeight.toString());
-
-					var originalWidth = document.getElementById("image").naturalWidth;
-                    var originalHeight = document.getElementById("image").naturalHeight;
-                    $("#originalWidth").val(originalWidth.toString());
-                    $("#originalHeight").val(originalHeight.toString());
                 }
 			});
 		});
@@ -144,11 +218,16 @@ $(document).ready(function()
 
 <div class="container">
 	<div class="white">
+        <div class="row">
+            <div class="col-md-1">
+                <a href="<?php echo ROOT_DIR . '/manage/productList'?>" class="btn btn-default">Back</a>
+            </div>
+        </div>
 		<div class="row">
 			<hr>
 			<div class="col-sm-1"></div>
 			<h1>Productinformatie</h1>
-			<form class="form-horizontal" action="javascript:handleUpdate()">
+			<form class="form-horizontal" action="javascript:handleUpdateProduct()">
 				<div class="form-group">
 					<label class="control-label col-sm-2">ID</label>
 					<div class="col-sm-10">
@@ -245,9 +324,12 @@ $(document).ready(function()
 					<label class="control-label col-sm-2"></label>
 					<div class="col-sm-10">
 						<div class="input-group">
-							<button class="btn btn-default" type="submit">Update</button>
-							<div class="alert" id="status" role="alert"></div>
+							<div class="btn-toolbar">
+								<button class="btn btn-default" type="submit">Update</button>
+								<button class="btn btn-danger" type="button" onClick="handleDeleteProduct()">Delete</button>
+							</div>
 						</div>
+						<div class="alert" id="status" role="alert"></div>
 					</div>
 				</div>
 			</form>
@@ -260,7 +342,19 @@ $(document).ready(function()
 				</div>
 			</div>
 			<div class="row">
-				<button class="btn btn-default" onClick="handleNewImage()">Maak afbeelding</button>
+				<form id="imageDataForm" enctype="multipart/form-data" action="javascript:handleNewImage()">
+					<button class="btn btn-default" type="submit">Maak afbeelding</button>
+					<input class="hidden" id="fileInput" name="file" type="file">
+					<input name="productId" type="hidden" value="<?php echo $model->id ?>">
+					<input id="xCoord" name="xCoord" type="hidden">
+					<input id="yCoord" name="yCoord" type="hidden">
+					<input id="width" name="width" type="hidden">
+					<input id="height" name="height" type="hidden">
+					<input id="clientWidth" name="clientWidth" type="hidden">
+					<input id="clientHeight" name="clientHeight" type="hidden">
+					<input id="originalWidth" name="originalWidth" type="hidden">
+					<input id="originalHeight" name="originalHeight" type="hidden">
+				</form>
 			</div>
 		</div>
 		<div class="row">
@@ -279,9 +373,9 @@ $(document).ready(function()
 				?>
 				<div class="col-sm-2">
 					<div class="thumbnail">
-						<img src="<?php echo $imagePath ?>" alt="">
+						<img src="<?php echo $imagePath ?>">
 						<div class="caption text-center">
-							<a href="#" class="btn btn-danger" role="button">Verwijder</a>
+							<a class="btn btn-danger" onClick="handleDeleteImage('<?php echo $imagePath ?>')">Verwijder</a>
 						</div>
 					</div>
 				</div>
@@ -292,16 +386,3 @@ $(document).ready(function()
 		</div>
 	</div>
 </div>
-
-<form id="imageDataForm" enctype="multipart/form-data">
-	<input class="hidden" id="fileInput" name="file" type="file">
-	<input name="productId" type="hidden" value="<?php echo $model->id ?>">
-	<input id="xCoord" name="xCoord" type="hidden">
-	<input id="yCoord" name="yCoord" type="hidden">
-	<input id="width" name="width" type="hidden">
-	<input id="height" name="height" type="hidden">
-	<input id="clientWidth" name="clientWidth" type="hidden">
-	<input id="clientHeight" name="clientHeight" type="hidden">
-	<input id="originalWidth" name="originalWidth" type="hidden">
-	<input id="originalHeight" name="originalHeight" type="hidden">
-</form>

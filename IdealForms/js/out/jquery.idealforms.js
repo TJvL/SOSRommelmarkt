@@ -6,6 +6,7 @@
 
         required: 'Dit veld is verplicht',
         digits: 'Moet enkel getallen zijn',
+        price: 'Moet een geldig prijs zijn in de form van x.00',
         name: 'Moet minimaal 3 karakters lang zijn en moet alleen bestaan uit letters',
         lastname : 'Moet minimaal 3 karakters lang zijn en moet alleen bestaan uit letters',
         companyname: 'Moet minimaal 3 karakters lang zijn en moet alleen bestaan uit letters',
@@ -1274,6 +1275,7 @@
 
         required: /.+/,
         digits: /^\d+$/,
+        price: /^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$/,
         email: /^[^@]+@[^@]+\..{2,6}$/,
         username: /^[a-z](?=[\w.]{3,31}$)\w*\.?\w*$/i,
         name: /^([A-z\s]{3,10})+$/,

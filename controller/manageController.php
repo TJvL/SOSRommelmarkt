@@ -38,30 +38,16 @@ class ManageController extends Controller
         $this->render("manageproduct");
     }
 
-    public function deleteshopproduct_POST()
-    {
-        $id = $_POST["id"];
-        ShopProduct::deleteById($id);
-
-        $dir = ROOT_DIR . "/img/Content/products/" . $id;
-        $it = new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS);
-        $files = new RecursiveIteratorIterator($it,
-            RecursiveIteratorIterator::CHILD_FIRST);
-        foreach($files as $file) {
-            if ($file->isDir()){
-                rmdir($file->getRealPath());
-            } else {
-                unlink($file->getRealPath());
-            }
-        }
-        rmdir($dir);
-
-        $this->redirectTo("/manage/productList");
-    }
-
     public function addshopproduct_GET()
     {
         $this->render("addshopproduct");
+    }
+
+    public function addshopproduct_POST()
+    {
+        $shopProduct = ShopProduct::insert($_POST["name"], $_POST["description"], "Administrator", $_POST["colorCode"], $_POST["price"], 0);
+
+        $this->redirectTo("/manage/shopproduct/$shopProduct->id");
     }
 
 	public function instellingen_GET()
@@ -91,7 +77,39 @@ class ManageController extends Controller
     	{
     		// TODO: weird ass workaround t'll I know the best way to do this... w/e
     		// If the id equals update a post request for updating a product has been sent.
-    		if ($_GET["id"] == "update")
+    		if ($_GET["id"] == "delete")
+    		{
+    			// Check if all the necessary data has been sent with the request.
+    			if (isset($_POST["productId"]))
+    			{
+    				// Delete the product.
+    				$shopProduct = ShopProduct::deleteById($_POST["productId"]);
+    				
+    				// Delete the product images recursively.
+    				$dir = Product::IMAGES_DIRECTORY . "/" . $_POST["productId"];
+    				if (is_dir($dir))
+    				{
+    					$objects = scandir($dir);
+    					foreach ($objects as $object)
+    					{
+    						if ($object != "." && $object != "..")
+    						{
+    							if (filetype($dir . "/" . $object) == "dir")
+    								rrmdir($dir . "/" . $object);
+    							else
+    								unlink($dir . "/" . $object);
+    						}
+    					}
+    					reset($objects);
+    					rmdir($dir);
+    				}
+    				
+    				// Return 0 for great success.
+    				header("Content-Type: application/json");
+    				exit(json_encode(0));
+    			}
+    		}
+    		else if ($_GET["id"] == "update")
     		{
     			// Check if all the necessary data has been sent with the request.
     			if (isset($_POST["productId"]) && isset($_POST["productName"]) && isset($_POST["productDescription"]) && isset($_POST["productColorCode"]) &&
@@ -107,7 +125,7 @@ class ManageController extends Controller
     				$shopProduct->update();
     				
     				// Return 0 for great success.
-    				header('Content-Type: application/json');
+    				header("Content-Type: application/json");
     				exit(json_encode(0));
     			}
     		}
@@ -134,8 +152,18 @@ class ManageController extends Controller
 					$imageTargetFilePath = Product::IMAGES_DIRECTORY . "/" . $_POST["productId"] . "/" . $i . ".jpg";
 					$manipulator->save($imageTargetFilePath, IMAGETYPE_JPEG);
 					
-					header('Content-Type: application/json');
+					header("Content-Type: application/json");
 					exit(json_encode(0));
+    			}
+    		}
+    		else if ($_GET["id"] == "deleteImage")
+    		{
+    			if (isset($_POST["productId"]) && isset($_POST["imageName"]))
+    			{
+    				unlink(Product::IMAGES_DIRECTORY . "/" . $_POST["productId"] . "/" . $_POST["imageName"]);
+    				
+    				header("Content-Type: application/json");
+    				exit(json_encode(0));
     			}
     		}
     	}
@@ -152,7 +180,7 @@ class ManageController extends Controller
                     // Get the product, set the data and update.
                     VisitingHours::update($_POST["Maandag"],$_POST["Dinsdag"],$_POST["Woensdag"], $_POST["Donderdag"],$_POST["Vrijdag"],$_POST["Zaterdag"],$_POST["Zondag"]);
                 }
-                echo "update geslaagd";
+               $this->redirectTo("/manage/instellingen");
     }
 
     public function companyInfomation_POST()

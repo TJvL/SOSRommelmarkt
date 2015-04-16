@@ -50,16 +50,16 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
 
-            <ul class = "nav navbar-nav navbar-right">
+<!--             <ul class = "nav navbar-nav navbar-right">
 
                 <li>
-                    <!--User data -->
+                   
                     <div id="userData" class="col-md-12">
                         <div class="col-sm-8"><i class="fa fa-user"></i> Admin</div>
                         <div class="col-sm-2"><i class="fa fa-sign-out"></i></div>
                     </div>
                 </li>
-            </ul>
+            </ul> -->
 
         </div>
     </div>
@@ -79,26 +79,12 @@
             <div class="col-md-8 margin-lg">
 
                 <div class="col-md-12 manage-subtitle">
-                    <p><a href="<?php echo ROOT_DIR?>/manage">Administrator beheer</a> </p>
+                    <p><a href="<?php echo ROOT_DIR?>/manage">Beheer</a> </p>
                 </div>
-                <div class="row">
+             
 
-                    <div class="col-md-2">
-                        <a href="#">
-                            <button class="btn btn-red">
-                                <i class="fa fa-user-plus fa-5x fa-fw"></i>
-                                <br /><b>Gebruikers</b>
-                            </button>
-                        </a>
-                    </div>
-                    <div class="col-md-2">
-                        <a href="#">
-                            <button class="btn btn-red">
-                                <i class="fa fa-pencil-square-o fa-5x fa-fw"></i>
-                                <br /><b>Pagina's</b>
-                            </button>
-                        </a>
-                    </div>
+
+
                     <div class="col-md-2">
                         <a href="<?php echo ROOT_DIR; ?>/manage/instellingen">
                             <button class="btn btn-red">
@@ -107,7 +93,7 @@
                             </button>
                         </a>
                     </div>
-
+                    <div class="col-md-1"></div><!--spacer-->
                     <div class="col-md-2">
                         <a href="<?php echo ROOT_DIR; ?>/manage/subventions">
                             <button class="btn btn-red">
@@ -116,6 +102,7 @@
                             </button>
                         </a>
                     </div>
+                    <div class="col-md-1"></div><!--spacer-->
                     <div class="col-md-2">
                         <a href="<?php echo ROOT_DIR; ?>/manage/productList">
                             <button class="btn btn-red">
@@ -125,7 +112,7 @@
                         </a>
                     </div>
 
-                </div>
+            
 
 
 

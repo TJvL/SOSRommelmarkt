@@ -5,7 +5,7 @@
 </head>
 
 <div class="container">
-    <div class="white">
+    <div style="margin-bottom:5%" class="white">
         <div class="content">
 
             <div class="idealsteps-container">
