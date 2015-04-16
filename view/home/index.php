@@ -36,35 +36,50 @@
     <div class="row padding-lg">
     	<div class="col-md-8 padding-hor-md">
 		    <div class="grey padding-sm margin-ver-lg height-fix">
-	    		<div id="vitrine-carousel" class="carousel slide full-height" data-ride="carousel">
-			    	<ol class="carousel-indicators">
-			    		<?php for ($i = 0; $i < $model->size(); $i++) { ?>
-			    		<li data-target="#vitrine-carousel" data-slide-to="<?php echo $i ?>" <?php if ($i == 0) echo 'class="active"' ?>></li>
-			    		<?php } ?>
-			    	</ol>
-			    
-				    <div class="carousel-inner full-height" role="listbox">
-				    	<?php for ($i = 0; $i < $model->size(); $i++) { ?>
-				    	<div class="item <?php if ($i == 0) echo 'active' ?> carousel-overlay full-height">
-				    		<a href="<?php echo ROOT_DIR; ?>/auction/index"><img class="center-block full-height" src="<?php echo $model->get($i)->imagePath ?>" alt="Slide"></a>
-				    		<div class="carousel-caption">
-				    			<br>
-				    			<h2><?php echo $model->get($i)->name ?></h2>
-				    			<p><?php echo $model->get($i)->description ?></p>
-				    		</div>
-				    	</div>
-				    	<?php } ?>
-			    	</div>
+		    	<?php 
+		    	// If there is no auction. Print some text saying there is no auction.. that makes sense right??
+		    	if ($model->size() == 0)
+		    	{
+		    		?>
+		    		<h2>Veiling</h2>
+		    		<p>Er is op dit moment geen veiling gaande. Zodra er een nieuwe veiling is gestart kunt u hier de producten bekijken.</p>
+		    		<?php
+		    	}
+		    	else
+		    	{
+		    		?>
+		    		<div id="vitrine-carousel" class="carousel slide full-height" data-ride="carousel">
+				    	<ol class="carousel-indicators">
+				    		<?php for ($i = 0; $i < $model->size(); $i++) { ?>
+				    		<li data-target="#vitrine-carousel" data-slide-to="<?php echo $i ?>" <?php if ($i == 0) echo 'class="active"' ?>></li>
+				    		<?php } ?>
+				    	</ol>
 				    
-				    <a class="left carousel-control" href="#vitrine-carousel" role="button" data-slide="prev">
-				    	<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				    	<span class="sr-only">Vorige</span>
-				    </a>
-				    <a class="right carousel-control" href="#vitrine-carousel" role="button" data-slide="next">
-				    	<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				    	<span class="sr-only">Volgende</span>
-				    </a>
-			    </div>
+					    <div class="carousel-inner full-height" role="listbox">
+					    	<?php for ($i = 0; $i < $model->size(); $i++) { ?>
+					    	<div class="item <?php if ($i == 0) echo 'active' ?> carousel-overlay full-height">
+					    		<a href="<?php echo ROOT_DIR; ?>/auction/index"><img class="center-block full-height" src="<?php echo $model->get($i)->imagePath ?>" alt="Slide"></a>
+					    		<div class="carousel-caption">
+					    			<br>
+					    			<h2><?php echo $model->get($i)->name ?></h2>
+					    			<p><?php echo $model->get($i)->description ?></p>
+					    		</div>
+					    	</div>
+					    	<?php } ?>
+				    	</div>
+					    
+					    <a class="left carousel-control" href="#vitrine-carousel" role="button" data-slide="prev">
+					    	<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					    	<span class="sr-only">Vorige</span>
+					    </a>
+					    <a class="right carousel-control" href="#vitrine-carousel" role="button" data-slide="next">
+					    	<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					    	<span class="sr-only">Volgende</span>
+					    </a>
+				    </div>
+				    <?php
+		    	}
+		    	?>
 			</div>
 		</div>
 		
