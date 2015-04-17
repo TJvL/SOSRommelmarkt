@@ -337,11 +337,8 @@ class ManageController extends Controller
 		// Check if the id is set.
 		if (isset($_GET["id"]))
 		{
-			// Get the product.
-			$auctionProduct = AuctionProduct::selectById($_GET["id"]);
-		
 			// Render the view.
-			$this->render("auctionproduct", $auctionProduct);
+			$this->render("auctionproduct", AuctionProduct::selectById($_GET["id"]));
 		}
 		 
 		// TODO: Error or some shit
@@ -445,5 +442,12 @@ class ManageController extends Controller
 		// TODO: Error or some shit
 		exit(json_encode(1));
 	}
+
+    public function addpartner_POST()
+    {
+        Partner::insert($_POST["name"], $_POST["website"]);
+
+        $this->redirectTo("/manage/partners");
+    }
 }
 ?>
