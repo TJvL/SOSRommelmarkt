@@ -21,5 +21,20 @@ class AuctionController extends Controller
 
         $this->render("detail", $prod);
     }
+
+    public function addProduct_GET()
+    {
+        $this->render('addProduct');
+    }
+
+    public function addProduct_POST()
+    {
+        if(isset($_POST['name']) && isset($_POST['description']) && isset($_POST['colorCode']) && isset($_POST['auctionId']))
+        {
+            AuctionProduct::insert($_POST['name'], $_POST['description'], "PLACEHOLDER", $_POST['colorCode']);
+            
+        }
+        $this->redirectTo("SOSRommelmarkt/manage/editauction/");
+    }
 }
 ?>
