@@ -206,8 +206,8 @@ $(document).ready(function()
 				// Reset the image.
 				$("#image").html("<img id='image'>");
 				$("#image").attr("src", e.target.result);
-				$("#image").css("width", "100%");
-				$("#image").css("height", "100%");
+				$("#image").css("width", "auto");
+				$("#image").css("max-height", "500px");
             }
 			reader.readAsDataURL(input.files[0]);
 		}
