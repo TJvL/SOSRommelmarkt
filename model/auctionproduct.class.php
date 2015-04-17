@@ -194,6 +194,14 @@ class AuctionProduct extends Product
 
         return $dates;
     }
+    
+    public function addToAuction($auctionId)
+    {
+    	$query = "INSERT INTO AuctionProductList (Auction_id, AuctionProduct_id) VALUES (?, ?)";
+    	
+    	// Execute query.
+    	Database::insert($query, "ii", array($auctionId, $this->id));
+    }
 }
 
 ?>

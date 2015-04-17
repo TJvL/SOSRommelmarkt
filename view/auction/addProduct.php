@@ -11,7 +11,7 @@
 
                 <nav class="idealsteps-nav"></nav>
 
-                <form action="/SOSRommelmarkt/auction/addProduct" method="POST" enctype="multipart/form-data" autocomplete="off" class="idealforms" id="product_add">
+                <form action="<?php echo ROOT_DIR ?>/auction/addProduct" method="POST" enctype="multipart/form-data" autocomplete="off" class="idealforms" id="product_add">
 
                     <input type="hidden" name="auctionId" value="<?php echo $_GET['id'];?>" />
 

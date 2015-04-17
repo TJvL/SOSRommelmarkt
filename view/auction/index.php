@@ -47,7 +47,8 @@
                                                         {
                                                             echo '<li data-target="#prod-' . $product->id . '-carousel" data-slide-to="' . $count . '" class="active"></li>';
                                                         }
-                                                        echo '<li data-target="#prod-' . $product->id . '-carousel" data-slide-to="' . $count . '"></li>';
+                                                        else
+                                                        	echo '<li data-target="#prod-' . $product->id . '-carousel" data-slide-to="' . $count . '"></li>';
                                                         $count = $count + 1;
                                                     }
                                                     ?>
@@ -63,7 +64,8 @@
                                                         {
                                                             echo '<div class="item active"><img class="img" src="' . $path . '" alt="image for {{x.name}}"/></div>';
                                                         }
-                                                        echo '<div class="item"><img class="img" src="' . $path . '" alt="image for {{x.name}}"/></div>';
+                                                        else
+                                                        	echo '<div class="item"><img class="img" src="' . $path . '" alt="image for {{x.name}}"/></div>';
                                                         $count = $count + 1;
                                                     }
                                                     ?>
