@@ -32,7 +32,6 @@ class AuctionController extends Controller
         if(isset($_POST['name']) && isset($_POST['description']) && isset($_POST['colorCode']) && isset($_POST['auctionId']))
         {
             AuctionProduct::insert($_POST['name'], $_POST['description'], "PLACEHOLDER", $_POST['colorCode']);
-            
         }
         $this->redirectTo("SOSRommelmarkt/manage/editauction/");
     }

@@ -3,7 +3,7 @@
         <div class="content">
             <div class="row">
                 <div class="col-md-1">
-                    <a href="/SOSRommelmarkt/manage/editauction/" class="btn btn-default">Terug naar Beheer</a>
+                    <a href="/SOSRommelmarkt/manage/editauction/<?php echo $_GET['id']; ?>" class="btn btn-default">Terug naar Beheer</a>
                 </div>
             </div>
 
@@ -11,7 +11,9 @@
 
                 <nav class="idealsteps-nav"></nav>
 
-                <form action="<?php echo ROOT_DIR . '/auction/addProduct'?>" method="POST" enctype="multipart/form-data" autocomplete="off" class="idealforms" id="product_add">
+                <form action="/SOSRommelmarkt/auction/addProduct" method="POST" enctype="multipart/form-data" autocomplete="off" class="idealforms" id="product_add">
+
+                    <input type="hidden" name="auctionId" value="<?php echo $_GET['id'];?>" />
 
                     <div class="idealsteps-wrap">
                         <!-- Step 1 -->
@@ -83,7 +85,6 @@
         rules: {
             'name': 'required name',
             'description': 'required minmax:20:500',
-            'price': 'required price',
             'colorCode': 'select:default',
             'picture': 'extension:jpg'
         },

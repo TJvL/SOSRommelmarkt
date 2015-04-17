@@ -7,7 +7,7 @@
 				<a href="../auctions" class="btn btn-default">Terug</a>
 			</div>
 			<div class="col-md-1">
-				<a href="/SOSRommelmarkt/auction/addProduct" class="btn btn-default">Product Toevoegen</a>
+				<a href="/SOSRommelmarkt/auction/addProduct/<?php echo $_GET['id']; ?>" class="btn btn-default">Product Toevoegen</a>
 			</div>
 		</div>
 		<div class="table-responsive padding-sm">
