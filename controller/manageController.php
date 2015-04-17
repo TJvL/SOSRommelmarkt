@@ -259,12 +259,16 @@ class ManageController extends Controller
 	{
 		if (isset($_GET["id"]))
 		{
+			$_SESSION["auctionId"] = $_GET["id"];
+			
 			// get the auctionproducts
 			$auctionProductList = new ArrayList("AuctionProduct");
 			$auctionProductList->addAll(AuctionProduct::selectByAuctionId($_GET["id"]));
 			
 			// render
 			$this->render("editauction", $auctionProductList);
+			
+			
 		}
 		
 		// TODO: error catching

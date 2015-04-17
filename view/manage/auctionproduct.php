@@ -69,7 +69,7 @@ function handleDeleteProduct()
 		        }
 	
 		     	// Go to the product management page.
-		        document.location.href = "../productList";
+		        document.location.href = "../editauction/<?php echo $_SESSION["auctionId"] ?>";
 	        }
 		});
 	}
@@ -214,7 +214,7 @@ $(document).ready(function()
 	<div class="white">
         <div class="row">
             <div class="col-md-1">
-                <a href="<?php echo ROOT_DIR . '/manage/productList'?>" class="btn btn-default">Back</a>
+                <a href="<?php echo ROOT_DIR . "/manage/editauction/" . $_SESSION["auctionId"] ?>" class="btn btn-default">Back</a>
             </div>
         </div>
 		<div class="row">

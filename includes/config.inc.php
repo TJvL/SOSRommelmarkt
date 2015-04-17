@@ -9,6 +9,8 @@ if(in_array("SOSRommelmarkt", scandir($_SERVER['DOCUMENT_ROOT'])))
 }
 define("ROOT_DIR", $root);
 
+session_start();
+
 require("database.php");
 
 //require_once("/controller/Controller.php");
