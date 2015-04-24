@@ -7,7 +7,7 @@ if(in_array("SOSRommelmarkt", scandir($_SERVER['DOCUMENT_ROOT'])))
 {
     $root = $root . "/SOSRommelmarkt";
 }
-define("ROOT", $root);
+define("ROOT_DIR", $root);
 
 session_start();
 
