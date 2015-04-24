@@ -1,7 +1,231 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6af5ee69-e82e-45f6-b5dd-0b3566fca9ed" name="Default" comment="" />
+    <list default="true" id="6af5ee69-e82e-45f6-b5dd-0b3566fca9ed" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/bootstrap/css/bootstrap.min.css" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\css\jquery.Jcrop.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\js\jquery.dataTables.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\auction.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\contact.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\contact_action.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\contactformulier_alternat.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\create_element.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\createproduct.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\edit_product.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\Content\products\1\main.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\Content\products\2\1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\Content\products\2\main.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\Content\products\38\3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\Content\products\3\1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\Content\products\4\main.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\Content\products\8\main.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\Content\products\9\main.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\Content\products\9\pic3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\TESTER.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\analytics.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\content\VitrineHeader.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\exampleProduct.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\jumbotron.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\slide1.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\slide2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\tempslideshow\slideshow_1000x200_1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\tempslideshow\slideshow_1000x200_2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\tempslideshow\slideshow_1000x200_3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\tempslideshow\slideshow_1140x456_1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\tempslideshow\slideshow_1140x456_2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\tempslideshow\slideshow_1140x456_3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\tempslideshow\slideshow_500x350_1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\tempslideshow\slideshow_500x350_2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\tempslideshow\slideshow_500x350_3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\css\bootstrap-theme.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\css\bootstrap-theme.css.map" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\css\bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\css\bootstrap.css.map" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\css\bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\js\bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\js\jquery.bxslider.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\js\npm.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\insertproduct.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\menu.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\printsubvention.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\shop.php" afterPath="" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\css\jquery.idealforms.css" afterPath="$PROJECT_DIR$/frameworks/idealforms/css/jquery.idealforms.css" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\img\datepicker.png" afterPath="$PROJECT_DIR$/frameworks/idealforms/img/datepicker.png" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\img\loading.gif" afterPath="$PROJECT_DIR$/frameworks/idealforms/img/loading.gif" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\img\logo.svg" afterPath="$PROJECT_DIR$/frameworks/idealforms/img/logo.svg" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\img\radiocheck.png" afterPath="$PROJECT_DIR$/frameworks/idealforms/img/radiocheck.png" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\img\radiocheck.svg" afterPath="$PROJECT_DIR$/frameworks/idealforms/img/radiocheck.svg" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\img\validation.png" afterPath="$PROJECT_DIR$/frameworks/idealforms/img/validation.png" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\img\validation.svg" afterPath="$PROJECT_DIR$/frameworks/idealforms/img/validation.svg" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\errors.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/errors.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\extensions\adaptive\adaptive.ext.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/extensions/adaptive/adaptive.ext.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\extensions\ajax\ajax.ext.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/extensions/ajax/ajax.ext.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\extensions\custom-inputs\custom-inputs.ext.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/extensions/custom-inputs/custom-inputs.ext.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\extensions\custom-inputs\idealfile.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/extensions/custom-inputs/idealfile.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\extensions\custom-inputs\idealradiocheck.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/extensions/custom-inputs/idealradiocheck.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\extensions\datepicker\datepicker.ext.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/extensions/datepicker/datepicker.ext.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\extensions\dynamic-fields\dynamic-fields.ext.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/extensions/dynamic-fields/dynamic-fields.ext.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\extensions\steps\idealsteps.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/extensions/steps/idealsteps.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\extensions\steps\steps.ext.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/extensions/steps/steps.ext.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\i18n\jquery.idealforms.i18n.de.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/i18n/jquery.idealforms.i18n.de.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\i18n\jquery.idealforms.i18n.es.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/i18n/jquery.idealforms.i18n.es.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\i18n\jquery.idealforms.i18n.fr.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/i18n/jquery.idealforms.i18n.fr.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\i18n\jquery.idealforms.i18n.pt.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/i18n/jquery.idealforms.i18n.pt.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\i18n\jquery.idealforms.i18n.ru.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/i18n/jquery.idealforms.i18n.ru.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\main.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/main.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\out\jquery.idealforms.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/out/jquery.idealforms.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\out\jquery.idealforms.min.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/out/jquery.idealforms.min.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\out\jquery.idealforms.submit.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/out/jquery.idealforms.submit.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\plugin.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/plugin.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\private.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/private.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\public.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/public.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\js\rules.js" afterPath="$PROJECT_DIR$/frameworks/idealforms/js/rules.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\styl\datepicker.styl" afterPath="$PROJECT_DIR$/frameworks/idealforms/styl/datepicker.styl" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\styl\idealfile.styl" afterPath="$PROJECT_DIR$/frameworks/idealforms/styl/idealfile.styl" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\styl\idealradiocheck.styl" afterPath="$PROJECT_DIR$/frameworks/idealforms/styl/idealradiocheck.styl" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\styl\idealsteps.styl" afterPath="$PROJECT_DIR$/frameworks/idealforms/styl/idealsteps.styl" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\styl\jquery.idealforms.styl" afterPath="$PROJECT_DIR$/frameworks/idealforms/styl/jquery.idealforms.styl" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\styl\main.styl" afterPath="$PROJECT_DIR$/frameworks/idealforms/styl/main.styl" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\IdealForms\styl\vars.styl" afterPath="$PROJECT_DIR$/frameworks/idealforms/styl/vars.styl" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\Markup\footer.inc.php" afterPath="$PROJECT_DIR$/includes/footer.inc.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\Markup\header.inc.php" afterPath="$PROJECT_DIR$/includes/header.inc.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\Markup\managefooter.inc.php" afterPath="$PROJECT_DIR$/includes/managefooter.inc.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\Markup\manageheader.inc.php" afterPath="$PROJECT_DIR$/includes/manageheader.inc.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\css\angular.rangeSlider.css" afterPath="$PROJECT_DIR$/css/angular.rangeSlider.css" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\css\carousel.css" afterPath="$PROJECT_DIR$/css/carousel.css" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\css\contactformulier.css" afterPath="$PROJECT_DIR$/css/contactformulier.css" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\css\contactformulier_jq_form.css" afterPath="$PROJECT_DIR$/css/contactformulier_jq_form.css" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\css\contactformulier_normalize.css" afterPath="$PROJECT_DIR$/css/contactformulier_normalize.css" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\css\cropper.css" afterPath="$PROJECT_DIR$/css/cropper.css" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\css\jquery.dataTables.css" afterPath="$PROJECT_DIR$/frameworks/datatables/css/jquery.dataTables.css" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\css\manage_style.css" afterPath="$PROJECT_DIR$/css/manage_style.css" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\css\override-bootstrap.css" afterPath="$PROJECT_DIR$/css/override-bootstrap.css" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\js\angular.rangeSlider.js" afterPath="$PROJECT_DIR$/js/shop/angular.rangeSlider.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\js\cropper.min.js" afterPath="$PROJECT_DIR$/js/manage/shopproduct/cropper.min.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\js\jquery.dataTables.min.js" afterPath="$PROJECT_DIR$/frameworks/datatables/js/jquery.dataTables.min.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\js\subvention_overview.js" afterPath="$PROJECT_DIR$/js/manage/subventions/subvention_overview.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\pdfConvert\font\courier.php" afterPath="$PROJECT_DIR$/frameworks/pdfconvert/font/courier.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\pdfConvert\font\courierb.php" afterPath="$PROJECT_DIR$/frameworks/pdfconvert/font/courierb.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\pdfConvert\font\courierbi.php" afterPath="$PROJECT_DIR$/frameworks/pdfconvert/font/courierbi.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\pdfConvert\font\courieri.php" afterPath="$PROJECT_DIR$/frameworks/pdfconvert/font/courieri.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\pdfConvert\font\helvetica.php" afterPath="$PROJECT_DIR$/frameworks/pdfconvert/font/helvetica.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\pdfConvert\font\helveticab.php" afterPath="$PROJECT_DIR$/frameworks/pdfconvert/font/helveticab.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\pdfConvert\font\helveticabi.php" afterPath="$PROJECT_DIR$/frameworks/pdfconvert/font/helveticabi.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\pdfConvert\font\helveticai.php" afterPath="$PROJECT_DIR$/frameworks/pdfconvert/font/helveticai.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\pdfConvert\font\symbol.php" afterPath="$PROJECT_DIR$/frameworks/pdfconvert/font/symbol.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\pdfConvert\font\times.php" afterPath="$PROJECT_DIR$/frameworks/pdfconvert/font/times.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\pdfConvert\font\timesb.php" afterPath="$PROJECT_DIR$/frameworks/pdfconvert/font/timesb.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\pdfConvert\font\timesbi.php" afterPath="$PROJECT_DIR$/frameworks/pdfconvert/font/timesbi.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\pdfConvert\font\timesi.php" afterPath="$PROJECT_DIR$/frameworks/pdfconvert/font/timesi.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\pdfConvert\font\zapfdingbats.php" afterPath="$PROJECT_DIR$/frameworks/pdfconvert/font/zapfdingbats.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\pdfConvert\fpdf.php" afterPath="$PROJECT_DIR$/frameworks/pdfconvert/fpdf.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\utility\arraylist.class.php" afterPath="$PROJECT_DIR$/application/utility/arraylist.class.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\utility\database.class.php" afterPath="$PROJECT_DIR$/application/model/database/database.class.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\utility\form.class.php" afterPath="$PROJECT_DIR$/application/utility/form.class.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\utility\imagemanipulator.class.php" afterPath="$PROJECT_DIR$/application/utility/imagemanipulator.class.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\Includes\utility\type.class.php" afterPath="$PROJECT_DIR$/application/utility/type.class.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\controller\aboutuscontroller.class.php" afterPath="$PROJECT_DIR$/application/controller/standard/aboutuscontroller.class.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\controller\auctioncontroller.class.php" afterPath="$PROJECT_DIR$/application/controller/standard/auctioncontroller.class.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\controller\contactcontroller.class.php" afterPath="$PROJECT_DIR$/application/controller/standard/contactcontroller.class.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\controller\controller.class.php" afterPath="$PROJECT_DIR$/application/controller/standard/controller.class.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\controller\homecontroller.class.php" afterPath="$PROJECT_DIR$/application/controller/standard/homecontroller.class.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\controller\managecontroller.class.php" afterPath="$PROJECT_DIR$/application/controller/standard/managecontroller.class.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\controller\shopcontroller.class.php" afterPath="$PROJECT_DIR$/application/controller/standard/shopcontroller.class.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\controller\subventioncontroller.class.php" afterPath="$PROJECT_DIR$/application/controller/standard/subventioncontroller.class.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\anbi.jpg" afterPath="$PROJECT_DIR$/img/content/anbi.jpg" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\background.jpg" afterPath="$PROJECT_DIR$/img/content/background.jpg" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\bg.JPG" afterPath="$PROJECT_DIR$/img/content/bg.jpg" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\headerdiv.png" afterPath="$PROJECT_DIR$/img/content/headerdiv.png" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\headerdiv.psd" afterPath="$PROJECT_DIR$/img/content/headerdiv.psd" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\logo2.png" afterPath="$PROJECT_DIR$/img/content/logo2.png" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\img\logo_sos.png" afterPath="$PROJECT_DIR$/img/content/logo_sos.png" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\css\bootstrap-theme.min.css" afterPath="$PROJECT_DIR$/frameworks/bootstrap/css/bootstrap-theme.min.css" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\css\footer.css" afterPath="$PROJECT_DIR$/css/footer.css" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\css\jquery.bxslider.css" afterPath="$PROJECT_DIR$/css/jquery.bxslider.css" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\css\menu.css" afterPath="$PROJECT_DIR$/css/menu.css" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\css\shoppingcart.css" afterPath="$PROJECT_DIR$/css/shoppingcart.css" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\css\style.css" afterPath="$PROJECT_DIR$/css/style.css" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\css\vitrine.css" afterPath="$PROJECT_DIR$/css/vitrine.css" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\css\font-awesome.css" afterPath="$PROJECT_DIR$/fonts/font-awesome/css/font-awesome.css" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\css\font-awesome.min.css" afterPath="$PROJECT_DIR$/fonts/font-awesome/css/font-awesome.min.css" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\fonts\FontAwesome.otf" afterPath="$PROJECT_DIR$/fonts/font-awesome/fonts/FontAwesome.otf" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\fonts\fontawesome-webfont.eot" afterPath="$PROJECT_DIR$/fonts/font-awesome/fonts/fontawesome-webfont.eot" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\fonts\fontawesome-webfont.svg" afterPath="$PROJECT_DIR$/fonts/font-awesome/fonts/fontawesome-webfont.svg" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\fonts\fontawesome-webfont.ttf" afterPath="$PROJECT_DIR$/fonts/font-awesome/fonts/fontawesome-webfont.ttf" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\fonts\fontawesome-webfont.woff" afterPath="$PROJECT_DIR$/fonts/font-awesome/fonts/fontawesome-webfont.woff" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\fonts\fontawesome-webfont.woff2" afterPath="$PROJECT_DIR$/fonts/font-awesome/fonts/fontawesome-webfont.woff2" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\less\animated.less" afterPath="$PROJECT_DIR$/fonts/font-awesome/less/animated.less" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\less\bordered-pulled.less" afterPath="$PROJECT_DIR$/fonts/font-awesome/less/bordered-pulled.less" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\less\core.less" afterPath="$PROJECT_DIR$/fonts/font-awesome/less/core.less" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\less\fixed-width.less" afterPath="$PROJECT_DIR$/fonts/font-awesome/less/fixed-width.less" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\less\font-awesome.less" afterPath="$PROJECT_DIR$/fonts/font-awesome/less/font-awesome.less" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\less\icons.less" afterPath="$PROJECT_DIR$/fonts/font-awesome/less/icons.less" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\less\larger.less" afterPath="$PROJECT_DIR$/fonts/font-awesome/less/larger.less" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\less\list.less" afterPath="$PROJECT_DIR$/fonts/font-awesome/less/list.less" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\less\mixins.less" afterPath="$PROJECT_DIR$/fonts/font-awesome/less/mixins.less" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\less\path.less" afterPath="$PROJECT_DIR$/fonts/font-awesome/less/path.less" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\less\rotated-flipped.less" afterPath="$PROJECT_DIR$/fonts/font-awesome/less/rotated-flipped.less" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\less\stacked.less" afterPath="$PROJECT_DIR$/fonts/font-awesome/less/stacked.less" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\less\variables.less" afterPath="$PROJECT_DIR$/fonts/font-awesome/less/variables.less" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\scss\_animated.scss" afterPath="$PROJECT_DIR$/fonts/font-awesome/scss/_animated.scss" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\scss\_bordered-pulled.scss" afterPath="$PROJECT_DIR$/fonts/font-awesome/scss/_bordered-pulled.scss" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\scss\_core.scss" afterPath="$PROJECT_DIR$/fonts/font-awesome/scss/_core.scss" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\scss\_fixed-width.scss" afterPath="$PROJECT_DIR$/fonts/font-awesome/scss/_fixed-width.scss" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\scss\_icons.scss" afterPath="$PROJECT_DIR$/fonts/font-awesome/scss/_icons.scss" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\scss\_larger.scss" afterPath="$PROJECT_DIR$/fonts/font-awesome/scss/_larger.scss" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\scss\_list.scss" afterPath="$PROJECT_DIR$/fonts/font-awesome/scss/_list.scss" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\scss\_mixins.scss" afterPath="$PROJECT_DIR$/fonts/font-awesome/scss/_mixins.scss" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\scss\_path.scss" afterPath="$PROJECT_DIR$/fonts/font-awesome/scss/_path.scss" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\scss\_rotated-flipped.scss" afterPath="$PROJECT_DIR$/fonts/font-awesome/scss/_rotated-flipped.scss" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\scss\_stacked.scss" afterPath="$PROJECT_DIR$/fonts/font-awesome/scss/_stacked.scss" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\scss\_variables.scss" afterPath="$PROJECT_DIR$/fonts/font-awesome/scss/_variables.scss" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\font-awesome\scss\font-awesome.scss" afterPath="$PROJECT_DIR$/fonts/font-awesome/scss/font-awesome.scss" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/fonts/glyphicons-halflings-regular.eot" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/fonts/glyphicons-halflings-regular.svg" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/fonts/glyphicons-halflings-regular.ttf" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/fonts/glyphicons-halflings-regular.woff" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\fonts\glyphicons-halflings-regular.woff2" afterPath="$PROJECT_DIR$/fonts/glyphicons-halflings-regular.woff2" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\js\bootstrap.min.js" afterPath="$PROJECT_DIR$/frameworks/bootstrap/js/bootstrap.min.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\js\jquery.bxslider.min.js" afterPath="$PROJECT_DIR$/js/jquery.bxslider.min.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\js\menu.js" afterPath="$PROJECT_DIR$/js/menu.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\js\shopfilter.js" afterPath="$PROJECT_DIR$/js/shopfilter.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\js\shoppingcart.js" afterPath="$PROJECT_DIR$/js/shoppingcart.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\includes\js\vitrine.js" afterPath="$PROJECT_DIR$/js/vitrine.js" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\model\SubventionRequest.class.php" afterPath="$PROJECT_DIR$/application/model/models/subventionrequest.class.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\model\VisitingHours.class.php" afterPath="$PROJECT_DIR$/application/model/models/visitinghours.class.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\model\auction.class.php" afterPath="$PROJECT_DIR$/application/model/models/auction.class.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\model\auctionproduct.class.php" afterPath="$PROJECT_DIR$/application/model/models/auctionproduct.class.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\model\colorcode.class.php" afterPath="$PROJECT_DIR$/application/model/models/colorcode.class.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\model\companyInfomation.class.php" afterPath="$PROJECT_DIR$/application/model/models/companyInfomation.class.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\model\partner.class.php" afterPath="$PROJECT_DIR$/application/model/models/partner.class.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\model\product.class.php" afterPath="$PROJECT_DIR$/application/model/models/product.class.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\model\shopproduct.class.php" afterPath="$PROJECT_DIR$/application/model/models/shopproduct.class.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\aboutUs\index.php" afterPath="$PROJECT_DIR$/application/view/aboutus/index.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\auction\addProduct.php" afterPath="$PROJECT_DIR$/application/view/auction/addproduct.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\auction\index.php" afterPath="$PROJECT_DIR$/application/view/auction/index.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\contact\index.php" afterPath="$PROJECT_DIR$/application/view/contact/index.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\home\index.php" afterPath="$PROJECT_DIR$/application/view/home/index.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\manage\addauction.php" afterPath="$PROJECT_DIR$/application/view/manage/addauction.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\manage\addpartner.php" afterPath="$PROJECT_DIR$/application/view/manage/addpartner.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\manage\addshopproduct.php" afterPath="$PROJECT_DIR$/application/view/manage/addshopproduct.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\manage\auctionproduct.php" afterPath="$PROJECT_DIR$/application/view/manage/auctionproduct.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\manage\auctions.php" afterPath="$PROJECT_DIR$/application/view/manage/auctions.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\manage\editauction.php" afterPath="$PROJECT_DIR$/application/view/manage/editauction.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\manage\index.php" afterPath="$PROJECT_DIR$/application/view/manage/index.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\manage\instellingen.php" afterPath="$PROJECT_DIR$/application/view/manage/instellingen.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\manage\manageproduct.php" afterPath="$PROJECT_DIR$/application/view/manage/manageproduct.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\manage\partner.php" afterPath="$PROJECT_DIR$/application/view/manage/partner.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\manage\partners.php" afterPath="$PROJECT_DIR$/application/view/manage/partners.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\manage\shopproduct.php" afterPath="$PROJECT_DIR$/application/view/manage/shopproduct.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\manage\subventions.php" afterPath="$PROJECT_DIR$/application/view/manage/subventions.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\shop\detail.php" afterPath="$PROJECT_DIR$/application/view/shop/detail.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\shop\index.php" afterPath="$PROJECT_DIR$/application/view/shop/index.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\subvention\aanvraagSucces.php" afterPath="$PROJECT_DIR$/application/view/subvention/aanvraagsucces.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\subvention\example.php" afterPath="$PROJECT_DIR$/application/view/subvention/example.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\subvention\index.php" afterPath="$PROJECT_DIR$/application/view/subvention/index.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\SOSRommelmarkt\view\subvention\landing.php" afterPath="$PROJECT_DIR$/application/view/subvention/landing.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="SOSRommelmarkt.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -24,18 +248,7 @@
     <favorites_list name="SOSRommelmarkt" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.056478404" vertical-offset="0" max-vertical-offset="903">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -80,6 +293,7 @@
         <option value="$PROJECT_DIR$/view/manage/editauction.php" />
         <option value="$PROJECT_DIR$/view/auction/addProduct.php" />
         <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/includes/header.inc.php" />
       </list>
     </option>
   </component>
@@ -89,9 +303,9 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="y" value="22" />
-    <option name="width" value="1936" />
-    <option name="height" value="1066" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="754" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -137,6 +351,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SOSRommelmarkt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SOSRommelmarkt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -158,8 +386,11 @@
       <recent name="C:\Users\Mirwais\Documents\GitHub\SOSRommelmarkt\Includes\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Education\proj_blk7-8\SOSRommelmarkt\view\auction" />
-      <recent name="D:\Education\proj_blk7-8\SOSRommelmarkt\view\home" />
+      <recent name="C:\xampp\htdocs\SOSRommelmarkt\js\manage\shopproduct" />
+      <recent name="C:\xampp\htdocs\SOSRommelmarkt\js\shop" />
+      <recent name="C:\xampp\htdocs\SOSRommelmarkt\js\manage\subventions" />
+      <recent name="C:\xampp\htdocs\SOSRommelmarkt\frameworks\datatables\js" />
+      <recent name="C:\xampp\htdocs\SOSRommelmarkt\frameworks\datatables\css" />
     </key>
   </component>
   <component name="RunManager">
@@ -177,6 +408,9 @@
       <BehatRunner />
       <method />
     </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
@@ -184,9 +418,6 @@
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -205,23 +436,23 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="22" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32868218" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20885417" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23499268" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -261,8 +492,88 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.056478404" vertical-offset="0" max-vertical-offset="903">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="782">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="617">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/manage/subventions/subvention_overview.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24797407" vertical-offset="0" max-vertical-offset="1207">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="782">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/content/anbi.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/content/background.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/content/bg.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/content/headerdiv.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/content/headerdiv.psd">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/content/logo_sos.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/view/manage/shopproduct.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.789618" vertical-offset="6264" max-vertical-offset="6681">
+          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/header.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1229508" vertical-offset="371" max-vertical-offset="2108">
+          <caret line="46" column="100" selection-start-line="46" selection-start-column="100" selection-end-line="46" selection-end-column="100" />
+          <folding>
+            <marker date="1429872864919" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..Info..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/jquery.bxslider.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
