@@ -11,7 +11,7 @@ if (isset($_GET['controller']))
 }
 else
 {
-	$controller = "homeController";
+	$controller = "HomeController";
 }
 
 if (isset($_GET['action']))
