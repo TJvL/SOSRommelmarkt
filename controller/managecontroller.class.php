@@ -23,7 +23,7 @@ class ManageController extends Controller
 
     public function subventions_POST()
     {
-                include_once "/model/SubventionRequest.class.php";
+                include_once "/model/subventionrequest.class.php";
                 SubventionRequest::deleteById($_POST["id"]);
         $subventionList = new ArrayList("SubventionRequest");
         $subventionList->addAll(SubventionRequest::fetchAllSubventionRequests());
@@ -105,7 +105,7 @@ class ManageController extends Controller
     				}
     				
     				// Return 0 for great success.
-    				header("Content-Type: application/json");
+    				header("content-Type: application/json");
     				exit(json_encode(0));
     			}
     		}
@@ -125,7 +125,7 @@ class ManageController extends Controller
     				$shopProduct->update();
     				
     				// Return 0 for great success.
-    				header("Content-Type: application/json");
+    				header("content-Type: application/json");
     				exit(json_encode(0));
     			}
     		}
@@ -152,7 +152,7 @@ class ManageController extends Controller
 					$imageTargetFilePath = Product::IMAGES_DIRECTORY . "/" . $_POST["productId"] . "/" . $i . ".jpg";
 					$manipulator->save($imageTargetFilePath, IMAGETYPE_JPEG);
 					
-					header("Content-Type: application/json");
+					header("content-Type: application/json");
 					exit(json_encode(0));
     			}
     		}
@@ -162,7 +162,7 @@ class ManageController extends Controller
     			{
     				unlink(Product::IMAGES_DIRECTORY . "/" . $_POST["productId"] . "/" . $_POST["imageName"]);
     				
-    				header("Content-Type: application/json");
+    				header("content-Type: application/json");
     				exit(json_encode(0));
     			}
     		}
@@ -229,7 +229,7 @@ class ManageController extends Controller
 					$auction = Auction::deleteById($_POST["auctionId"]);
 					
 					// return 0 for success
-					header("Content-Type: application/json");
+					header("content-Type: application/json");
 					exit(json_encode(0));
 				}
 			}
@@ -310,7 +310,7 @@ class ManageController extends Controller
     				Partner::deleteById($_POST["id"]);
     	
     				// Return 0 for great success.
-    				header("Content-Type: application/json");
+    				header("content-Type: application/json");
     				exit(json_encode(0));
     			}
     		}
@@ -326,7 +326,7 @@ class ManageController extends Controller
     				$partner->update();
     	
     				// Return 0 for great success.
-    				header("Content-Type: application/json");
+    				header("content-Type: application/json");
     				exit(json_encode(0));
     			}
     		}
@@ -383,7 +383,7 @@ class ManageController extends Controller
 					}
 	
 					// Return 0 for great success.
-					header("Content-Type: application/json");
+					header("content-Type: application/json");
 					exit(json_encode(0));
 				}
 			}
@@ -400,7 +400,7 @@ class ManageController extends Controller
 					$auctionProduct->update();
 	
 					// Return 0 for great success.
-					header("Content-Type: application/json");
+					header("content-Type: application/json");
 					exit(json_encode(0));
 				}
 			}
@@ -427,7 +427,7 @@ class ManageController extends Controller
 					$imageTargetFilePath = Product::IMAGES_DIRECTORY . "/" . $_POST["id"] . "/" . $i . ".jpg";
 					$manipulator->save($imageTargetFilePath, IMAGETYPE_JPEG);
 						
-					header("Content-Type: application/json");
+					header("content-Type: application/json");
 					exit(json_encode(0));
 				}
 			}
@@ -437,7 +437,7 @@ class ManageController extends Controller
 				{
 					unlink(Product::IMAGES_DIRECTORY . "/" . $_POST["id"] . "/" . $_POST["imageName"]);
 	
-					header("Content-Type: application/json");
+					header("content-Type: application/json");
 					exit(json_encode(0));
 				}
 			}

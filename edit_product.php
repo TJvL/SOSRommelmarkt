@@ -1,5 +1,5 @@
 <!--For best practice on includes, a config php file is required which defines the root, so absolute paths can be created from $root/includes/markup for example..-->
-<?php include("includes/markup/header.php"); ?> 
+<?php include("includes/markup/header.inc.php"); ?>
 
 <div class="container">
 	<div class="grey">
@@ -45,5 +45,5 @@
 </div>
 
 <?php
-include("includes/markup/footer.php"); 
+include("includes/markup/footer.inc.php");
 ?> 

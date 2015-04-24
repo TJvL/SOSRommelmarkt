@@ -2,7 +2,7 @@
 
 <head>
     <?php
-    include("includes/markup/header.php");
+    include("includes/markup/header.inc.php");
     ?>
 
     <link href=  "/SOSRommelmarkt/includes/css/contactformulier_normalize.css" rel="stylesheet">
@@ -171,5 +171,5 @@
 
 
 <?php
-include("includes/markup/footer.php");
+include("includes/markup/footer.inc.php");
 ?>

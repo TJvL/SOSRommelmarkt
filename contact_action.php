@@ -1,5 +1,5 @@
 <?php
-include "/model/SubventionRequest.class.php";
+include "/model/subventionrequest.class.php";
 
 
 

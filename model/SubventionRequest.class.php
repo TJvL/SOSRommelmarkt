@@ -84,7 +84,7 @@ VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     static public function fetchSubventionRequestById($id)
     {
 //        TODO moet niet nodig zijn
-        include_once "database.php";
+        include_once "database.class.php";
     	$query = "SELECT * FROM SubventionRequest WHERE id = ?";
     	 
     	// Execute the query.

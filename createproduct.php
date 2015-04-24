@@ -1,5 +1,5 @@
 <?php
-include("includes/utility/imagemanipulator.php");
+include("includes/utility/imagemanipulator.class.php");
 //Insert data into database and create a product variable for later use.
 //$product = ShopProduct::insert($_POST["productName"], $_POST["productDesc"], "PLACEHOLDER", $_POST["productColorCode"], $_POST["productPrice"], "0");
 

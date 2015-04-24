@@ -40,7 +40,7 @@ class SubventionController extends Controller
 
     public function landing_POST()
     {
-        include_once "/model/SubventionRequest.class.php";
+        include_once "/model/subventionrequest.class.php";
 
 
         $sv = new SubventionRequest();

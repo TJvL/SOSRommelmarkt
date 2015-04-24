@@ -11,41 +11,16 @@ define("ROOT_DIR", $root);
 
 session_start();
 
-require("database.php");
+//Define the paths to the directories holding class files
+$paths = array(
+    'includes/utility',
+    'controller',
+    'model'
+);
 
-//require_once("/controller/Controller.php");
-function loadControllers($class)
-{
-    $loc = "controller/";
-    $file = $loc . $class . ".php";
-    if(file_exists($_SERVER['DOCUMENT_ROOT']. "/SOSRommelmarkt/" . $file))
-    {
-        require_once($file);
-    }
-}
-
-function loadModels($class)
-{
-    $loc = "model/";
-    $file = $loc . $class . ".class.php";
-    if(file_exists($_SERVER['DOCUMENT_ROOT']. "/SOSRommelmarkt/" . $file))
-    {
-        require_once($file);
-    }
-}
-
-function loadUtilities($class)
-{
-    $loc = "includes/utility/";
-    $file = $loc . $class . ".php";
-    if(file_exists($_SERVER['DOCUMENT_ROOT']. "/SOSRommelmarkt/" . $file))
-    {
-        require_once($file);
-    }
-}
-
-spl_autoload_register('loadControllers');
-spl_autoload_register('loadModels');
-spl_autoload_register('loadUtilities');
-
-?>
+//Add the paths to the class directories to the include path.
+set_include_path(get_include_path() . PATH_SEPARATOR . implode(PATH_SEPARATOR, $paths));
+//Add the file extensions to the SPL.
+spl_autoload_extensions(".class.php,.php,.inc");
+//Register the default autoloader implementation in the php engine.
+spl_autoload_register();
