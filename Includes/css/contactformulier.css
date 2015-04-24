@@ -1,0 +1,23 @@
+
+.field.buttons button {
+    margin-right: .5em;
+}
+
+#invalid {
+    display: none;
+    float: left;
+    width: 290px;
+    margin-left: 120px;
+    margin-top: .5em;
+    color: #CC2A18;
+    font-size: 130%;
+    font-weight: bold;
+}
+
+.idealforms.adaptive #invalid {
+    margin-left: 0 !important;
+}
+
+.idealforms.adaptive .field.buttons label {
+    height: 0;
+}
