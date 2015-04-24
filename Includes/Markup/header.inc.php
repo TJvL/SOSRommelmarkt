@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link href = "<?php echo ROOT_DIR; ?>/database.php" rel = "database">
+    <link href = "<?php echo ROOT_DIR; ?>/includes/utility/database.class.php" rel = "database">
 
     <link rel="stylesheet" href="<?php echo ROOT_DIR; ?>/includes/css/menu.css" type="text/css" media="screen">
     <link rel="stylesheet" href="<?php echo ROOT_DIR; ?>/includes/fonts/font-awesome/css/font-awesome.min.css" >

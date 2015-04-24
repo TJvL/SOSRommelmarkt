@@ -1004,8 +1004,8 @@ function Output($name='', $dest='')
 			if(PHP_SAPI!='cli')
 			{
 				// We send to a browser
-				header('Content-Type: application/pdf');
-				header('Content-Disposition: inline; filename="'.$name.'"');
+				header('content-Type: application/pdf');
+				header('content-Disposition: inline; filename="'.$name.'"');
 				header('Cache-Control: private, max-age=0, must-revalidate');
 				header('Pragma: public');
 			}
@@ -1014,8 +1014,8 @@ function Output($name='', $dest='')
 		case 'D':
 			// Download file
 			$this->_checkoutput();
-			header('Content-Type: application/x-download');
-			header('Content-Disposition: attachment; filename="'.$name.'"');
+			header('content-Type: application/x-download');
+			header('content-Disposition: attachment; filename="'.$name.'"');
 			header('Cache-Control: private, max-age=0, must-revalidate');
 			header('Pragma: public');
 			echo $this->buffer;
@@ -1797,7 +1797,7 @@ function _enddoc()
 // Handle special IE contype request
 if(isset($_SERVER['HTTP_USER_AGENT']) && $_SERVER['HTTP_USER_AGENT']=='contype')
 {
-	header('Content-Type: application/pdf');
+	header('content-Type: application/pdf');
 	exit;
 }
 

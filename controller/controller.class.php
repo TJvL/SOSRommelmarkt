@@ -14,11 +14,11 @@ class Controller
     {
         if ($this->name == "manage" || $this->name == "auction")
         {
-            include("includes/markup/manageHeader.php");
+            include("includes/markup/manageheader.inc.php");
         }
         else
         {
-            include("includes/markup/header.php");
+            include("includes/markup/header.inc.php");
         }
     	
         if (func_num_args() ==1)
@@ -36,11 +36,11 @@ class Controller
         
         if ($this->name == "manage" || $this->name == "auction")
         {
-        	include("includes/markup/manageFooter.php");
+        	include("includes/markup/managefooter.inc.php");
         }
         else
         {
-        	include("includes/markup/footer.php");
+        	include("includes/markup/footer.inc.php");
         }
     }
 

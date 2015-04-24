@@ -26,7 +26,7 @@
     <div class="tab-pane fade in active" id="tab1">
 
         <?php
-        //TODO implementeer database.php
+        //TODO implementeer database.class.php
                 //Create a query
                 $query = "SELECT * FROM Info ";
                 //submit the query and capture the result
@@ -78,7 +78,7 @@
      </div>
     <div class="tab-pane fade" id="tab2">
                 <?php
-                //TODO implementeer database.php
+                //TODO implementeer database.class.php
                         //Create a query
                         $query = "SELECT * FROM Openingstijden ";
                         //submit the query and capture the result
