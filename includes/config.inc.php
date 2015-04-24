@@ -1,49 +1,45 @@
 <?php
 
-$root = "";
-
-//root dir incompatibility fix
-if(in_array("SOSRommelmarkt", scandir($_SERVER['DOCUMENT_ROOT'])))
-{
-    $root = $root . "/SOSRommelmarkt";
-}
+$root = $_SERVER['DOCUMENT_ROOT'] . "SOSRommelmarkt/";
 define("ROOT_DIR", $root);
 
 session_start();
+echo ROOT_DIR . "application/controller/";
+print_r(scandir(ROOT_DIR . "application/controller/"));
 
 function loadController($class)
 {
-    $location = "controller/";
-    $file = $location . strtolower($class) . ".class.php";
-    if(file_exists($file))
+    $location =  ROOT_DIR . "application/controller/";
+
+    foreach(scandir($location) as $subdir)
     {
-        require_once($file);
+        $file = $location . $subdir . "/" . strtolower($class) . ".class.php";
+
+        if(file_exists($file))
+        {
+            require_once($file);
+        }
     }
 }
 
 function loadModel($class)
 {
-    $location = "model/";
-    $file = $location . strtolower($class) . ".class.php";
-    if(file_exists($file))
-    {
-        require_once($file);
-    }
-}
+    $location =  ROOT_DIR . "application/model/";
 
-function loadViewModel($class)
-{
-    $location = "viewModel/";
-    $file = $location . strtolower($class) . ".class.php";
-    if(file_exists($file))
+    foreach(scandir($location) as $subdir)
     {
-        require_once($file);
+        $file = $location . $subdir . "/" . strtolower($class) . ".class.php";
+
+        if(file_exists($file))
+        {
+            require_once($file);
+        }
     }
 }
 
 function loadUtility($class)
 {
-    $location = "includes/utility/";
+    $location = ROOT_DIR . "application/utility/";
     $file = $location . strtolower($class) . ".class.php";
     if(file_exists($file))
     {
@@ -53,7 +49,6 @@ function loadUtility($class)
 
 spl_autoload_register('loadController');
 spl_autoload_register('loadModel');
-spl_autoload_register('loadViewModel');
 spl_autoload_register('loadUtility');
 
 ////Define the paths to the directories holding class files
