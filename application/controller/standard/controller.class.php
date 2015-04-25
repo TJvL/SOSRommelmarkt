@@ -14,11 +14,11 @@ class Controller
     {
         if ($this->name == "manage" || $this->name == "auction")
         {
-            include("includes/markup/manageheader.inc.php");
+            include("includes/manageheader.inc.php");
         }
         else
         {
-            include("includes/markup/header.inc.php");
+            include("includes/header.inc.php");
         }
     	
         if (func_num_args() ==1)
@@ -36,24 +36,24 @@ class Controller
         
         if ($this->name == "manage" || $this->name == "auction")
         {
-        	include("includes/markup/managefooter.inc.php");
+        	include("includes/managefooter.inc.php");
         }
         else
         {
-        	include("includes/markup/footer.inc.php");
+        	include("includes/footer.inc.php");
         }
     }
 
     private function renderView($action)
     {
         $viewbag = $this->viewbag;
-        include("view/" . $this->name . "/" . $action . ".php");
+        include("application/view/" . $this->name . "/" . $action . ".php");
     }
     
     private function renderStrongView($action, $model)
     {
         $viewbag = $this->viewbag;
-        include("view/" . $this->name . "/" . $action . ".php");
+        include("application/view/" . $this->name . "/" . $action . ".php");
     }
 
     protected function redirectTo($target)

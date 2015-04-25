@@ -4,8 +4,6 @@ $root = $_SERVER['DOCUMENT_ROOT'] . "SOSRommelmarkt/";
 define("ROOT_DIR", $root);
 
 session_start();
-echo ROOT_DIR . "application/controller/";
-print_r(scandir(ROOT_DIR . "application/controller/"));
 
 function loadController($class)
 {

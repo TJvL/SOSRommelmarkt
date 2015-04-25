@@ -8,22 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link href = "<?php echo ROOT_DIR; ?>/application/model/database/database.class.php" rel = "database">
+    <link href = "<?php echo ROOT_DIR; ?>application/model/database/database.class.php" rel = "database">
 
-    <link rel="stylesheet" href="<?php echo ROOT_DIR; ?>/css/menu.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="<?php echo ROOT_DIR; ?>/fonts/font-awesome/css/font-awesome.min.css" >
-    <link href = "<?php echo ROOT_DIR; ?>/frameworks/bootstrap/css/bootstrap.min.css" rel = "stylesheet">
-    <link href = "<?php echo ROOT_DIR; ?>/css/shoppingcart.css" rel = "stylesheet">
-    <link href = "<?php echo ROOT_DIR; ?>/css/footer.css" rel = "stylesheet">
-    <link href=  "<?php echo ROOT_DIR; ?>/css/jquery.bxslider.css" rel="stylesheet">
-    <link href=  "<?php echo ROOT_DIR; ?>/css/style.css" rel="stylesheet">
-    <link href=  "<?php echo ROOT_DIR; ?>/css/vitrine.css" rel="stylesheet">
-    <link href=  "<?php echo ROOT_DIR; ?>/css/angular.rangeSlider.css" rel="stylesheet">
-    <link href = "<?php echo ROOT_DIR; ?>/css/carousel.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo ROOT_DIR; ?>css/menu.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="<?php echo ROOT_DIR; ?>fonts/font-awesome/css/font-awesome.min.css" >
+    <link href = "<?php echo ROOT_DIR; ?>frameworks/bootstrap/css/bootstrap.min.css" rel = "stylesheet">
+    <link href = "<?php echo ROOT_DIR; ?>css/shoppingcart.css" rel = "stylesheet">
+    <link href = "<?php echo ROOT_DIR; ?>css/footer.css" rel = "stylesheet">
+    <link href=  "<?php echo ROOT_DIR; ?>css/jquery.bxslider.css" rel="stylesheet">
+    <link href=  "<?php echo ROOT_DIR; ?>css/style.css" rel="stylesheet">
+    <link href=  "<?php echo ROOT_DIR; ?>css/vitrine.css" rel="stylesheet">
+    <link href=  "<?php echo ROOT_DIR; ?>css/angular.rangeSlider.css" rel="stylesheet">
+    <link href = "<?php echo ROOT_DIR; ?>css/carousel.css" rel="stylesheet">
     <link href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.5/css/jquery.dataTables.css">
-    <link href=  "/SOSRommelmarkt/IdealForms/css/jquery.idealforms.css" rel="stylesheet">
-    <link href=  "<?php echo ROOT_DIR; ?>/css/override-bootstrap.css" rel="stylesheet">
+    <link href="<?php echo ROOT_DIR; ?>frameworks/IdealForms/css/jquery.idealforms.css" rel="stylesheet">
+    <link href="<?php echo ROOT_DIR; ?>css/override-bootstrap.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -32,18 +32,18 @@
     <![endif]-->    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
-    <script src="<?php echo ROOT_DIR; ?>/js/shopfilter.js" type="text/javascript"></script>
-    <script src="<?php echo ROOT_DIR; ?>/js/shoppingcart.js" type="text/javascript"></script>
-    <script src="<?php echo ROOT_DIR; ?>/frameworks/bootstrap/js/bootstrap.min.js"></script>
-    <script src="<?php echo ROOT_DIR; ?>/js/jquery.bxslider.min.js"></script>
-    <script src="<?php echo ROOT_DIR; ?>/js/menu.js" type="text/javascript"></script>
-    <script src="<?php echo ROOT_DIR; ?>/js/vitrine.js" type="text/javascript"></script>
+    <script src="<?php echo ROOT_DIR; ?>js/shopfilter.js" type="text/javascript"></script>
+    <script src="<?php echo ROOT_DIR; ?>js/shoppingcart.js" type="text/javascript"></script>
+    <script src="<?php echo ROOT_DIR; ?>frameworks/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?php echo ROOT_DIR; ?>js/jquery.bxslider.min.js"></script>
+    <script src="<?php echo ROOT_DIR; ?>js/menu.js" type="text/javascript"></script>
+    <script src="<?php echo ROOT_DIR; ?>js/vitrine.js" type="text/javascript"></script>
     <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js" type="text/javascript"></script>
 
     <script src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.js" type="text/javascript"></script>
     <script src="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js"></script>
-    <script src="<?php echo ROOT_DIR; ?>/js/shop/angular.rangeSlider.js" type="text/javascript"></script>
+    <script src="<?php echo ROOT_DIR; ?>js/shop/angular.rangeSlider.js" type="text/javascript"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-animate.js"></script>
 
 </head>
