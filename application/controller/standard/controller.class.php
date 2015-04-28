@@ -2,7 +2,7 @@
 class Controller
 {
 	private $name;
-    protected $viewbag;
+    protected $viewBag;
 	
 	function __constructor($name)
 	{
@@ -10,8 +10,16 @@ class Controller
         $this->viewbag = array();
 	}
 
-    protected function render()
+    protected function render($action, $model = null)
     {
+        if(empty($action))
+        {
+            throw new InvalidArgumentException("Action parameter must not be empty.");
+        }
+
+        $controller = $this->name;
+        $viewBag = $this->viewBag;
+
         if ($this->name == "manage" || $this->name == "auction")
         {
             include("includes/manageheader.inc.php");
@@ -20,18 +28,14 @@ class Controller
         {
             include("includes/header.inc.php");
         }
-    	
-        if (func_num_args() ==1)
+
+        if(isset($model))
         {
-            $this->renderView(func_get_arg(0));
-        }
-        elseif (func_num_args() == 2)
-        {
-            $this->renderStrongView(func_get_arg(0), func_get_arg(1));
+            $this->renderStrongView($action, $model, $viewBag);
         }
         else
         {
-            throw new BadFunctionCallException("Invalid argument count");
+            $this->renderView($action, $viewBag);
         }
         
         if ($this->name == "manage" || $this->name == "auction")
@@ -44,13 +48,13 @@ class Controller
         }
     }
 
-    private function renderView($action)
+    private function renderView($action, $viewBag)
     {
         $viewbag = $this->viewbag;
         include("application/view/" . $this->name . "/" . $action . ".php");
     }
     
-    private function renderStrongView($action, $model)
+    private function renderStrongView($action, $model, $viewBag)
     {
         $viewbag = $this->viewbag;
         include("application/view/" . $this->name . "/" . $action . ".php");
