@@ -3,7 +3,7 @@
 abstract class Product
 {
 	// The directory the images for the products are placed.
-	const IMAGES_DIRECTORY = "img/content/products";
+	const IMAGES_DIRECTORY = "img/products";
 	
     // Maximum image size in bytes. 10 MB right now.
     const MAX_IMAGE_SIZE = 10000000;
@@ -20,7 +20,7 @@ abstract class Product
     {
         $result = glob(Product::IMAGES_DIRECTORY . "/" . $this->id . "/" . "*");
         if ($result)
-            return ROOT_DIR . "/" . $result[0];
+            return ROOT_PATH . "/" . $result[0];
         else
             return null;
     }
@@ -34,7 +34,7 @@ abstract class Product
     		
     		foreach ($result as $key => $imagePath)
     		{
-    			$imagePaths[$key] = ROOT_DIR . "/" . $imagePath;
+    			$imagePaths[$key] = ROOT_PATH . "/" . $imagePath;
     		}
     		
     		return $imagePaths;

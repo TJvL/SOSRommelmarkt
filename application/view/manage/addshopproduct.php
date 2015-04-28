@@ -3,7 +3,7 @@
         <div class="content">
             <div class="row">
                 <div class="col-md-1">
-                    <a href="<?php echo ROOT_DIR . '/manage/productList'?>" class="btn btn-default">Back</a>
+                    <a href="<?php echo ROOT_PATH . '/manage/productList'?>" class="btn btn-default">Back</a>
                 </div>
             </div>
 
@@ -11,7 +11,7 @@
 
                 <nav class="idealsteps-nav"></nav>
 
-                <form action="<?php echo ROOT_DIR . '/manage/addshopproduct'?>" method="POST" enctype="multipart/form-data" autocomplete="off" class="idealforms" id="product_add">
+                <form action="<?php echo ROOT_PATH . '/manage/addshopproduct'?>" method="POST" enctype="multipart/form-data" autocomplete="off" class="idealforms" id="product_add">
 
                     <div class="idealsteps-wrap">
 

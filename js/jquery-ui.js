@@ -16384,7 +16384,7 @@
                 return;
             }
 
-            // Content can be updated multiple times. If the tooltip already
+            // content can be updated multiple times. If the tooltip already
             // exists, then just update the content and bail.
             tooltipData = this._find( target );
             if ( tooltipData ) {

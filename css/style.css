@@ -5,7 +5,7 @@ html {
 
 body{
 /*    background-image: url("/SOSRommelmarkt/img/background.jpg");*/
-    background-image: url("../../img/background.jpg");
+    background-image: url("../img/content/background.jpg");
     background-attachment:fixed;
     background-size: cover;
     margin-bottom: 250px; /* bottom = footer height */

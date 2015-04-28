@@ -4,6 +4,8 @@ define("SEPARATOR", "/");
 
 $root = $_SERVER['DOCUMENT_ROOT'] . SEPARATOR . "SOSRommelmarkt";
 define("ROOT_DIR", $root);
+$path = SEPARATOR . "SOSRommelmarkt";
+define("ROOT_PATH", $path);
 
 function loadClass($class)
 {

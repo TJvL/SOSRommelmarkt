@@ -2,8 +2,8 @@
 
 <!--TODO: remove the head-->
 <head>
-	<script src="<?php echo ROOT_DIR; ?>/js/manage/subventions/subvention_overview.js" type="text/javascript"></script>
-	<script src="<?php echo ROOT_DIR; ?>/js/jquery.deletesub.js" type="text/javascript"></script>
+	<script src="<?php echo ROOT_PATH; ?>/js/manage/subventions/subvention_overview.js" type="text/javascript"></script>
+	<script src="<?php echo ROOT_PATH; ?>/js/jquery.deletesub.js" type="text/javascript"></script>
 </head>
 
 <div class="container" ng-app="subventionApp" ng-controller="subventionController">
@@ -130,7 +130,7 @@
                         </a>
                         <div class="col-md-4">
 
-                            <form class="form-inline" action="<?php echo ROOT_DIR;?>/manage/changeSubventionStatus" method="Post">
+                            <form class="form-inline" action="<?php echo ROOT_PATH;?>/manage/changeSubventionStatus" method="Post">
 
                                 <div class="input-group">
                                     <input type='hidden' name='id' value={{subventionRequest.id}}>

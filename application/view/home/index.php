@@ -1,6 +1,7 @@
 <?php Type::check("ArrayList:AuctionProduct", $model) ?>
 <?php
 
+    //TODO Please, handel de openingstijden queries en deze include anders af..- Erik
     // Declaration.
     $servername = "samwise.technotive.nl";
     $username = "sosAdmin";
@@ -23,7 +24,7 @@
     <div class="grey">
         <div class="row">
             <div class= "col-md-3">
-                <img class="img-responsive" src="<?php echo ROOT_DIR;?>/img/content/headerdiv.png">
+                <img class="img-responsive" src="<?php echo ROOT_PATH;?>/img/content/headerdiv.png">
             </div>
             <div class="col-md-9">
                 <p>Alles wat verkoopbaar is krijgt bij klanten een nieuw leven.</p>
@@ -58,7 +59,7 @@
 					    <div class="carousel-inner full-height" role="listbox">
 					    	<?php for ($i = 0; $i < $model->size(); $i++) { ?>
 					    	<div class="item <?php if ($i == 0) echo 'active' ?> carousel-overlay full-height">
-					    		<a href="<?php echo ROOT_DIR; ?>/auction/index"><img class="center-block full-height" src="<?php echo $model->get($i)->imagePath ?>" alt="Slide"></a>
+					    		<a href="<?php echo ROOT_PATH; ?>/auction/index"><img class="center-block full-height" src="<?php echo $model->get($i)->imagePath ?>" alt="Slide"></a>
 					    		<div class="carousel-caption">
 					    			<br>
 					    			<h2><?php echo $model->get($i)->name ?></h2>
@@ -109,14 +110,14 @@
 			<div class="white margin-ver-lg">
 				<h2>Subsidie</h2>
 				<p>Kent u een project in een ontwikkelingsland dat steun kan gebruiken dan kunt u bij SOS Rommelmarkt een aanvraag voor subsidie indienen.</p>
-				<a href="<?php echo ROOT_DIR; ?>/subvention/index"><button type="button" class="btn btn-red btn-lg" style="border-top-width: 40px;">Vraag subsidie aan <i class="fa fa-chevron-right"></i></button></a> <!--Style used -> Hacky I know..-->
+				<a href="<?php echo ROOT_PATH; ?>/subvention/index"><button type="button" class="btn btn-red btn-lg">Vraag subsidie aan <i class="fa fa-chevron-right"></i></button></a> <!--Style used -> Hacky I know..-->
 			</div>
 		</div>
 		<div class="col-md-6-custom padding-hor-md">
 			<div class="white margin-ver-lg">
 				<h2>Webshop</h2>
 				<p>In de kringloopwinkel van SOS Rommelmarkt in de Vughterstraat van ’s-Hertogenbosch worden al dertig jaar tweedehands spullen verkocht. Je vindt in onze opgeruimde en overzichtelijke winkel kringloopgoederen voor een kleine prijs. Een deel van de collectie wordt ook online aangeboden.</p>
-				<a href="<?php echo ROOT_DIR; ?>/shop/index"><button type="button" class="btn btn-red btn-lg">Webshop <i class="fa fa-chevron-right"></i></button></a>
+				<a href="<?php echo ROOT_PATH; ?>/shop/index"><button type="button" class="btn btn-red btn-lg">Webshop <i class="fa fa-chevron-right"></i></button></a>
 			</div>
 		</div>
 	</div>

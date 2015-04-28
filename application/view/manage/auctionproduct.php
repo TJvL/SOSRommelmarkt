@@ -214,7 +214,7 @@ $(document).ready(function()
 	<div class="white">
         <div class="row">
             <div class="col-md-1">
-                <a href="<?php echo ROOT_DIR . "/manage/editauction/" . $_SESSION["auctionId"] ?>" class="btn btn-default">Back</a>
+                <a href="<?php echo ROOT_PATH . "/manage/editauction/" . $_SESSION["auctionId"] ?>" class="btn btn-default">Back</a>
             </div>
         </div>
 		<div class="row">

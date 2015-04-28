@@ -7269,9 +7269,9 @@
                  * - `$httpProvider.defaults.headers.common` (headers that are common for all requests):
                  *   - `Accept: application/json, text/plain, * / *`
                  * - `$httpProvider.defaults.headers.post`: (header defaults for POST requests)
-                 *   - `Content-Type: application/json`
+                 *   - `content-Type: application/json`
                  * - `$httpProvider.defaults.headers.put` (header defaults for PUT requests)
-                 *   - `Content-Type: application/json`
+                 *   - `content-Type: application/json`
                  *
                  * To add or overwrite these defaults, simply add or remove a property from these configuration
                  * objects. To add headers for an HTTP method other than POST or PUT, simply add a new object
@@ -18246,7 +18246,7 @@
      *
      * @element html
      * @description
-     * Enables [CSP (Content Security Policy)](https://developer.mozilla.org/en/Security/CSP) support.
+     * Enables [CSP (content Security Policy)](https://developer.mozilla.org/en/Security/CSP) support.
      *
      * This is necessary when developing things like Google Chrome Extensions.
      *
@@ -18909,10 +18909,10 @@
       }
      </file>
      <file name="template1.html">
-     Content of template1.html
+     content of template1.html
      </file>
      <file name="template2.html">
-     Content of template2.html
+     content of template2.html
      </file>
      <file name="animations.css">
      .slide-animate-container {
@@ -18959,7 +18959,7 @@
      var includeElem = element(by.css('[ng-include]'));
 
      it('should load template1.html', function() {
-        expect(includeElem.getText()).toMatch(/Content of template1.html/);
+        expect(includeElem.getText()).toMatch(/content of template1.html/);
       });
 
      it('should load template2.html', function() {
@@ -18970,7 +18970,7 @@
         }
         templateSelect.click();
         templateSelect.element.all(by.css('option')).get(2).click();
-        expect(includeElem.getText()).toMatch(/Content of template2.html/);
+        expect(includeElem.getText()).toMatch(/content of template2.html/);
       });
 
      it('should change to blank', function() {
@@ -20476,7 +20476,7 @@
      <example>
      <file name="index.html">
      <script type="text/ng-template" id="/tpl.html">
-     Content of the template.
+     content of the template.
      </script>
 
      <a ng-click="currentTpl='/tpl.html'" id="tpl-link">Load inlined template</a>
@@ -20485,7 +20485,7 @@
      <file name="protractor.js" type="protractor">
      it('should load template defined inside script tag', function() {
         element(by.css('#tpl-link')).click();
-        expect(element(by.css('#tpl-content')).getText()).toMatch(/Content of the template/);
+        expect(element(by.css('#tpl-content')).getText()).toMatch(/content of the template/);
       });
      </file>
      </example>

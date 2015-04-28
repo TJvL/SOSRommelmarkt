@@ -3,13 +3,13 @@
         <div class="content">
             <div class="row">
                 <div class="col-md-1">
-                    <a href="<?php echo ROOT_DIR . '/manage/auctions'?>" class="btn btn-default">Terug</a>
+                    <a href="<?php echo ROOT_PATH . '/manage/auctions'?>" class="btn btn-default">Terug</a>
                 </div>
             </div>
 
             <div class="idealsteps-container">
 
-                <form action="<?php echo ROOT_DIR . '/manage/addauction'?>" method="POST" enctype="multipart/form-data" autocomplete="off" class="idealforms" id="auction_add">
+                <form action="<?php echo ROOT_PATH . '/manage/addauction'?>" method="POST" enctype="multipart/form-data" autocomplete="off" class="idealforms" id="auction_add">
 
                     <div class="idealsteps-wrap">
 

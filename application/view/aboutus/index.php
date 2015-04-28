@@ -5,7 +5,7 @@
 			<h1>Over ons</h1>
 			<p>SOS Rommelmarkt is een project van stichting Spoor 073 en heeft een ANBI status. De doelstelling van Stichting Spoor 073 is:</p>
 
-			<img class="img-anbi" id="img" src="<?php echo ROOT_DIR; ?>/img/content/anbi.jpg" />
+			<img class="img-anbi" id="img" src="<?php echo ROOT_PATH; ?>/img/content/anbi.jpg" />
 
 
 			<style>

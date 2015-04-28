@@ -16,7 +16,7 @@
     <?php
     IncludeLocator::locateIncludes("js", $controller, $action);
     ?>
-    <script src="<?php echo ROOT_DIR; ?>/frameworks/idealforms/js/out/jquery.idealforms.js" type="text/javascript"></script>
+    <script src="<?php echo ROOT_PATH; ?>/frameworks/idealforms/js/out/jquery.idealforms.js" type="text/javascript"></script>
 
 <!--    <link href = "--><?php //echo ROOT_DIR; ?><!--/css/menu.css" type="text/css" media="screen" rel="stylesheet" >-->
 <!--    <link href = "--><?php //echo ROOT_DIR; ?><!--/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" >-->
@@ -49,20 +49,20 @@
 
             <div class="col-sm-3">
 
-                <a href="<?php echo ROOT_DIR?>/home"><img class="img-responsive" id="logo" src="<?php echo ROOT_DIR; ?>/img/content/logo2.png" /></a>
+                <a href="<?php echo ROOT_PATH?>/home"><img class="img-responsive" id="logo" src="<?php echo ROOT_PATH; ?>/img/content/logo2.png" /></a>
 
             </div>
             <div class="col-md-8 margin-lg">
 
                 <div class="col-md-12 manage-subtitle">
-                    <p><a href="<?php echo ROOT_DIR?>/manage">Beheer</a> </p>
+                    <p><a href="<?php echo ROOT_PATH?>/manage">Beheer</a> </p>
                 </div>
              
 
 
 
                     <div class="col-md-2">
-                        <a href="<?php echo ROOT_DIR; ?>/manage/instellingen">
+                        <a href="<?php echo ROOT_PATH; ?>/manage/instellingen">
                             <button class="btn btn-red">
                                 <i class="fa fa-cogs fa-5x fa-fw"></i>
                                 <br /><b>Instellingen</b>
@@ -70,7 +70,7 @@
                         </a>
                     </div>
                     <div class="col-md-2">
-                        <a href="<?php echo ROOT_DIR; ?>/manage/subventions">
+                        <a href="<?php echo ROOT_PATH; ?>/manage/subventions">
                             <button class="btn btn-red">
                                 <i class="fa fa-check-square fa-5x fa-fw"></i>
                                 <br /><b>Subsidies</b>
@@ -78,7 +78,7 @@
                         </a>
                     </div>
                     <div class="col-md-2">
-                        <a href="<?php echo ROOT_DIR; ?>/manage/productList">
+                        <a href="<?php echo ROOT_PATH; ?>/manage/productList">
                             <button class="btn btn-red">
                                 <i class="fa fa-shopping-cart fa-5x fa-fw"></i>
                                 <br /><b>Producten</b>
@@ -86,7 +86,7 @@
                         </a>
                     </div>
                     <div class="col-md-2">
-                        <a href="<?php echo ROOT_DIR; ?>/manage/auctions">
+                        <a href="<?php echo ROOT_PATH; ?>/manage/auctions">
                             <button class="btn btn-red">
                                 <i class="fa fa-gavel fa-5x fa-fw"></i>
                                 <br /><b>Veilingen</b>
@@ -94,7 +94,7 @@
                         </a>
                     </div>
                     <div class="col-md-2">
-                        <a href="<?php echo ROOT_DIR; ?>/manage/partners">
+                        <a href="<?php echo ROOT_PATH; ?>/manage/partners">
                             <button class="btn btn-red">
                                 <i class="fa fa-users fa-5x fa-fw"></i>
                                 <br /><b>Partners</b>

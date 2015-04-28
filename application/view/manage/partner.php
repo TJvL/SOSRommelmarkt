@@ -81,7 +81,7 @@
 	<div class="white">
 		<div class="row">
 			<div class="col-md-1">
-				<a href="<?php echo ROOT_DIR . "/manage/partners" ?>" class="btn btn-default">Terug</a>
+				<a href="<?php echo ROOT_PATH . "/manage/partners" ?>" class="btn btn-default">Terug</a>
 			</div>
 		</div>
 		<div class="row">

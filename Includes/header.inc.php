@@ -11,7 +11,7 @@
     Wat is dit?
     -Thomas
     -->
-    <link href = "<?php echo ROOT_DIR; ?>application/model/database/database.class.php" rel = "database">
+    <link href = "<?php echo ROOT_PATH; ?>application/model/database/database.class.php" rel = "database">
 
 
     <?php
@@ -21,7 +21,7 @@
     <?php
     IncludeLocator::locateIncludes("js", $controller, $action);
     ?>
-    <script src="<?php echo ROOT_DIR; ?>/frameworks/idealforms/js/out/jquery.idealforms.js" type="text/javascript"></script>
+    <script src="<?php echo ROOT_PATH; ?>/frameworks/idealforms/js/out/jquery.idealforms.js" type="text/javascript"></script>
 
 <!--    <link rel="stylesheet" href="--><?php //echo ROOT_DIR; ?><!--css/menu.css" type="text/css" media="screen">-->
 <!--    <link rel="stylesheet" href="--><?php //echo ROOT_DIR; ?><!--fonts/font-awesome/css/font-awesome.min.css" >-->
@@ -110,8 +110,8 @@
         <div id="headerdiv">
             <div class="row">
                 <div class="col-sm-3">
-                    <a href="<?php echo ROOT_DIR; ?>/home/index">
-                        <img class="img-responsive" id="logo" src="<?php echo ROOT_DIR; ?>/img/content/logo2.png" />
+                    <a href="<?php echo ROOT_PATH; ?>/home/index">
+                        <img class="img-responsive" id="logo" src="<?php echo ROOT_PATH; ?>/img/content/logo2.png" />
                     </a>
                 </div>
                 <div class="col-md-9">
@@ -119,11 +119,11 @@
                          <a id="touch-menu" class="mobile-menu" href="#">Menu<i class="fa fa-angle-double-down fa-lg"></i></a>
                          <subnav>
                              <ul class="menu">
-                                 <li><a href="<?php echo ROOT_DIR; ?>/home/index"><i class="fa fa-home"></i> Home</a></li>
-                                 <li><a  href="<?php echo ROOT_DIR; ?>/shop/index"><i class="fa fa-cubes"></i> Producten</a></li>
-                                 <li><a href="<?php echo ROOT_DIR; ?>/subvention/index"><i class="fa fa-money"></i> Subsidie</a></li>
-                                 <li><a href="<?php echo ROOT_DIR; ?>/aboutUs/index"><i class="fa fa-group"></i> Over ons</a></li>
-                                 <li><a  href="<?php echo ROOT_DIR; ?>/contact/index"><i class="fa fa-envelope"></i> Contact</a></li>
+                                 <li><a href="<?php echo ROOT_PATH; ?>/home/index"><i class="fa fa-home"></i> Home</a></li>
+                                 <li><a  href="<?php echo ROOT_PATH; ?>/shop/index"><i class="fa fa-cubes"></i> Producten</a></li>
+                                 <li><a href="<?php echo ROOT_PATH; ?>/subvention/index"><i class="fa fa-money"></i> Subsidie</a></li>
+                                 <li><a href="<?php echo ROOT_PATH; ?>/aboutUs/index"><i class="fa fa-group"></i> Over ons</a></li>
+                                 <li><a  href="<?php echo ROOT_PATH; ?>/contact/index"><i class="fa fa-envelope"></i> Contact</a></li>
                              </ul>
                         </subnav>
                     </div>

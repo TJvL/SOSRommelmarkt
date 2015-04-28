@@ -7,7 +7,7 @@
 
         <div class="row">
             <div class="col-md-1">
-                <a href="<?php echo ROOT_DIR . '/manage/addshopproduct'?>" class="btn btn-default">Product toevoegen...</a>
+                <a href="<?php echo ROOT_PATH . '/manage/addshopproduct'?>" class="btn btn-default">Product toevoegen...</a>
             </div>
         </div>
         <div class="table-responsive padding-sm">

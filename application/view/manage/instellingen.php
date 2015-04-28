@@ -38,7 +38,7 @@
                   <div class="col-md-4">
                     <h2> Adres:</h2>
 
-                         <form class="form-horizontal"  action="<?php echo ROOT_DIR;?>/manage/companyInfomation" method="Post">
+                         <form class="form-horizontal"  action="<?php echo ROOT_PATH;?>/manage/companyInfomation" method="Post">
                             <?php
                         while ($row = $result->fetch_assoc()) {?>
                         <div class="form-group">
@@ -89,7 +89,7 @@
 
                 <div class="col-md-4">
                     <h2> Openingstijden:</h2>
-                    <form class="form-horizontal" action="<?php echo ROOT_DIR;?>/manage/instellingen" method="Post">
+                    <form class="form-horizontal" action="<?php echo ROOT_PATH;?>/manage/instellingen" method="Post">
                         <?php
                         while ($row = $result->fetch_assoc()) {?>
                         <div class="form-group">

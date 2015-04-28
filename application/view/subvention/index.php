@@ -19,6 +19,6 @@
                 <p>• De aanvrager moet bereid zijn een verantwoordingsrapportage te maken.<br>
              • De aanvragen van buitenlandse organisaties laten toetsen door een nader te bepalen Nederlandse hulpinstelling.</p>
 
-        <a href="<?php echo ROOT_DIR; ?>/subvention/landing"> <button type="button" class="btn btn-red btn-lg">Aanvragen<i class="fa fa-chevron-right"></i></button></a>
+        <a href="<?php echo ROOT_PATH; ?>/subvention/landing"> <button type="button" class="btn btn-red btn-lg">Aanvragen<i class="fa fa-chevron-right"></i></button></a>
     </div>
 </div>

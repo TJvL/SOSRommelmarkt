@@ -1,8 +1,8 @@
 <!--For best practice on includes, a config php file is required which defines the root, so absolute paths can be created from $root/includes/markup for example..-->
 
-<head>
-    <link href=  "/SOSRommelmarkt/IdealForms/css/jquery.idealforms.css" rel="stylesheet">
-</head>
+<!--<head>-->
+<!--    <link href=  "/SOSRommelmarkt/IdealForms/css/jquery.idealforms.css" rel="stylesheet">-->
+<!--</head>-->
 
 <div class="container">
     <div style="margin-bottom:5%" class="white">
@@ -164,5 +164,5 @@
 
 </div>
 
-<script src="/SOSRommelmarkt/IdealForms/js/out/jquery.idealforms.js" type="text/javascript"></script>
-<script src="/SOSRommelmarkt/IdealForms/js/out/jquery.idealforms.submit.js" type="text/javascript"></script>
+<script src="/SOSRommelmarkt/frameworks/idealforms/js/out/jquery.idealforms.js" type="text/javascript"></script>
+<script src="/SOSRommelmarkt/frameworks/idealforms/js/out/jquery.idealforms.submit.js" type="text/javascript"></script>
