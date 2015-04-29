@@ -1,7 +1,7 @@
 <?php
 
-class CompanyInformation {
-	
+class CompanyInformation
+{
 	public $id; // seems unnecessary, but it's in the db...
 	public $phone;
 	public $email;
@@ -24,13 +24,12 @@ class CompanyInformation {
 		return $companyInformation;
 	}
 	
-	public static function update()
+	public function update()
 	{
-		// Als de DB veranderd naar engels moet dit ook anders genoemd worden...
 		$query = "UPDATE Info
 					SET phone= ?, email = ?, address = ?, city = ?, postalcode = ?
 					WHERE id = ?";
-		Database::update($query, "sssssi", array($this->phone, $this->email, $this->address, $this->city, $this->postalcode, $this-id));
+		Database::update($query, "sssssi", array($this->phone, $this->email, $this->address, $this->city, $this->postalcode, $this->id));
 	}
 	
 	public static function selectCurrent()
