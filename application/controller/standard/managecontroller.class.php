@@ -172,26 +172,42 @@ class ManageController extends Controller
     	exit(json_encode(1));
     }
     
-    public function instellingen_POST()
-    {
-                // Check if all the necessary data has been sent with the request.
-                if (isset($_POST["Maandag"]) && isset($_POST["Dinsdag"]) && isset($_POST["Woensdag"]) && isset($_POST["Donderdag"]) && isset($_POST["Vrijdag"]) && isset($_POST["Zaterdag"]) && isset($_POST["Zondag"]))
-                {
-                    // Get the product, set the data and update.
-                    VisitingHours::update($_POST["Maandag"],$_POST["Dinsdag"],$_POST["Woensdag"], $_POST["Donderdag"],$_POST["Vrijdag"],$_POST["Zaterdag"],$_POST["Zondag"]);
-                }
-               $this->redirectTo("/manage/instellingen");
-    }
+	public function instellingen_POST()
+	{
+		// Check if all the necessary data has been sent with the request.
+		if (isset($_POST["monday"]) && isset($_POST["tuesday"]) && isset($_POST["wednesday"]) && isset($_POST["thursday"]) && isset($_POST["friday"]) && isset($_POST["saturday"]) && isset($_POST["sunday"]))
+		{
+			// set the data and update
+			$visitingHours				= VisitingHours::selectCurrent();
+			$visitingHours->monday		= $_POST["monday"];
+			$visitingHours->tuesday		= $_POST["tuesday"];
+			$visitingHours->wednesday	= $_POST["wednesday"];
+			$visitingHours->thursday	= $_POST["thursday"];
+			$visitingHours->friday		= $_POST["friday"];
+			$visitingHours->saturday	= $_POST["saturday"];
+			$visitingHours->sunday 		= $_POST["sunday"];
+			$visitingHours->update();
+		}
+		
+		$this->redirectTo("/manage/instellingen");
+	}
 
-    public function companyInformation_POST()
-    {
-                // Check if all the necessary data has been sent with the request.
-                if (isset($_POST["Telefoon"]) && isset($_POST["Email"]) && isset($_POST["Adres"]) && isset($_POST["Plaats"]))
-                {
-                    // Get the product, set the data and update.
-                    CompanyInformation::update($_POST["Telefoon"],$_POST["Email"],$_POST["Adres"], $_POST["Plaats"]);
-                }
-                echo "update geslaagd1";
+	public function companyInformation_POST()
+	{
+		// Check if all the necessary data has been sent with the request.
+		if (isset($_POST["phone"]) && isset($_POST["email"]) && isset($_POST["address"]) && isset($_POST["city"]) && isset($_POST["postalcode"]))
+		{
+			// set the data and update
+			$companyInformation				= CompanyInformation::selectCurrent();
+			$companyInformation->phone		= $_POST["phone"];
+			$companyInformation->email		= $_POST["email"];
+			$companyInformation->address	= $_POST["address"];
+			$companyInformation->city		= $_POST["city"];
+			$companyInformation->postalcode	= $_POST["postalcode"];
+			$companyInformation->update();
+		}
+
+		$this->redirectTo("/manage/instellingen");
     }
 
     public function changeSubventionStatus_POST()

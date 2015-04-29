@@ -15,128 +15,104 @@
 							</ul>
 							<div class="tab-content">
 								<div class="tab-pane fade in active" id="tab1">
-            
 						            <?php 
 						            	// contactinfo ophalen
 						            	$companyInformation = CompanyInformation::selectCurrent();
 						            ?>
-						            <br />
-										<form class="form-horizontal"  action="<?php echo ROOT_PATH;?>/manage/companyInformation" method="Post">
-											<div class="form-group">
-												<label class="col-sm-2 control-label" for="info-address">Adres</label>
-												<div class="col-sm-8">
-													<input type="text" class="form-control" id="info-address" name="address" value="<?php echo $companyInformation->address; ?>" />
-												</div>
+						            <br /> <!-- empty line -->
+									<form class="form-horizontal"  action="<?php echo ROOT_PATH;?>/manage/companyInformation" method="Post">
+										<div class="form-group">
+											<label class="col-sm-2 control-label" for="info-address">Adres</label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control" id="info-address" name="address" value="<?php echo $companyInformation->address; ?>" />
 											</div>
-											<div class="form-group">
-												<label class="col-sm-2 control-label" for="info-city">Plaats</label>
-												<div class="col-sm-8">
-													<input type="text" class="form-control" id="info-city" name="city" value="<?php echo $companyInformation->city; ?>"/>
-												</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-2 control-label" for="info-city">Plaats</label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control" id="info-city" name="city" value="<?php echo $companyInformation->city; ?>"/>
 											</div>
-											<div class="form-group">
-												<label class="col-sm-2 control-label" for="info-postalcode">Postcode</label>
-												<div class="col-sm-8">
-													<input type="text" class="form-control" id="info-postalcode" name="postalcode" value="<?php echo $companyInformation->postalcode; ?>"/>
-												</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-2 control-label" for="info-postalcode">Postcode</label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control" id="info-postalcode" name="postalcode" value="<?php echo $companyInformation->postalcode; ?>"/>
 											</div>
-											<div class="form-group">
-												<label class="col-sm-2 control-label" for="info-phone">Telefoon</label>
-												<div class="col-sm-8">
-													<input type="text" class="form-control" id="info-phone" name="phone" value="<?php echo $companyInformation->phone; ?>" />
-												</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-2 control-label" for="info-phone">Telefoon</label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control" id="info-phone" name="phone" value="<?php echo $companyInformation->phone; ?>" />
 											</div>
-											<div class="form-group">
-												<label class="col-sm-2 control-label" for="info-email">Email</label>
-												<div class="col-sm-8">
-													<input type="email" class="form-control" id="info-email" name="email" value="<?php echo $companyInformation->email; ?>" />
-												</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-2 control-label" for="info-email">Email</label>
+											<div class="col-sm-8">
+												<input type="email" class="form-control" id="info-email" name="email" value="<?php echo $companyInformation->email; ?>" />
 											</div>
-											<div class="form-group">
-												<div class="col-sm-offset-2 col-sm-8">
-													<button type="submit" class="btn btn-danger btn-block">Opslaan</button>
-												</div>
+										</div>
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-8">
+												<button type="submit" class="btn btn-danger btn-block" id="submit" name="add">Opslaan</button>
 											</div>
-										</form>
+										</div>
+									</form>
 								</div>
+								
 								<div class="tab-pane fade" id="tab2">
-									<?php
-										//TODO implementeer database.class.php
-										//Create a query
-										$query = "SELECT * FROM Openingstijden ";
-										//submit the query and capture the result
-										 $result = Database::fetch($query);
-										$query=getenv("QUERY_STRING");
-										parse_str($query);
+									<?php 
+										$visitingHours = VisitingHours::selectCurrent();
 									?>
-
-									<div class="col-md-4">
-										<h2> Openingstijden:</h2>
-										<form class="form-horizontal" action="<?php echo ROOT_PATH;?>/manage/instellingen" method="Post">
-											<?php
-												while ($row = $result->fetch_assoc()) {?>
-											<div class="form-group">
-												<label class="col-xs-2 control-label" >Maandag</label>
-												<div class="col-xs-10">
-													<div calss ="timeCss">
-														<input id="Maandag" type="text" name="Maandag" value="<?php echo $row['Maandag']; ?>"  />
-													</div>
-												</div>
+									<br /><!-- empty line -->
+									<form class="form-horizontal" action="<?php echo ROOT_PATH;?>/manage/instellingen" method="Post">
+										<div class="form-group">
+											<label class="col-sm-2 control-label" for="hours-monday">Maandag</label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control" id="hours-monday" name="monday" value="<?php echo $visitingHours->monday; ?>" />
 											</div>
-											<div class="form-group">
-												<label class="col-xs-2 control-label" >Dinsdag</label>
-												<div class="col-xs-10">
-													<div calss ="timeCss">
-														<input id="Dinsdag" type="text" name="Dinsdag" value="<?php echo $row['Dinsdag']; ?> "  />
-													</div>
-												</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-2 control-label" for="hours-tuesday">Dinsdag</label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control" id="hours-tuesday" name="tuesday" value="<?php echo $visitingHours->tuesday; ?>" />
 											</div>
-											<div class="form-group">
-												<label class="col-xs-2 control-label">Woensdag</label>
-												<div class="col-xs-10">
-													<div calss ="timeCss">
-														<input id="Woensdag" type="text" name="Woensdag" value="<?php echo $row['Woensdag']; ?> "  />
-													</div>
-												</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-2 control-label" for="hours-wednesday">Woensdag</label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control" id="hours-wednesday" name="wednesday" value="<?php echo $visitingHours->wednesday; ?>" />
 											</div>
-											<div class="form-group">
-												<label class="col-xs-2 control-label">Donderdag</label>
-												<div class="col-xs-10">
-													<div calss ="timeCss">
-														<input id="Donderdag" type="text" name="Donderdag" value="<?php echo $row['Donderdag']; ?> "  />
-													</div>
-												</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-2 control-label" for="hours-thursday">Donderdag</label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control" id="hours-thursday" name="thursday" value="<?php echo $visitingHours->thursday; ?>" />
 											</div>
-											<div class="form-group">
-												<label class="col-xs-2 control-label">Vrijdag</label>
-												<div class="col-xs-10">
-													<div calss ="timeCss">
-														<input id="Vrijdag" type="text" name="Vrijdag" value="<?php echo $row['Vrijdag']; ?>" />
-													</div>
-												</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-2 control-label" for="hours-friday">Vrijdag</label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control" id="hours-friday" name="friday" value="<?php echo $visitingHours->friday; ?>" />
 											</div>
-											<div class="form-group">
-												<label class="col-xs-2 control-label">Zaterdag</label>
-												<div class="col-xs-10">
-													<div calss ="timeCss">
-														<input id="Zaterdag" type="text" name="Zaterdag" value="<?php echo $row['Zaterdag']; ?>" />
-													</div>
-												</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-2 control-label" for="hours-saturday">Zaterdag</label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control" id="hours-saturday" name="saturday" value="<?php echo $visitingHours->saturday; ?>" />
 											</div>
-											<div class="form-group">
-												<label class="col-xs-2 control-label">Zondag</label>
-												<div class="col-xs-10">
-													<div calss ="timeCss">
-														<input id="Zondag" type="text" name="Zondag" value="<?php echo $row['Zondag']; ?> " />
-													</div>
-												</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-2 control-label" for="hours-sunday">Zondag</label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control" id="hours-sunday" name="sunday" value="<?php echo $visitingHours->sunday; ?>" />
 											</div>
-											<td>
-												<input name="add" type="submit" id="submit" value="Update Tijd">
-											</td>
-										</form>
-										<?php } ?>
-									</div>
+										</div>
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-8">
+												<button type="submit" class="btn btn-danger btn-block" id="submit" name="add">Opslaan</button>
+											</div>
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
