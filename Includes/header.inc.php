@@ -86,6 +86,8 @@
                             <div class="contact-phone"><span><?php echo $companyInformation->phone; ?></span></div>
                             <span class="icon"><i class="fa fa-envelope"></i></span>
                             <div class="contact-mail"><span><?php echo $companyInformation->email ?> </span></div>
+                            <span class="icon"><i class="fa fa-map-marker"></i></span>
+                            <div class="contact-address"><span><?php echo $companyInformation->address . ", " . $companyInformation->postalcode . " " . $companyInformation->city; ?></span></div>
                         </div>
                     </li>
                 </ul>

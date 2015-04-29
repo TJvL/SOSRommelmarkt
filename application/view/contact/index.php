@@ -65,15 +65,24 @@
 		<div class="col-sm-3">
 			<h2 class="title">Adres:</h2>
 			<p>
-                Ridderspoorstraat 2<br>
-				5212 XP 's Hertogenbosch<br>
+				<?php $companyInformation = CompanyInformation::selectCurrent(); ?>
+				
+				<?php echo $companyInformation->address;?><br />
+				<?php echo $companyInformation->postalcode . ", " . $companyInformation->city; ?><br />
 				<!-- <a href="tel:0736133774">0736133774</a><br> Doesn't seem to work very well... -->
-				073 613 3774<br>
-				<a href="mailto:info@sosrommelmarkt.nl" target="_top">info@sosrommelmarkt.nl</a>
+				<?php echo $companyInformation->phone; ?><br />
+				<a href="mailto:<?php echo $companyInformation->email; ?>" target="_top"><?php $companyInformation->email; ?></a>
 			</p>
 					
 			<!-- google map -->
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4945.754735084947!2d5.30305697168822!3d51.69868920698085!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6ee5d3cbe3817%3A0xc2bc3b36e7e3416f!2sRidderspoorstraat+2%2C+De+Orthenpoort%2C+5212+XP+&#39;s-Hertogenbosch!5e0!3m2!1sen!2snl!4v1426840575196" frameborder="0" style="border:0"></iframe>
+			<!-- nb. embed veranderd uiteraard niet automatisch mee met adreswijzigingen, om het dynamisch te maken lijkt er een API key nodig te zijn. -->
+            <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4945.754735084947!2d5.30305697168822!3d51.69868920698085!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6ee5d3cbe3817%3A0xc2bc3b36e7e3416f!2sRidderspoorstraat+2%2C+De+Orthenpoort%2C+5212+XP+&#39;s-Hertogenbosch!5e0!3m2!1sen!2snl!4v1426840575196" frameborder="0" style="border:0"></iframe>  -->
+            <!-- 
+            <iframe
+            	frameborder="0" style="border:0"
+            	src="https://www.google.com/maps/embed/v1/place&key="..."&q=Ridderspoor+2,den+bosch"
+            ></iframe>
+            -->
 		</div>
 	</div>
 </div>

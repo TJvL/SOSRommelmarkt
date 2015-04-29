@@ -225,7 +225,7 @@ h1.manage-title{
 .contact-info{
 	margin-top: 15px;
     color: #fff;
-    width: 427px;
+    /*width: 427px;*/
 }
 
 .contact-mail{
@@ -238,6 +238,10 @@ h1.manage-title{
 	margin-right: 8px;
 }
 
+.contact-address {
+	float: left;
+	margin-right: 8px;
+}
 
 .contact-info .icon {
  	 float: left;
