@@ -183,13 +183,13 @@ class ManageController extends Controller
                $this->redirectTo("/manage/instellingen");
     }
 
-    public function companyInfomation_POST()
+    public function companyInformation_POST()
     {
                 // Check if all the necessary data has been sent with the request.
                 if (isset($_POST["Telefoon"]) && isset($_POST["Email"]) && isset($_POST["Adres"]) && isset($_POST["Plaats"]))
                 {
                     // Get the product, set the data and update.
-                    companyInfomation::update($_POST["Telefoon"],$_POST["Email"],$_POST["Adres"], $_POST["Plaats"]);
+                    CompanyInformation::update($_POST["Telefoon"],$_POST["Email"],$_POST["Adres"], $_POST["Plaats"]);
                 }
                 echo "update geslaagd1";
     }
