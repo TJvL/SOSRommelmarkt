@@ -72,25 +72,20 @@
 <!--                    <span class="icon-bar"></span>-->
 <!--                </button>-->
             </div>
-
-            <?php
-            $query = "SELECT * FROM Info ";
-            //submit the query and capture the result
-            $result = Database::fetch($query);
-            $query=getenv("QUERY_STRING");
-            parse_str($query);
-
-            while ($row = $result->fetch_assoc())
-            {
+            
+            <?php 
+            	// contactinfo ophalen
+            	$companyInformation = CompanyInformation::selectCurrent();
             ?>
+
             <div id="navbar" class=" navbar">
                 <ul class = "nav navbar-nav ">
                     <li>
                         <div class="contact-info">
                             <span class="icon"><i class="fa fa-phone"></i></span>
-                            <div class="contact-phone"><span><?php echo $row['Telefoon']; ?></span></div>
+                            <div class="contact-phone"><span><?php echo $companyInformation->phone; ?></span></div>
                             <span class="icon"><i class="fa fa-envelope"></i></span>
-                            <div class="contact-mail"><span><?php echo $row['Email']; ?> </span></div>
+                            <div class="contact-mail"><span><?php echo $companyInformation->email ?> </span></div>
                         </div>
                     </li>
                 </ul>
@@ -101,7 +96,6 @@
 <!--                    <li><a href="--><?php //echo ROOT_DIR; ?><!--/aboutUs/index"><i class="fa fa-group"></i> Over ons</a></li>-->
 <!--                    <li><a  href="--><?php //echo ROOT_DIR; ?><!--/contact/index"><i class="fa fa-envelope"></i> Contact</a></li>-->
 <!--                </ul>-->
-           <?php } ?>
             </div>
         </div>
     </nav>

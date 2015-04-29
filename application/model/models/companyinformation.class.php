@@ -36,19 +36,19 @@ class CompanyInformation {
 	{
 		$query = "SELECT *
 					FROM Info
-					WHERE id = ?";
+					WHERE id = 1";
 		
 		// execute the query
-		$result = Database::fetch($query, "i", array($id));
+		$result = Database::fetch($query);
 		
 		// put the result into an object
 		$row = $result->fetch_assoc();
 		$companyInformation = CompanyInformation::createObjectFromDatabaseRow($row);
 		
 		// free the resultset
-		$resulst->close();
+		$result->close();
 		
-		return companyInformation;
+		return $companyInformation;
 	}
 }
 ?>
