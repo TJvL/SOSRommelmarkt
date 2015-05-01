@@ -12,6 +12,7 @@
 							<ul class="nav nav-tabs">
 								<li class="active"><a href="#tab1" data-toggle="tab">Adres</a></li>
 								<li><a href="#tab2" data-toggle="tab">Openingstijden</a></li>
+								<li><a href="#tab3" data-toggle="tab">Slogans</a></li>
 							</ul>
 							<div class="tab-content">
 								<div class="tab-pane fade in active" id="tab1">
@@ -114,6 +115,34 @@
 										</div>
 									</form>
 								</div>
+								
+								<div class="tab-pane fade" id="tab3">
+									<?php $slogans = Slogan::selectAll();?>
+									<br /><!-- empty line -->
+									<div class="row">
+										<div class="col-md-1">
+											<a href="./addslogan" class="btn btn-default">Nieuwe Slogan</a>
+										</div>
+									</div>
+									<div class="table-responsive padding-sm margin-lg">
+										<table id="sloganTable" class="display">
+											<thead>
+												<tr>
+													<th>Slogan</th>
+													<th>Opties</th>
+												</tr>
+											</thead>
+											<tbody>
+												<?php foreach ($slogans as $slogan) { ?>
+												<tr>
+													<td><?php echo $slogan->slogan ?></td>
+													<td><a href="slogan/<?php echo $slogan->id ?>"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a></td>
+												</tr>
+												<?php } ?>
+											</tbody>
+										</table>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -122,4 +151,9 @@
 		</div>
 	</div>
 </div>
- 
+
+<script>
+	$(document).ready(function() {
+		$('#sloganTable').DataTable();
+	});
+</script>
