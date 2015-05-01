@@ -86,24 +86,26 @@
 		
 		<div class="col-md-4 padding-hor-md">
 			<div class="white margin-ver-lg height-fix">
-				<?php
-					$query =  mysqli_query($connection,"SELECT * FROM Openingstijden");
-					while ($row = mysqli_fetch_assoc($query)) {
-				?>
+
+			<?php 
+            	// contactinfo ophalen
+            	$visitingHours = VisitingHours::selectCurrent();
+            ?>
+
 				<table class="table table-condensed table-responsive">
 					<h2>Openingstijden</h2>
-					<tr><td>Maandag</td><td> <?php echo $row['Maandag']; ?></td></tr>
-					<tr><td>Dinsdag</td><td> <?php echo $row['Dinsdag']; ?></td></tr>
-					<tr><td>Woensdag</td><td> <?php echo $row['Woensdag']; ?></td></tr>
-					<tr><td>Donderdag</td><td> <?php echo $row['Donderdag']; ?></td></tr>
-					<tr><td>Vrijdag</td><td> <?php echo $row['Vrijdag']; ?></td></tr>
-					<tr><td>Zaterdag</td><td> <?php echo $row['Zaterdag']; ?></td></tr>
-					<tr><td>Zondag</td><td> <?php echo $row['Zondag']; ?></td></tr>
+					<tr><td>Maandag</td><td> <?php echo $visitingHours->monday; ?></td></tr>
+					<tr><td>Dinsdag</td><td> <?php echo $visitingHours->tuesday; ?></td></tr>
+					<tr><td>Woensdag</td><td> <?php echo $visitingHours->wednesday; ?></td></tr>
+					<tr><td>Donderdag</td><td> <?php echo $visitingHours->thursday; ?></td></tr>
+					<tr><td>Vrijdag</td><td> <?php echo $visitingHours->friday; ?></td></tr>
+					<tr><td>Zaterdag</td><td> <?php echo $visitingHours->saturday; ?></td></tr>
+					<tr><td>Zondag</td><td> <?php echo $visitingHours->sunday; ?></td></tr>
 				</table>
-				<?php } ?>
 			</div>
 		</div>
 	</div>
+
 	
 	<div class="row padding-lg">
 		<div class="col-md-6-custom padding-hor-md">
