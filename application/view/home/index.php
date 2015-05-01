@@ -1,23 +1,4 @@
 <?php Type::check("ArrayList:AuctionProduct", $model) ?>
-<?php
-
-    //TODO Please, handel de openingstijden queries en deze include anders af..- Erik
-    // Declaration.
-    $servername = "samwise.technotive.nl";
-    $username = "sosAdmin";
-    $password = "shadowrend";
-    $database = "sosRommel";
-    $port = 3306;
-
-    $connection = new mysqli($servername, $username, $password, $database, $port);
-
-    // Check connection.
-    if ($connection->connect_error)
-    {
-        die("Connection failed: " . $connection->connect_error);
-    }
-
-?>
 
 <!--echo $viewbag['voorbeeld'];-->
 <div class="container">
