@@ -7,13 +7,6 @@
     <title>SOS Rommelmarkt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--
-    Wat is dit?
-    -Thomas
-    -->
-    <link href = "<?php echo ROOT_PATH; ?>application/model/database/database.class.php" rel = "database">
-
-
     <?php
     IncludeLocator::locateIncludes("css", $controller, $action);
     ?>
@@ -91,13 +84,6 @@
                         </div>
                     </li>
                 </ul>
-<!--                <ul class="nav navbar-nav navbar-left">-->
-<!--                    <li><a href="--><?php //echo ROOT_DIR; ?><!--/home/index"><i class="fa fa-home"></i> Home</a></li>-->
-<!--                    <li><a  href="--><?php //echo ROOT_DIR; ?><!--/shop/index"><i class="fa fa-cubes"></i> Producten</a></li>-->
-<!--                    <li><a href="--><?php //echo ROOT_DIR; ?><!--/subvention/index"><i class="fa fa-money"></i> Subsidie</a></li>-->
-<!--                    <li><a href="--><?php //echo ROOT_DIR; ?><!--/aboutUs/index"><i class="fa fa-group"></i> Over ons</a></li>-->
-<!--                    <li><a  href="--><?php //echo ROOT_DIR; ?><!--/contact/index"><i class="fa fa-envelope"></i> Contact</a></li>-->
-<!--                </ul>-->
             </div>
         </div>
     </nav>
