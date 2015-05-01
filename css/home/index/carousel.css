@@ -4,7 +4,7 @@
 	/* max-width: 500px; */
 }
 
-.carousel-caption
+.carousel-overlay-caption
 {
     padding-left: 520px;
     z-index: -1;
@@ -28,4 +28,11 @@
 .full-height
 {
 	height: 100% !important;
+}
+
+.text-carousel .carousel-content
+{
+	display: flex;
+	align-items: center;
+	height: 99px;
 }
