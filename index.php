@@ -2,7 +2,7 @@
 // ob_start: buffers output and only displays after calling ob_end_flush. Enables dynamic redirect.
 ob_start();
 
-include("includes/config.inc.php");
+include(__DIR__ . "/includes/config.inc.php");
 
 // MVC structure
 if (isset($_GET['controller']))
