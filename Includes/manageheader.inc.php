@@ -18,26 +18,6 @@
     ?>
     <script src="<?php echo ROOT_PATH; ?>/frameworks/idealforms/js/out/jquery.idealforms.js" type="text/javascript"></script>
 
-<!--    <link href = "--><?php //echo ROOT_DIR; ?><!--/css/menu.css" type="text/css" media="screen" rel="stylesheet" >-->
-<!--    <link href = "--><?php //echo ROOT_DIR; ?><!--/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" >-->
-<!--    <link href = "--><?php //echo ROOT_DIR; ?><!--/css/bootstrap.css" rel = "stylesheet">-->
-<!--    <link href = "--><?php //echo ROOT_DIR; ?><!--/css/shoppingcart.css" rel = "stylesheet">-->
-<!--    <link href = "--><?php //echo ROOT_DIR; ?><!--/css/footer.css" rel = "stylesheet">-->
-<!--    <link href = "--><?php //echo ROOT_DIR; ?><!--/css/style.css" rel="stylesheet">-->
-<!--    <link href = "--><?php //echo ROOT_DIR; ?><!--/css/carousel.css" rel="stylesheet">-->
-<!--    <link href = "//cdn.datatables.net/1.10.5/css/jquery.dataTables.css" rel="stylesheet" type="text/css" >-->
-<!--    <link href = "--><?php //echo ROOT_DIR; ?><!--/css/override-bootstrap.css" rel="stylesheet">-->
-<!--    <link href = "--><?php //echo ROOT_DIR; ?><!--/frameworks/idealforms/css/jquery.idealforms.css" rel="stylesheet">-->
-<!--    <link href = "--><?php //echo ROOT_DIR; ?><!--/css/cropper.css" rel="stylesheet">-->
-<!---->
-<!---->
-<!--    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
-<!--    <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js" type="text/javascript"></script>-->
-<!--    <script src="--><?php //echo ROOT_DIR; ?><!--/js/bootstrap.js"></script>-->
-<!--    <script src="--><?php //echo ROOT_DIR; ?><!--/js/manage/shopproduct/cropper.min.js"></script>-->
-<!--    <script src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.js" type="text/javascript"></script>-->
-<!--    <script src="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>-->
-<!--    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js"></script>-->
 
 </head>
 <body>
