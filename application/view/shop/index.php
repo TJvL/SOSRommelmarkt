@@ -46,7 +46,7 @@
 
                                         </div>
                                         <div class="col-lg-12">
-                                            <div range-slider min=<?php echo floor($priceRanges[0]);?> max=<?php echo ceil($priceRanges[1]);?> model-min="sliderRanges.min" model-max="sliderRanges.max" disabled="false" filter="currency:'€'"></div>
+                                            <div range-slider min=<?php echo floor($priceRanges["lowestPrice"]);?> max=<?php echo ceil($priceRanges["highestPrice"]);?> model-min="sliderRanges.min" model-max="sliderRanges.max" disabled="false" filter="currency:'€'"></div>
                                         </div>
 
                                 </li>
@@ -172,8 +172,8 @@
                     $scope.shopProducts = <?php echo $model->getJSON(); ?>;
                     $scope.sliderRanges = {
 
-                      min: <?php echo floor($priceRanges[0]);?>,
-                      max: <?php echo ceil($priceRanges[1]);?>
+                      min: <?php echo floor($priceRanges["lowestPrice"]);?>,
+                      max: <?php echo ceil($priceRanges["highestPrice"]);?>
                     };
 
                     $scope.colorIncludes = ["green", "red", "blue"];

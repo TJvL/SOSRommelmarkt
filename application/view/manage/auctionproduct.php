@@ -67,9 +67,6 @@ function handleDeleteProduct()
 		        {
 		        	alert("fail");
 		        }
-	
-		     	// Go to the product management page.
-		        document.location.href = "../editauction/<?php echo $_SESSION["auctionId"] ?>";
 	        }
 		});
 	}
@@ -261,18 +258,18 @@ $(document).ready(function()
 						<div class="input-group">
 							<select name="colorCode" class="form-control">
 				                <?php 
-								foreach (ColorCode::selectAll() as $colorCode)
+								foreach (ColorCodeRepository::selectAll() as $colorCode)
 								{
-									if ($colorCode == $model->colorCode)
+									if ($colorCode->name == $model->colorCode)
 									{
 										?>
-										<option selected="selected"><?php echo $colorCode ?></option>
+										<option selected="selected"><?php echo $colorCode->name ?></option>
 										<?php
 									}
 									else
 									{
 										?>
-										<option><?php echo $colorCode ?></option>
+										<option><?php echo $colorCode->name ?></option>
 										<?php
 									}
 								}

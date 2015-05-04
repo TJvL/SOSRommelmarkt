@@ -19,19 +19,16 @@ class ManageController extends Controller
         $this->render("subventions", $subventionList);
     }
 
-
-
     public function subventions_POST()
     {
-                include_once "/model/subventionrequest.class.php";
-                SubventionRequest::deleteById($_POST["id"]);
+		include_once "/model/subventionrequest.class.php";
+		SubventionRequest::deleteById($_POST["id"]);
+		
         $subventionList = new ArrayList("SubventionRequest");
         $subventionList->addAll(SubventionRequest::fetchAllSubventionRequests());
 
         $this->render("subventions", $subventionList);
-
     }
-
 
     public function productList_GET()
     {
@@ -45,7 +42,7 @@ class ManageController extends Controller
 
     public function addshopproduct_POST()
     {
-        $shopProduct = ShopProduct::insert($_POST["name"], $_POST["description"], "Administrator", $_POST["colorCode"], $_POST["price"], 0);
+        $shopProduct = ShopProductRepository::insert($_POST["name"], $_POST["description"], "Administrator", $_POST["colorCode"], $_POST["price"], 0);
 
         $this->redirectTo("/manage/shopproduct/$shopProduct->id");
     }
@@ -61,7 +58,7 @@ class ManageController extends Controller
     	if (isset($_GET["id"]))
     	{
     		// Get the product.
-    		$shopProduct = ShopProduct::selectById($_GET["id"]);
+    		$shopProduct = ShopProductRepository::selectById($_GET["id"]);
     		
     		// Render the view.
     		$this->render("shopproduct", $shopProduct);
@@ -83,7 +80,7 @@ class ManageController extends Controller
     			if (isset($_POST["productId"]))
     			{
     				// Delete the product.
-    				ShopProduct::deleteById($_POST["productId"]);
+    				ShopProductRepository::deleteById($_POST["productId"]);
     				
     				// Delete the product images recursively.
     				$dir = Product::IMAGES_DIRECTORY . "/" . $_POST["productId"];
@@ -116,13 +113,13 @@ class ManageController extends Controller
     					isset($_POST["productPrice"]) && isset($_POST["productIsReserved"]))
     			{
     				// Get the product, set the data and update.
-    				$shopProduct = ShopProduct::selectById($_POST["productId"]);
+    				$shopProduct = ShopProductRepository::selectById($_POST["productId"]);
     				$shopProduct->name = $_POST["productName"];
     				$shopProduct->description = $_POST["productDescription"];
     				$shopProduct->colorCode = $_POST["productColorCode"];
     				$shopProduct->price = $_POST["productPrice"];
     				$shopProduct->isReserved = $_POST["productIsReserved"];
-    				$shopProduct->update();
+    				ShopProductRepository::update($shopProduct);
     				
     				// Return 0 for great success.
     				header("content-Type: application/json");
@@ -229,7 +226,7 @@ class ManageController extends Controller
 	public function auctions_GET()
 	{
 		$auctionList = new ArrayList("Auction");
-		$auctionList->addAll(Auction::selectAll());
+		$auctionList->addAll(AuctionRepository::selectAll());
 		
 		$this->render("auctions", $auctionList);
 	}
@@ -242,7 +239,7 @@ class ManageController extends Controller
 			{
 				if (isset($_POST["auctionId"]))
 				{
-					$auction = Auction::deleteById($_POST["auctionId"]);
+					$auction = AuctionRepository::deleteById($_POST["auctionId"]);
 					
 					// return 0 for success
 					header("content-Type: application/json");
@@ -266,7 +263,7 @@ class ManageController extends Controller
 	
 	public function addauction_POST()
 	{
-		$auction = Auction::insert($_POST["startDate"], $_POST['endDate']);
+		$auction = AuctionRepository::insert($_POST["startDate"], $_POST['endDate']);
 		//$this->redirectTo("/manage/editauction/$auction->id");
 		$this->redirectTo("/manage/auctions"); // tijdelijk totdat editauction compleet is
 	}
@@ -275,16 +272,12 @@ class ManageController extends Controller
 	{
 		if (isset($_GET["id"]))
 		{
-			$_SESSION["auctionId"] = $_GET["id"];
-			
 			// get the auctionproducts
 			$auctionProductList = new ArrayList("AuctionProduct");
-			$auctionProductList->addAll(AuctionProduct::selectByAuctionId($_GET["id"]));
+			$auctionProductList->addAll(AuctionProductRepository::selectByAuctionId($_GET["id"]));
 			
 			// render
 			$this->render("editauction", $auctionProductList);
-			
-			
 		}
 		
 		// TODO: error catching
@@ -309,7 +302,6 @@ class ManageController extends Controller
         {
             $this->render("partner", Partner::selectById($_GET["id"]));
         }
-
     }
 	
     public function partner_POST()
@@ -358,7 +350,7 @@ class ManageController extends Controller
 		if (isset($_GET["id"]))
 		{
 			// Render the view.
-			$this->render("auctionproduct", AuctionProduct::selectById($_GET["id"]));
+			$this->render("auctionproduct", AuctionProductRepository::selectById($_GET["id"]));
 		}
 		 
 		// TODO: Error or some shit
@@ -377,7 +369,7 @@ class ManageController extends Controller
 				if (isset($_POST["id"]))
 				{
 					// Delete the product.
-					AuctionProduct::deleteById($_POST["id"]);
+					AuctionProductRepository::deleteById($_POST["id"]);
 	
 					// Delete the product images recursively.
 					$dir = Product::IMAGES_DIRECTORY . "/" . $_POST["id"];
@@ -409,11 +401,11 @@ class ManageController extends Controller
 				if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["colorCode"]))
 				{
 					// Get the product, set the data and update.
-					$auctionProduct = AuctionProduct::selectById($_POST["id"]);
+					$auctionProduct = AuctionProductRepository::selectById($_POST["id"]);
 					$auctionProduct->name = $_POST["name"];
 					$auctionProduct->description = $_POST["description"];
 					$auctionProduct->colorCode = $_POST["colorCode"];
-					$auctionProduct->update();
+					AuctionProductRepository::update($auctionProduct);
 	
 					// Return 0 for great success.
 					header("content-Type: application/json");

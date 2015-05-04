@@ -25,7 +25,7 @@
                 </thead>
                 <tbody>
                 <?php
-                    $products = ShopProduct::selectAll();
+                    $products = ShopProductRepository::selectAll();
                     foreach ($products as $product)
                     {
                     	?>

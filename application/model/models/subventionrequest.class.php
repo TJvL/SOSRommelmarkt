@@ -2,7 +2,8 @@
 /**
  * Model klasse voor de subsidieaanvraag.
  */
-class SubventionRequest {
+class SubventionRequest
+{
     //alle waardes die we straks door moeten krijgen van het formulier, het kan zijn dat er lege waardes bij zitten, ligt eraan hoe de w
     public $id;
     public $contactperson;
@@ -20,20 +21,17 @@ class SubventionRequest {
     public $results;
     public $status;
 
-   static function insertSubventionRequest($contactperson,$firm,$kvk,$adress,$postalcode,$city,$phonenumber1
-        ,$phonenumber2,$fax,$email,$elucidation,$activities,$results)
+	static function insertSubventionRequest($contactperson,$firm,$kvk,$adress,$postalcode,$city,$phonenumber1,
+		$phonenumber2,$fax,$email,$elucidation,$activities,$results)
     {
-        //construct query
-        $query = "
-INSERT INTO SubventionRequest(contactperson,firm,kvk,adress,postalcode,city,phonenumber1,phonenumber2,fax,email,elucidation,activities,results,status)
-VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		//construct query
+		$query = "INSERT INTO SubventionRequest(
+        	contactperson,firm,kvk,adress,postalcode,city,phonenumber1,phonenumber2,fax,email,elucidation,activities,results,status)
+			VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         //execute
-       $id= Database::insert($query,"ssssssssssssss",array($contactperson,$firm,$kvk,$adress,$postalcode,$city,$phonenumber1
-        ,$phonenumber2,$fax,$email,$elucidation,$activities,$results,"nieuw"));
-
-
-
+		$id= Database::insert($query,"ssssssssssssss",array($contactperson,$firm,$kvk,$adress,$postalcode,$city,$phonenumber1,
+       		$phonenumber2,$fax,$email,$elucidation,$activities,$results,"nieuw"));
     }
 
 	static private function createSubventionRequestObjectFromDatabaseRow($row)
@@ -63,7 +61,7 @@ VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     	$query = "SELECT * FROM SubventionRequest";
     	
     	// Execute the query.
-    	$result = Database::fetch($query);
+    	$result = Database::select($query);
     	
     	// Put the results of the query into an aray of subvention request objects.
     	$subventionRequests = array();
@@ -88,7 +86,7 @@ VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     	$query = "SELECT * FROM SubventionRequest WHERE id = ?";
     	 
     	// Execute the query.
-    	$result = Database::fetch($query, "i", array($id));
+    	$result = Database::select($query, "i", array($id));
     	
     	// Put the results of the query into a subvention request object.
     	$row = $result->fetch_assoc();
@@ -113,7 +111,7 @@ VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $query = "SELECT * FROM SubventionStatus";
 
         // Execute the query.
-        $result = Database::fetch($query);
+        $result = Database::select($query);
 
         $statuses = array();
 
