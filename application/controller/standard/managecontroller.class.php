@@ -47,9 +47,9 @@ class ManageController extends Controller
         $this->redirectTo("/manage/shopproduct/$shopProduct->id");
     }
 
-	public function instellingen_GET()
+	public function settings_GET()
     {
-        $this->render("instellingen");
+        $this->render("settings");
     }
 	
     public function shopproduct_GET()
@@ -169,7 +169,7 @@ class ManageController extends Controller
     	exit(json_encode(1));
     }
     
-	public function instellingen_POST()
+	public function settings_POST()
 	{
 		// Check if all the necessary data has been sent with the request.
 		if (isset($_POST["monday"]) && isset($_POST["tuesday"]) && isset($_POST["wednesday"]) && isset($_POST["thursday"]) && isset($_POST["friday"]) && isset($_POST["saturday"]) && isset($_POST["sunday"]))
@@ -186,7 +186,7 @@ class ManageController extends Controller
 			$visitingHours->update();
 		}
 		
-		$this->redirectTo("/manage/instellingen");
+		$this->redirectTo("/manage/settings");
 	}
 
 	public function companyInformation_POST()
@@ -204,7 +204,7 @@ class ManageController extends Controller
 			$companyInformation->update();
 		}
 
-		$this->redirectTo("/manage/instellingen");
+		$this->redirectTo("/manage/settings");
     }
 
     public function changeSubventionStatus_POST()
