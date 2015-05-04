@@ -6,6 +6,7 @@
 			<ul class="nav nav-tabs nav-justified" role="tablist">
 				<li role="presentation" class="active"><a href="#address" aria-controls="address" role="tab" data-toggle="tab">Adres</a></li>
 				<li role="presentation"><a href="#visitinghours" aria-controls="visitinghours" role="tab" data-toggle="tab">Openingstijden</a></li>
+				<li role="presentation"><a href="#slogans" aria-controls="slogans" role="Tab" data-toggle="tab">Slogans</a></li>
 			</ul>
 			<!-- end nav tabs -->
 			
@@ -110,6 +111,34 @@
 							</div>
 						</div>
 					</form>
+				</div>
+				
+				<div role="tabpanel" class="tab-pane fade" id="slogans">				
+					<?php $slogans = Slogan::selectAll();?>
+					<br /><!-- empty line -->
+					<div class="row">
+						<div class="col-md-1">
+							<a href="./addslogan" class="btn btn-default">Nieuwe Slogan</a>
+						</div>
+					</div>
+					<div class="table-responsive padding-sm margin-lg">
+						<table id="sloganTable" class="display">
+							<thead>
+								<tr>
+									<th>Slogan</th>
+									<th>Opties</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php foreach ($slogans as $slogan) { ?>
+								<tr>
+									<td><?php echo $slogan->slogan ?></td>
+									<td><a href="slogan/<?php echo $slogan->id ?>"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a></td>
+								</tr>
+								<?php } ?>
+							</tbody>
+						</table>
+					</div>
 				</div>
 				<!-- end tab panes -->
 			</div>
