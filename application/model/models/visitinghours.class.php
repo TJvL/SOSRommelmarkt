@@ -31,8 +31,9 @@ class VisitingHours {
 	public function update()
 	{
 		$query = "UPDATE VisitingHours
-					SET monday = ?, tuesday = ?, wednesday = ?, thursday = ?, friday = ?, saturday = ?, sunday = ?
-					WHERE id = ?";
+			SET monday = ?, tuesday = ?, wednesday = ?, thursday = ?, friday = ?, saturday = ?, sunday = ?
+			WHERE id = ?";
+		
 		Database::update($query, "sssssssi", array($this->monday, $this->tuesday, $this->wednesday, $this->thursday, $this->friday, $this->saturday, $this->sunday, $this-id));
 	}
 	
@@ -43,7 +44,7 @@ class VisitingHours {
 					WHERE id = 1";
 		
 		// execute the query
-		$result = Database::fetch($query);
+		$result = Database::select($query);
 		
 		// put the result into an object
 		$row = $result->fetch_assoc();

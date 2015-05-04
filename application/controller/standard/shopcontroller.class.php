@@ -9,14 +9,14 @@ class ShopController extends Controller
     public function index_GET()
     {
         $productList = new ArrayList("Product");
-        $productList->addAll(ShopProduct::selectAll());
-
+        $productList->addAll(ShopProductRepository::selectAll());
+        
         $this->render("index", $productList);
     }
 
     public function detail_GET()
     {
-        $prod = ShopProduct::selectById($_GET['id']);
+        $prod = ShopProductRepository::selectById($_GET['id']);
 
         $this->render("detail", $prod);
     }

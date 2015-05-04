@@ -39,7 +39,7 @@ class Partner
 			WHERE id = ?";
 
         // Execute the query.
-        $result = Database::fetch($query, "i", array($id));
+        $result = Database::select($query, "i", array($id));
 
         // Put the results of the query into a product object.
         $row = $result->fetch_assoc();
@@ -65,7 +65,7 @@ class Partner
 			FROM Partners";
 
         // Execute the query.
-        $result = Database::fetch($query);
+        $result = Database::select($query);
 
         // Put the results of the query into an array of Product objects.
         $partners = array();

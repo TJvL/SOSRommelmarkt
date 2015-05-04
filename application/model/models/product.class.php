@@ -42,30 +42,6 @@ abstract class Product
     	else
     		return array();
     }
-
-    protected static function insert($name, $description, $addedBy, $colorCode)
-    {
-        $query = "INSERT INTO Product (name, description, addedBy, colorCode)
-                                VALUES (?, ?, ?, ?)";
-
-        // Insert the product and get back the auto incremented key.
-        return Database::insert($query, "ssss", array($name, $description, $addedBy, $colorCode));
-    }
-
-    protected function update()
-    {
-        $query = "UPDATE Product SET name = ?, description = ?, addedBy = ?, colorCode = ? WHERE id = ?";
-
-        // Execute the update query.
-        Database::update($query, "ssssi", array($this->name, $this->description, $this->addedBy, $this->colorCode, $this->id));
-    }
-
-	protected static function deleteById($id)
-	{
-		$query = "DELETE FROM Product WHERE id = ?";
-		
-		Database::update($query, "i", array($id));
-	}
 }
 
 ?>
