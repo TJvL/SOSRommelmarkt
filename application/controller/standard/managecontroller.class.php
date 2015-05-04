@@ -47,9 +47,9 @@ class ManageController extends Controller
         $this->redirectTo("/manage/shopproduct/$shopProduct->id");
     }
 
-	public function instellingen_GET()
+	public function settings_GET()
     {
-        $this->render("instellingen");
+        $this->render("settings");
     }
 	
     public function shopproduct_GET()
