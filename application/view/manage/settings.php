@@ -10,11 +10,11 @@
 					<div class="widget-content">
 						<div class="tabbable"> <!-- Only required for left/right tabs -->
 							<ul class="nav nav-tabs">
-								<li class="active"><a href="#tab1" data-toggle="tab">Adres</a></li>
-								<li><a href="#tab2" data-toggle="tab">Openingstijden</a></li>
+								<li class="active"><a href="#address" data-toggle="tab">Adres</a></li>
+								<li><a href="#visitinghours" data-toggle="tab">Openingstijden</a></li>
 							</ul>
 							<div class="tab-content">
-								<div class="tab-pane fade in active" id="tab1">
+								<div class="tab-pane fade in active" id="address">
 						            <?php 
 						            	// contactinfo ophalen
 						            	$companyInformation = CompanyInformation::selectCurrent();
@@ -59,7 +59,7 @@
 									</form>
 								</div>
 								
-								<div class="tab-pane fade" id="tab2">
+								<div class="tab-pane fade" id="visitinghours">
 									<?php 
 										$visitingHours = VisitingHours::selectCurrent();
 									?>
