@@ -9,7 +9,7 @@ class AuctionController extends Controller
     public function index_GET()
     {
         $productList = new ArrayList("Product");
-        $productList->addAll(AuctionProduct::selectCurrentAuction());
+        $productList->addAll(AuctionProductRepository::selectByCurrentAuction());
 
         $this->render("index", $productList);
     }
@@ -32,7 +32,7 @@ class AuctionController extends Controller
     	$auctionProduct = null;
         if (isset($_POST['name']) && isset($_POST['description']) && isset($_POST['colorCode']) && isset($_POST['auctionId']))
         {
-            $auctionProduct = AuctionProduct::insert($_POST['name'], $_POST['description'], "Administrator", $_POST['colorCode']);
+            $auctionProduct = AuctionProductRepository::insert($_POST['name'], $_POST['description'], "Administrator", $_POST['colorCode']);
             $auctionProduct->addToAuction($_POST['auctionId']);
         }
         

@@ -10,7 +10,7 @@ class HomeController extends Controller
     {
         $this->viewbag['voorbeeld'] = "hello, greetings from the viewbag";
         $productList = new ArrayList("AuctionProduct");
-        $productList->addAll(AuctionProduct::selectCurrentAuction());
+        $productList->addAll(AuctionProductRepository::selectByCurrentAuction());
         $this->render("index", $productList);
     }
 }

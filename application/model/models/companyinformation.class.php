@@ -39,7 +39,7 @@ class CompanyInformation
 					WHERE id = 1";
 		
 		// execute the query
-		$result = Database::fetch($query);
+		$result = Database::select($query);
 		
 		// put the result into an object
 		$row = $result->fetch_assoc();

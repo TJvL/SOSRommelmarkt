@@ -207,6 +207,7 @@ $(document).ready(function()
 				$("#image").html("<img id='image'>");
 				$("#image").attr("src", e.target.result);
 				$("#image").css("width", "auto");
+				$("#image").css("max-width", "100%");
 				$("#image").css("max-height", "500px");
             }
 			reader.readAsDataURL(input.files[0]);
@@ -266,18 +267,18 @@ $(document).ready(function()
 						<div class="input-group">
 							<select id="productColorCode" class="form-control">
 				                <?php 
-								foreach (ColorCode::selectAll() as $colorCode)
+								foreach (ColorCodeRepository::selectAll() as $colorCode)
 								{
-									if ($colorCode == $model->colorCode)
+									if ($colorCode->name == $model->colorCode)
 									{
 										?>
-										<option selected="selected"><?php echo $colorCode ?></option>
+										<option selected="selected"><?php echo $colorCode->name ?></option>
 										<?php
 									}
 									else
 									{
 										?>
-										<option><?php echo $colorCode ?></option>
+										<option><?php echo $colorCode->name ?></option>
 										<?php
 									}
 								}
