@@ -8,8 +8,8 @@ function handleUpdateSlogan()
 		
 		var data =
 		{
-			id:	<?php echo $model->id ?>,
-			slogan:		$("#slogan-text").val(),
+			id:		$("#slogan-id").val(),
+			slogan:	$("#slogan-text").val(),
 		};
 		
 		$.ajax(
@@ -42,7 +42,7 @@ function handleDeleteSlogan()
 	{
 		var data =
 		{
-			id: <?php echo $model->id ?>,
+			id:	$("#slogan-id").val(),
 		};
 		
 		$.ajax(
