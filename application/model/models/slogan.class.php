@@ -38,7 +38,7 @@ class Slogan
 					WHERE id = ?";
 		
 		// execute the query
-		$result = Database::fetch($query, "i", array($id));
+		$result = Database::select($query, "i", array($id));
 		
 		// put the results in an object
 		$row = $result->fetch_assoc();
@@ -55,7 +55,7 @@ class Slogan
 		$query = "SELECT *
 					FROM Slogans";
 		// execute the query
-		$result = Database::fetch($query);
+		$result = Database::select($query);
 		
 		// put the results in an array of objects
 		$slogans = array();
