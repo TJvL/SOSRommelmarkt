@@ -198,6 +198,7 @@ $(document).ready(function()
 				$("#image").html("<img id='image'>");
 				$("#image").attr("src", e.target.result);
 				$("#image").css("width", "auto");
+				$("#image").css("max-width", "100%");
 				$("#image").css("max-height", "500px");
             }
 			reader.readAsDataURL(input.files[0]);
