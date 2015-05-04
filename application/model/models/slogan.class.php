@@ -19,7 +19,7 @@ class Slogan
 		$query = "INSERT INTO Slogans (slogan)
 					VALUES(?)";
 		
-		return Database::insert($query, "s", array($name,  $website));
+		return Database::insert($query, "s", array($slogan));
 	}
 	
 	public function update()

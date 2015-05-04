@@ -461,5 +461,64 @@ class ManageController extends Controller
 
         $this->redirectTo("/manage/partners");
     }
+    
+    public function addslogan_GET()
+    {
+    	$this->render("addslogan");
+    }
+    
+    public function addslogan_POST()
+    {
+    	Slogan::insert($_POST["slogan"]);
+    	
+    	$this->redirectTo("/manage/settings#tab_slogans"); // dit werkt niet?
+    }
+
+    public function slogan_GET()
+    {
+        if (isset($_GET["id"]))
+        {
+            $this->render("slogan", Slogan::selectById($_GET["id"]));
+        }
+    }
+	
+    public function slogan_POST()
+    {
+    	// Check if the slogan id is set.
+    	if (isset($_GET["id"]))
+    	{
+    		if ($_GET["id"] == "delete")
+    		{
+    			// Check if all the necessary data has been sent with the request.
+    			if (isset($_POST["id"]))
+    			{
+    				// Delete the partner.
+    				Slogan::deleteById($_POST["id"]);
+    	
+    				// Return 0 for great success.
+    				header("content-Type: application/json");
+    				exit(json_encode(0));
+    			}
+    		}
+    		else if ($_GET["id"] == "update")
+    		{
+    			// Check if all the necessary data has been sent with the request.
+    			if (isset($_POST["id"]) && isset($_POST["slogan"]))
+    			{
+    				// Get the slogan, set the data and update.
+    				$slogan = Slogan::selectById($_POST["id"]);
+    				$slogan->slogan = $_POST["slogan"];
+    				$slogan->update();
+    	
+    				// Return 0 for great success.
+    				header("content-Type: application/json");
+    				exit(json_encode(0));
+    			}
+    		}
+    	}
+    	
+    	// TODO: Error or some shit
+    	exit(json_encode(1));
+    }
 }
 ?>
