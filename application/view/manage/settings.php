@@ -64,7 +64,7 @@
 										$visitingHours = VisitingHours::selectCurrent();
 									?>
 									<br /><!-- empty line -->
-									<form class="form-horizontal" action="<?php echo ROOT_PATH;?>/manage/instellingen" method="Post">
+									<form class="form-horizontal" action="<?php echo ROOT_PATH;?>/manage/settings" method="Post">
 										<div class="form-group">
 											<label class="col-sm-2 control-label" for="hours-monday">Maandag</label>
 											<div class="col-sm-8">
