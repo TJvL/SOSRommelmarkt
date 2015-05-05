@@ -94,7 +94,3 @@
         </div>
     </div>
 </div>
-
-
-<script src="/SOSRommelmarkt/includes/js/contactformulier.js" type="text/javascript"></script>
-<script src="/SOSRommelmarkt/includes/js/contactformulier_submit.js" type="text/javascript"></script>

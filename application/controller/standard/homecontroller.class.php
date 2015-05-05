@@ -31,8 +31,7 @@ class HomeController extends Controller
         $headers = 'From: ' . $from . "\r\n";
 
         date_default_timezone_set("Europe/Amsterdam");
-
-        echo $to;
+        
 
         if(mail($to, $subject, $message, $headers))
         {
