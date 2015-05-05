@@ -21,7 +21,6 @@ class ManageController extends Controller
 
     public function subventions_POST()
     {
-		include_once "/model/subventionrequest.class.php";
 		SubventionRequest::deleteById($_POST["id"]);
 		
         $subventionList = new ArrayList("SubventionRequest");
