@@ -20,14 +20,7 @@ class Controller
         $controller = $this->name;
         $viewBag = $this->viewBag;
 
-        if ($this->name == "manage" || $this->name == "auction")
-        {
-            include("includes/manageheader.inc.php");
-        }
-        else
-        {
-            include("includes/header.inc.php");
-        }
+        include("includes/header.inc.php");
 
         if(isset($model))
         {
@@ -37,15 +30,8 @@ class Controller
         {
             $this->renderView($action, $viewBag);
         }
-        
-        if ($this->name == "manage" || $this->name == "auction")
-        {
-        	include("includes/managefooter.inc.php");
-        }
-        else
-        {
-        	include("includes/footer.inc.php");
-        }
+
+        include("includes/footer.inc.php");
     }
 
     private function renderView($action, $viewBag)
