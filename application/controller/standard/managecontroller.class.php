@@ -52,6 +52,13 @@ class ManageController extends Controller
         $this->render("instellingen");
     }
 	
+    // pages add controller
+    public function pages_GET()
+    {
+       $this->render("pages");
+    }
+
+
     public function shopproduct_GET()
     {
     	// Check if the shopproduct id is set.
@@ -462,4 +469,6 @@ class ManageController extends Controller
         $this->redirectTo("/manage/partners");
     }
 }
+
+
 ?>
