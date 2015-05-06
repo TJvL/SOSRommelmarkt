@@ -33,7 +33,7 @@
                     <div class="row">
                         <div class="col-sm-4 padding-sm"><input type="text" class="form-control" required="required" name="name" placeholder="Naam..."><span class="error"></span></div>
                         <div class="col-sm-4 padding-sm"><input type="text" class="form-control" required="required" name="email" placeholder="E-mail adres.."></div>
-                        <div class="col-sm-4 padding-sm"><input type="text" class="form-control" name="phone" placeholder="Telefoonnummer..."></div>
+                        <div class="col-sm-4 padding-sm"><input type="text" class="form-control" required="required" name="phone" placeholder="Telefoonnummer..."></div>
                     </div>
 
                     <div class="row">
