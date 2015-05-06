@@ -14,6 +14,11 @@ class HomeController extends Controller
         $this->render("index", $productList);
     }
 
+    public function projects_GET()
+    {
+        $this->render("projects");
+    }
+
     public function contact_GET()
     {
         $this->render("contact");
@@ -31,7 +36,7 @@ class HomeController extends Controller
         $headers = 'From: ' . $from . "\r\n";
 
         date_default_timezone_set("Europe/Amsterdam");
-        
+
 
         if(mail($to, $subject, $message, $headers))
         {

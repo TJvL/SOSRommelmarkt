@@ -1,11 +1,5 @@
 <?php Type::check("ArrayList:SubventionRequest", $model) ?>
 
-<!--TODO: remove the head-->
-<head>
-	<script src="<?php echo ROOT_PATH; ?>/js/manage/subventions/subvention_overview.js" type="text/javascript"></script>
-	<script src="<?php echo ROOT_PATH; ?>/js/jquery.deletesub.js" type="text/javascript"></script>
-</head>
-
 <div class="container" ng-app="subventionApp" ng-controller="subventionController">
 	<div class="white">
 		<div class="row">
