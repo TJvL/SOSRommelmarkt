@@ -21,6 +21,7 @@ class ManageController extends Controller
 
     public function subventions_POST()
     {
+		include_once "/model/subventionrequest.class.php";
 		SubventionRequest::deleteById($_POST["id"]);
 		
         $subventionList = new ArrayList("SubventionRequest");
@@ -46,11 +47,17 @@ class ManageController extends Controller
         $this->redirectTo("/manage/shopproduct/$shopProduct->id");
     }
 
-	public function settings_GET()
+	public function instellingen_GET()
     {
-        $this->render("settings");
+        $this->render("instellingen");
     }
 	
+    public function pages_GET()
+    {
+        $this->render("pages");
+    }
+
+
     public function shopproduct_GET()
     {
     	// Check if the shopproduct id is set.
@@ -168,7 +175,7 @@ class ManageController extends Controller
     	exit(json_encode(1));
     }
     
-	public function settings_POST()
+	public function instellingen_POST()
 	{
 		// Check if all the necessary data has been sent with the request.
 		if (isset($_POST["monday"]) && isset($_POST["tuesday"]) && isset($_POST["wednesday"]) && isset($_POST["thursday"]) && isset($_POST["friday"]) && isset($_POST["saturday"]) && isset($_POST["sunday"]))
@@ -185,8 +192,26 @@ class ManageController extends Controller
 			$visitingHours->update();
 		}
 		
-		$this->redirectTo("/manage/settings");
+		$this->redirectTo("/manage/instellingen");
 	}
+
+        public function pages_POST()
+    {
+        // Check if all the necessary data has been sent with the request.
+        if (isset($_POST["title"]) && isset($_POST["label"]) && isset($_POST["header"]) && isset($_POST["body"]))
+        
+        {
+            // set the data and update
+            $addPages = AddPages::selectCurrent();
+            $addPages->title         = $_POST["title"];
+            $addPages->label         = $_POST["label"];
+            $addPages->header        = $_POST["header"];
+            $addPages->body          = $_POST["body"];
+            $addPages->update();
+        }
+        
+        $this->redirectTo("/manage/pages");
+    }
 
 	public function companyInformation_POST()
 	{
@@ -203,7 +228,7 @@ class ManageController extends Controller
 			$companyInformation->update();
 		}
 
-		$this->redirectTo("/manage/settings");
+		$this->redirectTo("/manage/instellingen");
     }
 
     public function changeSubventionStatus_POST()
@@ -460,64 +485,7 @@ class ManageController extends Controller
 
         $this->redirectTo("/manage/partners");
     }
-    
-    public function addslogan_GET()
-    {
-    	$this->render("addslogan");
-    }
-    
-    public function addslogan_POST()
-    {
-    	Slogan::insert($_POST["slogan"]);
-    	
-    	$this->redirectTo("/manage/settings#tab_slogans"); // dit werkt niet?
-    }
-
-    public function slogan_GET()
-    {
-        if (isset($_GET["id"]))
-        {
-            $this->render("slogan", Slogan::selectById($_GET["id"]));
-        }
-    }
-	
-    public function slogan_POST()
-    {
-    	// Check if the slogan id is set.
-    	if (isset($_GET["id"]))
-    	{
-    		if ($_GET["id"] == "delete")
-    		{
-    			// Check if all the necessary data has been sent with the request.
-    			if (isset($_POST["id"]))
-    			{
-    				// Delete the partner.
-    				Slogan::deleteById($_POST["id"]);
-    	
-    				// Return 0 for great success.
-    				header("content-Type: application/json");
-    				exit(json_encode(0));
-    			}
-    		}
-    		else if ($_GET["id"] == "update")
-    		{
-    			// Check if all the necessary data has been sent with the request.
-    			if (isset($_POST["id"]) && isset($_POST["slogan"]))
-    			{
-    				// Get the slogan, set the data and update.
-    				$slogan = Slogan::selectById($_POST["id"]);
-    				$slogan->slogan = $_POST["slogan"];
-    				$slogan->update();
-    	
-    				// Return 0 for great success.
-    				header("content-Type: application/json");
-    				exit(json_encode(0));
-    			}
-    		}
-    	}
-    	
-    	// TODO: Error or some shit
-    	exit(json_encode(1));
-    }
 }
+
+
 ?>
