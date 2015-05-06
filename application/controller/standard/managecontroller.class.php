@@ -49,14 +49,15 @@ class ManageController extends Controller
 
 	public function instellingen_GET()
     {
-        $this->render("instellingen");
+
+        $this->render("settings");
     }
 	
-    public function pages_GET()
-    {
-        $this->render("pages");
-    }
 
+    // public function pages_GET()
+    // {
+    //     $this->render("pages");
+    // }
 
     public function shopproduct_GET()
     {
@@ -195,23 +196,23 @@ class ManageController extends Controller
 		$this->redirectTo("/manage/instellingen");
 	}
 
-        public function pages_POST()
-    {
-        // Check if all the necessary data has been sent with the request.
-        if (isset($_POST["title"]) && isset($_POST["label"]) && isset($_POST["header"]) && isset($_POST["body"]))
+    //     public function pages_POST()
+    // {
+    //     // Check if all the necessary data has been sent with the request.
+    //     if (isset($_POST["title"]) && isset($_POST["label"]) && isset($_POST["header"]) && isset($_POST["body"]))
         
-        {
-            // set the data and update
-            $addPages = AddPages::selectCurrent();
-            $addPages->title         = $_POST["title"];
-            $addPages->label         = $_POST["label"];
-            $addPages->header        = $_POST["header"];
-            $addPages->body          = $_POST["body"];
-            $addPages->update();
-        }
+    //     {
+    //         // set the data and update
+    //         $addPages = AddPages::selectCurrent();
+    //         $addPages->title         = $_POST["title"];
+    //         $addPages->label         = $_POST["label"];
+    //         $addPages->header        = $_POST["header"];
+    //         $addPages->body          = $_POST["body"];
+    //         $addPages->update();
+    //     }
         
-        $this->redirectTo("/manage/pages");
-    }
+    //     $this->redirectTo("/manage/pages");
+    // }
 
 	public function companyInformation_POST()
 	{
