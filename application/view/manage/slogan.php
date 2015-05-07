@@ -28,10 +28,10 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-2">
-						<button type="submit" class="btn btn-default btn-block" >Update</button>
+						<button type="submit" class="btn btn-default btn-block" >Opslaan</button>
 					</div>
 					<div class="col-sm-2">
-						<button type="button" class="btn btn-danger btn-block" onClick="handleDeleteSlogan()">Delete</button>
+						<button type="button" class="btn btn-danger btn-block" onClick="handleDeleteSlogan()">Verwijderen</button>
 					</div>
 					<div class="col-sm-4">
 						<div class="alert" id="status" role="alert"></div>

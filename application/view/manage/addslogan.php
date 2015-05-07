@@ -19,7 +19,7 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-2">
-						<button type="submit" class="btn btn-danger btn-block" id="submit" name="add">Opslaan</button>
+						<button type="submit" class="btn btn-default btn-block" id="submit" name="add">Opslaan</button>
 					</div>
 				</div>
 			</form>
