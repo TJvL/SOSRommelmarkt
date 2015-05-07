@@ -1,6 +1,8 @@
 <?php Type::check("ArrayList:Project", $model) ?>
 <div class="container" >
     <div class="white">
+        <div class="row">
+            <div class="col-sm-12">
         <h1>Projecten</h1>
                 <div class="list-group collapse-group margin-ver-lg">
                     <?php foreach ($model as $m) {?>
@@ -21,7 +23,6 @@
                                             <?php echo $m->body ?>
                                         </td>
                                     </tr>
-                                ':LKgQ
                                     </tbody>
                                 </table>
                         </div>
@@ -29,6 +30,9 @@
                     <?php
                     }
                     ?>
+                    </div>
                 </div>
+            </div>
         </div>
     </div>
+

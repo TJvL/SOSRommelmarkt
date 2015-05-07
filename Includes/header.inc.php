@@ -121,7 +121,6 @@
                                  <li><a href="<?php echo ROOT_PATH; ?>/aboutUs/index"><i class="fa fa-group"></i> Over ons</a></li>
                                  <li><a  href="<?php echo ROOT_PATH; ?>/home/projects"><i class="fa fa-list-alt"></i> Projecten</a></li>
                                  <li><a  href="<?php echo ROOT_PATH; ?>/home/contact"><i class="fa fa-envelope"></i> Contact</a></li>
-
                              </ul>
                         </subnav>
                     </div>
