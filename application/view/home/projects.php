@@ -1,44 +1,34 @@
-
+<?php Type::check("ArrayList:Project", $model) ?>
 <div class="container" >
     <div class="white">
-        <div class="row">
-            <div class="col-sm-12">
-
-                <h1>Projecten</h1>
-
+        <h1>Projecten</h1>
                 <div class="list-group collapse-group margin-ver-lg">
-
+                    <?php foreach ($model as $m) {?>
                         <!--                        one list item-->
-                    <a class="list-group-item collapse-group-item col-md-8">
-
+                    <a class="list-group-item collapse-group-item">
                         <!--                        collapsible part-->
-                        <div class="collapse-button col-md-12">
-                            <div class="col-sm-8">
-                                <h4 class="list-group-item-heading">ProjectNaam</h4>
-                                <p class="list-group-item-text">Subtitel?</p>
-                            </div>
+                        <div class="row">
+                        <div class="collapse-button">
+                            <div class="col-sm-8"><h3 class="list-group-item-heading"><?php echo $m->title ?></h3></div>
                             <div class="col-sm-4"><i class="fa fa-expand fa-2x pull-right"></i></div>
                         </div>
-
-                        <div class="collapse col-md-12">
-                            <div class="table-responsive">
-                                <table class="table table-condensed col-md-8">
+                        </div>
+                        <div class="collapse">
+                                <table class="table-responsive">
                                     <tbody>
                                     <tr>
-                                        <th scope="row">Contactpersoon</th>
-                                        <td>{{subventionRequest.contactperson}}</td>
+                                        <td>
+                                            <?php echo $m->body ?>
+                                        </td>
                                     </tr>
+                                ':LKgQ
                                     </tbody>
                                 </table>
-                            </div>
                         </div>
-
                         </a>
-
-
-
+                    <?php
+                    }
+                    ?>
                 </div>
-            </div>
         </div>
     </div>
-</div>

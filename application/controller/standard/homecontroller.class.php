@@ -16,7 +16,9 @@ class HomeController extends Controller
 
     public function projects_GET()
     {
-        $this->render("projects");
+        $projectList = new ArrayList("Project");
+        $projectList->addAll(Project::fetchAllProjects());
+        $this->render("projects", $projectList);
     }
 
     public function contact_GET()
