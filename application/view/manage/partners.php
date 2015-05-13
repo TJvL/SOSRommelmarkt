@@ -14,7 +14,6 @@
 			<table id="partnerTable" class="display">
 				<thead>
 					<tr>
-						<th>Partner ID</th>
 						<th>Naam</th>
 						<th>Website</th>
 						<th>Opties</th>
@@ -26,7 +25,6 @@
                 {
                     ?>
                     <tr>
-                        <td><?php echo $m->id ?></td>
                         <td><?php echo $m->name ?></td>
                         <td><?php echo $m->website ?></td>
                         <td>
