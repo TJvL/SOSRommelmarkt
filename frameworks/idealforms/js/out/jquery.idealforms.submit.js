@@ -5,7 +5,7 @@ $('form.idealforms').idealforms({
     rules: {
         'username': 'required username ajax',
         'name': 'required name',
-        'kvknr': 'required kvknr',
+        'kvknr': 'kvknr',
         'street': 'required street',
         'from': 'required from',
         'to': 'required to',

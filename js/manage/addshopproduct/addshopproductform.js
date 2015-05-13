@@ -40,6 +40,7 @@ $('.prev').click(function(){
 });
 //Prompts idealforms to show the previous step in the form.
 $('.next').click(function(){
+ //   alert($('#aanvraag').idealforms('get:invalid'));
     $('.next').show();
     $('form.idealforms').idealforms('nextStep');
 });

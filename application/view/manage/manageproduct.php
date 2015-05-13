@@ -14,7 +14,6 @@
             <table id="productTable" class="display">
                 <thead>
                 <tr>
-                    <th>Product ID</th>
                     <th>Naam</th>
                     <th>Kleur Code</th>
                     <th>Prijs</th>
@@ -30,7 +29,6 @@
                     {
                     	?>
                         <tr>
-	                        <td><?php echo $product->id ?></td>
 	                        <td><?php echo $product->name ?></td>
 	                        <td><?php echo $product->colorCode ?></td>
 	                        <td><?php echo $product->price ?></td>

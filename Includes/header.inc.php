@@ -116,7 +116,7 @@
                          <subnav>
                              <ul class="menu">
                                  <li><a href="<?php echo ROOT_PATH; ?>/home/index"><i class="fa fa-home"></i> Home</a></li>
-                                 <li><a  href="<?php echo ROOT_PATH; ?>/shop/index"><i class="fa fa-cubes"></i> Producten</a></li>
+                                 <li><a  href="<?php echo ROOT_PATH; ?>/shop/index"><i class="fa fa-cubes"></i> Webshop</a></li>
                                  <li><a href="<?php echo ROOT_PATH; ?>/subvention/index"><i class="fa fa-money"></i> Subsidie</a></li>
                                  <li><a href="<?php echo ROOT_PATH; ?>/aboutUs/index"><i class="fa fa-group"></i> Over ons</a></li>
                                  <li><a  href="<?php echo ROOT_PATH; ?>/home/projects"><i class="fa fa-list-alt"></i> Projecten</a></li>

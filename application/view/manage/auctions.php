@@ -11,7 +11,6 @@
 			<table id="auctionTable" class="display">
 				<thead>
 					<tr>
-						<th>Veiling ID</th>
 						<th>Startdatum</th>
 						<th>Einddatum</th>
 						<th>Opties</th>
@@ -19,7 +18,6 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="Auction in auctions">
-						<td>{{Auction.id}}</td>
 						<td>{{Auction.startDate}}</td>
 						<td>{{Auction.endDate}}</td>
 						<td>
