@@ -77,7 +77,7 @@ if(isset($_post['submitted']) == 1) {
 
 
 				<p> Page Form </p>	
-			<form action ="manage/pages" method="post" role="form">
+			<form action ="<?php echo ROOT_PATH;?>/manage/pages" method="post" role="form">
 				<div class="form-group">
 					<label for="title">Page Title:</label>
 					<input class="form-control" type="text" name="title" id="title" placeholder="Page Title">
