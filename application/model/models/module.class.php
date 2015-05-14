@@ -54,6 +54,29 @@ class Module
 		return $module;
 	}
 	
+	public static function selectByCategory($category)
+	{
+		$query = "SELECT *
+					FROM Modules
+					WHERE category = ?";
+				
+		// execute the query
+		$result = Database::select($query);
+		
+		// put the results in an array of objects
+		$modules = array();
+		
+		for ($i = 0; $i < $result->num_rows; $i++)
+		{
+			$row = $result->fetch_assoc();
+			$modules[$i] = Module.createObjectFromDatabaseRow($row);
+		}
+		
+		// free result
+		$result->close();
+		return $modules;
+	}
+	
 	public static function selectAll()
 	{
 		$query = "SELECT *
@@ -74,6 +97,7 @@ class Module
 		$result->close();
 		return $modules;
 	}
+	
 	
 	public static function deleteById($id)
 	{
