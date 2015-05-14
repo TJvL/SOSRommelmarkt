@@ -104,6 +104,10 @@
 		</div>
 	</div>
 	
+	<!-- Start modules -->
+	
+	<!-- End modules -->
+	
 	
 	<div class="row padding-lg">
 		<div class="col-md-6-custom padding-hor-md">
