@@ -90,8 +90,8 @@
 				$visitingHours = VisitingHours::selectCurrent();
 			?>
 			
+				<h2>Openingstijden</h2>
 				<table class="table table-condensed table-responsive">
-					<h2>Openingstijden</h2>
 					<tr><td>Maandag</td><td> <?php echo $visitingHours->monday; ?></td></tr>
 					<tr><td>Dinsdag</td><td> <?php echo $visitingHours->tuesday; ?></td></tr>
 					<tr><td>Woensdag</td><td> <?php echo $visitingHours->wednesday; ?></td></tr>
