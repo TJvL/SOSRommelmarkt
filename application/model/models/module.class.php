@@ -63,7 +63,7 @@ class Module
 					WHERE category = ?";
 				
 		// execute the query
-		$result = Database::select($query);
+		$result = Database::select($query, "s", array($category));
 		
 		// put the results in an array of objects
 		$modules = array();
@@ -71,7 +71,7 @@ class Module
 		for ($i = 0; $i < $result->num_rows; $i++)
 		{
 			$row = $result->fetch_assoc();
-			$modules[$i] = Module.createObjectFromDatabaseRow($row);
+			$modules[$i] = Module::createObjectFromDatabaseRow($row);
 		}
 		
 		// free result
