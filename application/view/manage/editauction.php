@@ -14,7 +14,6 @@
 			<table id=auctionProductTable class="display">
 				<thead>
 					<tr>
-						<th>Product ID</th>
 						<th>Naam</th>
 						<th>Kleur Code</th>
 						<th>Toegevoegd Door</th>
@@ -23,7 +22,6 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="AuctionProduct in auctionProducts">
-						<td>{{AuctionProduct.id}}</td>
 						<td>{{AuctionProduct.name}}</td>
 						<td>{{AuctionProduct.colorCode}}</td>
 						<td>{{AuctionProduct.addedBy}}</td>

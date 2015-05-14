@@ -86,42 +86,37 @@
 		</div>
 		<div class="row">
 			<hr>
-			<div class="col-sm-1"></div>
-			<h1>Partnerinformatie</h1>
+			<div class="col-sm-offset-2 col-sm-10">
+				<h1>Partnerinformatie</h1>
+			</div>
+			
 			<form class="form-horizontal" action="javascript:handleUpdatePartner()">
 				<div class="form-group">
-					<label class="control-label col-sm-2">ID</label>
-					<div class="col-sm-10">
-						<div class="input-group">
-							<input class="form-control" id="id" type="number" value="<?php echo $model->id ?>" disabled>
-						</div>
+					<label class="control-label col-sm-2" for="id">ID</label>
+					<div class="col-sm-8">
+						<input class="form-control" id="id" type="number" value="<?php echo $model->id ?>" disabled>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2">Naam</label>
-					<div class="col-sm-10">
-						<div class="input-group">
-							<input class="form-control" id="name" type="text" placeholder="Naam van de partner" value="<?php echo $model->name ?>" required>
-						</div>
+					<label class="control-label col-sm-2" for="name">Naam</label>
+					<div class="col-sm-8">
+						<input class="form-control" id="name" type="text" placeholder="Naam van de partner" value="<?php echo $model->name ?>" required>
 					</div>
 				</div>
 				<div class="form-group">
-                    <label class="control-label col-sm-2">Website</label>
-                    <div class="col-sm-10">
-                        <div class="input-group">
-                            <textarea class="form-control" id="website" style="resize: none" rows="3" placeholder="Website van de partner" required><?php echo $model->website ?></textarea>
-                        </div>
+                    <label class="control-label col-sm-2" for="website">Website</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="website" type="text"placeholder="Website van partner" value="<?php echo $model->website ?>" required>
                     </div>
                 </div>
 				<div class="form-group">
-					<label class="control-label col-sm-2"></label>
-					<div class="col-sm-10">
-						<div class="input-group">
-							<div class="btn-toolbar">
-								<button class="btn btn-default" type="submit">Update</button>
-								<button class="btn btn-danger" type="button" onClick="handleDeletePartner()">Delete</button>
-							</div>
-						</div>
+					<div class="col-sm-offset-2 col-sm-2">
+						<button class="btn btn-default btn-block" type="submit">Opslaan</button>
+					</div>
+					<div class="col-sm-2">
+						<button class="btn btn-danger btn-block" type="button" onClick="handleDeletePartner()">Verwijderen</button>
+					</div>
+					<div class="col-sm-4">
 						<div class="alert" id="status" role="alert"></div>
 					</div>
 				</div>

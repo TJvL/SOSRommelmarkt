@@ -50,6 +50,14 @@
                         </a>
                     </div>
                     <div class="col-md-2">
+                        <a href="<?php echo ROOT_PATH; ?>/manage/pages">
+                            <button class="btn btn-red">
+                                <i class="fa fa-file-text-o fa-5x fa-fw"></i>
+                                <br /><b>Pagina's</b>
+                            </button>
+                        </a>
+                    </div>
+                    <div class="col-md-2">
                         <a href="<?php echo ROOT_PATH; ?>/manage/subventions">
                             <button class="btn btn-red">
                                 <i class="fa fa-check-square fa-5x fa-fw"></i>

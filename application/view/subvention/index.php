@@ -18,7 +18,10 @@
                         Doel 8: Er is meer eerlijke handel, schuldverlichting en hulp.</p>
                 <p>• De aanvrager moet bereid zijn een verantwoordingsrapportage te maken.<br>
              • De aanvragen van buitenlandse organisaties laten toetsen door een nader te bepalen Nederlandse hulpinstelling.</p>
+        <p>Zie <a href="<?php echo ROOT_PATH; ?>/home/project">hier </a>wat voorbeelden van projecten die door SOSRommelmarkt gesteund zijn.</p>
+
 
         <a href="<?php echo ROOT_PATH; ?>/subvention/landing"> <button type="button" class="btn btn-red btn-lg">Aanvragen<i class="fa fa-chevron-right"></i></button></a>
+
     </div>
 </div>

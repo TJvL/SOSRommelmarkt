@@ -226,70 +226,61 @@ $(document).ready(function()
         </div>
 		<div class="row">
 			<hr>
-			<div class="col-sm-1"></div>
-			<h1>Productinformatie</h1>
+			<div class="col-sm-offset-2 col-sm-10">
+				<h1>Productinformatie</h1>
+			</div>
 			<form class="form-horizontal" action="javascript:handleUpdateProduct()">
 				<div class="form-group">
-					<label class="control-label col-sm-2">ID</label>
-					<div class="col-sm-10">
-						<div class="input-group">
-							<input class="form-control" id="productId" type="number" value="<?php echo $model->id ?>" disabled>
-						</div>
+					<label class="control-label col-sm-2" for="productId">ID</label>
+					<div class="col-sm-8">
+						<input class="form-control" id="productId" type="number" value="<?php echo $model->id ?>" disabled>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2">Naam</label>
-					<div class="col-sm-10">
-						<div class="input-group">
-							<input class="form-control" id="productName" type="text" placeholder="Naam van het product" value="<?php echo $model->name ?>" required>
-						</div>
+					<label class="control-label col-sm-2" for="productName">Naam</label>
+					<div class="col-sm-8">
+						<input class="form-control" id="productName" type="text" placeholder="Naam van het product" value="<?php echo $model->name ?>" required>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2">Omschrijving</label>
-					<div class="col-sm-10">
-						<div class="input-group">
-							<textarea class="form-control" id="productDescription" style="resize: none" rows="3" placeholder="Omschrijving van het product" required><?php echo $model->description ?></textarea>
-						</div>
+					<label class="control-label col-sm-2" for="productDescription">Omschrijving</label>
+					<div class="col-sm-8">
+						<textarea class="form-control" id="productDescription" style="resize: none" rows="3" placeholder="Omschrijving van het product" required><?php echo $model->description ?></textarea>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2">Toegevoegd door</label>
-					<div class="col-sm-10">
-						<div class="input-group">
-							<input class="form-control" type="text" value="<?php echo $model->addedBy ?>" disabled>
-						</div>
+					<label class="control-label col-sm-2" for="productAddedBy">Toegevoegd door</label>
+					<div class="col-sm-8">
+						<input class="form-control" id="productAddedBy" type="text" value="<?php echo $model->addedBy ?>" disabled>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2">Kleurcode</label>
-					<div class="col-sm-10">
-						<div class="input-group">
-							<select id="productColorCode" class="form-control">
-				                <?php 
-								foreach (ColorCodeRepository::selectAll() as $colorCode)
+					<label class="control-label col-sm-2" for="productColorCode">Kleurcode</label>
+					<div class="col-sm-8">
+						<select id="productColorCode" class="form-control">
+			                <?php 
+							foreach (ColorCodeRepository::selectAll() as $colorCode)
+							{
+								if ($colorCode->name == $model->colorCode)
 								{
-									if ($colorCode->name == $model->colorCode)
-									{
-										?>
-										<option selected="selected"><?php echo $colorCode->name ?></option>
-										<?php
-									}
-									else
-									{
-										?>
-										<option><?php echo $colorCode->name ?></option>
-										<?php
-									}
+									?>
+									<option selected="selected"><?php echo $colorCode->name ?></option>
+									<?php
 								}
-								?>
-							</select>
-						</div>
+								else
+								{
+									?>
+									<option><?php echo $colorCode->name ?></option>
+									<?php
+								}
+							}
+							?>
+						</select>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2">Prijs</label>
-					<div class="col-sm-10">
+					<label class="control-label col-sm-2" for="productPrice">Prijs</label>
+					<div class="col-sm-8">
 						<div class="input-group">
 							<span class="input-group-addon">&euro;</span>
 							<input class="form-control" id="productPrice" type="number" step="any" value="<?php echo $model->price ?>" required>
@@ -297,39 +288,36 @@ $(document).ready(function()
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2">Is gereserveerd</label>
-					<div class="col-sm-10">
-						<div class="input-group">
-							<div class="checkbox">
-								<label>
-									<?php 
-									if ($model->isReserved)
-									{
-										?>
-										<input id="productIsReserved" type="checkbox" checked>
-										<?php
-									}
-									else
-									{
-										?>
-										<input id="productIsReserved" type="checkbox">
-										<?php
-									}
+					<label class="control-label col-sm-2" for="productIsReserved">Is gereserveerd</label>
+					<div class="col-sm-8">
+						<div class="checkbox">
+							<label>
+								<?php 
+								if ($model->isReserved)
+								{
 									?>
-								</label>
-							</div>
+									<input id="productIsReserved" type="checkbox" checked>
+									<?php
+								}
+								else
+								{
+									?>
+									<input id="productIsReserved" type="checkbox">
+									<?php
+								}
+								?>
+							</label>
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2"></label>
-					<div class="col-sm-10">
-						<div class="input-group">
-							<div class="btn-toolbar">
-								<button class="btn btn-default" type="submit">Update</button>
-								<button class="btn btn-danger" type="button" onClick="handleDeleteProduct()">Delete</button>
-							</div>
-						</div>
+					<div class="col-sm-offset-2 col-sm-2">
+						<button class="btn btn-default btn-block" type="submit">Opslaan</button>
+					</div>
+					<div class="col-sm-2">
+						<button class="btn btn-danger btn-block" type="button" onClick="handleDeleteProduct()">Verwijderen</button>
+					</div>
+					<div class="col-sm-4">
 						<div class="alert" id="status" role="alert"></div>
 					</div>
 				</div>
