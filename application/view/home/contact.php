@@ -1,76 +1,80 @@
-<?php
-
-//if(isset($_POST['submit'])){
-//    $to	= "ihendrik1@avans.nl"; // Should be info@sosrommelmarkt.nl
-//    $from = $_POST['email']; // this is the sender's Email address
-//    $name = $_POST['name'];
-//    $phone = $_POST['phone'];
-//    $subject = "Contactformulier: " . $_POST['subject'];
-//    $subject2 = "Kopie van uw contactformulier: " . $_POST['subject'];
-//    $message = $name . "\n" . "Tel: " . $phone . "\n\n" . $_POST['message'];
-//    $message2 = "Dit is een kopie van uw contactformulier." . "\n\n" . $message;
-//
-//    $headers = "From:" . $from;
-//    $headers2 = "From:" . $to;
-//    mail($to,$subject,$message,$headers);
-//    mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
-//    //header('Location: thank_you.php'); // Use this to redirect to a thankyou page or something
-//    }
-?>
 
 <div class="container">
+    <div style="margin-bottom:5%" class="white col-md-8">
+        <div class="col-md-offset-0">
+            <div class="content">
 
-    <div style="margin-bottom:5%" class="row white margin-hor-0">
-        <!-- Contact form -->
-        <div class="col-sm-9">
-            <form role="form" action="" method="post">
-                <!--                <form role="form" action="" class="idealforms" method="post">-->
+                <div class="idealsteps-container">
 
-                <div class="form-group">
+                    <!-- <nav class="idealsteps-nav"></nav> -->
 
-                    <h2>Contact:</h2>
+                    <form role="form" action="" class="idealforms" method="post">
 
-                    <div class="row">
-                        <div class="col-sm-4 padding-sm"><input type="text" class="form-control" required="required" name="name" placeholder="Naam..."><span class="error"></span></div>
-                        <div class="col-sm-4 padding-sm"><input type="text" class="form-control" required="required" name="email" placeholder="E-mail adres.."></div>
-                        <div class="col-sm-4 padding-sm"><input type="text" class="form-control" required="required" name="phone" placeholder="Telefoonnummer..."></div>
-                    </div>
+                        <div class="idealsteps-wrap">
 
-                    <div class="row">
-                        <select  class="col-sm-12 padding-sm form-control" name="subject" required="required">
-                            <option value="Kies een onderwerp..." disabled selected>Kies een onderwerp...</option>
-                            <option value="subsidieaanvraag">Subsidieaanvraag</option>
-                            <option value="goederen">Goederen ophalen/brengen</option>
-                            <option value="overig">Overig</option>
-                        </select>
-                    </div>
+                            <section class="idealsteps-step">
+                                <h2>Contact</h2>
 
+                                <div class="field">
+                                    <label class="main">Naam</label>
+                                    <input name="name" type="text" placeholder="Uw naam">
+                                    <span class="error"></span>
+                                </div>
 
+                                <div class="field">
+                                    <label class="main">E-Mail</label>
+                                    <input name="email" type="email" placeholder="Uw E-mail">
+                                    <span class="error"></span>
+                                </div>
 
+                                <div class="field">
+                                    <label class="main">Telefoon</label>
+                                    <input name="phone" type="text" placeholder="Uw telefoonnummer">
+                                    <span class="error"></span>
+                                </div>
 
-                    <div class="row">
-                        <div class="col-sm-12 padding-sm"><textarea class="form-control" required="required" name="comments" rows="10"></textarea></div>
-                    </div>
+                                <div class="field">
+                                    <label class="main">Kies een onderwerp</label>
+                                    <select name="options" id="">
+                                        <option value="Kies een onderwerp..." disabled selected>Kies een onderwerp...</option>
+                                        <option value="subsidieaanvraag">Subsidieaanvraag</option>
+                                        <option value="goederen">Goederen ophalen/brengen</option>
+                                        <option value="overig">Overig</option>
+                                    </select>
+                                    <span class="error"></span>
+                                </div>
 
-                    <div class="row">
-                        <div class="col-sm-10 padding-sm"></div>
-                        <div class="col-sm-2 padding-sm"><input type="submit" name="submit" value="Verstuur" class="form-control"></div>
-                    </div>
-                    <?php
-                    if(isset($viewbag['message']))
-                    {
-                        echo $viewbag['message'];
-                    }
-                    ?>
+                                <div class="field">
+                                    <label class="main">Toelichting</label>
+                                    <textarea name="explanation" cols="30" rows="7" style="resize: none" placeholder="Toelichting"></textarea>
+                                    <span class="error"></span>
+                                </div>
+
+                                <div class="field buttons">
+                                    <label class="main">&nbsp;</label>
+                                    <button form="aanvraag" type="submit" class="submit">Versturen</button>
+                                </div>
+                                <?php
+                                if(isset($viewbag['message']))
+                                {
+                                    echo $viewbag['message'];
+                                }
+                                ?>
+
+                            </section>
+
+                        </div>
+
+                        <span id="invalid"></span>
+                    </form>
+
                 </div>
 
-                <span id="invalid"></span>
-
-            </form>
+            </div>
         </div>
-
-        <!-- Adres & Google Maps -->
-        <div class="col-sm-3">
+    </div>
+    <div style="margin-bottom:5%" class="white col-md-4">
+        <div class="col-md-offset-0">
             <h2 class="title">Adres:</h2>
             <p>
                 <?php $companyInformation = CompanyInformation::selectCurrent(); ?>
@@ -92,5 +96,11 @@
             ></iframe>
             -->
         </div>
+
     </div>
+
+
 </div>
+
+<script src="/SOSRommelmarkt/frameworks/idealforms/js/out/jquery.idealforms.js" type="text/javascript"></script>
+<script src="/SOSRommelmarkt/frameworks/idealforms/js/out/jquery.idealforms.submit.js" type="text/javascript"></script>
