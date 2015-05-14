@@ -105,7 +105,22 @@
 	</div>
 	
 	<!-- Start modules -->
-	
+	<?php 
+		$modules = Module::SelectByCategory("home");
+		$rows = ceil(count($modules) / 2); // determine the number of rows we'll need (2 modules per row)
+		$index = 0; // module index
+		
+		for ($i = 0; $i < count($modules); $i++)
+		{
+	?>
+	<div class="col-md-6">
+		<div class="white">
+			<h2><?php echo $modules[$i]->heading; ?></h2>
+			<p><?php echo $modules[$i]->content; ?></p>
+			<a href="#"><button type="button" class="btn btn-red btn-lg">Knop <i class="fa fa-chevron-right"></i></button></a>
+		</div>
+	</div>
+	<?php } ?>
 	<!-- End modules -->
 	
 	
