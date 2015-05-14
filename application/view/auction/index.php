@@ -4,12 +4,12 @@
 
     <div class="white">
 
-        <h1>Veiling</h1>
+        <h1>Vitrine</h1>
 
         <!--Auction Timer-->
         <div id="auction-timer" class="padding-lg">
 
-            <p><i class="fa fa-clock-o"></i> Deze veiling eindigt in <span id="timeRemaining">loading</span></p>
+            <p><i class="fa fa-clock-o"></i> Deze vitrine eindigt in <span id="timeRemaining">loading</span></p>
 
         </div>
 
@@ -112,12 +112,12 @@
 
         <!--Auction info-->
         <div class="auction-info padding-lg">
-            <a href="#" data-toggle="modal" data-target=".bs-auction-info-modal-lg">Meer weten over veilingen? <i class="fa fa-chevron-right"></i></a>
+            <a href="#" data-toggle="modal" data-target=".bs-auction-info-modal-lg">Meer weten over onze vitrine? <i class="fa fa-chevron-right"></i></a>
             <div class="modal fade bs-auction-info-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div style="margin-left: 12px; color:black;">
-                        <h3>Over de Veiling</h3>
+                        <h3>Over de Vitrine</h3>
                         <p>
                             Elke maand worden er bijzondere artikelen in onze vitrinekast geplaatst. Iedereen kan een bod op een van deze artikelen uitbrengen.<br />
                             Bij de kassa in de winkel liggen biedbriefjes. Op het biedbriefje schrijf je:
@@ -128,7 +128,7 @@
                             <li>welk bedrag je wilt betalen</li>
                         </ul>
                         <p>
-                            Je ingevulde briefje gaat in de vitrinebus naast de vitrinekast. elke laatste zaterdag van de maand worden alle biedbriefjes verzameld en de hoogste bieder wordt telefonisch benaderd.
+                            Je ingevulde briefje gaat in de bus naast de vitrinekast. elke laatste zaterdag van de maand worden alle biedbriefjes verzameld en de hoogste bieder wordt telefonisch benaderd.
                         </p>
                     </div>
                 </div>
@@ -167,7 +167,7 @@
             var s = parseInt(totalSec % 60, 10);
             var result = d + " dagen, " + h + " uur, " + m + " minuten en " + s + " seconden.";
             if(s<0){
-                result = "<p>Deze veiling is afgelopen</p>";
+                result = "<p>Deze vitrine is afgelopen</p>";
                 document.getElementById('auction-timer').innerHTML = result;
                 return;
             }
