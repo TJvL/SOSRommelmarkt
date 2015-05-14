@@ -2,7 +2,7 @@
 <div class="container">
     <div style="margin-bottom:5%" class="white">
     	<div class="row">
-	        <div class="col-md-8">
+	        <div class="col-md-9">
 	            <div class="content">
 	
 	                <div class="idealsteps-container">
@@ -73,8 +73,8 @@
 	
 	            </div>
 	        </div>
-	        <div class="col-md-4">
-	            <h2 class="title">Adres:</h2>
+	        <div class="col-md-3 col-md-3-adjust">
+	            <h2 class="title">Adres</h2>
 	            <p>
 	                <?php $companyInformation = CompanyInformation::selectCurrent(); ?>
 	
