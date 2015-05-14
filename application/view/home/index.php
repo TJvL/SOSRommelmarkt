@@ -105,37 +105,7 @@
 	</div>
 	
 	<!-- Start modules -->
-	<?php 
-		$modules = Modules::SelectByCategory("home");
-		$rows = ceil(count($modules) / 2); // determine the number of rows we'll need (2 modules per row)
-		
-		for ($r = 0; $r < $rows; $r++)
-		{
-	?>
-	<div class="row"
 	
-	
-	<?php
-		}
-		
-		
-
-		for ($i = 0; $i < count($modules); $i++) 
-		{
-			
-			
-			
-			
-			
-			
-			
-			
-			// if the object is odd and the last in the list, make it twice as wide (to fill the space)
-			if (($i % 2 != 0) && ($i == count($modules)))
-			{
-			}
-		}
-	?>
 	<!-- End modules -->
 	
 	
