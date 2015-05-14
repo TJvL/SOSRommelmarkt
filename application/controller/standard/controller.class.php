@@ -20,7 +20,7 @@ class Controller
         $controller = $this->name;
         $viewBag = $this->viewBag;
 
-        if ($this->name == "manage" || $this->name == "auction")
+        if ($this->name == "manage")
         {
             include("includes/manageheader.inc.php");
         }
