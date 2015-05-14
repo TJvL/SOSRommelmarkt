@@ -8,7 +8,6 @@ class HomeController extends Controller
 
     public function index_GET()
     {
-        $this->viewbag['voorbeeld'] = "hello, greetings from the viewbag";
         $productList = new ArrayList("AuctionProduct");
         $productList->addAll(AuctionProductRepository::selectByCurrentAuction());
         $this->render("index", $productList);
