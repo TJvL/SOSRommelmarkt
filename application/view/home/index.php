@@ -123,28 +123,11 @@
 			<div class="white margin-ver-lg">
 				<h2><?php echo $modules[$i]->heading; ?></h2>
 				<p><?php echo $modules[$i]->content; ?></p>
-				<a href="<?php echo ROOT_PATH . '/' . $modules[$i]->reference; ?>"><button type="button" class="btn btn-red btn-lg">Knop <i class="fa fa-chevron-right"></i></button></a>
+				<a href="<?php echo ROOT_PATH . '/' . $modules[$i]->reference; ?>"><button type="button" class="btn btn-red btn-lg"><?php echo $modules[$i]->reference_label; ?> <i class="fa fa-chevron-right"></i></button></a>
 			</div>
 		</div>
 		<?php if ($i % 2 != 0 || $i == count($modules) - 1)	{ ?>
 	</div>
 	<?php }} ?>
 	<!-- End modules -->
-	
-	<div class="row padding-lg">
-		<div class="col-md-6-custom padding-hor-md">
-			<div class="white margin-ver-lg">
-				<h2>Subsidie</h2>
-				<p>Kent u een project in een ontwikkelingsland dat steun kan gebruiken dan kunt u bij SOS Rommelmarkt een aanvraag voor subsidie indienen.</p>
-				<a href="<?php echo ROOT_PATH; ?>/subvention/index"><button type="button" class="btn btn-red btn-lg">Vraag subsidie aan <i class="fa fa-chevron-right"></i></button></a> <!--Style used -> Hacky I know..-->
-			</div>
-		</div>
-		<div class="col-md-6-custom padding-hor-md">
-			<div class="white margin-ver-lg">
-				<h2>Webshop</h2>
-				<p>In de kringloopwinkel van SOS Rommelmarkt in de Vughterstraat van ’s-Hertogenbosch worden al dertig jaar tweedehands spullen verkocht. Je vindt in onze opgeruimde en overzichtelijke winkel kringloopgoederen voor een kleine prijs. Een deel van de collectie wordt ook online aangeboden.</p>
-				<a href="<?php echo ROOT_PATH; ?>/shop/index"><button type="button" class="btn btn-red btn-lg">Webshop <i class="fa fa-chevron-right"></i></button></a>
-			</div>
-		</div>
-	</div>
 </div>
