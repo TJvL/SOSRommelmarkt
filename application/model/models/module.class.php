@@ -36,7 +36,7 @@ class Module
 					SET heading = ?, content = ?, position = ?, category = ?, reference = ?
 					WHERE id = ?";
 		
-		Database::update($query, "sssssi", array($this->heading, $this->content, $this->position, $this->category, $this->reference $this->id));
+		Database::update($query, "sssssi", array($this->heading, $this->content, $this->position, $this->category, $this->reference, $this->id));
 	}
 	
 	public static function selectById($id)
