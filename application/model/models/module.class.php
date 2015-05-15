@@ -62,7 +62,8 @@ class Module
 	{
 		$query = "SELECT *
 					FROM Modules
-					WHERE category = ?";
+					WHERE category = ?
+					ORDER BY position ASC";
 				
 		// execute the query
 		$result = Database::select($query, "s", array($category));
