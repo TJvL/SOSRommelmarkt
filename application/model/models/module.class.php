@@ -8,6 +8,7 @@ class Module
 	public $position;
 	public $category;
 	public $reference;
+	public $reference_label;
 	
 	private static function createObjectFromDatabaseRow($row)
 	{
@@ -18,25 +19,26 @@ class Module
 		$module->position = $row["position"];
 		$module->category = $row["category"];
 		$module->reference = $row["reference"];
+		$module->reference_label = $row["reference_label"];
 		
 		return $module;
 	}
 	
 	public static function insert($module)
 	{
-		$query = "INSERT INTO Modules (heading, content, position, category, reference)
-					VALUES(?, ?, ?, ?, ?)";
+		$query = "INSERT INTO Modules (heading, content, position, category, reference, reference_label)
+					VALUES(?, ?, ?, ?, ?, ?)";
 		
-		return Database::insert($query, "sssss", array($heading, $content, $position, $category, $reference));
+		return Database::insert($query, "ssssss", array($heading, $content, $position, $category, $reference, $reference_label));
 	}
 	
 	public function update()
 	{
 		$query = "UPDATE Modules
-					SET heading = ?, content = ?, position = ?, category = ?, reference = ?
+					SET heading = ?, content = ?, position = ?, category = ?, reference = ?, reference_label = ?
 					WHERE id = ?";
 		
-		Database::update($query, "sssssi", array($this->heading, $this->content, $this->position, $this->category, $this->reference, $this->id));
+		Database::update($query, "ssssssi", array($this->heading, $this->content, $this->position, $this->category, $this->reference, $this->reference_label, $this->id));
 	}
 	
 	public static function selectById($id)
