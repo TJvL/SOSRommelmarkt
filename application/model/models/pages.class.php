@@ -11,7 +11,7 @@ class Pages {
 		// put the result into an object
 		while($page_list = mysqli_fetch_assoc($r)) {
 			echo $page_list['name'];	
-			 $blurb = substr(strip_tags($page_list['body']), 0, 20)
+			 $blurb = substr(strip_tags($page_list['body']), 0, 20);
 		}
 		
 		// free the resultset

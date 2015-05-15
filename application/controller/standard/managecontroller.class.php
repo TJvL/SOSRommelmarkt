@@ -456,10 +456,21 @@ class ManageController extends Controller
         // TODO: Error or some shit
         exit(json_encode(1));
     }
+    
     public function addpartner_POST()
     {
-        Partner::insert($_POST["name"], $_POST["website"]);
-        $this->redirectTo("/manage/partners");
+    	// Check if everything needed is here.
+    	if (isset($_POST["name"]) && isset($_POST["website"]) && isset($_FILES["image"]))
+    	{
+    		// Insert the partner record.
+    		$partnerId = Partner::insert($_POST["name"], $_POST["website"]);
+    		
+    		// Get the image file extension.
+    		$imageFileType = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+    		
+    		// Save the image.
+    		move_uploaded_file($_FILES["image"]["tmp_name"], "img/partners/" . $partnerId . "." . $imageFileType);
+    	}
     }
     
     public function addslogan_GET()
