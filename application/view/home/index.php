@@ -1,6 +1,5 @@
 <?php Type::check("ArrayList:AuctionProduct", $model) ?>
 
-<!--echo $viewbag['voorbeeld'];-->
 <div class="container">
 	<div class="grey">
 		<div class="row">
@@ -24,9 +23,6 @@
             			<?php } ?>
             		</div>
 				</div>
-				
-<!-- 				<p>Alles wat verkoopbaar is krijgt bij klanten een nieuw leven.</p> -->
-<!-- 				<p>Het restafval wordt gescheiden aangeleverd bij verwerkingsbedrijven.</p> -->
 			</div>
 		</div>
 	</div>
@@ -103,26 +99,37 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- Start modules -->
-	<?php 
+	<?php
+		// Get all modules that belong to the homepage
 		$modules = Module::SelectByCategory("home");
-		$rows = ceil(count($modules) / 2); // determine the number of rows we'll need (2 modules per row)
-		$index = 0; // module index
 		
+		// Display all of them
 		for ($i = 0; $i < count($modules); $i++)
 		{
+			// The modules are put in rows of 2, so every even index is the start of a new row.
+			if ($i % 2 == 0)
+			{
 	?>
-	<div class="col-md-6">
-		<div class="white">
-			<h2><?php echo $modules[$i]->heading; ?></h2>
-			<p><?php echo $modules[$i]->content; ?></p>
-			<a href="#"><button type="button" class="btn btn-red btn-lg">Knop <i class="fa fa-chevron-right"></i></button></a>
+	<div class="row padding-ver-lg">
+	<?php if ($i == count($modules) - 1) { ?>
+		<div class="col-md-12">
+		<?php }	else { ?>
+		<div class="col-md-6">
+		<?php }} else { ?>
+		<div class="col-md-6">
+		<?php }	?>
+			<div class="white margin-ver-lg">
+				<h2><?php echo $modules[$i]->heading; ?></h2>
+				<p><?php echo $modules[$i]->content; ?></p>
+				<a href="<?php echo ROOT_PATH . '/' . $modules[$i]->reference; ?>"><button type="button" class="btn btn-red btn-lg">Knop <i class="fa fa-chevron-right"></i></button></a>
+			</div>
 		</div>
+		<?php if ($i % 2 != 0 || $i == count($modules) - 1)	{ ?>
 	</div>
-	<?php } ?>
+	<?php }} ?>
 	<!-- End modules -->
-	
 	
 	<div class="row padding-lg">
 		<div class="col-md-6-custom padding-hor-md">
