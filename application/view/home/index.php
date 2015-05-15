@@ -112,7 +112,7 @@
 			if ($i % 2 == 0)
 			{
 	?>
-	<div class="row padding-ver-lg">
+	<div class="row padding-ver-lg margin-btm-lg">
 	<?php if ($i == count($modules) - 1) { ?>
 		<div class="col-md-12 equal-height">
 		<?php }	else { ?>

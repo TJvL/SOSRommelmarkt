@@ -113,6 +113,22 @@ iframe, object, embed {
 	margin-bottom: 10px !important;
 }
 
+.margin-btm-0 {
+	margin-bottom: 0 !important;
+}
+
+.margin-btm-sm {
+	margin-bottom: 10px !important;
+}
+
+.margin-btm-md {
+	margin-bottom: 20px !important;
+}
+
+.margin-btm-lg {
+	margin-bottom: 50px !important;
+}
+
 .padding-0 {
 	padding: 0 !important;
 }
