@@ -29,8 +29,8 @@
 	
 	<!-- carousel -->
 	<div class="row padding-lg">
-		<div class="col-md-8 padding-hor-md">
-			<div class="grey padding-sm margin-ver-lg height-fix">
+		<div class="col-md-8 padding-hor-md equal-height">
+			<div class="grey padding-sm margin-ver-lg full-height">
 				<?php 
 				// If there is no auction. Print some text saying there is no auction.. that makes sense right??
 				if ($model->size() == 0)
@@ -43,17 +43,17 @@
 				else
 				{
 					?>
-					<div id="vitrine-carousel" class="carousel slide full-height" data-ride="carousel">
+					<div id="vitrine-carousel" class="carousel slide" data-ride="carousel">
 						<ol class="carousel-indicators">
 							<?php for ($i = 0; $i < $model->size(); $i++) { ?>
 							<li data-target="#vitrine-carousel" data-slide-to="<?php echo $i ?>" <?php if ($i == 0) echo 'class="active"' ?>></li>
 							<?php } ?>
 						</ol>
 					
-						<div class="carousel-inner full-height" role="listbox">
+						<div class="carousel-inner" role="listbox">
 							<?php for ($i = 0; $i < $model->size(); $i++) { ?>
-							<div class="item <?php if ($i == 0) echo 'active' ?> carousel-overlay full-height">
-								<a href="<?php echo ROOT_PATH; ?>/auction/index"><img class="center-block full-height" src="<?php echo $model->get($i)->imagePath ?>" alt="Slide"></a>
+							<div class="item <?php if ($i == 0) echo 'active' ?> carousel-overlay">
+								<a href="<?php echo ROOT_PATH; ?>/auction/index"><img class="center-block" src="<?php echo $model->get($i)->imagePath ?>" alt="Slide"></a>
 								<div class="carousel-caption">
 									<br>
 									<h2><?php echo $model->get($i)->name ?></h2>
@@ -78,8 +78,8 @@
 			</div>
 		</div>
 		
-		<div class="col-md-4 padding-hor-md">
-			<div class="white margin-ver-lg height-fix">
+		<div class="col-md-4 padding-hor-md equal-height">
+			<div class="white margin-ver-lg">
 			
 			<?php 
 				// contactinfo ophalen
@@ -114,11 +114,11 @@
 	?>
 	<div class="row padding-ver-lg">
 	<?php if ($i == count($modules) - 1) { ?>
-		<div class="col-md-12">
+		<div class="col-md-12 equal-height">
 		<?php }	else { ?>
-		<div class="col-md-6">
+		<div class="col-md-6 equal-height">
 		<?php }} else { ?>
-		<div class="col-md-6">
+		<div class="col-md-6 equal-height">
 		<?php }	?>
 			<div class="white margin-ver-lg">
 				<h2><?php echo $modules[$i]->heading; ?></h2>
