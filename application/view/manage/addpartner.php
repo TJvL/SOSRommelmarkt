@@ -1,9 +1,9 @@
 <head>
 <script>
-function InsertPartner()
+function CreatePartner()
 {
 	// Get the form data.
-	var formData = new FormData(document.getElementById("addPartnerForm"));
+	var formData = new FormData(document.getElementById("createPartnerForm"));
 	
 	// Check if all the needed data is here.
 //	if (formData.has("name") && formData.has("website") && formData.has("image"))
@@ -13,7 +13,7 @@ function InsertPartner()
 	
 	$.ajax(
 	{
-		url: "addpartner",
+		url: "createpartner",
 		type: "POST",
         data: formData,
         contentType: false,
@@ -50,7 +50,7 @@ function InsertPartner()
             <div class="col-sm-offset-2 col-sm-10">
 	            <h1>Partner toevoegen</h1>
             </div>
-            <form class="form-horizontal" id="addPartnerForm" enctype="multipart/form-data" action="javascript:InsertPartner()">
+            <form class="form-horizontal" id="createPartnerForm" enctype="multipart/form-data" action="javascript:CreatePartner()">
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="name">Naam</label>
                     <div class="col-sm-8">
