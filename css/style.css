@@ -280,19 +280,18 @@ h1.manage-title{
     height: 250px;
 
 }
-@media (min-width: 1200px)  {
- .btn-red{
-width: auto !important;
-
-  }
+@media (min-width: 1200px) {
+	.btn-red {
+		width: auto !important;
+	}
 }
 
-@media (min-width: 450px)  {
- .btn-red{
-width: 100%;
+@media (min-width: 450px) {
+	.btn-red {
+		width: 100%;
+	}
+}
 
-  }
-
-
-  }
+div .full-height {
+	height: 100%;
 }
