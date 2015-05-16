@@ -23,6 +23,40 @@ class ManageController extends Controller
         $subventionList->addAll(SubventionRequest::fetchAllSubventionRequests());
         $this->render("subventions", $subventionList);
     }
+
+    public function projects_get(){
+
+        $projectList = new ArrayList("Project");
+        $projectList->addAll(ProjectRepository::selectAll());
+        $this->render("projects", $projectList);
+    }
+
+    public function addproject_GET(){
+        $this->render("addproject");
+    }
+
+    public function addproject_POST()
+    {
+        $newProject = ProjectRepository::insert($_POST["title"],$_POST["description"]);
+        $this->redirectTo("/manage/projects/$newProject->id");
+    }
+
+    public function projectdetails_GET()
+    {
+        // Check if the projectid id is set.
+        if (isset($_GET["id"]))
+        {
+            // Get the product.
+            $project = ProjectRepository::selectById($_GET["id"]);
+//            $shopProduct = ShopProductRepository::selectById($_GET["id"]);
+
+            // Render the view.
+            $this->render("project", $project);
+        }
+
+        // TODO: Error or some shit
+    }
+
     public function productList_GET()
     {
         $this->render("manageproduct");
