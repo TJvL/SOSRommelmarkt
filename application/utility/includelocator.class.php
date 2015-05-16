@@ -64,7 +64,7 @@ class IncludeLocator
             for ($i = 0; $i < count($includes); $i++)
             {
                 $include = str_replace($root, "", $includes[$i]);
-                echo "<link href='$include' type='text/css' rel='stylesheet'>";
+                echo "    <link href='$include' type='text/css' rel='stylesheet'>\n";
             }
         }
     }
@@ -77,7 +77,15 @@ class IncludeLocator
             for ($i = 0; $i < count($includes); $i++)
             {
                 $include = str_replace($root, "", $includes[$i]);
-                echo "<script src='$include' type='text/javascript'></script>";
+
+                if(strpos($include, "/angular.js"))
+                {
+                    echo "    <script src='$include' type='text/javascript'></script>\n";
+                }
+                else
+                {
+                    echo "    <script src='$include' type='text/javascript' defer></script>\n";
+                }
             }
         }
     }
