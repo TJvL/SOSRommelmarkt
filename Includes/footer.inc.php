@@ -13,27 +13,21 @@
             </div>
     	</div>
     	<div class="row">
-	        <div class="col-sm-4 col-md-6">
-	            <ul class="style1">
-	            	<?php for ($i = 0; $i < ceil($partnerArray->size()/2); $i++) { ?>
-	            	<li><a href="<?php echo $partnerArray->get($i)->website ?>"><?php echo $partnerArray->get($i)->name ?></a></li>
-					<?php } ?>
-	            </ul>
-	        </div>
-	        <div class="col-sm-4 col-md-6">
-	            <ul class="style1">
-	                <?php for ($i = ceil($partnerArray->size()/2); $i < $partnerArray->size(); $i++) { ?>
-	            	<li><a href="<?php echo $partnerArray->get($i)->website ?>"><?php echo $partnerArray->get($i)->name ?></a></li>
-	            	<?php } ?>
-	                
-	            </ul>
+	        <div class="col-sm-8 col-md-12">
+	            	<?php for ($i = 0; $i < $partnerArray->size(); $i++)
+	            	{
+	            		?>
+	            			<a href="<?php echo $partnerArray->get($i)->website ?>"><img class="footer-partner-logo-image" src="<?php echo $partnerArray->get($i)->getImagePath() ?>"></a>
+	            		<?php
+					}
+					?>
 	        </div>
     	</div>
     </div>
 </div>
 
 <div id="copyright">
-	<p>&copy; SOSrommelmarkt. Alle rechten voorbehouden. | Ontwerp en ontwikkeling door 42IN07SOe</a>.</p>
+	<p>&copy; SOSrommelmarkt. Alle rechten voorbehouden. | Ontwerp en ontwikkeling door 42IN07SOe.</p>
 </div>
 
 </div>
