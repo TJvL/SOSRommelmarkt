@@ -217,6 +217,24 @@ class ManageController extends Controller
         }
         $this->redirectTo("/manage/settings");
     }
+
+     public function subventionsContent_POST()
+    {
+        // Check if all the necessary data has been sent with the request.
+        if (isset($_POST["titel"]) && isset($_POST["content"]))
+        {
+        $subventionsContent              = SubventionsContent::selectCurrent();
+        $subventionsContent->titel       = $_POST["titel"];
+        $subventionsContent->content     = $_POST["content"];
+        $subventionsContent->update();
+            // set the data and update 
+        }
+        
+        $this->redirectTo("/manage/subventions");
+    }
+
+
+
     public function changeSubventionStatus_POST()
     {
         // Check if all the necessary data has been sent with the request.
