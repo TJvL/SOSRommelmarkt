@@ -7,15 +7,12 @@
     <title>SOS Rommelmarkt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href = "<?php echo ROOT_PATH; ?>application/model/database/database.class.php" rel = "database">
+
     <?php
     IncludeLocator::locateIncludes("css", $controller, $action);
-    ?>
-    <?php
     IncludeLocator::locateIncludes("js", $controller, $action);
     ?>
     <script src="<?php echo ROOT_PATH; ?>/frameworks/idealforms/js/out/jquery.idealforms.js" type="text/javascript"></script>
-
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -23,13 +20,10 @@
     <script src="http://css3-mediaqueries-js.googlecode.com/files/css3-mediaqueries.js"></script>
     <![endif]-->
 
-
 </head>
 <body>
     <nav class= "navbar navbar-default navbar-static-top">
         <div class="container">
-            <div class="navbar-header">
-            </div>
             <?php 
             	// contactinfo ophalen
             	$companyInformation = CompanyInformation::selectCurrent();
@@ -60,17 +54,47 @@
                     </a>
                 </div>
                 <div class="col-md-9">
+
+                    <?php
+                    //If logged in
+                    $placeholder = false;
+                    if($placeholder)
+                    {?>
+                        <div class="col-md-12 manage-subtitle">
+                            <p><a href="<?php echo ROOT_PATH?>/manage">Beheer</a> </p>
+                        </div>
+                    <?php }?>
+
                      <div>
+
                          <a id="touch-menu" class="mobile-menu" href="#">Menu<i class="fa fa-angle-double-down fa-lg"></i></a>
                          <subnav>
-                             <ul class="menu">
-                                 <li><a href="<?php echo ROOT_PATH; ?>/home/index"><i class="fa fa-home"></i> Home</a></li>
-                                 <li><a  href="<?php echo ROOT_PATH; ?>/shop/index"><i class="fa fa-cubes"></i> Webshop</a></li>
-                                 <li><a href="<?php echo ROOT_PATH; ?>/subvention/index"><i class="fa fa-money"></i> Subsidie</a></li>
-                                 <li><a href="<?php echo ROOT_PATH; ?>/aboutUs/index"><i class="fa fa-group"></i> Over ons</a></li>
-                                 <li><a  href="<?php echo ROOT_PATH; ?>/home/projects"><i class="fa fa-list-alt"></i> Projecten</a></li>
-                                 <li><a  href="<?php echo ROOT_PATH; ?>/home/contact"><i class="fa fa-envelope"></i> Contact</a></li>
-                             </ul>
+                                 <?php
+                                 //If logged in
+                                 $placeholder = false; //!!!!Momenteel staat de header standaar op normaal. Zet deze boolean op true als je de manageheader nodig hebt. (later wordt dit met login afgehandeld)
+                                 if(!$placeholder)
+                                 {
+                                 ?>
+                                     <ul class="menu">
+                                         <li><a href="<?php echo ROOT_PATH; ?>/home/index"><i class="fa fa-home"></i> Home</a></li>
+                                         <li><a href="<?php echo ROOT_PATH; ?>/shop/index"><i class="fa fa-cubes"></i> Producten</a></li>
+                                         <li><a href="<?php echo ROOT_PATH; ?>/subvention/index"><i class="fa fa-money"></i> Subsidie</a></li>
+                                         <li><a href="<?php echo ROOT_PATH; ?>/aboutUs/index"><i class="fa fa-group"></i> Over ons</a></li>
+                                         <li><a href="<?php echo ROOT_PATH; ?>/contact/index"><i class="fa fa-envelope"></i> Contact</a></li>
+                                     </ul>
+                                 <?php
+                                 }
+                                 else
+                                 {?>
+                                     <ul class="menu">
+                                         <li><a href="<?php echo ROOT_PATH; ?>/manage/settings"><i class="fa fa-cogs"></i> Instellingen</a></li>
+                                         <li><a href="<?php echo ROOT_PATH; ?>/manage/subventions"><i class="fa fa-check-square"></i> Subsidies</a></li>
+                                         <li><a href="<?php echo ROOT_PATH; ?>/manage/productList"><i class="fa fa-shopping-cart"></i> Producten</a></li>
+                                         <li><a href="<?php echo ROOT_PATH; ?>/manage/auctions"><i class="fa fa-gavel"></i> Veilingen</a></li>
+                                         <li><a href="<?php echo ROOT_PATH; ?>/manage/partners"><i class="fa fa-users"></i> Partners</a></li>
+                                     </ul>
+                                 <?php
+                                 }?>
                         </subnav>
                     </div>
                 </div>
