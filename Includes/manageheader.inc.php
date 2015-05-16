@@ -17,7 +17,7 @@
     <?php
     IncludeLocator::locateIncludes("js", $controller, $action);
     ?>
-    <script src="<?php echo ROOT_PATH; ?>/frameworks/idealforms/js/out/jquery.idealforms.js" type="text/javascript"></script>
+    <script src="<?php echo ROOT_PATH; ?>/js/jquery.idealforms.js" type="text/javascript"></script>
 
 
 </head>
