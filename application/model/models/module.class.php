@@ -24,7 +24,7 @@ class Module
 		return $module;
 	}
 	
-	public static function insert($module)
+	public static function insert($heading, $content, $position, $category, $reference, $reference_label)
 	{
 		$query = "INSERT INTO Modules (heading, content, position, category, reference, reference_label)
 					VALUES(?, ?, ?, ?, ?, ?)";
