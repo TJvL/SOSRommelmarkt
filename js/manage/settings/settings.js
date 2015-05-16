@@ -3,6 +3,7 @@ $(document).ready(function() {
 	$('#homeTable').DataTable({
 		"columnDefs": [{
 			"width": "7em", "targets": 1
-		}]
+		}],
+		"ordering": false
 	});
 });
