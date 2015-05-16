@@ -15,9 +15,21 @@ function UpdatePartner()
 	// Get the form data.
 	var formData = new FormData(document.getElementById("updatePartnerForm"));
 	formData.append("id", "<?php echo $model->id ?>");
+	
 	// Check if the image is set. If so, add it to the formdata.
 	if ($("#image").val() !== "")
+	{
+		// Check if the file has an image extension.
+		if (!IsImage($("#image").val()))
+		{
+			$("#status").text("Het bestand dat u probeert te gebruiken is geen plaatje.");
+			$("#status").addClass("alert-warning");
+	        
+			return;
+		}
+		
         formData.append("image", $("#image")[0].files[0]);
+	}
 	
 	// Check if all the needed data is here.
 //	if (formData.has("name") && formData.has("website") && formData.has("image"))

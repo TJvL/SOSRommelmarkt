@@ -14,7 +14,7 @@ function CreatePartner()
 	if (!IsImage($("#image").val()))
 	{
 		$("#status").text("Het bestand dat u probeert te gebruiken is geen plaatje.");
-        $("#status").addClass("alert-warning");
+		$("#status").addClass("alert-warning");
         
 		return;
 	}
