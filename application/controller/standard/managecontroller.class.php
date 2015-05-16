@@ -23,7 +23,7 @@ class ManageController extends Controller
         $subventionList->addAll(SubventionRequest::fetchAllSubventionRequests());
         $this->render("subventions", $subventionList);
     }
-    public function productList_GET()
+    public function manageproduct_GET()
     {
         $this->render("manageproduct");
     }

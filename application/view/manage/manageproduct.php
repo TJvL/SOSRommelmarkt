@@ -45,7 +45,6 @@
                                     break;
                             }
                             ?>
-	                        <td><?php echo $product->colorCode ?></td>
 	                        <td><?php echo $product->price ?></td>
                             <td><?php echo $product->addedBy ?></td>
                             <td>
@@ -76,9 +75,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    $(document).ready( function () {
-        $('#productTable').DataTable();
-    } );
-</script>

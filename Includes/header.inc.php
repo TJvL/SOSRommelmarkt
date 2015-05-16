@@ -4,15 +4,14 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>SOS Rommelmarkt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOS Rommelmarkt</title>
 
 
     <?php
     IncludeLocator::locateIncludes("css", $controller, $action);
     IncludeLocator::locateIncludes("js", $controller, $action);
     ?>
-    <script src="<?php echo ROOT_PATH; ?>/frameworks/idealforms/js/out/jquery.idealforms.js" type="text/javascript"></script>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
