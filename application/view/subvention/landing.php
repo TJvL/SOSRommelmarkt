@@ -1,6 +1,6 @@
 
 <div class="container">
-    <div style="margin-bottom:5%" class="white">
+    <div class="white">
         <div class="content">
 
             <div class="idealsteps-container">
@@ -17,7 +17,7 @@
 
 
                             <div class="field">
-                                <label class="main">voornaam</label>
+                                <label class="main">Voornaam</label>
                                 <input name="name" type="text" placeholder="Uw voornaam">
                                 <span class="error"></span>
                             </div>
@@ -122,19 +122,19 @@
 
                             <div class="field">
                                 <label class="main">Toelichting</label>
-                                <textarea name="explanation" cols="30" rows="7" style="resize: none" placeholder="Graag invullen waarom u een subsidie nodig heeft."></textarea>
+                                <textarea name="explanation" cols="30" rows="7" placeholder="Graag invullen waarom u een subsidie nodig heeft."></textarea>
                                 <span class="error"></span>
                             </div>
 
                             <div class="field">
                                 <label class="main">Geplande activiteiten</label>
-                                <textarea name="planned_activities" cols="30" rows="7" style="resize: none" placeholder="Geef een beschijving van beoogde activiteiten."></textarea>
+                                <textarea name="planned_activities" cols="30" rows="7" placeholder="Geef een beschrijving van beoogde activiteiten."></textarea>
                                 <span class="error"></span>
                             </div>
 
                             <div class="field">
                                 <label class="main">Beoogde resultaten</label>
-                                <textarea name="intended_results" cols="30" rows="7" style="resize: none" placeholder="Geef een beschijving van de beoogde resultaten."></textarea>
+                                <textarea name="intended_results" cols="30" rows="7" placeholder="Geef een beschrijving van de beoogde resultaten."></textarea>
                                 <span class="error"></span>
                             </div>
 
@@ -159,5 +159,5 @@
 
 </div>
 
-<script src="/SOSRommelmarkt/frameworks/idealforms/js/out/jquery.idealforms.js" type="text/javascript"></script>
-<script src="/SOSRommelmarkt/frameworks/idealforms/js/out/jquery.idealforms.submit.js" type="text/javascript"></script>
+<!--<script src="/SOSRommelmarkt/frameworks/idealforms/js/out/jquery.idealforms.js" type="text/javascript"></script>-->
+<!--<script src="/SOSRommelmarkt/frameworks/idealforms/js/out/jquery.idealforms.submit.js" type="text/javascript"></script>-->

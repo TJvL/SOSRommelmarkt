@@ -64,7 +64,7 @@ class IncludeLocator
             for ($i = 0; $i < count($includes); $i++)
             {
                 $include = str_replace($root, "", $includes[$i]);
-                echo "<link href='$include' rel='stylesheet'>";
+                echo "<link href='$include' type='text/css' rel='stylesheet'>";
             }
         }
     }
@@ -77,7 +77,7 @@ class IncludeLocator
             for ($i = 0; $i < count($includes); $i++)
             {
                 $include = str_replace($root, "", $includes[$i]);
-                echo "<script src='$include'></script>";
+                echo "<script src='$include' type='text/javascript' defer></script>";
             }
         }
     }

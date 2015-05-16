@@ -90,7 +90,7 @@ class ManageController extends Controller
         // TODO: Error or some shit
     }
 
-    public function productList_GET()
+    public function manageproduct_GET()
     {
         $this->render("manageproduct");
     }
