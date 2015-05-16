@@ -23,20 +23,17 @@
                 </thead>
                 <tbody>
                 <?php
-
                 foreach ($model as $project)
-                {
-                    ?>
+                {?>
                     <tr>
                         <td><?php echo $project->id ?></td>
                         <td><?php echo $project->title ?></td>
                         <td>
-                            <a href="projectdetails/<?php echo $project->id ?>"><button class="btn btn-default"><i class="fa fa-pencil"></i></button></a>
+                            <a href="<?php echo ROOT_PATH ?>/manage/projectdetails/<?php echo $project->id ?>"><button class="btn btn-default"><i class="fa fa-pencil"></i></button></a>
                         </td>
                     </tr>
                 <?php
-                }
-                ?>
+                }?>
                 </tbody>
             </table>
         </div>

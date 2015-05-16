@@ -61,6 +61,15 @@ class ProjectRepository
         return $project;
     }
 
+    public static function update($project)
+    {
+        $query = "UPDATE Project
+			SET title = ?, body = ?
+			WHERE idProject = ?";
+
+        Database::update($query, "ssi", array($project->title, $project->body, $project->id));
+    }
+
     public static function deleteById($id)
     {
         $query = "DELETE FROM Project WHERE idProject = ?";

@@ -14,18 +14,18 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="name">Titel</label>
                     <div class="col-sm-8">
-                        <input class="form-control" form="projectForm" id="title" name="title" type="text" placeholder="Titel van het project" required>
+                        <input class="form-control" name="title" type="text" placeholder="Titel van het project" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="website">Project omschrijving</label>
                     <div class="col-sm-8">
-                        <textarea form="projectForm" class="form-control" rows="5" id="description" name="description" placeholder="Omschrijving van het project" required></textarea>
+                        <textarea class="form-control" rows="5" name="description" placeholder="Omschrijving van het project" required></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-2">
-                        <button class="btn btn-red btn-block" form="projectForm" type="submit">Toevoegen</button>
+                        <button class="btn btn-red btn-block" type="submit">Toevoegen</button>
                     </div>
                 </div>
             </form>

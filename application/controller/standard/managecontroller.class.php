@@ -41,6 +41,40 @@ class ManageController extends Controller
         $this->redirectTo("/manage/projects/$newProject->id");
     }
 
+    public function deleteproject_POST(){
+
+        ProjectRepository::deleteById($_POST["id"]);
+        $this->redirectTo("/manage/projects");
+    }
+
+    public function editproject_POST(){
+
+        $project = new Project();
+        $project->id = $_POST["id"];
+        $project->title = $_POST["title"];
+        $project->body = $_POST["description"];
+
+        $noVarsNull = true;
+
+        if (!isset($_POST["id"])){
+            $noVarsNull = false;
+        }
+        if (!isset($_POST["title"])){
+            $noVarsNull = false;
+        }
+        if (!isset($_POST["description"])){
+            $noVarsNull = false;
+        }
+
+        if($noVarsNull){
+            ProjectRepository::update($project);
+            $this->redirectTo("/manage/projectdetails/$project->id"); //TODO: add succes message (session data?)
+        }
+        else{
+            //TODO: ERROR Handling
+        }
+    }
+
     public function projectdetails_GET()
     {
         // Check if the projectid id is set.
@@ -48,7 +82,6 @@ class ManageController extends Controller
         {
             // Get the product.
             $project = ProjectRepository::selectById($_GET["id"]);
-//            $shopProduct = ShopProductRepository::selectById($_GET["id"]);
 
             // Render the view.
             $this->render("project", $project);
