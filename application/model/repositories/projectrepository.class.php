@@ -12,12 +12,12 @@ class ProjectRepository
         return $project;
     }
 
-    public static function insert($title, $description)
+    public static function insert($project)
     {
         $query = "INSERT INTO Project (title, body)
 			VALUES (?, ?)";
 
-        return Database::insert($query, "ss", array($title, $description));
+        return Database::insert($query, "ss", array($project->title, $project->body));
     }
 
     public static function selectAll()

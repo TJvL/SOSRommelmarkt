@@ -10,17 +10,23 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <h1>Project toevoegen</h1>
             </div>
-            <form class="form-horizontal" id="projectForm" method="POST" action="<?php echo ROOT_PATH . "/manage/addproject" ?>">
+            <form class="form-horizontal" id="projectForm" method="POST" enctype="multipart/form-data" action="<?php echo ROOT_PATH . "/manage/addproject" ?>">
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="name">Titel</label>
+                    <label class="control-label col-sm-2"">Titel</label>
                     <div class="col-sm-8">
                         <input class="form-control" name="title" type="text" placeholder="Titel van het project" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="website">Project omschrijving</label>
+                    <label class="control-label col-sm-2"">Project omschrijving</label>
                     <div class="col-sm-8">
                         <textarea class="form-control" rows="5" name="description" placeholder="Omschrijving van het project" required></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2"">Afbeeldingen</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="file" name="images" multiple>
                     </div>
                 </div>
                 <div class="form-group">
