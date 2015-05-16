@@ -71,8 +71,9 @@ IncludeLocator::locateIncludes("js", $controller, $action);
                                          <li><a href="<?php echo ROOT_PATH; ?>/home/index"><i class="fa fa-home"></i> Home</a></li>
                                          <li><a href="<?php echo ROOT_PATH; ?>/shop/index"><i class="fa fa-cubes"></i> Producten</a></li>
                                          <li><a href="<?php echo ROOT_PATH; ?>/subvention/index"><i class="fa fa-money"></i> Subsidie</a></li>
-                                         <li><a href="<?php echo ROOT_PATH; ?>/aboutUs/index"><i class="fa fa-group"></i> Over ons</a></li>
-                                         <li><a href="<?php echo ROOT_PATH; ?>/contact/index"><i class="fa fa-envelope"></i> Contact</a></li>
+                                         <li><a href="<?php echo ROOT_PATH; ?>/home/aboutus"><i class="fa fa-group"></i> Over ons</a></li>
+                                         <li><a href="<?php echo ROOT_PATH; ?>/home/retrieval"><i class="fa fa-truck"></i> Afgifte</a></li>
+                                         <li><a href="<?php echo ROOT_PATH; ?>/home/contact"><i class="fa fa-envelope"></i> Contact</a></li>
                                      </ul>
                                  <?php
                                  }

@@ -1,76 +1,58 @@
-
 <div class="container">
     <div style="margin-bottom:5%" class="white">
     	<div class="row">
 	        <div class="col-md-9">
 	            <div class="content">
-	
-	                <div class="idealsteps-container">
-	
-	                    <!-- <nav class="idealsteps-nav"></nav> -->
-	
-	                    <form role="form" action="" class="idealforms" method="post">
-	
-	                        <div class="idealsteps-wrap">
-	
-	                            <section class="idealsteps-step">
-	                                <h2>Contact</h2>
-	
-	                                <div class="field">
-	                                    <label class="main">Naam</label>
-	                                    <input name="name" type="text" placeholder="Uw naam">
-	                                    <span class="error"></span>
-	                                </div>
-	
-	                                <div class="field">
-	                                    <label class="main">E-Mail</label>
-	                                    <input name="email" type="email" placeholder="Uw E-mail">
-	                                    <span class="error"></span>
-	                                </div>
-	
-	                                <div class="field">
-	                                    <label class="main">Telefoon</label>
-	                                    <input name="phone" type="text" placeholder="Uw telefoonnummer">
-	                                    <span class="error"></span>
-	                                </div>
-	
-	                                <div class="field">
-	                                    <label class="main">Kies een onderwerp</label>
-	                                    <select name="options" id="">
-	                                        <option value="Kies een onderwerp..." disabled selected>Kies een onderwerp...</option>
-	                                        <option value="subsidieaanvraag">Subsidieaanvraag</option>
-	                                        <option value="goederen">Goederen ophalen/brengen</option>
-	                                        <option value="overig">Overig</option>
-	                                    </select>
-	                                    <span class="error"></span>
-	                                </div>
-	
-	                                <div class="field">
-	                                    <label class="main">Toelichting</label>
-	                                    <textarea name="explanation" cols="30" rows="7" style="resize: none" placeholder="Toelichting"></textarea>
-	                                    <span class="error"></span>
-	                                </div>
-	
-	                                <div class="field buttons">
-	                                    <label class="main">&nbsp;</label>
-	                                    <button form="aanvraag" type="submit" class="submit">Versturen</button>
-	                                </div>
-	                                <?php
-	                                if(isset($viewbag['message']))
-	                                {
-	                                    echo $viewbag['message'];
-	                                }
-	                                ?>
-	
-	                            </section>
-	
-	                        </div>
-	
-	                        <span id="invalid"></span>
-	                    </form>
-	
-	                </div>
-	
+                    <form role="form" action="" class="idealforms" method="post" id="contactform">
+                        <h2>Contact</h2>
+
+                        <div class="field">
+                            <label class="main">Naam</label>
+                            <input name="name" type="text" placeholder="Uw naam">
+                            <span class="error"></span>
+                        </div>
+
+                        <div class="field">
+                            <label class="main">E-Mail</label>
+                            <input name="email" type="email" placeholder="Uw E-mail">
+                            <span class="error"></span>
+                        </div>
+
+                        <div class="field">
+                            <label class="main">Telefoon</label>
+                            <input name="phone" type="text" placeholder="Uw telefoonnummer">
+                            <span class="error"></span>
+                        </div>
+
+                        <div class="field">
+                            <label class="main">Kies een onderwerp</label>
+                            <select name="options" id="">
+                                <option value="Kies een onderwerp..." disabled selected>Kies een onderwerp...</option>
+                                <option value="subsidieaanvraag">Subsidieaanvraag</option>
+                                <option value="goederen">Goederen ophalen/brengen</option>
+                                <option value="overig">Overig</option>
+                            </select>
+                            <span class="error"></span>
+                        </div>
+
+                        <div class="field">
+                            <label class="main">Toelichting</label>
+                            <textarea name="explanation" cols="30" rows="7" style="resize: none" placeholder="Toelichting"></textarea>
+                            <span class="error"></span>
+                        </div>
+
+                        <div class="field buttons">
+                            <label class="main">&nbsp;</label>
+                            <button form="aanvraag" type="submit" class="submit">Versturen</button>
+                        </div>
+                        <?php
+                        if(isset($viewbag['message']))
+                        {
+                            echo $viewbag['message'];
+                        }
+                        ?>
+                        <span id="invalid"></span>
+                    </form>
 	            </div>
 	        </div>
 	        <div class="col-md-3 col-md-3-adjust">
@@ -98,6 +80,3 @@
     	</div>
     </div>
 </div>
-
-<script src="/SOSRommelmarkt/frameworks/idealforms/js/out/jquery.idealforms.js" type="text/javascript"></script>
-<script src="/SOSRommelmarkt/frameworks/idealforms/js/out/jquery.idealforms.submit.js" type="text/javascript"></script>

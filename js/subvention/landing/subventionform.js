@@ -3,20 +3,7 @@ $('#aanvraag').idealforms({
     silentLoad: true,
 
     rules: {
-        'name': 'required',
-        'lastname': 'required',
-        'companyname': 'required',
-        'kvknr': 'required',
-        'street': 'required',
-        'zip': 'required',
-        'place': 'required',
-        'phone': 'required',
-        'gsm': 'required',
-        'fax': 'required',
-        'email': 'required',
-        'explanation': 'required minmax:50:200',
-        'planned_activities': 'required minmax:50:200',
-        'intended_results': 'required minmax:50:200'
+        'name': 'required'
     },
 
 
