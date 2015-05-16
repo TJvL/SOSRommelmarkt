@@ -114,6 +114,7 @@
 	?>
 	<div class="row padding-ver-lg <?php if ($i == count($modules) - 1 || $i == count($modules) - 2) echo "margin-btm-lg"; ?>">
 	<?php if ($i == count($modules) - 1) { ?>
+		<div class="col-md-12">
 		<?php }	else { ?>
 		<div class="col-md-6">
 		<?php }} else { ?>
