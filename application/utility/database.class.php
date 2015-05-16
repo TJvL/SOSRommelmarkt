@@ -74,11 +74,12 @@ class Database
 			// Cleanup.
 			$preparedStatement->close();
 		}
-		finally
-		{
-			// Close database connection even if an exception occurs.
-			$connection->close();
-		}
+        catch (Exception $e)
+        {
+            $connection->close();
+            throw $e;
+        }
+        $connection->close();
 		
 		return $result;
 	}
@@ -114,11 +115,12 @@ class Database
 			// Cleanup.
 			$preparedStatement->close();
 		}
-		finally
-		{
-			// Close database connection even if an exception occurs.
-			$connection->close();
-		}
+        catch (Exception $e)
+        {
+            $connection->close();
+            throw $e;
+        }
+        $connection->close();
 	}
 	
 	/**
@@ -157,11 +159,12 @@ class Database
 			// Cleanup.
 			$preparedStatement->close();
 		}
-		finally
-		{
-			// Close database connection even if an exception occurs.
-			$connection->close();
-		}
+        catch (Exception $e)
+        {
+            $connection->close();
+            throw $e;
+        }
+        $connection->close();
 		
 		return $insertId;
 	}

@@ -33,7 +33,7 @@
 </div>
 
 <div id="copyright">
-	<p>&copy; SOSrommelmarkt. All rights reserved. | Design by 42IN07SOe.</p>
+	<p>&copy; SOSrommelmarkt. Alle rechten voorbehouden. | Ontwerp en ontwikkeling door 42IN07SOe</a>.</p>
 </div>
 
 </div>

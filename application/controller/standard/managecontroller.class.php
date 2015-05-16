@@ -23,6 +23,73 @@ class ManageController extends Controller
         $subventionList->addAll(SubventionRequest::fetchAllSubventionRequests());
         $this->render("subventions", $subventionList);
     }
+
+    public function projects_get(){
+
+        $projectList = new ArrayList("Project");
+        $projectList->addAll(ProjectRepository::selectAll());
+        $this->render("projects", $projectList);
+    }
+
+    public function addproject_GET(){
+        $this->render("addproject");
+    }
+
+    public function addproject_POST()
+    {
+        $newProject = ProjectRepository::insert($_POST["title"],$_POST["description"]);
+        $this->redirectTo("/manage/projects/$newProject->id");
+    }
+
+    public function deleteproject_POST(){
+
+        ProjectRepository::deleteById($_POST["id"]);
+        $this->redirectTo("/manage/projects");
+    }
+
+    public function editproject_POST(){
+
+        $project = new Project();
+        $project->id = $_POST["id"];
+        $project->title = $_POST["title"];
+        $project->body = $_POST["description"];
+
+        $noVarsNull = true;
+
+        if (!isset($_POST["id"])){
+            $noVarsNull = false;
+        }
+        if (!isset($_POST["title"])){
+            $noVarsNull = false;
+        }
+        if (!isset($_POST["description"])){
+            $noVarsNull = false;
+        }
+
+        if($noVarsNull){
+            ProjectRepository::update($project);
+            $this->redirectTo("/manage/projectdetails/$project->id"); //TODO: add succes message (session data?)
+        }
+        else{
+            //TODO: ERROR Handling
+        }
+    }
+
+    public function projectdetails_GET()
+    {
+        // Check if the projectid id is set.
+        if (isset($_GET["id"]))
+        {
+            // Get the product.
+            $project = ProjectRepository::selectById($_GET["id"]);
+
+            // Render the view.
+            $this->render("project", $project);
+        }
+
+        // TODO: Error or some shit
+    }
+
     public function productList_GET()
     {
         $this->render("manageproduct");
@@ -217,6 +284,24 @@ class ManageController extends Controller
         }
         $this->redirectTo("/manage/settings");
     }
+
+     public function subventionsContent_POST()
+    {
+        // Check if all the necessary data has been sent with the request.
+        if (isset($_POST["titel"]) && isset($_POST["content"]))
+        {
+        $subventionsContent              = SubventionsContent::selectCurrent();
+        $subventionsContent->titel       = $_POST["titel"];
+        $subventionsContent->content     = $_POST["content"];
+        $subventionsContent->update();
+            // set the data and update 
+        }
+        
+        $this->redirectTo("/manage/subventions");
+    }
+
+
+
     public function changeSubventionStatus_POST()
     {
         // Check if all the necessary data has been sent with the request.

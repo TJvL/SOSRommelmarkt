@@ -1,4 +1,3 @@
-
 <?php Type::check("ArrayList:SubventionRequest", $model) ?>
 
 <div class="container">
@@ -12,7 +11,7 @@
                     </div> 
                     <div class="widget-content">
                         <div class="tabbable"> <!-- Only required for left/right tabs -->
-                            <ul class="nav nav-tabs">
+                            <ul class="nav nav-tabs nav-justified" role="tablist">
                                 <li class="active"><a href="#tab1" data-toggle="tab">Subsidie verzoeken</a></li>
                                 <li><a href="#tab2" data-toggle="tab">Subsidie content</a></li>
                             </ul>
@@ -186,8 +185,45 @@
 
                                 <div class="tab-pane fade" id="tab2">
 
-                                    <p>test</p>
-                                </div>
+
+
+                                <?php 
+                                    // contactinfo ophalen
+                                    $subventionsContent = SubventionsContent::selectCurrent();
+                                ?>
+
+
+                                 <form class="form-horizontal"  action="<?php echo ROOT_PATH;?>/manage/subventionsContent_POST" method="Post">
+                                    <div class="form-group">
+                                        <label for="title">Page Title:</label>
+                                        <input class="form-control" type="text" name="title" id="title" placeholder="Page Title" value="<?php echo $subventionsContent->titel ;?>">
+                                    </div>
+
+                                     <div class="form-group">
+                                        <label for="content">Page Title:</label>
+                                        <input class="form-control" type="text" name="content" id="content" placeholder="Page Title" value="<?php echo $subventionsContent->content ;?>">
+                                    </div>
+
+<!--                                     <div class="form-group">
+                                        <label for="body">Body:</label>
+                                        <textarea class="form-control" name="body" rows="8" id="body" placeholder="Page body"><?php echo $subventionsContent->content ;?> </textarea>
+                                    </div>
+                                     -->
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-8">
+                                            <button type="submit" class="btn btn-danger btn-block" id="submit" name="add">Opslaan</button>
+                                        </div>
+                                    </div>
+
+                                </form> 
                             </div>
 
-
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>     
+    </div>
+</div>
