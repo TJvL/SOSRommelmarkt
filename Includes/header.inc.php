@@ -7,17 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOS Rommelmarkt</title>
 
-
 <?php
 IncludeLocator::locateIncludes("css", $controller, $action);
 IncludeLocator::locateIncludes("js", $controller, $action);
 ?>
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <script src="http://css3-mediaqueries-js.googlecode.com/files/css3-mediaqueries.js"></script>
-    <![endif]-->
 
 </head>
 <body>
@@ -70,7 +63,7 @@ IncludeLocator::locateIncludes("js", $controller, $action);
                          <subnav>
                                  <?php
                                  //If logged in
-                                 $placeholder = false; //!!!!Momenteel staat de header standaar op normaal. Zet deze boolean op true als je de manageheader nodig hebt. (later wordt dit met login afgehandeld)
+                                 $placeholder = false; //!!!!Momenteel staat de header standaard op normaal. Zet deze boolean op true als je de manageheader nodig hebt. (later wordt dit met login afgehandeld)
                                  if(!$placeholder)
                                  {
                                  ?>
