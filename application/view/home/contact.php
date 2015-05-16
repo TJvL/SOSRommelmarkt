@@ -3,30 +3,30 @@
     	<div class="row">
 	        <div class="col-md-9">
 	            <div class="content">
-                    <form role="form" action="" class="idealforms" method="post" id="contactform">
+                    <form action="<?php echo ROOT_PATH . "/home/contact"?>" class="idealforms" method="post" id="contactform">
                         <h2>Contact</h2>
 
                         <div class="field">
                             <label class="main">Naam</label>
-                            <input name="name" type="text" placeholder="Uw naam">
+                            <input form="contactform" name="name" type="text" placeholder="Uw naam">
                             <span class="error"></span>
                         </div>
 
                         <div class="field">
                             <label class="main">E-Mail</label>
-                            <input name="email" type="email" placeholder="Uw E-mail">
+                            <input form="contactform" name="email" type="email" placeholder="Uw E-mail">
                             <span class="error"></span>
                         </div>
 
                         <div class="field">
                             <label class="main">Telefoon</label>
-                            <input name="phone" type="text" placeholder="Uw telefoonnummer">
+                            <input form="contactform" name="phone" type="text" placeholder="Uw telefoonnummer">
                             <span class="error"></span>
                         </div>
 
                         <div class="field">
                             <label class="main">Kies een onderwerp</label>
-                            <select name="options" id="">
+                            <select form="contactform" name="options" id="">
                                 <option value="Kies een onderwerp..." disabled selected>Kies een onderwerp...</option>
                                 <option value="subsidieaanvraag">Subsidieaanvraag</option>
                                 <option value="goederen">Goederen ophalen/brengen</option>
@@ -37,13 +37,13 @@
 
                         <div class="field">
                             <label class="main">Toelichting</label>
-                            <textarea name="explanation" cols="30" rows="7" style="resize: none" placeholder="Toelichting"></textarea>
+                            <textarea form="contactform" name="explanation" cols="30" rows="7" style="resize: none" placeholder="Toelichting"></textarea>
                             <span class="error"></span>
                         </div>
 
                         <div class="field buttons">
                             <label class="main">&nbsp;</label>
-                            <button form="aanvraag" type="submit" class="submit">Versturen</button>
+                            <button form="contactform" type="submit" class="submit">Versturen</button>
                         </div>
                         <?php
                         if(isset($viewbag['message']))
