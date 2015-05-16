@@ -515,25 +515,16 @@ class ManageController extends Controller
     	exit(json_encode(1));
     }
     
-    public function setpartnerimage_POST()
-    {
-    	// Check if everything needed is here.
-    	if (isset($_POST["id"]) && isset($_FILES["image"]))
-    	{
-    		PartnerRepository::selectById($_POST["id"])->setImage($_FILES["image"]);
-    		
-    		exit(json_encode(0));
-    	}
-    	 
-    	exit(json_encode(1));
-    }
-    
     public function updatepartner_POST()
     {
     	// Check if everything needed is here.
     	if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["website"]))
     	{
 			PartnerRepository::updateById($_POST["id"], $_POST["name"], $_POST["website"]);
+			
+			// Optional image.
+			if (isset($_FILES["image"]))
+				Partner::setImageById($_POST["id"], $_FILES["image"]);
 			
 			exit(json_encode(0));
     	}

@@ -119,7 +119,7 @@ $(document).ready(function()
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="image">Plaatje</label>
                     <div class="col-sm-8">
-                    	<input class="form-control" id="image" name=image type="file" required>
+                    	<input class="form-control" id="image" name="image" type="file" required>
                     </div>
                 </div>
                 <div class="form-group hidden" id="imagePreviewDiv">

@@ -25,6 +25,17 @@ class Partner
 			unlink($result[0]);
 	}
 	
+	public static function setImageById($id, $uploadedImageFile)
+	{
+		// Get the image file extension.
+		$imageFileExtension = pathinfo($uploadedImageFile["name"], PATHINFO_EXTENSION);
+		
+		// TODO: Check for valid image types.
+		
+		// Save the image.
+		move_uploaded_file($uploadedImageFile["tmp_name"], Partner::IMAGES_DIRECTORY . "/" . $id . "." . $imageFileExtension);
+	}
+	
 	public function getImagePath()
 	{
 		return Partner::getImagePathById($this->id);
@@ -32,13 +43,7 @@ class Partner
 	
 	public function setImage($uploadedImageFile)
 	{		
-		// Get the image file extension.
-		$imageFileExtension = pathinfo($uploadedImageFile["name"], PATHINFO_EXTENSION);
-		
-		// TODO: Check for valid image types.
-		
-		// Save the image.
-		move_uploaded_file($uploadedImageFile["tmp_name"], Partner::IMAGES_DIRECTORY . "/" . $this->id . "." . $imageFileExtension);
+		Partner::setImageById($this->id, $uploadedImageFile);
 	}
 }
 

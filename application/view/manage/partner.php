@@ -15,6 +15,9 @@ function UpdatePartner()
 	// Get the form data.
 	var formData = new FormData(document.getElementById("updatePartnerForm"));
 	formData.append("id", "<?php echo $model->id ?>");
+	// Check if the image is set. If so, add it to the formdata.
+	if ($("#image").val() !== "")
+        formData.append("image", $("#image")[0].files[0]);
 	
 	// Check if all the needed data is here.
 //	if (formData.has("name") && formData.has("website") && formData.has("image"))
@@ -79,6 +82,42 @@ function DeletePartner()
 		});
 	}
 }
+
+$(document).ready(function()
+{
+	// For previewing the image.
+	$("#image").change(function()
+	{
+		ResetStatus();
+		
+		// Check if the file has an image extension.
+		if (!IsImage($("#image").val()))
+		{
+			$("#status").text("Het bestand dat u probeert te gebruiken is geen plaatje.");
+	        $("#status").addClass("alert-warning");
+	        
+	     	// Hide the image.
+			$("#imagePreviewDiv").addClass("hidden");
+	        
+			return;
+		}
+		
+		if (this.files && this.files[0])
+		{
+			var reader = new FileReader();
+
+			reader.onload = function(e)
+			{
+				$("#imagePreview").attr("src", e.target.result);
+			}
+
+			reader.readAsDataURL(this.files[0]);
+
+			// Show the image.
+			$("#imagePreviewDiv").removeClass("hidden");
+	    }
+	});
+});
 </script>
 </head>
 
@@ -113,6 +152,18 @@ function DeletePartner()
                         <input class="form-control" id="website" name="website" type="text"placeholder="Website van partner" value="<?php echo $model->website ?>" required>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="image">Plaatje</label>
+                    <div class="col-sm-8">
+                    	<input class="form-control" id="image" name="image" type="file" form="">
+                    </div>
+                </div>
+                <div class="form-group" id="imagePreviewDiv">
+                	<label class="control-label col-sm-2" for="imagePreview">Plaatje preview</label>
+	                <div class="col-sm-8">
+	                	<img class="image-preview" id="imagePreview" src="<?php echo $model->getImagePath() ?>">
+	                </div>
+				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-2">
 						<button class="btn btn-default btn-block" type="submit">Opslaan</button>
