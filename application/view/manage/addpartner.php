@@ -1,7 +1,24 @@
 <head>
 <script>
+function ResetStatus()
+{
+	$("#status").text("");
+	$("#status").removeClass("alert-warning alert-danger alert-success");
+}
+
 function CreatePartner()
 {
+	ResetStatus();
+	
+	// Check if the file has an image extension.
+	if (!IsImage($("#image").val()))
+	{
+		$("#status").text("Het bestand dat u probeert te gebruiken is geen plaatje.");
+        $("#status").addClass("alert-warning");
+        
+		return;
+	}
+	
 	// Get the form data.
 	var formData = new FormData(document.getElementById("createPartnerForm"));
 	
@@ -11,6 +28,7 @@ function CreatePartner()
 //	else
 //		alert("nope");
 	
+	// Send the POST request.
 	$.ajax(
 	{
 		url: "createpartner",
@@ -23,18 +41,53 @@ function CreatePartner()
 	        // Check if it went alright.
 	        if (result == 0)
 	        {
-	        	alert("Success");
-
 	        	// Go to the partners page.
 		        window.location.replace("partners");
 	        }
 	        else
 	        {
-	        	alert("fail");
+	        	$("#status").text("Er is iets verkeerd gegaan.");
+                $("#status").addClass("alert-danger");
 	        }
         }
 	});
 }
+
+$(document).ready(function()
+{
+	// For previewing the image.
+	$("#image").change(function()
+	{
+		ResetStatus();
+		
+		// Check if the file has an image extension.
+		if (!IsImage($("#image").val()))
+		{
+			$("#status").text("Het bestand dat u probeert te gebruiken is geen plaatje.");
+	        $("#status").addClass("alert-warning");
+	        
+	     	// Hide the image.
+			$("#imagePreviewDiv").addClass("hidden");
+	        
+			return;
+		}
+		
+		if (this.files && this.files[0])
+		{
+			var reader = new FileReader();
+
+			reader.onload = function(e)
+			{
+				$("#imagePreview").attr("src", e.target.result);
+			}
+
+			reader.readAsDataURL(this.files[0]);
+
+			// Show the image.
+			$("#imagePreviewDiv").removeClass("hidden");
+	    }
+	});
+});
 </script>
 </head>
 
@@ -69,10 +122,19 @@ function CreatePartner()
                     	<input class="form-control" id="image" name=image type="file" required>
                     </div>
                 </div>
+                <div class="form-group hidden" id="imagePreviewDiv">
+                	<label class="control-label col-sm-2" for="imagePreview">Plaatje preview</label>
+	                <div class="col-sm-8">
+	                	<img class="image-preview" id="imagePreview">
+	                </div>
+				</div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-2">
                         <button class="btn btn-default btn-block" type="submit">Opslaan</button>
                     </div>
+                    <div class="col-sm-4">
+						<div class="alert" id="status" role="alert"></div>
+					</div>
                 </div>
             </form>
         </div>

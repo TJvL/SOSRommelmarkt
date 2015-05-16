@@ -23,6 +23,73 @@ class ManageController extends Controller
         $subventionList->addAll(SubventionRequest::fetchAllSubventionRequests());
         $this->render("subventions", $subventionList);
     }
+
+    public function projects_get(){
+
+        $projectList = new ArrayList("Project");
+        $projectList->addAll(ProjectRepository::selectAll());
+        $this->render("projects", $projectList);
+    }
+
+    public function addproject_GET(){
+        $this->render("addproject");
+    }
+
+    public function addproject_POST()
+    {
+        $newProject = ProjectRepository::insert($_POST["title"],$_POST["description"]);
+        $this->redirectTo("/manage/projects/$newProject->id");
+    }
+
+    public function deleteproject_POST(){
+
+        ProjectRepository::deleteById($_POST["id"]);
+        $this->redirectTo("/manage/projects");
+    }
+
+    public function editproject_POST(){
+
+        $project = new Project();
+        $project->id = $_POST["id"];
+        $project->title = $_POST["title"];
+        $project->body = $_POST["description"];
+
+        $noVarsNull = true;
+
+        if (!isset($_POST["id"])){
+            $noVarsNull = false;
+        }
+        if (!isset($_POST["title"])){
+            $noVarsNull = false;
+        }
+        if (!isset($_POST["description"])){
+            $noVarsNull = false;
+        }
+
+        if($noVarsNull){
+            ProjectRepository::update($project);
+            $this->redirectTo("/manage/projectdetails/$project->id"); //TODO: add succes message (session data?)
+        }
+        else{
+            //TODO: ERROR Handling
+        }
+    }
+
+    public function projectdetails_GET()
+    {
+        // Check if the projectid id is set.
+        if (isset($_GET["id"]))
+        {
+            // Get the product.
+            $project = ProjectRepository::selectById($_GET["id"]);
+
+            // Render the view.
+            $this->render("project", $project);
+        }
+
+        // TODO: Error or some shit
+    }
+
     public function manageproduct_GET()
     {
         $this->render("manageproduct");
@@ -432,18 +499,15 @@ class ManageController extends Controller
     }
     
     public function createpartner_POST()
-    {
+    {    	
     	// Check if everything needed is here.
     	if (isset($_POST["name"]) && isset($_POST["website"]) && isset($_FILES["image"]))
     	{
-    		// Insert the partner record.
-    		$partnerId = PartnerRepository::insert($_POST["name"], $_POST["website"]);
+	   		// Insert the partner record. And set $post id to the id for setpartnerimage.
+    		$image = PartnerRepository::insert($_POST["name"], $_POST["website"]);
     		
-    		// Get the image file extension.
-    		$imageFileType = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
-    		
-    		// Save the image.
-    		move_uploaded_file($_FILES["image"]["tmp_name"], "img/partners/" . $partnerId . "." . $imageFileType);
+    		// Set the image.
+    		$image->setImage($_FILES["image"]);
     		
     		exit(json_encode(0));
     	}
@@ -451,11 +515,24 @@ class ManageController extends Controller
     	exit(json_encode(1));
     }
     
+    public function setpartnerimage_POST()
+    {
+    	// Check if everything needed is here.
+    	if (isset($_POST["id"]) && isset($_FILES["image"]))
+    	{
+    		PartnerRepository::selectById($_POST["id"])->setImage($_FILES["image"]);
+    		
+    		exit(json_encode(0));
+    	}
+    	 
+    	exit(json_encode(1));
+    }
+    
     public function updatepartner_POST()
     {
     	// Check if everything needed is here.
     	if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["website"]))
-    	{			
+    	{
 			PartnerRepository::updateById($_POST["id"], $_POST["name"], $_POST["website"]);
 			
 			exit(json_encode(0));
@@ -469,8 +546,12 @@ class ManageController extends Controller
     	// Check if everything needed is here.
     	if (isset($_POST["id"]))
     	{
+    		// Delete the database entry.
     		PartnerRepository::deleteById($_POST["id"]);
-    			
+    		
+    		// Delete the image.
+    		Partner::deleteImageById($_POST["id"]);
+    		
     		exit(json_encode(0));
     	}
     	 
@@ -536,4 +617,3 @@ class ManageController extends Controller
     }
 }
 ?>
-

@@ -17,7 +17,12 @@ class PartnerRepository
 		$query = "INSERT INTO Partners (name, website)
 			VALUES (?, ?)";
 		
-		return Database::insert($query, "ss", array($name, $website));
+		$partner = new Partner();
+		$partner->id = Database::insert($query, "ss", array($name, $website));
+		$partner->name = $name;
+		$partner->website = $website;
+		
+		return $partner;
 	}
 	
 	public static function update($partner)
