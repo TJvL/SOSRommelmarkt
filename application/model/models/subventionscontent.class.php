@@ -17,19 +17,15 @@ class SubventionsContent {
 		return $subventionsContent;
 	}
 
-
-	
 	public function update()
-		{
-				$query = "UPDATE SubventionsContent
-				SET titel = ? , content = ? 
-				WHERE id = ?";
-			
-			Database::update($query, "ssi", array($this->titel, $this->content));
-		}
+	{
+		$query = "UPDATE SubventionsContent
+			SET titel = ?, content = ?
+			WHERE id = ?";
 		
-
-
+		Database::update($query, "ssi", array($this->titel, $this->content));
+	}
+	
 		public static function selectCurrent()
 	{
 		$query = "SELECT *
