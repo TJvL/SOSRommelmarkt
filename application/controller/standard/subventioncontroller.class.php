@@ -40,17 +40,16 @@ class SubventionController extends Controller
 
     public function landing_POST()
     {
-        include_once "/model/subventionrequest.class.php";
-
-
-        $sv = new SubventionRequest();
-        $sv ->insertSubventionRequest($_POST["name"]. " ".$_POST["lastname"],$_POST["companyname"],$_POST["kvknr"],
-            $_POST["street"],$_POST["zip"],$_POST["place"],$_POST["phone"],
-            $_POST["gsm"],$_POST["fax"],$_POST["email"],$_POST["explanation"],
-            $_POST["planned_activities"],$_POST["intended_results"]);
+SubventionRequest::insertSubventionRequest($_POST["name"]. " ".$_POST["lastname"],$_POST["companyname"],$_POST["kvknr"],
+    $_POST["street"],$_POST["zip"],$_POST["place"],$_POST["phone"],
+    $_POST["gsm"],$_POST["fax"],$_POST["email"],$_POST["explanation"],
+    $_POST["planned_activities"],$_POST["intended_results"]);
         $this->viewbag['voorbeeld'] = "hello, greetings from the viewbag";
         $this->render("aanvraagSucces");
+
     }
+
+    
 
 
 }

@@ -7,6 +7,7 @@
     <title>SOS Rommelmarkt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
     <?php
     IncludeLocator::locateIncludes("css", $controller, $action);
     IncludeLocator::locateIncludes("js", $controller, $action);
@@ -27,7 +28,6 @@
             	// contactinfo ophalen
             	$companyInformation = CompanyInformation::selectCurrent();
             ?>
-
             <div id="navbar" class=" navbar">
                 <ul class = "nav navbar-nav ">
                     <li>
@@ -71,7 +71,7 @@
                          <subnav>
                                  <?php
                                  //If logged in
-                                 $placeholder = false;
+                                 $placeholder = false; //!!!!Momenteel staat de header standaar op normaal. Zet deze boolean op true als je de manageheader nodig hebt. (later wordt dit met login afgehandeld)
                                  if(!$placeholder)
                                  {
                                  ?>

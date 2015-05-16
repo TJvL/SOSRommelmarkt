@@ -33,14 +33,11 @@ $('#product_add').find('input, select, textarea').on('change keyup', function() 
     $('#invalid').hide();
 });
 
-//Prompts idealforms to show the next step in the form.
 $('.prev').click(function(){
     $('.prev').show();
     $('form.idealforms').idealforms('prevStep');
 });
-//Prompts idealforms to show the previous step in the form.
 $('.next').click(function(){
- //   alert($('#aanvraag').idealforms('get:invalid'));
     $('.next').show();
     $('form.idealforms').idealforms('nextStep');
 });

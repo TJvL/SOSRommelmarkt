@@ -217,6 +217,24 @@ class ManageController extends Controller
         }
         $this->redirectTo("/manage/settings");
     }
+
+     public function subventionsContent_POST()
+    {
+        // Check if all the necessary data has been sent with the request.
+        if (isset($_POST["titel"]) && isset($_POST["content"]))
+        {
+        $subventionsContent              = SubventionsContent::selectCurrent();
+        $subventionsContent->titel       = $_POST["titel"];
+        $subventionsContent->content     = $_POST["content"];
+        $subventionsContent->update();
+            // set the data and update 
+        }
+        
+        $this->redirectTo("/manage/subventions");
+    }
+
+
+
     public function changeSubventionStatus_POST()
     {
         // Check if all the necessary data has been sent with the request.
@@ -291,7 +309,7 @@ class ManageController extends Controller
     public function partners_GET()
     {
         $partnerArray = new ArrayList("Partner");
-        $partnerArray->addAll(Partner::selectAll());
+        $partnerArray->addAll(PartnerRepository::selectAll());
         $this->render("partners", $partnerArray);
     }
     public function addpartner_GET()
@@ -302,48 +320,8 @@ class ManageController extends Controller
     {
         if (isset($_GET["id"]))
         {
-            $this->render("partner", Partner::selectById($_GET["id"]));
+            $this->render("partner", PartnerRepository::selectById($_GET["id"]));
         }
-    }
-    
-    public function partner_POST()
-    {
-        // Check if the partner id is set.
-        if (isset($_GET["id"]))
-        {
-            if ($_GET["id"] == "delete")
-            {
-                // Check if all the necessary data has been sent with the request.
-                if (isset($_POST["id"]))
-                {
-                    // Delete the partner.
-                    Partner::deleteById($_POST["id"]);
-        
-                    // Return 0 for great success.
-                    header("content-Type: application/json");
-                    exit(json_encode(0));
-                }
-            }
-            else if ($_GET["id"] == "update")
-            {
-                // Check if all the necessary data has been sent with the request.
-                if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["website"]))
-                {
-                    // Get the partner, set the data and update.
-                    $partner = Partner::selectById($_POST["id"]);
-                    $partner->name = $_POST["name"];
-                    $partner->website = $_POST["website"];
-                    $partner->update();
-        
-                    // Return 0 for great success.
-                    header("content-Type: application/json");
-                    exit(json_encode(0));
-                }
-            }
-        }
-        
-        // TODO: Error or some shit
-        exit(json_encode(1));
     }
     
     public function auctionproduct_GET()
@@ -393,7 +371,6 @@ class ManageController extends Controller
                     }
     
                     // Return 0 for great success.
-                    header("content-Type: application/json");
                     exit(json_encode(0));
                 }
             }
@@ -410,7 +387,6 @@ class ManageController extends Controller
                     AuctionProductRepository::update($auctionProduct);
     
                     // Return 0 for great success.
-                    header("content-Type: application/json");
                     exit(json_encode(0));
                 }
             }
@@ -437,7 +413,6 @@ class ManageController extends Controller
                     $imageTargetFilePath = Product::IMAGES_DIRECTORY . "/" . $_POST["id"] . "/" . $i . ".jpg";
                     $manipulator->save($imageTargetFilePath, IMAGETYPE_JPEG);
                         
-                    header("content-Type: application/json");
                     exit(json_encode(0));
                 }
             }
@@ -447,7 +422,6 @@ class ManageController extends Controller
                 {
                     unlink(Product::IMAGES_DIRECTORY . "/" . $_POST["id"] . "/" . $_POST["imageName"]);
     
-                    header("content-Type: application/json");
                     exit(json_encode(0));
                 }
             }
@@ -456,10 +430,51 @@ class ManageController extends Controller
         // TODO: Error or some shit
         exit(json_encode(1));
     }
-    public function addpartner_POST()
+    
+    public function createpartner_POST()
     {
-        Partner::insert($_POST["name"], $_POST["website"]);
-        $this->redirectTo("/manage/partners");
+    	// Check if everything needed is here.
+    	if (isset($_POST["name"]) && isset($_POST["website"]) && isset($_FILES["image"]))
+    	{
+    		// Insert the partner record.
+    		$partnerId = PartnerRepository::insert($_POST["name"], $_POST["website"]);
+    		
+    		// Get the image file extension.
+    		$imageFileType = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+    		
+    		// Save the image.
+    		move_uploaded_file($_FILES["image"]["tmp_name"], "img/partners/" . $partnerId . "." . $imageFileType);
+    		
+    		exit(json_encode(0));
+    	}
+    	
+    	exit(json_encode(1));
+    }
+    
+    public function updatepartner_POST()
+    {
+    	// Check if everything needed is here.
+    	if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["website"]))
+    	{			
+			PartnerRepository::updateById($_POST["id"], $_POST["name"], $_POST["website"]);
+			
+			exit(json_encode(0));
+    	}
+    	
+    	exit(json_encode(1));
+    }
+    
+    public function deletepartner_POST()
+    {
+    	// Check if everything needed is here.
+    	if (isset($_POST["id"]))
+    	{
+    		PartnerRepository::deleteById($_POST["id"]);
+    			
+    		exit(json_encode(0));
+    	}
+    	 
+    	exit(json_encode(1));
     }
     
     public function addslogan_GET()

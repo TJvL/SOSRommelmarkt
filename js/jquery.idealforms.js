@@ -872,7 +872,7 @@
                     disabledExtensions: 'none'
                 },
                 methods: {},
-                global: {},
+                global: {}
             }, plugin);
 
             $[plugin.name] = $.extend({
