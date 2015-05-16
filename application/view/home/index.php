@@ -114,16 +114,19 @@
 	?>
 	<div class="row padding-ver-lg <?php if ($i == count($modules) - 1 || $i == count($modules) - 2) echo "margin-btm-lg"; ?>">
 	<?php if ($i == count($modules) - 1) { ?>
-		<div class="col-md-12 equal-height">
 		<?php }	else { ?>
-		<div class="col-md-6 equal-height">
+		<div class="col-md-6">
 		<?php }} else { ?>
-		<div class="col-md-6 equal-height">
+		<div class="col-md-6">
 		<?php }	?>
-			<div class="white margin-ver-lg">
+			<div class="white margin-ver-lg ">
 				<h2><?php echo $modules[$i]->heading; ?></h2>
-				<p><?php echo $modules[$i]->content; ?></p>
-				<a href="<?php echo ROOT_PATH . '/' . $modules[$i]->reference; ?>"><button type="button" class="btn btn-red btn-lg"><?php echo $modules[$i]->reference_label; ?> <i class="fa fa-chevron-right"></i></button></a>
+				<p class="equal-height"><?php echo $modules[$i]->content; ?></p>
+				<div class="row">
+					<div class="col-md-12">
+						<a class="btn btn-red btn-lg btn-block" href="<?php echo ROOT_PATH . '/' . $modules[$i]->reference; ?>"><?php echo $modules[$i]->reference_label; ?> <i class="fa fa-chevron-right"></i></a>
+					</div>
+				</div>
 			</div>
 		</div>
 		<?php if ($i % 2 != 0 || $i == count($modules) - 1)	{ ?>
