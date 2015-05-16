@@ -2,8 +2,16 @@
 
 <head>
 <script>
+function ResetStatus()
+{
+	$("#status").text("");
+	$("#status").removeClass("alert-warning alert-danger alert-success");
+}
+
 function UpdatePartner()
 {
+	ResetStatus();
+	
 	// Get the form data.
 	var formData = new FormData(document.getElementById("updatePartnerForm"));
 	formData.append("id", "<?php echo $model->id ?>");
@@ -40,6 +48,8 @@ function UpdatePartner()
 
 function DeletePartner()
 {
+	ResetStatus();
+	
 	if (confirm("Weet u zeker dat u deze partner wilt verwijderen?"))
 	{
 		var data =
@@ -57,14 +67,13 @@ function DeletePartner()
 				// Check if it went alright.
 				if (result == 0)
 				{
-					alert("Success");
-
 					// Go to the partner management page.
 					document.location.href = "../partners";
 				}
 				else
 				{
-					alert("fail");
+					$("#status").text("Er is iets verkeerd gegaan.");
+	                $("#status").addClass("alert-danger");
 				}
 			}
 		});

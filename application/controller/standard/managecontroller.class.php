@@ -414,18 +414,15 @@ class ManageController extends Controller
     }
     
     public function createpartner_POST()
-    {
+    {    	
     	// Check if everything needed is here.
     	if (isset($_POST["name"]) && isset($_POST["website"]) && isset($_FILES["image"]))
     	{
-    		// Insert the partner record.
-    		$partnerId = PartnerRepository::insert($_POST["name"], $_POST["website"]);
+	   		// Insert the partner record. And set $post id to the id for setpartnerimage.
+    		$image = PartnerRepository::insert($_POST["name"], $_POST["website"]);
     		
-    		// Get the image file extension.
-    		$imageFileType = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
-    		
-    		// Save the image.
-    		move_uploaded_file($_FILES["image"]["tmp_name"], "img/partners/" . $partnerId . "." . $imageFileType);
+    		// Set the image.
+    		$image->setImage($_FILES["image"]);
     		
     		exit(json_encode(0));
     	}
@@ -433,11 +430,24 @@ class ManageController extends Controller
     	exit(json_encode(1));
     }
     
+    public function setpartnerimage_POST()
+    {
+    	// Check if everything needed is here.
+    	if (isset($_POST["id"]) && isset($_FILES["image"]))
+    	{
+    		PartnerRepository::selectById($_POST["id"])->setImage($_FILES["image"]);
+    		
+    		exit(json_encode(0));
+    	}
+    	 
+    	exit(json_encode(1));
+    }
+    
     public function updatepartner_POST()
     {
     	// Check if everything needed is here.
     	if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["website"]))
-    	{			
+    	{
 			PartnerRepository::updateById($_POST["id"], $_POST["name"], $_POST["website"]);
 			
 			exit(json_encode(0));
@@ -451,8 +461,12 @@ class ManageController extends Controller
     	// Check if everything needed is here.
     	if (isset($_POST["id"]))
     	{
+    		// Delete the database entry.
     		PartnerRepository::deleteById($_POST["id"]);
-    			
+    		
+    		// Delete the image.
+    		Partner::deleteImageById($_POST["id"]);
+    		
     		exit(json_encode(0));
     	}
     	 
@@ -518,4 +532,3 @@ class ManageController extends Controller
     }
 }
 ?>
-

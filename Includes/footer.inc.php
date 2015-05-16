@@ -1,6 +1,6 @@
 <?php 
 	$partnerArray = new ArrayList("Partner");
-	$partnerArray->addAll(Partner::selectAll());
+	$partnerArray->addAll(PartnerRepository::selectAll());
 ?>
 
 <div id ="footerContainer">
