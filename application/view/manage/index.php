@@ -33,7 +33,7 @@
             <div class="col-md-2">
                 <a href="<?php echo ROOT_PATH; ?>/manage/auctions">
                     <button class="btn btn-red">
-                        <i class="fa fa-gavel fa-5x fa-fw"></i>
+                        <i class="fa fa-diamond fa-5x fa-fw"></i>
                         <br /><b>Vitrines</b>
                     </button>
                 </a>
