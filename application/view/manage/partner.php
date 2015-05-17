@@ -10,63 +10,66 @@ function ResetStatus()
 
 function UpdatePartner()
 {
-	ResetStatus();
-	
-	// Get the form data.
-	var formData = new FormData(document.getElementById("updatePartnerForm"));
-	formData.append("id", "<?php echo $model->id ?>");
-	
-	// Check if the image is set. If so, add it to the formdata.
-	if ($("#image").val() !== "")
+	if (confirm("Weet u zeker dat u deze partner wilt wijzigen?"))
 	{
-		// Check if the file has an image extension.
-		if (!IsImage($("#image").val()))
+		ResetStatus();
+		
+		// Get the form data.
+		var formData = new FormData(document.getElementById("updatePartnerForm"));
+		formData.append("id", "<?php echo $model->id ?>");
+		
+		// Check if the image is set. If so, add it to the formdata.
+		if ($("#image").val() !== "")
 		{
-			$("#status").text("Het bestand dat u probeert te gebruiken is geen plaatje.");
-			$("#status").addClass("alert-warning");
-	        
-			return;
+			// Check if the file has an image extension.
+			if (!IsImage($("#image").val()))
+			{
+				$("#status").text("Het bestand dat u probeert te gebruiken is geen plaatje.");
+				$("#status").addClass("alert-warning");
+		        
+				return;
+			}
+			
+	        formData.append("image", $("#image")[0].files[0]);
 		}
 		
-        formData.append("image", $("#image")[0].files[0]);
-	}
+		// Check if all the needed data is here.
+	//	if (formData.has("name") && formData.has("website") && formData.has("image"))
+	//		alert("has them all.");
+	//	else
+	//		alert("nope");
 	
-	// Check if all the needed data is here.
-//	if (formData.has("name") && formData.has("website") && formData.has("image"))
-//		alert("has them all.");
-//	else
-//		alert("nope");
-
-	$.ajax(
-	{
-		url: "../updatepartner",
-		type: "POST",
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function(result)
-        {
-	        // Check if it went alright.
-	        if (result == 0)
+		$.ajax(
+		{
+			url: "../updatepartner",
+			type: "POST",
+	        data: formData,
+	        contentType: false,
+	        processData: false,
+	        success: function(result)
 	        {
-	        	$("#status").text("Succes!");
-                $("#status").addClass("alert-success");
+		        // Check if it went alright.
+		        if (result == 0)
+		        {
+		        	$("#status").text("Succes!");
+	                $("#status").addClass("alert-success");
+		        }
+		        else
+		        {
+		        	$("#status").text("Er is iets verkeerd gegaan.");
+	                $("#status").addClass("alert-danger");
+		        }
 	        }
-	        else
-	        {
-	        	$("#status").text("Er is iets verkeerd gegaan.");
-                $("#status").addClass("alert-danger");
-	        }
-        }
-	});
+		});
+	}
 }
 
 function DeletePartner()
 {
-	ResetStatus();
-	
 	if (confirm("Weet u zeker dat u deze partner wilt verwijderen?"))
 	{
+		ResetStatus();
+		
 		var data =
 		{
 			id: <?php echo $model->id ?>,
