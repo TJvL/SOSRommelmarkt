@@ -13,15 +13,15 @@
             </div>
     	</div>
     	<div class="row">
-	        <div class="col-sm-8 col-md-12">
-	            	<?php for ($i = 0; $i < $partnerArray->size(); $i++)
-	            	{
-	            		?>
-	            			<a href="<?php echo $partnerArray->get($i)->website ?>"><img class="footer-partner-logo-image" src="<?php echo $partnerArray->get($i)->getImagePath() ?>"></a>
-	            		<?php
-					}
-					?>
-	        </div>
+			<?php for ($i = 0; $i < $partnerArray->size(); $i++)
+			{
+				?>
+				<div class="col-sm-2">
+					<a href="<?php echo $partnerArray->get($i)->website ?>"><img class="footer-partner-logo-image" src="<?php echo $partnerArray->get($i)->getImagePath() ?>"></a>
+				</div>
+				<?php
+			}
+			?>
     	</div>
     </div>
 </div>

@@ -291,7 +291,7 @@ h1.manage-title{
 
 .footer-partner-logo-image {
 	max-height: 100px;
-	max-width: auto;
+	max-width: 100%;
 }
 
 .timeCss, #Maandag, #Dinsdag, #Woensdag, #Donderdag, #Vrijdag, #Zaterdag, #Zondag{

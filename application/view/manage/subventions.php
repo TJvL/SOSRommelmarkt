@@ -17,7 +17,7 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="tab1">
-                                    <div class="container" ng-app="subventionApp" ng-controller="subventionController">
+                                    <div ng-app="subventionApp" ng-controller="subventionController">
                                         <div class="white">
                                             <div class="row">
                                                 <div class="col-sm-12">
