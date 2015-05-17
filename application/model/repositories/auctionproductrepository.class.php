@@ -11,6 +11,7 @@ class AuctionProductRepository extends ProductRepository
 		$auctionProduct->addedBy = $array["addedBy"];
 		$auctionProduct->colorCode = $array["colorCode"];
 		$auctionProduct->imagePath = $auctionProduct->getMainImagePath();
+		$auctionProduct->imagePaths = $auctionProduct->getImagePaths();
 	
 		return $auctionProduct;
 	}
@@ -32,6 +33,8 @@ class AuctionProductRepository extends ProductRepository
 		$auctionProduct->description = $description;
 		$auctionProduct->addedBy = $addedBy;
 		$auctionProduct->colorCode = $colorCode;
+		$auctionProduct->imagePath = $auctionProduct->getMainImagePath();
+		$auctionProduct->imagePaths = $auctionProduct->getImagePaths();
 	
 		// Return an object of the newly inserted acution product.
 		return $auctionProduct;

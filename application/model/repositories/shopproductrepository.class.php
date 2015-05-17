@@ -13,7 +13,7 @@ class ShopProductRepository extends ProductRepository
 		$shopProduct->price = $array["price"];
 		$shopProduct->isReserved = $array["isReserved"];
 		$shopProduct->imagePath = $shopProduct->getMainImagePath();
-        $shopProduct->imagePaths = $shopProduct->getImagePaths();
+		$shopProduct->imagePaths = $shopProduct->getImagePaths();
 
 		return $shopProduct;
 	}
