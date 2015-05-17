@@ -264,13 +264,13 @@ $(document).ready(function()
 									if ($colorCode->name == $model->colorCode)
 									{
 										?>
-										<option selected="selected"><?php echo $colorCode->name ?> (<?php echo $colorCode->description ?>)</option>
+										<option selected="selected"><?php echo $colorCode->name ?> - <?php echo $colorCode->description ?></option>
 										<?php
 									}
 									else
 									{
 										?>
-										<option><?php echo $colorCode->name ?> (<?php echo $colorCode->description ?>)</option>
+										<option><?php echo $colorCode->name ?> - <?php echo $colorCode->description ?></option>
 										<?php
 									}
 								}
