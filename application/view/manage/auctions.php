@@ -4,7 +4,7 @@
 	<div class="white">
 		<div class="row">
 			<div class="col-md-1">
-				<a href="./addauction" class="btn btn-default">Nieuwe Veiling</a>
+				<a href="./addauction" class="btn btn-default">Nieuwe Vitrine</a>
 			</div>
 		</div>
 		<div class="table-responsive padding-sm">
