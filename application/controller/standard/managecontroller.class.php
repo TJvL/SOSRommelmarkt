@@ -100,7 +100,7 @@ class ManageController extends Controller
     }
     public function addshopproduct_POST()
     {
-        $shopProduct = ShopProductRepository::insert($_POST["name"], $_POST["description"], "Administrator", $_POST["colorCode"], $_POST["price"], 0);
+        $shopProduct = ShopProductRepository::insert($_POST["name"], $_POST["description"], "Administrator", $_POST["colorCode"], $_POST["price"], false);
         $this->redirectTo("/manage/shopproduct/$shopProduct->id");
     }
     public function settings_GET()

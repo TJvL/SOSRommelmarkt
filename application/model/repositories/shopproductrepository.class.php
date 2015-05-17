@@ -18,7 +18,7 @@ class ShopProductRepository extends ProductRepository
 		return $shopProduct;
 	}
 	
-	public static function insert($name, $description, $addedBy, $colorCode)
+	public static function insert($name, $description, $addedBy, $colorCode, $price, $isReserved)
 	{
 		// Insert a normal product and get back the auto incremented key.
 		$id = parent::insert($name, $description, $addedBy, $colorCode);
@@ -37,6 +37,8 @@ class ShopProductRepository extends ProductRepository
 		$shopProduct->colorCode = $colorCode;
 		$shopProduct->price = $price;
 		$shopProduct->isReserved = $isReserved;
+		$shopProduct->imagePath = $shopProduct->getMainImagePath();
+		$shopProduct->imagePaths = $shopProduct->getImagePaths();
 		
 		// Return an object of the inserted product.
 		return $shopProduct;
