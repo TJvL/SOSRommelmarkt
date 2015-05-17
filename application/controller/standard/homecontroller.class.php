@@ -20,6 +20,16 @@ class HomeController extends Controller
         $this->render("projects", $projectList);
     }
 
+    public function retrieval_GET()
+    {
+        $this->render("retrieval");
+    }
+
+    public function aboutus_GET()
+    {
+        $this->render("aboutus");
+    }
+
     public function contact_GET()
     {
         $this->render("contact");

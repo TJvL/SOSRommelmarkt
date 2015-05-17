@@ -39,9 +39,3 @@
 		</div>
 	</div>
 </div>
-
-<script>
-	$(document).ready( function () {
-		$('#partnerTable').DataTable();
-	} );
-</script>

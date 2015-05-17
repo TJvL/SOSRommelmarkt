@@ -26,7 +26,6 @@ class ColorCodeRepository
 		// Execute the query.
 		$result = Database::select($query);
 	
-		// Put the results of the query into an array.
 		$colorCodes = array();
 	
 		for ($i = 0; $i < $result->num_rows; $i++)
@@ -36,7 +35,6 @@ class ColorCodeRepository
 			$colorCodes[$i] = ColorCodeRepository::createObjectFromArray($row);
 		}
 	
-		// Free the result set.
 		$result->close();
 	
 		return $colorCodes;

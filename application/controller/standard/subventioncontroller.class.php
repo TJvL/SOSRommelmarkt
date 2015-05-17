@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: bram
- * Date: 3/12/2015
- * Time: 5:37 PM
- */
-
 
 class SubventionController extends Controller
 {
@@ -24,6 +17,16 @@ class SubventionController extends Controller
         $this->render("landing");
     }
 
+    public function landing_POST()
+    {
+        SubventionRequest::insertSubventionRequest($_POST["name"]. " ".$_POST["lastname"],$_POST["companyname"],$_POST["kvknr"],
+            $_POST["street"],$_POST["zip"],$_POST["place"],$_POST["phone"],
+            $_POST["gsm"],$_POST["fax"],$_POST["email"],$_POST["explanation"],
+            $_POST["planned_activities"],$_POST["intended_results"]);
+
+        $this->render("aanvraagSucces");
+    }
+
     //Example for IdealForm usage - Can be deleted!
     public function example_GET()
     {
@@ -33,21 +36,6 @@ class SubventionController extends Controller
 
     public function aanvraagSucces_GET()
     {
-        $this->viewbag['voorbeeld'] = "hello, greetings from the viewbag";
         $this->render("aanvraagSucces");
     }
-
-
-    public function landing_POST()
-    {
-SubventionRequest::insertSubventionRequest($_POST["name"]. " ".$_POST["lastname"],$_POST["companyname"],$_POST["kvknr"],
-    $_POST["street"],$_POST["zip"],$_POST["place"],$_POST["phone"],
-    $_POST["gsm"],$_POST["fax"],$_POST["email"],$_POST["explanation"],
-    $_POST["planned_activities"],$_POST["intended_results"]);
-        $this->viewbag['voorbeeld'] = "hello, greetings from the viewbag";
-        $this->render("aanvraagSucces");
-
-    }
-
-
 }

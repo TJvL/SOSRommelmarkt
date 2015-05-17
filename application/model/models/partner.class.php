@@ -2,86 +2,49 @@
 
 class Partner
 {
+	// The directory the images for the partners are placed.
+	const IMAGES_DIRECTORY = "img/partners";
+	
 	public $id;
 	public $name;
 	public $website;
 	
-	private static function createObjectFromDatabaseRow($row)
+	public static function getImagePathById($id)
 	{
-		$partner = new Partner();
-		$partner->id = $row["id"];
-		$partner->name = $row["name"];
-		$partner->website = $row["website"];
-	
-		return $partner;
+		$result = glob(Partner::IMAGES_DIRECTORY . "/" . $id . "." . "*");
+		if ($result)
+			return ROOT_PATH . "/" . $result[0];
+		else
+			return null;
 	}
 	
-	public static function insert($name, $website)
+	public static function deleteImageById($id)
 	{
-		$query = "INSERT INTO Partners (name, website)
-					VALUES (?, ?)";
+		$result = glob(Partner::IMAGES_DIRECTORY . "/" . $id . "." . "*");
+		if ($result)
+			unlink($result[0]);
+	}
+	
+	public static function setImageById($id, $uploadedImageFile)
+	{
+		// Get the image file extension.
+		$imageFileExtension = pathinfo($uploadedImageFile["name"], PATHINFO_EXTENSION);
 		
-		return Database::insert($query, "ss", array($name, $website));
-	}
-	
-	public function update()
-	{
-		$query = "UPDATE Partners
-					SET name = ?, website = ?
-					WHERE id = ?";
-		Database::update($query, "ssi", array($this->name, $this->website, $this->id));
-	}
-
-    public static function selectById($id)
-    {
-        $query = "SELECT *
-			FROM Partners
-			WHERE id = ?";
-
-        // Execute the query.
-        $result = Database::select($query, "i", array($id));
-
-        // Put the results of the query into a product object.
-        $row = $result->fetch_assoc();
-
-        $partners = Partner::createObjectFromDatabaseRow($row);
-
-        // Free the result set.
-        $result->close();
-
-        return $partners;
-    }
-	
-	public static function deleteById($id)
-	{
-		$query = "DELETE FROM Partners WHERE id = ?";
+		// TODO: Check for valid image types.
 		
-		Database::update($query, "i", array($id));
+		// Save the image.
+		move_uploaded_file($uploadedImageFile["tmp_name"], Partner::IMAGES_DIRECTORY . "/" . $id . "." . $imageFileExtension);
 	}
 	
-	public static function selectAll()
-    {
-        $query = "SELECT *
-			FROM Partners";
-
-        // Execute the query.
-        $result = Database::select($query);
-
-        // Put the results of the query into an array of Product objects.
-        $partners = array();
-
-        for ($i = 0; $i < $result->num_rows; $i++)
-        {
-            $row = $result->fetch_assoc();
-
-            $partners[$i] = Partner::createObjectFromDatabaseRow($row);
-        }
-
-        // Free the result set.
-        $result->close();
-
-        return $partners;
-    }
+	public function getImagePath()
+	{
+		return Partner::getImagePathById($this->id);
+	}
+	
+	public function setImage($uploadedImageFile)
+	{		
+		Partner::setImageById($this->id, $uploadedImageFile);
+	}
 }
 
 ?>

@@ -9,7 +9,7 @@ class SubventionRequest
     public $contactperson;
     public $firm;
     public $kvk;
-    public $adress;
+    public $address;
     public $postalcode;
     public $city;
     public $phonenumber1;
@@ -21,16 +21,16 @@ class SubventionRequest
     public $results;
     public $status;
 
-	static function insertSubventionRequest($contactperson,$firm,$kvk,$adress,$postalcode,$city,$phonenumber1,
+	static function insertSubventionRequest($contactperson,$firm,$kvk,$address,$postalcode,$city,$phonenumber1,
 		$phonenumber2,$fax,$email,$elucidation,$activities,$results)
     {
 		//construct query
 		$query = "INSERT INTO SubventionRequest(
-        	contactperson,firm,kvk,adress,postalcode,city,phonenumber1,phonenumber2,fax,email,elucidation,activities,results,status)
+        	contactperson,firm,kvk,address,postalcode,city,phonenumber1,phonenumber2,fax,email,elucidation,activities,results,status)
 			VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         //execute
-		$id= Database::insert($query,"ssssssssssssss",array($contactperson,$firm,$kvk,$adress,$postalcode,$city,$phonenumber1,
+		$id= Database::insert($query,"ssssssssssssss",array($contactperson,$firm,$kvk,$address,$postalcode,$city,$phonenumber1,
        		$phonenumber2,$fax,$email,$elucidation,$activities,$results,"nieuw"));
     }
 
@@ -41,7 +41,7 @@ class SubventionRequest
         $subventionRequest->contactperson = $row["contactperson"];
         $subventionRequest->firm = $row["firm"];
         $subventionRequest->kvk = $row["kvk"];
-        $subventionRequest->adress = $row["adress"];
+        $subventionRequest->address = $row["address"];
         $subventionRequest->postalcode = $row["postalcode"];
         $subventionRequest->city = $row["city"];
         $subventionRequest->phonenumber1 = $row["phonenumber1"];
