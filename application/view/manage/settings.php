@@ -147,7 +147,7 @@
 					<br /><!-- empty line -->
 					<div class="row">
 						<div class="col-md-1">
-							<a href="./addmodule" class="btn btn-default">Nieuwe module</a>
+							<a href="./addmodule/home" class="btn btn-default">Nieuwe module</a>
 						</div>
 					</div>
 					<div class="table-responsive padding-sm margin-lg">

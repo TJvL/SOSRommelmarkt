@@ -24,12 +24,12 @@ class Module
 		return $module;
 	}
 	
-	public static function insert($heading, $content, $position, $category, $reference, $reference_label)
+	public static function insert($heading, $content, $category, $reference, $reference_label)
 	{
-		$query = "INSERT INTO Modules (heading, content, position, category, reference, reference_label)
-					VALUES(?, ?, ?, ?, ?, ?)";
+		$query = "INSERT INTO Modules (heading, content, category, reference, reference_label)
+					VALUES(?, ?, ?, ?, ?)";
 		
-		return Database::insert($query, "ssssss", array($heading, $content, $position, $category, $reference, $reference_label));
+		return Database::insert($query, "sssss", array($heading, $content, $category, $reference, $reference_label));
 	}
 	
 	public function update()
