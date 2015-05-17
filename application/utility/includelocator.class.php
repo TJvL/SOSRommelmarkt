@@ -84,7 +84,7 @@ class IncludeLocator
                 }
                 else
                 {
-                    echo "    <script src='$include' type='text/javascript' defer></script>\n";
+                    echo "    <script src='$include' type='text/javascript'></script>\n";
                 }
             }
         }
