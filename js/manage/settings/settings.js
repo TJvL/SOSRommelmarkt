@@ -6,4 +6,10 @@ $(document).ready(function() {
 		}],
 		"ordering": false
 	});
+	$('#aboutusTable').DataTable({
+		"columnDefs": [{
+			"width": "7em", "targets": 1
+		}],
+		"ordering": false
+	})
 });
