@@ -84,7 +84,7 @@ IncludeLocator::locateIncludes("js", $controller, $action);
                                          <li><a href="<?php echo ROOT_PATH; ?>/manage/settings"><i class="fa fa-cogs"></i> Instellingen</a></li>
                                          <li><a href="<?php echo ROOT_PATH; ?>/manage/subventions"><i class="fa fa-check-square"></i> Subsidies</a></li>
                                          <li><a href="<?php echo ROOT_PATH; ?>/manage/productList"><i class="fa fa-shopping-cart"></i> Webshop</a></li>
-                                         <li><a href="<?php echo ROOT_PATH; ?>/manage/auctions"><i class="fa fa-gavel"></i> Vitrines</a></li>
+                                         <li><a href="<?php echo ROOT_PATH; ?>/manage/auctions"><i class="fa fa-diamond"></i> Vitrines</a></li>
                                          <li><a href="<?php echo ROOT_PATH; ?>/manage/partners"><i class="fa fa-users"></i> Partners</a></li>
                                      </ul>
                                  <?php
