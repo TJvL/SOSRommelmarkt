@@ -311,3 +311,10 @@ h1.manage-title{
 div .full-height {
 	height: 100%;
 }
+
+pre.pre-override {
+    word-break: normal;
+    background-color: #ffffff;
+    border: none;
+    font-family: sans-serif;
+}

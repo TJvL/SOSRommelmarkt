@@ -10,7 +10,7 @@
 		<div class="col-md-12">
 			<div class="white">
 				<h2><?php echo $modules[$i]->heading; ?></h2>
-				<p class="equal-height"><?php echo $modules[$i]->content; ?></p>
+				<pre class="pre-override"><?php echo $modules[$i]->content; ?></pre>
 			</div>
 		</div>
 	</div>
