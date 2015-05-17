@@ -34,7 +34,7 @@
                 <a href="<?php echo ROOT_PATH; ?>/manage/auctions">
                     <button class="btn btn-red">
                         <i class="fa fa-gavel fa-5x fa-fw"></i>
-                        <br /><b>Veilingen</b>
+                        <br /><b>Vitrines</b>
                     </button>
                 </a>
             </div>
