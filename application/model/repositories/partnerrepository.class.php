@@ -56,8 +56,11 @@ class PartnerRepository
         $result = Database::select($query, "i", array($id));
 
         $row = $result->fetch_assoc();
-
-        $partners = PartnerRepository::createObjectFromArray($row);
+        
+        if ($row !== null)
+        	$partners = PartnerRepository::createObjectFromArray($row);
+        else
+        	$partners = null;
 
         $result->close();
 
