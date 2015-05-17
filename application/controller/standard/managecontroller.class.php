@@ -96,7 +96,9 @@ class ManageController extends Controller
     }
     public function addshopproduct_GET()
     {
-        $this->render("addshopproduct");
+        $colorCodes = ColorCodeRepository::selectAll();
+
+        $this->render("addshopproduct", $colorCodes);
     }
     public function addshopproduct_POST()
     {
