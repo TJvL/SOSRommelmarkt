@@ -40,6 +40,7 @@
 						<textarea type="text" class="form-control" form="moduleForm" id="module-content" name="content" placeholder="Schrijf hier uw paragraaf..." cols="10" rows="5" style="resize: vertical" required></textarea>
 					</div>
 				</div>
+				<?php if ($_GET["id"] == "home") { ?>
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="module-reference-label">Referentie Tekst</label>
 					<div class="col-sm-8">
@@ -53,6 +54,7 @@
 						<span id="module-reference-help" class="help-block">Hier kunt u aangeven waar de module naar toe linkt. Bijvoorbeeld <code>/home/index</code> of <code>/subvention/landing</code>.</span>
 					</div>
 				</div>
+				<?php } ?>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-2">
 						<button type="submit" class="btn btn-default btn-block" id="submit" name="add">Opslaan</button>

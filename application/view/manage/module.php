@@ -7,6 +7,8 @@
 			$returnPath = "/manage/settings#tab_home-modules";
 			break;
 		case "aboutus":
+			$returnPath = "/manage/settings#tab_aboutus-modules";
+			break;
 		default:
 			$returnPath = "/manage";
 	}
@@ -47,6 +49,7 @@
 						<textarea type="text" class="form-control" id="module-content" name="content" placeholder="Schrijf hier uw paragraaf..." cols="10" rows="5" style="resize: vertical" required><?php echo $model->content; ?></textarea>
 					</div>
 				</div>
+				<?php if ($model->category == "home") { ?>
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="module-reference-label">Referentie Tekst</label>
 					<div class="col-sm-8">
@@ -60,6 +63,7 @@
 						<span id="module-reference-help" class="help-block">Hier kunt u aangeven waar de module naar toe linkt. Bijvoorbeeld <code>/home/index</code> of <code>/subvention/landing</code>.</span>
 					</div>
 				</div>
+				<?php } ?>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-2">
 						<button type="submit" class="btn btn-default btn-block" >Opslaan</button>
