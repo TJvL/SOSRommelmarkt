@@ -17,6 +17,10 @@ class PartnerRepository
 		$query = "INSERT INTO Partners (name, website)
 			VALUES (?, ?)";
 		
+		// Check if the website is valid (with http(s):// prefix). Add it if not.
+		if (strpos($website, "http://") === false && strpos($website, "https://") === false)
+			$website = "http://" . $website;
+		
 		$partner = new Partner();
 		$partner->id = Database::insert($query, "ss", array($name, $website));
 		$partner->name = $name;
