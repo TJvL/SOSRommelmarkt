@@ -43,17 +43,17 @@
 				else
 				{
 					?>
-					<div id="vitrine-carousel" class="carousel slide" data-ride="carousel">
+					<div id="vitrine-carousel" class="carousel slide full-height" data-ride="carousel">
 						<ol class="carousel-indicators">
 							<?php for ($i = 0; $i < $model->size(); $i++) { ?>
 							<li data-target="#vitrine-carousel" data-slide-to="<?php echo $i ?>" <?php if ($i == 0) echo 'class="active"' ?>></li>
 							<?php } ?>
 						</ol>
 					
-						<div class="carousel-inner" role="listbox">
+						<div class="carousel-inner full-height" role="listbox">
 							<?php for ($i = 0; $i < $model->size(); $i++) { ?>
-							<div class="item <?php if ($i == 0) echo 'active' ?> carousel-overlay">
-								<a href="<?php echo ROOT_PATH; ?>/auction/index"><img class="center-block" src="<?php echo $model->get($i)->imagePath ?>" alt="Slide"></a>
+							<div class="item <?php if ($i == 0) echo 'active' ?> carousel-overlay full-height">
+								<a href="<?php echo ROOT_PATH; ?>/auction/index"><img class="center-block full-height" src="<?php echo $model->get($i)->imagePath ?>" alt="Slide"></a>
 								<div class="carousel-caption">
 									<br>
 									<h2><?php echo $model->get($i)->name ?></h2>

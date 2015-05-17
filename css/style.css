@@ -324,7 +324,7 @@ h1.manage-title{
 }
 
 div .full-height {
-	height: 100%;
+	height: 100% !important;
 }
 
 pre.pre-override {
