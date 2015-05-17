@@ -186,7 +186,6 @@
                                 <div class="tab-pane fade" id="tab2">
 
 
-    <script type="text/javascript" src="<?php echo ROOT_PATH; ?>/js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="<?php echo ROOT_PATH; ?>/js/tinymce/tinymce.min.js"></script>
     <script type="text/javascript">
     tinymce.init({
