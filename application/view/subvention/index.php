@@ -1,8 +1,20 @@
+   
+        <?php 
+             // contactinfo ophalen
+             $subventionsContent = SubventionsContent::selectCurrent();
+        ?>
+
 <div class= "container">
 <!--        <div class="grey_subvention" >-->
 
     <div style="margin-bottom:5%" class="white">
-                <h2><b>Contactformulier subsidieaanvraag</b></h2>
+                <h2><b><?php echo $subventionsContent->titel; ?></b></h2>
+                
+                <?php echo $subventionsContent->content; ?>
+
+
+
+
                 <p>Ken jij een project in een ontwikkelingsland dat steun kan gebruiken dan kun je bij SOS Rommelmarkt een aanvraag voor subsidie indienen.</p>
                 <p>Om in aanmerking te komen voor subsidie, toetst onze Beleidsgroep Subsidies de aanvragen. Er wordt gekeken of de aanvraag voldoet aan onderstaande criteria:</p><br>
                 <p>• De aanvrager moet rechtspersoon zijn.<br>

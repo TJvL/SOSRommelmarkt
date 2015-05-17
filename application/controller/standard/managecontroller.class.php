@@ -250,23 +250,23 @@ class ManageController extends Controller
         $this->redirectTo("/manage/settings");
     }
 
-        public function pages_POST()
-    {
-        // Check if all the necessary data has been sent with the request.
-        if (isset($_POST["title"]) && isset($_POST["label"]) && isset($_POST["header"]) && isset($_POST["body"]))
+    //     public function pages_POST()
+    // {
+    //     // Check if all the necessary data has been sent with the request.
+    //     if (isset($_POST["title"]) && isset($_POST["label"]) && isset($_POST["header"]) && isset($_POST["body"]))
         
-        {
-            // set the data and update
-            $addPages = AddPages::selectCurrent();
-            $addPages->title         = $_POST["title"];
-            $addPages->label         = $_POST["label"];
-            $addPages->header        = $_POST["header"];
-            $addPages->body          = $_POST["body"];
-            $addPages->update();
-        }
+    //     {
+    //         // set the data and update
+    //         $addPages = AddPages::selectCurrent();
+    //         $addPages->title         = $_POST["title"];
+    //         $addPages->label         = $_POST["label"];
+    //         $addPages->header        = $_POST["header"];
+    //         $addPages->body          = $_POST["body"];
+    //         $addPages->update();
+    //     }
         
-        $this->redirectTo("/manage/pages");
-    }
+    //     $this->redirectTo("/manage/pages");
+    // }
 
     public function companyInformation_POST()
     {
@@ -285,22 +285,20 @@ class ManageController extends Controller
         $this->redirectTo("/manage/settings");
     }
 
+
      public function subventionsContent_POST()
-    {
-        // Check if all the necessary data has been sent with the request.
-        if (isset($_POST["titel"]) && isset($_POST["content"]))
         {
-        $subventionsContent              = SubventionsContent::selectCurrent();
-        $subventionsContent->titel       = $_POST["titel"];
-        $subventionsContent->content     = $_POST["content"];
-        $subventionsContent->update();
-            // set the data and update 
+            // Check if all the necessary data has been sent with the request.
+            if (isset($_POST["titel"]) && isset($_POST["content"]))
+            {
+                // set the data and update
+                $subventionsContent             = SubventionsContent::selectCurrent();
+                $subventionsContent->titel      = $_POST["titel"];
+                $subventionsContent->content     = $_POST["content"];
+                $subventionsContent->update();
+            }
+            $this->redirectTo("/manage/subventions");
         }
-        
-        $this->redirectTo("/manage/subventions");
-    }
-
-
 
     public function changeSubventionStatus_POST()
     {

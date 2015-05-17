@@ -193,29 +193,34 @@
                                 ?>
 
 
-                                 <form class="form-horizontal"  action="<?php echo ROOT_PATH;?>/manage/subventionsContent_POST" method="Post">
-                                    <div class="form-group">
-                                        <label for="title">Page Title:</label>
-                                        <input class="form-control" type="text" name="title" id="title" placeholder="Page Title" value="<?php echo $subventionsContent->titel ;?>">
-                                    </div>
+                                    <form class="form-horizontal" action="<?php echo ROOT_PATH;?>/manage/subventionsContent" method="Post">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="titel">titel</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="titel" name="titel" value="<?php echo $subventionsContent->titel; ?>" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="content">content</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="content" name="content" value="<?php echo $subventionsContent->content; ?>" />
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-8">
+                                                <button type="submit" class="btn btn-danger btn-block" id="submit" name="add">Opslaan</button>
+                                            </div>
+                                        </div>
+                                    </form>
 
-                                     <div class="form-group">
-                                        <label for="content">Page Title:</label>
-                                        <input class="form-control" type="text" name="content" id="content" placeholder="Page Title" value="<?php echo $subventionsContent->content ;?>">
-                                    </div>
 
-<!--                                     <div class="form-group">
+                                <!-- <div class="form-group">
                                         <label for="body">Body:</label>
                                         <textarea class="form-control" name="body" rows="8" id="body" placeholder="Page body"><?php echo $subventionsContent->content ;?> </textarea>
                                     </div>
                                      -->
-                                    <div class="form-group">
-                                        <div class="col-sm-offset-2 col-sm-8">
-                                            <button type="submit" class="btn btn-danger btn-block" id="submit" name="add">Opslaan</button>
-                                        </div>
-                                    </div>
-
-                                </form> 
+                       
                             </div>
 
                                 </div>
