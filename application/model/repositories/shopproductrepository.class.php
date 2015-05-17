@@ -96,7 +96,7 @@ class ShopProductRepository extends ProductRepository
 		$query = "UPDATE ShopProduct SET price = ?, isReserved = ? WHERE id = ?";
 	
 		// Execute the update query.
-		Database::update($query, "dii", array($this->price, $this->isReserved, $this->id));
+		Database::update($query, "dii", array($product->price, $product->isReserved, $product->id));
 	}
 	
 	public static function deleteById($id)
