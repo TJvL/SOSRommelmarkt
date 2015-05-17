@@ -90,27 +90,30 @@ class ManageController extends Controller
         // TODO: Error or some shit
     }
 
-    public function manageproduct_GET()
+    public function shopproducts_GET()
     {
-        $this->render("manageproduct");
+        $this->render("shopproducts");
     }
+    
     public function addshopproduct_GET()
     {
         $colorCodes = ColorCodeRepository::selectAll();
 
         $this->render("addshopproduct", $colorCodes);
     }
+    
     public function addshopproduct_POST()
     {
         $shopProduct = ShopProductRepository::insert($_POST["name"], $_POST["description"], "Administrator", $_POST["colorCode"], $_POST["price"], false);
         $this->redirectTo("/manage/shopproduct/$shopProduct->id");
     }
+    
     public function settings_GET()
     {
         $this->render("settings");
     }
 
-        public function pages_GET()
+	public function pages_GET()
     {
         $this->render("pages");
     }
