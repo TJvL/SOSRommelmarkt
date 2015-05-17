@@ -45,6 +45,7 @@
                                     break;
                             }
                             ?>
+                            <td><?php echo $product->colorCode ?></td>
 	                        <td><?php echo $product->price ?></td>
                             <td><?php echo $product->addedBy ?></td>
                             <td>

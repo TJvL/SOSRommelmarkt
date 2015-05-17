@@ -3,7 +3,7 @@
         <div class="content">
             <div class="row">
                 <div class="col-md-1">
-                    <a href="<?php echo ROOT_PATH . '/manage/manageproduct'?>" class="btn btn-default">Back</a>
+                    <a href="<?php echo ROOT_PATH . '/manage/shopproducts'?>" class="btn btn-default">Back</a>
                 </div>
             </div>
 
