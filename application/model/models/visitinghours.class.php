@@ -34,7 +34,7 @@ class VisitingHours {
 			SET monday = ?, tuesday = ?, wednesday = ?, thursday = ?, friday = ?, saturday = ?, sunday = ?
 			WHERE id = ?";
 		
-		Database::update($query, "sssssssi", array($this->monday, $this->tuesday, $this->wednesday, $this->thursday, $this->friday, $this->saturday, $this->sunday));
+		Database::update($query, "sssssssi", array($this->monday, $this->tuesday, $this->wednesday, $this->thursday, $this->friday, $this->saturday, $this->sunday, $this->id));
 	}
 	
 	public static function selectCurrent()
