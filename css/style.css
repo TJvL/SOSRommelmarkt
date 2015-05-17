@@ -8,7 +8,7 @@ body{
     background-image: url("../img/content/background.jpg");
     background-attachment:fixed;
     background-size: cover;
-    margin-bottom: 250px; /* bottom = footer height */
+    margin-bottom: 190px; /* bottom = footer height */
     height:100%;
 }
 
@@ -292,6 +292,11 @@ h1.manage-title{
 .footer-partner-logo-image {
 	max-height: 100px;
 	max-width: 100%;
+}
+
+.footer-partners {
+
+    padding-left:35px;
 }
 
 .timeCss, #Maandag, #Dinsdag, #Woensdag, #Donderdag, #Vrijdag, #Zaterdag, #Zondag{

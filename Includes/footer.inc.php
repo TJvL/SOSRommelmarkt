@@ -12,12 +12,12 @@
                 <h2>Partners</h2>
             </div>
     	</div>
-    	<div class="row">
+    	<div class="row footer-partners">
 			<?php for ($i = 0; $i < $partnerArray->size(); $i++)
 			{
 				?>
-				<div class="col-sm-2">
-					<a href="<?php echo $partnerArray->get($i)->website ?>"><img class="footer-partner-logo-image" src="<?php echo $partnerArray->get($i)->getImagePath() ?>"></a>
+				<div class=" col-sm-1 padding-md">
+					<a href="<?php echo $partnerArray->get($i)->website ?>"><img class="footer-partner-logo-image img-responsive" src="<?php echo $partnerArray->get($i)->getImagePath() ?>"></a>
 				</div>
 				<?php
 			}
