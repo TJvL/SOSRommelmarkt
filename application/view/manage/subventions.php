@@ -122,12 +122,12 @@
                                                                      </div>
 
                                                                     <div class="row">
-                                                                        <div class="col-sm-8"><!-- just a spacer --></div>
-                                                                        <div class="col-md-4">
+                                                                        <div class="col-sm-10"><!-- just a spacer --></div>
+                                                                        <div class="col-md-2">
 
-                                                                                <button id="{{subventionRequest.id}}" onClick="print_sub(this.id)" type="button" title="Print" class="btn btn-default">
-                                                                                    <span class="glyphicon glyphicon-print  col-sm-1" aria-hidden="true"></span>
-                                                                                </button>
+<!--                                                                                <button id="{{subventionRequest.id}}" onClick="print_sub(this.id)" type="button" title="Print" class="btn btn-default">-->
+<!--                                                                                    <span class="glyphicon glyphicon-print  col-sm-1" aria-hidden="true"></span>-->
+<!--                                                                                </button>-->
 
                                                                                 <!-- TODO: Change delete js function to request in manage controller -->
                                                                                 <button id="{{subventionRequest.id}}" onClick="delete_sub(this.id)" type="button" title="Print" class="btn btn-default">
