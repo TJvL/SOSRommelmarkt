@@ -1,11 +1,6 @@
 <div class="container">
 	<div style="margin-bottom:5%" class="row white margin-hor-0">
-		<!-- Contact form -->
-		<div class="col-sm-12">
-			<h1>Over ons</h1>
-			<p>SOS Rommelmarkt is een project van stichting Spoor 073 en heeft een ANBI status. De doelstelling van Stichting Spoor 073 is:</p>
 
-			<img class="img-anbi" id="img" src="<?php echo ROOT_PATH; ?>/img/content/anbi.jpg" />
 
 
 			<style>
