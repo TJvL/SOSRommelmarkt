@@ -115,10 +115,6 @@
 
 
       <body onload="initialize()">
-        <div>
-            <?php echo $companyInformation->address.' , '.$companyInformation->city; ?>
-
-        </div>
         <div id="map_canvas" style="width: 200px; height: 200px;"></div>
     </body>
 
