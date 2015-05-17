@@ -29,8 +29,12 @@
 			
 			<form class="form-horizontal" action="javascript:handleUpdateModule()">
 				<!-- some hidden values -->
-				<input type="hidden" id="module-category" name="category" value="<?php echo $_GET["id"];?>">
+				<input type="hidden" id="module-category" name="category" value="<?php echo $model->category;?>">
 				<input type="hidden" id="return-path" name="returnPath" value="<?php echo $returnPath; ?>">
+				<?php if ($model->category != "home") { ?>
+				<input type="hidden" id="module-reference" name="reference" value="<?php echo $model->reference; ?>">
+				<input type="hidden" id="module-reference-label" name="reference_label" value="<?php echo $model->reference_label; ?>">
+				<?php } ?>
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="module-id">ID</label>
 					<div class="col-sm-8">
@@ -53,6 +57,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="module-reference-label">Referentie Tekst</label>
 					<div class="col-sm-8">
+						<input type="text" class="form-control" id="module-reference" name="reference" placeholder="Bijvoorbeeld: /home/index" value="<?php echo $model->reference; ?>" aria-describedby="module-reference-help" required>
 						<input type="text" class="form-control" id="module-reference-label" name="reference_label" placeholder="Plaats hier de tekst voor de referentie..." value="<?php echo $model->reference_label; ?>" required>
 					</div>
 				</div>
