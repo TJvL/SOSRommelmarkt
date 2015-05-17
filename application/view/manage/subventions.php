@@ -70,7 +70,7 @@
 
                                                                             <tr>
                                                                                 <th scope="row">Adres</th>
-                                                                                <td>{{subventionRequest.adress}}</td>
+                                                                                <td>{{subventionRequest.address}}</td>
                                                                             </tr>
 
                                                                             <tr>
