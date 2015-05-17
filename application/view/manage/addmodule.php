@@ -5,6 +5,8 @@
 			$returnPath = "/manage/settings#tab_home-modules";
 			break;
 		case "aboutus":
+			$returnPath = "/manage/settings#tab_aboutus-modules";
+			break;
 		default:
 			$returnPath = "/manage";
 	}
