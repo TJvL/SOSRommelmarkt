@@ -165,8 +165,10 @@
 									<td><?php echo $modules[$i]->heading ?></td>
 									<td>
 										<a href="module/<?php echo $modules[$i]->id ?>"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
+										<!-- Tijdelijk verwijderd -- werken nog niet
 										<button class="btn btn-default <?php if ($i == 0) echo "disabled"; ?>" title="Omhoog" onClick="moveModuleUp()"><i class="fa fa-caret-up"></i></button>
 										<button class="btn btn-default <?php if ($i == count($modules) - 1) echo "disabled"; ?>" title="Omlaag" onClick="moveModuleDown()"><i class="fa fa-caret-down"></i></button>
+										 -->
 									</td>
 								</tr>
 								<?php } ?>
@@ -197,8 +199,10 @@
 									<td><?php echo $modules[$i]->heading ?></td>
 									<td>
 										<a href="module/<?php echo $modules[$i]->id ?>"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
+										<!-- Tijdelijk verwijderd -- werken nog niet
 										<button class="btn btn-default <?php if ($i == 0) echo "disabled"; ?>" title="Omhoog" onClick="moveModuleUp()"><i class="fa fa-caret-up"></i></button>
 										<button class="btn btn-default <?php if ($i == count($modules) - 1) echo "disabled"; ?>" title="Omlaag" onClick="moveModuleDown()"><i class="fa fa-caret-down"></i></button>
+										 -->
 									</td>
 								</tr>
 								<?php } ?>
