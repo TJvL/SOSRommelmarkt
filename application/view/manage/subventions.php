@@ -3,6 +3,11 @@
 <div class="container">
     <div class="white">
         <div class="row">
+            <div class="col-md-1">
+                <a href="<?php echo ROOT_PATH . "/manage/index" ?>" class="btn btn-default">Terug</a>
+            </div>
+        </div>
+        <div class="row">
             <div class="span8">             
                 <div class="widget stacked ">
                     <div class="widget-header">

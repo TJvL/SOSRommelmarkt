@@ -2,6 +2,14 @@
 
 <div class="container" ng-app="auctionApp" ng-controller="auctionController">
 	<div class="white">
+        <div class="row">
+            <div class="col-md-1">
+                <a href="<?php echo ROOT_PATH . "/manage/index" ?>" class="btn btn-default">Terug</a>
+            </div>
+        </div>
+        <div class="row">
+            <h1>Vitrines</h1>
+        </div>
 		<div class="row">
 			<div class="col-md-1">
 				<a href="./addauction" class="btn btn-default">Nieuwe Vitrine</a>

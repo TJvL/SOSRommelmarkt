@@ -1,5 +1,10 @@
 <div class="container">
 	<div class="white">
+        <div class="row">
+            <div class="col-md-1">
+                <a href="<?php echo ROOT_PATH . "/manage/index" ?>" class="btn btn-default">Terug</a>
+            </div>
+        </div>
 		<h3>Instellingen</h3>
 		<div class="tabpanel">
 			<!-- start nav tabs -->

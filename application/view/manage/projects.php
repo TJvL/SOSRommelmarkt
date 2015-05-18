@@ -4,6 +4,11 @@
     <div class="white">
 
         <div class="row">
+            <div class="col-md-1">
+                <a href="<?php echo ROOT_PATH . "/manage/index" ?>" class="btn btn-default">Terug</a>
+            </div>
+        </div>
+        <div class="row">
             <h1>Projecten</h1>
         </div>
 
