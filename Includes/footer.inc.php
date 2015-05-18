@@ -12,7 +12,7 @@
                 <h2>Partners</h2>
             </div>
     	</div>
-    	<div class="row footer-partners">
+    	<div class="row footer-partners col-sm-offset-1">
 			<?php for ($i = 0; $i < $partnerArray->size(); $i++)
 			{
 				?>

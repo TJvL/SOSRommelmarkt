@@ -23,12 +23,12 @@
                         <textarea class="form-control" rows="5" name="description" placeholder="Omschrijving van het project" required></textarea>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-2"">Afbeeldingen</label>
-                    <div class="col-sm-8">
-                        <input class="form-control" type="file" name="images" multiple>
-                    </div>
-                </div>
+<!--                <div class="form-group">-->
+<!--                    <label class="control-label col-sm-2"">Afbeeldingen</label>-->
+<!--                    <div class="col-sm-8">-->
+<!--                        <input class="form-control" type="file" name="images" multiple>-->
+<!--                    </div>-->
+<!--                </div>-->
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-2">
                         <button class="btn btn-red btn-block" type="submit">Toevoegen</button>

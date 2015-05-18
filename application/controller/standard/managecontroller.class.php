@@ -51,44 +51,45 @@ class ManageController extends Controller
         }
 
         if($noVarsNull) {
-           $id = ProjectRepository::insert($newProject);
+           ProjectRepository::insert($newProject);
 
-            if(!empty( $_FILES ) )
-            {
-                foreach($_FILES['images'] as $index => $tmpName  )
-                {
-                    if( !empty( $_FILES[ 'images' ][ 'error' ][ $index ] ) )
-                    {
-                        // some error occured with the file in index $index
-                        // yield an error here
-                        return false; // return false also immediately perhaps??
-                    }
-
-                    /*
-                        edit: the following is not necessary actually as it is now
-                        defined in the foreach statement ($index => $tmpName)
-
-                        // extract the temporary location
-                        $tmpName = $_FILES[ 'image' ][ 'tmp_name' ][ $index ];
-                    */
-
-                    // check whether it's not empty, and whether it indeed is an uploaded file
-                    if( !empty( $tmpName ) && is_uploaded_file( $tmpName ) )
-                    {
-                        // the path to the actual uploaded file is in $_FILES[ 'image' ][ 'tmp_name' ][ $index ]
-                        // do something with it:
-                        echo $index;
-                        $uploadPath = $_SERVER['DOCUMENT_ROOT'] . "/SOSRommelmarkt/img/projects/" . $id . "/" ;
-                        move_uploaded_file( $index, $uploadPath ); // move to new location perhaps?
-                    }
-                }
-            }
+            //TODO: images upload function
+//            if(!empty( $_FILES ) )
+//            {
+//                foreach($_FILES['images'] as $index => $tmpName  )
+//                {
+//                    if( !empty( $_FILES[ 'images' ][ 'error' ][ $index ] ) )
+//                    {
+//                        // some error occured with the file in index $index
+//                        // yield an error here
+//                        return false; // return false also immediately perhaps??
+//                    }
+//
+//                    /*
+//                        edit: the following is not necessary actually as it is now
+//                        defined in the foreach statement ($index => $tmpName)
+//
+//                        // extract the temporary location
+//                        $tmpName = $_FILES[ 'image' ][ 'tmp_name' ][ $index ];
+//                    */
+//
+//                    // check whether it's not empty, and whether it indeed is an uploaded file
+//                    if( !empty( $tmpName ) && is_uploaded_file( $tmpName ) )
+//                    {
+//                        // the path to the actual uploaded file is in $_FILES[ 'image' ][ 'tmp_name' ][ $index ]
+//                        // do something with it:
+//                        echo $index;
+//                        $uploadPath = $_SERVER['DOCUMENT_ROOT'] . "/SOSRommelmarkt/img/projects/" . $id . "/" ;
+//                        move_uploaded_file( $index, $uploadPath ); // move to new location perhaps?
+//                    }
+//                }
+//            }
 
 //            move_uploaded_file($_FILES["images"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/" . Project::IMAGES_DIRECTORY . "/" . $id . ".png");
 //            unset($_FILES["images"]);
-//            $this->redirectTo("/manage/projects/$newProject->id");
+            $this->redirectTo("/manage/projects/$newProject->id");
 //            var_dump($_FILES);
-            echo $uploadPath;
+//            echo $uploadPath;
         }
         else{
             //TODO:Error handling (empty object fields)
