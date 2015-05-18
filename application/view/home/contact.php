@@ -7,7 +7,7 @@
 
 
            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-           <script type="text/javascript" src="<?php echo ROOT_PATH; ?>/js/gmaps.js"></script>
+           <script type="text/javascript" src="<?php echo ROOT_PATH; ?>/js/home/contact/gmaps.js"></script>
            <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
            <script type="text/javascript">
                  var geocoder;
