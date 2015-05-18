@@ -1,6 +1,5 @@
 <?php Type::check("ArrayList:AuctionProduct", $model) ?>
 
-<!--echo $viewbag['voorbeeld'];-->
 <div class="container">
 	<div class="grey">
 		<div class="row">
@@ -24,17 +23,14 @@
             			<?php } ?>
             		</div>
 				</div>
-				
-<!-- 				<p>Alles wat verkoopbaar is krijgt bij klanten een nieuw leven.</p> -->
-<!-- 				<p>Het restafval wordt gescheiden aangeleverd bij verwerkingsbedrijven.</p> -->
 			</div>
 		</div>
 	</div>
 	
 	<!-- carousel -->
 	<div class="row padding-lg">
-		<div class="col-md-8 padding-hor-md">
-			<div class="grey padding-sm margin-ver-lg height-fix">
+		<div class="col-md-8 padding-hor-md equal-height">
+			<div class="grey padding-sm margin-ver-lg full-height">
 				<?php 
 				// If there is no auction. Print some text saying there is no auction.. that makes sense right??
 				if ($model->size() == 0)
@@ -82,16 +78,16 @@
 			</div>
 		</div>
 		
-		<div class="col-md-4 padding-hor-md">
-			<div class="white margin-ver-lg height-fix">
+		<div class="col-md-4 padding-hor-md equal-height">
+			<div class="white margin-ver-lg">
 			
 			<?php 
 				// contactinfo ophalen
 				$visitingHours = VisitingHours::selectCurrent();
 			?>
 			
+				<h2>Openingstijden</h2>
 				<table class="table table-condensed table-responsive">
-					<h2>Openingstijden</h2>
 					<tr><td>Maandag</td><td> <?php echo $visitingHours->monday; ?></td></tr>
 					<tr><td>Dinsdag</td><td> <?php echo $visitingHours->tuesday; ?></td></tr>
 					<tr><td>Woensdag</td><td> <?php echo $visitingHours->wednesday; ?></td></tr>
@@ -103,22 +99,39 @@
 			</div>
 		</div>
 	</div>
-	
-	
-	<div class="row padding-lg">
-		<div class="col-md-6-custom padding-hor-md">
-			<div class="white margin-ver-lg">
-				<h2>Subsidie</h2>
-				<p>Kent u een project in een ontwikkelingsland dat steun kan gebruiken dan kunt u bij SOS Rommelmarkt een aanvraag voor subsidie indienen.</p>
-				<a href="<?php echo ROOT_PATH; ?>/subvention/index"><button type="button" class="btn btn-red btn-lg">Vraag subsidie aan <i class="fa fa-chevron-right"></i></button></a> <!--Style used -> Hacky I know..-->
+
+	<!-- Start modules -->
+	<?php
+		// Get all modules that belong to the homepage
+		$modules = Module::SelectByCategory("home");
+		
+		// Display all of them
+		for ($i = 0; $i < count($modules); $i++)
+		{
+			// The modules are put in rows of 2, so every even index is the start of a new row.
+			if ($i % 2 == 0)
+			{
+	?>
+	<div class="row padding-ver-lg <?php if ($i == count($modules) - 1 || $i == count($modules) - 2) echo "margin-btm-lg"; ?>">
+	<?php if ($i == count($modules) - 1) { ?>
+		<div class="col-md-12">
+		<?php }	else { ?>
+		<div class="col-md-6">
+		<?php }} else { ?>
+		<div class="col-md-6">
+		<?php }	?>
+			<div class="white margin-ver-lg ">
+				<h2><?php echo $modules[$i]->heading; ?></h2>
+				<p class="equal-height"><?php echo $modules[$i]->content; ?></p>
+				<div class="row">
+					<div class="col-md-12">
+						<a class="btn btn-red btn-lg btn-block" href="<?php echo ROOT_PATH . '/' . $modules[$i]->reference; ?>"><?php echo $modules[$i]->reference_label; ?> <i class="fa fa-chevron-right"></i></a>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class="col-md-6-custom padding-hor-md">
-			<div class="white margin-ver-lg">
-				<h2>Webshop</h2>
-				<p>In de kringloopwinkel van SOS Rommelmarkt in de Vughterstraat van ’s-Hertogenbosch worden al dertig jaar tweedehands spullen verkocht. Je vindt in onze opgeruimde en overzichtelijke winkel kringloopgoederen voor een kleine prijs. Een deel van de collectie wordt ook online aangeboden.</p>
-				<a href="<?php echo ROOT_PATH; ?>/shop/index"><button type="button" class="btn btn-red btn-lg">Webshop <i class="fa fa-chevron-right"></i></button></a>
-			</div>
-		</div>
+		<?php if ($i % 2 != 0 || $i == count($modules) - 1)	{ ?>
 	</div>
+	<?php }} ?>
+	<!-- End modules -->
 </div>

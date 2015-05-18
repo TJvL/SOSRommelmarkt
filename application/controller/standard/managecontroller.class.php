@@ -145,25 +145,30 @@ class ManageController extends Controller
         // TODO: Error or some shit
     }
 
-    public function manageproduct_GET()
+    public function shopproducts_GET()
     {
-        $this->render("manageproduct");
+        $this->render("shopproducts");
     }
+    
     public function addshopproduct_GET()
     {
-        $this->render("addshopproduct");
+        $colorCodes = ColorCodeRepository::selectAll();
+
+        $this->render("addshopproduct", $colorCodes);
     }
+    
     public function addshopproduct_POST()
     {
-        $shopProduct = ShopProductRepository::insert($_POST["name"], $_POST["description"], "Administrator", $_POST["colorCode"], $_POST["price"], 0);
+        $shopProduct = ShopProductRepository::insert($_POST["name"], $_POST["description"], "Administrator", $_POST["colorCode"], $_POST["price"], false);
         $this->redirectTo("/manage/shopproduct/$shopProduct->id");
     }
+    
     public function settings_GET()
     {
         $this->render("settings");
     }
 
-        public function pages_GET()
+	public function pages_GET()
     {
         $this->render("pages");
     }
@@ -305,23 +310,23 @@ class ManageController extends Controller
         $this->redirectTo("/manage/settings");
     }
 
-        public function pages_POST()
-    {
-        // Check if all the necessary data has been sent with the request.
-        if (isset($_POST["title"]) && isset($_POST["label"]) && isset($_POST["header"]) && isset($_POST["body"]))
+    //     public function pages_POST()
+    // {
+    //     // Check if all the necessary data has been sent with the request.
+    //     if (isset($_POST["title"]) && isset($_POST["label"]) && isset($_POST["header"]) && isset($_POST["body"]))
         
-        {
-            // set the data and update
-            $addPages = AddPages::selectCurrent();
-            $addPages->title         = $_POST["title"];
-            $addPages->label         = $_POST["label"];
-            $addPages->header        = $_POST["header"];
-            $addPages->body          = $_POST["body"];
-            $addPages->update();
-        }
+    //     {
+    //         // set the data and update
+    //         $addPages = AddPages::selectCurrent();
+    //         $addPages->title         = $_POST["title"];
+    //         $addPages->label         = $_POST["label"];
+    //         $addPages->header        = $_POST["header"];
+    //         $addPages->body          = $_POST["body"];
+    //         $addPages->update();
+    //     }
         
-        $this->redirectTo("/manage/pages");
-    }
+    //     $this->redirectTo("/manage/pages");
+    // }
 
     public function companyInformation_POST()
     {
@@ -340,22 +345,20 @@ class ManageController extends Controller
         $this->redirectTo("/manage/settings");
     }
 
+
      public function subventionsContent_POST()
-    {
-        // Check if all the necessary data has been sent with the request.
-        if (isset($_POST["titel"]) && isset($_POST["content"]))
         {
-        $subventionsContent              = SubventionsContent::selectCurrent();
-        $subventionsContent->titel       = $_POST["titel"];
-        $subventionsContent->content     = $_POST["content"];
-        $subventionsContent->update();
-            // set the data and update 
+            // Check if all the necessary data has been sent with the request.
+            if (isset($_POST["titel"]) && isset($_POST["content"]))
+            {
+                // set the data and update
+                $subventionsContent             = SubventionsContent::selectCurrent();
+                $subventionsContent->titel      = $_POST["titel"];
+                $subventionsContent->content     = $_POST["content"];
+                $subventionsContent->update();
+            }
+            $this->redirectTo("/manage/subventions");
         }
-        
-        $this->redirectTo("/manage/subventions");
-    }
-
-
 
     public function changeSubventionStatus_POST()
     {
@@ -615,6 +618,7 @@ class ManageController extends Controller
         
         $this->redirectTo("/manage/settings#tab_slogans"); // dit werkt niet?
     }
+    
     public function slogan_GET()
     {
         if (isset($_GET["id"]))
@@ -650,6 +654,70 @@ class ManageController extends Controller
                     $slogan = Slogan::selectById($_POST["id"]);
                     $slogan->slogan = $_POST["slogan"];
                     $slogan->update();
+        
+                    // Return 0 for great success.
+                    header("content-Type: application/json");
+                    exit(json_encode(0));
+                }
+            }
+        }
+        
+        // TODO: Error or some shit
+        exit(json_encode(1));
+    }
+    
+    public function addmodule_GET()
+    {
+    	$this->render("addmodule");
+    }
+    
+    
+    public function addmodule_POST()
+    {
+    	Module::insert($_POST["heading"], $_POST["content"], $_POST["category"], $_POST["reference"], $_POST["reference_label"]);
+		$this->redirectTo($_POST["returnPath"]);
+    }
+    
+    public function module_GET()
+    {
+        if (isset($_GET["id"]))
+        {
+            $this->render("module", Module::selectById($_GET["id"]));
+        }
+    }
+    
+    
+    public function module_POST()
+    {
+        // Check if the module id is set.
+        if (isset($_GET["id"]))
+        {
+            if ($_GET["id"] == "delete")
+            {
+                // Check if all the necessary data has been sent with the request.
+                if (isset($_POST["id"]))
+                {
+                    // Delete the module.
+                    Module::deleteById($_POST["id"]);
+        
+                    // Return 0 for great success.
+                    header("content-Type: application/json");
+                    exit(json_encode(0));
+                }
+            }
+            else if ($_GET["id"] == "update")
+            {
+                // Check if all the necessary data has been sent with the request.
+                if (isset($_POST["id"]) && isset($_POST["heading"]) && isset($_POST["content"]) && isset($_POST["category"]) && isset($_POST["reference"]) && isset($_POST["reference_label"]))
+                {
+                    // Get the module, set the data and update.
+                    $module						= Module::selectById($_POST["id"]);
+                    $module->heading			= $_POST["heading"];
+                    $module->content			= $_POST["content"];
+                    $module->category			= $_POST["category"];
+                    $module->reference			= $_POST["reference"];
+                    $module->reference_label	= $_POST["reference_label"];
+                    $module->update();
         
                     // Return 0 for great success.
                     header("content-Type: application/json");

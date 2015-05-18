@@ -8,7 +8,6 @@ class HomeController extends Controller
 
     public function index_GET()
     {
-        $this->viewbag['voorbeeld'] = "hello, greetings from the viewbag";
         $productList = new ArrayList("AuctionProduct");
         $productList->addAll(AuctionProductRepository::selectByCurrentAuction());
         $this->render("index", $productList);
@@ -19,6 +18,16 @@ class HomeController extends Controller
         $projectList = new ArrayList("Project");
         $projectList->addAll(Project::fetchAllProjects());
         $this->render("projects", $projectList);
+    }
+
+    public function retrieval_GET()
+    {
+        $this->render("retrieval");
+    }
+
+    public function aboutus_GET()
+    {
+        $this->render("aboutus");
     }
 
     public function contact_GET()

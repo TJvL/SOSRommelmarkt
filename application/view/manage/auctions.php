@@ -4,7 +4,7 @@
 	<div class="white">
 		<div class="row">
 			<div class="col-md-1">
-				<a href="./addauction" class="btn btn-default">Nieuwe Veiling</a>
+				<a href="./addauction" class="btn btn-default">Nieuwe Vitrine</a>
 			</div>
 		</div>
 		<div class="table-responsive padding-sm">
@@ -27,7 +27,7 @@
 					</tr>
 				</tbody>
 			</table>
-			
+
 			<script>
 				var app = angular.module("auctionApp", []);
 				app.controller("auctionController", ['$scope', '$http', function($scope, $http) {
@@ -41,41 +41,3 @@
 		</div>
 	</div>
 </div>
-
-<script>
-	$(document).ready( function () {
-		$('#auctionTable').DataTable();
-	} );
-
-	function deleteAuction($auctionId)
-	{
-		if (confirm("Weet u zeker dat u deze veiling wilt verwijderen?"))
-		{
-			var data =
-			{
-					auctionId: $auctionId
-			};
-
-			$.ajax(
-			{
-				url: "/SOSRommelmarkt/manage/auctions/delete",
-				type: "POST",
-				data: data,
-				async: true,
-				success: function(result)
-				{
-					if (result == 0)
-					{
-						// OK
-					}
-					else
-					{
-						alert("Deze veiling kan niet worden verwijderd.");
-					}
-
-					document.location.href = "./auctions";
-				}
-			});
-		}
-	}
-</script>

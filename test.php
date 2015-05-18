@@ -1,5 +1,7 @@
 <?php
 
+file_put_contents("debug.txt", "test", FILE_APPEND | LOCK_EX);
+
 include("includes/config.inc.php");
 
 $auctions = ShopProductRepository::selectById(1);

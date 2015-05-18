@@ -13,12 +13,12 @@ class ShopProductRepository extends ProductRepository
 		$shopProduct->price = $array["price"];
 		$shopProduct->isReserved = $array["isReserved"];
 		$shopProduct->imagePath = $shopProduct->getMainImagePath();
-        $shopProduct->imagePaths = $shopProduct->getImagePaths();
+		$shopProduct->imagePaths = $shopProduct->getImagePaths();
 
 		return $shopProduct;
 	}
 	
-	public static function insert($name, $description, $addedBy, $colorCode)
+	public static function insert($name, $description, $addedBy, $colorCode, $price, $isReserved)
 	{
 		// Insert a normal product and get back the auto incremented key.
 		$id = parent::insert($name, $description, $addedBy, $colorCode);
@@ -37,6 +37,8 @@ class ShopProductRepository extends ProductRepository
 		$shopProduct->colorCode = $colorCode;
 		$shopProduct->price = $price;
 		$shopProduct->isReserved = $isReserved;
+		$shopProduct->imagePath = $shopProduct->getMainImagePath();
+		$shopProduct->imagePaths = $shopProduct->getImagePaths();
 		
 		// Return an object of the inserted product.
 		return $shopProduct;
@@ -94,7 +96,7 @@ class ShopProductRepository extends ProductRepository
 		$query = "UPDATE ShopProduct SET price = ?, isReserved = ? WHERE id = ?";
 	
 		// Execute the update query.
-		Database::update($query, "dii", array($this->price, $this->isReserved, $this->id));
+		Database::update($query, "dii", array($product->price, $product->isReserved, $product->id));
 	}
 	
 	public static function deleteById($id)

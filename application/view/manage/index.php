@@ -23,7 +23,7 @@
                 </a>
             </div>
             <div class="col-md-2">
-                <a href="<?php echo ROOT_PATH; ?>/manage/manageproduct">
+                <a href="<?php echo ROOT_PATH; ?>/manage/shopproducts">
                     <button class="btn btn-red">
                         <i class="fa fa-shopping-cart fa-5x fa-fw"></i>
                         <br /><b>Producten</b>
@@ -33,8 +33,8 @@
             <div class="col-md-2">
                 <a href="<?php echo ROOT_PATH; ?>/manage/auctions">
                     <button class="btn btn-red">
-                        <i class="fa fa-gavel fa-5x fa-fw"></i>
-                        <br /><b>Veilingen</b>
+                        <i class="fa fa-diamond fa-5x fa-fw"></i>
+                        <br /><b>Vitrines</b>
                     </button>
                 </a>
             </div>

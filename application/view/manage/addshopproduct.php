@@ -3,7 +3,7 @@
         <div class="content">
             <div class="row">
                 <div class="col-md-1">
-                    <a href="<?php echo ROOT_PATH . '/manage/manageproduct'?>" class="btn btn-default">Back</a>
+                    <a href="<?php echo ROOT_PATH . '/manage/shopproducts'?>" class="btn btn-default">Back</a>
                 </div>
             </div>
 
@@ -53,10 +53,12 @@
                                 <label class="main">Kleur code:</label>
                                 <select form="product_add" name="colorCode" id="">
                                     <option value="default">&ndash; Selecteer een optie &ndash;</option>
-                                    <option value="blue">Blauw</option>
-                                    <option value="green">Groen</option>
-                                    <option value="yellow">Geel</option>
-                                    <option value="red">Rood</option>
+                                    <?php
+                                    foreach($model as $colorCode)
+                                    {
+                                        echo "<option value='$colorCode->name'>$colorCode->name - $colorCode->description</option>";
+                                    }
+                                    ?>
                                 </select>
                                 <span class="error"></span>
                             </div>

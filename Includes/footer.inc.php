@@ -12,28 +12,22 @@
                 <h2>Partners</h2>
             </div>
     	</div>
-    	<div class="row">
-	        <div class="col-sm-4 col-md-6">
-	            <ul class="style1">
-	            	<?php for ($i = 0; $i < ceil($partnerArray->size()/2); $i++) { ?>
-	            	<li><a href="<?php echo $partnerArray->get($i)->website ?>"><?php echo $partnerArray->get($i)->name ?></a></li>
-					<?php } ?>
-	            </ul>
-	        </div>
-	        <div class="col-sm-4 col-md-6">
-	            <ul class="style1">
-	                <?php for ($i = ceil($partnerArray->size()/2); $i < $partnerArray->size(); $i++) { ?>
-	            	<li><a href="<?php echo $partnerArray->get($i)->website ?>"><?php echo $partnerArray->get($i)->name ?></a></li>
-	            	<?php } ?>
-	                
-	            </ul>
-	        </div>
+    	<div class="row footer-partners">
+			<?php for ($i = 0; $i < $partnerArray->size(); $i++)
+			{
+				?>
+				<div class=" col-sm-1 padding-md">
+					<a href="<?php echo $partnerArray->get($i)->website ?>"><img class="footer-partner-logo-image img-responsive" src="<?php echo $partnerArray->get($i)->getImagePath() ?>"></a>
+				</div>
+				<?php
+			}
+			?>
     	</div>
     </div>
 </div>
 
 <div id="copyright">
-	<p>&copy; SOSrommelmarkt. Alle rechten voorbehouden. | Ontwerp en ontwikkeling door 42IN07SOe</a>.</p>
+	<p>&copy; SOSrommelmarkt. Alle rechten voorbehouden. | Ontwerp en ontwikkeling door 42IN07SOe.</p>
 </div>
 
 </div>

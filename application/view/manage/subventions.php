@@ -17,7 +17,7 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="tab1">
-                                    <div class="container" ng-app="subventionApp" ng-controller="subventionController">
+                                    <div ng-app="subventionApp" ng-controller="subventionController">
                                         <div class="white">
                                             <div class="row">
                                                 <div class="col-sm-12">
@@ -70,7 +70,7 @@
 
                                                                             <tr>
                                                                                 <th scope="row">Adres</th>
-                                                                                <td>{{subventionRequest.adress}}</td>
+                                                                                <td>{{subventionRequest.address}}</td>
                                                                             </tr>
 
                                                                             <tr>
@@ -122,12 +122,12 @@
                                                                      </div>
 
                                                                     <div class="row">
-                                                                        <div class="col-sm-8"><!-- just a spacer --></div>
-                                                                        <div class="col-md-4">
+                                                                        <div class="col-sm-10"><!-- just a spacer --></div>
+                                                                        <div class="col-md-2">
 
-                                                                                <button id="{{subventionRequest.id}}" onClick="print_sub(this.id)" type="button" title="Print" class="btn btn-default">
-                                                                                    <span class="glyphicon glyphicon-print  col-sm-1" aria-hidden="true"></span>
-                                                                                </button>
+<!--                                                                                <button id="{{subventionRequest.id}}" onClick="print_sub(this.id)" type="button" title="Print" class="btn btn-default">-->
+<!--                                                                                    <span class="glyphicon glyphicon-print  col-sm-1" aria-hidden="true"></span>-->
+<!--                                                                                </button>-->
 
                                                                                 <!-- TODO: Change delete js function to request in manage controller -->
                                                                                 <button id="{{subventionRequest.id}}" onClick="delete_sub(this.id)" type="button" title="Print" class="btn btn-default">
@@ -186,6 +186,32 @@
                                 <div class="tab-pane fade" id="tab2">
 
 
+    <script type="text/javascript" src="<?php echo ROOT_PATH; ?>/js/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript">
+    tinymce.init({
+       selector: ".editor",
+        theme: "modern",
+        height: 300,
+        plugins: [
+             "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+             "save table contextmenu directionality emoticons template paste textcolor"
+       ],
+       content_css: "css/content.css",
+       toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons", 
+       style_formats: [
+            {title: 'Bold text', inline: 'b'},
+            {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+            {title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
+            {title: 'Example 1', inline: 'span', classes: 'example1'},
+            {title: 'Example 2', inline: 'span', classes: 'example2'},
+            {title: 'Table styles'},
+            {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
+        ]
+     });
+    </script>
+
+
 
                                 <?php 
                                     // contactinfo ophalen
@@ -193,29 +219,31 @@
                                 ?>
 
 
-                                 <form class="form-horizontal"  action="<?php echo ROOT_PATH;?>/manage/subventionsContent_POST" method="Post">
-                                    <div class="form-group">
-                                        <label for="title">Page Title:</label>
-                                        <input class="form-control" type="text" name="title" id="title" placeholder="Page Title" value="<?php echo $subventionsContent->titel ;?>">
-                                    </div>
-
-                                     <div class="form-group">
-                                        <label for="content">Page Title:</label>
-                                        <input class="form-control" type="text" name="content" id="content" placeholder="Page Title" value="<?php echo $subventionsContent->content ;?>">
-                                    </div>
-
-<!--                                     <div class="form-group">
-                                        <label for="body">Body:</label>
-                                        <textarea class="form-control" name="body" rows="8" id="body" placeholder="Page body"><?php echo $subventionsContent->content ;?> </textarea>
-                                    </div>
-                                     -->
-                                    <div class="form-group">
-                                        <div class="col-sm-offset-2 col-sm-8">
-                                            <button type="submit" class="btn btn-danger btn-block" id="submit" name="add">Opslaan</button>
+                                    <form class="form-horizontal" action="<?php echo ROOT_PATH;?>/manage/subventionsContent" method="Post">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="titel">titel</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="titel" name="titel" value="<?php echo $subventionsContent->titel; ?>" />
+                                            </div>
                                         </div>
-                                    </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="content">content</label>
+                                            <div class="col-sm-8">
+                                                 <textarea class="form-control editor" name="content" rows="8" id="body"><?php echo $subventionsContent->content ;?> </textarea>
+                                                <!-- <input type="text" class="form -control" id="content" name="content" value="<?php echo $subventionsContent->content; ?>" /> -->
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-8">
+                                                <button type="submit" class="btn btn-danger btn-block" id="submit" name="add">Opslaan</button>
+                                            </div>
+                                        </div>
+                                    </form>
 
-                                </form> 
+
+                               
+                       
                             </div>
 
                                 </div>

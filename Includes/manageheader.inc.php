@@ -18,6 +18,15 @@
     IncludeLocator::locateIncludes("js", $controller, $action);
     ?>
     <script src="<?php echo ROOT_PATH; ?>/js/jquery.idealforms.js" type="text/javascript"></script>
+    <script type="text/javascript" src="<?php echo ROOT_PATH; ?>/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="<?php echo ROOT_PATH; ?>/js/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript">
+    tinymce.init({
+        selector: "textarea"
+     });
+    </script>
+
+
 
 
 </head>
@@ -67,7 +76,7 @@
                         </a>
                     </div>
                     <div class="col-md-2">
-                        <a href="<?php echo ROOT_PATH; ?>/manage/productList">
+                        <a href="<?php echo ROOT_PATH; ?>/manage/shopproducts">
                             <button class="btn btn-red">
                                 <i class="fa fa-shopping-cart fa-5x fa-fw"></i>
                                 <br /><b>Producten</b>
@@ -77,8 +86,8 @@
                     <div class="col-md-2">
                         <a href="<?php echo ROOT_PATH; ?>/manage/auctions">
                             <button class="btn btn-red">
-                                <i class="fa fa-gavel fa-5x fa-fw"></i>
-                                <br /><b>Veilingen</b>
+                                <i class="fa fa-diamond fa-5x fa-fw"></i>
+                                <br /><b>Vitrines</b>
                             </button>
                         </a>
                     </div>

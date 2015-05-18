@@ -20,16 +20,6 @@
 	/*background: linear-gradient(		right, rgba(142, 199, 255, 1), rgba(142, 199, 255, 1) 50%, rgba(142, 199, 255, .8) 75%, rgba(142, 199, 255, 0));*/
 }
 
-.height-fix
-{
-	height: 356px;
-}
-
-.full-height
-{
-	height: 100% !important;
-}
-
 .text-carousel .carousel-content
 {
 	display: flex;
