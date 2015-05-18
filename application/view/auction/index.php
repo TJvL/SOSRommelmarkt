@@ -89,7 +89,7 @@
                                                         <h1><?php echo $product->name; ?></h1>
                                                     </div>
                                                     <div class="col-md-12 margin-lg padding-hor-lg red-bar">
-                                                        <h3>Beschrijving</h3>
+                                                        <h4>Beschrijving</h4>
                                                     </div>
                                                     <div class="col-md-12 margin-lg padding-sm">
                                                         <p>

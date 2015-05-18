@@ -133,7 +133,7 @@
                                             </div>
                                             <div class="col-md-12 margin-sm padding-hor-lg red-bar">
 
-                                                <h3>Beschrijving</h3>
+                                                <h4>Beschrijving</h4>
 
                                             </div>
                                             <div class="col-md-12 margin-lg padding-sm">
@@ -145,7 +145,7 @@
                                             </div>
                                             <div class="col-md-12 margin-sm padding-hor-lg red-bar">
 
-                                                <h3>Prijs</h3>
+                                                <h4>Prijs</h4>
 
                                             </div>
                                             <div class="col-md-12 margin-lg padding-sm">
