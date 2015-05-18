@@ -22,12 +22,6 @@ function CreatePartner()
 		// Get the form data.
 		var formData = new FormData(document.getElementById("createPartnerForm"));
 		
-		// Check if all the needed data is here.
-//		if (formData.has("name") && formData.has("website") && formData.has("image"))
-//			alert("has them all.");
-//		else
-//			alert("nope");
-		
 		// Send the POST request.
 		$.ajax(
 		{

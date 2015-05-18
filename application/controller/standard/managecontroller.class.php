@@ -5,16 +5,19 @@ class ManageController extends Controller
     {
         parent::__constructor("manage");
     }
+    
     public function index_GET()
     {
         $this->render("index");
     }
+    
     public function subventions_GET()
     {
         $subventionList = new ArrayList("SubventionRequest");
         $subventionList->addAll(SubventionRequest::fetchAllSubventionRequests());
         $this->render("subventions", $subventionList);
     }
+    
     public function subventions_POST()
     {
         SubventionRequest::deleteById($_POST["id"]);
@@ -24,14 +27,15 @@ class ManageController extends Controller
         $this->render("subventions", $subventionList);
     }
 
-    public function projects_get(){
-
+    public function projects_get()
+    {
         $projectList = new ArrayList("Project");
         $projectList->addAll(ProjectRepository::selectAll());
         $this->render("projects", $projectList);
     }
 
-    public function addproject_GET(){
+    public function addproject_GET()
+    {
         $this->render("addproject");
     }
 
@@ -189,6 +193,53 @@ class ManageController extends Controller
         // TODO: Error or some shit
     }
     
+    public function updateshopproduct_POST()
+    {
+    	// Check if everything needed is here.
+    	if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["colorCode"]) && isset($_POST["price"]) && isset($_POST["isReserved"]))
+    	{
+    		ShopProductRepository::updateById($_POST["id"], $_POST["name"], $_POST["description"], $_POST["colorCode"], $_POST["price"], $_POST["isReserved"]);
+    			
+    		exit(json_encode(0));
+    	}
+    	 
+    	exit(json_encode(1));
+    }
+    	
+    public function deleteshopproduct_POST()
+    {
+    	// Check if everything needed is here.
+    	if (isset($_POST["id"]))
+    	{
+    		// Delete the database entry.
+    		ShopProductRepository::deleteById($_POST["id"]);
+    		
+    		// Delete the product images recursively.
+    		$dir = Product::IMAGES_DIRECTORY . "/" . $_POST["id"];
+    		if (is_dir($dir))
+    		{
+    			$objects = scandir($dir);
+    			foreach ($objects as $object)
+    			{
+    				if ($object != "." && $object != "..")
+    				{
+    					if (filetype($dir . "/" . $object) == "dir")
+    						rrmdir($dir . "/" . $object);
+    					else
+    						unlink($dir . "/" . $object);
+    				}
+    			}
+    			reset($objects);
+    			rmdir($dir);
+    		}
+    	
+    		exit(json_encode(0));
+    	}
+    	
+    	exit(json_encode(1));
+    }
+    	
+    
     public function shopproduct_POST()
     {
         // Check if the shopproduct id is set.
@@ -196,59 +247,7 @@ class ManageController extends Controller
         {
             // TODO: weird ass workaround t'll I know the best way to do this... w/e
             // If the id equals update a post request for updating a product has been sent.
-            if ($_GET["id"] == "delete")
-            {
-                // Check if all the necessary data has been sent with the request.
-                if (isset($_POST["productId"]))
-                {
-                    // Delete the product.
-                    ShopProductRepository::deleteById($_POST["productId"]);
-                    
-                    // Delete the product images recursively.
-                    $dir = Product::IMAGES_DIRECTORY . "/" . $_POST["productId"];
-                    if (is_dir($dir))
-                    {
-                        $objects = scandir($dir);
-                        foreach ($objects as $object)
-                        {
-                            if ($object != "." && $object != "..")
-                            {
-                                if (filetype($dir . "/" . $object) == "dir")
-                                    rrmdir($dir . "/" . $object);
-                                else
-                                    unlink($dir . "/" . $object);
-                            }
-                        }
-                        reset($objects);
-                        rmdir($dir);
-                    }
-                    
-                    // Return 0 for great success.
-                    header("content-Type: application/json");
-                    exit(json_encode(0));
-                }
-            }
-            else if ($_GET["id"] == "update")
-            {
-                // Check if all the necessary data has been sent with the request.
-                if (isset($_POST["productId"]) && isset($_POST["productName"]) && isset($_POST["productDescription"]) && isset($_POST["productColorCode"]) &&
-                        isset($_POST["productPrice"]) && isset($_POST["productIsReserved"]))
-                {
-                    // Get the product, set the data and update.
-                    $shopProduct = ShopProductRepository::selectById($_POST["productId"]);
-                    $shopProduct->name = $_POST["productName"];
-                    $shopProduct->description = $_POST["productDescription"];
-                    $shopProduct->colorCode = $_POST["productColorCode"];
-                    $shopProduct->price = $_POST["productPrice"];
-                    $shopProduct->isReserved = $_POST["productIsReserved"];
-                    ShopProductRepository::update($shopProduct);
-                    
-                    // Return 0 for great success.
-                    header("content-Type: application/json");
-                    exit(json_encode(0));
-                }
-            }
-            else if ($_GET["id"] == "addImage")
+            if ($_GET["id"] == "addImage")
             {
                 if (isset($_POST["productId"]) && isset($_POST["originalWidth"]) && isset($_POST["clientWidth"]) && isset($_POST["xCoord"]) && isset($_POST["width"]) &&
                         isset($_POST["originalHeight"]) && isset($_POST["clientHeight"]) && isset($_POST["yCoord"]) && isset($_POST["height"]) && isset($_FILES["file"]))
@@ -574,16 +573,24 @@ class ManageController extends Controller
     	exit(json_encode(1));
     }
     
+    public function setpartnerimage_POST()
+    {
+    	if (isset($_POST["id"]) && isset($_FILES["image"]))
+    	{
+    		Partner::setImageById($_POST["id"], $_FILES["image"]);
+    		
+    		exit(json_encode(0));
+    	}
+    	
+    	exit(json_encode(1));
+    }
+    
     public function updatepartner_POST()
     {
     	// Check if everything needed is here.
     	if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["website"]))
     	{
 			PartnerRepository::updateById($_POST["id"], $_POST["name"], $_POST["website"]);
-			
-			// Optional image.
-			if (isset($_FILES["image"]))
-				Partner::setImageById($_POST["id"], $_FILES["image"]);
 			
 			exit(json_encode(0));
     	}

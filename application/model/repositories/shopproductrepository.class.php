@@ -89,14 +89,18 @@ class ShopProductRepository extends ProductRepository
 		return $shopProduct;
 	}
 	
-	public static function update($product)
+	public static function updateById($id, $name, $description, $colorCode, $price, $isReserved)
 	{
-		parent::update($product);
-		
+		parent::updateById($id, $name, $description, $colorCode);
+	
 		$query = "UPDATE ShopProduct SET price = ?, isReserved = ? WHERE id = ?";
 	
-		// Execute the update query.
-		Database::update($query, "dii", array($product->price, $product->isReserved, $product->id));
+		Database::update($query, "dii", array($price, $isReserved, $id));
+	}
+	
+	public static function update($product)
+	{
+		ShopProductRepository::updateById($product->id, $product->name, $product->description, $product->colorCode, $product->price, $product->isReserved);
 	}
 	
 	public static function deleteById($id)

@@ -9,13 +9,18 @@ abstract class ProductRepository
 
         return Database::insert($query, "ssss", array($name, $description, $addedBy, $colorCode));
     }
+    
+    protected static function updateById($id, $name, $description, $colorCode)
+    {
+    	$query = "UPDATE Product
+        	SET name = ?, description = ?, colorCode = ? WHERE id = ?";
+    
+    	Database::update($query, "sssi", array($name, $description, $colorCode, $id));
+    }
 
     protected static function update($product)
     {
-        $query = "UPDATE Product
-        	SET name = ?, description = ?, addedBy = ?, colorCode = ? WHERE id = ?";
-
-        Database::update($query, "ssssi", array($product->name, $product->description, $product->addedBy, $product->colorCode, $product->id));
+        ProductRepository::updateById($product->id, $product->name, $product->description, $product->colorCode);
     }
 
 	protected static function deleteById($id)

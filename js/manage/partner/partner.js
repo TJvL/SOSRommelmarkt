@@ -4,44 +4,78 @@ function ResetStatus()
 	$("#status").removeClass("alert-warning alert-danger alert-success");
 }
 
-function UpdatePartner()
+function SetPartnerImage()
 {
-	if (confirm("Weet u zeker dat u deze partner wilt wijzigen?"))
+	if (confirm("Weet u zeker dat u het plaatje wilt wijzigen?"))
 	{
 		ResetStatus();
 		
-		// Get the form data.
-		var formData = new FormData(document.getElementById("updatePartnerForm"));
-		formData.append("id", "<?php echo $model->id ?>");
-		
-		// Check if the image is set. If so, add it to the formdata.
-		if ($("#image").val() !== "")
+		// Check if the image is set.
+		if ($("#image").val() === "")
 		{
-			// Check if the file has an image extension.
-			if (!IsImage($("#image").val()))
-			{
-				$("#status").text("Het bestand dat u probeert te gebruiken is geen plaatje.");
-				$("#status").addClass("alert-warning");
-		        
-				return;
-			}
-			
-	        formData.append("image", $("#image")[0].files[0]);
+			$("#status").text("Er is geen plaatje geselecteerd.");
+			$("#status").addClass("alert-warning");
+	        
+			return;
 		}
 		
-		// Check if all the needed data is here.
-//		if (formData.has("name") && formData.has("website") && formData.has("image"))
-//			alert("has them all.");
-//		else
-//			alert("nope");
+		// Check if the file has an image extension.
+		if (!IsImage($("#image").val()))
+		{
+			$("#status").text("Het bestand dat u probeert te gebruiken is geen plaatje.");
+			$("#status").addClass("alert-warning");
+	        
+			return;
+		}
+		
+		var data = new FormData();
+		data.append("id", $("#id").val());
+		data.append("image", $("#image")[0].files[0]);
+		
+		$.ajax(
+		{
+			url: "../setpartnerimage",
+			type: "POST",
+	        data: data,
+	        async: false,
+	        contentType: false,
+	        processData: false,
+	        success: function(result)
+	        {
+		        // Check if it went alright.
+		        if (result == 0)
+		        {
+		        	$("#status").text("Succes!");
+	                $("#status").addClass("alert-success");
+		        }
+		        else
+		        {
+		        	$("#status").text("Er is iets verkeerd gegaan.");
+	                $("#status").addClass("alert-danger");
+		        }
+	        }
+		});
+	}
+}
+
+function UpdatePartner()
+{
+	if (confirm("Weet u zeker dat u de wijzigingen wilt toepassen?"))
+	{
+		ResetStatus();
+		
+		var data =
+		{
+	    	id:			$("#id").val(),
+	    	name:		$("#name").val(),
+	    	website:	$("#website").val()
+		};
 	
 		$.ajax(
 		{
 			url: "../updatepartner",
 			type: "POST",
-	        data: formData,
-	        contentType: false,
-	        processData: false,
+	        data: data,
 	        success: function(result)
 	        {
 		        // Check if it went alright.
