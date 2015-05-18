@@ -38,7 +38,6 @@
         float:left;
         clear:both;
         margin:.35em 0;
-        width: 100%;
     }
 
     form.idealforms label.main,form.idealforms .field > input,form.idealforms select,form.idealforms button,form.idealforms textarea,form.idealforms .field .group{

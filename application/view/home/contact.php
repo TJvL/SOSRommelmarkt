@@ -42,7 +42,7 @@
       </body>
     </div>
     <div class="row">
-           <div class="col-md-9">
+           <div class="col-md-8">
                <div class="content">
                 <form action="<?php echo ROOT_PATH . "/home/contact"?>" class="idealforms" method="post" id="contactform">
                     <h2>Contact</h2>
@@ -97,7 +97,7 @@
            </div>
         </div>
        
-        <div class="col-md-3">
+        <div class="col-md-4">
            <h2 class="title">Adres</h2>
            <p>
                <?php $companyInformation = CompanyInformation::selectCurrent(); ?>
