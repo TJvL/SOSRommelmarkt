@@ -78,7 +78,7 @@ class IncludeLocator
             {
                 $include = str_replace($root, "", $includes[$i]);
 
-                if(strpos($include, "/angular.js"))
+                if(strpos($include, "/angular.min.js") || strpos($include, "/1.11.3-jquery.min.js")  )
                 {
                     echo "    <script src='$include' type='text/javascript'></script>\n";
                 }
