@@ -16,7 +16,6 @@
             <table id="projectTable" class="display">
                 <thead>
                 <tr>
-                    <th>Id</th>
                     <th>Titel</th>
                     <th></th>
                 </tr>
@@ -26,7 +25,6 @@
                 foreach ($model as $project)
                 {?>
                     <tr>
-                        <td><?php echo $project->id ?></td>
                         <td><?php echo $project->title ?></td>
                         <td>
                             <a href="<?php echo ROOT_PATH ?>/manage/projectdetails/<?php echo $project->id ?>"><button class="btn btn-default"><i class="fa fa-pencil"></i></button></a>
