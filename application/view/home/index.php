@@ -38,6 +38,7 @@
                 ?>
                 <div class="col-md-3 padding-hor-md equal-height">
                     <div class="white margin-ver-lg">
+                        <p><b>In de vitrine:</b></p>
                         <a href="<?php echo ROOT_PATH; ?>/auction/index">
                             <img class="img-responsive" src="<?php echo $prod->imagePath ?>">
                         </a>
@@ -68,6 +69,7 @@
                 ?>
                 <div class="col-md-3 padding-hor-md equal-height">
                     <div class="white margin-ver-lg">
+                        <p><b>In de vitrine:</b></p>
                         <a href="<?php echo ROOT_PATH; ?>/auction/index">
                             <img class="img-responsive" src="<?php echo $prod->imagePath ?>">
                         </a>
@@ -80,7 +82,7 @@
         }
 
         ?>
-        
+
 		<div class="col-md-3 padding-hor-md equal-height">
 			<div class="white margin-ver-lg">
 			
