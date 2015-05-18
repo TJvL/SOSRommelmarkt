@@ -20,14 +20,17 @@ function CreatePartner()
 		}
 		
 		// Get the form data.
-		var formData = new FormData(document.getElementById("createPartnerForm"));
+		var data = new FormData();
+		data.append("name", $("#name").val());
+		data.append("website", $("#website").val())
+		data.append("image", $("#image")[0].files[0]);
 		
 		// Send the POST request.
 		$.ajax(
 		{
 			url: "createpartner",
 			type: "POST",
-	        data: formData,
+	        data: data,
 	        contentType: false,
 	        processData: false,
 	        success: function(result)

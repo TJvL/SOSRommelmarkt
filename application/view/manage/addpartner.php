@@ -14,19 +14,19 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="name">Naam</label>
                     <div class="col-sm-8">
-                        <input class="form-control" id="name" name="name" type="text" placeholder="Naam van de partner" required>
+                        <input class="form-control" id="name" type="text" placeholder="Naam van de partner" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="website">Website</label>
                     <div class="col-sm-8">
-                        <input class="form-control" id="website" name="website" type="text" placeholder="Website van de partner" required>
+                        <input class="form-control" id="website" type="text" placeholder="Website van de partner" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="image">Plaatje</label>
                     <div class="col-sm-8">
-                    	<input class="form-control" id="image" name="image" type="file" required>
+                    	<input class="form-control" id="image" type="file" required>
                     </div>
                 </div>
                 <div class="form-group hidden" id="imagePreviewDiv">
