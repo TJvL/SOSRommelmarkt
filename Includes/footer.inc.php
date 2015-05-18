@@ -17,7 +17,7 @@
 			{
 				?>
 				<div class=" col-sm-1 padding-md">
-					<a href="<?php echo $partnerArray->get($i)->website ?>"><img class="footer-partner-logo-image img-responsive" src="<?php echo $partnerArray->get($i)->getImagePath() ?>"></a>
+					<a href="<?php echo $partnerArray->get($i)->website ?>" target="_blank"><img class="footer-partner-logo-image img-responsive" src="<?php echo $partnerArray->get($i)->getImagePath() ?>"></a>
 				</div>
 				<?php
 			}
