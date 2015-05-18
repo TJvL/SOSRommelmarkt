@@ -29,56 +29,59 @@
 	
 	<!-- carousel -->
 	<div class="row padding-lg">
-		<div class="col-md-8 padding-hor-md equal-height">
-			<div class="grey padding-sm margin-ver-lg full-height">
-				<?php 
-				// If there is no auction. Print some text saying there is no auction.. that makes sense right??
-				if ($model->size() == 0)
-				{
-					?>
-					<h2>Veiling</h2>
-					<p>Er is op dit moment geen veiling gaande. Zodra er een nieuwe veiling is gestart kunt u hier de producten bekijken.</p>
-					<?php 
-				}
-				else
-				{
-					?>
-					<div id="vitrine-carousel" class="carousel slide full-height" data-ride="carousel">
-						<ol class="carousel-indicators">
-							<?php for ($i = 0; $i < $model->size(); $i++) { ?>
-							<li data-target="#vitrine-carousel" data-slide-to="<?php echo $i ?>" <?php if ($i == 0) echo 'class="active"' ?>></li>
-							<?php } ?>
-						</ol>
-					
-						<div class="carousel-inner full-height" role="listbox">
-							<?php for ($i = 0; $i < $model->size(); $i++) { ?>
-							<div class="item <?php if ($i == 0) echo 'active' ?> carousel-overlay full-height">
-								<a href="<?php echo ROOT_PATH; ?>/auction/index"><img class="center-block full-height" src="<?php echo $model->get($i)->imagePath ?>" alt="Slide"></a>
-								<div class="carousel-caption">
-									<br>
-									<h2><?php echo $model->get($i)->name ?></h2>
-									<p><?php echo $model->get($i)->description ?></p>
-								</div>
-							</div>
-							<?php } ?>
-						</div>
-						
-						<a class="left carousel-control" href="#vitrine-carousel" role="button" data-slide="prev">
-							<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-							<span class="sr-only">Vorige</span>
-						</a>
-						<a class="right carousel-control" href="#vitrine-carousel" role="button" data-slide="next">
-							<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-							<span class="sr-only">Volgende</span>
-						</a>
-					</div>
-					<?php
-				}
-				?>
-			</div>
-		</div>
-		
-		<div class="col-md-4 padding-hor-md equal-height">
+        <?php
+        //if there's 3 or less products, just give all of them
+        if($model->size() <= 3)
+        {
+            foreach($model as $prod)
+            {
+                ?>
+                <div class="col-md-3 padding-hor-md equal-height">
+                    <div class="white margin-ver-lg">
+                        <a href="<?php echo ROOT_PATH; ?>/auction/index">
+                            <img class="img-responsive" src="<?php echo $prod->imagePath ?>">
+                        </a>
+                        <h2><?php echo $prod->name ?></h2>
+                        <p><?php echo $prod->description ?></p>
+                    </div>
+                </div>
+                <?php
+            }
+            for($i = 3; $i > $model->size(); $i--) //fill up until 3 spaces are filled.
+            {
+                ?>
+                <div class="col-md-3 padding-hor-md equal-height"></div>
+                <?php
+            }
+        }
+        else
+        {
+            //mt_rand is inclusive
+            $rands = array();
+            $rands[] = mt_rand(1, $model->size()-2); //anything except lowest or highest number.
+            $rands[] = mt_rand(0, $rands[0]); //atleast one below first random
+            $rands[] = mt_rand($rands[0]+1, $model->size()-1); //atleast one above first random;
+
+            foreach($rands as $val)
+            {
+                $prod = $model->get($val);
+                ?>
+                <div class="col-md-3 padding-hor-md equal-height">
+                    <div class="white margin-ver-lg">
+                        <a href="<?php echo ROOT_PATH; ?>/auction/index">
+                            <img class="img-responsive" src="<?php echo $prod->imagePath ?>">
+                        </a>
+                        <h2><?php echo $prod->name ?></h2>
+                        <p><?php echo $prod->description ?></p>
+                    </div>
+                </div>
+                <?php
+            }
+        }
+
+        ?>
+        
+		<div class="col-md-3 padding-hor-md equal-height">
 			<div class="white margin-ver-lg">
 			
 			<?php 
