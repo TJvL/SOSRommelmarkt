@@ -57,7 +57,6 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="module-reference-label">Referentie Tekst</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" id="module-reference" name="reference" placeholder="Bijvoorbeeld: /home/index" value="<?php echo $model->reference; ?>" aria-describedby="module-reference-help" required>
 						<input type="text" class="form-control" id="module-reference-label" name="reference_label" placeholder="Plaats hier de tekst voor de referentie..." value="<?php echo $model->reference_label; ?>" required>
 					</div>
 				</div>
