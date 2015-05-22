@@ -9,7 +9,7 @@
 			<div class="col-md-9">
 				<?php 
 					// slogans ophalen
-					$slogans = Slogan::selectAll();
+					$slogans = SloganRepository::selectAll();
 				?>
 				
 				<div id="slogan-carousel" class="carousel text-carousel slide" data-ride="carousel">
