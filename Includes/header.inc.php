@@ -14,7 +14,7 @@ IncludeLocator::locateIncludes("js", $controller, $action);
 
 </head>
 <body>
-    <nav class= "navbar navbar-default navbar-static-top">
+    <nav class= "navbar navbar-default navbar-static-top header_fixed">
         <div class="container">
             <?php 
             	// contactinfo ophalen
@@ -42,7 +42,7 @@ IncludeLocator::locateIncludes("js", $controller, $action);
 
     <div class="container"> 
         <div id="headerdiv">
-            <div class="row">
+            <div class="row menu_position">
                 <div class="col-sm-3">
                     <a href="<?php echo ROOT_PATH; ?>/home/index">
                         <img class="img-responsive" id="logo" src="<?php echo ROOT_PATH; ?>/img/content/logo2.png" />
