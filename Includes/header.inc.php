@@ -30,6 +30,7 @@ IncludeLocator::locateIncludes("js", $controller, $action);
                             <div class="contact-mail"><span><?php echo $companyInformation->email ?> </span></div>
                             <span class="icon"><i class="fa fa-map-marker"></i></span>
                             <div class="contact-address"><span><?php echo $companyInformation->address . ", " . $companyInformation->postalcode . " " . $companyInformation->city; ?></span></div>
+                            <li><a href="<?php echo ROOT_PATH; ?>/home/contact"><i class="fa fa-envelope"></i> Contact</a></li>
                         </div>
                     </li>
                 </ul>
@@ -75,7 +76,6 @@ IncludeLocator::locateIncludes("js", $controller, $action);
                                          <li><a href="<?php echo ROOT_PATH; ?>/home/aboutus"><i class="fa fa-group"></i> Over ons</a></li>
                                          <li><a href="<?php echo ROOT_PATH; ?>/home/projects"><i class="fa fa-tasks"></i> Projecten</a></li>
                                          <li><a href="<?php echo ROOT_PATH; ?>/home/retrieval"><i class="fa fa-truck"></i> Afgifte</a></li>
-                                         <li><a href="<?php echo ROOT_PATH; ?>/home/contact"><i class="fa fa-envelope"></i> Contact</a></li>
                                      </ul>
                                  <?php
                                  }
