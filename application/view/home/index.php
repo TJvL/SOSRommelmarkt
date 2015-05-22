@@ -108,7 +108,7 @@
 	<!-- Start modules -->
 	<?php
 		// Get all modules that belong to the homepage
-		$modules = Module::SelectByCategory("home");
+		$modules = ModuleRepository::SelectByCategory("home");
 		
 		// Display all of them
 		for ($i = 0; $i < count($modules); $i++)

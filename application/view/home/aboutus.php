@@ -1,7 +1,7 @@
 <div class="container">
 	<?php
 	// Get all modules that belong to about us
-	$modules = Module::SelectByCategory("aboutus");
+	$modules = ModuleRepository::SelectByCategory("aboutus");
 
 	for ($i = 0; $i < count($modules); $i++) {
 
