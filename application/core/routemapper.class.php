@@ -2,44 +2,48 @@
 
 class RouteMapper
 {
-    public $controller;
-    public $controllerURLName;
-    public $action;
-    public $id;
-    public $httpMethod;
-    public $controllerMethod;
+    private $routeObject; //The RouteObject contains information about the route to be taken to handle the request.
+    private $strictRules; //Defines if strict rules are enforced in the application regarding mapping http request variables.
 
-    public function __construct()
+    public function __construct($strictRules)
     {
-        $this->controller = DEFAULT_CONTROLLER;
-        $this->controllerURLName = str_replace("Controller", "", $this->controller);
-        $this->action = DEFAULT_ACTION;
-        $this->id = "";
-        $this->httpMethod = $_SERVER['REQUEST_METHOD'];
-        $this->controllerMethod = $this->action . $this->httpMethod;
+        $this->strictRules = $strictRules;
+        $this->routeObject = new RouteObject();
+        $this->routeObject->controller = DEFAULT_CONTROLLER;
+        $this->routeObject->controllerURLName = str_replace("Controller", "", $this->routeObject->controller);
+        $this->routeObject->action = DEFAULT_ACTION;
+        $this->routeObject->id = "";
+        $this->routeObject->httpMethod = $_SERVER['REQUEST_METHOD'];
+        $this->routeObject->controllerMethod = $this->routeObject->action . "_" . $this->routeObject->httpMethod;
     }
 
+    /**
+     * Maps the by URL defined route to a RouteObject.
+     *
+     * @returns RouteObject     When the route is found to be pointing to an existing resource.
+     * @throws Exception        When the route does not point to an existing resource.
+     */
     public function mapRoute()
     {
         // Define the route to be taken by the request.
         if (isset($_GET['controller']))
         {
-            $this->controllerURLName = $_GET['controller'];
-            $this->controller = $_GET['controller'] . "Controller";
+            $this->routeObject->controllerURLName = $_GET['controller'];
+            $this->routeObject->controller = $_GET['controller'] . "Controller";
 
             if (isset($_GET['action']))
             {
-                $this->action = $_GET['action'];
+                $this->routeObject->action = $_GET['action'];
 
                 if (isset($_GET['id']))
                 {
-                    $this->id = $_GET['id'];
+                    $this->routeObject->id = $_GET['id'];
                 }
             }
         }
-        $this->controllerMethod = $this->action . "_" . $this->httpMethod;
+        $this->routeObject->controllerMethod = $this->routeObject->action . "_" . $this->routeObject->httpMethod;
 
-        if(STRICT_RULES)
+        if($this->strictRules) //If strict rules are enforced on this server the $_GET array is unset to prevent future use.
         {
             unset($_GET);
         }
@@ -52,20 +56,27 @@ class RouteMapper
         {
             throw new Exception("Requested resource has not been found", 404, $ex);
         }
+
+        return $this->routeObject;
     }
 
+    /**
+     * Validates if the request can be handled by and existing method in an existing controller.
+     *
+     * @throws Exception        When no controller or method exists for this kind of action.
+     */
     private function validateRoute()
     {
-        if(class_exists($this->controller, true))
+        if(class_exists($this->routeObject->controller, true))
         {
-            if(!method_exists($this->controller, $this->action . "_" . $this->httpMethod))
+            if(!method_exists($this->routeObject->controller, $this->routeObject->controllerMethod))
             {
-                throw new Exception("Method: $this->action in $this->controller has not been defined");
+                throw new Exception("Method: $this->routeObject->action in $this->routeObject->controller has not been defined");
             }
         }
         else
         {
-            throw new Exception("$this->controller has not been defined");
+            throw new Exception("$this->routeObject->controller has not been defined");
         }
     }
 }

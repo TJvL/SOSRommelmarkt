@@ -2,11 +2,25 @@
 
 class ModelMapper
 {
+    private $strictRules; //Defines if strict rules are enforced in the application regarding mapping http request variables.
+
+    public function __construct($strictRules)
+    {
+        $this->strictRules = $strictRules;
+    }
+
+    /**
+     * Only if strict rules are enforced on this server!
+     * Maps all POST data to a model class as long as the request contains the model class name in a variable named: "modelName"
+     *
+     * @returns Mixed           Returns null if nothing was mapped or an instance of the given model with all matched POST data mapped to it's variables.
+     * @throws Exception        When no model class was found or when no model name was supplied in the http request.
+     */
     public function mapToModel()
     {
         $model = null;
 
-        if(STRICT_RULES)
+        if($this->strictRules)
         {
             if(isset($_POST["modelName"]))
             {

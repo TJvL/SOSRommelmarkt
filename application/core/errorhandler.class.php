@@ -2,40 +2,60 @@
 
 class ErrorHandler
 {
-    private $exception;
-    private $exceptionEncountered;
-    private $httpCode;
-    private $clientMessage;
+    private $exception; //The exception that will be handled.
+    private $exceptionEncountered; //Boolean that determines if an exception is encountered.
+    private $httpCode; //The http response status code;
+    private $clientMessage; //The error message the client will receive.
+    private $devMode; //Defines if the server is running in development mode.
 
+    public function __construct($devMode)
+    {
+        $this->devMode = $devMode;
+    }
+
+    /**
+     * Handles the given exception differently depending on whether development mode is on or not.
+     *
+     * @param $ex			The exception to be handled.
+     *
+     */
     public function handleException($ex)
     {
+        //Set the exception to be handled and indicate that an exception is encountered.
         $this->exception = $ex;
         $this->exceptionEncountered = true;
 
-        if(DEV_RULES)
+
+        if($this->devMode) //If development mode is active handle the error differently.
         {
-            $this->logError();
-            $this->outputError();
+            $this->logError(); //The error is logged to php server log.
+            $this->outputError(); //The error is displayed with all exception information available to the client.
         }
-        else
+        else //Else handle it normally.
         {
-            $this->setClientResponse();
-            $this->logError();
-            $this->notifyAdmin();
-            $this->redirectToErrorPage();
+            $this->setClientResponse(); //Prepare the client error response message.
+            $this->logError(); //The error is logged to php server log.
+            $this->notifyAdmin(); //The configured e-mail address is notified of the error.
+            $this->redirectToErrorPage(); //The client is redirected to the configured error page.
         }
     }
 
+    /**
+     * Dumps the contents of the exception object to the client.
+     */
     private function outputError()
     {
         var_dump($this->exception);
         die();
     }
 
+    /**
+     * Checks the handled exception for it's HTTP status code and sets a appropriate message for the client.
+     */
     private function setClientResponse()
     {
         $code = $this->exception->getCode();
-        if(isset($code))
+        if(isset($code)) //If the code was set then proceed to search the appropriate message for it.
         {
             http_response_code($code);
             $this->httpCode = $code;
@@ -62,7 +82,7 @@ class ErrorHandler
                     return;
             }
         }
-        else
+        else //Else put the code on 500 BadRequest.
         {
             http_response_code(500);
             $this->httpCode = 500;
@@ -70,17 +90,27 @@ class ErrorHandler
         }
     }
 
+    /**
+     * Logs the handled exception to the server log.
+     */
     private function logError()
     {
         $message = "Client: " . $_SERVER['REMOTE_ADDR'] . " has caused the following exception to occur:\n" . $this->exception->__toString();
         error_log($message, 0);
     }
 
+    /**
+     * Emails the configured email address a notification about the occured exception.
+     */
     private function notifyAdmin()
     {
-
+        //TODO: Implement this function!
     }
 
+    /**
+     * Redirects the client to the configured standard error page.
+     * Sets the $_SESSION array so next request the client sees some minor details about this exception.
+     */
     private function redirectToErrorPage()
     {
         $_SESSION['msg'] = $this->clientMessage;
