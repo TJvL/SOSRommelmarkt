@@ -7,7 +7,7 @@ class Controller
 	function __constructor($name)
 	{
 		$this->name = $name;
-        $this->viewbag = array();
+        $this->viewBag = array();
 	}
 
     protected function render($action, $model = null)
@@ -18,37 +18,37 @@ class Controller
         }
 
         $controller = $this->name;
-        $viewBag = $this->viewBag;
 
         include("includes/header.inc.php");
 
         if(isset($model))
         {
-            $this->renderStrongView($action, $model, $viewBag);
+            $this->renderStrongView($action, $model);
         }
         else
         {
-            $this->renderView($action, $viewBag);
+            $this->renderView($action);
         }
 
         include("includes/footer.inc.php");
     }
 
-    private function renderView($action, $viewBag)
+    private function renderView($action)
     {
-        $viewbag = $this->viewbag;
+        $viewBag = $this->viewBag;
         include("application/view/" . $this->name . "/" . $action . ".php");
     }
     
-    private function renderStrongView($action, $model, $viewBag)
+    private function renderStrongView($action, $model)
     {
-        $viewbag = $this->viewbag;
+        $viewBag = $this->viewBag;
         include("application/view/" . $this->name . "/" . $action . ".php");
     }
 
     protected function redirectTo($target)
     {
         header('Location: ' . ROOT_PATH . $target);
+        exit("Redirecting...");
     }
 }
 ?>

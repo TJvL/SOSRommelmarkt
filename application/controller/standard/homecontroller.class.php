@@ -6,6 +6,14 @@ class HomeController extends Controller
         parent::__constructor("home");
     }
 
+    public function error_GET()
+    {
+        $this->viewBag['msg'] = $_SESSION['msg'];
+        $this->viewBag['code'] = $_SESSION['code'];
+        $this->viewBag['prevLocation'] = $_SESSION['prevLocation'];
+        $this->render("error");
+    }
+
     public function index_GET()
     {
         $productList = new ArrayList("AuctionProduct");

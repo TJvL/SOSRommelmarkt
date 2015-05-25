@@ -1,41 +1,37 @@
 <?php
 // ob_start: buffers output and only displays after calling ob_end_flush. Enables dynamic redirect.
 ob_start();
+session_start();
 
 include(__DIR__ . "/includes/config.inc.php");
 
-// MVC structure
-if (isset($_GET['controller']))
-{
-	$controller = $_GET['controller'] . "Controller";
-}
-else
-{
-	$controller = "HomeController";
-}
+$controller = null;
+$errorHandler = new ErrorHandler();
+$routeMapper = new RouteMapper();
+$modelMapper = new ModelMapper();
 
-if (isset($_GET['action']))
+try
 {
-	$action = $_GET['action'];
-}
-else
-{
-	$action="index";
-}
+    $routeMapper->mapRoute();
+    $controller = new $routeMapper->controller();
+    $method = $routeMapper->controllerMethod;
+    $id = $routeMapper->id;
 
-if (isset($_GET['id']))
-{
-	$id = $_GET['id'];
+    if($routeMapper->httpMethod === "GET")
+    {
+        $controller->$method($id);
+        $_SESSION['prevLocation'] = $routeMapper->controllerURLName . SEPARATOR . $routeMapper->action;
+    }
+    else
+    {
+        $model = $modelMapper->mapToModel();
+        $controller->$method($model);
+    }
 }
-else
+catch (Exception $ex)
 {
-	$id = "";
+    ob_end_clean();
+    $errorHandler->handleException($ex);
 }
-    
-$method = $_SERVER['REQUEST_METHOD'];
-
-$ctrl = new $controller();
-$ctrl->{$action . "_" . $method}($id);
 
 ob_end_flush();
-?>
