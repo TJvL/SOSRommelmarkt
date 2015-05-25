@@ -9,8 +9,6 @@ session_start();
 include(__DIR__ . "/includes/config.inc.php");
 
 //Start handling the request.
-
-$controller = null; //The controller that is going to handle the request.
 $errorHandler = new ErrorHandler(DEV_RULES); //An error handling service that logs and responds accordingly to exceptions.
 $routeMapper = new RouteMapper(STRICT_RULES); //A route mapping service that map the requested route and checks if it is valid. Then returns a RouteObject when it successfully maps the route.
 $modelMapper = new ModelMapper(STRICT_RULES); //A model mapping service that maps POST data to the desired model class.
