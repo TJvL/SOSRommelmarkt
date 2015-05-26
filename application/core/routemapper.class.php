@@ -29,6 +29,12 @@ class RouteMapper
         if (isset($_GET['controller']))
         {
             $this->routeObject->controllerURLName = $_GET['controller'];
+
+            if(strpos($this->routeObject->controllerURLName, "api")) //When the controller name includes "api" it means error handling goes differently.
+            {
+                $this->routeObject->isAPICall = true;
+            }
+
             $this->routeObject->controller = $_GET['controller'] . "Controller";
 
             if (isset($_GET['action']))
