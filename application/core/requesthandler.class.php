@@ -4,6 +4,8 @@ class RequestHandler
 {
     private $modelMapper;
     private $controllerFactory;
+    private $routeObject;
+    private $controller;
 
     public function __construct($modelMapper, $controllerFactory)
     {
@@ -15,27 +17,63 @@ class RequestHandler
      * Handles the client's request by executing the mapped route on the right controller.
      *
      * @param $routeObject RouteObject      The mapped route object to be used to call the correct method on the controller.
-     * @throws Exception                    When the client used http request method is not supported by this application.
+     * @throws CoreException                    When the client used http request method is not supported by this application.
      */
     public function handleRequest($routeObject)
     {
-        $controller = $this->controllerFactory->createController($routeObject); //Create the proper controller.
-        $method = $routeObject->controllerMethod; //Get the method to be called on the controller.
-        $id = $routeObject->id; //Get the last part of the route the optional id. This variable can be an empty string.
+        $this->routeObject = $routeObject;
+        $this->setController(); //Set the controller to be used for handling this request.
 
         if($routeObject->httpMethod === "GET") //If the http request method was of the type GET, then call the controller method with the optional id variable.
         {
-            $controller->$method($id);
-            $_SESSION['prevLocation'] = $routeObject->controllerURLName . SEPARATOR . $routeObject->action;
+            $this->handleGET();
         }
         elseif($routeObject->httpMethod === "POST") //Else if the http request method was of the type POST, then map the posted data to a model and call the controller method with it as parameter.
         {
-            $model = $this->modelMapper->mapToModel();
-            $controller->$method($model);
+            $this->handlePOST();
         }
         else
         {
-            Throw new Exception("The client's used http request method is not support", 405);
+            Throw new CoreException("The client's used http request method is not support", 405, null, $this->routeObject);
         }
+    }
+
+    private function setController()
+    {
+        try
+        {
+            $this->controller = $this->controllerFactory->createController($this->routeObject); //Create the proper controller.
+        }
+        catch(Exception $ex)
+        {
+            $exception = new CoreException("The controller or one of it's dependencies could not be created.", 500, $ex, $this->routeObject);
+            throw $exception;
+        }
+    }
+
+    private function handlePOST()
+    {
+        $method = $this->routeObject->controllerMethod; //Get the method to be called on the controller.
+
+        try
+        {
+            $model = $this->modelMapper->mapToModel();
+        }
+        catch(Exception $ex)
+        {
+            $exception = new CoreException("The model could not be found and/or mapped.", 500, $ex, $this->routeObject);
+            throw $exception;
+        }
+
+        $this->controller->$method($model);
+    }
+
+    private function handleGET()
+    {
+        $method = $this->routeObject->controllerMethod; //Get the method to be called on the controller.
+        $id = $this->routeObject->id; //Get the last part of the route the optional id. This variable can be an empty string.
+
+        $this->controller->$method($id);
+        $_SESSION['prevLocation'] = $this->routeObject->controllerURLName . SEPARATOR . $this->routeObject->action;
     }
 }

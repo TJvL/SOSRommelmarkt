@@ -32,23 +32,6 @@ define("MAIN_DB", "main");
 //Constant that defines the user database. This must also be the name of the directory where all repositories that depend on this database are located. This is inside application/model/repositories
 define("USER_DB", "user");
 
-//Error handling settings.
-//If the server is running in development mode configure the error handling differently.
-if(DEV_RULES)
-{
-    ini_set("display_errors", "On");
-    ini_set("display_startup_errors", "On");
-    ini_set("error_reporting", "E_ALL");
-    ini_set("log_errors", "On");
-}
-else
-{
-    ini_set("display_errors", "Off");
-    ini_set("display_startup_errors", "Off");
-    ini_set("error_reporting", "E_ALL");
-    ini_set("log_errors", "On");
-}
-
 //Database connections
 $dbCons = array(
     //Main database:

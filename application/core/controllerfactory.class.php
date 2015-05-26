@@ -11,35 +11,30 @@ class ControllerFactory
 
     public function createController($routeObject)
     {
-        $controller = null;
+        $controllerReflection =  new ReflectionClass($routeObject->controller);
+        $controllerDependencyNames = $controllerReflection->getConstructor()->getParameters();
+        $controllerDependencies = array();
 
-        try
+        foreach ($controllerDependencyNames AS $dependency)
         {
-            $controllerReflection =  new ReflectionClass($routeObject->controller);
-            $controllerDependencyNames = $controllerReflection->getConstructor()->getParameters();
-            $controllerDependencies = array();
-
-            foreach ($controllerDependencyNames AS $dependency)
+            try
             {
-                if(strpos($dependency->name, "Repository"))
+                if (strpos($dependency->name, "Repository"))
                 {
                     $controllerDependencies[$dependency->name] = $this->repositoryFactory->createRepository($dependency->name);
-                }
-                else
+                } else
                 {
                     $reflectionClass = new ReflectionClass($dependency->name);
                     $controllerDependencies[$dependency->name] = $reflectionClass->newInstance();
                 }
             }
-
-            $controller = $controllerReflection->newInstanceArgs($controllerDependencies);
-        }
-        catch (Exception $ex)
-        {
-            $exception = new Exception("Something went wrong while trying to create the controller class, check inner exception.", 500, $ex);
-            throw $exception;
+            catch (Exception $ex)
+            {
+                $exception = new Exception("Something went wrong while trying to create the controller class, check inner exception.", 500, $ex);
+                throw $exception;
+            }
         }
 
-        return $controller;
+        return $controllerReflection->newInstanceArgs($controllerDependencies);;
     }
 }

@@ -3,7 +3,7 @@
 class ErrorHandler
 {
     private $exception; //The exception that will be handled.
-    private $routeObject; //The route object used when the exception occurred.
+    private $context; //A context containing possible information about the state of the application at exception time.
     private $exceptionEncountered; //Boolean that determines if an exception is encountered.
     private $httpCode; //The http response status code;
     private $clientMessage; //The error message the client will receive.
@@ -18,17 +18,29 @@ class ErrorHandler
      * Handles the given exception differently depending on whether development mode is on or not.
      *
      * @param $ex Exception			        The exception to be handled.
-     * @param $routeObject RouteObject      The route information used when the exception was thrown, can be null.
+     * @param $context Mixed                A context containing possible information about the state of the application at exception time, can be null.
      *
      */
-    public function handleException($ex, $routeObject)
+    public function handleException($ex, $context = null)
     {
         //Set the exception to be handled and indicate that an exception is encountered.
         $this->exception = $ex;
-        $this->routeObject = $routeObject;
+        $this->context = $context;
         $this->exceptionEncountered = true;
 
-        if($routeObject->isAPICall)
+        $handleAPI = false;
+        if(isset($context))
+        {
+            if(is_a($context, "RouteObject"))
+            {
+                if($context->isAPICall)
+                {
+                    $handleAPI = true;
+                }
+            }
+        }
+
+        if($handleAPI)
         {
             $this->handleAsAPI();
         }
@@ -75,8 +87,8 @@ class ErrorHandler
      */
     private function outputDevError()
     {
-        header('Content-Type: application/json');
-        exit(json_encode($this->exception));
+        var_dump($this->exception);
+        exit();
     }
 
     /**
@@ -116,7 +128,7 @@ class ErrorHandler
                 case 405:
                     $this->clientMessage = "HTTP request method wordt niet ondersteund op deze actie.";
                     return;
-                case 500:
+                default:
                     $this->clientMessage = "Interne server fout. Probeer opnieuw of neem contact op met de beheerder.";
                     return;
             }

@@ -16,7 +16,7 @@ abstract class Controller
         {
             throw new InvalidArgumentException("Action parameter must not be empty.");
         }
-        
+
         $controller = $this->name;
 
         include("includes/header.inc.php");
