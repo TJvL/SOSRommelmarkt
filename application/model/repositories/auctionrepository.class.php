@@ -17,7 +17,14 @@ class AuctionRepository
 		$query = "INSERT INTO Auction (startDate, endDate)
 			VALUES (?, ?)";
 		
-		return Database::insert($query, "ss", array($startDate, $endDate)); // TODO: fix dates
+		$id = Database::insert($query, "ss", array($startDate, $endDate)); // TODO: fix dates
+		
+		$auction = new Auction();
+		$auction->id = $id;
+		$auction->startDate = $startDate;
+		$auction->endDate = $endDate;
+		
+		return $auction;
 	}
 	
 	public static function selectAll()
