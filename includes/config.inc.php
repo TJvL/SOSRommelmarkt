@@ -20,7 +20,7 @@ define("DEFAULT_ACTION", "index");
 //Constant that defines the route to be taken when redirecting to error page.
 define("ERROR_ROUTE", "home/error");
 
-//Constant that defines if http requests should be held under stricter rules.
+//Constant that defines if http requests should be held under stricter rules. Meaning that values extracted from $_GET and $_POST should be mapped before the controller is called.
 define("STRICT_RULES", false);
 
 //Constant that defines if this server is in development mode.

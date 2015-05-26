@@ -71,12 +71,12 @@ class RouteMapper
         {
             if(!method_exists($this->routeObject->controller, $this->routeObject->controllerMethod))
             {
-                throw new Exception("Method: $this->routeObject->action in $this->routeObject->controller has not been defined");
+                throw new Exception("Method: " . $this->routeObject->action . " in " . $this->routeObject->controller . "has not been defined");
             }
         }
         else
         {
-            throw new Exception("$this->routeObject->controller has not been defined");
+            throw new Exception($this->routeObject->controller . "has not been defined");
         }
     }
 }
