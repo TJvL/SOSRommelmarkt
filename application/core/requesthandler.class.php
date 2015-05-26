@@ -3,10 +3,12 @@
 class RequestHandler
 {
     private $modelMapper;
+    private $controllerFactory;
 
-    public function __construct($modelMapper)
+    public function __construct($modelMapper, $controllerFactory)
     {
         $this->modelMapper = $modelMapper;
+        $this->controllerFactory = $controllerFactory;
     }
 
     /**
@@ -17,7 +19,7 @@ class RequestHandler
      */
     public function handleRequest($routeObject)
     {
-        $controller = new $routeObject->controller(); //Create the proper controller.
+        $controller = $this->controllerFactory->createController($routeObject); //Create the proper controller.
         $method = $routeObject->controllerMethod; //Get the method to be called on the controller.
         $id = $routeObject->id; //Get the last part of the route the optional id. This variable can be an empty string.
 

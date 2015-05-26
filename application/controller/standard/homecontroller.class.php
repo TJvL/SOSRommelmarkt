@@ -1,9 +1,13 @@
 <?php
 class HomeController extends Controller
 {
-    function __construct()
+    private $auctionProductRepository;
+
+    public function __construct($auctionProductRepository)
     {
-        parent::__constructor("home");
+        $this->auctionProductRepository = $auctionProductRepository;
+
+        Parent::__construct("home");
     }
 
     public function error_GET()
@@ -17,7 +21,7 @@ class HomeController extends Controller
     public function index_GET()
     {
         $productList = new ArrayList("AuctionProduct");
-        $productList->addAll(AuctionProductRepository::selectByCurrentAuction());
+        $productList->addAll($this->auctionProductRepository->selectByCurrentAuction());
         $this->render("index", $productList);
     }
 

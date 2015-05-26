@@ -1,10 +1,10 @@
 <?php
-class Controller
+abstract class Controller
 {
 	private $name;
     protected $viewBag;
 	
-	function __constructor($name)
+	protected function __construct($name)
 	{
 		$this->name = $name;
         $this->viewBag = array();
@@ -17,6 +17,7 @@ class Controller
             throw new InvalidArgumentException("Action parameter must not be empty.");
         }
 
+        echo "hoi";
         $controller = $this->name;
 
         include("includes/header.inc.php");

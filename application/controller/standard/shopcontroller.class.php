@@ -1,22 +1,26 @@
 <?php
 class ShopController extends Controller
 {
-    function __construct()
+    private $shopProductRepository;
+
+    public function __construct($shopProductRepository)
     {
-        parent::__constructor("shop");
+        $this->shopProductRepository = $shopProductRepository;
+
+        Parent::__construct("shop");
     }
 
     public function index_GET()
     {
         $productList = new ArrayList("Product");
-        $productList->addAll(ShopProductRepository::selectAll());
+        $productList->addAll($this->shopProductRepository->selectAll());
         
         $this->render("index", $productList);
     }
 
     public function detail_GET()
     {
-        $prod = ShopProductRepository::selectById($_GET['id']);
+        $prod = $this->shopProductRepository->selectById($_GET['id']);
 
         $this->render("detail", $prod);
     }

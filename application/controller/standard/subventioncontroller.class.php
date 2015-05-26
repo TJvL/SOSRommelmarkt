@@ -2,9 +2,9 @@
 
 class SubventionController extends Controller
 {
-    function __construct()
+    public function __construct()
     {
-        parent::__constructor("subvention");
+        parent::__construct("subvention");
     }
 
     public function index_GET()

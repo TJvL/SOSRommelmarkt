@@ -1,23 +1,27 @@
 <?php
 class AuctionController extends Controller
 {
-    function __construct()
+    private $auctionProductRepository;
+
+    public function __construct($auctionProductRepository)
     {
-        parent::__constructor("auction");
+        $this->auctionProductRepository = $auctionProductRepository;
+
+        parent::__construct("auction");
     }
 
     public function index_GET()
     {
         $productList = new ArrayList("Product");
-        $productList->addAll(AuctionProductRepository::selectByCurrentAuction());
+        $productList->addAll($this->auctionProductRepository->selectByCurrentAuction());
 
         $this->render("index", $productList);
     }
 
-    public function detail_GET()
+    public function detail_GET($id)
     {
         //Hier komt logic met de GET data
-        $prod = Product::get($_GET['id']);
+        $prod = $this->auctionProductRepository->selectById($id);
 
         $this->render("detail", $prod);
     }
@@ -32,11 +36,10 @@ class AuctionController extends Controller
     	$auctionProduct = null;
         if (isset($_POST['name']) && isset($_POST['description']) && isset($_POST['colorCode']) && isset($_POST['auctionId']))
         {
-            $auctionProduct = AuctionProductRepository::insert($_POST['name'], $_POST['description'], "Administrator", $_POST['colorCode']);
+            $auctionProduct = $this->auctionProductRepository->insert($_POST['name'], $_POST['description'], "Administrator", $_POST['colorCode']);
             $auctionProduct->addToAuction($_POST['auctionId']);
         }
         
         $this->redirectTo("/manage/auctionproduct/" . $auctionProduct->id);
     }
 }
-?>

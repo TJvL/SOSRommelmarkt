@@ -2,7 +2,12 @@
 
 class ShopProductRepository extends ProductRepository
 {
-	private static function createObjectFromArray($array)
+    public function __construct($database)
+    {
+        Parent::__construct($database);
+    }
+
+	private function createObjectFromArray($array)
 	{
 		$shopProduct = new ShopProduct();
 		$shopProduct->id = $array["id"];
@@ -18,16 +23,16 @@ class ShopProductRepository extends ProductRepository
 		return $shopProduct;
 	}
 	
-	public static function insert($name, $description, $addedBy, $colorCode, $price, $isReserved)
+	public function insert($name, $description, $addedBy, $colorCode, $price, $isReserved)
 	{
 		// Insert a normal product and get back the auto incremented key.
-		$id = parent::insert($name, $description, $addedBy, $colorCode);
+		$id = Parent::insert($name, $description, $addedBy, $colorCode);
 		
 		$query = "INSERT INTO ShopProduct (id, price, isReserved)
 				VALUES (?, ?, ?)";
 		
 		// Insert the shop product.
-		Database::insert($query, "idi", array($id, $price, $isReserved));
+        $this->database->insert($query, "idi", array($id, $price, $isReserved));
 		
 		$shopProduct = new ShopProduct();
 		$shopProduct->id = $id;
@@ -44,14 +49,14 @@ class ShopProductRepository extends ProductRepository
 		return $shopProduct;
 	}
 	
-	public static function selectAll()
+	public function selectAll()
 	{
 		$query = "SELECT ShopProduct.id, name, description, addedBy, colorCode, price, isReserved
 			FROM ShopProduct
 			LEFT JOIN Product
 			ON ShopProduct.id = Product.id";
 	
-		$result = Database::select($query);
+		$result = $this->database->select($query);
 	
 		$shopProducts = array();
 	
@@ -67,7 +72,7 @@ class ShopProductRepository extends ProductRepository
 		return $shopProducts;
 	}
 	
-	public static function selectById($id)
+	public function selectById($id)
 	{
 		$query = "SELECT ShopProduct.id, name, description, addedBy, colorCode, price, isReserved
 			FROM ShopProduct
@@ -75,7 +80,7 @@ class ShopProductRepository extends ProductRepository
 			ON ShopProduct.id = Product.id
 			WHERE ShopProduct.id = ?";
 	
-		$result = Database::select($query, "i", array($id));
+		$result = $this->database->select($query, "i", array($id));
 	
 		$row = $result->fetch_assoc();
 		
@@ -89,28 +94,26 @@ class ShopProductRepository extends ProductRepository
 		return $shopProduct;
 	}
 	
-	public static function updateById($id, $name, $description, $colorCode, $price, $isReserved)
+	public function updateById($id, $name, $description, $colorCode, $price, $isReserved)
 	{
-		parent::updateById($id, $name, $description, $colorCode);
+		Parent::updateById($id, $name, $description, $colorCode);
 	
 		$query = "UPDATE ShopProduct SET price = ?, isReserved = ? WHERE id = ?";
-	
-		Database::update($query, "dii", array($price, $isReserved, $id));
+
+        $this->database->update($query, "dii", array($price, $isReserved, $id));
 	}
 	
-	public static function update($product)
+	public function update($product)
 	{
 		ShopProductRepository::updateById($product->id, $product->name, $product->description, $product->colorCode, $product->price, $product->isReserved);
 	}
 	
-	public static function deleteById($id)
+	public function deleteById($id)
 	{
 		$query = "DELETE FROM ShopProduct WHERE id = ?";
+
+        $this->database->update($query, "i", array($id));
 		
-		Database::update($query, "i", array($id));
-		
-		parent::deleteById($id);
+		Parent::deleteById($id);
 	}
 }
-
-?>

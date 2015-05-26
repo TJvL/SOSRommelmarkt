@@ -1,15 +1,104 @@
 <?php
 class ManageController extends Controller
 {
-    function __construct()
+    private $projectRepository;
+    private $colorCodeRepository;
+    private $shopProductRepository;
+    private $auctionRepository;
+    private $partnerRepository;
+    private $auctionProductRepository;
+
+    public function __construct($projectRepository, $colorCodeRepository, $shopProductRepository, $auctionRepository, $partnerRepository, $auctionProductRepository)
     {
-        parent::__constructor("manage");
+        $this->projectRepository = $projectRepository;
+        $this->colorCodeRepository = $colorCodeRepository;
+        $this->shopProductRepository = $shopProductRepository;
+        $this->auctionRepository = $auctionRepository;
+        $this->partnerRepository = $partnerRepository;
+        $this->auctionProductRepository = $auctionProductRepository;
+
+        Parent::__construct("manage");
     }
     
     public function index_GET()
     {
         $this->render("index");
     }
+
+    public function companyInformation_POST()
+    {
+        // Check if all the necessary data has been sent with the request.
+        if (isset($_POST["phone"]) && isset($_POST["email"]) && isset($_POST["address"]) && isset($_POST["city"]) && isset($_POST["postalcode"]))
+        {
+            // set the data and update
+            $companyInformation             = CompanyInformation::selectCurrent();
+            $companyInformation->phone      = $_POST["phone"];
+            $companyInformation->email      = $_POST["email"];
+            $companyInformation->address    = $_POST["address"];
+            $companyInformation->city       = $_POST["city"];
+            $companyInformation->postalcode = $_POST["postalcode"];
+            $companyInformation->update();
+        }
+        $this->redirectTo("/manage/settings");
+    }
+
+    //<editor-fold desc="Pages Manage">
+
+    public function pages_GET()
+    {
+        $this->render("pages");
+    }
+
+    //     public function pages_POST()
+    // {
+    //     // Check if all the necessary data has been sent with the request.
+    //     if (isset($_POST["title"]) && isset($_POST["label"]) && isset($_POST["header"]) && isset($_POST["body"]))
+
+    //     {
+    //         // set the data and update
+    //         $addPages = AddPages::selectCurrent();
+    //         $addPages->title         = $_POST["title"];
+    //         $addPages->label         = $_POST["label"];
+    //         $addPages->header        = $_POST["header"];
+    //         $addPages->body          = $_POST["body"];
+    //         $addPages->update();
+    //     }
+
+    //     $this->redirectTo("/manage/pages");
+    // }
+
+    //</editor-fold>
+
+    //<editor-fold desc="Settings Manage">
+
+    public function settings_GET()
+    {
+        $this->render("settings");
+    }
+
+    public function settings_POST()
+    {
+        // Check if all the necessary data has been sent with the request.
+        if (isset($_POST["monday"]) && isset($_POST["tuesday"]) && isset($_POST["wednesday"]) && isset($_POST["thursday"]) && isset($_POST["friday"]) && isset($_POST["saturday"]) && isset($_POST["sunday"]))
+        {
+            // set the data and update
+            $visitingHours              = VisitingHours::selectCurrent();
+            $visitingHours->monday      = $_POST["monday"];
+            $visitingHours->tuesday     = $_POST["tuesday"];
+            $visitingHours->wednesday   = $_POST["wednesday"];
+            $visitingHours->thursday    = $_POST["thursday"];
+            $visitingHours->friday      = $_POST["friday"];
+            $visitingHours->saturday    = $_POST["saturday"];
+            $visitingHours->sunday      = $_POST["sunday"];
+            $visitingHours->update();
+        }
+
+        $this->redirectTo("/manage/settings");
+    }
+
+    //</editor-fold>
+
+    //<editor-fold desc="Subvention Manage">
     
     public function subventions_GET()
     {
@@ -27,10 +116,42 @@ class ManageController extends Controller
         $this->render("subventions", $subventionList);
     }
 
+    public function subventionsContent_POST()
+    {
+        // Check if all the necessary data has been sent with the request.
+        if (isset($_POST["titel"]) && isset($_POST["content"]))
+        {
+            // set the data and update
+            $subventionsContent             = SubventionsContent::selectCurrent();
+            $subventionsContent->titel      = $_POST["titel"];
+            $subventionsContent->content     = $_POST["content"];
+            $subventionsContent->update();
+        }
+        $this->redirectTo("/manage/subventions");
+    }
+
+    public function changeSubventionStatus_POST()
+    {
+        // Check if all the necessary data has been sent with the request.
+        if (isset($_POST["id"]) && isset($_POST["status"]))
+        {
+            // Get the product, set the data and update.
+            SubventionRequest::updateStatus($_POST["id"], $_POST["status"]);
+            $this->subventions_GET();
+        }
+        else{
+            //TODO: error handling
+        }
+    }
+
+    //  </editor-fold>
+
+    //<editor-fold desc="Projects Manage">
+
     public function projects_get()
     {
         $projectList = new ArrayList("Project");
-        $projectList->addAll(ProjectRepository::selectAll());
+        $projectList->addAll($this->projectRepository->selectAll());
         $this->render("projects", $projectList);
     }
 
@@ -55,7 +176,7 @@ class ManageController extends Controller
         }
 
         if($noVarsNull) {
-           ProjectRepository::insert($newProject);
+            $this->projectRepository->insert($newProject);
 
             //TODO: images upload function
 //            if(!empty( $_FILES ) )
@@ -103,7 +224,7 @@ class ManageController extends Controller
 
     public function deleteproject_POST(){
 
-        ProjectRepository::deleteById($_POST["id"]);
+        $this->projectRepository->deleteById($_POST["id"]);
         $this->redirectTo("/manage/projects");
     }
 
@@ -127,7 +248,7 @@ class ManageController extends Controller
         }
 
         if($noVarsNull){
-            ProjectRepository::update($project);
+            $this->projectRepository->update($project);
             $this->redirectTo("/manage/projectdetails/$project->id"); //TODO: add succes message (session data?)
         }
         else{
@@ -141,7 +262,7 @@ class ManageController extends Controller
         if (isset($_GET["id"]))
         {
             // Get the product.
-            $project = ProjectRepository::selectById($_GET["id"]);
+            $project = $this->projectRepository->selectById($_GET["id"]);
 
             // Render the view.
             $this->render("project", $project);
@@ -150,6 +271,10 @@ class ManageController extends Controller
         // TODO: Error or some shit
     }
 
+    //  </editor-fold>
+
+    //<editor-fold desc="Shop Product Manage">
+
     public function shopproducts_GET()
     {
         $this->render("shopproducts");
@@ -157,25 +282,15 @@ class ManageController extends Controller
     
     public function addshopproduct_GET()
     {
-        $colorCodes = ColorCodeRepository::selectAll();
+        $colorCodes = $this->colorCodeRepository->selectAll();
 
         $this->render("addshopproduct", $colorCodes);
     }
     
     public function addshopproduct_POST()
     {
-        $shopProduct = ShopProductRepository::insert($_POST["name"], $_POST["description"], "Administrator", $_POST["colorCode"], $_POST["price"], false);
+        $shopProduct = $this->shopProductRepository->insert($_POST["name"], $_POST["description"], "Administrator", $_POST["colorCode"], $_POST["price"], false);
         $this->redirectTo("/manage/shopproduct/$shopProduct->id");
-    }
-    
-    public function settings_GET()
-    {
-        $this->render("settings");
-    }
-
-	public function pages_GET()
-    {
-        $this->render("pages");
     }
     
     public function shopproduct_GET()
@@ -184,7 +299,7 @@ class ManageController extends Controller
         if (isset($_GET["id"]))
         {
             // Get the product.
-            $shopProduct = ShopProductRepository::selectById($_GET["id"]);
+            $shopProduct = $this->shopProductRepository->selectById($_GET["id"]);
             
             // Render the view.
             $this->render("shopproduct", $shopProduct);
@@ -198,7 +313,7 @@ class ManageController extends Controller
     	// Check if everything needed is here.
     	if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["colorCode"]) && isset($_POST["price"]) && isset($_POST["isReserved"]))
     	{
-    		ShopProductRepository::updateById($_POST["id"], $_POST["name"], $_POST["description"], $_POST["colorCode"], $_POST["price"], $_POST["isReserved"]);
+            $this->shopProductRepository->updateById($_POST["id"], $_POST["name"], $_POST["description"], $_POST["colorCode"], $_POST["price"], $_POST["isReserved"]);
     			
     		exit(json_encode(0));
     	}
@@ -212,7 +327,7 @@ class ManageController extends Controller
     	if (isset($_POST["id"]))
     	{
     		// Delete the database entry.
-    		ShopProductRepository::deleteById($_POST["id"]);
+            $this->shopProductRepository->deleteById($_POST["id"]);
     		
     		// Delete the product images recursively.
     		$dir = Product::IMAGES_DIRECTORY . "/" . $_POST["id"];
@@ -289,94 +404,15 @@ class ManageController extends Controller
         // TODO: Error or some shit
         exit(json_encode(1));
     }
-    
-    public function settings_POST()
-    {
-        // Check if all the necessary data has been sent with the request.
-        if (isset($_POST["monday"]) && isset($_POST["tuesday"]) && isset($_POST["wednesday"]) && isset($_POST["thursday"]) && isset($_POST["friday"]) && isset($_POST["saturday"]) && isset($_POST["sunday"]))
-        {
-            // set the data and update
-            $visitingHours              = VisitingHours::selectCurrent();
-            $visitingHours->monday      = $_POST["monday"];
-            $visitingHours->tuesday     = $_POST["tuesday"];
-            $visitingHours->wednesday   = $_POST["wednesday"];
-            $visitingHours->thursday    = $_POST["thursday"];
-            $visitingHours->friday      = $_POST["friday"];
-            $visitingHours->saturday    = $_POST["saturday"];
-            $visitingHours->sunday      = $_POST["sunday"];
-            $visitingHours->update();
-        }
-        
-        $this->redirectTo("/manage/settings");
-    }
 
-    //     public function pages_POST()
-    // {
-    //     // Check if all the necessary data has been sent with the request.
-    //     if (isset($_POST["title"]) && isset($_POST["label"]) && isset($_POST["header"]) && isset($_POST["body"]))
-        
-    //     {
-    //         // set the data and update
-    //         $addPages = AddPages::selectCurrent();
-    //         $addPages->title         = $_POST["title"];
-    //         $addPages->label         = $_POST["label"];
-    //         $addPages->header        = $_POST["header"];
-    //         $addPages->body          = $_POST["body"];
-    //         $addPages->update();
-    //     }
-        
-    //     $this->redirectTo("/manage/pages");
-    // }
+    //  </editor-fold>
 
-    public function companyInformation_POST()
-    {
-        // Check if all the necessary data has been sent with the request.
-        if (isset($_POST["phone"]) && isset($_POST["email"]) && isset($_POST["address"]) && isset($_POST["city"]) && isset($_POST["postalcode"]))
-        {
-            // set the data and update
-            $companyInformation             = CompanyInformation::selectCurrent();
-            $companyInformation->phone      = $_POST["phone"];
-            $companyInformation->email      = $_POST["email"];
-            $companyInformation->address    = $_POST["address"];
-            $companyInformation->city       = $_POST["city"];
-            $companyInformation->postalcode = $_POST["postalcode"];
-            $companyInformation->update();
-        }
-        $this->redirectTo("/manage/settings");
-    }
+    //<editor-fold desc="Auction Manage">
 
-
-     public function subventionsContent_POST()
-        {
-            // Check if all the necessary data has been sent with the request.
-            if (isset($_POST["titel"]) && isset($_POST["content"]))
-            {
-                // set the data and update
-                $subventionsContent             = SubventionsContent::selectCurrent();
-                $subventionsContent->titel      = $_POST["titel"];
-                $subventionsContent->content     = $_POST["content"];
-                $subventionsContent->update();
-            }
-            $this->redirectTo("/manage/subventions");
-        }
-
-    public function changeSubventionStatus_POST()
-    {
-        // Check if all the necessary data has been sent with the request.
-        if (isset($_POST["id"]) && isset($_POST["status"]))
-        {
-            // Get the product, set the data and update.
-            SubventionRequest::updateStatus($_POST["id"], $_POST["status"]);
-            $this->subventions_GET();
-        }
-        else{
-            //TODO: error handling
-        }
-    }
     public function auctions_GET()
     {
         $auctionList = new ArrayList("Auction");
-        $auctionList->addAll(AuctionRepository::selectAll());
+        $auctionList->addAll($this->auctionRepository->selectAll());
         
         $this->render("auctions", $auctionList);
     }
@@ -389,7 +425,7 @@ class ManageController extends Controller
             {
                 if (isset($_POST["auctionId"]))
                 {
-                    $auction = AuctionRepository::deleteById($_POST["auctionId"]);
+                    $auction = $this->auctionRepository->deleteById($_POST["auctionId"]);
                     
                     // return 0 for success
                     header("content-Type: application/json");
@@ -412,7 +448,7 @@ class ManageController extends Controller
     
     public function addauction_POST()
     {
-        $auction = AuctionRepository::insert($_POST["startDate"], $_POST['endDate']);
+        $auction = $this->auctionRepository->insert($_POST["startDate"], $_POST['endDate']);
         //$this->redirectTo("/manage/editauction/$auction->id");
         $this->redirectTo("/manage/auctions"); // tijdelijk totdat editauction compleet is
     }
@@ -423,7 +459,7 @@ class ManageController extends Controller
         {
             // get the auctionproducts
             $auctionProductList = new ArrayList("AuctionProduct");
-            $auctionProductList->addAll(AuctionProductRepository::selectByAuctionId($_GET["id"]));
+            $auctionProductList->addAll($this->auctionRepository->selectByAuctionId($_GET["id"]));
             
             // render
             $this->render("editauction", $auctionProductList);
@@ -431,23 +467,93 @@ class ManageController extends Controller
         
         // TODO: error catching
     }
+
+    //  </editor-fold>
+
+    //<editor-fold desc="Partner Manage">
+
     public function partners_GET()
     {
         $partnerArray = new ArrayList("Partner");
-        $partnerArray->addAll(PartnerRepository::selectAll());
+        $partnerArray->addAll($this->partnerRepository->selectAll());
         $this->render("partners", $partnerArray);
     }
+
     public function addpartner_GET()
     {
         $this->render("addpartner");
     }
+
     public function partner_GET()
     {
         if (isset($_GET["id"]))
         {
-            $this->render("partner", PartnerRepository::selectById($_GET["id"]));
+            $this->render("partner", $this->partnerRepository->selectById($_GET["id"]));
         }
     }
+
+    public function createpartner_POST()
+    {
+        // Check if everything needed is here.
+        if (isset($_POST["name"]) && isset($_POST["website"]) && isset($_FILES["image"]))
+        {
+            // Insert the partner record. And set $post id to the id for setpartnerimage.
+            $image = $this->partnerRepository->insert($_POST["name"], $_POST["website"]);
+
+            // Set the image.
+            $image->setImage($_FILES["image"]);
+
+            exit(json_encode(0));
+        }
+
+        exit(json_encode(1));
+    }
+
+    public function setpartnerimage_POST()
+    {
+        if (isset($_POST["id"]) && isset($_FILES["image"]))
+        {
+            Partner::setImageById($_POST["id"], $_FILES["image"]);
+
+            exit(json_encode(0));
+        }
+
+        exit(json_encode(1));
+    }
+
+    public function updatepartner_POST()
+    {
+        // Check if everything needed is here.
+        if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["website"]))
+        {
+            $this->partnerRepository->updateById($_POST["id"], $_POST["name"], $_POST["website"]);
+
+            exit(json_encode(0));
+        }
+
+        exit(json_encode(1));
+    }
+
+    public function deletepartner_POST()
+    {
+        // Check if everything needed is here.
+        if (isset($_POST["id"]))
+        {
+            // Delete the database entry.
+            $this->partnerRepository->deleteById($_POST["id"]);
+
+            // Delete the image.
+            Partner::deleteImageById($_POST["id"]);
+
+            exit(json_encode(0));
+        }
+
+        exit(json_encode(1));
+    }
+
+    //</editor-fold>
+
+    //<editor-fold desc="Auction Product Manage">
     
     public function auctionproduct_GET()
     {
@@ -455,7 +561,7 @@ class ManageController extends Controller
         if (isset($_GET["id"]))
         {
             // Render the view.
-            $this->render("auctionproduct", AuctionProductRepository::selectById($_GET["id"]));
+            $this->render("auctionproduct", $this->auctionProductRepository->selectById($_GET["id"]));
         }
          
         // TODO: Error or some shit
@@ -474,7 +580,7 @@ class ManageController extends Controller
                 if (isset($_POST["id"]))
                 {
                     // Delete the product.
-                    AuctionProductRepository::deleteById($_POST["id"]);
+                    $this->auctionProductRepository->deleteById($_POST["id"]);
     
                     // Delete the product images recursively.
                     $dir = Product::IMAGES_DIRECTORY . "/" . $_POST["id"];
@@ -505,11 +611,11 @@ class ManageController extends Controller
                 if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["colorCode"]))
                 {
                     // Get the product, set the data and update.
-                    $auctionProduct = AuctionProductRepository::selectById($_POST["id"]);
+                    $auctionProduct = $this->auctionProductRepository->selectById($_POST["id"]);
                     $auctionProduct->name = $_POST["name"];
                     $auctionProduct->description = $_POST["description"];
                     $auctionProduct->colorCode = $_POST["colorCode"];
-                    AuctionProductRepository::update($auctionProduct);
+                    $this->auctionProductRepository->update($auctionProduct);
     
                     // Return 0 for great success.
                     exit(json_encode(0));
@@ -555,65 +661,10 @@ class ManageController extends Controller
         // TODO: Error or some shit
         exit(json_encode(1));
     }
-    
-    public function createpartner_POST()
-    {    	
-    	// Check if everything needed is here.
-    	if (isset($_POST["name"]) && isset($_POST["website"]) && isset($_FILES["image"]))
-    	{
-	   		// Insert the partner record. And set $post id to the id for setpartnerimage.
-    		$image = PartnerRepository::insert($_POST["name"], $_POST["website"]);
-    		
-    		// Set the image.
-    		$image->setImage($_FILES["image"]);
-    		
-    		exit(json_encode(0));
-    	}
-    	
-    	exit(json_encode(1));
-    }
-    
-    public function setpartnerimage_POST()
-    {
-    	if (isset($_POST["id"]) && isset($_FILES["image"]))
-    	{
-    		Partner::setImageById($_POST["id"], $_FILES["image"]);
-    		
-    		exit(json_encode(0));
-    	}
-    	
-    	exit(json_encode(1));
-    }
-    
-    public function updatepartner_POST()
-    {
-    	// Check if everything needed is here.
-    	if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["website"]))
-    	{
-			PartnerRepository::updateById($_POST["id"], $_POST["name"], $_POST["website"]);
-			
-			exit(json_encode(0));
-    	}
-    	
-    	exit(json_encode(1));
-    }
-    
-    public function deletepartner_POST()
-    {
-    	// Check if everything needed is here.
-    	if (isset($_POST["id"]))
-    	{
-    		// Delete the database entry.
-    		PartnerRepository::deleteById($_POST["id"]);
-    		
-    		// Delete the image.
-    		Partner::deleteImageById($_POST["id"]);
-    		
-    		exit(json_encode(0));
-    	}
-    	 
-    	exit(json_encode(1));
-    }
+
+    //</editor-fold>
+
+    //<editor-fold desc="Slogan Manage">
     
     public function addslogan_GET()
     {
@@ -673,7 +724,11 @@ class ManageController extends Controller
         // TODO: Error or some shit
         exit(json_encode(1));
     }
-    
+
+    //</editor-fold>
+
+    //<editor-fold desc="Module Manage">
+
     public function addmodule_GET()
     {
     	$this->render("addmodule");
@@ -737,5 +792,6 @@ class ManageController extends Controller
         // TODO: Error or some shit
         exit(json_encode(1));
     }
+
+    //</editor-fold>
 }
-?>

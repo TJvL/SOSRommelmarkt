@@ -2,7 +2,14 @@
 
 class AuctionRepository
 {
-	private static function createObjectFromArray($array)
+    private $database;
+
+    public function __construct($database)
+    {
+        $this->database = $database;
+    }
+
+	private function createObjectFromArray($array)
 	{
 		$auction = new Auction();
 		$auction->id = $array["id"];
@@ -12,20 +19,20 @@ class AuctionRepository
 		return $auction;
 	}
 	
-	public static function insert($startDate, $endDate)
+	public function insert($startDate, $endDate)
 	{
 		$query = "INSERT INTO Auction (startDate, endDate)
 			VALUES (?, ?)";
 		
-		return Database::insert($query, "ss", array($startDate, $endDate)); // TODO: fix dates
+		return $this->database->insert($query, "ss", array($startDate, $endDate)); // TODO: fix dates
 	}
 	
-	public static function selectAll()
+	public function selectAll()
 	{
 		$query = "SELECT *
 			FROM Auction";
 		
-		$result = Database::select($query);
+		$result = $this->database->select($query);
 		
 		$auctions = array();
 		
@@ -41,13 +48,13 @@ class AuctionRepository
 		return $auctions;
 	}
 	
-	public static function selectById($id)
+	public function selectById($id)
 	{
 		$query = "SELECT *
 			FROM Auction
 			WHERE id = ?";
 	
-		$result = Database::select($query, "i", array($id));
+		$result = $this->database->select($query, "i", array($id));
 	
 		$row = $result->fetch_assoc();
 		
@@ -61,21 +68,19 @@ class AuctionRepository
 		return $auction;
 	}
 	
-	public static function update($auction)
+	public function update($auction)
 	{
 		$query = "UPDATE Auction
 			SET startDate = ?, endDate = ?
 			WHERE id = ?";
-		
-		Database::update($query, "ssi", array($auction->startDate, $auction->endDate, $auction->id)); // TODO: fix dates
+
+        $this->database->update($query, "ssi", array($auction->startDate, $auction->endDate, $auction->id)); // TODO: fix dates
 	}
 	
-	public static function deleteById($id)
+	public function deleteById($id)
 	{
 		$query = "DELETE FROM Auction WHERE id = ?";
-		
-		Database::update($query, "i", array($id));
+
+        $this->database->update($query, "i", array($id));
 	}
 }
-
-?>

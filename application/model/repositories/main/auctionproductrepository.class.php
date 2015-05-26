@@ -2,7 +2,12 @@
 
 class AuctionProductRepository extends ProductRepository
 {
-	private static function createObjectFromArray($array)
+    public function __construct($database)
+    {
+        Parent::__construct($database);
+    }
+
+	private function createObjectFromArray($array)
 	{
 		$auctionProduct = new AuctionProduct();
 		$auctionProduct->id = $array["id"];
@@ -16,16 +21,16 @@ class AuctionProductRepository extends ProductRepository
 		return $auctionProduct;
 	}
 	
-	public static function insert($name, $description, $addedBy, $colorCode)
+	public function insert($name, $description, $addedBy, $colorCode)
 	{
 		// Insert a normal product and get back the auto incremented key.
-		$id = parent::insert($name, $description, $addedBy, $colorCode);
+		$id = Parent::insert($name, $description, $addedBy, $colorCode);
 	
 		$query = "INSERT INTO AuctionProduct (id)
 				VALUES (?)";
 		
 		// Insert the auction product.
-		Database::insert($query, "i", array($id));
+        $this->database->insert($query, "i", array($id));
 	
 		$auctionProduct = new AuctionProduct();
 		$auctionProduct->id = $id;
@@ -40,14 +45,14 @@ class AuctionProductRepository extends ProductRepository
 		return $auctionProduct;
 	}
 	
-	public static function selectAll()
+	public function selectAll()
 	{
 		$query = "SELECT AuctionProduct.id, name, description, addedBy, colorCode
 			FROM AuctionProduct
 			LEFT JOIN Product
 			ON AuctionProduct.id = Product.id";
 	
-		$result = Database::select($query);
+		$result = $this->database->select($query);
 	
 		$auctionProducts = array();
 	
@@ -63,7 +68,7 @@ class AuctionProductRepository extends ProductRepository
 		return $auctionProducts;
 	}
 	
-	public static function selectById($id)
+	public function selectById($id)
 	{
 		$query = "SELECT AuctionProduct.id, name, description, addedBy, colorCode
 			FROM AuctionProduct
@@ -71,7 +76,7 @@ class AuctionProductRepository extends ProductRepository
 			ON AuctionProduct.id = Product.id
 			WHERE AuctionProduct.id = ?";
 	
-		$result = Database::select($query, "i", array($id));
+		$result = $this->database->select($query, "i", array($id));
 		
 		$row = $result->fetch_assoc();
 		
@@ -85,7 +90,7 @@ class AuctionProductRepository extends ProductRepository
 		return $auctionProduct;
 	}
 	
-	public static function selectByAuctionId($id)
+	public function selectByAuctionId($id)
 	{
 		$query = "SELECT AuctionProduct.id, name, description, addedBy, colorCode
 			FROM AuctionProductList
@@ -95,7 +100,7 @@ class AuctionProductRepository extends ProductRepository
 			ON AuctionProduct.id = Product.id
 			WHERE Auction_id = ?";
 	
-		$result = Database::select($query, "i", array($id));
+		$result = $this->database->select($query, "i", array($id));
 	
 		$auctionProducts = array();
 	
@@ -110,7 +115,7 @@ class AuctionProductRepository extends ProductRepository
 		return $auctionProducts;
 	}
 	
-	public static function selectByCurrentAuction()
+	public function selectByCurrentAuction()
 	{
 		$query = "SELECT AuctionProduct.id, name, description, addedBy, colorCode
 			FROM AuctionProductList
@@ -127,7 +132,7 @@ class AuctionProductRepository extends ProductRepository
 				LIMIT 1
 			)";
 		
-		$result = Database::select($query);
+		$result = $this->database->select($query);
 		
 		$auctionProducts = array();
 		
@@ -143,24 +148,22 @@ class AuctionProductRepository extends ProductRepository
 		return $auctionProducts;
 	}
 	
-	public static function update($product)
+	public function update($product)
 	{
-		parent::update($product);
+		$this->update($product);
 	}
 	
-	public static function deleteById($id)
+	public function deleteById($id)
 	{
 		// Delete from auctionproductlist table.
-		$query = "DELETE FROM AuctionProductList WHERE AuctionProduct_id = ?";
-		Database::update($query1, "i", array($id));
+		$query1 = "DELETE FROM AuctionProductList WHERE AuctionProduct_id = ?";
+        $this->database->update($query1, "i", array($id));
 	
 		// Delete from auctionproduct table.
-		$query = "DELETE FROM AuctionProduct WHERE id = ?";
-		Database::update($query2, "i", array($id));
+		$query2 = "DELETE FROM AuctionProduct WHERE id = ?";
+        $this->database->update($query2, "i", array($id));
 	
 		// Delete from product table.
-		parent::deleteById($id);
+        Parent::deleteById($id);
 	}
 }
-
-?>

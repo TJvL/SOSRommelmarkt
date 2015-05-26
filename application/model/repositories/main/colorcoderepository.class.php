@@ -2,7 +2,14 @@
 
 class ColorCodeRepository
 {
-	private static function createObjectFromArray($array)
+    private $database;
+
+    public function __construct($database)
+    {
+        $this->database = $database;
+    }
+
+    private function createObjectFromArray($array)
 	{
 		$colorCode = new ColorCode();
 		$colorCode->name = $array["name"];
@@ -11,20 +18,20 @@ class ColorCodeRepository
 		return $colorCode;
 	}
 	
-	public static function insert($name, $description)
+	public function insert($name, $description)
 	{
 		$query = "INSERT INTO ColorCode (name, description)
 			VALUES (?, ?)";
 		
-		return Database::insert($query, "ss", array($name, $description));
+		return $this->database->insert($query, "ss", array($name, $description));
 	}
 	
-	public static function selectAll()
+	public function selectAll()
 	{
 		$query = "SELECT * FROM ColorCode";
 	
 		// Execute the query.
-		$result = Database::select($query);
+		$result = $this->database->select($query);
 	
 		$colorCodes = array();
 	
@@ -40,12 +47,10 @@ class ColorCodeRepository
 		return $colorCodes;
 	}
 	
-	public static function deleteByName($name)
+	public function deleteByName($name)
 	{
 		$query = "DELETE FROM ColorCode WHERE name = ?";
-		
-		Database::update($query, "s", array($name));
+
+        $this->database->update($query, "s", array($name));
 	}
 }
-
-?>

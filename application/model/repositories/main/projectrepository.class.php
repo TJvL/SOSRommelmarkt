@@ -2,7 +2,14 @@
 
 class ProjectRepository
 {
-    private static function createObjectFromArray($array)
+    private $database;
+
+    public function __construct($database)
+    {
+        $this->database = $database;
+    }
+
+    private function createObjectFromArray($array)
     {
         $project = new Project();
         $project->id = $array["idProject"];
@@ -12,7 +19,7 @@ class ProjectRepository
         return $project;
     }
 
-    public static function insert($project)
+    public function insert($project)
     {
         $query = "INSERT INTO Project (title, body)
 			VALUES (?, ?)";
@@ -20,7 +27,7 @@ class ProjectRepository
         return Database::insert($query, "ss", array($project->title, $project->body));
     }
 
-    public static function selectAll()
+    public function selectAll()
     {
         $query = "SELECT * FROM Project";
 
@@ -43,7 +50,7 @@ class ProjectRepository
         return $projects;
     }
 
-    public static function selectById($id)
+    public function selectById($id)
     {
         $query = "SELECT * FROM Project WHERE idProject = ?";
 
@@ -61,7 +68,7 @@ class ProjectRepository
         return $project;
     }
 
-    public static function update($project)
+    public function update($project)
     {
         $query = "UPDATE Project
 			SET title = ?, body = ?
@@ -70,7 +77,7 @@ class ProjectRepository
         Database::update($query, "ssi", array($project->title, $project->body, $project->id));
     }
 
-    public static function deleteById($id)
+    public function deleteById($id)
     {
         $query = "DELETE FROM Project WHERE idProject = ?";
 

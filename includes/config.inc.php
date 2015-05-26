@@ -26,6 +26,12 @@ define("STRICT_RULES", false);
 //Constant that defines if this server is in development mode.
 define("DEV_RULES", true);
 
+//Constant that defines the main database. This must also be the name of the directory where all repositories that depend on this database are located. This is inside application/model/repositories
+define("MAIN_DB", "main");
+
+//Constant that defines the user database. This must also be the name of the directory where all repositories that depend on this database are located. This is inside application/model/repositories
+define("USER_DB", "user");
+
 //Error handling settings.
 //If the server is running in development mode configure the error handling differently.
 if(DEV_RULES)
@@ -42,6 +48,24 @@ else
     ini_set("error_reporting", "E_ALL");
     ini_set("log_errors", "On");
 }
+
+//Database connections
+$dbCons = array(
+    //Main database:
+    MAIN_DB=>array(
+        "host"=>"samwise.technotive.nl",
+        "username"=>"sosAdmin",
+        "password"=>"shadowrend",
+        "database"=>"sosRommel",
+        "port"=>3306),
+    //User Database:
+    USER_DB=>array(
+        "host"=>"samwise.technotive.nl",
+        "username"=>"sosAccountUser",
+        "password"=>"supaplex",
+        "database"=>"sosUser",
+        "port"=>3306)
+    );
 
 //Autoload functionality
 //This function searches all directories in application for the requested class and requires it.

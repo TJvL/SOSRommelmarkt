@@ -1,9 +1,9 @@
 <?php
 class AccountController extends Controller
 {
-    function __construct()
+    public function __construct()
     {
-        parent::__constructor("account");
+        Parent::__construct("account");
     }
 
     public function index_GET()

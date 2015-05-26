@@ -2,7 +2,14 @@
 
 class ModuleRepository
 {
-	private static function createObjectFromArray($array)
+    private $database;
+
+    public function __construct($database)
+    {
+        $this->database = $database;
+    }
+
+    private function createObjectFromArray($array)
 	{
 		$module						= new Module();
 		$module->id					= $array["id"];
@@ -16,7 +23,7 @@ class ModuleRepository
 		return $module;
 	}
 	
-	public static function insert($name, $website)
+	public function insert($name, $website)
 	{
 		$query = "INSERT INTO Modules (heading, content, category, reference, reference_label)
 					VALUES(?, ?, ?, ?, ?)";
@@ -24,7 +31,7 @@ class ModuleRepository
 		return Database::insert($query, "sssss", array($heading, $content, $category, $reference, $reference_label));
 	}
 	
-	public static function update($partner)
+	public function update($partner)
 	{
 		$query = "UPDATE Modules
 					SET heading = ?, content = ?, position = ?, category = ?, reference = ?, reference_label = ?
@@ -33,7 +40,7 @@ class ModuleRepository
 		Database::update($query, "ssssssi", array($this->heading, $this->content, $this->position, $this->category, $this->reference, $this->reference_label, $this->id));
 	}
 
-    public static function selectById($id)
+    public function selectById($id)
     {
 		$query = "SELECT *
 					FROM Modules
@@ -52,20 +59,20 @@ class ModuleRepository
 		return $module;
     }
 	
-	public static function deleteById($id)
+	public function deleteById($id)
 	{
 		$query = "DELETE FROM Modules
 					WHERE id = ?";
-		
-		Database::update($query, "i", array($id));
+
+        $this->database->update($query, "i", array($id));
 	}
 	
-	public static function selectAll()
+	public function selectAll()
     {
 		$query = "SELECT *
 					FROM Modules";
 		// execute the query
-		$result = Database::select($query);
+		$result = $this->database->select($query);
 		
 		// put the results in an array of objects
 		$modules = array();
@@ -81,7 +88,7 @@ class ModuleRepository
 		return $modules;
     }
 	
-	public static function selectByCategory($category)
+	public function selectByCategory($category)
 	{
 		$query = "SELECT *
 					FROM Modules
@@ -89,7 +96,7 @@ class ModuleRepository
 					ORDER BY position ASC";
 				
 		// execute the query
-		$result = Database::select($query, "s", array($category));
+		$result = $this->database->select($query, "s", array($category));
 		
 		// put the results in an array of objects
 		$modules = array();
@@ -105,5 +112,3 @@ class ModuleRepository
 		return $modules;
 	}
 }
-
-?>
