@@ -1,9 +1,10 @@
 /*Logo*/
 #logo{
-    position:relative;
-    margin-top:10px;
-    margin-left: 30px;
-    width:100%;
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 60px;
+  width: auto;
 }
 
 #headerdiv{

@@ -6,37 +6,10 @@
         <div class="col-md-">
 
 
-           <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-           <script type="text/javascript" src="<?php echo ROOT_PATH; ?>/js/home/contact/gmaps.js"></script>
            <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
-           <script type="text/javascript">
-                 var geocoder;
-                 var map;
-                 function initialize() {
-                  geocoder = new google.maps.Geocoder();
-                  var latlng = new google.maps.LatLng(34.052234,-118.243685);
-                  var address = '<?php echo $companyInformation->address.', '.$companyInformation->city; ?>';
+          <script type="text/javascript" src="<?php echo ROOT_PATH;?>/js/home/contact/googlemaps.js"> </script>
 
-                  var myOptions = {
-                    zoom: 15,
-                    center: latlng,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                }
-                map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-                geocoder.geocode( { 'address': address}, function(results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                      map.setCenter(results[0].geometry.location);
-                      var marker = new google.maps.Marker({
-                          map: map, 
-                          position: results[0].geometry.location
-                      });
-                  } else {
-                      alert("Geocode was not successful for the following reason: " + status);
-                  }
-              });
-            }
-          </script>
-
+           
       <body onload="initialize()">
         <div id="map_canvas" style="width: 100%; height: 280px;"></div>
       </body>
@@ -102,8 +75,9 @@
            <p>
                <?php $companyInformation = CompanyInformation::selectCurrent(); ?>
 
-               <?php echo $companyInformation->address;?><br />
-               <?php echo $companyInformation->postalcode . ", " . $companyInformation->city; ?><br />
+              <div id="adres"> <?php echo $companyInformation->address;?><br /> </div>
+              <div id="plaats"><?php echo $companyInformation->city; ?> </div>
+              <div id-"postcode"><?php echo $companyInformation->postalcode . ", " . $companyInformation->city; ?><br /></div>
                <?php echo $companyInformation->phone; ?><br />
                <a href="mailto:<?php echo $companyInformation->email; ?>" target="_top"><?php $companyInformation->email; ?></a>
           </p> 

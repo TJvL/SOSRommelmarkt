@@ -14,7 +14,7 @@ IncludeLocator::locateIncludes("js", $controller, $action);
 
 </head>
 <body>
-    <nav class= "navbar navbar-default navbar-static-top">
+    <nav class= "navbar navbar-default navbar-static-top header_fixed">
         <div class="container">
             <?php 
             	// contactinfo ophalen
@@ -30,9 +30,11 @@ IncludeLocator::locateIncludes("js", $controller, $action);
                             <div class="contact-mail"><span><?php echo $companyInformation->email ?> </span></div>
                             <span class="icon"><i class="fa fa-map-marker"></i></span>
                             <div class="contact-address"><span><?php echo $companyInformation->address . ", " . $companyInformation->postalcode . " " . $companyInformation->city; ?></span></div>
-                            <li><a href="<?php echo ROOT_PATH; ?>/home/contact"><i class="fa fa-envelope"></i> Contact</a></li>
                         </div>
                     </li>
+                    <li><a href="<?php echo ROOT_PATH; ?>/home/contact"><i class="fa fa-envelope"></i> Contact</a></li>
+                    <li><a href="<?php echo ROOT_PATH; ?>/account/login"><i class="fa fa-sign-in"></i> Inloggen</a></li>
+                    <li><a href="<?php echo ROOT_PATH; ?>/account/register"><i class="fa fa-user-plus"></i> Registreren</a></li>
                 </ul>
             </div>
         </div>
@@ -40,7 +42,7 @@ IncludeLocator::locateIncludes("js", $controller, $action);
 
     <div class="container"> 
         <div id="headerdiv">
-            <div class="row">
+            <div class="row menu_position">
                 <div class="col-sm-3">
                     <a href="<?php echo ROOT_PATH; ?>/home/index">
                         <img class="img-responsive" id="logo" src="<?php echo ROOT_PATH; ?>/img/content/logo2.png" />

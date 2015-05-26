@@ -20,6 +20,14 @@ div .white{
     
 }
 
+.header_fixed {
+    position:fixed;
+    width: 100%;
+}
+.menu_position {
+    margin-top: 50px;
+}
+
 div .grey{
     margin-top:30px;
     padding:2em;
@@ -332,4 +340,10 @@ pre.pre-override {
     background-color: #ffffff;
     border: none;
     font-family: sans-serif;
+}
+
+
+.navbar-default{
+	position: fixed;
+
 }
