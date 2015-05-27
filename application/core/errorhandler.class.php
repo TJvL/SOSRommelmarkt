@@ -3,6 +3,7 @@
 class ErrorHandler
 {
     private $exception; //The exception that will be handled.
+    private $routeObject; //The route object used when the exception occurred.
     private $exceptionEncountered; //Boolean that determines if an exception is encountered.
     private $httpCode; //The http response status code;
     private $clientMessage; //The error message the client will receive.
@@ -16,20 +17,49 @@ class ErrorHandler
     /**
      * Handles the given exception differently depending on whether development mode is on or not.
      *
-     * @param $ex			The exception to be handled.
+     * @param $ex Exception			        The exception to be handled.
+     * @param $routeObject RouteObject      The route information used when the exception was thrown, can be null.
      *
      */
-    public function handleException($ex)
+    public function handleException($ex, $routeObject)
     {
         //Set the exception to be handled and indicate that an exception is encountered.
         $this->exception = $ex;
+        $this->routeObject = $routeObject;
         $this->exceptionEncountered = true;
 
+        if($routeObject->isAPICall)
+        {
+            $this->handleAsAPI();
+        }
+        else
+        {
+            $this->handleAsStandard();
+        }
+    }
 
+    private function handleAsAPI()
+    {
         if($this->devMode) //If development mode is active handle the error differently.
         {
             $this->logError(); //The error is logged to php server log.
-            $this->outputError(); //The error is displayed with all exception information available to the client.
+            $this->outputDevError(); //The error is displayed with all exception information available to the client.
+        }
+        else //Else handle it normally.
+        {
+            $this->setClientResponse(); //Prepare the client error response message.
+            $this->logError(); //The error is logged to php server log.
+            $this->notifyAdmin(); //The configured e-mail address is notified of the error.
+            $this->outputError();
+        }
+    }
+
+    private function handleAsStandard()
+    {
+        if($this->devMode) //If development mode is active handle the error differently.
+        {
+            $this->logError(); //The error is logged to php server log.
+            $this->outputDevError(); //The error is displayed with all exception information available to the client.
         }
         else //Else handle it normally.
         {
@@ -43,10 +73,19 @@ class ErrorHandler
     /**
      * Dumps the contents of the exception object to the client.
      */
+    private function outputDevError()
+    {
+        header('Content-Type: application/json');
+        exit(json_encode($this->exception));
+    }
+
+    /**
+     * Gives the client a notice of the occurred error in JSON.
+     */
     private function outputError()
     {
-        var_dump($this->exception);
-        die();
+        header('Content-Type: application/json');
+        exit(json_encode($this->clientMessage));
     }
 
     /**
