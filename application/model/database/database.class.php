@@ -34,7 +34,7 @@ class Database
 	public function select($query, $parameterTypes = null, $parameters = null)
 	{
 		// Create a connection to the database.
-		$connection = $this->$connectionContext->connect();
+		$connection = $this->connectionContext->connect();
 		
 		try
 		{
@@ -78,7 +78,7 @@ class Database
 	public function update($query, $parameterTypes = null, $parameters = null)
 	{
 		// Create a connection to the database.
-        $connection = $this->$connectionContext->connect();
+        $connection = $this->connectionContext->connect();
 		
 		try
 		{
@@ -119,7 +119,7 @@ class Database
 	public function insert($query, $parameterTypes = null, $parameters = null)
 	{
 		// Create a connection to the database.
-        $connection = $this->$connectionContext->connect();
+        $connection = $this->connectionContext->connect();
 		
 		try
 		{

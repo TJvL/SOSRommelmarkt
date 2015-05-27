@@ -3,8 +3,6 @@
 class ExceptionHandler
 {
     private $exception; //The exception that will be handled.
-    private $context; //A context containing possible information about the state of the application at exception time.
-    private $exceptionEncountered; //Boolean that determines if an exception is encountered.
     private $httpCode; //The http response status code;
     private $clientMessage; //The error message the client will receive.
     private $devMode; //Defines if the server is running in development mode.
@@ -18,14 +16,13 @@ class ExceptionHandler
      * Handles the given exception differently depending on whether development mode is on or not.
      *
      * @param $ex Exception			        The exception to be handled.
-     * @param $context Mixed                A context containing possible information about the state of the application at exception time, can be null.
      *
      */
     public function handleException($ex)
     {
+        ob_end_clean(); //Remove all accumulated output in the buffer.
         //Set the exception to be handled and indicate that an exception is encountered.
         $this->exception = $ex;
-        $this->exceptionEncountered = true;
 
         $handleAPI = false;
         if(is_a($ex, "CoreException"))

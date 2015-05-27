@@ -19,7 +19,8 @@ class RepositoryFactory
         {
             $config = $this->dbCons[$classDirName];
             $context = new ConnectionContext($config['host'], $config['username'], $config['password'], $config['database'], $config['port']);
-            return $repositoryReflection->newInstance($context);
+            $database = new Database($context);
+            return $repositoryReflection->newInstance($database);
         }
         else
         {
