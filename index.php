@@ -7,32 +7,7 @@ session_start();
 
 // Load the server configuration.
 include(__DIR__ . "/includes/config.inc.php");
-
-//Set a exception handler for when a exception is not caught below.
-function handleException($exception)
-{
-    $errorHandler = new ErrorHandler(DEV_RULES);
-    if(is_a($exception, "PHPError"))
-    {
-        $errorHandler->handleException($exception, $exception->getContext);
-    }
-    elseif(is_a($exception, "CoreException"))
-    {
-        $errorHandler->handleException($exception, $exception->getRouteObject);
-    }
-    else
-    {
-        $errorHandler->handleException($exception, null);
-    }
-}
-set_exception_handler("handleException");
-
-//Set php error handler to a function that throws exceptions
-function handleError($code, $message, $file, $line, $context)
-{
-    throw new PHPError($code, $message, $file, $line, $context);
-}
-set_error_handler('handleError', E_ALL);
+include(__DIR__ . "/includes/exceptionhandling.inc.php");
 
 $routeMapper = new RouteMapper(STRICT_RULES); //A route mapping service that map the requested route and checks if it is valid. Then returns a RouteObject when it successfully maps the route.
 $repositoryFactory = new RepositoryFactory($dbCons);
