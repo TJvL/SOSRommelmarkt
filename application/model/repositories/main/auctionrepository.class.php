@@ -23,8 +23,15 @@ class AuctionRepository
 	{
 		$query = "INSERT INTO Auction (startDate, endDate)
 			VALUES (?, ?)";
+
+		$id = $this->database->insert($query, "ss", array($startDate, $endDate)); // TODO: fix dates
 		
-		return $this->database->insert($query, "ss", array($startDate, $endDate)); // TODO: fix dates
+		$auction = new Auction();
+		$auction->id = $id;
+		$auction->startDate = $startDate;
+		$auction->endDate = $endDate;
+		
+		return $auction;
 	}
 	
 	public function selectAll()
