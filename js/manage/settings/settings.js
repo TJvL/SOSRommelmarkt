@@ -1,5 +1,10 @@
 $(document).ready(function() {
-	$('#sloganTable').DataTable();
+	$('#sloganTable').DataTable({
+		"columnDefs": [{
+			"width": "7em", "targets": 1
+		}],
+		"ordering": false
+	});
 	$('#homeTable').DataTable({
 		"columnDefs": [{
 			"width": "7em", "targets": 1
