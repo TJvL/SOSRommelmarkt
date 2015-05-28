@@ -2,7 +2,14 @@
 
 class SloganRepository
 {
-	private static function createObjectFromArray($array)
+    private $database;
+
+    public function __construct($database)
+    {
+        $this->database = $database;
+    }
+
+	private function createObjectFromArray($array)
 	{
 		$slogan			= new Slogan();
 		$slogan->id		= $array["id"];
@@ -11,12 +18,12 @@ class SloganRepository
 		return $slogan;
 	}
 	
-	public static function insert($slogan)
+	public function insert($slogan)
 	{
 		$query = "INSERT INTO Slogans (slogan)
 					VALUES(?)";
 		
-		return Database::insert($query, "s", array($slogan));
+		return $this->database->insert($query, "s", array($slogan));
 	}
 	
 	public function update($slogan)
@@ -24,22 +31,22 @@ class SloganRepository
 		$query = "UPDATE Slogans
 					SET slogan = ?
 					WHERE id = ?";
-		
-		Database::update($query, "si", array($slogan->slogan, $slogan->id));
+
+        $this->database->update($query, "si", array($slogan->slogan, $slogan->id));
 	}
 	
-	public static function selectById($id)
+	public function selectById($id)
 	{
 		$query = "SELECT *
 					FROM Slogans
 					WHERE id = ?";
 		
 		// execute the query
-		$result = Database::select($query, "i", array($id));
+		$result = $this->database->select($query, "i", array($id));
 		
 		// put the results in an object
 		$array = $result->fetch_assoc();
-		$slogan = SloganRepository::createObjectFromArray($array);
+		$slogan = $this->createObjectFromArray($array);
 		
 		// free result
 		$result->close();
@@ -47,12 +54,12 @@ class SloganRepository
 		return $slogan;
 	}
 	
-	public static function selectAll()
+	public function selectAll()
 	{
 		$query = "SELECT *
 					FROM Slogans";
 		// execute the query
-		$result = Database::select($query);
+		$result = $this->database->select($query);
 		
 		// put the results in an array of objects
 		$slogans = array();
@@ -60,7 +67,7 @@ class SloganRepository
 		for ($i = 0; $i < $result->num_rows; $i++)
 		{
 			$row = $result->fetch_assoc();
-			$slogans[$i] = SloganRepository::createObjectFromArray($row);
+			$slogans[$i] = $this->createObjectFromArray($row);
 		}
 		
 		// free result
@@ -68,13 +75,11 @@ class SloganRepository
 		return $slogans;
 	}
 	
-	public static function deleteById($id)
+	public function deleteById($id)
 	{
 		$query = "DELETE FROM Slogans
 					WHERE id = ?";
-		
-		Database::update($query, "i", array($id));
+
+        $this->database->update($query, "i", array($id));
 	}
 }
-
-?>

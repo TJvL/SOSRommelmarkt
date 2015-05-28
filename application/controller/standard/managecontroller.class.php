@@ -8,10 +8,12 @@ class ManageController extends Controller
     private $partnerRepository;
     private $auctionProductRepository;
     private $subventionRequestRepository;
+    private $moduleRepository;
+    private $sloganRepository;
 
     public function __construct($projectRepository, $colorCodeRepository, $shopProductRepository,
                                 $auctionRepository, $partnerRepository, $auctionProductRepository,
-                                $subventionRequestRepository)
+                                $subventionRequestRepository, $moduleRepository, $sloganRepository)
     {
         $this->projectRepository = $projectRepository;
         $this->colorCodeRepository = $colorCodeRepository;
@@ -20,6 +22,8 @@ class ManageController extends Controller
         $this->partnerRepository = $partnerRepository;
         $this->auctionProductRepository = $auctionProductRepository;
         $this->subventionRequestRepository = $subventionRequestRepository;
+        $this->moduleRepository = $moduleRepository;
+        $this->sloganRepository = $sloganRepository;
 
         parent::__construct("manage");
     }
@@ -677,7 +681,7 @@ class ManageController extends Controller
     
     public function addslogan_POST()
     {
-        SloganRepository::insert($_POST["slogan"]);
+        $this->sloganRepository->insert($_POST["slogan"]);
         
         $this->redirectTo("/manage/settings#tab_slogans");
     }
@@ -686,7 +690,7 @@ class ManageController extends Controller
     {
         if (isset($_GET["id"]))
         {
-            $this->render("slogan", SloganRepository::selectById($_GET["id"]));
+            $this->render("slogan", $this->sloganRepository->selectById($_GET["id"]));
         }
     }
     
@@ -701,7 +705,7 @@ class ManageController extends Controller
                 if (isset($_POST["id"]))
                 {
                     // Delete the partner.
-                    SloganRepository::deleteById($_POST["id"]);
+                    $this->sloganRepository->deleteById($_POST["id"]);
         
                     // Return 0 for great success.
                     header("content-Type: application/json");
@@ -714,9 +718,9 @@ class ManageController extends Controller
                 if (isset($_POST["id"]) && isset($_POST["slogan"]))
                 {
                     // Get the slogan, set the data and update.
-                    $slogan = SloganRepository::selectById($_POST["id"]);
+                    $slogan = $this->sloganRepository->selectById($_POST["id"]);
                     $slogan->slogan = $_POST["slogan"];
-                    SloganRepository::update($slogan);
+                    $this->sloganRepository->update($slogan);
         
                     // Return 0 for great success.
                     header("content-Type: application/json");
@@ -741,7 +745,7 @@ class ManageController extends Controller
     
     public function addmodule_POST()
     {
-    	ModuleRepository::insert($_POST["heading"], $_POST["content"], $_POST["category"], $_POST["reference"], $_POST["reference_label"]);
+        $this->moduleRepository->insert($_POST["heading"], $_POST["content"], $_POST["category"], $_POST["reference"], $_POST["reference_label"]);
 		$this->redirectTo($_POST["returnPath"]);
     }
     
@@ -749,7 +753,7 @@ class ManageController extends Controller
     {
         if (isset($_GET["id"]))
         {
-            $this->render("module", ModuleRepository::selectById($_GET["id"]));
+            $this->render("module", $this->moduleRepository->selectById($_GET["id"]));
         }
     }
     
@@ -765,7 +769,7 @@ class ManageController extends Controller
                 if (isset($_POST["id"]))
                 {
                     // Delete the module.
-                    ModuleRepository::deleteById($_POST["id"]);
+                    $this->moduleRepository->deleteById($_POST["id"]);
         
                     // Return 0 for great success.
                     header("content-Type: application/json");
@@ -778,13 +782,13 @@ class ManageController extends Controller
                 if (isset($_POST["id"]) && isset($_POST["heading"]) && isset($_POST["content"]) && isset($_POST["category"]) && isset($_POST["reference"]) && isset($_POST["reference_label"]))
                 {
                     // Get the module, set the data and update.
-                    $module						= ModuleRepository::selectById($_POST["id"]);
+                    $module						= $this->moduleRepository->selectById($_POST["id"]);
                     $module->heading			= $_POST["heading"];
                     $module->content			= $_POST["content"];
                     $module->category			= $_POST["category"];
                     $module->reference			= $_POST["reference"];
                     $module->reference_label	= $_POST["reference_label"];
-                    ModuleRepository::update($module);
+                    $this->moduleRepository->update($module);
         
                     // Return 0 for great success.
                     header("content-Type: application/json");
