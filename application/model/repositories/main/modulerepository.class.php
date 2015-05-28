@@ -22,22 +22,22 @@ class ModuleRepository
 		
 		return $module;
 	}
-	
-	public function insert($name, $website)
+
+	public function insert($heading, $content, $category, $reference, $reference_label)
 	{
 		$query = "INSERT INTO Modules (heading, content, category, reference, reference_label)
 					VALUES(?, ?, ?, ?, ?)";
 		
-		return Database::insert($query, "sssss", array($heading, $content, $category, $reference, $reference_label));
+		return $this->database->insert($query, "sssss", array($heading, $content, $category, $reference, $reference_label));
 	}
-	
-	public function update($partner)
+
+	public function update($module)
 	{
 		$query = "UPDATE Modules
 					SET heading = ?, content = ?, position = ?, category = ?, reference = ?, reference_label = ?
 					WHERE id = ?";
-		
-		Database::update($query, "ssssssi", array($this->heading, $this->content, $this->position, $this->category, $this->reference, $this->reference_label, $this->id));
+
+        $this->database->update($query, "ssssssi", array($module->heading, $module->content, $module->position, $module->category, $module->reference, $module->reference_label, $module->id));
 	}
 
     public function selectById($id)
@@ -47,11 +47,11 @@ class ModuleRepository
 					WHERE id = ?";
 		
 		// execute the query
-		$result = Database::select($query, "i", array($id));
+		$result = $this->database->select($query, "i", array($id));
 		
 		// put the results in an object
 		$array = $result->fetch_assoc();
-		$module = ModuleRepository::createObjectFromArray($array);
+		$module = $this->createObjectFromArray($array);
 		
 		// free result
 		$result->close();
@@ -80,7 +80,7 @@ class ModuleRepository
 		for ($i = 0; $i < $result->num_rows; $i++)
 		{
 			$array = $result->fetch_assoc();
-			$modules[$i] = ModuleRepository::createObjectFromArray($array);
+			$modules[$i] = $this->createObjectFromArray($array);
 		}
 		
 		// free result
@@ -104,7 +104,7 @@ class ModuleRepository
 		for ($i = 0; $i < $result->num_rows; $i++)
 		{
 			$array = $result->fetch_assoc();
-			$modules[$i] = ModuleRepository::createObjectFromArray($array);
+			$modules[$i] = $this->createObjectFromArray($array);
 		}
 		
 		// free result

@@ -121,7 +121,7 @@
 				</div>
 				
 				<div role="tabpanel" class="tab-pane fade" id="slogans">				
-					<?php $slogans = Slogan::selectAll();?>
+					<?php $slogans = SloganRepository::selectAll();?>
 					<br /><!-- empty line -->
 					<div class="row">
 						<div class="col-md-1">
@@ -149,7 +149,7 @@
 				</div>
 				
 				<div role="tabpanel" class="tab-pane fade" id="home-modules">
-					<?php $modules = Module::selectByCategory("home"); ?>
+					<?php $modules = ModuleRepository::selectByCategory("home"); ?>
 					<br /><!-- empty line -->
 					<div class="row">
 						<div class="col-md-1">
@@ -183,7 +183,7 @@
 				</div>
 				
 				<div role="tabpanel" class="tab-pane fade" id="aboutus-modules">
-					<?php $modules = Module::selectByCategory("aboutus"); ?>
+					<?php $modules = ModuleRepository::selectByCategory("aboutus"); ?>
 					<br /><!-- empty line -->
 					<div class="row">
 						<div class="col-md-1">
