@@ -7,8 +7,11 @@ class ManageController extends Controller
     private $auctionRepository;
     private $partnerRepository;
     private $auctionProductRepository;
+    private $subventionRequestRepository;
 
-    public function __construct($projectRepository, $colorCodeRepository, $shopProductRepository, $auctionRepository, $partnerRepository, $auctionProductRepository)
+    public function __construct($projectRepository, $colorCodeRepository, $shopProductRepository,
+                                $auctionRepository, $partnerRepository, $auctionProductRepository,
+                                $subventionRequestRepository)
     {
         $this->projectRepository = $projectRepository;
         $this->colorCodeRepository = $colorCodeRepository;
@@ -16,8 +19,9 @@ class ManageController extends Controller
         $this->auctionRepository = $auctionRepository;
         $this->partnerRepository = $partnerRepository;
         $this->auctionProductRepository = $auctionProductRepository;
+        $this->subventionRequestRepository = $subventionRequestRepository;
 
-        Parent::__construct("manage");
+        parent::__construct("manage");
     }
     
     public function index_GET()
@@ -103,18 +107,16 @@ class ManageController extends Controller
     public function subventions_GET()
     {
         $subventionList = new ArrayList("SubventionRequest");
-        $subventionList->addAll(SubventionrequestRepository::fetchAllSubventionRequests());
+        $subventionList->addAll($this->subventionRequestRepository->fetchAllSubventionRequests());
         $this->render("subventions", $subventionList);
     }
     
     public function subventions_POST()
     {
-
-
-        SubventionrequestRepository::deleteById($_POST["id"]);
+        $this->subventionRequestRepository->deleteById($_POST["id"]);
         
         $subventionList = new ArrayList("SubventionRequest");
-        $subventionList->addAll(SubventionrequestRepository::fetchAllSubventionRequests());
+        $subventionList->addAll($this->subventionRequestRepository->fetchAllSubventionRequests());
         $this->render("subventions", $subventionList);
     }
 
@@ -138,7 +140,7 @@ class ManageController extends Controller
         if (isset($_POST["id"]) && isset($_POST["status"]))
         {
             // Get the product, set the data and update.
-            SubventionRequest::updateStatus($_POST["id"], $_POST["status"]);
+            $this->subventionRequestRepository->updateStatus($_POST["id"], $_POST["status"]);
             $this->subventions_GET();
         }
         else{

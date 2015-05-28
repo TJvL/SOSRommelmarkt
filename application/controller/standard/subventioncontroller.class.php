@@ -2,8 +2,12 @@
 
 class SubventionController extends Controller
 {
-    public function __construct()
+    private $subventionRequestRepository;
+
+    public function __construct($subventionRequestRepository)
     {
+        $this->subventionRequestRepository = $subventionRequestRepository;
+
         parent::__construct("subvention");
     }
 
@@ -19,7 +23,7 @@ class SubventionController extends Controller
 
     public function landing_POST()
     {
-        SubventionrequestRepository::insertSubventionRequest($_POST["name"]. " ".$_POST["lastname"],$_POST["companyname"],$_POST["kvknr"],
+        $this->subventionRequestRepository->insertSubventionRequest($_POST["name"]. " ".$_POST["lastname"],$_POST["companyname"],$_POST["kvknr"],
             $_POST["street"],$_POST["zip"],$_POST["place"],$_POST["phone"],
             $_POST["gsm"],$_POST["fax"],$_POST["email"],$_POST["explanation"],
             $_POST["planned_activities"],$_POST["intended_results"]);
