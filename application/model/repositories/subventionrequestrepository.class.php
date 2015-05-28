@@ -83,7 +83,6 @@ class SubventionrequestRepository
     static public function deleteById($id)
     {
         $query = "DELETE FROM SubventionRequest WHERE id = ?";
-
         Database::update($query, "i", array($id));
     }
 

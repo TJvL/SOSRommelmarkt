@@ -22,16 +22,6 @@ function post(path, params, method) {
 	form.submit();
 }
 
-//function print_sub(clicked_id)
-//{
-//	var x;
-//	    if (confirm("Weet je zeker dat je deze aanvraag wilt uitprinten?") == true) {
-//			window.location.href = "../../SOSRommelmarkt/printsubvention.php?id="+clicked_id;
-//	    } else {
-//	        x = "You pressed Cancel!";
-//	    }
-//
-//}
 
 function delete_sub(clicked_id)
 {
