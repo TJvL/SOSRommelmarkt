@@ -5,8 +5,8 @@ class SloganRepository
 	private static function createObjectFromArray($array)
 	{
 		$slogan			= new Slogan();
-		$slogan->id		= $row["id"];
-		$slogan->slogan	= $row["slogan"];
+		$slogan->id		= $array["id"];
+		$slogan->slogan	= $array["slogan"];
 		
 		return $slogan;
 	}
