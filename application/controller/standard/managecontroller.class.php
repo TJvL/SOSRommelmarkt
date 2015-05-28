@@ -14,7 +14,7 @@ class ManageController extends Controller
     public function subventions_GET()
     {
         $subventionList = new ArrayList("SubventionRequest");
-        $subventionList->addAll(SubventionRequest::fetchAllSubventionRequests());
+        $subventionList->addAll(SubventionRequestRepository::fetchAllSubventionRequests());
         $this->render("subventions", $subventionList);
     }
     
