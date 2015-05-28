@@ -17,7 +17,7 @@ class RequestHandler
      * Handles the client's request by executing the mapped route on the right controller.
      *
      * @param $routeObject RouteObject      The mapped route object to be used to call the correct method on the controller.
-     * @throws CoreException                    When the client used http request method is not supported by this application.
+     * @throws CoreException                When the client used http request method is not supported by this application.
      */
     public function handleRequest($routeObject)
     {
@@ -38,6 +38,9 @@ class RequestHandler
         }
     }
 
+    /**
+     * @throws CoreException        When creating the controller failed somehow.
+     */
     private function setController()
     {
         try
@@ -51,6 +54,10 @@ class RequestHandler
         }
     }
 
+    /**
+     * Handle the http request when it's of the type POST
+     * @throws CoreException        When mapping POST data failed somehow.
+     */
     private function handlePOST()
     {
         $method = $this->routeObject->controllerMethod; //Get the method to be called on the controller.
@@ -68,6 +75,9 @@ class RequestHandler
         $this->controller->$method($model);
     }
 
+    /**
+     * Handle the http request when it's of the type GET
+     */
     private function handleGET()
     {
         $method = $this->routeObject->controllerMethod; //Get the method to be called on the controller.

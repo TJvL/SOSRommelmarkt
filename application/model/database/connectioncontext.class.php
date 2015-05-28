@@ -8,6 +8,13 @@ class ConnectionContext
     private $database;
     private $port;
 
+    /**
+     * @param $host String        The host where the database is located.
+     * @param $username String    The username that must be used to access the database.
+     * @param $password String    The password used to authenticate the user.
+     * @param $database String    The database name.
+     * @param $port String        The port that should be connected to.
+     */
     public function __construct($host, $username, $password, $database, $port)
     {
         $this->host = $host;
@@ -17,10 +24,9 @@ class ConnectionContext
         $this->port = $port;
     }
 
+
     /**
-     * Makes a connection to the database and returns it.
-     *
-     * @return A mysqli object with a valid connection to the database.
+     * @return mysqli       PHP standard mysqli object to connect to defined database.
      */
     public function connect()
     {

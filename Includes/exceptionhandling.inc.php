@@ -1,6 +1,9 @@
 <?php
+//Prevent default behaviour.
 ini_set( "display_errors", "off" );
 ini_set( "log_errors", "off" );
+
+//Call this function when a exception goes uncatched by the application code.
 function handleException($exception)
 {
     $errorHandler = new ExceptionHandler(DEV_RULES);
@@ -8,6 +11,7 @@ function handleException($exception)
 }
 set_exception_handler("handleException");
 
+//Call this when ANY php error is encountered. And convert the error into an appropriate exception.
 function handleError($err_severity, $err_msg, $err_file, $err_line)
 {
     // error was suppressed with the @-operator
@@ -61,7 +65,6 @@ function handleError($err_severity, $err_msg, $err_file, $err_line)
     handleException($exception);
     return false;
 }
-//Set php error handler to a function that throws exceptions
 set_error_handler("handleError");
 
 //When a php error of level E_ERROR is encountered php always shuts down.
