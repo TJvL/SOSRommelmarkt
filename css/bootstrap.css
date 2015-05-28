@@ -6120,6 +6120,11 @@ button.close {
 .carousel {
   position: relative;
 }
+.carousel-modal{
+    position: relative;
+    display: inline-table;
+}
+
 .carousel-inner {
   position: relative;
   width: 100%;

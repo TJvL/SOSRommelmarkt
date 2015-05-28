@@ -76,10 +76,17 @@
     
 }
 
-.price-slider
+#priceSlider
 {
     margin-left:10px;
     margin-right:10px;
+}
+
+#amount
+{
+    border:0;
+    color:#b20000;
+    font-weight:bold;"
 }
 
 .product-filter-quality
