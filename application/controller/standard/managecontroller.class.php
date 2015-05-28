@@ -624,16 +624,16 @@ class ManageController extends Controller
     
     public function addslogan_POST()
     {
-        Slogan::insert($_POST["slogan"]);
+        SloganRepository::insert($_POST["slogan"]);
         
-        $this->redirectTo("/manage/settings#tab_slogans"); // dit werkt niet?
+        $this->redirectTo("/manage/settings#tab_slogans");
     }
     
     public function slogan_GET()
     {
         if (isset($_GET["id"]))
         {
-            $this->render("slogan", Slogan::selectById($_GET["id"]));
+            $this->render("slogan", SloganRepository::selectById($_GET["id"]));
         }
     }
     
@@ -648,7 +648,7 @@ class ManageController extends Controller
                 if (isset($_POST["id"]))
                 {
                     // Delete the partner.
-                    Slogan::deleteById($_POST["id"]);
+                    SloganRepository::deleteById($_POST["id"]);
         
                     // Return 0 for great success.
                     header("content-Type: application/json");
@@ -661,9 +661,9 @@ class ManageController extends Controller
                 if (isset($_POST["id"]) && isset($_POST["slogan"]))
                 {
                     // Get the slogan, set the data and update.
-                    $slogan = Slogan::selectById($_POST["id"]);
+                    $slogan = SloganRepository::selectById($_POST["id"]);
                     $slogan->slogan = $_POST["slogan"];
-                    $slogan->update();
+                    SloganRepository::update($slogan);
         
                     // Return 0 for great success.
                     header("content-Type: application/json");
@@ -684,7 +684,7 @@ class ManageController extends Controller
     
     public function addmodule_POST()
     {
-    	Module::insert($_POST["heading"], $_POST["content"], $_POST["category"], $_POST["reference"], $_POST["reference_label"]);
+    	ModuleRepository::insert($_POST["heading"], $_POST["content"], $_POST["category"], $_POST["reference"], $_POST["reference_label"]);
 		$this->redirectTo($_POST["returnPath"]);
     }
     
@@ -692,7 +692,7 @@ class ManageController extends Controller
     {
         if (isset($_GET["id"]))
         {
-            $this->render("module", Module::selectById($_GET["id"]));
+            $this->render("module", ModuleRepository::selectById($_GET["id"]));
         }
     }
     
@@ -708,7 +708,7 @@ class ManageController extends Controller
                 if (isset($_POST["id"]))
                 {
                     // Delete the module.
-                    Module::deleteById($_POST["id"]);
+                    ModuleRepository::deleteById($_POST["id"]);
         
                     // Return 0 for great success.
                     header("content-Type: application/json");
@@ -721,13 +721,13 @@ class ManageController extends Controller
                 if (isset($_POST["id"]) && isset($_POST["heading"]) && isset($_POST["content"]) && isset($_POST["category"]) && isset($_POST["reference"]) && isset($_POST["reference_label"]))
                 {
                     // Get the module, set the data and update.
-                    $module						= Module::selectById($_POST["id"]);
+                    $module						= ModuleRepository::selectById($_POST["id"]);
                     $module->heading			= $_POST["heading"];
                     $module->content			= $_POST["content"];
                     $module->category			= $_POST["category"];
                     $module->reference			= $_POST["reference"];
                     $module->reference_label	= $_POST["reference_label"];
-                    $module->update();
+                    ModuleRepository::update($module);
         
                     // Return 0 for great success.
                     header("content-Type: application/json");
