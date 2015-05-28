@@ -14,6 +14,7 @@
 				<li role="presentation"><a href="#slogans" aria-controls="slogans" role="Tab" data-toggle="tab">Slogans</a></li>
 				<li role="presentation"><a href="#home-modules" aria-controls="home-modules" role="tab" data-toggle="tab">Home Modules</a></li>
 				<li role="presentation"><a href="#aboutus-modules" aria-controls="aboutus-modules" role="tab" data-toggle="tab">Over Ons Modules</a>
+				<li role="presentation"><a href="#news-modules" aria-controls="news-modules" role="tab" data-toggle="tab">Nieuws Modules</a>
 			</ul>
 			<!-- end nav tabs -->
 			
@@ -192,6 +193,40 @@
 					</div>
 					<div class="table-responsive padding-sm margin-lg">
 						<table id="aboutusTable" class="display">
+							<thead>
+								<tr>
+									<th>Heading</th>
+									<th>Opties</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php for ($i = 0; $i < count($modules); $i++) { ?>
+								<tr>
+									<td><?php echo $modules[$i]->heading ?></td>
+									<td>
+										<a href="module/<?php echo $modules[$i]->id ?>"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
+										<!-- Tijdelijk verwijderd -- werken nog niet
+										<button class="btn btn-default <?php if ($i == 0) echo "disabled"; ?>" title="Omhoog" onClick="moveModuleUp()"><i class="fa fa-caret-up"></i></button>
+										<button class="btn btn-default <?php if ($i == count($modules) - 1) echo "disabled"; ?>" title="Omlaag" onClick="moveModuleDown()"><i class="fa fa-caret-down"></i></button>
+										 -->
+									</td>
+								</tr>
+								<?php } ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				<div role="tabpanel" class="tab-pane fade" id="news-modules">
+					<?php $modules = ModuleRepository::selectByCategory("news"); ?>
+					<br /><!-- empty line -->
+					<div class="row">
+						<div class="col-md-1">
+							<a href="./addmodule/news" class="btn btn-default">Nieuwe module</a>
+						</div>
+					</div>
+					<div class="table-responsive padding-sm margin-lg">
+						<table id="newsTable" class="display">
 							<thead>
 								<tr>
 									<th>Heading</th>

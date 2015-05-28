@@ -17,4 +17,10 @@ $(document).ready(function() {
 		}],
 		"ordering": false
 	})
+	$('#newsTable').DataTable({
+		"columnDefs": [{
+			"width": "7em", "targets": 1
+		}],
+		"ordering": false
+	})
 });

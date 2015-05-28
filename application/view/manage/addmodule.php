@@ -7,6 +7,9 @@
 		case "aboutus":
 			$returnPath = "/manage/settings#tab_aboutus-modules";
 			break;
+		case "news":
+			$returnPath ="/manage/settings#tab_news-modules";
+			break;
 		default:
 			$returnPath = "/manage";
 	}
