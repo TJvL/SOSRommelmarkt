@@ -26,30 +26,24 @@
                         <li class="filterHeadings"><h3>Kwaliteit <i class="fa fa-minus category-plus-open"></i></h3></li>
                         <li>
                             <ul id="filterOptions" class="filterListings ">
-                                <li><input type="checkbox" onclick="filter()"><span> Alles</span></li>
-                                <li><input type="checkbox" onclick="filter()"/> <span >Als nieuw<i class="product-filter-quality filter-green" title="Als nieuw"></i><span></li>
-                                <li><input type="checkbox" onclick="filter()"/> <span>Gebruikt <i class="product-filter-quality filter-blue" title="Gebruikt"></i></span></li>
-                                <li><input type="checkbox" onclick="filter()"/> <span>Lichte schade <i class="product-filter-quality filter-red" title="Lichte schade"></i></span></li>
+                                <li><input id="type-All" type="checkbox" checked="checked"/><span> Alles</span></li>
+                                <li><input id="type-Groen" type="checkbox" checked="checked"/> <span >Als nieuw<i class="product-filter-quality filter-green" title="Als nieuw"></i><span></li>
+                                <li><input id="type-Blauw" type="checkbox" checked="checked"/> <span>Gebruikt <i class="product-filter-quality filter-blue" title="Gebruikt"></i></span></li>
+                                <li><input id="type-Rood" type="checkbox" checked="checked"/> <span>Lichte schade <i class="product-filter-quality filter-red" title="Lichte schade"></i></span></li>
                             </ul>
                         </li>
                         <li class="filterHeadings"><h3>Prijs <i class="fa fa-minus category-plus-open"></i></h3></li>
                         <li>
                             <ul class="filterListings ">
                                 <li>
-                                        <?php $priceRanges = ShopProduct::getPriceRanges();?>
+                                    <?php $priceRanges = ShopProduct::getPriceRanges();?>
+                                    <div class="col-lg-12">
+                                        <p>
+                                            <input type="text" id="amount">
+                                        </p>
 
-                                        <div class="col-lg-12 margin-ver-md">
-                                            <div class="row">
-                                                <div class="col-sm-5"><input type="text" class="form-control" ng-model="sliderRanges.min"></div>
-                                                <div class="col-lg-2"></div>
-                                                <div class="col-sm-5"><input type="text" class="form-control" ng-model="sliderRanges.max"></div>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div range-slider min=<?php echo floor($priceRanges["lowestPrice"]);?> max=<?php echo ceil($priceRanges["highestPrice"]);?> model-min="sliderRanges.min" model-max="sliderRanges.max" disabled="false" filter="currency:'€'"></div>
-                                        </div>
-
+                                        <div id="rangeSlider" data-minPrice="<?php echo floor($priceRanges["lowestPrice"]);?>" data-maxPrice="<?php echo ceil($priceRanges["highestPrice"]);?>"></div>
+                                    </div>
                                 </li>
                             </ul>
                         </li>
@@ -60,7 +54,7 @@
             <div class="col-sm-9 ">
 
                 <?php foreach($model as $product){?>
-                <div class="col-sm-3 product padding-lg animation ">
+                <div id="product<?php echo $product->id?>" class="col-sm-3 product padding-lg animation <?php echo $product->colorCode?>" data-productPrice="<?php echo $product->price?>">
                     <i class="product-info-quality <?php echo $product->colorCode ?>"></i>
                     <div class="view view-first">
                         <img class="img-responsive" src="<?php echo $product->imagePath ?>" />
@@ -88,9 +82,9 @@
                     <div class="modal fade bs-<?php echo $product->id ?>-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
-                                <div style="padding:12px;">
+                                <div class="padding-lg">
                                     <!-- Carousel start -->
-                                    <div id="prod-<?php echo $product->id ?>-carousel" class="carousel slide" style="display:inline-table;" data-ride="carousel">
+                                    <div id="prod-<?php echo $product->id ?>-carousel" class="carousel-modal slide " style="display:inline-table;" data-ride="carousel">
 
                                         <!-- Indicators -->
                                         <ol class="carousel-indicators">
