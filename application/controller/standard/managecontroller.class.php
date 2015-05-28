@@ -103,16 +103,18 @@ class ManageController extends Controller
     public function subventions_GET()
     {
         $subventionList = new ArrayList("SubventionRequest");
-        $subventionList->addAll(SubventionRequest::fetchAllSubventionRequests());
+        $subventionList->addAll(SubventionrequestRepository::fetchAllSubventionRequests());
         $this->render("subventions", $subventionList);
     }
     
     public function subventions_POST()
     {
-        SubventionRequest::deleteById($_POST["id"]);
+
+
+        SubventionrequestRepository::deleteById($_POST["id"]);
         
         $subventionList = new ArrayList("SubventionRequest");
-        $subventionList->addAll(SubventionRequest::fetchAllSubventionRequests());
+        $subventionList->addAll(SubventionrequestRepository::fetchAllSubventionRequests());
         $this->render("subventions", $subventionList);
     }
 

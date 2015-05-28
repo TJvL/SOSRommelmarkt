@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function projects_GET()
     {
         $projectList = new ArrayList("Project");
-        $projectList->addAll(Project::fetchAllProjects());
+        $projectList->addAll(ProjectRepository::selectAll());
         $this->render("projects", $projectList);
     }
 
