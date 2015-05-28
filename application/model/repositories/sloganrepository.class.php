@@ -19,13 +19,13 @@ class SloganRepository
 		return Database::insert($query, "s", array($slogan));
 	}
 	
-	public function update()
+	public function update($slogan)
 	{
 		$query = "UPDATE Slogans
 					SET slogan = ?
 					WHERE id = ?";
 		
-		Database::update($query, "si", array($this->slogan, $this->id));
+		Database::update($query, "si", array($slogan->slogan, $slogan->id));
 	}
 	
 	public static function selectById($id)

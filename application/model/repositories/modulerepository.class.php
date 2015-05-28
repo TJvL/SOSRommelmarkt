@@ -16,7 +16,7 @@ class ModuleRepository
 		return $module;
 	}
 	
-	public static function insert($name, $website)
+	public static function insert($heading, $content, $category, $reference, $reference_label)
 	{
 		$query = "INSERT INTO Modules (heading, content, category, reference, reference_label)
 					VALUES(?, ?, ?, ?, ?)";
@@ -24,13 +24,13 @@ class ModuleRepository
 		return Database::insert($query, "sssss", array($heading, $content, $category, $reference, $reference_label));
 	}
 	
-	public static function update($partner)
+	public static function update($module)
 	{
 		$query = "UPDATE Modules
 					SET heading = ?, content = ?, position = ?, category = ?, reference = ?, reference_label = ?
 					WHERE id = ?";
 		
-		Database::update($query, "ssssssi", array($this->heading, $this->content, $this->position, $this->category, $this->reference, $this->reference_label, $this->id));
+		Database::update($query, "ssssssi", array($module->heading, $module->content, $module->position, $module->category, $module->reference, $module->reference_label, $module->id));
 	}
 
     public static function selectById($id)
