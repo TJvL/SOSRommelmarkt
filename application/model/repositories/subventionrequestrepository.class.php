@@ -1,6 +1,6 @@
 <?php
 
-class SubventionrquestRepository
+class SubventionrequestRepository
 {
     static function insertSubventionRequest($contactperson,$firm,$kvk,$address,$postalcode,$city,$phonenumber1,
                                             $phonenumber2,$fax,$email,$elucidation,$activities,$results)
@@ -51,7 +51,7 @@ class SubventionrquestRepository
         {
             $row = $result->fetch_assoc();
 
-            $subventionRequests[$i] = SubventionrquestRepository::createSubventionRequestObjectFromDatabaseRow($row);
+            $subventionRequests[$i] = SubventionrequestRepository::createSubventionRequestObjectFromDatabaseRow($row);
         }
 
         // Free the result set.
