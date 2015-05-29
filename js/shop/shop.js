@@ -45,9 +45,9 @@ $(document).ready(function(){
 
                     var value=$(this).data('productprice');
 
-                    if(value > $( "#rangeSlider").slider( "values", 0 ) && value < $( "#rangeSlider" ).slider( "values", 1 ))
+                    if(value >= ui.values[ 0 ] && value <= ui.values[ 1 ])
                     {
-                        $(this).hide() // hide all rows
+                        $(this).hide()
                             .filter(selector).show(); // reduce set to matched and show
                     }
                     else{
@@ -82,7 +82,7 @@ $(document).ready(function(){
 
                 var value=$(this).data('productprice');
 
-                if(value > $( "#rangeSlider").slider( "values", 0 ) && value < $( "#rangeSlider" ).slider( "values", 1 ))
+                if(value >= $( "#rangeSlider").slider( "values", 0 ) && value <= $( "#rangeSlider" ).slider( "values", 1 ))
                 {
                     $(this).hide() // hide all rows
                         .filter(selector).show(); // reduce set to matched and show
@@ -116,7 +116,7 @@ $(document).ready(function(){
 
                     var value=$(this).data('productprice');
 
-                    if(value > $( "#rangeSlider").slider( "values", 0 ) && value < $( "#rangeSlider" ).slider( "values", 1 ))
+                    if(value >= $( "#rangeSlider").slider( "values", 0 ) && value <= $( "#rangeSlider" ).slider( "values", 1 ))
                     {
                         $(this).hide() // hide all rows
                             .filter(selector).show(); // reduce set to matched and show
@@ -144,7 +144,7 @@ $(document).ready(function(){
 
                     var value=$(this).data('productprice');
 
-                    if(value > $( "#rangeSlider").slider( "values", 0 ) && value < $( "#rangeSlider" ).slider( "values", 1 ))
+                    if(value >= $( "#rangeSlider").slider( "values", 0 ) && value <= $( "#rangeSlider" ).slider( "values", 1 ))
                     {
                         $(this).show();
                     }
