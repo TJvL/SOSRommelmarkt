@@ -14,7 +14,7 @@
 				<li role="presentation"><a href="#slogans" aria-controls="slogans" role="Tab" data-toggle="tab">Slogans</a></li>
 				<li role="presentation"><a href="#home-modules" aria-controls="home-modules" role="tab" data-toggle="tab">Home Modules</a></li>
 				<li role="presentation"><a href="#aboutus-modules" aria-controls="aboutus-modules" role="tab" data-toggle="tab">Over Ons Modules</a>
-				<li role="presentation"><a href="#news-modules" aria-controls="news-modules" role="tab" data-toggle="tab">Nieuws Modules</a>
+				<li role="presentation"><a href="#news-items" aria-controls="news-items" role="tab" data-toggle="tab">Nieuws</a>
 			</ul>
 			<!-- end nav tabs -->
 			
@@ -217,12 +217,12 @@
 					</div>
 				</div>
 				
-				<div role="tabpanel" class="tab-pane fade" id="news-modules">
-					<?php $modules = ModuleRepository::selectByCategory("news"); ?>
+				<div role="tabpanel" class="tab-pane fade" id="news-items">
+					<?php $news_items = NewsRepository::selectAll(); ?>
 					<br /><!-- empty line -->
 					<div class="row">
 						<div class="col-md-1">
-							<a href="./addmodule/news" class="btn btn-default">Nieuwe module</a>
+							<a href="./addnews" class="btn btn-default">Nieuws Toevoegen</a>
 						</div>
 					</div>
 					<div class="table-responsive padding-sm margin-lg">
@@ -230,19 +230,19 @@
 							<thead>
 								<tr>
 									<th>Heading</th>
+									<th>Aanmaakdatum</th>
+									<th>Verloopdatum</th>
 									<th>Opties</th>
 								</tr>
 							</thead>
 							<tbody>
-								<?php for ($i = 0; $i < count($modules); $i++) { ?>
+								<?php for ($i = 0; $i < count($news_items); $i++) { ?>
 								<tr>
-									<td><?php echo $modules[$i]->heading ?></td>
+									<td><?php echo $news_items[$i]->heading; ?></td>
+									<td><?php echo $news_items[$i]->create_date; ?></td>
+									<td><?php echo $news_items[$i]->expiration_date; ?></td>
 									<td>
-										<a href="module/<?php echo $modules[$i]->id ?>"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
-										<!-- Tijdelijk verwijderd -- werken nog niet
-										<button class="btn btn-default <?php if ($i == 0) echo "disabled"; ?>" title="Omhoog" onClick="moveModuleUp()"><i class="fa fa-caret-up"></i></button>
-										<button class="btn btn-default <?php if ($i == count($modules) - 1) echo "disabled"; ?>" title="Omlaag" onClick="moveModuleDown()"><i class="fa fa-caret-down"></i></button>
-										 -->
+										<a href="news/<?php echo $news_items[$i]->id ?>"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
 									</td>
 								</tr>
 								<?php } ?>
