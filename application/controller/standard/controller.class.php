@@ -1,6 +1,9 @@
 <?php
 abstract class Controller
 {
+    public $companyInformationRepository;
+    public $partnerRepository;
+
 	private $name; //The name of this controller, meaning the name that has to be used in the URL.
     protected $viewBag; //The view bag can be used to make certain values accessible in the view script. Do not use this to send complex data! Use the $model for that.
 
@@ -30,9 +33,9 @@ abstract class Controller
         $controller = $this->name;//Make the name of this controller available in the view.
         $viewBag = $this->viewBag;//Make the contents of the view bag array available in the view.
 
-        include("includes/header.inc.php");
+        $this->includeHeader($controller, $action);
         include("application/view/" . $this->name . "/" . $action . ".php");
-        include("includes/footer.inc.php");
+        $this->includeFooter($controller, $action);
     }
 
     /**
@@ -42,5 +45,25 @@ abstract class Controller
     {
         header('Location: ' . ROOT_PATH . $target);
         exit("Redirecting...");
+    }
+
+    private function includeHeader($controller, $action)
+    {
+        $headerVM = new HeaderViewModel();
+        $headerVM->companyInformation = $this->companyInformationRepository->selectCurrent();
+
+        include("includes/header.inc.php");
+    }
+
+    private function includeFooter($controller, $action)
+    {
+        $footerVM = new FooterViewModel();
+
+        $partners = new ArrayList("Partner");
+        $partners->addAll($this->partnerRepository->selectAll());
+
+        $footerVM->partners = $partners;
+
+        include("includes/footer.inc.php");
     }
 }

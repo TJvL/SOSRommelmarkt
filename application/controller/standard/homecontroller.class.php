@@ -2,6 +2,10 @@
 class HomeController extends Controller
 {
     public $auctionProductRepository;
+    public $sloganRepository;
+    public $projectRepository;
+    public $visitingHoursRepository;
+    public $moduleRepository;
 
     public function __construct()
     {
@@ -18,15 +22,30 @@ class HomeController extends Controller
 
     public function index_GET()
     {
-        $productList = new ArrayList("AuctionProduct");
-        $productList->addAll($this->auctionProductRepository->selectByCurrentAuction());
-        $this->render("index", $productList);
+        $homeVM = new HomePageViewModel();
+
+        $auctionProducts = new ArrayList("AuctionProduct");
+        $auctionProducts->addAll($this->auctionProductRepository->selectByCurrentAuction());
+
+        $slogans = new ArrayList("Slogan");
+        $slogans->addAll($this->sloganRepository->selectAll());
+
+        $visitingHours = $this->visitingHoursRepository->selectCurrent();
+
+        $modules = $this->moduleRepository->selectByCategory("home");
+
+        $homeVM->auctionProducts = $auctionProducts;
+        $homeVM->slogans = $slogans;
+        $homeVM->visitingHours = $visitingHours;
+        $homeVM->modules = $modules;
+
+        $this->render("index", $homeVM);
     }
 
     public function projects_GET()
     {
         $projectList = new ArrayList("Project");
-        $projectList->addAll(ProjectRepository::selectAll());
+        $projectList->addAll($this->projectRepository->selectAll());
         $this->render("projects", $projectList);
     }
 
@@ -61,11 +80,11 @@ class HomeController extends Controller
 
         if(mail($to, $subject, $message, $headers))
         {
-            $this->viewbag['message'] = "Uw bericht is verzonden, wij nemen spoedig contact met U op.";
+            $this->viewBag['message'] = "Uw bericht is verzonden, wij nemen spoedig contact met U op.";
         }
         else
         {
-            $this->viewbag['message'] = "Er is een fout opgetreden, probeer U het later nog eens.";
+            $this->viewBag['message'] = "Er is een fout opgetreden, probeer U het later nog eens.";
         }
 
         $this->render("contact");
@@ -74,4 +93,3 @@ class HomeController extends Controller
 
 
 }
-?>
