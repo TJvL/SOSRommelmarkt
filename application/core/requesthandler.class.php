@@ -39,6 +39,8 @@ class RequestHandler
     }
 
     /**
+     * Set the controller to be used for this request through the controller factory.
+     *
      * @throws CoreException        When creating the controller failed somehow.
      */
     private function setController()

@@ -7,8 +7,9 @@ session_start();
 
 // Load the server configuration.
 include(__DIR__ . "/includes/config.inc.php");
-include(__DIR__ . "/includes/exceptionhandling.inc.php");
+include(__DIR__ . "/includes/exceptionhandling.inc.php");//This configures an error and exception handler. All PHP E_* errors/warnings are converted to exceptions in this configuration.
 
+//Initialize the core classes of this application.
 $routeMapper = new RouteMapper(STRICT_RULES); //A route mapping service that map the requested route and checks if it is valid. Then returns a RouteObject when it successfully maps the route.
 $repositoryFactory = new RepositoryFactory($dbCons); //Will instantiate new repositories when needed.
 $controllerFactory = new ControllerFactory($repositoryFactory);//Will instantiate new controller and automatically supply all it's dependencies through it's constructor function.
@@ -22,3 +23,4 @@ $routeObject = $routeMapper->mapRoute(); //Try to map the requested route (from 
 $requestHandler->handleRequest($routeObject); //Try to successfully process the request.
 
 ob_end_flush(); //Output the accumulated buffer.
+exit(); //Cleanly exit the script.
