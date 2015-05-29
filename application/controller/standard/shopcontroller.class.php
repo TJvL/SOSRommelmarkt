@@ -1,13 +1,11 @@
 <?php
 class ShopController extends Controller
 {
-    private $shopProductRepository;
+    public $shopProductRepository;
 
-    public function __construct($shopProductRepository)
+    public function __construct()
     {
-        $this->shopProductRepository = $shopProductRepository;
-
-        Parent::__construct("shop");
+        parent::__construct("shop");
     }
 
     public function index_GET()

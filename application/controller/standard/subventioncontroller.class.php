@@ -2,12 +2,10 @@
 
 class SubventionController extends Controller
 {
-    private $subventionRequestRepository;
+    public $subventionRequestRepository;
 
-    public function __construct($subventionRequestRepository)
+    public function __construct()
     {
-        $this->subventionRequestRepository = $subventionRequestRepository;
-
         parent::__construct("subvention");
     }
 

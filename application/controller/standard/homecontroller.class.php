@@ -1,13 +1,11 @@
 <?php
 class HomeController extends Controller
 {
-    private $auctionProductRepository;
+    public $auctionProductRepository;
 
-    public function __construct($auctionProductRepository)
+    public function __construct()
     {
-        $this->auctionProductRepository = $auctionProductRepository;
-
-        Parent::__construct("home");
+        parent::__construct("home");
     }
 
     public function error_GET()

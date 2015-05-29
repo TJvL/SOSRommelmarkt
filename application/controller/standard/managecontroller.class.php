@@ -1,30 +1,18 @@
 <?php
 class ManageController extends Controller
 {
-    private $projectRepository;
-    private $colorCodeRepository;
-    private $shopProductRepository;
-    private $auctionRepository;
-    private $partnerRepository;
-    private $auctionProductRepository;
-    private $subventionRequestRepository;
-    private $moduleRepository;
-    private $sloganRepository;
+    public $projectRepository;
+    public $colorCodeRepository;
+    public $shopProductRepository;
+    public $auctionRepository;
+    public $partnerRepository;
+    public $auctionProductRepository;
+    public $subventionRequestRepository;
+    public $moduleRepository;
+    public $sloganRepository;
 
-    public function __construct($projectRepository, $colorCodeRepository, $shopProductRepository,
-                                $auctionRepository, $partnerRepository, $auctionProductRepository,
-                                $subventionRequestRepository, $moduleRepository, $sloganRepository)
+    public function __construct()
     {
-        $this->projectRepository = $projectRepository;
-        $this->colorCodeRepository = $colorCodeRepository;
-        $this->shopProductRepository = $shopProductRepository;
-        $this->auctionRepository = $auctionRepository;
-        $this->partnerRepository = $partnerRepository;
-        $this->auctionProductRepository = $auctionProductRepository;
-        $this->subventionRequestRepository = $subventionRequestRepository;
-        $this->moduleRepository = $moduleRepository;
-        $this->sloganRepository = $sloganRepository;
-
         parent::__construct("manage");
     }
     

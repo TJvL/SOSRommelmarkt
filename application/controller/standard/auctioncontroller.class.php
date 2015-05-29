@@ -1,12 +1,10 @@
 <?php
 class AuctionController extends Controller
 {
-    private $auctionProductRepository;
+    public $auctionProductRepository;
 
-    public function __construct($auctionProductRepository)
+    public function __construct()
     {
-        $this->auctionProductRepository = $auctionProductRepository;
-
         parent::__construct("auction");
     }
 
