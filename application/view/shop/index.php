@@ -39,7 +39,7 @@
                                     <?php $priceRanges = ShopProduct::getPriceRanges();?>
                                     <div class="col-lg-12">
                                         <p>
-                                            <input type="text" id="amount">
+                                            <span type="text" id="amount"/>
                                         </p>
 
                                         <div id="rangeSlider" data-minPrice="<?php echo floor($priceRanges["lowestPrice"]);?>" data-maxPrice="<?php echo ceil($priceRanges["highestPrice"]);?>"></div>

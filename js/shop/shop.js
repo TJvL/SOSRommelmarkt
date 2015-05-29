@@ -25,7 +25,7 @@ $(document).ready(function(){
             max: $('#rangeSlider').data('maxprice'),
             values: [ ($('#rangeSlider').data('minprice')*2), (($('#rangeSlider').data('maxprice')/4)*3) ],
             slide: function( event, ui ) {
-                $( "#amount" ).val( "€" + ui.values[ 0 ] + " - €" + ui.values[ 1 ] );
+                $( "#amount" ).html( "€" + ui.values[ 0 ] + " - €" + ui.values[ 1 ] );
 
                 var $checkboxes = $("input[id^='type-']");
 
@@ -57,7 +57,7 @@ $(document).ready(function(){
                 });
             }
         });
-        $( "#amount" ).val( "€" + $( "#rangeSlider").slider( "values", 0 ) +
+        $( "#amount" ).html( "€" + $( "#rangeSlider").slider( "values", 0 ) +
         " - €" + $( "#rangeSlider" ).slider( "values", 1 ) );
     });
 
