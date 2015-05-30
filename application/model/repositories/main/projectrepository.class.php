@@ -24,7 +24,7 @@ class ProjectRepository
         $query = "INSERT INTO Project (title, body)
 			VALUES (?, ?)";
 
-        return Database::insert($query, "ss", array($project->title, $project->body));
+        return $this->database->insert($query, "ss", array($project->title, $project->body));
     }
 
     public function selectAll()
@@ -32,7 +32,7 @@ class ProjectRepository
         $query = "SELECT * FROM Project";
 
         // Execute the query.
-        $result = Database::select($query);
+        $result = $this->database->select($query);
 
         // Put the results of the query into an array.
         $projects = array();
@@ -41,7 +41,7 @@ class ProjectRepository
         {
             $row = $result->fetch_assoc();
 
-            $projects[$i] = ProjectRepository::createObjectFromArray($row);
+            $projects[$i] = $this->createObjectFromArray($row);
         }
 
         // Free the result set.
@@ -54,12 +54,12 @@ class ProjectRepository
     {
         $query = "SELECT * FROM Project WHERE idProject = ?";
 
-        $result = Database::select($query, "i", array($id));
+        $result = $this->database->select($query, "i", array($id));
 
         $row = $result->fetch_assoc();
 
         if ($row !== null)
-            $project = ProjectRepository::createObjectFromArray($row);
+            $project = $this->createObjectFromArray($row);
         else
             $project = null;
 
@@ -74,15 +74,13 @@ class ProjectRepository
 			SET title = ?, body = ?
 			WHERE idProject = ?";
 
-        Database::update($query, "ssi", array($project->title, $project->body, $project->id));
+        $this->database->update($query, "ssi", array($project->title, $project->body, $project->id));
     }
 
     public function deleteById($id)
     {
         $query = "DELETE FROM Project WHERE idProject = ?";
 
-        Database::update($query, "s", array($id));
+        $this->database->update($query, "s", array($id));
     }
 }
-
-?>
