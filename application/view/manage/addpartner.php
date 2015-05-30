@@ -27,10 +27,10 @@
                     <label class="control-label col-sm-2" for="categorie">Categorie</label>
                     <div class="col-sm-8">
                         <select class="form-control" form="createPartnerForm" name="options" id="categorie">
-                            <option value="<?php echo $model->categorie ?>" disabled selected>Kies een partner categorie</option>
-                            <option value="<?php echo $model->categorie ?>">SOS</option>
-                            <option value="<?php echo $model->categorie ?>">Dienstverleners</option>
-                            <option value="<?php echo $model->categorie ?>">Projecten</option>
+                            <option value="disabled" disabled selected>Kies een partner categorie</option>
+                            <option value="sos">SOS</option>
+                            <option value="dienstverleners">Dienstverleners</option>
+                            <option value="projecten">Projecten</option>
                         </select>
                     </div>
                 </div>

@@ -521,13 +521,18 @@ class ManageController extends Controller
         $this->render("addpartner");
     }
 
-    public function partner_GET()
+    public function partner_GET($id)
     {
-        if (isset($_GET["id"]))
+        if (isset($id))
         {
-            $this->render("partner", $this->partnerRepository->selectById($_GET["id"]));
+            $this->render("partner", $this->partnerRepository->selectById($id));
+        }
+        else
+        {
+            throw new Exception("Resource was not found. No id was provided", 404);
         }
     }
+   
 
     public function createpartner_POST()
     {

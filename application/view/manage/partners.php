@@ -33,7 +33,7 @@
                     <tr>
                         <td><?php echo $m->name ?></td>
                         <td><?php echo $m->website ?></td>
-                        <td><?php echo $m->categorie ?></td>
+                        <td><?php echo $m->category ?></td>
                         <td>
                        		<a href="partner/<?php echo $m->id ?>"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
                         </td>
