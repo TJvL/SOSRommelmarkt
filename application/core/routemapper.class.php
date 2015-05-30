@@ -60,7 +60,8 @@ class RouteMapper
         }
         catch (Exception $ex)
         {
-            throw new Exception("Requested resource has not been found", 404, $ex);
+            $exception = new CoreException("Requested resource has not been found", 404, $ex, $this->routeObject);
+            throw $exception;
         }
 
         return $this->routeObject;

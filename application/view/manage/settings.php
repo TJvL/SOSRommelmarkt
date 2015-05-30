@@ -22,7 +22,7 @@
 				<div role="tabpanel" class="tab-pane fade in active" id="address">
 					<?php 
 						// contactinfo ophalen
-						$companyInformation = CompanyInformation::selectCurrent();
+						$companyInformation = $model->companyInformation;
 					?>
 					<br /> <!-- empty line -->
 					<form class="form-horizontal"  action="<?php echo ROOT_PATH;?>/manage/companyInformation" method="Post">
@@ -66,7 +66,7 @@
 				
 				<div role="tabpanel" class="tab-pane fade" id="visitinghours">
 					<?php 
-						$visitingHours = VisitingHours::selectCurrent();
+						$visitingHours = $model->visitingHours;
 					?>
 					<br /><!-- empty line -->
 					<form class="form-horizontal" action="<?php echo ROOT_PATH;?>/manage/settings" method="Post">
@@ -121,7 +121,7 @@
 				</div>
 				
 				<div role="tabpanel" class="tab-pane fade" id="slogans">				
-					<?php $slogans = SloganRepository::selectAll();?>
+					<?php $slogans = $model->slogans;?>
 					<br /><!-- empty line -->
 					<div class="row">
 						<div class="col-md-1">
@@ -149,7 +149,7 @@
 				</div>
 				
 				<div role="tabpanel" class="tab-pane fade" id="home-modules">
-					<?php $modules = ModuleRepository::selectByCategory("home"); ?>
+					<?php $modules = $model->homeModules; ?>
 					<br /><!-- empty line -->
 					<div class="row">
 						<div class="col-md-1">
@@ -183,7 +183,7 @@
 				</div>
 				
 				<div role="tabpanel" class="tab-pane fade" id="aboutus-modules">
-					<?php $modules = ModuleRepository::selectByCategory("aboutus"); ?>
+					<?php $modules = $model->aboutUsModules ?>
 					<br /><!-- empty line -->
 					<div class="row">
 						<div class="col-md-1">
