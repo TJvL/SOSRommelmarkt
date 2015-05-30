@@ -1,4 +1,4 @@
-<?php $companyInformation = CompanyInformation::selectCurrent(); ?>
+<?php $companyInformation = $model; ?>
 
 <div class="container">
     <div style="margin-bottom:5%" class="white">
@@ -70,8 +70,6 @@
         <div class="col-md-4">
            <h2 class="title">Adres</h2>
            <p>
-               <?php $companyInformation = CompanyInformation::selectCurrent(); ?>
-
               <div id="adres"> <?php echo $companyInformation->address;?><br /> </div>
               <div id="plaats"><?php echo $companyInformation->city; ?> </div>
               <div id-"postcode"><?php echo $companyInformation->postalcode . ", " . $companyInformation->city; ?><br /></div>

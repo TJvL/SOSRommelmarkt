@@ -63,7 +63,9 @@ class HomeController extends Controller
 
     public function contact_GET()
     {
-        $this->render("contact");
+        $companyInformation = $this->companyInformationRepository->selectCurrent();
+
+        $this->render("contact", $companyInformation);
     }
 
     public function contact_POST()
