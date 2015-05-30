@@ -532,10 +532,10 @@ class ManageController extends Controller
     public function createpartner_POST()
     {
         // Check if everything needed is here.
-        if (isset($_POST["name"]) && isset($_POST["website"]) && isset($_FILES["image"]))
+        if (isset($_POST["name"]) && isset($_POST["website"]) && isset($_POST["category"]) && isset($_FILES["image"]))
         {
             // Insert the partner record. And set $post id to the id for setpartnerimage.
-            $image = $this->partnerRepository->insert($_POST["name"], $_POST["website"]);
+            $image = $this->partnerRepository->insert($_POST["name"], $_POST["website"], $_POST["category"]);
 
             // Set the image.
             $image->setImage($_FILES["image"]);
@@ -561,9 +561,9 @@ class ManageController extends Controller
     public function updatepartner_POST()
     {
         // Check if everything needed is here.
-        if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["website"]))
+        if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["website"]) && isset($_POST["category"]))
         {
-            $this->partnerRepository->updateById($_POST["id"], $_POST["name"], $_POST["website"]);
+            $this->partnerRepository->updateById($_POST["id"], $_POST["name"], $_POST["website"], $_POST["category"]);
 
             exit(json_encode(0));
         }

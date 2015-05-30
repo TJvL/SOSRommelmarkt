@@ -15,23 +15,25 @@ class PartnerRepository
 		$partner->id = $array["id"];
 		$partner->name = $array["name"];
 		$partner->website = $array["website"];
+        $partner->category = $array["category"];
 	
 		return $partner;
 	}
 	
-	public function insert($name, $website)
+	public function insert($name, $website, $category)
 	{
-		$query = "INSERT INTO Partners (name, website)
-			VALUES (?, ?)";
+		$query = "INSERT INTO Partners (name, website, category)
+			VALUES (?, ?, ?)";
 		
 		// Check if the website is valid (with http(s):// prefix). Add it if not.
 		if (strpos($website, "http://") === false && strpos($website, "https://") === false)
 			$website = "http://" . $website;
 		
 		$partner = new Partner();
-		$partner->id = $this->database->insert($query, "ss", array($name, $website));
+		$partner->id = $this->database->insert($query, "sss", array($name, $website, $category));
 		$partner->name = $name;
 		$partner->website = $website;
+        $partner->category = $category;
 		
 		return $partner;
 	}
@@ -39,19 +41,19 @@ class PartnerRepository
 	public function update($partner)
 	{
 		$query = "UPDATE Partners
-			SET name = ?, website = ?
+			SET name = ?, website = ?, category = ?
 			WHERE id = ?";
 
-        $this->database->update($query, "ssi", array($partner->name, $partner->website, $partner->id));
+        $this->database->update($query, "sssi", array($partner->name, $partner->website, $partner->category, $partner->id));
 	}
 	
-	public function updateById($id, $name, $website)
+	public function updateById($id, $name, $website, $category)
 	{
 		$query = "UPDATE Partners
-			SET name = ?, website = ?
+			SET name = ?, website = ?, category = ?
 			WHERE id = ?";
 
-        $this->database->update($query, "ssi", array($name, $website, $id));
+        $this->database->update($query, "sssi", array($name, $website, $category, $id));
 	}
 
     public function selectById($id)
