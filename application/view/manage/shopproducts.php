@@ -29,27 +29,11 @@
                 </thead>
                 <tbody>
                 <?php
-                    $products = ShopProductRepository::selectAll();
-                    foreach ($products as $product)
+                    foreach ($model->shopProducts as $product)
                     {
                     	?>
                         <tr>
 	                        <td><?php echo $product->name ?></td>
-                            <?php
-                            switch ($product->colorCode) {
-                                case "blue":
-                                   echo "<td>gebruikt</td>";
-                                    break;
-
-                                case "red":
-                                    echo "<td>lichte schade</td>";
-                                    break;
-
-                                case "green":
-                                    echo "<td>Als nieuw</td>";
-                                    break;
-                            }
-                            ?>
                             <td><?php echo $product->colorCode ?></td>
 	                        <td><?php echo $product->price ?></td>
                             <td><?php echo $product->addedBy ?></td>

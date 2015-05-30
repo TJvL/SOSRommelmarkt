@@ -1,9 +1,16 @@
 <?php
 class HomeController extends Controller
 {
-    function __construct()
+    public $auctionProductRepository;
+    public $sloganRepository;
+    public $projectRepository;
+    public $visitingHoursRepository;
+    public $moduleRepository;
+    public $newsRepository;
+
+    public function __construct()
     {
-        parent::__constructor("home");
+        parent::__construct("home");
     }
 
     public function error_GET()
@@ -16,15 +23,33 @@ class HomeController extends Controller
 
     public function index_GET()
     {
-        $productList = new ArrayList("AuctionProduct");
-        $productList->addAll(AuctionProductRepository::selectByCurrentAuction());
-        $this->render("index", $productList);
+        $homeVM = new HomePageViewModel();
+
+        $auctionProducts = new ArrayList("AuctionProduct");
+        $auctionProducts->addAll($this->auctionProductRepository->selectByCurrentAuction());
+
+        $slogans = new ArrayList("Slogan");
+        $slogans->addAll($this->sloganRepository->selectAll());
+
+        $visitingHours = $this->visitingHoursRepository->selectCurrent();
+
+        $modules = $this->moduleRepository->selectByCategory("home");
+        
+        $newsItems = $this->newsRepository->selectCurrent();
+
+        $homeVM->auctionProducts = $auctionProducts;
+        $homeVM->slogans = $slogans;
+        $homeVM->visitingHours = $visitingHours;
+        $homeVM->modules = $modules;
+        $homeVM->newsItems = $newsItems;
+
+        $this->render("index", $homeVM);
     }
 
     public function projects_GET()
     {
         $projectList = new ArrayList("Project");
-        $projectList->addAll(ProjectRepository::selectAll());
+        $projectList->addAll($this->projectRepository->selectAll());
         $this->render("projects", $projectList);
     }
 
@@ -35,35 +60,37 @@ class HomeController extends Controller
 
     public function aboutus_GET()
     {
-        $this->render("aboutus");
+        $modules = $this->moduleRepository->SelectByCategory("aboutus");
+
+        $this->render("aboutus", $modules);
     }
 
     public function contact_GET()
     {
-        $this->render("contact");
+        $companyInformation = $this->companyInformationRepository->selectCurrent();
+
+        $this->render("contact", $companyInformation);
     }
 
     public function contact_POST()
     {
-        $from = $_POST['email'];
-        $to = "caboel@student.avans.";
-        $subject = $_POST['subject'];
+        $subject = $_POST['options']; //Yeah, 'subject' is called options in the view
         $message =
             'Verzonden door: ' . $_POST['name'] . "\n".
             'Telefoon nummer: ' . $_POST['phone'] . "\n".
-            'Bericht:' . $_POST['comments'] . "\n";
-        $headers = 'From: ' . $from . "\r\n";
+            'E-mail adres: ' . $_POST['email'] . "\n".
+            'Bericht: ' . "\n" . $_POST['explanation'] . "\n";
 
         date_default_timezone_set("Europe/Amsterdam");
 
 
-        if(mail($to, $subject, $message, $headers))
+        if(Mailer::sendNotifMail($subject, $message))
         {
-            $this->viewbag['message'] = "Uw bericht is verzonden, wij nemen spoedig contact met U op.";
+            $this->viewBag['message'] = "Uw bericht is verzonden, wij nemen spoedig contact met U op.";
         }
         else
         {
-            $this->viewbag['message'] = "Er is een fout opgetreden, probeer U het later nog eens.";
+            $this->viewBag['message'] = "Er is een fout opgetreden, probeer U het later nog eens.";
         }
 
         $this->render("contact");
@@ -72,8 +99,7 @@ class HomeController extends Controller
     public function news_GET()
     {
     	$newsList = new ArrayList("News");
-    	$newsList->addAll(NewsRepository::selectCurrent());
+    	$newsList->addAll($this->newsRepository->selectCurrent());
     	$this->render("news", $newsList);
     }
 }
-?>

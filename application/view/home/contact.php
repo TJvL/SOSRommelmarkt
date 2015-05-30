@@ -1,25 +1,28 @@
-<?php $companyInformation = CompanyInformation::selectCurrent(); ?>
+<?php $companyInformation = $model; ?>
 
 <div class="container">
     <div style="margin-bottom:5%" class="white">
-      <div class="row">
-        <div class="col-md-">
-
-
-           <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
-          <script type="text/javascript" src="<?php echo ROOT_PATH;?>/js/home/contact/googlemaps.js"> </script>
-
-           
-      <body onload="initialize()">
-        <div id="map_canvas" style="width: 100%; height: 280px;"></div>
-      </body>
-    </div>
-    <div class="row">
+        <div class="row">
+            <div class="col-md-">
+                <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
+                <script type="text/javascript" src="<?php echo ROOT_PATH;?>/js/home/contact/googlemaps.js"> </script>
+                <body onload="initialize()">
+                    <div id="map_canvas" style="width: 100%; height: 280px;"></div>
+                </body>
+            </div>
+        <div class="row">
            <div class="col-md-8">
                <div class="content">
-                <form action="<?php echo ROOT_PATH . "/home/contact"?>" class="idealforms" method="post" id="contactform">
-                    <h2>Contact</h2>
 
+                <form action="<?php echo ROOT_PATH . "/home/contact"?>" class="idealforms" method="post" id="contactform">
+                    <?php
+                    if(isset($viewbag['message']))
+                    {
+                        echo "<p>" . $viewbag['message'] . "</p>";
+                    }
+                    ?>
+
+                    <h2>Contact</h2>
                     <div class="field">
                         <label for="inputEmail3" class="main">Naam</label>
                         <input form="contactform" name="name" type="text" placeholder="Uw naam">
@@ -59,12 +62,6 @@
                         <label class="main">&nbsp;</label>
                         <button form="contactform" type="submit" class="submit">Versturen</button>
                     </div>
-                    <?php
-                    if(isset($viewbag['message']))
-                    {
-                        echo $viewbag['message'];
-                    }
-                    ?>
                     <span id="invalid"></span>
                 </form>
            </div>
@@ -73,8 +70,6 @@
         <div class="col-md-4">
            <h2 class="title">Adres</h2>
            <p>
-               <?php $companyInformation = CompanyInformation::selectCurrent(); ?>
-
               <div id="adres"> <?php echo $companyInformation->address;?><br /> </div>
               <div id="plaats"><?php echo $companyInformation->city; ?> </div>
               <div id-"postcode"><?php echo $companyInformation->postalcode . ", " . $companyInformation->city; ?><br /></div>

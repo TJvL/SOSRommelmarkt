@@ -1,16 +1,10 @@
-
-	<?php
-	// Get all modules that belong to about us
-	$modules = ModuleRepository::SelectByCategory("aboutus");
-	?>
-
 <div class="container" >
 	<div class="white">
 		<!--        title-->
 		<h1>Over ons</h1>
 		<!--            list-->
 		<div class="list-group collapse-group margin-ver-lg">
-			<?php foreach ($modules as $m) {?>
+			<?php foreach ($model as $m) {?>
 				<!--                        one list item-->
 				<a class="list-group-item collapse-group-item">
 					<!--                        collapsible part-->

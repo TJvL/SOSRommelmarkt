@@ -1,18 +1,12 @@
-   
-        <?php 
-             // contactinfo ophalen
-             $subventionsContent = SubventionsContent::selectCurrent();
-        ?>
-
 <div class= "container">
 <!--        <div class="grey_subvention" >-->
 
     <div style="margin-bottom:5%" class="white">
         <content>
 
-                <h2><b><?php echo $subventionsContent->titel; ?></b></h2>
+                <h2><b><?php echo $model->titel; ?></b></h2>
                 
-                <?php echo $subventionsContent->content; ?>
+                <?php echo $model->content; ?>
                 
         </content>
 
