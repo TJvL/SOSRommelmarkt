@@ -10,6 +10,8 @@ class ManageController extends Controller
     public $subventionRequestRepository;
     public $moduleRepository;
     public $sloganRepository;
+    public $companyInformationRepository;
+    public $visitingHoursRepository;
 
     public function __construct()
     {
@@ -19,23 +21,6 @@ class ManageController extends Controller
     public function index_GET()
     {
         $this->render("index");
-    }
-
-    public function companyInformation_POST()
-    {
-        // Check if all the necessary data has been sent with the request.
-        if (isset($_POST["phone"]) && isset($_POST["email"]) && isset($_POST["address"]) && isset($_POST["city"]) && isset($_POST["postalcode"]))
-        {
-            // set the data and update
-            $companyInformation             = CompanyInformation::selectCurrent();
-            $companyInformation->phone      = $_POST["phone"];
-            $companyInformation->email      = $_POST["email"];
-            $companyInformation->address    = $_POST["address"];
-            $companyInformation->city       = $_POST["city"];
-            $companyInformation->postalcode = $_POST["postalcode"];
-            $companyInformation->update();
-        }
-        $this->redirectTo("/manage/settings");
     }
 
     //<editor-fold desc="Pages Manage">
@@ -69,7 +54,21 @@ class ManageController extends Controller
 
     public function settings_GET()
     {
-        $this->render("settings");
+        $settingsVM = new SettingsViewModel();
+
+        $companyInformation = $this->companyInformationRepository->selectCurrent();
+        $visitingHours = $this->visitingHoursRepository->selectCurrent();
+        $slogans = $this->sloganRepository->selectAll();
+        $homeModules = $this->moduleRepository->selectByCategory("home");
+        $aboutUsModules = $this->moduleRepository->selectByCategory("aboutus");
+
+        $settingsVM->companyInformation = $companyInformation;
+        $settingsVM->visitingHours = $visitingHours;
+        $settingsVM->slogans = $slogans;
+        $settingsVM->homeModules = $homeModules;
+        $settingsVM->aboutUsModules = $aboutUsModules;
+
+        $this->render("settings", $settingsVM);
     }
 
     public function settings_POST()
@@ -78,7 +77,7 @@ class ManageController extends Controller
         if (isset($_POST["monday"]) && isset($_POST["tuesday"]) && isset($_POST["wednesday"]) && isset($_POST["thursday"]) && isset($_POST["friday"]) && isset($_POST["saturday"]) && isset($_POST["sunday"]))
         {
             // set the data and update
-            $visitingHours              = VisitingHours::selectCurrent();
+            $visitingHours              = new VisitingHours();
             $visitingHours->monday      = $_POST["monday"];
             $visitingHours->tuesday     = $_POST["tuesday"];
             $visitingHours->wednesday   = $_POST["wednesday"];
@@ -86,9 +85,26 @@ class ManageController extends Controller
             $visitingHours->friday      = $_POST["friday"];
             $visitingHours->saturday    = $_POST["saturday"];
             $visitingHours->sunday      = $_POST["sunday"];
-            $visitingHours->update();
+            $visitingHours->update($visitingHours);
         }
 
+        $this->redirectTo("/manage/settings");
+    }
+
+    public function companyInformation_POST()
+    {
+        // Check if all the necessary data has been sent with the request.
+        if (isset($_POST["phone"]) && isset($_POST["email"]) && isset($_POST["address"]) && isset($_POST["city"]) && isset($_POST["postalcode"]))
+        {
+            // set the data and update
+            $companyInformation             = new CompanyInformation();
+            $companyInformation->phone      = $_POST["phone"];
+            $companyInformation->email      = $_POST["email"];
+            $companyInformation->address    = $_POST["address"];
+            $companyInformation->city       = $_POST["city"];
+            $companyInformation->postalcode = $_POST["postalcode"];
+            $companyInformation->update($companyInformation);
+        }
         $this->redirectTo("/manage/settings");
     }
 
