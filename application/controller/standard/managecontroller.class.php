@@ -532,7 +532,7 @@ class ManageController extends Controller
             throw new Exception("Resource was not found. No id was provided", 404);
         }
     }
-   
+
 
     public function createpartner_POST()
     {

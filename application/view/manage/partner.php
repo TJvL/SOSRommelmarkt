@@ -31,12 +31,17 @@
                         <input class="form-control" id="website" type="text" placeholder="Website van partner" value="<?php echo $model->website ?>" required>
                     </div>
                 </div>
-                <select class="form-control" form="partnerForm" name="options" id="categorie">
-                    <option value="default" disabled >Kies een partner categorie</option>
-                    <option value="SOS" <?php if ($model->category == "SOS") echo "selected"; ?>>SOS</option>
-                    <option value="Dienstverleners" <?php if ($model->category == "Dienstverleners") echo "selected"; ?>>Dienstverleners</option>
-                    <option value="Projecten" <?php if ($model->category == "Projecten") echo "selected"; ?>>Projecten</option>
-                </select>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="category">Categorie</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" form="partnerForm" name="options" id="categorie" required>
+                            <option value="default" disabled <?php if ($model->category != ("SOS" || "Dienstverleners" || "Projecten")) echo "selected"; ?>>Kies een partner categorie</option>
+                            <option value="SOS" <?php if ($model->category === "SOS") echo "selected"; ?>>SOS</option>
+                            <option value="Dienstverleners" <?php if ($model->category === "Dienstverleners") echo "selected"; ?>>Dienstverleners</option>
+                            <option value="Projecten" <?php if ($model->category === "Projecten") echo "selected"; ?>>Projecten</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="image">Plaatje</label>
                     <div class="col-sm-8">
