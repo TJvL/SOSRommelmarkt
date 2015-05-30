@@ -1,10 +1,10 @@
 <?php
 
-class APIController
+abstract class APIController
 {
     private $name;
 
-    function __construct($name)
+    protected function __construct($name)
     {
         $this->name = $name;
     }

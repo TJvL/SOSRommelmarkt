@@ -1,6 +1,3 @@
-<?php Type::check("ArrayList:Product", $model);?>
-
-
 <div class="container">
 
     <div class="white">
@@ -36,7 +33,7 @@
                         <li>
                             <ul class="filterListings ">
                                 <li>
-                                    <?php $priceRanges = ShopProduct::getPriceRanges();?>
+                                    <?php $priceRanges = $model->prices; ?>
                                     <div class="col-lg-12">
                                         <p>
                                             <span type="text" id="amount"/>
@@ -53,7 +50,7 @@
             </div>
             <div class="col-sm-9 ">
 
-                <?php foreach($model as $product){?>
+                <?php foreach($model->shopProducts as $product){?>
                 <div id="product<?php echo $product->id?>" class="col-sm-3 product padding-lg animation <?php echo $product->colorCode?>" data-productPrice="<?php echo $product->price?>">
                     <i class="product-info-quality <?php echo $product->colorCode ?>"></i>
                     <div class="view view-first">

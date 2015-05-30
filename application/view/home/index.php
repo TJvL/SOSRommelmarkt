@@ -1,5 +1,3 @@
-<?php Type::check("ArrayList:AuctionProduct", $model) ?>
-
 <div class="container">
 	<div class="grey">
 		<div class="row">
@@ -7,20 +5,22 @@
 				<img class="img-responsive" src="<?php echo ROOT_PATH;?>/img/content/headerdiv.png">
 			</div>
 			<div class="col-md-9">
-				<?php 
-					// slogans ophalen
-					$slogans = SloganRepository::selectAll();
-				?>
-				
 				<div id="slogan-carousel" class="carousel text-carousel slide" data-ride="carousel">
             		<div class="carousel-inner" role="listbox">
-            			<?php for ($i = 0; $i < count($slogans); $i++) { ?>
+            			<?php
+                        $i = 0;
+                        foreach ($model->slogans as $slogan)
+                        {
+                            ?>
             			<div class="item <?php if ($i == 0) echo 'active' ?>">
             				<div class="carousel-content">
-            					<p><?php echo $slogans[$i]->slogan ?></p>
+            					<p><?php echo $slogan->slogan ?></p>
             				</div>
             			</div>
-            			<?php } ?>
+            			<?php
+                            $i++;
+                        }
+                        ?>
             		</div>
 				</div>
 			</div>
@@ -31,24 +31,24 @@
 	<div class="row padding-lg">
         <?php
         //if there's 3 or less products, just give all of them
-        if($model->size() <= 3)
+        if($model->auctionProducts->size() <= 3)
         {
-            foreach($model as $prod)
+            foreach($model->auctionProducts as $auctionProduct)
             {
                 ?>
                 <div class="col-md-3 padding-hor-md equal-height">
                     <div class="white margin-ver-lg">
                         <p><b>In de vitrine:</b></p>
                         <a href="<?php echo ROOT_PATH; ?>/auction/index">
-                            <img class="img-responsive" src="<?php echo $prod->imagePath ?>">
+                            <img class="img-responsive" src="<?php echo $auctionProduct->imagePath ?>">
                         </a>
-                        <h2><?php echo $prod->name ?></h2>
-                        <p><?php echo $prod->description ?></p>
+                        <h2><?php echo $auctionProduct->name ?></h2>
+                        <p><?php echo $auctionProduct->description ?></p>
                     </div>
                 </div>
                 <?php
             }
-            for($i = 3; $i > $model->size(); $i--) //fill up until 3 spaces are filled.
+            for($i = 3; $i > $model->auctionProducts->size(); $i--) //fill up until 3 spaces are filled.
             {
                 ?>
                 <div class="col-md-3 padding-hor-md equal-height"></div>
@@ -59,22 +59,22 @@
         {
             //mt_rand is inclusive
             $rands = array();
-            $rands[] = mt_rand(1, $model->size()-2); //anything except lowest or highest number.
+            $rands[] = mt_rand(1, $model->auctionProducts->size()-2); //anything except lowest or highest number.
             $rands[] = mt_rand(0, $rands[0]); //atleast one below first random
-            $rands[] = mt_rand($rands[0]+1, $model->size()-1); //atleast one above first random;
+            $rands[] = mt_rand($rands[0]+1, $model->auctionProducts->size()-1); //atleast one above first random;
 
             foreach($rands as $val)
             {
-                $prod = $model->get($val);
+                $auctionProduct = $model->auctionProducts->get($val);
                 ?>
                 <div class="col-md-3 padding-hor-md equal-height">
                     <div class="white margin-ver-lg">
                         <p><b>In de vitrine:</b></p>
                         <a href="<?php echo ROOT_PATH; ?>/auction/index">
-                            <img class="img-responsive" src="<?php echo $prod->imagePath ?>">
+                            <img class="img-responsive" src="<?php echo $auctionProduct->imagePath ?>">
                         </a>
-                        <h2><?php echo $prod->name ?></h2>
-                        <p><?php echo $prod->description ?></p>
+                        <h2><?php echo $auctionProduct->name ?></h2>
+                        <p><?php echo $auctionProduct->description ?></p>
                     </div>
                 </div>
                 <?php
@@ -88,7 +88,7 @@
 			
 			<?php 
 				// contactinfo ophalen
-				$visitingHours = VisitingHours::selectCurrent();
+				$visitingHours = $model->visitingHours;
 			?>
 			
 				<h2>Openingstijden</h2>
@@ -108,7 +108,7 @@
 	<!-- Start modules -->
 	<?php
 		// Get all modules that belong to the homepage
-		$modules = ModuleRepository::SelectByCategory("home");
+		$modules = $model->modules;
 		
 		// Display all of them
 		for ($i = 0; $i < count($modules); $i++)

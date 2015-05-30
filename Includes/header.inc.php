@@ -16,20 +16,16 @@ IncludeLocator::locateIncludes("js", $controller, $action);
 <body>
     <nav class= "navbar navbar-default navbar-static-top header_fixed">
         <div class="container">
-            <?php 
-            	// contactinfo ophalen
-            	$companyInformation = CompanyInformation::selectCurrent();
-            ?>
             <div id="navbar" class=" navbar">
                 <ul class = "nav navbar-nav ">
                     <li>
                         <div class="contact-info">
                             <span class="icon"><i class="fa fa-phone"></i></span>
-                            <div class="contact-phone"><span><?php echo $companyInformation->phone; ?></span></div>
+                            <div class="contact-phone"><span><?php echo $headerVM->companyInformation->phone; ?></span></div>
                             <span class="icon"><i class="fa fa-envelope"></i></span>
-                            <div class="contact-mail"><span><?php echo $companyInformation->email ?> </span></div>
+                            <div class="contact-mail"><span><?php echo $headerVM->companyInformation->email ?> </span></div>
                             <span class="icon"><i class="fa fa-map-marker"></i></span>
-                            <div class="contact-address"><span><?php echo $companyInformation->address . ", " . $companyInformation->postalcode . " " . $companyInformation->city; ?></span></div>
+                            <div class="contact-address"><span><?php echo $headerVM->companyInformation->address . ", " . $headerVM->companyInformation->postalcode . " " . $headerVM->companyInformation->city; ?></span></div>
                         </div>
                     </li>
                     <li><a href="<?php echo ROOT_PATH; ?>/home/contact"><i class="fa fa-envelope"></i> Contact</a></li>
