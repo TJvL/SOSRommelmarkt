@@ -1,6 +1,7 @@
 <?php
 abstract class Controller
 {
+
     public $companyInformationRepository;
     public $partnerRepository;
 

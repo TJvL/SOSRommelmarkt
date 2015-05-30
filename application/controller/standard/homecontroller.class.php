@@ -68,19 +68,17 @@ class HomeController extends Controller
 
     public function contact_POST()
     {
-        $from = $_POST['email'];
-        $to = "caboel@student.avans.";
-        $subject = $_POST['subject'];
+        $subject = $_POST['options']; //Yeah, 'subject' is called options in the view
         $message =
             'Verzonden door: ' . $_POST['name'] . "\n".
             'Telefoon nummer: ' . $_POST['phone'] . "\n".
-            'Bericht:' . $_POST['comments'] . "\n";
-        $headers = 'From: ' . $from . "\r\n";
+            'E-mail adres: ' . $_POST['email'] . "\n".
+            'Bericht: ' . "\n" . $_POST['explanation'] . "\n";
 
         date_default_timezone_set("Europe/Amsterdam");
 
 
-        if(mail($to, $subject, $message, $headers))
+        if(Mailer::sendNotifMail($subject, $message))
         {
             $this->viewBag['message'] = "Uw bericht is verzonden, wij nemen spoedig contact met U op.";
         }

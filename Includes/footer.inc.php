@@ -2,21 +2,35 @@
 
 <div id="footer-wrapper">
     <div id="footer" class="container">
-    	<div class="row">
-            <div class="title">
-                <h2>Partners</h2>
-            </div>
-    	</div>
     	<div class="row footer-partners col-sm-offset-1">
-			<?php foreach($footerVM->partners as $partner)
-			{
-				?>
-				<div class=" col-sm-1 padding-md">
-					<a href="<?php echo $partner->website ?>" target="_blank"><img class="footer-partner-logo-image img-responsive" src="<?php echo $partner->getImagePath() ?>"></a>
-				</div>
-				<?php
-			}
-			?>
+            <div class="col-md-4">
+                <h2>Partners</h2>
+                <?php for ($i = 0; $i < $footerVM->partners->size(); $i++)
+                {
+                    ?>
+
+                        <a href="<?php echo $footerVM->partners->get($i)->website ?>" target="_blank"><img class="footer-partner-logo-image img-responsive" src="<?php echo $footerVM->partners->get($i)->getImagePath() ?>"></a>
+
+                <?php
+                }
+                ?>
+            </div>
+			<div class="col-md-4">
+				<h2>Partners</h2>
+                partner 1
+                partner 2
+                partner 3
+                partner 4
+                partner 5
+			</div>
+            <div class="col-md-4">
+                <h2>Partners</h2>
+                partner 1
+                partner 2
+                partner 3
+                partner 4
+                partner 5
+            </div>
     	</div>
     </div>
 </div>
