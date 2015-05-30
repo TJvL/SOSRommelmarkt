@@ -24,6 +24,11 @@
                                             <?php echo $m->body ?>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td>
+                                            <?php var_dump($m->getImagePaths()); ?>
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                         </div>
