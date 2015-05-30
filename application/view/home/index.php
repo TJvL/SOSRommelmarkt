@@ -27,11 +27,10 @@
 		</div>
 	</div>
 	
-	<!-- carousel -->
 	<div class="row padding-lg">
         <?php
-        //if there's 3 or less products, just give all of them
-        if($model->size() <= 3)
+        //if there's 2 or less products, just give all of them
+        if($model->size() <= 2)
         {
             foreach($model as $prod)
             {
@@ -48,7 +47,7 @@
                 </div>
                 <?php
             }
-            for($i = 3; $i > $model->size(); $i--) //fill up until 3 spaces are filled.
+            for($i = 2; $i > $model->size(); $i--) //fill up until 2 spaces are filled.
             {
                 ?>
                 <div class="col-md-3 padding-hor-md equal-height"></div>
@@ -59,10 +58,16 @@
         {
             //mt_rand is inclusive
             $rands = array();
+            /*
             $rands[] = mt_rand(1, $model->size()-2); //anything except lowest or highest number.
             $rands[] = mt_rand(0, $rands[0]); //atleast one below first random
             $rands[] = mt_rand($rands[0]+1, $model->size()-1); //atleast one above first random;
-
+            */
+            
+            // modified by Ivo Hendriks
+            $rands[] = mt_rand(1, $model->size()-1); //anything except lowest number
+            $rands[] = mt_rand(0, $rands[0] - 1); //atleast one below first random
+            
             foreach($rands as $val)
             {
                 $prod = $model->get($val);
@@ -83,6 +88,21 @@
 
         ?>
 
+        <div class="col-md-3 padding-hor-md equal-height">
+        	<div class="white margin-ver-lg">
+        		<h2>Nieuws</h2>
+        	<?php $news_items = NewsRepository::selectCurrent(); ?>
+        		<div class="list-group">
+        		<?php foreach ($news_items as $news) { ?>
+        			<a href="#" class="list-group-item">
+        			<?php echo $news->heading; ?>
+        			<i class="pull-right fa fa-arrow-right"></i>
+        			</a>
+        		<?php } ?>
+        		</div>
+        	</div>
+        </div>
+        
 		<div class="col-md-3 padding-hor-md equal-height">
 			<div class="white margin-ver-lg">
 			

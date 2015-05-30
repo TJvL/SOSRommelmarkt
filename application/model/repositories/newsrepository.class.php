@@ -78,6 +78,29 @@ class NewsRepository
 		$result->close();
 		return $aNews;
     }
+    
+    public static function selectCurrent()
+    {
+    	$query = "SELECT *
+    				FROM News
+    				WHERE expiration_date > NOW()
+    				ORDER BY create_date DESC";
+    	// execute the query
+    	$result = Database::select($query);
+		
+		// put the results in an array of objects
+		$aNews = array();
+		
+		for ($i = 0; $i < $result->num_rows; $i++)
+		{
+			$array = $result->fetch_assoc();
+			$aNews[$i] = NewsRepository::createObjectFromArray($array);
+		}
+		
+		// free result
+		$result->close();
+		return $aNews;
+    }
 }
 
 ?>

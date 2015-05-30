@@ -68,8 +68,12 @@ class HomeController extends Controller
 
         $this->render("contact");
     }
-
-
-
+    
+    public function news_GET()
+    {
+    	$newsList = new ArrayList("News");
+    	$newsList->addAll(NewsRepository::selectCurrent());
+    	$this->render("news", $newsList);
+    }
 }
 ?>
