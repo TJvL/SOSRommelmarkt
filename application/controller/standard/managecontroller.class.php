@@ -289,12 +289,24 @@ class ManageController extends Controller
 
     public function shopproducts_GET()
     {
-        $this->render("shopproducts");
+        $productIndexVM = new ShopProductsIndexViewModel();
+
+        $shopProducts = new ArrayList("ShopProduct");
+        $shopProducts->addAll($this->shopProductRepository->selectAll());
+
+        $colorCodes = new ArrayList("ColorCode");
+        $colorCodes->addAll($this->colorCodeRepository->selectAll());
+
+        $productIndexVM->shopProducts = $shopProducts;
+        $productIndexVM->colorCodes = $colorCodes;
+
+        $this->render("shopproducts", $productIndexVM);
     }
     
     public function addshopproduct_GET()
     {
-        $colorCodes = $this->colorCodeRepository->selectAll();
+        $colorCodes = new ArrayList("ColorCode");
+        $colorCodes->addAll($this->colorCodeRepository->selectAll());
 
         $this->render("addshopproduct", $colorCodes);
     }
@@ -305,19 +317,29 @@ class ManageController extends Controller
         $this->redirectTo("/manage/shopproduct/$shopProduct->id");
     }
     
-    public function shopproduct_GET()
+    public function shopproduct_GET($id)
     {
         // Check if the shopproduct id is set.
-        if (isset($_GET["id"]))
+        if (isset($id))
         {
+            $shopProductVM = new ShopProductEditViewModel();
+
             // Get the product.
-            $shopProduct = $this->shopProductRepository->selectById($_GET["id"]);
+            $shopProduct = $this->shopProductRepository->selectById($id);
+
+            $colorCodes = new ArrayList("ColorCode");
+            $colorCodes->addAll($this->colorCodeRepository->selectAll());
+
+            $shopProductVM->shopProduct = $shopProduct;
+            $shopProductVM->colorCodes = $colorCodes;
             
             // Render the view.
-            $this->render("shopproduct", $shopProduct);
+            $this->render("shopproduct", $shopProductVM);
         }
-        
-        // TODO: Error or some shit
+        else
+        {
+            throw new Exception("Resource was not found. No id was provided", 404);
+        }
     }
     
     public function updateshopproduct_POST()
@@ -465,19 +487,22 @@ class ManageController extends Controller
         $this->redirectTo("/manage/auctions"); // tijdelijk totdat editauction compleet is
     }
     
-    public function editauction_GET()
+    public function editauction_GET($id)
     {
-        if (isset($_GET["id"]))
+        if (isset($id))
         {
-            // get the auctionproducts
+            // get the auction products
             $auctionProductList = new ArrayList("AuctionProduct");
-            $auctionProductList->addAll($this->auctionRepository->selectByAuctionId($_GET["id"]));
+            $auctionProductList->addAll($this->auctionProductRepository->selectByAuctionId($id));
             
             // render
+            $_SESSION["auctionId"] = $id;
             $this->render("editauction", $auctionProductList);
         }
-        
-        // TODO: error catching
+        else
+        {
+            throw new Exception("Resource was not found. No id was provided", 404);
+        }
     }
 
     //  </editor-fold>
@@ -567,16 +592,26 @@ class ManageController extends Controller
 
     //<editor-fold desc="Auction Product Manage">
     
-    public function auctionproduct_GET()
+    public function auctionproduct_GET($id)
     {
         // Check if the id is set.
-        if (isset($_GET["id"]))
+        if (isset($id))
         {
+            $auctionProductVM = new AuctionProductEditViewModel();
+
+            $auctionProduct = $this->auctionProductRepository->selectById($id);
+            $colorCodes = $this->colorCodeRepository->selectAll();
+
+            $auctionProductVM->auctionProduct = $auctionProduct;
+            $auctionProductVM->colorCodes = $colorCodes;
+
             // Render the view.
-            $this->render("auctionproduct", $this->auctionProductRepository->selectById($_GET["id"]));
+            $this->render("auctionproduct", $auctionProductVM);
         }
-         
-        // TODO: Error or some shit
+        else
+        {
+            throw new Exception("Resource was not found. No id was provided", 404);
+        }
     }
     
     public function auctionproduct_POST()

@@ -28,9 +28,12 @@ class ExceptionHandler
         if(is_a($ex, "CoreException"))
         {
             $routeObject = $ex->getRouteObject();
-            if($routeObject->isAPICall)
+            if(isset($routeObject))
             {
-                $handleAPI = true;
+                if($routeObject->isAPICall)
+                {
+                    $handleAPI = true;
+                }
             }
         }
 

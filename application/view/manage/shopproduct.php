@@ -1,8 +1,3 @@
-<?php 
-// Check if a correct model has been given to the view.
-Type::check("ShopProduct", $model);
-?>
-
 <div class="container">
 	<div class="white">
         <div class="row">
@@ -19,25 +14,25 @@ Type::check("ShopProduct", $model);
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="id">ID</label>
 					<div class="col-sm-8">
-						<input class="form-control" id="id" type="number" value="<?php echo $model->id ?>" disabled>
+						<input class="form-control" id="id" type="number" value="<?php echo $model->shopProduct->id ?>" disabled>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="name">Naam</label>
 					<div class="col-sm-8">
-						<input class="form-control" id="name" type="text" placeholder="Naam van het product" value="<?php echo $model->name ?>" required>
+						<input class="form-control" id="name" type="text" placeholder="Naam van het product" value="<?php echo $model->shopProduct->name ?>" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="description">Omschrijving</label>
 					<div class="col-sm-8">
-						<textarea class="form-control" id="description" style="resize: none" rows="3" placeholder="Omschrijving van het product" required><?php echo $model->description ?></textarea>
+						<textarea class="form-control" id="description" style="resize: none" rows="3" placeholder="Omschrijving van het product" required><?php echo $model->shopProduct->description ?></textarea>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="addedBy">Toegevoegd door</label>
 					<div class="col-sm-8">
-						<input class="form-control" id="addedBy" type="text" value="<?php echo $model->addedBy ?>" disabled>
+						<input class="form-control" id="addedBy" type="text" value="<?php echo $model->shopProduct->addedBy ?>" disabled>
 					</div>
 				</div>
 				<div class="form-group">
@@ -45,9 +40,9 @@ Type::check("ShopProduct", $model);
 					<div class="col-sm-8">
 						<select id="colorCode" class="form-control">
 			                <?php 
-							foreach (ColorCodeRepository::selectAll() as $colorCode)
+							foreach ($model->colorCodes as $colorCode)
 							{
-								if ($colorCode->name == $model->colorCode)
+								if ($colorCode->name == $model->shopProduct->colorCode)
 								{
 									?>
 									<option value="<?php echo $colorCode->name ?>" selected="selected"><?php echo $colorCode->name ?> - <?php echo $colorCode->description ?></option>
@@ -69,7 +64,7 @@ Type::check("ShopProduct", $model);
 					<div class="col-sm-8">
 						<div class="input-group">
 							<span class="input-group-addon">&euro;</span>
-							<input class="form-control" id="price" type="number" step="any" value="<?php echo $model->price ?>" required>
+							<input class="form-control" id="price" type="number" step="any" value="<?php echo $model->shopProduct->price ?>" required>
 						</div>
 					</div>
 				</div>
@@ -79,7 +74,7 @@ Type::check("ShopProduct", $model);
 						<div class="checkbox">
 							<label>
 								<?php 
-								if ($model->isReserved)
+								if ($model->shopProduct->isReserved)
 								{
 									?>
 									<input id="isReserved" type="checkbox" checked>
@@ -101,7 +96,7 @@ Type::check("ShopProduct", $model);
 						<button class="btn btn-default btn-block" type="submit">Opslaan</button>
 					</div>
 					<div class="col-sm-2">
-						<button class="btn btn-danger btn-block" type="button" onClick="DeleteShopProduct(<?php echo $model->id ?>)">Verwijderen</button>
+						<button class="btn btn-danger btn-block" type="button" onClick="DeleteShopProduct(<?php echo $model->shopProduct->id ?>)">Verwijderen</button>
 					</div>
 					<div class="col-sm-4">
 						<div class="alert" id="status" role="alert"></div>
@@ -120,7 +115,7 @@ Type::check("ShopProduct", $model);
 				<form id="imageDataForm" enctype="multipart/form-data" action="javascript:handleNewImage()">
 					<button class="btn btn-default" type="submit">Maak afbeelding</button>
 					<input class="hidden" id="fileInput" name="file" type="file">
-					<input name="productId" type="hidden" value="<?php echo $model->id ?>">
+					<input name="productId" type="hidden" value="<?php echo $model->shopProduct->id ?>">
 					<input id="xCoord" name="xCoord" type="hidden">
 					<input id="yCoord" name="yCoord" type="hidden">
 					<input id="width" name="width" type="hidden">
@@ -143,7 +138,7 @@ Type::check("ShopProduct", $model);
 				</div>
 			</div>
 			<?php
-			foreach ($model->getImagePaths() as $imagePath)
+			foreach ($model->shopProduct->getImagePaths() as $imagePath)
 			{
 				?>
 				<div class="col-sm-2">
