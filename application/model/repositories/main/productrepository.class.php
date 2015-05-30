@@ -10,7 +10,7 @@ abstract class ProductRepository
     }
 
 
-    protected function insert($name, $description, $addedBy, $colorCode)
+    protected function insertProduct($name, $description, $addedBy, $colorCode)
     {
         $query = "INSERT INTO Product (name, description, addedBy, colorCode)
 			VALUES (?, ?, ?, ?)";
@@ -18,7 +18,7 @@ abstract class ProductRepository
         return $this->database->insert($query, "ssss", array($name, $description, $addedBy, $colorCode));
     }
     
-    protected function updateById($id, $name, $description, $colorCode)
+    protected function updateProductById($id, $name, $description, $colorCode)
     {
     	$query = "UPDATE Product
         	SET name = ?, description = ?, colorCode = ? WHERE id = ?";
@@ -26,12 +26,12 @@ abstract class ProductRepository
         $this->database->update($query, "sssi", array($name, $description, $colorCode, $id));
     }
 
-    protected function update($product)
+    protected function updateProduct($product)
     {
         $this->updateById($product->id, $product->name, $product->description, $product->colorCode);
     }
 
-	protected function deleteById($id)
+	protected function deleteProductById($id)
 	{
 		$query = "DELETE FROM Product WHERE id = ?";
 

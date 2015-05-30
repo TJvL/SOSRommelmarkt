@@ -2,6 +2,7 @@
 class AuctionController extends Controller
 {
     public $auctionProductRepository;
+    public $auctionRepository;
 
     public function __construct()
     {
@@ -10,10 +11,17 @@ class AuctionController extends Controller
 
     public function index_GET()
     {
-        $productList = new ArrayList("Product");
-        $productList->addAll($this->auctionProductRepository->selectByCurrentAuction());
+        $auctionHomeVM = new AuctionHomeViewModel();
 
-        $this->render("index", $productList);
+        $auctionProducts = new ArrayList("Product");
+        $auctionProducts->addAll($this->auctionProductRepository->selectByCurrentAuction());
+
+        $auctionDates = $this->auctionRepository->getCurrentAuctionDates();
+
+        $auctionHomeVM->auctionProducts = $auctionProducts;
+        $auctionHomeVM->auctionDates = $auctionDates;
+
+        $this->render("index", $auctionHomeVM);
     }
 
     public function detail_GET($id)

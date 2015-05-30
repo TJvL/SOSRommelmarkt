@@ -10,17 +10,23 @@ class ShopController extends Controller
 
     public function index_GET()
     {
-        $productList = new ArrayList("Product");
-        $productList->addAll($this->shopProductRepository->selectAll());
+        $shopHomeVM = new ShopHomeViewModel();
+
+        $shopProducts = new ArrayList("Product");
+        $shopProducts->addAll($this->shopProductRepository->selectAll());
+
+        $prices = $this->shopProductRepository->getPriceRanges();
+
+        $shopHomeVM->shopProducts = $shopProducts;
+        $shopHomeVM->prices = $prices;
         
-        $this->render("index", $productList);
+        $this->render("index", $shopHomeVM);
     }
 
-    public function detail_GET()
+    public function detail_GET($id)
     {
-        $prod = $this->shopProductRepository->selectById($_GET['id']);
+        $prod = $this->shopProductRepository->selectById($id);
 
         $this->render("detail", $prod);
     }
 }
-?>

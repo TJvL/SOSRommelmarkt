@@ -4,7 +4,7 @@ class ShopProductRepository extends ProductRepository
 {
     public function __construct($database)
     {
-        Parent::__construct($database);
+        parent::__construct($database);
     }
 
 	private function createObjectFromArray($array)
@@ -26,7 +26,7 @@ class ShopProductRepository extends ProductRepository
 	public function insert($name, $description, $addedBy, $colorCode, $price, $isReserved)
 	{
 		// Insert a normal product and get back the auto incremented key.
-		$id = Parent::insert($name, $description, $addedBy, $colorCode);
+		$id = $this->insertProduct($name, $description, $addedBy, $colorCode);
 		
 		$query = "INSERT INTO ShopProduct (id, price, isReserved)
 				VALUES (?, ?, ?)";
@@ -64,7 +64,7 @@ class ShopProductRepository extends ProductRepository
 		{
 			$row = $result->fetch_assoc();
 		
-			$shopProducts[$i] = ShopProductRepository::createObjectFromArray($row);
+			$shopProducts[$i] = $this->createObjectFromArray($row);
 		}
 	
 		$result->close();
@@ -85,7 +85,7 @@ class ShopProductRepository extends ProductRepository
 		$row = $result->fetch_assoc();
 		
 		if ($row !== null)
-			$shopProduct = ShopProductRepository::createObjectFromArray($row);
+			$shopProduct = $this->createObjectFromArray($row);
 		else
 			$shopProduct = null;
 	
@@ -96,7 +96,7 @@ class ShopProductRepository extends ProductRepository
 	
 	public function updateById($id, $name, $description, $colorCode, $price, $isReserved)
 	{
-		Parent::updateById($id, $name, $description, $colorCode);
+		$this->updateProductById($id, $name, $description, $colorCode);
 	
 		$query = "UPDATE ShopProduct SET price = ?, isReserved = ? WHERE id = ?";
 
@@ -105,7 +105,7 @@ class ShopProductRepository extends ProductRepository
 	
 	public function update($product)
 	{
-		ShopProductRepository::updateById($product->id, $product->name, $product->description, $product->colorCode, $product->price, $product->isReserved);
+		$this->updateById($product->id, $product->name, $product->description, $product->colorCode, $product->price, $product->isReserved);
 	}
 	
 	public function deleteById($id)
@@ -114,6 +114,21 @@ class ShopProductRepository extends ProductRepository
 
         $this->database->update($query, "i", array($id));
 		
-		Parent::deleteById($id);
+		$this->deleteProductById($id);
 	}
+
+    public function getPriceRanges()
+    {
+        $query = "SELECT MIN(price) as lowestPrice, MAX(price) as highestPrice FROM ShopProduct";
+
+        // Execute the query.
+        $result = $this->database->select($query);
+
+        $prices = $result->fetch_assoc();
+
+        // Free the result set.
+        $result->close();
+
+        return $prices;
+    }
 }

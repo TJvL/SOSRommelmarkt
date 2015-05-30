@@ -47,7 +47,7 @@ class AuctionRepository
 		{
 			$row = $result->fetch_assoc();
 		
-			$auctions[$i] = AuctionRepository::createObjectFromArray($row);
+			$auctions[$i] = $this->createObjectFromArray($row);
 		}
 		
 		$result->close();
@@ -66,7 +66,7 @@ class AuctionRepository
 		$row = $result->fetch_assoc();
 		
 		if ($row !== null)
-			$auction = AuctionRepository::createObjectFromArray($row);
+			$auction =$this->createObjectFromArray($row);
 		else
 			$auction = null;
 	
@@ -90,4 +90,30 @@ class AuctionRepository
 
         $this->database->update($query, "i", array($id));
 	}
+
+    public function getCurrentAuctionDates()
+    {
+        $query = "SELECT startDate, endDate
+			FROM Auction
+			WHERE Auction.id = (SELECT MAX(id) FROM Auction)";
+
+        // Execute the query.
+        $result = $this->database->select($query);
+
+        // Put the results of the query into an array of Product objects.
+        $dates = array();
+
+        for ($i = 0; $i < $result->num_rows; $i++)
+        {
+            $row = $result->fetch_assoc();
+
+            $dates[$i] = $row["startDate"];
+            $dates[$i+1] = $row["endDate"];
+        }
+
+        // Free the result set.
+        $result->close();
+
+        return $dates;
+    }
 }

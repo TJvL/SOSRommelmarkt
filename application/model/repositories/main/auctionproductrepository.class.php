@@ -4,7 +4,7 @@ class AuctionProductRepository extends ProductRepository
 {
     public function __construct($database)
     {
-        Parent::__construct($database);
+        parent::__construct($database);
     }
 
 	private function createObjectFromArray($array)
@@ -24,7 +24,7 @@ class AuctionProductRepository extends ProductRepository
 	public function insert($name, $description, $addedBy, $colorCode)
 	{
 		// Insert a normal product and get back the auto incremented key.
-		$id = Parent::insert($name, $description, $addedBy, $colorCode);
+		$id = $this->insertProduct($name, $description, $addedBy, $colorCode);
 	
 		$query = "INSERT INTO AuctionProduct (id)
 				VALUES (?)";
@@ -41,7 +41,7 @@ class AuctionProductRepository extends ProductRepository
 		$auctionProduct->imagePath = $auctionProduct->getMainImagePath();
 		$auctionProduct->imagePaths = $auctionProduct->getImagePaths();
 	
-		// Return an object of the newly inserted acution product.
+		// Return an object of the newly inserted auction product.
 		return $auctionProduct;
 	}
 	
@@ -60,7 +60,7 @@ class AuctionProductRepository extends ProductRepository
 		{
 			$row = $result->fetch_assoc();
 		
-			$auctionProducts[$i] = AuctionProductRepository::createObjectFromArray($row);
+			$auctionProducts[$i] = $this->createObjectFromArray($row);
 		}
 	
 		$result->close();
@@ -81,7 +81,7 @@ class AuctionProductRepository extends ProductRepository
 		$row = $result->fetch_assoc();
 		
 		if ($row !== null)
-			$auctionProduct = AuctionProductRepository::createObjectFromArray($row);
+			$auctionProduct = $this->createObjectFromArray($row);
 		else
 			$auctionProduct = null;
 	
@@ -107,7 +107,7 @@ class AuctionProductRepository extends ProductRepository
 		for ($i = 0; $i < $result->num_rows; $i++)
 		{
 			$row = $result->fetch_assoc();
-			$auctionProducts[$i] = AuctionProductRepository::createObjectFromArray($row);
+			$auctionProducts[$i] = $this->createObjectFromArray($row);
 		}
 	
 		$result->close();
@@ -140,7 +140,7 @@ class AuctionProductRepository extends ProductRepository
 		{
 			$row = $result->fetch_assoc();
 			
-			$auctionProducts[$i] = AuctionProductRepository::createObjectFromArray($row);
+			$auctionProducts[$i] = $this->createObjectFromArray($row);
 		}
 		
 		$result->close();
@@ -150,7 +150,7 @@ class AuctionProductRepository extends ProductRepository
 	
 	public function update($product)
 	{
-		$this->update($product);
+		$this->updateProduct($product);
 	}
 	
 	public function deleteById($id)
@@ -164,6 +164,6 @@ class AuctionProductRepository extends ProductRepository
         $this->database->update($query2, "i", array($id));
 	
 		// Delete from product table.
-        Parent::deleteById($id);
+        $this->deleteProductById($id);
 	}
 }
