@@ -24,7 +24,19 @@ class SubventionController extends Controller
             $_POST["gsm"],$_POST["fax"],$_POST["email"],$_POST["explanation"],
             $_POST["planned_activities"],$_POST["intended_results"]);
 
-        Mailer::sendNotifMail("Nieuwe subsidie-aanvraag", "FANCY TEKST HIER");
+        $subject = "Subsidie-aanvraag ontvangen";
+        $content = "" . $_POST['name'] . " " . $_POST['lastname'];
+        if(isset($_POST["companyname"]))
+        {
+            $content = $content . "\nnamens " . $_POST["companyname"];
+        }
+        if(isset($_POST['kvknr']))
+        {
+            $content = $content . "\n(KVK: " . $_POST['kvknr'] .  ")";
+        }
+        $content = $content . "\n\nToelichting: \n" . $_POST["explanation"];
+        
+        Mailer::sendNotifMail($subject, $content);
 
         $this->render("aanvraagSucces");
     }
