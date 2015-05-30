@@ -1,4 +1,5 @@
 <?php
+
 class AccountController extends Controller
 {
     public function __construct()
@@ -21,4 +22,3 @@ class AccountController extends Controller
     	$this->render("login");
     }
 }
-?>
