@@ -27,7 +27,7 @@
 		</div>
 	</div>
 	
-	<!-- carousel -->
+	<!-- Products -->
 	<div class="row padding-lg">
         <?php
         //if there's 3 or less products, just give all of them

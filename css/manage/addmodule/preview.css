@@ -1,0 +1,16 @@
+body #preview-div
+{
+    width: 100%;
+    overflow-y: auto;
+}
+body .modal-content
+{
+    display: inline-block;
+    overflow-y: auto;
+}
+body .modal-lg
+{
+
+    width: 80%;
+    text-align: center;
+}
