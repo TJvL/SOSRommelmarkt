@@ -25,10 +25,10 @@ class NewsRepository
 	public static function update($news)
 	{
 		$query = "UPDATE News
-					SET heading = ?, content = ?, expiration_date = ?
+					SET heading = ?, content = ?, create_date = ?, expiration_date = ?
 					WHERE id = ?";
 		
-		Database::update($query, "ssssi", array($news->heading, $news->content, $news->expiration_date, $news->id));
+		Database::update($query, "ssssi", array($news->heading, $news->content, $news->create_date, $news->expiration_date, $news->id));
 	}
 
     public static function selectById($id)
