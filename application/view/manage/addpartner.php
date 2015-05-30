@@ -24,13 +24,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="categorie">Categorie</label>
+                    <label class="control-label col-sm-2" for="category">Categorie</label>
                     <div class="col-sm-8">
-                        <select class="form-control" form="createPartnerForm" name="options" id="categorie">
-                            <option value="<?php echo $model->categorie ?>" disabled selected>Kies een partner categorie</option>
-                            <option value="<?php echo $model->categorie ?>">SOS</option>
-                            <option value="<?php echo $model->categorie ?>">Dienstverleners</option>
-                            <option value="<?php echo $model->categorie ?>">Projecten</option>
+                        <select class="form-control" form="createPartnerForm" name="options" id="category">
+                            <option value="default" disabled selected>Kies een partner categorie</option>
+                            <option value="SOS">SOS</option>
+                            <option value="Dienstverleners">Dienstverleners</option>
+                            <option value="Projecten">Projecten</option>
                         </select>
                     </div>
                 </div>

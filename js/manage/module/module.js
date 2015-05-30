@@ -19,23 +19,19 @@ function handleUpdateModule()
 		
 		$.ajax(
 			{
-				url: "update",
+				url: "../../moduleapi/update",
 				type: "POST",
 				data: data,
 				async: true,
 				success: function(result)
 				{
-					// Check if it went alright.
-					if (result == 0)
-					{
-						$("#status").text("  Succes!");
-						$("#status").addClass("alert-success");
-					}
-					else
-					{
-						$("#status").text("  Er is iets verkeerd gegaan");
-						$("#status").addClass("alert-danger");
-					}
+					$("#status").text("  Succes!");
+					$("#status").addClass("alert-success");
+				},
+				error: function(result)
+				{
+					$("#status").text("  Er is iets verkeerd gegaan");
+					$("#status").addClass("alert-danger");
 				}
 			});
 	}
@@ -52,7 +48,7 @@ function handleDeleteModule()
 		
 		$.ajax(
 		{
-			url: "delete",
+			url: "moduleapi/delete",
 			type: "POST",
 			data: data,
 			async: true,
