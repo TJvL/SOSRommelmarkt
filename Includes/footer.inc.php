@@ -4,32 +4,37 @@
     <div id="footer" class="container">
     	<div class="row footer-partners col-sm-offset-1">
             <div class="col-md-4">
-                <h2>Partners</h2>
-                <?php for ($i = 0; $i < $footerVM->partners->size(); $i++)
-                {
-                    ?>
-
-                        <a href="<?php echo $footerVM->partners->get($i)->website ?>" target="_blank"><img class="footer-partner-logo-image img-responsive" src="<?php echo $footerVM->partners->get($i)->getImagePath() ?>"></a>
-
+                <h2>SOS</h2>
                 <?php
-                }
+                    for ($i = 0; $i < $footerVM->partners->size(); $i++) {
+                        if ($footerVM->partners->get($i)->category === "SOS") { ?>
+                            <a href="<?php echo $footerVM->partners->get($i)->website ?>" target="_blank"><img class="footer-partner-logo-image img-responsive" src="<?php echo $footerVM->partners->get($i)->getImagePath() ?>"></a>
+                        <?php
+                        }
+                    }
                 ?>
             </div>
 			<div class="col-md-4">
-				<h2>Partners</h2>
-                partner 1
-                partner 2
-                partner 3
-                partner 4
-                partner 5
+				<h2>Dienstverleners</h2>
+                <?php
+                for ($i = 0; $i < $footerVM->partners->size(); $i++) {
+                    if ($footerVM->partners->get($i)->category === "Dienstverleners") { ?>
+                        <a href="<?php echo $footerVM->partners->get($i)->website ?>" target="_blank"><img class="footer-partner-logo-image img-responsive" src="<?php echo $footerVM->partners->get($i)->getImagePath() ?>"></a>
+                    <?php
+                    }
+                }
+                ?>
 			</div>
             <div class="col-md-4">
-                <h2>Partners</h2>
-                partner 1
-                partner 2
-                partner 3
-                partner 4
-                partner 5
+                <h2>Projecten</h2>
+                <?php
+                for ($i = 0; $i < $footerVM->partners->size(); $i++) {
+                    if ($footerVM->partners->get($i)->category === "Projecten") { ?>
+                        <a href="<?php echo $footerVM->partners->get($i)->website ?>" target="_blank"><img class="footer-partner-logo-image img-responsive" src="<?php echo $footerVM->partners->get($i)->getImagePath() ?>"></a>
+                    <?php
+                    }
+                }
+                ?>
             </div>
     	</div>
     </div>
