@@ -94,7 +94,7 @@
         	<?php $news_items = NewsRepository::selectCurrent(); ?>
         		<div class="list-group">
         		<?php foreach ($news_items as $news) { ?>
-        			<a href="#" class="list-group-item">
+        			<a href="<?php echo ROOT_PATH; ?>/home/news" class="list-group-item">
         			<?php echo $news->heading; ?>
         			<i class="pull-right fa fa-arrow-right"></i>
         			</a>
