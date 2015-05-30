@@ -2,12 +2,12 @@
 class Controller
 {
 	private $name;
-    protected $viewBag;
+    protected $viewbag;
 	
 	function __constructor($name)
 	{
 		$this->name = $name;
-        $this->viewBag = array();
+        $this->viewbag = array();
 	}
 
     protected function render($action, $model = null)
@@ -35,13 +35,13 @@ class Controller
 
     private function renderView($action)
     {
-        $viewBag = $this->viewBag;
+        $viewbag = $this->viewbag;
         include("application/view/" . $this->name . "/" . $action . ".php");
     }
     
     private function renderStrongView($action, $model)
     {
-        $viewBag = $this->viewBag;
+        $viewbag = $this->viewbag;
         include("application/view/" . $this->name . "/" . $action . ".php");
     }
 
