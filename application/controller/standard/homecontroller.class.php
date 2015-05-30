@@ -56,7 +56,9 @@ class HomeController extends Controller
 
     public function aboutus_GET()
     {
-        $this->render("aboutus");
+        $modules = $this->moduleRepository->SelectByCategory("aboutus");
+
+        $this->render("aboutus", $modules);
     }
 
     public function contact_GET()

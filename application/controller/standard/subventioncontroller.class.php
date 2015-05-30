@@ -3,6 +3,7 @@
 class SubventionController extends Controller
 {
     public $subventionRequestRepository;
+    public $subventionsContentRepository;
 
     public function __construct()
     {
@@ -11,7 +12,9 @@ class SubventionController extends Controller
 
     public function index_GET()
     {
-        $this->render("index");
+        $subventionsContent = $this->subventionsContentRepository->selectCurrent();
+
+        $this->render("index", $subventionsContent);
     }
 
     public function landing_GET()
@@ -30,13 +33,6 @@ class SubventionController extends Controller
 
         $this->render("aanvraagSucces");
     }
-
-    //Example for IdealForm usage - Can be deleted!
-    public function example_GET()
-    {
-        $this->render("example");
-    }
-    //End Example
 
     public function aanvraagSucces_GET()
     {
