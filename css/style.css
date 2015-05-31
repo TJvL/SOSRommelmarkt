@@ -347,3 +347,20 @@ pre.pre-override {
 	position: fixed;
 
 }
+
+.nav > li {
+  position: relative;
+  display: -webkit-inline-box;
+  margin-left: 15px;
+}
+
+
+  @media (max-width: 480px) { 
+
+ 	.menu_position { margin-top: 140px; }
+ 	
+ 	.col-xs-6 { width: 32%; }
+
+ 	h2, .h2 { font-size: 13px; }
+
+}
