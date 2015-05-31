@@ -26,12 +26,11 @@ class AccountController extends Controller
 
     public function index_POST()
     {
-        $noUser = true;
+        $accountVM = null;
         if(array_key_exists("user", $_SESSION))
         {
             if(isset($_SESSION["user"]))
             {
-                $noUser = false;
                 $accountVM = $_SESSION["user"];
                 $id = $_POST['id'];
 
@@ -114,13 +113,14 @@ class AccountController extends Controller
             }
         }
 
-        if($noUser)
+        if(isset($accountVM))
+        {
+            $this->render("index", $accountVM);
+        }
+        else
         {
             $this->redirectTo("/account/login");
         }
-
-        $this->render("index", $_SESSION["user"]);
-        return;
     }
     
     public function register_GET()

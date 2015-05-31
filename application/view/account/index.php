@@ -29,31 +29,31 @@
             <form class="idealforms" id="accountForm" method="post" action="<?php echo ROOT_PATH . "/account/index"?>">
 
                 <div class="field">
-                    <label class="main" for="name">Gebruikersnaam</label>
+                    <label class="main">Gebruikersnaam</label>
                     <input form="accountForm" id="username" name="username" type="text" value="<?php echo $model->username ?>">
                     <span class="error"></span>
                 </div>
 
                 <div class="field">
-                    <label class="main" for="name">Email</label>
+                    <label class="main">Email</label>
                     <input form="accountForm" id="email" name="email" type="text" value="<?php echo $model->email ?>" data-idealforms-ajax="<?php echo ROOT_PATH . "/accountapi/checkEmail" ?>">
                     <span class="error"></span>
                 </div>
 
                 <div class="field">
-                    <label class="main" for="name">Nieuw wachtwoord</label>
+                    <label class="main">Nieuw wachtwoord</label>
                     <input form="accountForm" id="newPassword" name="newPassword" type="password">
                     <span class="error"></span>
                 </div>
 
                 <div class="field">
-                    <label class="main" for="name">Wachtwoord bevestiging</label>
+                    <label class="main">Wachtwoord bevestiging</label>
                     <input form="accountForm" id="confirmPassword" name="confirmPassword" type="password">
                     <span class="error"></span>
                 </div>
 
                 <div class="field">
-                    <label class="main" for="name">Oud wachtwoord</label>
+                    <label class="main">Oud wachtwoord</label>
                     <input form="accountForm" id="oldPassword" name="oldPassword" type="password">
                     <span class="error"></span>
                 </div>
