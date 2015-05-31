@@ -20,6 +20,6 @@ class SubventionRequest
     public $activities;
     public $results;
     public $status;
-
-	
 }
+
+?>
