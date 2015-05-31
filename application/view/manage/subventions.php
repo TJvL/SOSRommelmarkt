@@ -7,15 +7,13 @@
                 <a href="/SOSRommelmarkt/manage/index" class="btn btn-default">Terug</a>
             </div>
         </div>
-
-        <!--        title-->
         <h1>Subsidieaanvragen</h1>
-        <!--            list-->
         <div class="list-group collapse-group margin-ver-lg">
-            <?php foreach ($model as $m) {?>
-                <!--                        one list item-->
+            <?php
+            foreach ($model as $m)
+            {
+            	?>
                 <a class="list-group-item collapse-group-item">
-                    <!--                        collapsible part-->
                     <div class="row">
                         <div class="collapse-button">
                             <div class="col-sm-8"><h3 class="list-group-item-heading"><?php echo $m->firm ?></h3></div>
@@ -96,6 +94,28 @@
                             </tbody>
 
                         </table>
+                        
+                        <table class="table">
+                        	<thead>
+                        		<tr>
+                        			<th>Toegevoegde bestanden</th>
+                        			<th></th>
+                        		</tr>
+                        	</thead>
+                        	<tbody>
+	                        	<?php 
+	                        	foreach ($m->getAttachedFilenames() as $filename)
+	                        	{
+	                        		?>
+	                        		<tr>
+	                        			<td><?php echo $filename ?></td>
+	                        			<td><button class="btn" type="button" onClick="downloadSubventionRequestAttachedFile(<?php echo $m->id . ", '" . $filename . "'" ?>)">Download</button></td>
+	                        		</tr>
+	                        		<?php
+	                        	} 
+	                        	?>
+                        	</tbody>
+						</table>
 
                         <div class="row">
                            <div class="col-md-10"></div>
@@ -103,20 +123,14 @@
                                 <button id="<?php echo $m->id ?>" onClick="delete_sub(this.id)" type="button" title="Print" class="btn btn-default">
                                     <span class="glyphicon glyphicon-trash  col-sm-1" aria-hidden="true"></span>
                                 </button>
-
                             </div>
                         </div>
                     </div>
-
-
-
                 </a>
-            <?php
+            	<?php
             }
             ?>
         </div>
-        <!--        list end-->
-
     </div>
 </div>
 

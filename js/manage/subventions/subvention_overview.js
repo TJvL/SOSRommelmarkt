@@ -33,3 +33,24 @@ function delete_sub(clicked_id)
 	}
 
 }
+
+function downloadSubventionRequestAttachedFile(id, filename)
+{
+	var data =
+	{
+		id: id,
+		filename: filename
+	}
+	
+	jQuery.ajax(
+    {
+        url: "../subventionapi/downloadsubventionrequestattachedfile",
+        data: data,
+        type: "POST",
+        success: function(data)
+        {
+        	if (data !== 0)
+        		alert("Er is iets verkeerd gegaan." + data)
+        }
+    });
+}
