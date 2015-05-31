@@ -6,7 +6,7 @@ class SubventionAPIController extends APIController
 	
 	public function __construct()
 	{
-		Parent::__construct("subventionapi");
+		parent::__construct("subventionapi");
 	}
 
 	public function createsubventionrequest_POST()
@@ -76,6 +76,30 @@ class SubventionAPIController extends APIController
 		
 		$this->respondWithJSON(1);
 	}
+	
+	public function downloadsubventionrequestattachedfile_POST()
+	{
+		if (isset($_POST["id"]) && isset($_POST["filename"]))
+		{
+			$filepath = "files/subventions/" . $_POST["id"] . "/" . $_POST["filename"];
+			
+			if (file_exists($filepath))
+			{
+				header("Content-Description: File Transfer");
+				header("Content-Type: application/octet-stream");
+				header("Content-Disposition: attachment; filename='" . $_POST["filename"] . "'");
+				header("Content-Transfer-Encoding: binary");
+				header("Expires: 0");
+				header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+				header("Pragma: public");
+				header("Content-Length: " . filesize($filepath));
+				ob_clean();
+				readfile($filepath);
+				
+				$this->respondWithJSON(0);
+			}
+		}
+		
+		$this->respondWithJSON(1);
+	}
 }
-
-?>

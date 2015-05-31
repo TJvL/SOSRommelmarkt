@@ -68,7 +68,8 @@ function UpdatePartner()
 		{
 	    	id:			$("#id").val(),
 	    	name:		$("#name").val(),
-	    	website:	$("#website").val()
+	    	website:	$("#website").val(),
+            category:   $("#category").val()
 		};
 	
 		$.ajax(

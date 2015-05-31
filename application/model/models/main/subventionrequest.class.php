@@ -20,6 +20,41 @@ class SubventionRequest
     public $activities;
     public $results;
     public $status;
+    
+    public function getAttachedFilepaths()
+    {
+    	$result = glob("files/subventions/" . $this->id . "/" . "*");
+    	if ($result)
+    	{
+    		$paths = array();
+    		
+    		foreach ($result as $key => $path)
+    			$paths[$key] = ROOT_PATH . "/" . $path;
+    		
+    		return $paths;
+    	}
+    	else
+    		return array();
+    }
+    
+    public function getAttachedFilenames()
+    {
+    	$result = glob("files/subventions/" . $this->id . "/" . "*");
+    	if ($result)
+    	{
+    		$filenames = array();
+    
+    		foreach ($result as $key => $filename)
+    		{
+    			
+    			$filenames[$key] = substr($filename, strripos($filename, "/") + 1);
+    		}
+    
+    		return $filenames;
+    	}
+    	else
+    		return array();
+    }
 }
 
 ?>

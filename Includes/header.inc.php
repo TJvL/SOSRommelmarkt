@@ -28,9 +28,24 @@ IncludeLocator::locateIncludes("js", $controller, $action);
                             <div class="contact-address"><span><?php echo $headerVM->companyInformation->address . ", " . $headerVM->companyInformation->postalcode . " " . $headerVM->companyInformation->city; ?></span></div>
                         </div>
                     </li>
-                    <li><a href="<?php echo ROOT_PATH; ?>/home/contact"><i class="fa fa-envelope"></i> Contact</a></li>
-                    <li><a href="<?php echo ROOT_PATH; ?>/account/login"><i class="fa fa-sign-in"></i> Inloggen</a></li>
-                    <li><a href="<?php echo ROOT_PATH; ?>/account/register"><i class="fa fa-user-plus"></i> Registreren</a></li>
+                    <?php
+                    if(isset($headerVM->username))
+                    {
+                    ?>
+                        <li><a href="<?php echo ROOT_PATH; ?>/home/contact"><i class="fa fa-envelope"></i> Contact</a></li>
+                        <li><a href="<?php echo ROOT_PATH; ?>/account/index"><i class="fa fa-male"></i> <?php echo $headerVM->username; ?></a></li>
+                        <li><a href="<?php echo ROOT_PATH; ?>/account/logout"><i class="fa fa-sign-out"></i> Uitloggen</a></li>
+                    <?php
+                    }
+                    else
+                    {
+                    ?>
+                        <li><a href="<?php echo ROOT_PATH; ?>/home/contact"><i class="fa fa-envelope"></i> Contact</a></li>
+                        <li><a href="<?php echo ROOT_PATH; ?>/account/login"><i class="fa fa-sign-in"></i> Inloggen</a></li>
+                        <li><a href="<?php echo ROOT_PATH; ?>/account/register"><i class="fa fa-user-plus"></i> Registreren</a></li>
+                    <?php
+                    }
+                    ?>
                 </ul>
             </div>
         </div>

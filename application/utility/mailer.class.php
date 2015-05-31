@@ -8,6 +8,7 @@ class Mailer
 
     public static function sendErrorMail($subject, $content)
     {
+        date_default_timezone_set("Europe/Amsterdam");
         return mail(
             Mailer::$errorMailReceivers,
             $subject,
@@ -19,6 +20,7 @@ class Mailer
 
     public static function sendNotifMail($subject, $content)
     {
+        date_default_timezone_set("Europe/Amsterdam");
         return mail(
             Mailer::$notifyMailReceivers,
             $subject,
@@ -30,6 +32,7 @@ class Mailer
 
     public static function sendMail($receiver, $subject, $content)
     {
+        date_default_timezone_set("Europe/Amsterdam");
         return mail(
             $receiver,
             $subject,

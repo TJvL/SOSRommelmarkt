@@ -25,9 +25,9 @@ class AccountRepository
 	public function insert($account)
 	{
 		$query = "INSERT INTO Account (roleName, username, email, passwordHash, salt)
-			VALUES (?, ?, ?)";
+			VALUES (?, ?, ?, ?, ?)";
 
-        $id = $this->database->insert($query, "sss", array($account->role, $account->username, $account->email, $account->passwordHash, $account->salt));
+        $id = $this->database->insert($query, "sssss", array($account->roleName, $account->username, $account->email, $account->passwordHash, $account->salt));
 
         $account->id = $id;
 
@@ -81,7 +81,7 @@ class AccountRepository
 			SET roleName = ?, username = ?, email = ?, passwordHash = ?, salt = ?
 			WHERE id = ?";
 
-        $this->database->update($query, "sss", array($account->role, $account->passwordHash, $account->name));
+        $this->database->update($query, "ssssss", array($account->roleName, $account->username, $account->email, $account->passwordHash, $account->salt, $account->id));
 	}
 	
 	public function deleteById($id)

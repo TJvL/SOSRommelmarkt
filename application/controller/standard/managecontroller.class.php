@@ -18,7 +18,10 @@ class ManageController extends Controller
     {
         parent::__construct("manage");
     }
-    
+
+    /**
+     *{{Role=Junior,Senior,Administrator;}}
+     */
     public function index_GET()
     {
         $this->render("index");
@@ -290,6 +293,9 @@ class ManageController extends Controller
 
     //<editor-fold desc="Shop Product Manage">
 
+    /**
+     *<<Permission=Product;>>
+     */
     public function shopproducts_GET()
     {
         $productIndexVM = new ShopProductsIndexViewModel();
@@ -305,7 +311,10 @@ class ManageController extends Controller
 
         $this->render("shopproducts", $productIndexVM);
     }
-    
+
+    /**
+     *<<Permission=Product;>>
+     */
     public function addshopproduct_GET()
     {
         $colorCodes = new ArrayList("ColorCode");
@@ -319,7 +328,10 @@ class ManageController extends Controller
         $shopProduct = $this->shopProductRepository->insert($_POST["name"], $_POST["description"], "Administrator", $_POST["colorCode"], $_POST["price"], false);
         $this->redirectTo("/manage/shopproduct/$shopProduct->id");
     }
-    
+
+    /**
+     *<<Permission=Product;>>
+     */
     public function shopproduct_GET($id)
     {
         // Check if the shopproduct id is set.
@@ -344,7 +356,10 @@ class ManageController extends Controller
             throw new Exception("Resource was not found. No id was provided", 404);
         }
     }
-    
+
+    /**
+     *<<Permission=Product;>>
+     */
     public function updateshopproduct_POST()
     {
     	// Check if everything needed is here.
@@ -357,7 +372,10 @@ class ManageController extends Controller
     	 
     	exit(json_encode(1));
     }
-    	
+
+    /**
+     *<<Permission=Product;>>
+     */
     public function deleteshopproduct_POST()
     {
     	// Check if everything needed is here.
@@ -390,8 +408,10 @@ class ManageController extends Controller
     	
     	exit(json_encode(1));
     }
-    	
-    
+
+    /**
+     *<<Permission=Product>>
+     */
     public function shopproduct_POST()
     {
         // Check if the shopproduct id is set.

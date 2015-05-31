@@ -69,3 +69,20 @@ function loadClass($class)
 
 //The previously defined function is registered in the autoloader so it can be called whenever a class file is needed.
 spl_autoload_register('loadClass');
+
+// Starts the session for use in error handling and authentication.
+session_start();
+
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+    // last request was more than 30 minutes ago
+    if(array_key_exists("user", $_SESSION))
+    {
+        if(isset($_SESSION["user"]))
+        {
+            unset($_SESSION["user"]);
+        }
+    }
+}
+$_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+
+session_regenerate_id(true);
