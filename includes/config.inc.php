@@ -69,3 +69,6 @@ function loadClass($class)
 
 //The previously defined function is registered in the autoloader so it can be called whenever a class file is needed.
 spl_autoload_register('loadClass');
+
+// Starts the session for use in error handling and authentication.
+session_start();

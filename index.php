@@ -2,9 +2,6 @@
 // ob_start: buffers output and only displays after calling ob_end_flush. Enables dynamic redirect.
 ob_start();
 
-// Starts the session for use in error handling and authentication.
-session_start();
-
 // Load the server configuration.
 include(__DIR__ . "/includes/config.inc.php");
 include(__DIR__ . "/includes/exceptionhandling.inc.php");//This configures an error and exception handler. All PHP E_* errors/warnings are converted to exceptions in this configuration.
