@@ -66,15 +66,15 @@
                 </form>
            </div>
         </div>
-       
+
         <div class="col-md-4">
            <h2 class="title">Adres</h2>
            <p>
-              <div id="adres"> <?php echo $companyInformation->address;?><br /> </div>
-              <div id="plaats"><?php echo $companyInformation->city; ?> </div>
-              <div id-"postcode"><?php echo $companyInformation->postalcode . ", " . $companyInformation->city; ?><br /></div>
-               <?php echo $companyInformation->phone; ?><br />
-               <a href="mailto:<?php echo $companyInformation->email; ?>" target="_top"><?php $companyInformation->email; ?></a>
+            <div id="adres"> <?php echo $model->address;?><br /> </div>
+            <div id="plaats"><?php echo $model->city; ?> </div>
+            <div id-"postcode"><?php echo $model->postalcode . ", " . $model->city; ?><br /></div>
+            <?php echo $model->phone; ?><br />
+            <a href="mailto:<?php echo $model->email; ?>" target="_top"><?php $model->email; ?></a>
           </p> 
         </div>
       </div>

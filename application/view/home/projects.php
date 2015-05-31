@@ -26,7 +26,19 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <?php var_dump($m->getImagePaths()); ?>
+                                            <?php
+                                            $count = 0;
+                                            foreach ($m->getImagePaths() as $image){
+                                                if($count <6){ ?>
+                                                    <a class="margin-hor-md" href="<?php echo $image ?>" data-lightbox="<?php echo $m->id ?>" data-title=""><img class="project-image" src="<?php echo $image ?>" alt=""/></a>
+                                                <?php }
+                                                else{ ?>
+                                                    <div class="hidden">
+                                                        <a class="margin-hor-md" href="<?php echo $image ?>" data-lightbox="<?php echo $m->id ?>" data-title=""><img class="project-image" src="<?php echo $image ?>" alt=""/></a>
+                                                    </div>
+                                            <?php }
+                                                $count++;
+                                            } ?>
                                         </td>
                                     </tr>
                                     </tbody>
