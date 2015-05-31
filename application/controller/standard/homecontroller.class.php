@@ -141,8 +141,9 @@ class HomeController extends Controller
         {
             $this->viewBag['message'] = "Er is een fout opgetreden, probeer U het later nog eens.";
         }
+        $companyInformation = $this->companyInformationRepository->selectCurrent();
 
-        $this->render("contact");
+        $this->render("contact", $companyInformation);
     }
 
 

@@ -22,7 +22,7 @@ function CreatePartner()
 		// Get the form data.
 		var data = new FormData();
 		data.append("name", $("#name").val());
-		data.append("website", $("#website").val())
+		data.append("website", $("#website").val());
 		data.append("image", $("#image")[0].files[0]);
 		
 		// Send the POST request.
