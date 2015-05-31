@@ -6,6 +6,7 @@ class HomeController extends Controller
     public $projectRepository;
     public $visitingHoursRepository;
     public $moduleRepository;
+    public $newsRepository;
 
     public function __construct()
     {
@@ -33,11 +34,14 @@ class HomeController extends Controller
         $visitingHours = $this->visitingHoursRepository->selectCurrent();
 
         $modules = $this->moduleRepository->selectByCategory("home");
+        
+        $newsItems = $this->newsRepository->selectCurrent();
 
         $homeVM->auctionProducts = $auctionProducts;
         $homeVM->slogans = $slogans;
         $homeVM->visitingHours = $visitingHours;
         $homeVM->modules = $modules;
+        $homeVM->newsItems = $newsItems;
 
         $this->render("index", $homeVM);
     }
@@ -144,7 +148,11 @@ class HomeController extends Controller
 
         $this->render("contact");
     }
-
-
-
+    
+    public function news_GET()
+    {
+    	$newsList = new ArrayList("News");
+    	$newsList->addAll($this->newsRepository->selectCurrent());
+    	$this->render("news", $newsList);
+    }
 }

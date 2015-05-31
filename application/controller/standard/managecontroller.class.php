@@ -12,6 +12,7 @@ class ManageController extends Controller
     public $sloganRepository;
     public $companyInformationRepository;
     public $visitingHoursRepository;
+    public $newsRepository;
 
     public function __construct()
     {
@@ -61,12 +62,14 @@ class ManageController extends Controller
         $slogans = $this->sloganRepository->selectAll();
         $homeModules = $this->moduleRepository->selectByCategory("home");
         $aboutUsModules = $this->moduleRepository->selectByCategory("aboutus");
+        $newsItems = $this->newsRepository->selectAll();
 
         $settingsVM->companyInformation = $companyInformation;
         $settingsVM->visitingHours = $visitingHours;
         $settingsVM->slogans = $slogans;
         $settingsVM->homeModules = $homeModules;
         $settingsVM->aboutUsModules = $aboutUsModules;
+        $settingsVM->newsItems = $newsItems;
 
         $this->render("settings", $settingsVM);
     }
@@ -844,6 +847,71 @@ class ManageController extends Controller
         // TODO: Error or some shit
         exit(json_encode(1));
     }
-
-    //</editor-fold>
+    
+	//</editor-fold>
+	
+	//<editor-fold desc="News Manage">
+    
+    public function addnews_GET()
+    {
+    	$this->render("addnews");
+    }
+    
+    public function addnews_POST()
+    {
+    	$this->newsRepository->insert($_POST["heading"], $_POST["content"], $_POST["expiration_date"]);
+		$this->redirectTo("/manage/settings#tab_news-items");
+    }
+    
+    public function news_GET()
+    {
+        if (isset($_GET["id"]))
+        {
+            $this->render("news", $this->newsRepository->selectById($_GET["id"]));
+        }
+    }
+    
+    public function news_POST()
+    {
+        // Check if the module id is set.
+        if (isset($_GET["id"]))
+        {
+            if ($_GET["id"] == "delete")
+            {
+                // Check if all the necessary data has been sent with the request.
+                if (isset($_POST["id"]))
+                {
+                    // Delete the module.
+                    $this->newsRepository->deleteById($_POST["id"]);
+        
+                    // Return 0 for great success.
+                    header("content-Type: application/json");
+                    exit(json_encode(0));
+                }
+            }
+            else if ($_GET["id"] == "update")
+            {
+                // Check if all the necessary data has been sent with the request.
+                if (isset($_POST["id"]) && isset($_POST["heading"]) && isset($_POST["content"]) && isset($_POST["create_date"]) && isset($_POST["expiration_date"]))
+                {
+                    // Get the news item, set the data and update.
+                    $news					= $this->newsRepository->selectById($_POST["id"]);
+                    $news->heading			= $_POST["heading"];
+                    $news->content			= $_POST["content"];
+                    $news->create_date		= $_POST["create_date"];
+                    $news->expiration_date	= $_POST["expiration_date"];
+                    $this->newsRepository->update($news);
+        
+                    // Return 0 for great success.
+                    header("content-Type: application/json");
+                    exit(json_encode(0));
+                }
+            }
+        }
+        
+        // TODO: Error or some shit
+        exit(json_encode(1));
+    }
+	
+	//</editor-fold>
 }
