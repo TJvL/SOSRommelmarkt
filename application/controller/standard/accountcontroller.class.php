@@ -17,11 +17,110 @@ class AccountController extends Controller
         {
             if(isset($_SESSION["user"]))
             {
-                $this->render("index");
+                $this->render("index", $_SESSION["user"]);
                 return;
             }
         }
         $this->redirectTo("/account/login");
+    }
+
+    public function index_POST()
+    {
+        $noUser = true;
+        if(array_key_exists("user", $_SESSION))
+        {
+            if(isset($_SESSION["user"]))
+            {
+                $noUser = false;
+                $accountVM = $_SESSION["user"];
+                $id = $_POST['id'];
+
+                if($accountVM->id == $id)
+                {
+                    $accountToEdit = null;
+
+                    $email = $_POST['email'];
+                    $username = $_POST['username'];
+
+                    $newPassword = null;
+                    if(array_key_exists("newPassword", $_POST))
+                    {
+                        if(isset($_POST["newPassword"]))
+                        {
+                            $newPassword = $_POST['newPassword'];
+                        }
+                    }
+                    $oldPassword = $_POST['oldPassword'];
+
+                    $accounts = $this->accountRepository->selectAll();
+
+                    $accountToCheck = null;
+                    foreach($accounts as $account)
+                    {
+                        if($account->id === $id)
+                        {
+                            $accountToCheck = $account;
+                        }
+                    }
+
+                    if(isset($accountToCheck))
+                    {
+                        $hashedPassword = hash('sha256', $oldPassword . $accountToCheck->salt);
+                        //Hash password 65536 more times.
+                        for ($i = 0; $i < 65536; $i++)
+                        {
+                            $hashedPassword = hash('sha256', $hashedPassword . $accountToCheck->salt);
+                        }
+                        if($hashedPassword === $accountToCheck->passwordHash)
+                        {
+                            $accountToEdit = $accountToCheck;
+                        }
+                    }
+
+                    foreach($accounts as $account)
+                    {
+                        if(($account->email === $email)||($account->username === $username))
+                        {
+                            $accountToCheck = null;
+                        }
+                    }
+
+                    if(isset($accountToEdit))
+                    {
+                        $accountToEdit->email = $email;
+                        $accountToEdit->username = $username;
+
+                        if(isset($newPassword))
+                        {
+                            $accountToCheck->salt = dechex(mt_rand(0, 2147483647)) . dechex(mt_rand(0, 2147483647));
+                            $hashedPassword = hash('sha256', $newPassword . $accountToCheck->salt);
+                            //Hash password 65536 more times.
+                            for ($i = 0; $i < 65536; $i++)
+                            {
+                                $hashedPassword = hash('sha256', $hashedPassword . $accountToCheck->salt);
+                            }
+                            $accountToCheck->passwordHash = $hashedPassword;
+                        }
+
+                        $this->accountRepository->update($accountToEdit);
+
+                        $this->viewBag["message"] = "Wijzigingen succesvol opgeslagen.";
+                    }
+                }
+                else
+                {
+                    $this->viewBag["message"] = "Wijzigingen niet opgeslagen.";
+                }
+            }
+        }
+
+        if($noUser)
+        {
+            $this->redirectTo("/account/login");
+        }
+
+        $this->render("index", $_SESSION["user"]);
+        return;
     }
     
     public function register_GET()
