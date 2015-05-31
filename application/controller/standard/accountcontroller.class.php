@@ -3,6 +3,8 @@
 class AccountController extends Controller
 {
     public $accountRepository;
+    public $permissionRepository;
+    public $rolePermissionRepository;
 
     public function __construct()
     {
@@ -53,6 +55,63 @@ class AccountController extends Controller
 
     public function login_POST()
     {
+        $loggedIn = false;
+
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        $accounts = $this->accountRepository->selectAll();
+
+        $accountToCheck = null;
+        foreach($accounts as $account)
+        {
+            if($account->username === $username)
+            {
+                $accountToCheck = $account;
+            }
+        }
+
+        if(isset($accountToCheck))
+        {
+            $hashedPassword = hash('sha256', $password . $accountToCheck->salt);
+            //Hash password 65536 more times.
+            for ($i = 0; $i < 65536; $i++)
+            {
+                $hashedPassword = hash('sha256', $hashedPassword . $accountToCheck->salt);
+            }
+            if($hashedPassword === $accountToCheck->passwordHash)
+            {
+                $loggedIn = true;
+            }
+        }
+
+        if($loggedIn)
+        {
+            $accountVM = new AccountViewModel();
+            $accountVM->id = $accountToCheck->id;
+            $accountVM->username = $accountToCheck->username;
+            $accountVM->email = $accountToCheck->email;
+            $accountVM->role = $accountToCheck->roleName;
+
+            $rolePermissions = $this->rolePermissionRepository->selectAllByRoleName($accountToCheck->roleName);
+
+            $permissions = new ArrayList("Permission");
+            foreach($rolePermissions as $rolePermission)
+            {
+                $permissions->add($this->permissionRepository->selectByName($rolePermission->permissionName));
+            }
+
+            $accountVM->permissions = $permissions;
+
+            $_SESSION["user"] = $accountVM;
+
+            $this->viewBag["message"] = "Inloggen is gelukt.";
+        }
+        else
+        {
+            $this->viewBag["message"] = "Inloggen is mislukt.";
+        }
+
         $this->render("login");
     }
 }
