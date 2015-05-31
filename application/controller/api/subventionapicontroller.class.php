@@ -6,7 +6,7 @@ class SubventionAPIController extends APIController
 	
 	public function __construct()
 	{
-		parent::__construct("subventionapi"); // DEZE HIER, IK HEB 't AL AANGEPAST
+		parent::__construct("subventionapi");
 	}
 
 	public function createsubventionrequest_POST()
@@ -85,8 +85,6 @@ class SubventionAPIController extends APIController
 			
 			if (file_exists($filepath))
 			{
-				file_put_contents("debug", filesize($filepath) . "\r\n", FILE_APPEND | LOCK_EX);
-				
 				header("Content-Description: File Transfer");
 				header("Content-Type: application/octet-stream");
 				header("Content-Disposition: attachment; filename='" . $_POST["filename"] . "'");
@@ -96,17 +94,12 @@ class SubventionAPIController extends APIController
 				header("Pragma: public");
 				header("Content-Length: " . filesize($filepath));
 				ob_clean();
-				flush();
 				readfile($filepath);
 				
 				$this->respondWithJSON(0);
 			}
-			else
-				$this->respondWithJSON(2);
 		}
 		
 		$this->respondWithJSON(1);
 	}
 }
-
-?>
