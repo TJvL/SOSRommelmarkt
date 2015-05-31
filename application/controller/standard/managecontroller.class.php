@@ -879,8 +879,24 @@ class ManageController extends Controller
     
     public function addnews_POST()
     {
-    	$this->newsRepository->insert($_POST["heading"], $_POST["content"], $_POST["expiration_date"]);
-		$this->redirectTo("/manage/settings#tab_news-items");
+    	// TODO: Dit later normaal doen...
+    	$_POST["publisher"] = "Administrator";
+    	
+    	if (isset($_POST["heading"]) && isset($_POST["content"]) && isset($_POST["expiration_date"]) && isset($_POST["publisher"]))
+    	{
+    		$news = new News();
+    		$news->heading			= $_POST["heading"];
+    		$news->content			= $_POST["content"];
+    		$news->expiration_date	= date("Y-m-d H:i:s", strtotime($_POST["expiration_date"]));
+    		$news->publisher		= $_POST["publisher"];
+    		 
+    		$this->newsRepository->insert($news);
+    		$this->redirectTo("/manage/settings#tab_news-items");
+    	}
+    	else
+    	{
+    		throw new Exception("Resource was not found. Not all fields were provided.", 404);
+    	}
     }
     
     public function news_GET()
@@ -911,15 +927,19 @@ class ManageController extends Controller
             }
             else if ($_GET["id"] == "update")
             {
+            	// TODO: Dit later normaal doen...
+            	$_POST["publisher"] = "Administrator";
+            	
                 // Check if all the necessary data has been sent with the request.
-                if (isset($_POST["id"]) && isset($_POST["heading"]) && isset($_POST["content"]) && isset($_POST["create_date"]) && isset($_POST["expiration_date"]))
+                if (isset($_POST["id"]) && isset($_POST["heading"]) && isset($_POST["content"]) && isset($_POST["create_date"]) && isset($_POST["expiration_date"]) && isset($_POST["publisher"]))
                 {
                     // Get the news item, set the data and update.
                     $news					= $this->newsRepository->selectById($_POST["id"]);
                     $news->heading			= $_POST["heading"];
                     $news->content			= $_POST["content"];
-                    $news->create_date		= $_POST["create_date"];
-                    $news->expiration_date	= $_POST["expiration_date"];
+                    $news->create_date		= date("Y-m-d H:i:s", strtotime($_POST["create_date"]));
+                    $news->expiration_date	= date("Y-m-d H:i:s", strtotime($_POST["expiration_date"]));
+                    $news->publisher		= $_POST["publisher"];
                     $this->newsRepository->update($news);
         
                     // Return 0 for great success.

@@ -17,25 +17,26 @@ class NewsRepository
 		$news->content			= $array["content"];
 		$news->create_date		= $array["create_date"];
 		$news->expiration_date	= $array["expiration_date"];
+		$news->publisher		= $array["publisher"];
 		
 		return $news;
 	}
 	
-	public function insert($heading, $content, $expiration_date)
+	public function insert($news)
 	{
-		$query = "INSERT INTO News (heading, content, create_date, expiration_date)
-					VALUES(?, ?, NOW(), ?)";
+		$query = "INSERT INTO News (heading, content, create_date, expiration_date, publisher)
+					VALUES(?, ?, NOW(), ?, ?)";
 		
-		return $this->database->insert($query, "sss", array($heading, $content, $expiration_date));
+		return $this->database->insert($query, "ssss", array($news->heading, $news->content, $news->expiration_date, $news->publisher));
 	}
 	
 	public function update($news)
 	{
 		$query = "UPDATE News
-					SET heading = ?, content = ?, create_date = ?, expiration_date = ?
+					SET heading = ?, content = ?, create_date = ?, expiration_date = ?, publisher = ?
 					WHERE id = ?";
 		
-		$this->database->update($query, "ssssi", array($news->heading, $news->content, $news->create_date, $news->expiration_date, $news->id));
+		$this->database->update($query, "sssssi", array($news->heading, $news->content, $news->create_date, $news->expiration_date, $news->publisher, $news->id));
 	}
 
     public function selectById($id)
