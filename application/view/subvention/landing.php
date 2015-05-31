@@ -4,7 +4,7 @@
             <div class="idealsteps-container">
                 <nav class="idealsteps-nav"></nav>
 
-                <form class="idealforms" id="subventionForm" method="POST" action="javascript:void(0)" role="form">
+                <form class="idealforms" id="subventionForm" action="javascript:void(0)">
                     <div class="idealsteps-wrap">
 
                         <!-- Step 1 -->
