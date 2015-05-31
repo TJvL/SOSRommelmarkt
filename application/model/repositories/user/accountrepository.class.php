@@ -12,25 +12,25 @@ class AccountRepository
 	private function createObjectFromArray($array)
 	{
 		$account = new Account();
-		$account->name = $array["name"];
-		$account->role = $array["role"];
+        $account->id = $array["id"];
+        $account->roleName = $array["roleName"];
+		$account->username = $array["username"];
+		$account->email = $array["email"];
 		$account->passwordHash = $array["passwordHash"];
+        $account->salt = $array["salt"];
 	
 		return $account;
 	}
 	
-	public function insert($name, $role, $passwordHash)
+	public function insert($account)
 	{
-		$query = "INSERT INTO Account (name, passwordHash)
+		$query = "INSERT INTO Account (roleName, username, email, passwordHash, salt)
 			VALUES (?, ?, ?)";
 
-        $this->database->insert($query, "sss", array($name, $role, $passwordHash));
-		
-		$account = new Account();
-		$account->name = $name;
-		$account->role = $role;
-		$account->passwordHash = $passwordHash;
-		
+        $id = $this->database->insert($query, "sss", array($account->role, $account->username, $account->email, $account->passwordHash, $account->salt));
+
+        $account->id = $id;
+
 		return $account;
 	}
 	
@@ -55,13 +55,13 @@ class AccountRepository
 		return $accounts;
 	}
 	
-	public function selectByName($name)
+	public function selectById($id)
 	{
 		$query = "SELECT *
 			FROM Account
-			WHERE name = ?";
+			WHERE id = ?";
 	
-		$result = $this->database->select($query, "s", array($name));
+		$result = $this->database->select($query, "s", array($id));
 	
 		$row = $result->fetch_assoc();
 		
@@ -78,16 +78,16 @@ class AccountRepository
 	public function update($account)
 	{
 		$query = "UPDATE Account
-			SET role = ?, passwordHash = ?
-			WHERE name = ?";
+			SET roleName = ?, username = ?, email = ?, passwordHash = ?, salt = ?
+			WHERE id = ?";
 
         $this->database->update($query, "sss", array($account->role, $account->passwordHash, $account->name));
 	}
 	
-	public function deleteByName($name)
+	public function deleteById($id)
 	{
-		$query = "DELETE FROM Account WHERE name = ?";
+		$query = "DELETE FROM Account WHERE id = ?";
 
-        $this->database->update($query, "s", array($name));
+        $this->database->update($query, "s", array($id));
 	}
 }
