@@ -27,6 +27,7 @@
 		</div>
 	</div>
 	
+	<!-- Products -->
 	<div class="row padding-lg">
         <?php
         //if there's 2 or less products, just give all of them

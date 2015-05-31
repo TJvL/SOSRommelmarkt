@@ -9,8 +9,8 @@ class SubventionRequestRepository
         $this->database = $database;
     }
 
-    public function insertSubventionRequest($contactperson,$firm,$kvk,$address,$postalcode,$city,$phonenumber1,
-                                            $phonenumber2,$fax,$email,$elucidation,$activities,$results)
+    public function insertSubventionRequest($contactperson, $firm, $kvk, $address, $postalcode, $city, $phonenumber1,
+		$phonenumber2, $fax, $email, $elucidation, $activities, $results)
     {
         //construct query
         $query = "INSERT INTO SubventionRequest(
@@ -20,6 +20,8 @@ class SubventionRequestRepository
         //execute
         $id = $this->database->insert($query,"ssssssssssssss",array($contactperson,$firm,$kvk,$address,$postalcode,$city,$phonenumber1,
             $phonenumber2,$fax,$email,$elucidation,$activities,$results,"nieuw"));
+        
+        return $id;
     }
 
     public function fetchAllSubventionRequests()

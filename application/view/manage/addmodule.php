@@ -43,7 +43,9 @@
 						<textarea type="text" class="form-control" form="moduleForm" id="module-content" name="content" placeholder="Schrijf hier uw paragraaf..." cols="10" rows="5" style="resize: vertical" required></textarea>
 					</div>
 				</div>
-				<?php if ($_GET["id"] == "home") { ?>
+
+				<?php //if ($_GET["id"] == "home") { ?>
+
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="module-reference-label">Referentie Tekst</label>
 					<div class="col-sm-8">
@@ -57,11 +59,31 @@
 						<span id="module-reference-help" class="help-block">Hier kunt u aangeven waar de module naar toe linkt. Bijvoorbeeld <code>/home/index</code> of <code>/subvention/landing</code>.</span>
 					</div>
 				</div>
-				<?php } ?>
-				<div class="form-group">
+
+                <?php //} ?>
+
+                <div class="form-group">
 					<div class="col-sm-offset-2 col-sm-2">
 						<button type="submit" class="btn btn-default btn-block" id="submit" name="add">Opslaan</button>
 					</div>
+                    <!-- Preview Modal -->
+                    <div class="col-sm-2 col-sm-2">
+                        <a href="#" data-toggle="modal" data-target=".bs-preview-modal-lg"><button id="js-handler-preview" class="btn btn-default btn-block">Voorbeeld</button></a>
+                        <div class="modal fade bs-preview-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <!-- Preview -->
+                                    <h3 class="modal-title">Voorbeeld</h3>
+                                    <p>Dit is hoe de pagina er straks uitziet:</p>
+                                    <div id="preview-div">
+                                        <!-- jquery executes here -->
+                                    </div>
+                                    <!-- Preview EOF -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Preview Modal EOF -->
 				</div>
 			</form>
 		</div>

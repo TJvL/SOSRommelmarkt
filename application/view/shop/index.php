@@ -81,7 +81,7 @@
                             <div class="modal-content">
                                 <div class="padding-lg">
                                     <!-- Carousel start -->
-                                    <div id="prod-<?php echo $product->id ?>-carousel" class="carousel-modal slide " style="display:inline-table;" data-ride="carousel">
+                                    <div id="prod-<?php echo $product->id ?>-carousel" class="carousel carousel-modal slide " style="display:inline-table;" data-ride="carousel">
 
                                         <!-- Indicators -->
                                         <ol class="carousel-indicators">
