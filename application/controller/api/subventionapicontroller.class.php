@@ -6,7 +6,7 @@ class SubventionAPIController extends APIController
 	
 	public function __construct()
 	{
-		Parent::__construct("subventionapi");
+		parent::__construct("subventionapi"); // DEZE HIER, IK HEB 't AL AANGEPAST
 	}
 
 	public function createsubventionrequest_POST()

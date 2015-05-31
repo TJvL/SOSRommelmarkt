@@ -5,7 +5,7 @@ $(document).on('click', '#js-handler-preview', renderPreview);
 
 function renderPreview()
 {
-    $.post("/SOSRommelmarkt/home/indexpreview",
+    $.post("/SOSRommelmarkt/preview/index",
         {
             id: $('#module-id').val(),
             content: $('#module-content').val(),
