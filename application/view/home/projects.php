@@ -30,7 +30,7 @@
                                             $count = 0;
                                             foreach ($m->getImagePaths() as $image){
                                                 if($count <6){ ?>
-                                                    <a class="margin-hor-md" href="<?php echo $image ?>" data-lightbox="<?php echo $m->id ?>" data-title=""><img class="project-image" src="<?php echo $image ?>" alt=""/></a>
+                                                    <a class="margin-hor-md" href="<?php echo $image ?>" data-lightbox="<?php echo $m->id ?>" data-title="<?php echo $m->title?>"><img class="project-image" src="<?php echo $image ?>" alt=""/></a>
                                                 <?php }
                                                 else{ ?>
                                                     <div class="hidden">
