@@ -131,7 +131,13 @@
 	                        		?>
 	                        		<tr>
 	                        			<td><?php echo $filename ?></td>
-	                        			<td><button class="btn" type="button" onClick="downloadSubventionRequestAttachedFile(<?php echo $m->id . ", '" . $filename . "'" ?>)">Download</button></td>
+	                        			<td>
+	                        				<form method="POST" action="../subventionapi/downloadsubventionrequestattachedfile">
+	                        					<input name="id" type="hidden" value="<?php echo $m->id ?>">
+	                        					<input name="filename" type="hidden" value="<?php echo $filename ?>">
+	                        					<button class="btn" type="submit">Download</button>
+	                        				</form>
+	                        			</td>
 	                        		</tr>
 	                        		<?php
 	                        	} 

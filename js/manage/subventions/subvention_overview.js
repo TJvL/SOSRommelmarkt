@@ -1,6 +1,4 @@
-//$(document).ready(function() {
-//asda
-//});
+
 
 $(".filterButton").click(function(){
 //   get the clicked buttons status
@@ -12,14 +10,26 @@ $(".filterButton").click(function(){
 
 
 
-    $( ".list-group-item" ).each(function(){
-        $(this).hide();
 
-        if($(this.id).selector == selected)
+
+    $( ".list-group-item" ).each(function(){
+
+       if(selected == "alles")
        {
-           console.log("test");
            $(this).show();
+
        }
+        else
+       {
+           $(this).hide();
+
+           if($(this.id).selector == selected)
+           {
+               console.log("test");
+               $(this).show();
+           }
+       }
+
     });
 
 

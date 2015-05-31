@@ -30,8 +30,8 @@
 	<!-- Products -->
 	<div class="row padding-lg">
         <?php
-        //if there's 3 or less products, just give all of them
-        if($model->auctionProducts->size() <= 3)
+        //if there's 2 or less products, just give all of them
+        if($model->auctionProducts->size() <= 2)
         {
             foreach($model->auctionProducts as $auctionProduct)
             {
@@ -48,7 +48,7 @@
                 </div>
                 <?php
             }
-            for($i = 3; $i > $model->auctionProducts->size(); $i--) //fill up until 3 spaces are filled.
+            for($i = 2; $i > $model->auctionProducts->size(); $i--) //fill up until 2 spaces are filled.
             {
                 ?>
                 <div class="col-md-3 padding-hor-md equal-height"></div>
@@ -59,9 +59,8 @@
         {
             //mt_rand is inclusive
             $rands = array();
-            $rands[] = mt_rand(1, $model->auctionProducts->size()-2); //anything except lowest or highest number.
-            $rands[] = mt_rand(0, $rands[0]); //atleast one below first random
-            $rands[] = mt_rand($rands[0]+1, $model->auctionProducts->size()-1); //atleast one above first random;
+            $rands[] = mt_rand(1, $model->auctionProducts->size()-1); //anything except lowest number
+            $rands[] = mt_rand(0, $rands[0] - 1); //atleast one below first random
 
             foreach($rands as $val)
             {
@@ -83,6 +82,28 @@
 
         ?>
 
+        <div class="col-md-3 padding-hor-md equal-height">
+        	<div class="white margin-ver-lg">
+        		<h2>Nieuws</h2>
+        		<div class="list-group">
+        		<?php if (count($model->newsItems) === 0) { ?>
+        			<small>Op het moment is er geen nieuws</small>
+        		<?php } ?>
+        		<?php foreach ($model->newsItems as $news) { ?>
+        			<a href="<?php echo ROOT_PATH; ?>/home/news" class="list-group-item">
+        				<div class="row">
+	        				<div class="col-sm-10">
+	        					<?php echo $news->heading; ?><br />
+        						<small><?php echo date("d-m-Y", strtotime($news->create_date)); ?></small>
+	        				</div>
+		        			<div class="col-sm-2"><i class="pull-right fa fa-arrow-right"></i></div>
+        				</div>
+        			</a>
+        		<?php } ?>
+        		</div>
+        	</div>
+        </div>
+        
 		<div class="col-md-3 padding-hor-md equal-height">
 			<div class="white margin-ver-lg">
 			

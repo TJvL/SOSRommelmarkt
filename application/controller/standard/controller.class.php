@@ -51,7 +51,20 @@ abstract class Controller
     private function includeHeader($controller, $action)
     {
         $headerVM = new HeaderViewModel();
-        $headerVM->companyInformation = $this->companyInformationRepository->selectCurrent();
+
+        $companyInformation = $this->companyInformationRepository->selectCurrent();
+        $username = null;
+
+        if(array_key_exists("user", $_SESSION))
+        {
+            if(isset($_SESSION["user"]))
+            {
+                $username = $_SESSION["user"]->username;
+            }
+        }
+
+        $headerVM->companyInformation = $companyInformation;
+        $headerVM->username = $username;
 
         include("includes/header.inc.php");
     }
