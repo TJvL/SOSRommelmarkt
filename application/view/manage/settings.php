@@ -231,6 +231,7 @@
 									<th>Heading</th>
 									<th>Aanmaakdatum</th>
 									<th>Verloopdatum</th>
+									<th>Geplaatst door</th>
 									<th>Opties</th>
 								</tr>
 							</thead>
@@ -240,6 +241,7 @@
 									<td><?php echo $model->newsItems[$i]->heading; ?></td>
 									<td><?php echo $model->newsItems[$i]->create_date; ?></td>
 									<td><?php echo $model->newsItems[$i]->expiration_date; ?></td>
+									<td><?php echo $model->newsItems[$i]->publisher; ?></td>
 									<td>
 										<a href="news/<?php echo $model->newsItems[$i]->id ?>"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
 									</td>

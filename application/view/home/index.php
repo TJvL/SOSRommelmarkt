@@ -86,10 +86,18 @@
         	<div class="white margin-ver-lg">
         		<h2>Nieuws</h2>
         		<div class="list-group">
+        		<?php if (count($model->newsItems) === 0) { ?>
+        			<small>Op het moment is er geen nieuws</small>
+        		<?php } ?>
         		<?php foreach ($model->newsItems as $news) { ?>
         			<a href="<?php echo ROOT_PATH; ?>/home/news" class="list-group-item">
-        			<?php echo $news->heading; ?>
-        			<i class="pull-right fa fa-arrow-right"></i>
+        				<div class="row">
+	        				<div class="col-sm-10">
+	        					<?php echo $news->heading; ?><br />
+        						<small><?php echo date("d-m-Y", strtotime($news->create_date)); ?></small>
+	        				</div>
+		        			<div class="col-sm-2"><i class="pull-right fa fa-arrow-right"></i></div>
+        				</div>
         			</a>
         		<?php } ?>
         		</div>
