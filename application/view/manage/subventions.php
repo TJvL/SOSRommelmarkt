@@ -2,6 +2,11 @@
 
 <div class="container" >
     <div class="white">
+        <div class="row">
+            <div class="col-md-1">
+                <a href="/SOSRommelmarkt/manage/index" class="btn btn-default">Terug</a>
+            </div>
+        </div>
 
         <!--        title-->
         <h1>Subsidieaanvragen</h1>
