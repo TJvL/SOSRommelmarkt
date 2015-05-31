@@ -13,7 +13,15 @@ class AccountController extends Controller
 
     public function index_GET()
     {
-        // TODO: If logged in, refer to account page. Refer to login page otherwise.
+        if(array_key_exists("user", $_SESSION))
+        {
+            if(isset($_SESSION["user"]))
+            {
+                $this->render("index");
+                return;
+            }
+        }
+        $this->redirectTo("/account/login");
     }
     
     public function register_GET()
@@ -50,6 +58,13 @@ class AccountController extends Controller
     
     public function login_GET()
     {
+        if(array_key_exists("user", $_SESSION))
+        {
+            if(isset($_SESSION["user"]))
+            {
+                $this->redirectTo("/account/index");
+            }
+        }
     	$this->render("login");
     }
 
@@ -105,13 +120,23 @@ class AccountController extends Controller
 
             $_SESSION["user"] = $accountVM;
 
-            $this->viewBag["message"] = "Inloggen is gelukt.";
+            $this->redirectTo("/account/index");
         }
-        else
-        {
-            $this->viewBag["message"] = "Inloggen is mislukt.";
-        }
-
+        $this->viewBag["message"] = "Inloggen is mislukt.";
         $this->render("login");
+    }
+
+    public function logout_GET()
+    {
+        if(array_key_exists("user", $_SESSION))
+        {
+            if(isset($_SESSION["user"]))
+            {
+                unset($_SESSION["user"]);
+                $this->render("logout");
+                return;
+            }
+        }
+        $this->redirectTo("/account/login");
     }
 }
