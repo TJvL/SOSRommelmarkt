@@ -2,18 +2,35 @@
 
 <div class="container" >
     <div class="white">
+
         <div class="row">
             <div class="col-md-1">
                 <a href="/SOSRommelmarkt/manage/index" class="btn btn-default">Terug</a>
             </div>
         </div>
-        <h1>Subsidieaanvragen</h1>
+
+
+<!--            title-->
+
+                <h1>Subsidieaanvragen</h1>
+
+<!--            filter buttons-->
+
+            <button class="btn btn-red filterButton" id="alles">Alles</button>
+            <button class="btn btn-red filterButton" id="nieuw">Nieuw</button>
+            <button class="btn btn-red filterButton" id="geaccepteerd">Geaccepteerd</button>
+            <button class="btn btn-red filterButton" id="afgewezen">Afgewezen</button>
+
+
+
+
+
         <div class="list-group collapse-group margin-ver-lg">
             <?php
             foreach ($model as $m)
             {
             	?>
-                <a class="list-group-item collapse-group-item">
+                <a class="list-group-item collapse-group-item" id="<?php echo $m->status?>">
                     <div class="row">
                         <div class="collapse-button">
                             <div class="col-sm-8"><h3 class="list-group-item-heading"><?php echo $m->firm ?></h3></div>
@@ -91,6 +108,11 @@
                                 <th >Resultaten: </th>
                                 <td><?php echo $m->results?></td>
                             </tr>
+                            <tr>
+                                <th >Status: </th>
+                                <td ><?php echo $m->status?></td>
+                            </tr>
+
                             </tbody>
 
                         </table>
