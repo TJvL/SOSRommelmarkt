@@ -27,35 +27,11 @@ class ManageController extends Controller
         $this->render("index");
     }
 
-    //<editor-fold desc="Pages Manage">
-
-    public function pages_GET()
-    {
-        $this->render("pages");
-    }
-
-    //     public function pages_POST()
-    // {
-    //     // Check if all the necessary data has been sent with the request.
-    //     if (isset($_POST["title"]) && isset($_POST["label"]) && isset($_POST["header"]) && isset($_POST["body"]))
-
-    //     {
-    //         // set the data and update
-    //         $addPages = AddPages::selectCurrent();
-    //         $addPages->title         = $_POST["title"];
-    //         $addPages->label         = $_POST["label"];
-    //         $addPages->header        = $_POST["header"];
-    //         $addPages->body          = $_POST["body"];
-    //         $addPages->update();
-    //     }
-
-    //     $this->redirectTo("/manage/pages");
-    // }
-
-    //</editor-fold>
-
     //<editor-fold desc="Settings Manage">
 
+    /**
+     *{{Role=Administrator;}}
+     */
     public function settings_GET()
     {
         $settingsVM = new SettingsViewModel();
@@ -77,6 +53,9 @@ class ManageController extends Controller
         $this->render("settings", $settingsVM);
     }
 
+    /**
+     *{{Role=Administrator;}}
+     */
     public function settings_POST()
     {
         // Check if all the necessary data has been sent with the request.
@@ -97,6 +76,9 @@ class ManageController extends Controller
         $this->redirectTo("/manage/settings");
     }
 
+    /**
+     *{{Role=Administrator;}}
+     */
     public function companyInformation_POST()
     {
         // Check if all the necessary data has been sent with the request.
@@ -117,14 +99,20 @@ class ManageController extends Controller
     //</editor-fold>
 
     //<editor-fold desc="Subvention Manage">
-    
+
+    /**
+     *{{Permission=Formulier;}}
+     */
     public function subventions_GET()
     {
         $subventionList = new ArrayList("SubventionRequest");
         $subventionList->addAll($this->subventionRequestRepository->fetchAllSubventionRequests());
         $this->render("subventions", $subventionList);
     }
-    
+
+    /**
+     *{{Permission=Formulier;}}
+     */
     public function subventions_POST()
     {
         $this->subventionRequestRepository->deleteById($_POST["id"]);
@@ -134,6 +122,9 @@ class ManageController extends Controller
         $this->render("subventions", $subventionList);
     }
 
+    /**
+     *{{Permission=Onderdeel;}}
+     */
     public function subventionsContent_POST()
     {
         // Check if all the necessary data has been sent with the request.
@@ -148,6 +139,9 @@ class ManageController extends Controller
         $this->redirectTo("/manage/subventions");
     }
 
+    /**
+     *{{Permission=Formulier;}}
+     */
     public function changeSubventionStatus_POST()
     {
         // Check if all the necessary data has been sent with the request.
@@ -166,6 +160,9 @@ class ManageController extends Controller
 
     //<editor-fold desc="Projects Manage">
 
+    /**
+     *{{Permission=Onderdeel;}}
+     */
     public function projects_get()
     {
         $projectList = new ArrayList("Project");
@@ -173,11 +170,17 @@ class ManageController extends Controller
         $this->render("projects", $projectList);
     }
 
+    /**
+     *{{Permission=Onderdeel;}}
+     */
     public function addproject_GET()
     {
         $this->render("addproject");
     }
 
+    /**
+     *{{Permission=Onderdeel;}}
+     */
     public function addproject_POST()
     {
         $newProject = new Project();
@@ -240,12 +243,18 @@ class ManageController extends Controller
 
     }
 
+    /**
+     *{{Permission=Onderdeel;}}
+     */
     public function deleteproject_POST(){
 
         $this->projectRepository->deleteById($_POST["id"]);
         $this->redirectTo("/manage/projects");
     }
 
+    /**
+     *{{Permission=Onderdeel;}}
+     */
     public function editproject_POST(){
 
         $project = new Project();
@@ -274,6 +283,9 @@ class ManageController extends Controller
         }
     }
 
+    /**
+     *{{Permission=Onderdeel;}}
+     */
     public function projectdetails_GET()
     {
         // Check if the projectid id is set.
@@ -466,6 +478,9 @@ class ManageController extends Controller
 
     //<editor-fold desc="Auction Manage">
 
+    /**
+     *{{Permission=Product;}}
+     */
     public function auctions_GET()
     {
         $auctionList = new ArrayList("Auction");
@@ -473,7 +488,10 @@ class ManageController extends Controller
         
         $this->render("auctions", $auctionList);
     }
-    
+
+    /**
+     *{{Permission=Product;}}
+     */
     public function auctions_POST()
     {
         if (isset($_GET["id"]))
@@ -498,18 +516,28 @@ class ManageController extends Controller
         // TODO: deal with errors
         exit(json_encode(1));
     }
+
+    /**
+     *{{Permission=Product;}}
+     */
     public function addauction_GET()
     {
         $this->render("addauction");
     }
-    
+
+    /**
+     *{{Permission=Product;}}
+     */
     public function addauction_POST()
     {
         $auction = $this->auctionRepository->insert($_POST["startDate"], $_POST['endDate']);
         //$this->redirectTo("/manage/editauction/$auction->id");
         $this->redirectTo("/manage/auctions"); // tijdelijk totdat editauction compleet is
     }
-    
+
+    /**
+     *{{Permission=Product;}}
+     */
     public function editauction_GET($id)
     {
         if (isset($id))
@@ -532,6 +560,9 @@ class ManageController extends Controller
 
     //<editor-fold desc="Partner Manage">
 
+    /**
+     *{{Permission=Onderdeel;}}
+     */
     public function partners_GET()
     {
         $partnerArray = new ArrayList("Partner");
@@ -539,11 +570,17 @@ class ManageController extends Controller
         $this->render("partners", $partnerArray);
     }
 
+    /**
+     *{{Permission=Onderdeel;}}
+     */
     public function addpartner_GET()
     {
         $this->render("addpartner");
     }
 
+    /**
+     *{{Permission=Onderdeel;}}
+     */
     public function partner_GET($id)
     {
         if (isset($id))
@@ -557,6 +594,9 @@ class ManageController extends Controller
     }
 
 
+    /**
+     *{{Permission=Onderdeel;}}
+     */
     public function createpartner_POST()
     {
         // Check if everything needed is here.
@@ -574,6 +614,9 @@ class ManageController extends Controller
         exit(json_encode(1));
     }
 
+    /**
+     *{{Permission=Onderdeel;}}
+     */
     public function setpartnerimage_POST()
     {
         if (isset($_POST["id"]) && isset($_FILES["image"]))
@@ -586,6 +629,9 @@ class ManageController extends Controller
         exit(json_encode(1));
     }
 
+    /**
+     *{{Permission=Onderdeel;}}
+     */
     public function updatepartner_POST()
     {
         // Check if everything needed is here.
@@ -599,6 +645,9 @@ class ManageController extends Controller
         exit(json_encode(1));
     }
 
+    /**
+     *{{Permission=Onderdeel;}}
+     */
     public function deletepartner_POST()
     {
         // Check if everything needed is here.
@@ -619,7 +668,10 @@ class ManageController extends Controller
     //</editor-fold>
 
     //<editor-fold desc="Auction Product Manage">
-    
+
+    /**
+     *{{Permission=Product;}}
+     */
     public function auctionproduct_GET($id)
     {
         // Check if the id is set.
@@ -641,7 +693,10 @@ class ManageController extends Controller
             throw new Exception("Resource was not found. No id was provided", 404);
         }
     }
-    
+
+    /**
+     *{{Permission=Product;}}
+     */
     public function auctionproduct_POST()
     {
         // Check if the id is set.
@@ -740,19 +795,28 @@ class ManageController extends Controller
     //</editor-fold>
 
     //<editor-fold desc="Slogan Manage">
-    
+
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function addslogan_GET()
     {
         $this->render("addslogan");
     }
-    
+
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function addslogan_POST()
     {
         $this->sloganRepository->insert($_POST["slogan"]);
         
         $this->redirectTo("/manage/settings#tab_slogans");
     }
-    
+
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function slogan_GET()
     {
         if (isset($_GET["id"]))
@@ -760,7 +824,10 @@ class ManageController extends Controller
             $this->render("slogan", $this->sloganRepository->selectById($_GET["id"]));
         }
     }
-    
+
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function slogan_POST()
     {
         // Check if the slogan id is set.
@@ -804,18 +871,26 @@ class ManageController extends Controller
 
     //<editor-fold desc="Module Manage">
 
+    /**
+     *{{Permission=Onderdeel;}}
+     */
     public function addmodule_GET()
     {
     	$this->render("addmodule");
     }
-    
-    
+
+    /**
+     *{{Permission=Onderdeel;}}
+     */
     public function addmodule_POST()
     {
         $this->moduleRepository->insert($_POST["heading"], $_POST["content"], $_POST["category"], $_POST["reference"], $_POST["reference_label"]);
 		$this->redirectTo($_POST["returnPath"]);
     }
-    
+
+    /**
+     *{{Permission=Onderdeel;}}
+     */
     public function module_GET()
     {
         if (isset($_GET["id"]))
@@ -823,8 +898,10 @@ class ManageController extends Controller
             $this->render("module", $this->moduleRepository->selectById($_GET["id"]));
         }
     }
-    
-    
+
+    /**
+     *{{Permission=Onderdeel;}}
+     */
     public function module_POST()
     {
         // Check if the module id is set.
@@ -871,12 +948,18 @@ class ManageController extends Controller
 	//</editor-fold>
 	
 	//<editor-fold desc="News Manage">
-    
+
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function addnews_GET()
     {
     	$this->render("addnews");
     }
-    
+
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function addnews_POST()
     {
     	// TODO: Dit later normaal doen...
@@ -898,7 +981,10 @@ class ManageController extends Controller
     		throw new Exception("Resource was not found. Not all fields were provided.", 404);
     	}
     }
-    
+
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function news_GET()
     {
         if (isset($_GET["id"]))
@@ -906,7 +992,10 @@ class ManageController extends Controller
             $this->render("news", $this->newsRepository->selectById($_GET["id"]));
         }
     }
-    
+
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function news_POST()
     {
         // Check if the module id is set.
