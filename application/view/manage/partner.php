@@ -34,7 +34,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="category">Categorie</label>
                     <div class="col-sm-8">
-                        <select class="form-control" form="partnerForm" name="options" id="categorie" required>
+                        <select class="form-control" form="partnerForm" name="options" id="category" required>
                             <option value="default" disabled <?php if ($model->category != ("SOS" || "Dienstverleners" || "Projecten")) echo "selected"; ?>>Kies een partner categorie</option>
                             <option value="SOS" <?php if ($model->category === "SOS") echo "selected"; ?>>SOS</option>
                             <option value="Dienstverleners" <?php if ($model->category === "Dienstverleners") echo "selected"; ?>>Dienstverleners</option>
