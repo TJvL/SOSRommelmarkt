@@ -26,6 +26,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="categorie">Categorie</label>
                     <div class="col-sm-8">
+                        <select class="form-control" form="createPartnerForm" name="category" id="category">
                             <option value="disabled" disabled selected>Kies een partner categorie</option>
                             <option value="sos">SOS</option>
                             <option value="dienstverleners">Dienstverleners</option>
