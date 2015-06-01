@@ -563,7 +563,7 @@ class ManageController extends Controller
         if (isset($_POST["name"]) && isset($_POST["website"]) && isset($_POST["category"]) && isset($_FILES["image"]))
         {
             // Insert the partner record. And set $post id to the id for setpartnerimage.
-            $image = $this->partnerRepository->insert($_POST["name"], $_POST["website"], $_POST["category"]);
+            $image = $this->partnerRepository->insert($_POST["name"], $_POST["website"], strtoupper($_POST["category"]));
 
             // Set the image.
             $image->setImage($_FILES["image"]);
