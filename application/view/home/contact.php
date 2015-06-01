@@ -72,7 +72,7 @@
            <p>
             <div id="adres"> <?php echo $model->address;?><br /> </div>
             <div id="plaats"><?php echo $model->city; ?> </div>
-            <div id-"postcode"><?php echo $model->postalcode . ", " . $model->city; ?><br /></div>
+            <div id-"postcode"><?php echo $model->postalcode; ?><br /></div>
             <?php echo $model->phone; ?><br />
             <a href="mailto:<?php echo $model->email; ?>" target="_top"><?php $model->email; ?></a>
           </p> 
