@@ -9,11 +9,11 @@ class SloganRepository
         $this->database = $database;
     }
 
-	private function createObjectFromArray($array)
+	private function mapRowToModel($row)
 	{
 		$slogan			= new Slogan();
-		$slogan->id		= $array["id"];
-		$slogan->slogan	= $array["slogan"];
+		$slogan->id		= $row["id"];
+		$slogan->slogan	= $row["slogan"];
 		
 		return $slogan;
 	}
@@ -22,8 +22,12 @@ class SloganRepository
 	{
 		$query = "INSERT INTO Slogans (slogan)
 					VALUES(?)";
-		
-		return $this->database->insert($query, "s", array($slogan));
+        $parameters = array($slogan->slogan);
+        $paramTypes = "s";
+
+        $id = $this->database->insert($query, $paramTypes, $parameters);
+
+		return $id;
 	}
 	
 	public function update($slogan)
@@ -31,8 +35,10 @@ class SloganRepository
 		$query = "UPDATE Slogans
 					SET slogan = ?
 					WHERE id = ?";
+        $parameters = array($slogan->slogan, $slogan->id);
+        $paramTypes = "ss";
 
-        $this->database->update($query, "si", array($slogan->slogan, $slogan->id));
+        $this->database->update($query, $paramTypes, $parameters);
 	}
 	
 	public function selectById($id)
@@ -40,46 +46,50 @@ class SloganRepository
 		$query = "SELECT *
 					FROM Slogans
 					WHERE id = ?";
-		
-		// execute the query
-		$result = $this->database->select($query, "i", array($id));
-		
-		// put the results in an object
-		$array = $result->fetch_assoc();
-		$slogan = $this->createObjectFromArray($array);
-		
-		// free result
+        $parameters = array($id);
+        $paramTypes = "s";
+
+		$result = $this->database->select($query, $paramTypes, $parameters);
+
+        $slogan = null;
+        if($result->num_rows == 1)
+        {
+            $row = $result->fetch_assoc();
+            $slogan = $this->mapRowToModel($row);
+        }
+
 		$result->close();
 		
 		return $slogan;
 	}
+
+    public function deleteById($id)
+    {
+        $query = "DELETE FROM Slogans
+					WHERE id = ?";
+        $parameters = array($id);
+        $paramTypes = "s";
+
+        $this->database->update($query, $paramTypes, $parameters);
+    }
 	
 	public function selectAll()
 	{
 		$query = "SELECT *
 					FROM Slogans";
-		// execute the query
+
 		$result = $this->database->select($query);
-		
-		// put the results in an array of objects
+
 		$slogans = array();
 		
 		for ($i = 0; $i < $result->num_rows; $i++)
 		{
 			$row = $result->fetch_assoc();
-			$slogans[$i] = $this->createObjectFromArray($row);
+            $slogan = $this->mapRowToModel($row);
+			$slogans[$slogan->id] = $slogan;
 		}
-		
-		// free result
+
 		$result->close();
 		return $slogans;
-	}
-	
-	public function deleteById($id)
-	{
-		$query = "DELETE FROM Slogans
-					WHERE id = ?";
-
-        $this->database->update($query, "i", array($id));
 	}
 }

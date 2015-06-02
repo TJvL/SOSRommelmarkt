@@ -90,7 +90,7 @@
         			<small>Op het moment is er geen nieuws</small>
         		<?php } ?>
         		<?php foreach ($model->newsItems as $news) { ?>
-        			<a href="<?php echo ROOT_PATH; ?>/home/news" class="list-group-item">
+        			<a href="<?php echo ROOT_PATH; ?>/news/articles" class="list-group-item">
         				<div class="row">
 	        				<div class="col-sm-10">
 	        					<?php echo $news->heading; ?><br />

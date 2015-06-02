@@ -14,4 +14,11 @@ abstract class APIController
         header('Content-Type: application/json');
         exit(json_encode($model));
     }
+
+    protected function respondOK()
+    {
+        ob_end_clean();
+        http_response_code(200);
+        exit(200);
+    }
 }

@@ -23,4 +23,4 @@ $requestHandler->handleRequest($routeObject); //Try to successfully process the 
 
 ob_end_flush(); //Output the accumulated buffer.
 
-exit(); //Cleanly exit the script.
+exit; //Cleanly exit the script.

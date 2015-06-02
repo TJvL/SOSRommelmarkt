@@ -9,15 +9,15 @@ class NewsRepository
         $this->database = $database;
     }
 	
-	private function createObjectFromArray($array)
+	private function mapRowToModel($row)
 	{
 		$news					= new News();
-		$news->id				= $array["id"];
-		$news->heading			= $array["heading"];
-		$news->content			= $array["content"];
-		$news->create_date		= $array["create_date"];
-		$news->expiration_date	= $array["expiration_date"];
-		$news->publisher		= $array["publisher"];
+		$news->id				= $row["id"];
+		$news->heading			= $row["heading"];
+		$news->content			= $row["content"];
+		$news->create_date		= $row["create_date"];
+		$news->expiration_date	= $row["expiration_date"];
+		$news->publisher		= $row["publisher"];
 		
 		return $news;
 	}
@@ -26,17 +26,23 @@ class NewsRepository
 	{
 		$query = "INSERT INTO News (heading, content, create_date, expiration_date, publisher)
 					VALUES(?, ?, NOW(), ?, ?)";
-		
-		return $this->database->insert($query, "ssss", array($news->heading, $news->content, $news->expiration_date, $news->publisher));
+        $parameters = array($news->heading, $news->content, $news->expiration_date, $news->publisher);
+        $paramTypes = "ssss";
+
+        $id = $this->database->insert($query, $paramTypes, $parameters);
+
+		return $id;
 	}
 	
 	public function update($news)
 	{
 		$query = "UPDATE News
-					SET heading = ?, content = ?, create_date = ?, expiration_date = ?, publisher = ?
+					SET heading = ?, content = ?, expiration_date = ?
 					WHERE id = ?";
+        $parameters = array($news->heading, $news->content, $news->expiration_date, $news->id);
+        $paramTypes = "sssss";
 		
-		$this->database->update($query, "sssssi", array($news->heading, $news->content, $news->create_date, $news->expiration_date, $news->publisher, $news->id));
+		$this->database->update($query, $paramTypes, $parameters);
 	}
 
     public function selectById($id)
@@ -44,15 +50,18 @@ class NewsRepository
 		$query = "SELECT *
 					FROM News
 					WHERE id = ?";
-		
-		// execute the query
-		$result = $this->database->select($query, "i", array($id));
-		
-		// put the results in an object
-		$array = $result->fetch_assoc();
-		$news = $this->createObjectFromArray($array);
-		
-		// free result
+        $parameters = array($id);
+        $paramTypes = "s";
+
+		$result = $this->database->select($query, $paramTypes, $parameters);
+
+        $news = null;
+        if($result->num_rows == 1)
+        {
+            $row = $result->fetch_assoc();
+            $news = $this->mapRowToModel($row);
+        }
+
 		$result->close();
 		
 		return $news;
@@ -62,29 +71,30 @@ class NewsRepository
 	{
 		$query = "DELETE FROM News
 					WHERE id = ?";
+        $parameters = array($id);
+        $paramTypes = "s";
 		
-		$this->database->update($query, "i", array($id));
+		$this->database->update($query, $paramTypes, $parameters);
 	}
 	
 	public function selectAll()
     {
 		$query = "SELECT *
 					FROM News";
-		// execute the query
+
 		$result = $this->database->select($query);
-		
-		// put the results in an array of objects
-		$aNews = array();
+
+		$allNews = array();
 		
 		for ($i = 0; $i < $result->num_rows; $i++)
 		{
-			$array = $result->fetch_assoc();
-			$aNews[$i] = $this->createObjectFromArray($array);
+			$row = $result->fetch_assoc();
+            $news = $this->mapRowToModel($row);
+			$allNews[$news->id] = $news;
 		}
-		
-		// free result
+
 		$result->close();
-		return $aNews;
+		return $allNews;
     }
     
     public function selectCurrent()
@@ -93,22 +103,19 @@ class NewsRepository
     				FROM News
     				WHERE expiration_date > NOW()
     				ORDER BY create_date DESC";
-    	// execute the query
+
     	$result = $this->database->select($query);
-		
-		// put the results in an array of objects
-		$aNews = array();
+
+		$allNews = array();
 		
 		for ($i = 0; $i < $result->num_rows; $i++)
 		{
-			$array = $result->fetch_assoc();
-			$aNews[$i] = $this->createObjectFromArray($array);
+			$row = $result->fetch_assoc();
+			$allNews[$i] = $this->mapRowToModel($row);
 		}
 		
 		// free result
 		$result->close();
-		return $aNews;
+		return $allNews;
     }
 }
-
-?>

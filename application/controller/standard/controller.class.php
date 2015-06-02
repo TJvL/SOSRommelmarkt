@@ -45,7 +45,7 @@ abstract class Controller
     protected function redirectTo($target)
     {
         header('Location: ' . ROOT_PATH . $target);
-        exit("Redirecting...");
+        exit;
     }
 
     private function includeHeader($controller, $action)
