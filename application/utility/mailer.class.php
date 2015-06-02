@@ -1,8 +1,8 @@
 <?php
 class Mailer
 {
-    public static $errorMailReceivers = "ca.boel@student.avans.nl, dummy@nowhere.com, bbrouwer5@student.avans.nl";
-    public static $notifyMailReceivers = "ca.boel@student.avans.nl, sosrommelmarktAccount@blablabla.nl, scottyLove@yogscast.com, bbrouwer5@avans.nl";
+    public static $errorMailReceivers = "ca.boel@student.avans.nl, dummy@nowhere.com, bbrouwer5@student.avans.nl, bbrouwer5@avans.nl";
+    public static $notifyMailReceivers = "ca.boel@student.avans.nl, sosrommelmarktAccount@blablabla.nl, scottyLove@yogscast.com, bbrouwer5@avans.nl, bbrouwer5@student.avans.nl";
     public static $reply = "sosrommelmarkt@dummy.nl";
     public static $noReply = "noreply@dummy.nl";
 
