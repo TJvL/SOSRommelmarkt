@@ -3,8 +3,14 @@
         <div class="content">
             <div class="row">
                 <div class="col-md-1">
-                    <a href="<?php echo ROOT_PATH . '/manage/shopproducts'?>" class="btn btn-default">Back</a>
+                    <a href="<?php echo ROOT_PATH . '/manage/shopproducts'?>" class="btn btn-default">Terug</a>
                 </div>
+
+            </div>
+
+
+            <div class="row">
+                <h1>Winkel product toevoegen</h1>
             </div>
 
             <div class="idealsteps-container">
