@@ -6,68 +6,58 @@
 			<div class="col-md-1">
 				<a href="<?php echo ROOT_PATH . "/manage/partners" ?>" class="btn btn-default">Terug</a>
 			</div>
+            <div class="col-sm-offset-9 col-sm-2">
+                <button class="btn btn-danger btn-block" type="button" onClick="DeletePartner()">Verwijderen</button>
+            </div>
 		</div>
 		<div class="row">
 			<hr>
 			<div class="col-sm-offset-2 col-sm-10">
 				<h1>Partnerinformatie</h1>
 			</div>
-			<form class="form-horizontal" id="partnerForm" action="javascript:UpdatePartner()">
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="id">ID</label>
-					<div class="col-sm-8">
-						<input class="form-control" id="id" type="number" value="<?php echo $model->id ?>" disabled>
-					</div>
+			<form class="idealforms" form="partnerform" id="partnerform" action="javascript:UpdatePartner()">
+				<div class="field">
+					<label class="main" for="id">ID</label>
+					<input form="partnerform" id="id" type="number" value="<?php echo $model->id ?>" disabled>
+                    <span class="error"></span>
 				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="name">Naam</label>
-					<div class="col-sm-8">
-						<input class="form-control" id="name" type="text" placeholder="Naam van de partner" value="<?php echo $model->name ?>" required>
-					</div>
+				<div class="field">
+					<label class="main" for="name">Naam</label>
+					<input form="partnerform" id="name" type="text" placeholder="Naam van de partner" value="<?php echo $model->name ?>" required>
+                    <span class="error"></span>
 				</div>
-				<div class="form-group">
-                    <label class="control-label col-sm-2" for="website">Website</label>
-                    <div class="col-sm-8">
-                        <input class="form-control" id="website" type="text" placeholder="Website van partner" value="<?php echo $model->website ?>" required>
-                    </div>
+				<div class="field">
+                    <label class="main" for="website">Website</label>
+                    <input form="partnerform" id="website" type="text" placeholder="Website van partner" value="<?php echo $model->website ?>" required>
+                    <span class="error"></span>
                 </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="category">Categorie</label>
-                    <div class="col-sm-8">
-                        <select class="form-control" form="partnerForm" name="options" id="category" required>
-                            <option value="default" disabled <?php if ($model->category != ("SOS" || "Dienstverleners" || "Projecten")) echo "selected"; ?>>Kies een partner categorie</option>
-                            <option value="SOS" <?php if ($model->category === "SOS") echo "selected"; ?>>SOS</option>
-                            <option value="Dienstverleners" <?php if ($model->category === "Dienstverleners") echo "selected"; ?>>Dienstverleners</option>
-                            <option value="Projecten" <?php if ($model->category === "Projecten") echo "selected"; ?>>Projecten</option>
-                        </select>
-                    </div>
+                <div class="field">
+                    <label class="main" for="category">Categorie</label>
+                    <select form="partnerform" name="options" id="category" required>
+                        <option value="default" disabled <?php if ($model->category != ("SOS" || "Dienstverleners" || "Projecten")) echo "selected"; ?>>Kies een partner categorie</option>
+                        <option value="SOS" <?php if ($model->category === "SOS") echo "selected"; ?>>SOS</option>
+                        <option value="Dienstverleners" <?php if ($model->category === "Dienstverleners") echo "selected"; ?>>Dienstverleners</option>
+                        <option value="Projecten" <?php if ($model->category === "Projecten") echo "selected"; ?>>Projecten</option>
+                    </select>
+                    <span class="error"></span>
                 </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="image">Plaatje</label>
-                    <div class="col-sm-8">
-                    	<input class="form-control" id="image" type="file" form="">
-                    </div>
+                <div class="field">
+                    <label class="main" for="image">Plaatje</label>
+                    <input id="image" type="file" form="partnerform">
+                    <span class="error"></span>
                 </div>
-                <div class="form-group" id="imagePreviewDiv">
-                	<label class="control-label col-sm-2" for="imagePreview">Plaatje preview</label>
-	                <div class="col-sm-8">
-	                	<img class="image-preview" id="imagePreview" src="<?php echo $model->getImagePath() ?>">
-	                </div>
+                <div class="field" id="imagePreviewDiv">
+                	<label class="main" for="imagePreview">Plaatje preview</label>
+	                <img class="image-preview" id="imagePreview" src="<?php echo $model->getImagePath() ?>">
+                    <span class="error"></span>
 				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-2">
-						<button class="btn btn-default btn-block" type="submit">Opslaan</button>
-					</div>
-					<div class="col-sm-2">
-						<button class="btn btn-default btn-block" type="button" onClick="SetPartnerImage()">Opslaan plaatje</button>
-					</div>
-					<div class="col-sm-2">
-						<button class="btn btn-danger btn-block" type="button" onClick="DeletePartner()">Verwijderen</button>
-					</div>
-					<div class="col-sm-4">
-						<div class="alert" id="status" role="alert"></div>
-					</div>
-				</div>
+                <div class="field buttons">
+                    <label class="main">&nbsp;</label>
+                    <button form="partnerform" type="submit" class="submit">Opslaan</button>
+                    <button type="button" onClick="SetPartnerImage()">Opslaan plaatje</button>
+                </div>
+                <span id="invalid"></span>
+
 			</form>
 		</div>
 	</div>

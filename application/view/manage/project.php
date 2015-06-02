@@ -66,12 +66,12 @@
             </div>
             <div class="row">
                 <hr>
-                <div class="col-sm-1"></div>
-                <h1>Afbeeldingen</h1>
-                <div class="col-sm-1"></div>
+
+                <h1 class="padding-hor-lg">Afbeeldingen</h1>
+
                 <div class="col-sm-2">
-                    <div class="thumbnail text-center" id="addImageButton">
-                        <span class="glyphicon glyphicon-plus"></span>
+                    <div class="btn btn-default" id="addImageButton">
+                        <span class="fa fa-plus"></span>
                     </div>
                 </div>
                 <?php
@@ -80,7 +80,7 @@
                     ?>
                     <div class="col-sm-2">
                         <div class="thumbnail">
-                            <img src="<?php echo $imagePath; ?>">
+                            <img class="project-manage-image" src="<?php echo $imagePath; ?>">
                             <div class="caption text-center">
                                 <a class="btn btn-danger" onClick="handleDeleteImage('<?php echo $imagePath; ?>')">Verwijder</a>
                             </div>
@@ -89,7 +89,7 @@
                 <?php
                 }
                 ?>
-                <div class="col-sm-1"></div>
+
             </div>
 
         </div>

@@ -6,11 +6,18 @@ function handleUpdateProduct()
         $("#status").text("");
         $("#status").removeClass("alert-success alert-danger");
 
-        var formData = new FormData(document.getElementById("updateForm"));
+        var formData =
+        {
+            id:				$("#id").val(),
+            name:			$("#name").val(),
+            description:	$("#description").val(),
+            colorCode:		$("#colorCode option:selected").val()
+        };
+        console.log(formData);
 
         $.ajax(
             {
-                url: "update",
+                url: "../update",
                 type: "POST",
                 data: formData,
                 async: true,
@@ -23,11 +30,13 @@ function handleUpdateProduct()
                     {
                         $("#status").text("  Succes!");
                         $("#status").addClass("alert-success");
+                        alert("succes");
                     }
                     else
                     {
                         $("#status").text("  Er is iets verkeerd gegaan");
                         $("#status").addClass("alert-danger");
+                        alert("fail");
                     }
                 }
             });
@@ -39,9 +48,11 @@ function handleDeleteProduct()
     if (confirm("Weet u zeker dat u dit product wilt verwijderen?"))
     {
         var data =
-            {
-                id: $.('#productId').val()
-    };
+        {
+
+            id: $('#productId').val()
+        };
+    }
 
     $.ajax(
         {
@@ -62,7 +73,6 @@ function handleDeleteProduct()
                 }
             }
         });
-}
 }
 
 function handleNewImage()
@@ -102,9 +112,10 @@ function handleDeleteImage(imagePath)
         imageName = imagePath.substring(imagePath.lastIndexOf("/") + 1);
 
         var data =
-            {
-                id: $.('#productId').val(),
-         imageName: imageName
+        {
+            id: $('#productId').val(),
+            imageName: imageName
+        };
     };
 
     $.ajax(
@@ -129,7 +140,7 @@ function handleDeleteImage(imagePath)
                 location.reload();
             }
         });
-}
+
 }
 
 $(document).ready(function()

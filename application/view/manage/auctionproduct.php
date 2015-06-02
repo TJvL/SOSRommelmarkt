@@ -2,85 +2,67 @@
 	<div class="white">
         <div class="row">
             <div class="col-md-1">
-                <a href="<?php echo ROOT_PATH . "/manage/editauction/" . $_SESSION["auctionId"] ?>" class="btn btn-default">Back</a>
+                <a href="<?php echo ROOT_PATH . "/manage/editauction/" . $_SESSION["auctionId"] ?>" class="btn btn-default">Terug</a>
+            </div>
+            <div class="col-md-offset-9 col-md-1">
+                <button class="btn btn-danger" type="button" onClick="handleDeleteProduct()">Verwijderen</button>
             </div>
         </div>
 		<div class="row">
 			<hr>
 			<div class="col-sm-1"></div>
 			<h1>Productinformatie</h1>
-			<form class="form-horizontal" id="updateForm" action="javascript:handleUpdateProduct()">
-				<input name="id" type="hidden" id="productId" value="<?php echo $model->auctionProduct->id ?>">
-				<div class="form-group">
-					<label class="control-label col-sm-2">ID</label>
-					<div class="col-sm-10">
-						<div class="input-group">
-							<input class="form-control" type="number" value="<?php echo $model->auctionProduct->id ?>" disabled>
-						</div>
-					</div>
+			<form class="idealforms" id="updateForm" action="javascript:handleUpdateProduct()">
+<!--				<input name="id" type="hidden" id="productId" value="--><?php //echo $model->auctionProduct->id ?><!--">-->
+				<div class="field">
+					<label class="main" for="id">ID</label>
+                    <input form="updateForm" type="number" name="id" id="id" value="<?php echo $model->auctionProduct->id ?>" disabled>
+                    <span class="error"></span>
 				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-2">Naam</label>
-					<div class="col-sm-10">
-						<div class="input-group">
-							<input class="form-control" name="name" type="text" placeholder="Naam van het product" value="<?php echo $model->auctionProduct->name ?>" required>
-						</div>
-					</div>
+				<div class="field">
+					<label class="main">Naam</label>
+                    <input form="updateForm" name="name" id="name" type="text" placeholder="Naam van het product" value="<?php echo $model->auctionProduct->name ?>">
+					<span class="error"></span>
 				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-2">Omschrijving</label>
-					<div class="col-sm-10">
-						<div class="input-group">
-							<textarea class="form-control" name="description" style="resize: none" rows="3" placeholder="Omschrijving van het product" required><?php echo $model->auctionProduct->description ?></textarea>
-						</div>
-					</div>
+				<div class="field">
+					<label class="main">Omschrijving</label>
+                    <textarea form="updateForm" name="description" id="description" style="resize: none" rows="3" placeholder="Omschrijving van het product" required><?php echo $model->auctionProduct->description ?></textarea>
+					<span class="error"></span>
 				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-2">Toegevoegd door</label>
-					<div class="col-sm-10">
-						<div class="input-group">
-							<input class="form-control" type="text" value="<?php echo $model->auctionProduct->addedBy ?>" disabled>
-						</div>
-					</div>
+				<div class="field">
+					<label class="main">Toegevoegd door</label>
+                    <input form="updateForm" type="text" value="<?php echo $model->auctionProduct->addedBy ?>" disabled>
+					<span class="error"></span>
 				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-2">Kleurcode</label>
-					<div class="col-sm-10">
-						<div class="input-group">
-							<select name="colorCode" class="form-control">
-				                <?php 
-								foreach ($model->colorCodes as $colorCode)
-								{
-									if ($colorCode->name == $model->auctionProduct->colorCode)
-									{
-										?>
-										<option selected="selected"><?php echo $colorCode->name ?> - <?php echo $colorCode->description ?></option>
-										<?php
-									}
-									else
-									{
-										?>
-										<option><?php echo $colorCode->name ?> - <?php echo $colorCode->description ?></option>
-										<?php
-									}
-								}
-								?>
-							</select>
-						</div>
-					</div>
+				<div class="field">
+					<label class="main">Kleurcode</label>
+                    <select name="colorCode" id="colorCode" form="updateForm">
+                        <?php
+                        foreach ($model->colorCodes as $colorCode)
+                        {
+                            if ($colorCode->name == $model->auctionProduct->colorCode)
+                            {
+                                ?>
+                                <option selected="selected"><?php echo $colorCode->name ?> - <?php echo $colorCode->description ?></option>
+                                <?php
+                            }
+                            else
+                            {
+                                ?>
+                                <option><?php echo $colorCode->name ?> - <?php echo $colorCode->description ?></option>
+                                <?php
+                            }
+                        }
+                        ?>
+                    </select>
+                    <span class="error"></span>
 				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-2"></label>
-					<div class="col-sm-10">
-						<div class="input-group">
-							<div class="btn-toolbar">
-								<button class="btn btn-default" type="submit">Update</button>
-								<button class="btn btn-danger" type="button" onClick="handleDeleteProduct()">Delete</button>
-							</div>
-						</div>
-						<div class="alert" id="status" role="alert"></div>
-					</div>
-				</div>
+                <div class="field buttons">
+                    <label class="main">&nbsp;</label>
+                    <button form="updateForm" type="submit" class="submit">Opslaan</button>
+                </div>
+                <span id="invalid"></span>
+
 			</form>
 		</div>
 		<div class="hidden" id="cropperDiv">
