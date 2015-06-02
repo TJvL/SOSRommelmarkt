@@ -1,16 +1,8 @@
 
-
+//filter function
 $(".filterButton").click(function(){
 //   get the clicked buttons status
     var selected = ($(this.id).selector);
-
-    $( ".list-group-item" ).each(function(){
-
-    });
-
-
-
-
 
     $( ".list-group-item" ).each(function(){
 
@@ -32,12 +24,9 @@ $(".filterButton").click(function(){
 
     });
 
-
-
-
 });
 
-
+//i know this is ugly but pretty low priority
     function post(path, params, method) {
         method = method || "post"; // Set method to post by default if not specified.
 
@@ -71,6 +60,21 @@ $(".filterButton").click(function(){
         }
 
     }
+
+function delete_sub(clicked_id)
+{
+
+}
+
+
+
+
+
+
+
+
+
+
 
     function downloadSubventionRequestAttachedFile(id, filename) {
         var data =

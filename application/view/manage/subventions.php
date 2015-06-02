@@ -148,7 +148,7 @@
                         <div class="row">
                            <div class="col-md-10"></div>
                             <div class="col-md-2">
-                                <button id="<?php echo $m->id ?>" onClick="delete_sub(this.id)" type="button" title="Print" class="btn btn-default">
+                                <button id="<?php echo $m->id ?>" onClick="delete_sub(this.id)" type="button" title="Verwijder" class="btn btn-default">
                                     <span class="glyphicon glyphicon-trash  col-sm-1" aria-hidden="true"></span>
                                 </button>
                             </div>
