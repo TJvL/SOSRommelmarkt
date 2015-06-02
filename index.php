@@ -22,4 +22,5 @@ $authHandler->checkAuthorization($routeObject); //Check if the client is authori
 $requestHandler->handleRequest($routeObject); //Try to successfully process the request.
 
 ob_end_flush(); //Output the accumulated buffer.
+
 exit(); //Cleanly exit the script.

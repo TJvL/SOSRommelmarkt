@@ -28,7 +28,7 @@ class AuthorizationHandler
                 $role = "Role=";
                 $permission = "Permission=";
 
-                if ((strpos($authString, $role) + 1))
+                if (strpos($authString, $role))
                 {
                     $roleString = str_replace($role, "", $authString);
                     $roleString = str_replace(";", "", $roleString);

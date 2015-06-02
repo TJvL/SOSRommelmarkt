@@ -306,7 +306,7 @@ class ManageController extends Controller
     //<editor-fold desc="Shop Product Manage">
 
     /**
-     *<<Permission=Product;>>
+     *{{Permission=Product;}}
      */
     public function shopproducts_GET()
     {
@@ -325,7 +325,7 @@ class ManageController extends Controller
     }
 
     /**
-     *<<Permission=Product;>>
+     *{{Permission=Product;}}
      */
     public function addshopproduct_GET()
     {
@@ -342,7 +342,7 @@ class ManageController extends Controller
     }
 
     /**
-     *<<Permission=Product;>>
+     *{{Permission=Product;}}
      */
     public function shopproduct_GET($id)
     {
@@ -370,7 +370,7 @@ class ManageController extends Controller
     }
 
     /**
-     *<<Permission=Product;>>
+     *{{Permission=Product;}}
      */
     public function updateshopproduct_POST()
     {
@@ -386,7 +386,7 @@ class ManageController extends Controller
     }
 
     /**
-     *<<Permission=Product;>>
+     *{{Permission=Product;}}
      */
     public function deleteshopproduct_POST()
     {
@@ -422,7 +422,7 @@ class ManageController extends Controller
     }
 
     /**
-     *<<Permission=Product>>
+     *{{Permission=Product;}}
      */
     public function shopproduct_POST()
     {
