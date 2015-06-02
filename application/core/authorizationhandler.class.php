@@ -2,60 +2,49 @@
 
 class AuthorizationHandler
 {
+    private $authorized;
+
+    public function __construct()
+    {
+        $this->authorized = false;
+    }
+
     public function checkAuthorization($routeObject)
     {
-        $authorized = false;
+        $methodDocComment = $this->getDocComment($routeObject);
 
-        $controller = $routeObject->controller;
-        $methodName = $routeObject->controllerMethod;
-
-        $reflectedController = new ReflectionClass($controller);
-        $reflectedMethod = $reflectedController->getMethod($methodName);
-        $methodDocComment = $reflectedMethod->getDocComment();
-
-        $matches = array();
-        if (preg_match("/[\{]{2}.*[\}]{2}/", $methodDocComment, $matches))
+        $authString = $this->getAuthString($methodDocComment);
+        if (isset($authString))
         {
-            if ($this->isLoggedIn())
+            $user = $this->isLoggedIn();
+            if (isset($user))
             {
-                $user = $_SESSION["user"];
                 $userRole = $user->role;
                 $userPermissions = $user->permissions;
 
-                $authString = str_replace("{{", "", $matches[0]);
-                $authString = str_replace("}}", "", $authString);
-
-                $role = "Role=";
-                $permission = "Permission=";
-
-                if (strpos($authString, $role))
+                if (preg_match("/Role=.*;/", $authString))
                 {
-                    $roleString = str_replace($role, "", $authString);
-                    $roleString = str_replace(";", "", $roleString);
-                    $roles = explode(",", $roleString);
-
+                    $roles = $this->getRoles($authString);
                     foreach ($roles as $role)
                     {
                         if ($role === $userRole)
                         {
-                            $authorized = true;
+                            $this->authorized = true;
                             break;
                         }
                     }
                 }
-                elseif((strpos($authString, $permission) + 1))
+                elseif(preg_match("/Permission=.*;/", $authString))
                 {
-                    $permissionString = str_replace($role, "", $authString);
-                    $permissionString = str_replace(";", "", $permissionString);
-                    $permissions = explode(",", $permissionString);
+                    $permissions = $this->getPermissions($authString);
 
                     foreach ($permissions as $permission)
                     {
                         foreach ($userPermissions as $userPermission)
                         {
-                            if ($permission === $userPermission)
+                            if ($permission === $userPermission->name)
                             {
-                                $authorized = true;
+                                $this->authorized = true;
                                 break;
                             }
                         }
@@ -65,10 +54,10 @@ class AuthorizationHandler
         }
         else
         {
-            $authorized = true;
+            $this->authorized = true;
         }
 
-        if(!$authorized)
+        if(!$this->authorized)
         {
             throw new CoreException("Client not authorized to call this action", 401, null, $routeObject);
         }
@@ -80,9 +69,47 @@ class AuthorizationHandler
         {
             if (isset($_SESSION["user"]))
             {
-                return true;
+                return $_SESSION["user"];
             }
         }
-        return false;
+        return null;
+    }
+
+    private function getAuthString($methodDocComment)
+    {
+        $authString = null;
+        $matches = array();
+        if(preg_match("/[\{]{2}.*[\}]{2}/", $methodDocComment, $matches))
+        {
+            $authString = str_replace("{{", "", $matches[0]);
+            $authString = str_replace("}}", "", $authString);
+        }
+
+        return $authString;
+    }
+
+    private function getDocComment($routeObject)
+    {
+        $controller = $routeObject->controller;
+        $methodName = $routeObject->controllerMethod;
+
+        $reflectedController = new ReflectionClass($controller);
+        $reflectedMethod = $reflectedController->getMethod($methodName);
+
+        return $reflectedMethod->getDocComment();
+    }
+
+    private function getRoles($authString)
+    {
+        $roleString = str_replace("Role=", "", $authString);
+        $roleString = str_replace(";", "", $roleString);
+        return explode(",", $roleString);
+    }
+
+    private function getPermissions($authString)
+    {
+        $permissionString = str_replace("Permission=", "", $authString);
+        $permissionString = str_replace(";", "", $permissionString);
+        return explode(",", $permissionString);
     }
 }
