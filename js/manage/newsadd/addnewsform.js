@@ -59,7 +59,7 @@ function addNews()
                     document.location.href = getBaseURL() + 'manage/newsoverview';
                 },
                 error: function (status) {
-                    $("#status").text(status.status + ": " + status.statusText);
+                    $("#status").text(status.status + ": " + translateHttpError(status.statusText));
                     $("#status").addClass("alert-danger");
                 }
             });

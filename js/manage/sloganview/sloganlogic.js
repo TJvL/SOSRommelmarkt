@@ -55,7 +55,7 @@ function updateSlogan()
                     $("#status").addClass("alert-success");
                 },
                 error: function (status) {
-                    $("#status").text(status.status + ": " + status.statusText);
+                    $("#status").text(status.status + ": " + translateHttpError(status.statusText));
                     $("#status").addClass("alert-danger");
                 }
             });
@@ -83,7 +83,7 @@ function deleteSlogan()
                     document.location.href = getBaseURL() + 'manage/sloganoverview';
                 },
                 error: function (status) {
-                    $("#status").text(status.status + ": " + status.statusText);
+                    $("#status").text(status.status + ": " + translateHttpError(status.statusText));
                     $("#status").addClass("alert-danger");
                 }
             });

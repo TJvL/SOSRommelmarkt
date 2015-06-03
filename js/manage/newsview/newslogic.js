@@ -26,10 +26,6 @@ $('#newsForm').idealforms({
     }
 });
 
-// set datepicker format
-//$('.datepicker').datepicker({
-//	dateFormat: "dd-mm-yy"
-//});
 $('.datepicker').datepicker('option', 'dateFormat', 'dd-mm-yy');
 
 //Checks input fields and show message on bottom after every user input.
@@ -66,7 +62,7 @@ function updateNews()
                     $("#status").addClass("alert-success");
                 },
                 error: function (status) {
-                    $("#status").text(status.status + ": " + status.statusText);
+                    $("#status").text(status.status + ": " + translateHttpError(status.statusText));
                     $("#status").addClass("alert-danger");
                 }
             });
@@ -94,7 +90,7 @@ function deleteNews()
                     document.location.href = getBaseURL() + 'manage/newsoverview';
                 },
                 error: function (status) {
-                    $("#status").text(status.status + ": " + status.statusText);
+                    $("#status").text(status.status + ": " + translateHttpError(status.statusText));
                     $("#status").addClass("alert-danger");
                 }
             });
