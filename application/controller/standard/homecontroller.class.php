@@ -96,11 +96,11 @@ class HomeController extends Controller
 
         $this->render("contact", $companyInformation);
     }
-    
-    public function news_GET()
+
+    public function articles_GET()
     {
-    	$newsList = new ArrayList("News");
-    	$newsList->addAll($this->newsRepository->selectCurrent());
-    	$this->render("news", $newsList);
+        $newsList = new ArrayList("News");
+        $newsList->addAll($this->newsRepository->selectCurrent());
+        $this->render("articles", $newsList);
     }
 }

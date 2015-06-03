@@ -49,10 +49,10 @@ class RouteMapper
         }
         $this->routeObject->controllerMethod = $this->routeObject->action . "_" . $this->routeObject->httpMethod;
 
-        if($this->strictRules) //If strict rules are enforced on this server the $_GET array is unset to prevent future use.
-        {
-            unset($_GET);
-        }
+//        if($this->strictRules) //If strict rules are enforced on this server the $_GET array is unset to prevent future use.
+//        {
+//            unset($_GET);
+//        }
 
         try
         {

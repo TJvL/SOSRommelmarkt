@@ -1,11 +1,7 @@
-
 <div class= "container">
     <div class="white">
         <h1 class="manage-title">Beheer</h1>
         <div class="row margin-sm">
-            <!-- User: subsidie, Producten | Admin: Users en Inhoud -->
-            <!-- NOT IN USE:  <ul class="management-menu"> -->
-
             <div class="col-md-2">
                 <a href="<?php echo ROOT_PATH; ?>/manage/settings">
                     <button class="btn btn-red">
@@ -51,6 +47,22 @@
                     <button class="btn btn-red">
                         <i class="fa fa-tasks fa-5x fa-fw"></i>
                         <br /><b>Projecten</b>
+                    </button>
+                </a>
+            </div>
+            <div class="col-md-2">
+                <a href="<?php echo ROOT_PATH; ?>/manage/newsoverview">
+                    <button class="btn btn-red">
+                        <i class="fa fa-newspaper-o fa-5x fa-fw"></i>
+                        <br /><b>Nieuws</b>
+                    </button>
+                </a>
+            </div>
+            <div class="col-md-2">
+                <a href="<?php echo ROOT_PATH; ?>/manage/sloganoverview">
+                    <button class="btn btn-red">
+                        <i class="fa fa-comment fa-5x fa-fw"></i>
+                        <br /><b>Slogans</b>
                     </button>
                 </a>
             </div>

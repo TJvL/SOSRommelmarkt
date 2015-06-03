@@ -30,112 +30,37 @@ class ExceptionHandler
             $routeObject = $ex->getRouteObject();
             if(isset($routeObject))
             {
-                if($routeObject->isAPICall)
-                {
-                    $handleAPI = true;
-                }
+                $handleAPI = $routeObject->isAPICall;
             }
         }
 
-        if($handleAPI)
-        {
-            $this->handleAsAPI();
-        }
-        else
-        {
-            $this->handleAsStandard();
-        }
+        $this->setClientResponse(); //Prepare the client error response message.
+        $this->logError(); //The error is logged to php server log.
+        $this->notifyAdmin(); //The configured e-mail address is notified of the error.
+        $this->sendResponse($handleAPI);
     }
 
-    private function handleAsAPI()
+    private function sendResponse($handleAPI)
     {
-        if($this->devMode) //If development mode is active handle the error differently.
+        if(!$handleAPI)
         {
-            $this->logError(); //The error is logged to php server log.
-            $this->outputDevError(); //The error is displayed with all exception information available to the client.
-        }
-        else //Else handle it normally.
-        {
-            $this->setClientResponse(); //Prepare the client error response message.
-            $this->logError(); //The error is logged to php server log.
-            $this->notifyAdmin(); //The configured e-mail address is notified of the error.
-            $this->outputError();
-        }
-    }
-
-    private function handleAsStandard()
-    {
-        if($this->devMode) //If development mode is active handle the error differently.
-        {
-            $this->logError(); //The error is logged to php server log.
-            $this->outputDevError(); //The error is displayed with all exception information available to the client.
-        }
-        else //Else handle it normally.
-        {
-            $this->setClientResponse(); //Prepare the client error response message.
-            $this->logError(); //The error is logged to php server log.
-            $this->notifyAdmin(); //The configured e-mail address is notified of the error.
-            $this->redirectToErrorPage(); //The client is redirected to the configured error page.
-        }
-    }
-
-    /**
-     * Dumps the contents of the exception object to the client.
-     */
-    private function outputDevError()
-    {
-        var_dump($this->exception);
-        exit();
-    }
-
-    /**
-     * Gives the client a notice of the occurred error in JSON.
-     */
-    private function outputError()
-    {
-        header('Content-Type: application/json');
-        exit(json_encode($this->clientMessage));
-    }
-
-    /**
-     * Checks the handled exception for it's HTTP status code and sets a appropriate message for the client.
-     */
-    private function setClientResponse()
-    {
-        $code = $this->exception->getCode();
-        if(isset($code)) //If the code was set then proceed to search the appropriate message for it.
-        {
-            http_response_code($code);
-            $this->httpCode = $code;
-
-            switch ($code)
+            if($this->devMode)
             {
-                case 400:
-                    $this->clientMessage = "Actie niet geaccepteerd door server, check actie parameters.";
-                    return;
-                case 401:
-                    $this->clientMessage = "U bent niet bevoegd om deze actie uit te voeren.";
-                    return;
-                case 403:
-                    $this->clientMessage = "Deze actie is verboden.";
-                    return;
-                case 404:
-                    $this->clientMessage = "De aangevraagde gegevens konden niet gevonden worden.";
-                    return;
-                case 405:
-                    $this->clientMessage = "HTTP request method wordt niet ondersteund op deze actie.";
-                    return;
-                default:
-                    $this->clientMessage = "Interne server fout. Probeer opnieuw of neem contact op met de beheerder.";
-                    return;
+                var_dump($this->exception);
+            }
+            else
+            {
+                //The client is redirected to the configured error page.
+                $_SESSION['msg'] = $this->clientMessage;
+                $_SESSION['code'] = $this->httpCode;
+
+                header('Location: ' . ROOT_PATH . SEPARATOR . ERROR_ROUTE);
+                exit;
             }
         }
-        else //Else put the code on 500 BadRequest.
-        {
-            http_response_code(500);
-            $this->httpCode = 500;
-            $this->clientMessage = "Interne server fout. Probeer opnieuw of neem contact op met de beheerder.";
-        }
+
+        http_response_code($this->httpCode);
+        exit($this->httpCode);
     }
 
     /**
@@ -156,15 +81,38 @@ class ExceptionHandler
     }
 
     /**
-     * Redirects the client to the configured standard error page.
-     * Sets the $_SESSION array so next request the client sees some minor details about this exception.
+     * Checks the handled exception for it's HTTP status code and sets a appropriate message for the client.
      */
-    private function redirectToErrorPage()
+    private function setClientResponse()
     {
-        $_SESSION['msg'] = $this->clientMessage;
-        $_SESSION['code'] = $this->httpCode;
+        $code = $this->exception->getCode();
 
-        header('Location: ' . ROOT_PATH . SEPARATOR . ERROR_ROUTE);
-        exit("Redirecting...");
+        switch ($code)
+        {
+            case 400:
+                $this->httpCode = 400;
+                $this->clientMessage = "Actie niet geaccepteerd door server, check actie parameters.";
+                return;
+            case 401:
+                $this->httpCode = 401;
+                $this->clientMessage = "U bent niet bevoegd om deze actie uit te voeren.";
+                return;
+            case 403:
+                $this->httpCode = 403;
+                $this->clientMessage = "Deze actie is verboden.";
+                return;
+            case 404:
+                $this->httpCode = 404;
+                $this->clientMessage = "De aangevraagde gegevens konden niet gevonden worden.";
+                return;
+            case 405:
+                $this->httpCode = 405;
+                $this->clientMessage = "HTTP request method wordt niet ondersteund op deze actie.";
+                return;
+            default:
+                $this->httpCode = 500;
+                $this->clientMessage = "Interne server fout. Probeer opnieuw of neem contact op met de beheerder.";
+                return;
+        }
     }
 }

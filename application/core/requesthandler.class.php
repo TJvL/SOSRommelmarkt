@@ -63,6 +63,7 @@ class RequestHandler
     private function handlePOST()
     {
         $method = $this->routeObject->controllerMethod; //Get the method to be called on the controller.
+        $model = null;
 
         try
         {
@@ -70,11 +71,19 @@ class RequestHandler
         }
         catch(Exception $ex)
         {
-            $exception = new CoreException("The model could not be found and/or mapped.", 500, $ex, $this->routeObject);
+            $exception = new CoreException("The model could not be found and/or mapped.", $ex->getCode(), $ex, $this->routeObject);
             throw $exception;
         }
 
-        $this->controller->$method($model);
+        try
+        {
+            $this->controller->$method($model);
+        }
+        catch(Exception $ex)
+        {
+            $exception = new CoreException("Something went wrong in the controller", $ex->getCode(), $ex, $this->routeObject);
+            throw $exception;
+        }
     }
 
     /**
@@ -85,7 +94,15 @@ class RequestHandler
         $method = $this->routeObject->controllerMethod; //Get the method to be called on the controller.
         $id = $this->routeObject->id; //Get the last part of the route the optional id. This variable can be an empty string.
 
-        $this->controller->$method($id);
+        try
+        {
+            $this->controller->$method($id);
+        }
+        catch(Exception $ex)
+        {
+            $exception = new CoreException("Something went wrong in the controller", $ex->getCode(), $ex, $this->routeObject);
+            throw $exception;
+        }
         $_SESSION['prevLocation'] = $this->routeObject->controllerURLName . SEPARATOR . $this->routeObject->action;
     }
 }

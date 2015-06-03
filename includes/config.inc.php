@@ -21,7 +21,7 @@ define("DEFAULT_ACTION", "index");
 define("ERROR_ROUTE", "home/error");
 
 //Constant that defines if http requests should be held under stricter rules. Meaning that values extracted from $_GET and $_POST should be mapped before the controller is called.
-define("STRICT_RULES", false);
+define("STRICT_RULES", true);
 
 //Constant that defines if this server is in development mode.
 define("DEV_RULES", true);

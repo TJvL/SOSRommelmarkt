@@ -9,5 +9,3 @@ class News
 	public $expiration_date;
 	public $publisher;
 }
-
-?>

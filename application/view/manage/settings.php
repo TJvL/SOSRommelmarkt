@@ -11,10 +11,8 @@
 			<ul class="nav nav-tabs nav-justified" role="tablist">
 				<li role="presentation" class="active"><a href="#address" aria-controls="address" role="tab" data-toggle="tab">Adres</a></li>
 				<li role="presentation"><a href="#visitinghours" aria-controls="visitinghours" role="tab" data-toggle="tab">Openingstijden</a></li>
-				<li role="presentation"><a href="#slogans" aria-controls="slogans" role="Tab" data-toggle="tab">Slogans</a></li>
 				<li role="presentation"><a href="#home-modules" aria-controls="home-modules" role="tab" data-toggle="tab">Home Modules</a></li>
 				<li role="presentation"><a href="#aboutus-modules" aria-controls="aboutus-modules" role="tab" data-toggle="tab">Over Ons Modules</a>
-				<li role="presentation"><a href="#news-items" aria-controls="news-items" role="tab" data-toggle="tab">Nieuws</a>
 			</ul>
 			<!-- end nav tabs -->
 			
@@ -121,34 +119,6 @@
 					</form>
 				</div>
 				
-				<div role="tabpanel" class="tab-pane fade" id="slogans">				
-					<?php $slogans = $model->slogans;?>
-					<br /><!-- empty line -->
-					<div class="row">
-						<div class="col-md-1">
-							<a href="./addslogan" class="btn btn-default">Nieuwe Slogan</a>
-						</div>
-					</div>
-					<div class="table-responsive padding-sm margin-lg">
-						<table id="sloganTable" class="display">
-							<thead>
-								<tr>
-									<th>Slogan</th>
-									<th>Opties</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php foreach ($slogans as $slogan) { ?>
-								<tr>
-									<td><?php echo $slogan->slogan ?></td>
-									<td><a href="slogan/<?php echo $slogan->id ?>"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a></td>
-								</tr>
-								<?php } ?>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				
 				<div role="tabpanel" class="tab-pane fade" id="home-modules">
 					<?php $modules = $model->homeModules; ?>
 					<br /><!-- empty line -->
@@ -216,41 +186,7 @@
 						</table>
 					</div>
 				</div>
-				
-				<div role="tabpanel" class="tab-pane fade" id="news-items">
-					<br /><!-- empty line -->
-					<div class="row">
-						<div class="col-md-1">
-							<a href="./addnews" class="btn btn-default">Nieuws Toevoegen</a>
-						</div>
-					</div>
-					<div class="table-responsive padding-sm margin-lg">
-						<table id="newsTable" class="display">
-							<thead>
-								<tr>
-									<th>Heading</th>
-									<th>Aanmaakdatum</th>
-									<th>Verloopdatum</th>
-									<th>Geplaatst door</th>
-									<th>Opties</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php for ($i = 0; $i < count($model->newsItems); $i++) { ?>
-								<tr>
-									<td><?php echo $model->newsItems[$i]->heading; ?></td>
-									<td><?php echo $model->newsItems[$i]->create_date; ?></td>
-									<td><?php echo $model->newsItems[$i]->expiration_date; ?></td>
-									<td><?php echo $model->newsItems[$i]->publisher; ?></td>
-									<td>
-										<a href="news/<?php echo $model->newsItems[$i]->id ?>"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
-									</td>
-								</tr>
-								<?php } ?>
-							</tbody>
-						</table>
-					</div>
-				</div>
+
 				<!-- end tab panes -->
 			</div>
 		</div>

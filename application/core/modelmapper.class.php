@@ -20,8 +20,8 @@ class ModelMapper
     {
         $model = null;
 
-        if($this->strictRules)
-        {
+//        if($this->strictRules)
+//        {
             if(isset($_POST["modelName"]))
             {
                 $modelName = $_POST["modelName"];
@@ -43,18 +43,18 @@ class ModelMapper
                         }
                         next($vars);
                     }
-                    unset($_POST);
+//                    unset($_POST);
                 }
                 else
                 {
-                    throw new Exception("$modelName class not found.", 400);
+//                    throw new Exception("$modelName class not found.", 400);
                 }
             }
             else
             {
-                throw new Exception("No model name was supplied.", 400);
+//                throw new Exception("No model name was supplied.", 400);
             }
-        }
+//        }
 
         return $model;
     }

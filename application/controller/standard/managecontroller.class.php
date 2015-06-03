@@ -27,6 +27,84 @@ class ManageController extends Controller
         $this->render("index");
     }
 
+    //<editor-fold desc="News Manage***">
+
+    /**
+     *{{Permission=Tekst;}}
+     */
+    public function newsoverview_GET()
+    {
+        $allNews = new ArrayList("News");
+        $allNews->addAll($this->newsRepository->selectAll());
+        $this->render("newsoverview", $allNews);
+    }
+
+    /**
+     *{{Permission=Tekst;}}
+     */
+    public function newsadd_GET()
+    {
+        $this->render("newsadd");
+    }
+
+    /**
+     *{{Permission=Tekst;}}
+     */
+    public function newsview_GET($id)
+    {
+        $news = $this->newsRepository->selectById($id);
+
+        if(isset($news))
+        {
+            $this->render("newsview", $news);
+        }
+        else
+        {
+            throw new Exception("The requested information was not found.", 404);
+        }
+    }
+
+    //</editor-fold>
+
+    //<editor-fold desc="Slogan Manage***">
+
+    /**
+     *{{Permission=Tekst;}}
+     */
+    public function sloganoverview_GET()
+    {
+        $slogans = new ArrayList("Slogan");
+        $slogans->addAll($this->sloganRepository->selectAll());
+        $this->render("sloganoverview", $slogans);
+    }
+
+    /**
+     *{{Permission=Tekst;}}
+     */
+    public function sloganadd_GET()
+    {
+        $this->render("sloganadd");
+    }
+
+    /**
+     *{{Permission=Tekst;}}
+     */
+    public function sloganview_GET($id)
+    {
+        $slogan = $this->sloganRepository->selectById($id);
+
+        if(isset($slogan))
+        {
+            $this->render("sloganview", $slogan);
+        }
+        else
+        {
+            throw new Exception("The requested information was not found.", 404);
+        }
+    }
+
+    //</editor-fold>
+
     //<editor-fold desc="Settings Manage">
 
     /**
@@ -794,81 +872,6 @@ class ManageController extends Controller
 
     //</editor-fold>
 
-    //<editor-fold desc="Slogan Manage">
-
-    /**
-     *{{Permission=Tekst;}}
-     */
-    public function addslogan_GET()
-    {
-        $this->render("addslogan");
-    }
-
-    /**
-     *{{Permission=Tekst;}}
-     */
-    public function addslogan_POST()
-    {
-        $this->sloganRepository->insert($_POST["slogan"]);
-        
-        $this->redirectTo("/manage/settings#tab_slogans");
-    }
-
-    /**
-     *{{Permission=Tekst;}}
-     */
-    public function slogan_GET()
-    {
-        if (isset($_GET["id"]))
-        {
-            $this->render("slogan", $this->sloganRepository->selectById($_GET["id"]));
-        }
-    }
-
-    /**
-     *{{Permission=Tekst;}}
-     */
-    public function slogan_POST()
-    {
-        // Check if the slogan id is set.
-        if (isset($_GET["id"]))
-        {
-            if ($_GET["id"] == "delete")
-            {
-                // Check if all the necessary data has been sent with the request.
-                if (isset($_POST["id"]))
-                {
-                    // Delete the partner.
-                    $this->sloganRepository->deleteById($_POST["id"]);
-        
-                    // Return 0 for great success.
-                    header("content-Type: application/json");
-                    exit(json_encode(0));
-                }
-            }
-            else if ($_GET["id"] == "update")
-            {
-                // Check if all the necessary data has been sent with the request.
-                if (isset($_POST["id"]) && isset($_POST["slogan"]))
-                {
-                    // Get the slogan, set the data and update.
-                    $slogan = $this->sloganRepository->selectById($_POST["id"]);
-                    $slogan->slogan = $_POST["slogan"];
-                    $this->sloganRepository->update($slogan);
-        
-                    // Return 0 for great success.
-                    header("content-Type: application/json");
-                    exit(json_encode(0));
-                }
-            }
-        }
-        
-        // TODO: Error or some shit
-        exit(json_encode(1));
-    }
-
-    //</editor-fold>
-
     //<editor-fold desc="Module Manage">
 
     /**
@@ -945,102 +948,5 @@ class ManageController extends Controller
         exit(json_encode(1));
     }
     
-	//</editor-fold>
-	
-	//<editor-fold desc="News Manage">
-
-    /**
-     *{{Permission=Tekst;}}
-     */
-    public function addnews_GET()
-    {
-    	$this->render("addnews");
-    }
-
-    /**
-     *{{Permission=Tekst;}}
-     */
-    public function addnews_POST()
-    {
-    	// TODO: Dit later normaal doen...
-    	$_POST["publisher"] = "Administrator";
-    	
-    	if (isset($_POST["heading"]) && isset($_POST["content"]) && isset($_POST["expiration_date"]) && isset($_POST["publisher"]))
-    	{
-    		$news = new News();
-    		$news->heading			= $_POST["heading"];
-    		$news->content			= $_POST["content"];
-    		$news->expiration_date	= date("Y-m-d H:i:s", strtotime($_POST["expiration_date"]));
-    		$news->publisher		= $_POST["publisher"];
-    		 
-    		$this->newsRepository->insert($news);
-    		$this->redirectTo("/manage/settings#tab_news-items");
-    	}
-    	else
-    	{
-    		throw new Exception("Resource was not found. Not all fields were provided.", 404);
-    	}
-    }
-
-    /**
-     *{{Permission=Tekst;}}
-     */
-    public function news_GET()
-    {
-        if (isset($_GET["id"]))
-        {
-            $this->render("news", $this->newsRepository->selectById($_GET["id"]));
-        }
-    }
-
-    /**
-     *{{Permission=Tekst;}}
-     */
-    public function news_POST()
-    {
-        // Check if the module id is set.
-        if (isset($_GET["id"]))
-        {
-            if ($_GET["id"] == "delete")
-            {
-                // Check if all the necessary data has been sent with the request.
-                if (isset($_POST["id"]))
-                {
-                    // Delete the module.
-                    $this->newsRepository->deleteById($_POST["id"]);
-        
-                    // Return 0 for great success.
-                    header("content-Type: application/json");
-                    exit(json_encode(0));
-                }
-            }
-            else if ($_GET["id"] == "update")
-            {
-            	// TODO: Dit later normaal doen...
-            	$_POST["publisher"] = "Administrator";
-            	
-                // Check if all the necessary data has been sent with the request.
-                if (isset($_POST["id"]) && isset($_POST["heading"]) && isset($_POST["content"]) && isset($_POST["create_date"]) && isset($_POST["expiration_date"]) && isset($_POST["publisher"]))
-                {
-                    // Get the news item, set the data and update.
-                    $news					= $this->newsRepository->selectById($_POST["id"]);
-                    $news->heading			= $_POST["heading"];
-                    $news->content			= $_POST["content"];
-                    $news->create_date		= date("Y-m-d H:i:s", strtotime($_POST["create_date"]));
-                    $news->expiration_date	= date("Y-m-d H:i:s", strtotime($_POST["expiration_date"]));
-                    $news->publisher		= $_POST["publisher"];
-                    $this->newsRepository->update($news);
-        
-                    // Return 0 for great success.
-                    header("content-Type: application/json");
-                    exit(json_encode(0));
-                }
-            }
-        }
-        
-        // TODO: Error or some shit
-        exit(json_encode(1));
-    }
-	
 	//</editor-fold>
 }

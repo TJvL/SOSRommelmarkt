@@ -16,11 +16,5 @@ $(document).ready(function() {
 			"width": "7em", "targets": 1
 		}],
 		"ordering": false
-	})
-	$('#newsTable').DataTable({
-		"columnDefs": [{
-			"width": "7em", "targets": 4
-		}],
-		"ordering": false
-	})
+	});
 });
