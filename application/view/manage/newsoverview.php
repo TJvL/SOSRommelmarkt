@@ -29,7 +29,7 @@
                             <td><?php echo $news->expiration_date; ?></td>
                             <td><?php echo $news->publisher; ?></td>
                             <td>
-                                <a href="<?php echo ROOT_PATH . "manage/newsview/" . $news->id ?>"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
+                                <a href="<?php echo ROOT_PATH . "/manage/newsview/" . $news->id ?>"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
                             </td>
                         </tr>
                     <?php } ?>
