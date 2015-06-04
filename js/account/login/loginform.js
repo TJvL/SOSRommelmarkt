@@ -2,11 +2,6 @@ $('#loginForm').idealforms({
 
     silentLoad: true,
 
-    rules: {
-        'username': 'required',
-        'password': 'required'
-    },
-
     //When submit is pressed catch the event.
     onSubmit: function(invalid,event) {
 
@@ -22,6 +17,31 @@ $('#loginForm').idealforms({
 
 });
 
-$('#loginForm').find('input, select, textarea').on('change keyup', function() {
-    $('#invalid').hide();
-});
+function login()
+{
+    // Reset status message.
+    $("#status").text("");
+    $("#status").removeClass("alert-success alert-danger");
+
+    var data =
+    {
+        modelName: 'AccountPostViewModel',
+        username: $('#username').val(),
+        password: $('#password').val()
+    };
+
+    $.ajax(
+        {
+            url: getBaseURL() + 'accountapi/login',
+            type: 'POST',
+            data: data,
+            async: true,
+            success: function () {
+                document.location.href = getBaseURL() + 'account/index';
+            },
+            error: function (status) {
+                $("#status").text("Inloggen mislukt.");
+                $("#status").addClass("alert-danger");
+            }
+        });
+}

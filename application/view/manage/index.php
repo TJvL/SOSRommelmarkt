@@ -66,6 +66,14 @@
                     </button>
                 </a>
             </div>
+            <div class="col-md-2">
+                <a href="<?php echo ROOT_PATH; ?>/manage/accountoverview">
+                    <button class="btn btn-red">
+                        <i class="fa fa-key fa-5x fa-fw"></i>
+                        <br /><b>Accounts</b>
+                    </button>
+                </a>
+            </div>
         </div>
     </div>
 </div>

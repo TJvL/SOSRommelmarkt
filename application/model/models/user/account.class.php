@@ -8,4 +8,5 @@ class Account
     public $email;
 	public $passwordHash;
     public $salt;
+    public $lastLogin;
 }

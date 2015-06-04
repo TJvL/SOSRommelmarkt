@@ -9,11 +9,11 @@ class PermissionRepository
         $this->database = $database;
     }
 
-    private function createObjectFromArray($array)
+    private function mapRowToModel($row)
     {
         $permission = new Permission();
-        $permission->name = $array["name"];
-        $permission->description = $array["description"];
+        $permission->name = $row["name"];
+        $permission->description = $row["description"];
 
         return $permission;
     }
@@ -30,8 +30,8 @@ class PermissionRepository
         for ($i = 0; $i < $result->num_rows; $i++)
         {
             $row = $result->fetch_assoc();
-
-            $permissions[$i] = $this->createObjectFromArray($row);
+            $permission = $this->mapRowToModel($row);
+            $permissions[$permission->name] = $permission;
         }
 
         $result->close();
@@ -44,15 +44,17 @@ class PermissionRepository
         $query = "SELECT *
 			FROM Permission
 			WHERE name = ?";
+        $parameters = array($name);
+        $paramTypes = "s";
 
-        $result = $this->database->select($query, "s", array($name));
+        $result = $this->database->select($query, $paramTypes, $parameters);
 
-        $row = $result->fetch_assoc();
-
-        if ($row !== null)
-            $permission = $this->createObjectFromArray($row);
-        else
-            $permission = null;
+        $permission = null;
+        if($result->num_rows == 1)
+        {
+            $row = $result->fetch_assoc();
+            $permission = $this->mapRowToModel($row);
+        }
 
         $result->close();
 
