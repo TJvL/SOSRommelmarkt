@@ -19,6 +19,7 @@ function UpdateShopProduct()
 	    	price:			$("#price").val(),
 	    	isReserved:		($("#isReserved").is(":checked") == false ? 0 : 1)
 		};
+        console.log(data);
 		
 	    $.ajax(
 		{
