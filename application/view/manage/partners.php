@@ -6,15 +6,13 @@
             <div class="col-md-1">
                 <a href="<?php echo ROOT_PATH . "/manage/index" ?>" class="btn btn-default">Terug</a>
             </div>
+            <div class="col-md-offset-9 col-md-1">
+                <a href="<?php echo ROOT_PATH . "/manage/addpartner" ?>" class="btn btn-success">Nieuwe Partner</a>
+            </div>
         </div>
-        <div class="row">
+        <div class="row margin-hor-sm">
             <h1>Partner beheer</h1>
         </div>
-		<div class="row">
-			<div class="col-md-1">
-				<a href="./addpartner" class="btn btn-default">Nieuwe Partner</a>
-			</div>
-		</div>
 		<div class="table-responsive padding-sm">
 			<table id="partnerTable" class="display">
 				<thead>

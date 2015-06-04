@@ -18,9 +18,10 @@ function CreatePartner()
 	        
 			return;
 		}
-		
+
 		// Get the form data.
 		var data = new FormData();
+        data.append("modelName", "Partner");
 		data.append("name", $("#name").val());
 		data.append("website", $("#website").val());
         data.append("category", $("#category").val());
@@ -29,25 +30,19 @@ function CreatePartner()
 		// Send the POST request.
 		$.ajax(
 		{
-			url: "createpartner",
+			url: getBaseURL() + "partnerapi/add",
 			type: "POST",
 	        data: data,
-	        contentType: false,
-	        processData: false,
-	        success: function(result)
-	        {
-		        // Check if it went alright.
-		        if (result == 0)
-		        {
-		        	// Go to the partners page.
-			        window.location.replace("partners");
-		        }
-		        else
-		        {
-		        	$("#status").text("Er is iets verkeerd gegaan.");
-	                $("#status").addClass("alert-danger");
-		        }
-	        }
+            contentType: false,
+            processData: false,
+            async: true,
+            success: function () {
+                document.location.href = getBaseURL() + 'manage/partners';
+            },
+            error: function (status) {
+                $("#status").text(status.status + ": " + status.statusText);
+                $("#status").addClass("alert-danger");
+            }
 		});
 	}
 }

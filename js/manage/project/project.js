@@ -19,10 +19,11 @@ function UpdateProject()
 {
 	if (confirm("Weet u zeker dat u de wijzigingen wilt toepassen?"))
 	{
-		//ResetStatus();
+		ResetStatus();
 		
 		var data =
 		{
+            modelName:      'Project',
 	    	id:				$("#id").val(),
 	    	title:			$("#title").val(),
 	    	description:	$("#description").val()
@@ -30,25 +31,17 @@ function UpdateProject()
 		
 	    $.ajax(
 		{
-			url: "../../projectapi/editproject",
+			url: getBaseURL() + "projectapi/update",
 	        type: "POST",
 	        data: data,
-	        success: function(result)
-	        {
-		        // Check if it went alright.
-		        if (result == 0)
-		        {
-                    alert("Projectgegevens succesvol gewijzigd!")
-		        	//$("#status").text("Projectgegevens succesvol gewijzigd!");
-		        	//$("#status").addClass("alert-success");
-		        }
-		        else
-		        {
-                    alert("Er is iets verkeerd gegaan.")
-		        	//$("#status").text("Er is iets verkeerd gegaan");
-		        	//$("#status").addClass("alert-danger");
-		        }
-	        }
+            success: function () {
+                $("#status").text("Projectgegevens succesvol gewijzigd.");
+                $("#status").addClass("alert-success");
+            },
+            error: function (status) {
+                $("#status").text(status.status + ": " + status.statusText);
+                $("#status").addClass("alert-danger");
+            }
 		});
 	}
 }
@@ -61,28 +54,22 @@ function DeleteProject()
 		
 		var data =
 		{
-			id: $("#id").val()
+            modelName:  'Project',
+			id:         $("#id").val()
 		};
 	
 		$.ajax(
 		{
-			url: "../../projectapi/deleteproject",
+			url: getBaseURL() + "projectapi/delete",
 	        type: "POST",
 	        data: data,
-	        success: function(result)
-	        {
-	        	// Check if it went alright.
-				if (result == 0)
-				{
-					document.location.href = "../projects";
-				}
-				else
-				{
-                    alert("Er is iets verkeerd gegaan.")
-                    //$("#status").text("Er is iets verkeerd gegaan.");
-	                //$("#status").addClass("alert-danger");
-				}
-	        }
+            success: function () {
+                document.location.href = getBaseURL() + 'manage/projects';
+            },
+            error: function (status) {
+                $("#status").text(status.status + ": " + status.statusText);
+                $("#status").addClass("alert-danger");
+            }
 		});
 	}
 }
@@ -93,26 +80,20 @@ function handleNewImage()
 
     $.ajax(
 	{
-		url: "../../projectapi/addprojectimage",
+		url: getBaseURL() + "projectapi/addimage",
         type: "POST",
         data: formData,
         async: true,
         contentType: false,
         processData: false,
-        success: function(result)
-        {
-	        // Check if it went alright.
-	        if (result == 0)
-	        {
-	        	alert("De afbeelding is succesvol toegevoegd.");
-	        }
-	        else
-	        {
-	        	alert("Er is iets verkeerd gegaan.");
-	        }
-
-	     	// Reload the page.
-        	location.reload();
+        success: function () {
+            var successMessage = "De afbeelding is succesvol toegevoegd.";
+            localStorage.setItem("successMessage", successMessage);
+            location.reload();
+        },
+        error: function (status) {
+            $("#status").text(status.status + ": " + status.statusText);
+            $("#status").addClass("alert-danger");
         }
 	});
 }
@@ -123,44 +104,39 @@ function handleDeleteImage(imagePath)
 	{
 		imageName = imagePath.substring(imagePath.lastIndexOf("/") + 1);
 
-	
 		var data =
 		{
 			projectId: $("#id").val(),
 	    	imageName: imageName
 		};
+        console.log(data);
 	
 		$.ajax(
 		{
-			url: "../../projectapi/deleteprojectimage",
+			url: getBaseURL() + "projectapi/deleteimage",
 	        type: "POST",
 	        data: data,
-	        async: true,
-	        success: function(result)
-	        {
-	        	// Check if it went alright.
-		        if (result == 0)
-		        {
-		        	alert("De afbeelding is succesvol verwijderd.");
-                    //$("#status").text("De afbeelding is succesvol verwijderd.");
-                    //$("#status").addClass("alert-success");
-		        }
-		        else
-		        {
-                    alert("Er is iets verkeerd gegaan.");
-                    //$("#status").text("Er is iets verkeerd gegaan.");
-                    //$("#status").addClass("alert-danger");
-		        }
-	
-		     	// Reload the page.
-	        	location.reload();
-	        }
+            success: function () {
+                var successMessage = "De afbeelding is succesvol verwijderd.";
+                localStorage.setItem("successMessage", successMessage);
+                location.reload();
+            },
+            error: function (status) {
+                $("#status").text(status.status + ": " + status.statusText);
+                $("#status").addClass("alert-danger");
+            }
 		});
 	}
 }
 
 $(document).ready(function()
 {
+    if(localStorage.getItem("successMessage")!=null){
+        $("#status").text(localStorage.getItem("successMessage"));
+        $("#status").addClass("alert-success");
+        localStorage.clear();
+    }
+
 	$("#addImageButton").click(function()
 	{
 		$("#fileInput").trigger("click");
@@ -199,7 +175,6 @@ $('#projectform').idealforms({
     rules: {
         'title': 'required',
         'description': 'required'
-        //'phone': 'required'
     },
 
 

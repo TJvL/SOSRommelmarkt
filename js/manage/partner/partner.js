@@ -6,14 +6,14 @@ function ResetStatus()
 
 function SetPartnerImage()
 {
-	if (confirm("Weet u zeker dat u het plaatje wilt wijzigen?"))
+	if (confirm("Weet u zeker dat de afbeelding wilt wijzigen?"))
 	{
 		ResetStatus();
 		
 		// Check if the image is set.
 		if ($("#image").val() === "")
 		{
-			$("#status").text("Er is geen plaatje geselecteerd.");
+			$("#status").text("Er is geen afbeelding geselecteerd.");
 			$("#status").addClass("alert-warning");
 	        
 			return;
@@ -22,7 +22,7 @@ function SetPartnerImage()
 		// Check if the file has an image extension.
 		if (!IsImage($("#image").val()))
 		{
-			$("#status").text("Het bestand dat u probeert te gebruiken is geen plaatje.");
+			$("#status").text("Het bestand dat u probeert te gebruiken is geen afbeelding.");
 			$("#status").addClass("alert-warning");
 	        
 			return;
@@ -34,26 +34,21 @@ function SetPartnerImage()
 		
 		$.ajax(
 		{
-			url: "../setpartnerimage",
+			url: getBaseURL() + "partnerapi/setimage",
 			type: "POST",
 	        data: data,
 	        async: false,
 	        contentType: false,
 	        processData: false,
-	        success: function(result)
-	        {
-		        // Check if it went alright.
-		        if (result == 0)
-		        {
-		        	$("#status").text("Succes!");
-	                $("#status").addClass("alert-success");
-		        }
-		        else
-		        {
-		        	$("#status").text("Er is iets verkeerd gegaan.");
-	                $("#status").addClass("alert-danger");
-		        }
-	        }
+            success: function () {
+                $("#status").text("Afbeelding succesvol gewijzigd.");
+                $("#status").addClass("alert-success");
+            },
+            error: function (status) {
+                $("#status").text(status.status + ": " + status.statusText);
+                $("#status").addClass("alert-danger");
+                console.log("fail");
+            }
 		});
 	}
 }
@@ -66,32 +61,28 @@ function UpdatePartner()
 		
 		var data =
 		{
+            modelName:  'Partner',
 	    	id:			$("#id").val(),
 	    	name:		$("#name").val(),
 	    	website:	$("#website").val(),
             category:   $("#category").val()
 		};
-	
-		$.ajax(
-		{
-			url: "../updatepartner",
-			type: "POST",
-	        data: data,
-	        success: function(result)
-	        {
-		        // Check if it went alright.
-		        if (result == 0)
-		        {
-		        	$("#status").text("Succes!");
-	                $("#status").addClass("alert-success");
-		        }
-		        else
-		        {
-		        	$("#status").text("Er is iets verkeerd gegaan.");
-	                $("#status").addClass("alert-danger");
-		        }
-	        }
-		});
+
+        $.ajax(
+            {
+                url: getBaseURL() + "partnerapi/update",
+                type: "POST",
+                data: data,
+                success: function () {
+                    $("#status").text("Partnergegevens succesvol gewijzigd.");
+                    $("#status").addClass("alert-success");
+                },
+                error: function (status) {
+                    $("#status").text(status.status + ": " + status.statusText);
+                    $("#status").addClass("alert-danger");
+                    console.log("fail");
+                }
+            });
 	}
 }
 
@@ -103,28 +94,22 @@ function DeletePartner()
 		
 		var data =
 		{
+            modelName: 'Partner',
 			id: $("#id").val()
 		};
 	
 		$.ajax(
 		{
-			url: "../deletepartner",
+			url: getBaseURL() +  "partnerapi/delete",
 			type: "POST",
 			data: data,
-			success: function(result)
-			{
-				// Check if it went alright.
-				if (result == 0)
-				{
-					// Go to the partner management page.
-					document.location.href = "../partners";
-				}
-				else
-				{
-					$("#status").text("Er is iets verkeerd gegaan.");
-	                $("#status").addClass("alert-danger");
-				}
-			}
+            success: function () {
+                document.location.href = getBaseURL() + 'manage/partners';
+            },
+            error: function (status) {
+                $("#status").text(status.status + ": " + status.statusText);
+                $("#status").addClass("alert-danger");
+            }
 		});
 	}
 }
@@ -139,7 +124,7 @@ $(document).ready(function()
 		// Check if the file has an image extension.
 		if (!IsImage($("#image").val()))
 		{
-			$("#status").text("Het bestand dat u probeert te gebruiken is geen plaatje.");
+			$("#status").text("Het bestand dat u probeert te gebruiken is geen afbeelding.");
 	        $("#status").addClass("alert-warning");
 	        
 	     	// Hide the image.

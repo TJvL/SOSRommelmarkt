@@ -7,16 +7,14 @@
             <div class="col-md-1">
                 <a href="<?php echo ROOT_PATH . "/manage/index" ?>" class="btn btn-default">Terug</a>
             </div>
+            <div class="col-md-offset-9 col-md-1">
+                <a href="<?php echo ROOT_PATH . '/manage/addproject'?>" class="btn btn-success">Project toevoegen</a>
+            </div>
         </div>
-        <div class="row">
+        <div class="row margin-hor-sm">
             <h1>Projecten</h1>
         </div>
 
-        <div class="row">
-            <div class="col-md-1">
-                <a href="<?php echo ROOT_PATH . '/manage/addproject'?>" class="btn btn-default">Project toevoegen...</a>
-            </div>
-        </div>
         <div class="table-responsive padding-sm">
             <table id="projectTable" class="display">
                 <thead>

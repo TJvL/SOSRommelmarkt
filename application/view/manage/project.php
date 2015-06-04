@@ -65,6 +65,11 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-md-12 padding-lg">
+                    <p id="status" class="padding-lg"></p>
+                </div>
+            </div>
+            <div class="row">
                 <hr>
 
                 <h1 class="padding-hor-lg">Afbeeldingen</h1>

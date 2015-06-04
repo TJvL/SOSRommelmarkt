@@ -11,15 +11,15 @@
                 <h1>Project toevoegen</h1>
             </div>
 
-            <form class="idealforms" id="projectform" method="POST" action="<?php echo ROOT_PATH . "/manage/addproject" ?>">
+            <form class="idealforms" id="projectform" action="javascript:AddProject()">
                 <div class="field">
                     <label class="main" for="titel">Titel</label>
-                    <input form="projectform" name="title" type="text" placeholder="Titel van het project" required>
+                    <input form="projectform" name="title" id="title" type="text" placeholder="Titel van het project" required>
                     <span class="error"></span>
                 </div>
                 <div class="field">
                     <label class="main" for="description">Project omschrijving</label>
-                    <textarea form="projectform" rows="5" name="description" placeholder="Omschrijving van het project" required></textarea>
+                    <textarea form="projectform" rows="5" name="description" id="description" placeholder="Omschrijving van het project" required></textarea>
                     <span class="error"></span>
                 </div>
                 <div class="field buttons">
@@ -27,12 +27,12 @@
                     <button form="projectform" type="submit" class="submit">Opslaan</button>
                 </div>
                 <span id="invalid"></span>
-<!--                <div class="form-group">-->
-<!--                    <div class="col-sm-offset-2 col-sm-2">-->
-<!--                        <button class="btn btn-red btn-block" type="submit">Toevoegen</button>-->
-<!--                    </div>-->
-<!--                </div>-->
             </form>
+        </div>
+        <div class="row">
+            <div class="col-md-12 padding-lg">
+                <p id="status" class="padding-lg"></p>
+            </div>
         </div>
     </div>
 </div>
