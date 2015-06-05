@@ -39,7 +39,7 @@ function UpdateProject()
                 $("#status").addClass("alert-success");
             },
             error: function (status) {
-                $("#status").text(status.status + ": " + status.statusText);
+                $("#status").text(status.status + ": " + translateHttpError(status.statusText));
                 $("#status").addClass("alert-danger");
             }
 		});
@@ -67,7 +67,7 @@ function DeleteProject()
                 document.location.href = getBaseURL() + 'manage/projects';
             },
             error: function (status) {
-                $("#status").text(status.status + ": " + status.statusText);
+                $("#status").text(status.status + ": " + translateHttpError(status.statusText));
                 $("#status").addClass("alert-danger");
             }
 		});
@@ -92,7 +92,7 @@ function handleNewImage()
             location.reload();
         },
         error: function (status) {
-            $("#status").text(status.status + ": " + status.statusText);
+            $("#status").text(status.status + ": " + translateHttpError(status.statusText));
             $("#status").addClass("alert-danger");
         }
 	});
@@ -122,7 +122,7 @@ function handleDeleteImage(imagePath)
                 location.reload();
             },
             error: function (status) {
-                $("#status").text(status.status + ": " + status.statusText);
+                $("#status").text(status.status + ": " + translateHttpError(status.statusText));
                 $("#status").addClass("alert-danger");
             }
 		});
