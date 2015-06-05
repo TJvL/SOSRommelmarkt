@@ -55,12 +55,10 @@ abstract class Controller
         $companyInformation = $this->companyInformationRepository->selectCurrent();
         $username = null;
 
-        if(array_key_exists("user", $_SESSION))
+        $user = AccountHelper::getUserInfo();
+        if(isset($user))
         {
-            if(isset($_SESSION["user"]))
-            {
-                $username = $_SESSION["user"]->username;
-            }
+            $username = $user->username;
         }
 
         $headerVM->companyInformation = $companyInformation;

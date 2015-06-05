@@ -9,15 +9,16 @@ class AccountRepository
         $this->database = $database;
     }
 
-	private function createObjectFromArray($array)
+	private function mapRowToModel($row)
 	{
 		$account = new Account();
-        $account->id = $array["id"];
-        $account->roleName = $array["roleName"];
-		$account->username = $array["username"];
-		$account->email = $array["email"];
-		$account->passwordHash = $array["passwordHash"];
-        $account->salt = $array["salt"];
+        $account->id = $row["id"];
+        $account->roleName = $row["roleName"];
+		$account->username = $row["username"];
+		$account->email = $row["email"];
+		$account->passwordHash = $row["passwordHash"];
+        $account->salt = $row["salt"];
+        $account->lastLogin = $row["lastLogin"];
 	
 		return $account;
 	}
@@ -26,12 +27,12 @@ class AccountRepository
 	{
 		$query = "INSERT INTO Account (roleName, username, email, passwordHash, salt)
 			VALUES (?, ?, ?, ?, ?)";
+        $parameters = array($account->roleName, $account->username, $account->email, $account->passwordHash, $account->salt);
+        $paramTypes = "sssss";
 
-        $id = $this->database->insert($query, "sssss", array($account->roleName, $account->username, $account->email, $account->passwordHash, $account->salt));
+        $id = $this->database->insert($query, $paramTypes, $parameters);
 
-        $account->id = $id;
-
-		return $account;
+		return $id;
 	}
 	
 	public function selectAll()
@@ -46,8 +47,8 @@ class AccountRepository
 		for ($i = 0; $i < $result->num_rows; $i++)
 		{
 			$row = $result->fetch_assoc();
-		
-			$accounts[$i] = $this->createObjectFromArray($row);
+		    $account = $this->mapRowToModel($row);
+			$accounts[$account->id] = $account;
 		}
 		
 		$result->close();
@@ -60,15 +61,17 @@ class AccountRepository
 		$query = "SELECT *
 			FROM Account
 			WHERE id = ?";
-	
-		$result = $this->database->select($query, "s", array($id));
-	
-		$row = $result->fetch_assoc();
-		
-		if ($row !== null)
-			$account = $this->createObjectFromArray($row);
-		else
-			$account = null;
+	    $parameters = array($id);
+        $paramTypes = "s";
+
+		$result = $this->database->select($query, $paramTypes, $parameters);
+
+        $account = null;
+        if($result->num_rows == 1)
+        {
+            $row = $result->fetch_assoc();
+            $account = $this->mapRowToModel($row);
+        }
 	
 		$result->close();
 	
@@ -80,14 +83,29 @@ class AccountRepository
 		$query = "UPDATE Account
 			SET roleName = ?, username = ?, email = ?, passwordHash = ?, salt = ?
 			WHERE id = ?";
+        $parameters = array($account->roleName, $account->username, $account->email, $account->passwordHash, $account->salt, $account->id);
+        $paramTypes = "ssssss";
 
-        $this->database->update($query, "ssssss", array($account->roleName, $account->username, $account->email, $account->passwordHash, $account->salt, $account->id));
+        $this->database->update($query, $paramTypes, $parameters);
 	}
 	
 	public function deleteById($id)
 	{
 		$query = "DELETE FROM Account WHERE id = ?";
+        $parameters = array($id);
+        $paramTypes = "s";
 
-        $this->database->update($query, "s", array($id));
+        $this->database->update($query, $paramTypes, $parameters);
 	}
+
+    public function setLastLogin($id)
+    {
+        $query = "UPDATE Account
+			SET lastLogin = NOW()
+			WHERE id = ?";
+        $parameters = array($id);
+        $paramTypes = "s";
+
+        $this->database->update($query, $paramTypes, $parameters);
+    }
 }

@@ -80,9 +80,8 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
         if(isset($_SESSION["user"]))
         {
             unset($_SESSION["user"]);
+            session_regenerate_id(true);
         }
     }
 }
 $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
-
-session_regenerate_id(true);

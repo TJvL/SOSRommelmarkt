@@ -9,19 +9,18 @@ class ModelMapper
         $this->strictRules = $strictRules;
     }
 
+
     /**
-     * Only if strict rules are enforced on this server!
-     * Maps all POST data to a model class as long as the request contains the model class name in a variable named: "modelName"
-     *
-     * @returns Mixed           Returns null if nothing was mapped or an instance of the given model with all matched POST data mapped to it's variables.
-     * @throws Exception        When no model class was found or when no model name was supplied in the http request.
+     * @return mixed|null   If the modelName variable was set in the post request it will attempt to bind the post variable to that class.
+     *                      If no modelName was set then the post variables will be returned as an array or if it is just one value that value is returned.
+     * @throws Exception    Is thrown when a modelName was defined but no such class is found to bind to.
      */
     public function mapToModel()
     {
         $model = null;
 
-//        if($this->strictRules)
-//        {
+        if($this->strictRules)
+        {
             if(isset($_POST["modelName"]))
             {
                 $modelName = $_POST["modelName"];
@@ -30,32 +29,36 @@ class ModelMapper
                     $model = new $modelName();
                     $vars = get_class_vars($modelName);
 
-                    for ($i = 0; $i < count($vars); $i++)
+                    foreach ($vars as $name=>$value)
                     {
-                        $var = key($vars);
-                        if(array_key_exists($var, $_POST))
+                        if((array_key_exists($name, $_POST))&&(!empty($_POST[$name])))
                         {
-                            $model->$var = $_POST[$var];
+                            $model->$name = $_POST[$name];
                         }
                         else
                         {
-                            $model->$var = null;
+                            $model->$name = null;
                         }
-                        next($vars);
                     }
-//                    unset($_POST);
                 }
                 else
                 {
-//                    throw new Exception("$modelName class not found.", 400);
+                    throw new Exception("$modelName class not found.", 400);
                 }
             }
             else
             {
-//                throw new Exception("No model name was supplied.", 400);
+                if(count($_POST) == 1)
+                {
+                    $model = current($_POST);
+                }
+                elseif(count($_POST) > 1)
+                {
+                    $model = $_POST;
+                }
             }
-//        }
-
+        }
+//        unset($_POST);
         return $model;
     }
 }
