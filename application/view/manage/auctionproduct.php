@@ -13,7 +13,6 @@
 			<div class="col-sm-1"></div>
 			<h1>Productinformatie</h1>
 			<form class="idealforms" form="updateForm" id="updateForm" action="javascript:handleUpdateProduct()">
-<!--				<input name="id" type="hidden" id="productId" value="--><?php //echo $model->auctionProduct->id ?><!--">-->
 				<div class="field">
 					<label class="main" for="id">ID</label>
                     <input form="updateForm" type="number" name="id" id="id" value="<?php echo $model->auctionProduct->id ?>" disabled>

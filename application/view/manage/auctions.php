@@ -1,20 +1,20 @@
 <?php Type::check("ArrayList:Auction", $model) ?>
 
-<div class="container" ng-app="auctionApp" ng-controller="auctionController">
+<div class="container">
 	<div class="white">
+
         <div class="row">
             <div class="col-md-1">
                 <a href="<?php echo ROOT_PATH . "/manage/index" ?>" class="btn btn-default">Terug</a>
             </div>
+            <div class="col-md-offset-9 col-md-1">
+                <a href="<?php echo ROOT_PATH . "/manage/addauction"; ?>" class="btn btn-success">Nieuwe Vitrine</a>
+            </div>
         </div>
-        <div class="row">
+        <div class="row margin-hor-sm">
             <h1>Vitrines</h1>
         </div>
-		<div class="row">
-			<div class="col-md-1">
-				<a href="./addauction" class="btn btn-default">Nieuwe Vitrine</a>
-			</div>
-		</div>
+
 		<div class="table-responsive padding-sm">
 			<table id="auctionTable" class="display">
 				<thead>
@@ -25,27 +25,19 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="Auction in auctions">
-						<td>{{Auction.startDate}}</td>
-						<td>{{Auction.endDate}}</td>
+                <?php
+                foreach ($model as $auction)
+                {?>
+					<tr>
+						<td><?php echo $auction->startDate?></td>
+						<td><?php echo $auction->endDate?></td>
 						<td>
-							<a href="editauction/{{Auction.id}}"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
-							<button class="btn btn-default" title="Verwijderen" ng-click="deleteAuction(Auction.id)"><i class="fa fa-trash"></i></button>
+							<a href="<?php echo ROOT_PATH ?>/manage/editauction/<?php echo $auction->id ?>"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
 						</td>
 					</tr>
+                <?php } ?>
 				</tbody>
 			</table>
-
-			<script>
-				var app = angular.module("auctionApp", []);
-				app.controller("auctionController", ['$scope', '$http', function($scope, $http) {
-					$scope.auctions = <?php echo $model->getJSON(); ?>;
-					$scope.deleteAuction = function(AuctionID)
-					{
-						deleteAuction(AuctionID);
-					}
-				}]);
-			</script>
 		</div>
 	</div>
 </div>

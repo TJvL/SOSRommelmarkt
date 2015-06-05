@@ -148,9 +148,9 @@ class AuctionProductRepository extends ProductRepository
 		return $auctionProducts;
 	}
 	
-	public function update($product)
+	public function update($auctionproduct)
 	{
-		$this->updateProduct($product);
+		$this->updateProduct($auctionproduct);
 	}
 	
 	public function deleteById($id)

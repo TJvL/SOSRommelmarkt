@@ -1,15 +1,20 @@
 <?php Type::check("ArrayList:AuctionProduct", $model) ?>
 
-<div class="container" ng-app="auctionProductApp" ng-controller="auctionProductController">
+<div class="container">
 	<div class="white">
+
 		<div class="row">
 			<div class="col-md-1">
-				<a href="../auctions" class="btn btn-default">Terug</a>
+				<a href="<?php echo ROOT_PATH . "/manage/auctions" ?>" class="btn btn-default">Terug</a>
 			</div>
-			<div class="col-md-1">
-				<a href="/SOSRommelmarkt/auction/addProduct/<?php echo $_GET['id']; ?>" class="btn btn-default">Product Toevoegen</a>
+			<div class="col-md-offset-9 col-md-1">
+				<a href="<?php echo ROOT_PATH . "/auction/addProduct/" . $_GET['id']; ?>" class="btn btn-success">Product Toevoegen</a>
 			</div>
 		</div>
+        <div class="row margin-hor-sm">
+            <h1>Vitrine producten</h1>
+        </div>
+
 		<div class="table-responsive padding-sm">
 			<table id=auctionProductTable class="display">
 				<thead>
@@ -21,28 +26,20 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="AuctionProduct in auctionProducts">
-						<td>{{AuctionProduct.name}}</td>
-						<td>{{AuctionProduct.colorCode}}</td>
-						<td>{{AuctionProduct.addedBy}}</td>
+                    <?php
+                    foreach ($model as $auctionproduct)
+                    {?>
+					<tr>
+						<td><?php echo $auctionproduct ->name?></td>
+						<td><?php echo $auctionproduct ->colorCode?></td>
+						<td><?php echo $auctionproduct ->addedBy?></td>
 						<td>
-							<a href="../auctionproduct/{{AuctionProduct.id}}"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
-							<button class="btn btn-default" title="Verwijderen" ng-click="deleteAuctionProduct(AuctionProduct.id)"><i class="fa fa-trash"></i></button>
+							<a href="<?php echo ROOT_PATH . "/manage/auctionproduct/" . $auctionproduct->id ?>"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
 						</td>
 					</tr>
+                <?php } ?>
 				</tbody>
 			</table>
-			
-			<script>
-				var app = angular.module("auctionProductApp", []);
-				app.controller("auctionProductController", ['$scope', '$http', function($scope, $http) {
-					$scope.auctionProducts = <?php echo $model->getJSON(); ?>;
-					$scope.deleteAuctionProduct = function(AuctionProductID)
-					{
-						deleteAuctionProduct(AuctionProductID);
-					}
-				}]);
-			</script>
 		</div>
 	</div>
 </div>

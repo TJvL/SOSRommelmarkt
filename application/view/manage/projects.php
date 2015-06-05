@@ -41,8 +41,3 @@
     </div>
 </div>
 
-<script>
-    $(document).ready( function () {
-        $('#projectTable').DataTable();
-    } );
-</script>

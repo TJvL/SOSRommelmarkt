@@ -1,4 +1,3 @@
 $(document).ready( function () {
-    $('#auctionTable').DataTable();
+    $('#projectTable').DataTable();
 } );
-

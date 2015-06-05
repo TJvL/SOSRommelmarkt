@@ -6,38 +6,30 @@ function handleUpdateProduct()
         $("#status").text("");
         $("#status").removeClass("alert-success alert-danger");
 
-        var formData =
+        var data =
         {
+            modelName:      'AuctionProduct',
             id:				$("#id").val(),
             name:			$("#name").val(),
             description:	$("#description").val(),
             colorCode:		$("#colorCode option:selected").val()
         };
-        console.log(formData);
+
+        console.log(data);
 
         $.ajax(
             {
-                url: "../update",
+                url: getBaseURL() + "auctionproductapi/update",
                 type: "POST",
-                data: formData,
+                data: data,
                 async: true,
-                contentType: false,
-                processData: false,
-                success: function(result)
-                {
-                    // Check if it went alright.
-                    if (result == 0)
-                    {
-                        $("#status").text("  Succes!");
-                        $("#status").addClass("alert-success");
-                        alert("succes");
-                    }
-                    else
-                    {
-                        $("#status").text("  Er is iets verkeerd gegaan");
-                        $("#status").addClass("alert-danger");
-                        alert("fail");
-                    }
+                success: function () {
+                    $("#status").text("Success");
+                    $("#status").addClass("alert-success");
+                },
+                error: function (status) {
+                    $("#status").text(status.status + ": " + translateHttpError(status.statusText));
+                    $("#status").addClass("alert-danger");
                 }
             });
     }
