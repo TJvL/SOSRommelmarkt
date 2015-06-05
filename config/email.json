@@ -1,0 +1,12 @@
+{
+  "MAIL_TO":
+  {
+    "onError": "ca.boel@student.avans.nl",
+    "onNotify": "ca.boel@student.avans.nl"
+  },
+  "MAIL_FROM":
+  {
+    "onError": "noreply@sosproject.nl",
+    "onNotify": "ca.boel@student.avans.nl"
+  }
+}

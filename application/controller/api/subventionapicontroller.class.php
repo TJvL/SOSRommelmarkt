@@ -69,7 +69,7 @@ class SubventionAPIController extends APIController
 			}
 			$content = $content . "\n\nToelichting: \n" . $_POST["elucidation"];
 			
-			Mailer::sendNotifMail($subject, $content);
+			Mailer::getInstance()->sendNotifMail($subject, $content);
 			
 			$this->respondWithJSON(0);
 		}
