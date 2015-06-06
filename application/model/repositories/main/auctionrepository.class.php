@@ -19,19 +19,12 @@ class AuctionRepository
 		return $auction;
 	}
 	
-	public function insert($startDate, $endDate)
+	public function insert($auction)
 	{
 		$query = "INSERT INTO Auction (startDate, endDate)
 			VALUES (?, ?)";
 
-		$id = $this->database->insert($query, "ss", array($startDate, $endDate)); // TODO: fix dates
-		
-		$auction = new Auction();
-		$auction->id = $id;
-		$auction->startDate = $startDate;
-		$auction->endDate = $endDate;
-		
-		return $auction;
+		return $this->database->insert($query, "ss", array($auction->startDate, $auction->endDate));
 	}
 	
 	public function selectAll()
@@ -74,7 +67,7 @@ class AuctionRepository
 	
 		return $auction;
 	}
-	
+
 	public function update($auction)
 	{
 		$query = "UPDATE Auction
@@ -86,6 +79,8 @@ class AuctionRepository
 	
 	public function deleteById($id)
 	{
+        //Delete all connected auctionproducts and images
+
 		$query = "DELETE FROM Auction WHERE id = ?";
 
         $this->database->update($query, "i", array($id));

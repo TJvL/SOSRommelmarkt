@@ -46,6 +46,6 @@ class AuctionController extends Controller
             $auctionProduct->addToAuction($_POST['auctionId']);
         }
         
-        $this->redirectTo("/manage/auctionproduct/" . $auctionProduct->id);
+        $this->redirectTo("/manage/auctionproductview/" . $auctionProduct->id);
     }
 }

@@ -23,7 +23,7 @@ class ShopProductRepository extends ProductRepository
 		return $shopProduct;
 	}
 	
-	public function insert($name, $description, $addedBy, $colorCode, $price, $isReserved)
+	public function insert($shopproduct)
 	{
 		// Insert a normal product and get back the auto incremented key.
 		$id = $this->insertProduct($name, $description, $addedBy, $colorCode);

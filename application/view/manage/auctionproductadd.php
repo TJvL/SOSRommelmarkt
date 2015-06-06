@@ -3,17 +3,20 @@
         <div class="content">
             <div class="row">
                 <div class="col-md-1">
-                    <a href="/SOSRommelmarkt/manage/editauction/<?php echo $_GET['id']; ?>" class="btn btn-default">Terug naar Beheer</a>
+                    <a href="<?php echo ROOT_PATH . "/manage/auctionproductoverview/" . $_GET['id'] ?>" class="btn btn-default">Terug</a>
                 </div>
             </div>
-
+            <hr>
+            <div class="row margin-hor-sm">
+                <h1>Vitrine product toevoegen</h1>
+            </div>
             <div class="idealsteps-container">
 
                 <nav class="idealsteps-nav"></nav>
 
-                <form action="<?php echo ROOT_PATH ?>/auction/addProduct" method="POST" enctype="multipart/form-data" autocomplete="off" class="idealforms" id="product_add">
+                <form action="javascript:addAuctionProduct()" class="idealforms" id="product_add" form="product_add">
 
-                    <input type="hidden" name="auctionId" value="<?php echo $_GET['id'];?>" />
+                    <input type="hidden" name="auctionId" id="auctionId" value="<?php echo $_GET['id'];?>" />
 
                     <div class="idealsteps-wrap">
                         <!-- Step 1 -->
@@ -21,13 +24,13 @@
 
                             <div class="field">
                                 <label class="main">Product naam:</label>
-                                <input form="product_add" name="name" type="text">
+                                <input form="product_add" name="name" id="name" type="text">
                                 <span class="error"></span>
                             </div>
 
                             <div class="field">
                                 <label class="main">Product omschrijving:</label>
-                                <textarea form="product_add" name="description" cols="10" rows="5" style="resize: none"></textarea>
+                                <textarea form="product_add" name="description" id="description" cols="10" rows="5" style="resize: none"></textarea>
                                 <span class="error"></span>
                             </div>
 
@@ -44,12 +47,11 @@
 
                             <div class="field">
                                 <label class="main">Kleur code:</label>
-                                <select form="product_add" name="colorCode" id="">
+                                <select form="product_add" name="colorCode" id="colorCode">
                                     <option value="default">&ndash; Selecteer een optie &ndash;</option>
-                                    <option value="blue">Blauw</option>
-                                    <option value="green">Groen</option>
-                                    <option value="yellow">Geel</option>
-                                    <option value="red">Rood</option>
+                                    <option value="Blauw">Gebruikt</option>
+                                    <option value="Groen">Als nieuw</option>
+                                    <option value="Rood">Lichte schade</option>
                                 </select>
                                 <span class="error"></span>
                             </div>

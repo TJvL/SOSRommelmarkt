@@ -1,10 +1,25 @@
+$(window).load(function() {
+
+    boxes = $('.thumbnail');
+    maxHeight = Math.max.apply(
+        Math, boxes.map(function () {
+            return $(this).height();
+        }).get());
+    boxes.height(maxHeight);
+
+});
+
+function ResetStatus()
+{
+    $("#status").text("");
+    $("#status").removeClass("alert-warning alert-danger alert-success");
+}
+
 function handleUpdateProduct()
 {
     if (confirm("Weet u zeker dat u de wijzigingen wilt toepassen?"))
     {
-        // Reset status message.
-        $("#status").text("");
-        $("#status").removeClass("alert-success alert-danger");
+        ResetStatus();
 
         var data =
         {
@@ -12,10 +27,8 @@ function handleUpdateProduct()
             id:				$("#id").val(),
             name:			$("#name").val(),
             description:	$("#description").val(),
-            colorCode:		$("#colorCode option:selected").val()
+            colorCode:      $('#colorCode').val()
         };
-
-        console.log(data);
 
         $.ajax(
             {
@@ -24,7 +37,7 @@ function handleUpdateProduct()
                 data: data,
                 async: true,
                 success: function () {
-                    $("#status").text("Success");
+                    $("#status").text("Productgegevens succesvol gewijzigd.");
                     $("#status").addClass("alert-success");
                 },
                 error: function (status) {
@@ -41,28 +54,23 @@ function handleDeleteProduct()
     {
         var data =
         {
-
-            id: $('#productId').val()
+            modelName:  'AuctionProduct',
+            id:         $('#id').val()
         };
     }
 
     $.ajax(
         {
-            url: "delete",
+            url: getBaseURL() +  "auctionproductapi/delete",
             type: "POST",
             data: data,
             async: true,
-            success: function(result)
-            {
-                // Check if it went alright.
-                if (result == 0)
-                {
-                    alert("Success");
-                }
-                else
-                {
-                    alert("fail");
-                }
+            success: function () {
+                document.location.href = getBaseURL() + 'manage/auctionoverview'; //TODO link naar huidige veiling
+            },
+            error: function (status) {
+                $("#status").text(status.status + ": " + translateHttpError(status.statusText));
+                $("#status").addClass("alert-danger");
             }
         });
 }
@@ -70,29 +78,24 @@ function handleDeleteProduct()
 function handleNewImage()
 {
     var formData = new FormData(document.getElementById("imageForm"));
+    console.log(formData);
 
     $.ajax(
         {
-            url: "addImage",
+            url: getBaseURL() + "auctionproductapi/addimage",
             type: "POST",
             data: formData,
             async: true,
             contentType: false,
             processData: false,
-            success: function(result)
-            {
-                // Check if it went alright.
-                if (result == 0)
-                {
-                    alert("Success");
-                }
-                else
-                {
-                    alert("fail");
-                }
-
-                // Reload the page.
+            success: function () {
+                var successMessage = "De afbeelding is succesvol toegevoegd.";
+                localStorage.setItem("successMessage", successMessage);
                 location.reload();
+            },
+            error: function (status) {
+                $("#status").text(status.status + ": " + translateHttpError(status.statusText));
+                $("#status").addClass("alert-danger");
             }
         });
 }
@@ -105,31 +108,25 @@ function handleDeleteImage(imagePath)
 
         var data =
         {
-            id: $('#productId').val(),
+            id: $('#id').val(),
             imageName: imageName
         };
     };
 
     $.ajax(
         {
-            url: "deleteImage",
+            url: getBaseURL() + "auctionproductapi/deleteimage",
             type: "POST",
             data: data,
             async: true,
-            success: function(result)
-            {
-                // Check if it went alright.
-                if (result == 0)
-                {
-                    alert("Success");
-                }
-                else
-                {
-                    alert("fail");
-                }
-
-                // Reload the page.
+            success: function () {
+                var successMessage = "De afbeelding is succesvol verwijderd.";
+                localStorage.setItem("successMessage", successMessage);
                 location.reload();
+            },
+            error: function (status) {
+                $("#status").text(status.status + ": " + translateHttpError(status.statusText));
+                $("#status").addClass("alert-danger");
             }
         });
 
@@ -137,6 +134,12 @@ function handleDeleteImage(imagePath)
 
 $(document).ready(function()
 {
+    if(localStorage.getItem("successMessage")!=null){
+        $("#status").text(localStorage.getItem("successMessage"));
+        $("#status").addClass("alert-success");
+        localStorage.clear();
+    }
+
     $("#addImageButton").click(function()
     {
         $("#fileInput").trigger("click");

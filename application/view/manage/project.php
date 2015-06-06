@@ -42,12 +42,6 @@
 
             </form>
 
-<!--            <div class='row'>-->
-<!--                <div class='col-sm-12 padding-sm'>-->
-<!--                    <p class="alert alert-danger margin-lg" id="status"></p>-->
-<!--                </div>-->
-<!--            </div>-->
-
             <!--Image handling -->
             <div class="hidden col-md-12 margin-ver-md padding-sm" style="border:solid 3px #333" id="previewImageDiv">
 

@@ -27,6 +27,64 @@ class ManageController extends Controller
         $this->render("index");
     }
 
+    /**
+     *{{Permission=Product;}}
+     */
+    public function auctionadd_GET()
+    {
+        $this->render("auctionadd");
+    }
+
+    /**
+     *{{Permission=Product;}}
+     */
+    public function auctionadd_POST()
+    {
+        $auction = $this->auctionRepository->insert($_POST["startDate"], $_POST['endDate']);
+        //$this->redirectTo("/manage/editauction/$auction->id");
+        $this->redirectTo("/manage/auctionsoverview"); // tijdelijk totdat editauction compleet is
+    }
+
+    public function auctionview_GET($id)
+    {
+        if (isset($id))
+        {
+            $auction = $this->auctionRepository->selectById($id);
+            $this->render("auctionview", $auction);
+        }
+        else
+        {
+            throw new Exception("Resource was not found. No id was provided", 404);
+        }
+    }
+
+    public function auctionproductadd_GET()
+    {
+        $this->render('auctionproductadd');
+    }
+
+    public function auctionproductview_GET($id)
+    {
+        // Check if the id is set.
+        if (isset($id))
+        {
+            $auctionProductVM = new AuctionProductEditViewModel();
+
+            $auctionProduct = $this->auctionProductRepository->selectById($id);
+            $colorCodes = $this->colorCodeRepository->selectAll();
+
+            $auctionProductVM->auctionProduct = $auctionProduct;
+            $auctionProductVM->colorCodes = $colorCodes;
+
+            // Render the view.
+            $this->render("auctionproductview", $auctionProductVM);
+        }
+        else
+        {
+            throw new Exception("Resource was not found. No id was provided", 404);
+        }
+    }
+
     //<editor-fold desc="News Manage***">
 
     /**
@@ -559,12 +617,12 @@ class ManageController extends Controller
     /**
      *{{Permission=Product;}}
      */
-    public function auctions_GET()
+    public function auctionoverview_GET()
     {
         $auctionList = new ArrayList("Auction");
         $auctionList->addAll($this->auctionRepository->selectAll());
         
-        $this->render("auctions", $auctionList);
+        $this->render("auctionoverview", $auctionList);
     }
 
     /**
@@ -595,28 +653,12 @@ class ManageController extends Controller
         exit(json_encode(1));
     }
 
-    /**
-     *{{Permission=Product;}}
-     */
-    public function addauction_GET()
-    {
-        $this->render("addauction");
-    }
+
 
     /**
      *{{Permission=Product;}}
      */
-    public function addauction_POST()
-    {
-        $auction = $this->auctionRepository->insert($_POST["startDate"], $_POST['endDate']);
-        //$this->redirectTo("/manage/editauction/$auction->id");
-        $this->redirectTo("/manage/auctions"); // tijdelijk totdat editauction compleet is
-    }
-
-    /**
-     *{{Permission=Product;}}
-     */
-    public function editauction_GET($id)
+    public function auctionproductoverview_GET($id)
     {
         if (isset($id))
         {
@@ -626,7 +668,7 @@ class ManageController extends Controller
             
             // render
             $_SESSION["auctionId"] = $id;
-            $this->render("editauction", $auctionProductList);
+            $this->render("auctionproductoverview", $auctionProductList);
         }
         else
         {
@@ -750,125 +792,7 @@ class ManageController extends Controller
     /**
      *{{Permission=Product;}}
      */
-    public function auctionproduct_GET($id)
-    {
-        // Check if the id is set.
-        if (isset($id))
-        {
-            $auctionProductVM = new AuctionProductEditViewModel();
 
-            $auctionProduct = $this->auctionProductRepository->selectById($id);
-            $colorCodes = $this->colorCodeRepository->selectAll();
-
-            $auctionProductVM->auctionProduct = $auctionProduct;
-            $auctionProductVM->colorCodes = $colorCodes;
-
-            // Render the view.
-            $this->render("auctionproduct", $auctionProductVM);
-        }
-        else
-        {
-            throw new Exception("Resource was not found. No id was provided", 404);
-        }
-    }
-
-    /**
-     *{{Permission=Product;}}
-     */
-    public function auctionproduct_POST()
-    {
-        // Check if the id is set.
-        if (isset($_GET["id"]))
-        {
-            // TODO: weird ass workaround t'll I know the best way to do this... w/e
-            // If the id equals update a post request for updating a product has been sent.
-            if ($_GET["id"] == "delete")
-            {
-                // Check if all the necessary data has been sent with the request.
-                if (isset($_POST["id"]))
-                {
-                    // Delete the product.
-                    $this->auctionProductRepository->deleteById($_POST["id"]);
-    
-                    // Delete the product images recursively.
-                    $dir = Product::IMAGES_DIRECTORY . "/" . $_POST["id"];
-                    if (is_dir($dir))
-                    {
-                        $objects = scandir($dir);
-                        foreach ($objects as $object)
-                        {
-                            if ($object != "." && $object != "..")
-                            {
-                                if (filetype($dir . "/" . $object) == "dir")
-                                    rrmdir($dir . "/" . $object);
-                                else
-                                    unlink($dir . "/" . $object);
-                            }
-                        }
-                        reset($objects);
-                        rmdir($dir);
-                    }
-    
-                    // Return 0 for great success.
-                    exit(json_encode(0));
-                }
-            }
-            else if ($_GET["id"] == "update")
-            {
-                // Check if all the necessary data has been sent with the request.
-                if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["colorCode"]))
-                {
-                    // Get the product, set the data and update.
-                    $auctionProduct = $this->auctionProductRepository->selectById($_POST["id"]);
-                    $auctionProduct->name = $_POST["name"];
-                    $auctionProduct->description = $_POST["description"];
-                    $auctionProduct->colorCode = $_POST["colorCode"];
-                    $this->auctionProductRepository->update($auctionProduct);
-    
-                    // Return 0 for great success.
-                    exit(json_encode(0));
-                }
-            }
-            else if ($_GET["id"] == "addImage")
-            {
-                if (isset($_POST["id"]) && isset($_POST["originalWidth"]) && isset($_POST["clientWidth"]) && isset($_POST["xCoord"]) && isset($_POST["width"]) &&
-                        isset($_POST["originalHeight"]) && isset($_POST["clientHeight"]) && isset($_POST["yCoord"]) && isset($_POST["height"]) && isset($_FILES["file"]))
-                {
-                    $xScale = $_POST["originalWidth"] / $_POST["clientWidth"];
-    
-                    $x1 = $_POST["xCoord"] * $xScale;
-                    $x2 = $x1 + ($_POST["width"] * $xScale);
-    
-                    $yScale = $_POST["originalHeight"] / $_POST["clientHeight"];
-    
-                    $y1 = $_POST["yCoord"] * $yScale;
-                    $y2 = $y1 + ($_POST["height"] * $yScale);
-    
-                    // Generate numbah.
-                    for ($i = 1; file_exists(Product::IMAGES_DIRECTORY . "/" . $_POST["id"] . "/" . $i . ".jpg"); $i++) {}
-                        
-                    $manipulator = new ImageManipulator($_FILES["file"]["tmp_name"]);
-                    $manipulator = $manipulator->crop($x1, $y1, $x2, $y2);
-                    $imageTargetFilePath = Product::IMAGES_DIRECTORY . "/" . $_POST["id"] . "/" . $i . ".jpg";
-                    $manipulator->save($imageTargetFilePath, IMAGETYPE_JPEG);
-                        
-                    exit(json_encode(0));
-                }
-            }
-            else if ($_GET["id"] == "deleteImage")
-            {
-                if (isset($_POST["id"]) && isset($_POST["imageName"]))
-                {
-                    unlink(Product::IMAGES_DIRECTORY . "/" . $_POST["id"] . "/" . $_POST["imageName"]);
-    
-                    exit(json_encode(0));
-                }
-            }
-        }
-        
-        // TODO: Error or some shit
-        exit(json_encode(1));
-    }
 
     //</editor-fold>
 

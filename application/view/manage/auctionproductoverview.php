@@ -5,10 +5,10 @@
 
 		<div class="row">
 			<div class="col-md-1">
-				<a href="<?php echo ROOT_PATH . "/manage/auctions" ?>" class="btn btn-default">Terug</a>
+				<a href="<?php echo ROOT_PATH . "/manage/auctionoverview" ?>" class="btn btn-default">Terug</a>
 			</div>
 			<div class="col-md-offset-9 col-md-1">
-				<a href="<?php echo ROOT_PATH . "/auction/addProduct/" . $_GET['id']; ?>" class="btn btn-success">Product Toevoegen</a>
+				<a href="<?php echo ROOT_PATH . "/manage/auctionproductadd/" . $_GET['id']; ?>" class="btn btn-success">Product Toevoegen</a>
 			</div>
 		</div>
         <div class="row margin-hor-sm">
@@ -34,7 +34,7 @@
 						<td><?php echo $auctionproduct ->colorCode?></td>
 						<td><?php echo $auctionproduct ->addedBy?></td>
 						<td>
-							<a href="<?php echo ROOT_PATH . "/manage/auctionproduct/" . $auctionproduct->id ?>"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
+							<a href="<?php echo ROOT_PATH . "/manage/auctionproductview/" . $auctionproduct->id ?>"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
 						</td>
 					</tr>
                 <?php } ?>
