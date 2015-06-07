@@ -444,34 +444,26 @@ class ManageController extends Controller
     /**
      *{{Permission=Product;}}
      */
-    public function shopproducts_GET()
+    public function shopproductoverview_GET()
     {
-        $productIndexVM = new ShopProductsIndexViewModel();
-
         $shopProducts = new ArrayList("ShopProduct");
         $shopProducts->addAll($this->shopProductRepository->selectAll());
 
-        $colorCodes = new ArrayList("ColorCode");
-        $colorCodes->addAll($this->colorCodeRepository->selectAll());
-
-        $productIndexVM->shopProducts = $shopProducts;
-        $productIndexVM->colorCodes = $colorCodes;
-
-        $this->render("shopproducts", $productIndexVM);
+        $this->render("shopproductoverview", $shopProducts);
     }
 
     /**
      *{{Permission=Product;}}
      */
-    public function addshopproduct_GET()
+    public function shopproductadd_GET()
     {
         $colorCodes = new ArrayList("ColorCode");
         $colorCodes->addAll($this->colorCodeRepository->selectAll());
 
-        $this->render("addshopproduct", $colorCodes);
+        $this->render("shopproductadd", $colorCodes);
     }
     
-    public function addshopproduct_POST()
+    public function shopproductadd_POST()
     {
         $shopProduct = $this->shopProductRepository->insert($_POST["name"], $_POST["description"], "Administrator", $_POST["colorCode"], $_POST["price"], false);
         $this->redirectTo("/manage/shopproduct/$shopProduct->id");

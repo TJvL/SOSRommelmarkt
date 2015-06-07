@@ -2,7 +2,7 @@
 	<div class="white">
         <div class="row">
             <div class="col-md-1">
-                <a href="<?php echo ROOT_PATH . '/manage/shopproducts'?>" class="btn btn-default">Terug</a>
+                <a href="<?php echo ROOT_PATH . '/manage/shopproductoverview'?>" class="btn btn-default">Terug</a>
             </div>
             <div class="col-sm-offset-9 col-sm-2">
                 <button class="btn btn-danger btn-block" type="button" onClick="DeleteShopProduct(<?php echo $model->shopProduct->id ?>)">Verwijderen</button>

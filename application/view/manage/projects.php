@@ -8,7 +8,7 @@
                 <a href="<?php echo ROOT_PATH . "/manage/index" ?>" class="btn btn-default">Terug</a>
             </div>
             <div class="col-md-offset-9 col-md-1">
-                <a href="<?php echo ROOT_PATH . '/manage/addproject'?>" class="btn btn-success">Project toevoegen</a>
+                <a href="<?php echo ROOT_PATH . '/manage/addproject'?>" class="btn btn-success">Nieuw project</a>
             </div>
         </div>
         <div class="row margin-hor-sm">

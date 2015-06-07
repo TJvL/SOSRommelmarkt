@@ -26,21 +26,22 @@ class ShopProductRepository extends ProductRepository
 	public function insert($shopproduct)
 	{
 		// Insert a normal product and get back the auto incremented key.
-		$id = $this->insertProduct($name, $description, $addedBy, $colorCode);
+		$id = $this->insertProduct($shopproduct->name, $shopproduct->description, "Erik", $shopproduct->colorCode);
 		
 		$query = "INSERT INTO ShopProduct (id, price, isReserved)
 				VALUES (?, ?, ?)";
-		
+
+        $isReserved = 0;
 		// Insert the shop product.
-        $this->database->insert($query, "idi", array($id, $price, $isReserved));
+        $this->database->insert($query, "idi", array($id, $shopproduct->price, $isReserved));
 		
 		$shopProduct = new ShopProduct();
 		$shopProduct->id = $id;
-		$shopProduct->name = $name;
-		$shopProduct->description = $description;
-		$shopProduct->addedBy = $addedBy;
-		$shopProduct->colorCode = $colorCode;
-		$shopProduct->price = $price;
+		$shopProduct->name = $shopproduct->name;
+		$shopProduct->description = $shopproduct->description;
+		$shopProduct->addedBy = $shopproduct->addedBy;
+		$shopProduct->colorCode = $shopproduct->colorCode;
+		$shopProduct->price = $shopproduct->price;
 		$shopProduct->isReserved = $isReserved;
 		$shopProduct->imagePath = $shopProduct->getMainImagePath();
 		$shopProduct->imagePaths = $shopProduct->getImagePaths();

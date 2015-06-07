@@ -65,7 +65,7 @@ function DeleteShopProduct()
 	        	// Check if it went alright.
 				if (result == 0)
 				{
-					document.location.href = "../shopproducts";
+					document.location.href = "../shopproductoverview";
 				}
 				else
 				{

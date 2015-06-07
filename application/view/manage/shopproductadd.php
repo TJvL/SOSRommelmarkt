@@ -3,13 +3,11 @@
         <div class="content">
             <div class="row">
                 <div class="col-md-1">
-                    <a href="<?php echo ROOT_PATH . '/manage/shopproducts'?>" class="btn btn-default">Terug</a>
+                    <a href="<?php echo ROOT_PATH . '/manage/shopproductoverview'?>" class="btn btn-default">Terug</a>
                 </div>
 
             </div>
-
-
-            <div class="row">
+            <div class="row margin-hor-sm">
                 <h1>Winkel product toevoegen</h1>
             </div>
 
@@ -17,7 +15,7 @@
 
                 <nav class="idealsteps-nav"></nav>
 
-                <form action="<?php echo ROOT_PATH . '/manage/addshopproduct'?>" method="POST" enctype="multipart/form-data" autocomplete="off" class="idealforms" id="product_add">
+                <form action="javascript:addShopProduct()" autocomplete="off" class="idealforms" id="product_add">
 
                     <div class="idealsteps-wrap">
 
@@ -27,13 +25,13 @@
 
                             <div class="field">
                                 <label class="main">Product naam:</label>
-                                <input form="product_add" name="name" type="text">
+                                <input form="product_add" name="name" id="name" type="text">
                                 <span class="error"></span>
                             </div>
 
                             <div class="field">
                                 <label class="main">Product omschrijving:</label>
-                                <textarea form="product_add" name="description" cols="10" rows="5" style="resize: none"></textarea>
+                                <textarea form="product_add" name="description" id="description" cols="10" rows="5" style="resize: none"></textarea>
                                 <span class="error"></span>
                             </div>
 
@@ -50,14 +48,13 @@
 
                             <div class="field">
                                 <label class="main">Prijs:</label>
-                                <input form="product_add" name="price" type="text" placeholder="00,00">
+                                <input form="product_add" name="price" id="price" type="text" placeholder="€ 00,00">
                                 <span class="error"></span>
                             </div>
 
-
                             <div class="field">
                                 <label class="main">Kleur code:</label>
-                                <select form="product_add" name="colorCode" id="">
+                                <select form="product_add" name="colorCode" id="colorCode">
                                     <option value="default">&ndash; Selecteer een optie &ndash;</option>
                                     <?php
                                     foreach($model as $colorCode)
@@ -83,6 +80,11 @@
 
                 </form>
 
+            </div>
+            <div class="row">
+                <div class="col-md-12 padding-lg">
+                    <p id="status" class="padding-lg"></p>
+                </div>
             </div>
 
         </div>

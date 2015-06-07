@@ -5,15 +5,16 @@
             <div class="col-md-1">
                 <a href="<?php echo ROOT_PATH . "/manage/index" ?>" class="btn btn-default">Terug</a>
             </div>
+            <div class="col-md-offset-9 col-md-1">
+                <a href="<?php echo ROOT_PATH . '/manage/shopproductadd'?>" class="btn btn-success">Nieuw product</a>
+            </div>
         </div>
-        <div class="row">
+        <div class="row margin-hor-sm">
             <h1>Winkel producten</h1>
         </div>
 
         <div class="row">
-            <div class="col-md-1">
-                <a href="<?php echo ROOT_PATH . '/manage/addshopproduct'?>" class="btn btn-default">Product toevoegen...</a>
-            </div>
+
         </div>
         <div class="table-responsive padding-sm">
             <table id="productTable" class="display">
@@ -29,7 +30,7 @@
                 </thead>
                 <tbody>
                 <?php
-                    foreach ($model->shopProducts as $product)
+                    foreach ($model as $product)
                     {
                     	?>
                         <tr>
@@ -62,6 +63,11 @@
                 ?>
                 </tbody>
             </table>
+        </div>
+        <div class="row">
+            <div class="col-md-12 padding-lg">
+                <p id="status" class="padding-lg"></p>
+            </div>
         </div>
     </div>
 </div>

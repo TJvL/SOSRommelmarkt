@@ -1,3 +1,9 @@
+function ResetStatus()
+{
+    $("#status").text("");
+    $("#status").removeClass("alert-warning alert-danger alert-success");
+}
+
 //Initialize ideal forms
 $('#product_add').idealforms({
 
@@ -41,3 +47,37 @@ $('.next').click(function(){
     $('.next').show();
     $('form.idealforms').idealforms('nextStep');
 });
+
+function addShopProduct()
+{
+    if(confirm("Weet u zeker dat u wilt opslaan?"))
+    {
+        ResetStatus();
+
+        var data =
+        {
+            modelName: 'ShopProduct',
+            name: $('#name').val(),
+            description: $('#description').val(),
+            price: $('#price').val(),
+            colorCode: $('#colorCode').val()
+        };
+
+        console.log(data);
+
+        $.ajax(
+            {
+                url: getBaseURL() + 'shopproductapi/add',
+                type: 'POST',
+                data: data,
+                async: true,
+                success: function () {
+                    //document.location.href = getBaseURL() + 'manage/shopproductoverview'; //TODO: redirect naar nieuwe product pagina om fotos toe te voegen + success message
+                },
+                error: function (status) {
+                    $("#status").text(status.status + ": " + translateHttpError(status.statusText));
+                    $("#status").addClass("alert-danger");
+                }
+            });
+    }
+}

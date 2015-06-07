@@ -1,3 +1,9 @@
+function ResetStatus()
+{
+    $("#status").text("");
+    $("#status").removeClass("alert-warning alert-danger alert-success");
+}
+
 //Initialize ideal forms
 $('#product_add').idealforms({
 
@@ -46,10 +52,7 @@ function addAuctionProduct()
 {
     if(confirm("Weet u zeker dat u wilt opslaan?"))
     {
-        // Reset status message.
-        $("#status").text("");
-        $("#status").removeClass("alert-success alert-danger");
-
+        ResetStatus();
         var data =
         {
             modelName: 'AuctionProduct',

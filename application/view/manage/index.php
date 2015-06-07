@@ -19,7 +19,7 @@
                 </a>
             </div>
             <div class="col-md-2">
-                <a href="<?php echo ROOT_PATH; ?>/manage/shopproducts">
+                <a href="<?php echo ROOT_PATH; ?>/manage/shopproductoverview">
                     <button class="btn btn-red">
                         <i class="fa fa-shopping-cart fa-5x fa-fw"></i>
                         <br /><b>Webshop</b>
