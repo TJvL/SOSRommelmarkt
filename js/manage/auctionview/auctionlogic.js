@@ -54,8 +54,6 @@ function handleUpdateAuction()
             endDate:    $('#endDate').val()
         };
 
-        console.log(data);
-
         $.ajax(
             {
                 url: getBaseURL() + "auctionapi/update",

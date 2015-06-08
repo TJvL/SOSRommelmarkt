@@ -14,6 +14,7 @@ class PartnerAPIController extends APIController
         if(isset($partner->id))
         {
             $this->partnerRepository->deleteById($partner->id);
+            Partner::deleteImageById($partner->id);
             $this->respondOK();
         }
         else

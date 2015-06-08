@@ -2,7 +2,7 @@
 
 class VisitingHours
 {
-	public $id; // seems unnecessary, but it's in the db...
+	public $id;
 	public $monday;
 	public $tuesday;
 	public $wednesday;

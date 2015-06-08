@@ -23,7 +23,7 @@
 				</div>
 				<div class="field">
 					<label class="main">Omschrijving</label>
-                    <textarea form="updateForm" name="description" id="description" style="resize: none" rows="3" placeholder="Omschrijving van het product" required><?php echo $model->auctionProduct->description ?></textarea>
+                    <textarea form="updateForm" name="description" id="description" class="nonresizeable" rows="3" placeholder="Omschrijving van het product" required><?php echo $model->auctionProduct->description ?></textarea>
 					<span class="error"></span>
 				</div>
 				<div class="field">

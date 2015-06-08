@@ -18,7 +18,7 @@
                 </div>
                 <div class="field">
                     <label class="main">Tekst:</label>
-                    <textarea form="newsForm" id="content" name="content" cols="10" rows="5" style="resize: vertical" placeholder="Schrijf hier uw paragraaf..."></textarea>
+                    <textarea form="newsForm" id="content" name="content" cols="10" rows="5" class="nonresizeable" placeholder="Schrijf hier uw paragraaf..."></textarea>
                     <span class="error"></span>
                 </div>
                 <div class="field">

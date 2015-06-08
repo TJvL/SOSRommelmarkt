@@ -11,7 +11,7 @@ class ProjectAPIController extends APIController
 
     public function update_POST($project){
 
-        if (isset($project->id))
+        if (isset($project->id)&&(isset($project->body)))
         {
             $this->projectRepository->update($project);
             $this->respondOK();
@@ -24,6 +24,26 @@ class ProjectAPIController extends APIController
         if(isset($project->id))
         {
             $this->projectRepository->deleteById($project->id);
+
+            // Delete the project images recursively.
+            $dir = Project::IMAGES_DIRECTORY . "/" . $project->id;
+            if (is_dir($dir))
+            {
+                $objects = scandir($dir);
+                foreach ($objects as $object)
+                {
+                    if ($object != "." && $object != "..")
+                    {
+                        if (filetype($dir . "/" . $object) == "dir")
+                            rrmdir($dir . "/" . $object);
+                        else
+                            unlink($dir . "/" . $object);
+                    }
+                }
+                reset($objects);
+                rmdir($dir);
+            }
+
             $this->respondOK();
         }
         throw new Exception("Resource not found.", 404);

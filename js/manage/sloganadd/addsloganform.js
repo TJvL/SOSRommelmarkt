@@ -49,6 +49,8 @@ function addSlogan()
                 data: data,
                 async: true,
                 success: function () {
+                    var successMessage = "Slogan is succesvol toegevoegd.";
+                    localStorage.setItem("successMessage", successMessage);
                     document.location.href = getBaseURL() + 'manage/sloganoverview';
                 },
                 error: function (status) {

@@ -28,7 +28,6 @@ class PartnerRepository
 		// Check if the website is valid (with http(s):// prefix). Add it if not.
 		if (strpos($partner->website, "http://") === false && strpos($partner->website, "https://") === false)
 			$partner->website = "http://" . $partner->website;
-        $partner->category = strtoupper($partner->category);
 
 		$partner->id = $this->database->insert($query, "sss", array($partner->name, $partner->website, $partner->category));
 

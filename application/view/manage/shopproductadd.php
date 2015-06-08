@@ -31,7 +31,7 @@
 
                             <div class="field">
                                 <label class="main">Product omschrijving:</label>
-                                <textarea form="product_add" name="description" id="description" cols="10" rows="5" style="resize: none"></textarea>
+                                <textarea form="product_add" name="description" id="description" cols="10" rows="5" class="nonresizeable"></textarea>
                                 <span class="error"></span>
                             </div>
 

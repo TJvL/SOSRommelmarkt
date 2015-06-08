@@ -44,8 +44,6 @@ function addAuction()
             endDate:    $('#endDate').val()
         };
 
-        console.log(data);
-
         $.ajax(
             {
                 url: getBaseURL() + 'auctionapi/add',

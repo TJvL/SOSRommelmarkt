@@ -292,6 +292,10 @@ h1.manage-title{
 	display: none;
 }
 
+.nonresizeable{
+    resize: none;
+}
+
 .image-preview {
 	max-height: 200px;
 	max-width: auto;

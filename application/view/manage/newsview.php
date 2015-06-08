@@ -21,7 +21,7 @@
                 </div>
                 <div class="field">
                     <label class="main">Tekst:</label>
-                    <textarea form="newsForm" id="content" name="content" cols="10" rows="5" style="resize: vertical"><?php echo $model->content; ?></textarea>
+                    <textarea form="newsForm" id="content" name="content" cols="10" rows="5" class="nonresizeable"><?php echo $model->content; ?></textarea>
                     <span class="error"></span>
                 </div>
                 <div class="field">
@@ -38,7 +38,9 @@
             </form>
         </div>
         <div class="row">
-            <div id="status"></div>
+            <div class="col-md-12 padding-lg">
+                <p id="status" class="padding-lg"></p>
+            </div>
         </div>
 	</div>
 </div>

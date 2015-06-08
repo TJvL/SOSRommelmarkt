@@ -17,6 +17,26 @@ class ShopProductAPIController extends APIController
         if(isset($shopproduct->id))
         {
             $this->shopProductRepository->deleteById($shopproduct->id);
+
+            // Delete the product images recursively.
+            $dir = Product::IMAGES_DIRECTORY . "/" . $shopproduct->id;
+            if (is_dir($dir))
+            {
+                $objects = scandir($dir);
+                foreach ($objects as $object)
+                {
+                    if ($object != "." && $object != "..")
+                    {
+                        if (filetype($dir . "/" . $object) == "dir")
+                            rrmdir($dir . "/" . $object);
+                        else
+                            unlink($dir . "/" . $object);
+                    }
+                }
+                reset($objects);
+                rmdir($dir);
+            }
+
             $this->respondOK();
         }
         else

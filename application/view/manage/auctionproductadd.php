@@ -30,7 +30,7 @@
 
                             <div class="field">
                                 <label class="main">Product omschrijving:</label>
-                                <textarea form="product_add" name="description" id="description" cols="10" rows="5" style="resize: none"></textarea>
+                                <textarea form="product_add" name="description" id="description" cols="10" rows="5" class="nonresizeable" "></textarea>
                                 <span class="error"></span>
                             </div>
 
@@ -49,9 +49,12 @@
                                 <label class="main">Kleur code:</label>
                                 <select form="product_add" name="colorCode" id="colorCode">
                                     <option value="default">&ndash; Selecteer een optie &ndash;</option>
-                                    <option value="Blauw">Gebruikt</option>
-                                    <option value="Groen">Als nieuw</option>
-                                    <option value="Rood">Lichte schade</option>
+                                    <?php
+                                    foreach($model as $colorCode)
+                                    {
+                                        echo "<option value='$colorCode->name'>$colorCode->name - $colorCode->description</option>";
+                                    }
+                                    ?>
                                 </select>
                                 <span class="error"></span>
                             </div>
@@ -70,6 +73,11 @@
 
                 </form>
 
+            </div>
+            <div class="row">
+                <div class="col-md-12 padding-lg">
+                    <p id="status" class="padding-lg"></p>
+                </div>
             </div>
 
         </div>
