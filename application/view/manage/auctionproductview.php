@@ -63,11 +63,6 @@
 			</form>
 		</div>
 
-<!--        <div class="">-->
-<!--            <h2>Preview afbeelding</h2>-->
-<!--            <img id="image">-->
-<!--        </div>-->
-
 		<div class="hidden col-md-offset-2 col-md-8" id="cropperDiv">
 			<div class="row">
 				<hr>

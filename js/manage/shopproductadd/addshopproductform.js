@@ -63,8 +63,6 @@ function addShopProduct()
             colorCode: $('#colorCode').val()
         };
 
-        console.log(data);
-
         $.ajax(
             {
                 url: getBaseURL() + 'shopproductapi/add',
@@ -72,7 +70,7 @@ function addShopProduct()
                 data: data,
                 async: true,
                 success: function () {
-                    //document.location.href = getBaseURL() + 'manage/shopproductoverview'; //TODO: redirect naar nieuwe product pagina om fotos toe te voegen + success message
+                    document.location.href = getBaseURL() + 'manage/shopproductoverview'; //TODO: redirect naar nieuwe product pagina om fotos toe te voegen + success message
                 },
                 error: function (status) {
                     $("#status").text(status.status + ": " + translateHttpError(status.statusText));

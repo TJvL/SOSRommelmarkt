@@ -26,7 +26,7 @@ class ShopProductRepository extends ProductRepository
 	public function insert($shopproduct)
 	{
 		// Insert a normal product and get back the auto incremented key.
-		$id = $this->insertProduct($shopproduct->name, $shopproduct->description, "Erik", $shopproduct->colorCode);
+		$id = $this->insertProduct($shopproduct);
 		
 		$query = "INSERT INTO ShopProduct (id, price, isReserved)
 				VALUES (?, ?, ?)";
@@ -34,7 +34,7 @@ class ShopProductRepository extends ProductRepository
         $isReserved = 0;
 		// Insert the shop product.
         $this->database->insert($query, "idi", array($id, $shopproduct->price, $isReserved));
-		
+
 		$shopProduct = new ShopProduct();
 		$shopProduct->id = $id;
 		$shopProduct->name = $shopproduct->name;
@@ -45,7 +45,7 @@ class ShopProductRepository extends ProductRepository
 		$shopProduct->isReserved = $isReserved;
 		$shopProduct->imagePath = $shopProduct->getMainImagePath();
 		$shopProduct->imagePaths = $shopProduct->getImagePaths();
-		
+
 		// Return an object of the inserted product.
 		return $shopProduct;
 	}
@@ -95,18 +95,13 @@ class ShopProductRepository extends ProductRepository
 		return $shopProduct;
 	}
 	
-	public function updateById($id, $name, $description, $colorCode, $price, $isReserved)
-	{
-		$this->updateProductById($id, $name, $description, $colorCode);
-	
-		$query = "UPDATE ShopProduct SET price = ?, isReserved = ? WHERE id = ?";
-
-        $this->database->update($query, "dii", array($price, $isReserved, $id));
-	}
-	
 	public function update($product)
 	{
-		$this->updateById($product->id, $product->name, $product->description, $product->colorCode, $product->price, $product->isReserved);
+		$this->updateProduct($product);
+
+        $query = "UPDATE ShopProduct SET price = ?, isReserved = ? WHERE id = ?";
+
+        $this->database->update($query, "dii", array($product->price, $product->isReserved, $product->id));
 	}
 	
 	public function deleteById($id)

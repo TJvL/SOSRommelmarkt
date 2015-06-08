@@ -20,14 +20,6 @@ abstract class ProductRepository
 
         return $this->database->insert($query, $paramTypes, $parameters);
     }
-    
-//    protected function updateProductById($id, $name, $description, $colorCode)
-//    {
-//    	$query = "UPDATE Product
-//        	SET name = ?, description = ?, colorCode = ? WHERE id = ?";
-//
-//        $this->database->update($query, "sssi", array($name, $description, $colorCode, $id));
-//    }
 
     protected function updateProduct($product)
     {
@@ -35,8 +27,6 @@ abstract class ProductRepository
         	SET name = ?, description = ?, colorCode = ? WHERE id = ?";
 
         $this->database->update($query, "sssi", array($product->name, $product->description, $product->colorCode, $product->id));
-
-//        $this->updateProductById($product->id, $product->name, $product->description, $product->colorCode);
     }
 
 	protected function deleteProductById($id)

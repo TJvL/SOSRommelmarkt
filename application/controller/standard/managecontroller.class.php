@@ -466,15 +466,15 @@ class ManageController extends Controller
     public function shopproductadd_POST()
     {
         $shopProduct = $this->shopProductRepository->insert($_POST["name"], $_POST["description"], "Administrator", $_POST["colorCode"], $_POST["price"], false);
-        $this->redirectTo("/manage/shopproduct/$shopProduct->id");
+        $this->redirectTo("/manage/shopproductview/$shopProduct->id");
     }
 
     /**
      *{{Permission=Product;}}
      */
-    public function shopproduct_GET($id)
+    public function shopproductview_GET($id)
     {
-        // Check if the shopproduct id is set.
+        // Check if the shopproductview id is set.
         if (isset($id))
         {
             $shopProductVM = new ShopProductEditViewModel();
@@ -489,7 +489,7 @@ class ManageController extends Controller
             $shopProductVM->colorCodes = $colorCodes;
             
             // Render the view.
-            $this->render("shopproduct", $shopProductVM);
+            $this->render("shopproductview", $shopProductVM);
         }
         else
         {
@@ -554,7 +554,7 @@ class ManageController extends Controller
      */
     public function shopproduct_POST()
     {
-        // Check if the shopproduct id is set.
+        // Check if the shopproductview id is set.
         if (isset($_GET["id"]))
         {
             // TODO: weird ass workaround t'll I know the best way to do this... w/e

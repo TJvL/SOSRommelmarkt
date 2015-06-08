@@ -55,7 +55,7 @@
                                 ?>
                             </td>
 	                        <td>
-								<a href="shopproduct/<?php echo $product->id ?>"><button class="btn btn-default"><i class="fa fa-pencil"></i></button></a>
+								<a href="<?php echo ROOT_PATH ?>/manage/shopproductview/<?php echo $product->id ?>"><button class="btn btn-default"><i class="fa fa-pencil"></i></button></a>
 							</td>
 						</tr>
 						<?php

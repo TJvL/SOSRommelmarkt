@@ -12,11 +12,11 @@ class ShopProductAPIController extends APIController
     /**
      *{{Role=Administrator;}}
      */
-    public function delete_POST($auctionproduct)
+    public function delete_POST($shopproduct)
     {
-        if(isset($auctionproduct->id))
+        if(isset($shopproduct->id))
         {
-            $this->auctionProductRepository->deleteById($auctionproduct->id);
+            $this->shopProductRepository->deleteById($shopproduct->id);
             $this->respondOK();
         }
         else
@@ -25,11 +25,11 @@ class ShopProductAPIController extends APIController
         }
     }
 
-    public function update_POST($auctionproduct)
+    public function update_POST($shopproduct)
     {
-        if(isset($auctionproduct->id))
+        if(isset($shopproduct->id))
         {
-            $this->auctionProductRepository->update($auctionproduct);
+            $this->shopProductRepository->update($shopproduct);
             $this->respondOK();
         }
         else

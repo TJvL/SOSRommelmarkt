@@ -62,6 +62,8 @@ function addAuctionProduct()
             auctionId: $('#auctionId').val()
         };
 
+        console.log(data);
+
         $.ajax(
             {
                 url: getBaseURL() + 'auctionproductapi/add',
@@ -69,7 +71,7 @@ function addAuctionProduct()
                 data: data,
                 async: true,
                 success: function () {
-                    document.location.href = getBaseURL() + 'manage/auctionoverview'; //TODO: redirect naar nieuwe product pagina om fotos toe te voegen + success message
+                    //document.location.href = getBaseURL() + 'manage/auctionoverview'; //TODO: redirect naar nieuwe product pagina om fotos toe te voegen + success message
                 },
                 error: function (status) {
                     $("#status").text(status.status + ": " + translateHttpError(status.statusText));

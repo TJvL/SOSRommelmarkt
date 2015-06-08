@@ -12,6 +12,7 @@ function UpdateShopProduct()
 		
 		var data =
 		{
+            modelName:      'ShopProduct',
 	    	id:				$("#id").val(),
 	    	name:			$("#name").val(),
 	    	description:	$("#description").val(),
@@ -23,23 +24,17 @@ function UpdateShopProduct()
 		
 	    $.ajax(
 		{
-			url: "../updateshopproduct",
+			url: getBaseURL() +  "shopproductapi/update",
 	        type: "POST",
 	        data: data,
-	        success: function(result)
-	        {
-		        // Check if it went alright.
-		        if (result == 0)
-		        {
-		        	$("#status").text("Succes!");
-		        	$("#status").addClass("alert-success");
-		        }
-		        else
-		        {
-		        	$("#status").text("Er is iets verkeerd gegaan");
-		        	$("#status").addClass("alert-danger");
-		        }
-	        }
+            success: function () {
+                $("#status").text("Productgegevens succesvol gewijzigd.");
+                $("#status").addClass("alert-success");
+            },
+            error: function (status) {
+                $("#status").text(status.status + ": " + translateHttpError(status.statusText));
+                $("#status").addClass("alert-danger");
+            }
 		});
 	}
 }
@@ -52,100 +47,94 @@ function DeleteShopProduct()
 		
 		var data =
 		{
-			id: $("#id").val()
+            modelName:  'ShopProduct',
+			id:         $("#id").val()
 		};
 	
 		$.ajax(
 		{
-			url: "../deleteshopproduct",
+			url: getBaseURL() + "shopproductapi/delete",
 	        type: "POST",
 	        data: data,
-	        success: function(result)
-	        {
-	        	// Check if it went alright.
-				if (result == 0)
-				{
-					document.location.href = "../shopproductoverview";
-				}
-				else
-				{
-					$("#status").text("Er is iets verkeerd gegaan.");
-	                $("#status").addClass("alert-danger");
-				}
-	        }
+            success: function () {
+                var successMessage = "Product is succesvol verwijderd.";
+                localStorage.setItem("successMessage", successMessage);
+                document.location.href = getBaseURL() + 'manage/shopproductoverview';
+            },
+            error: function (status) {
+                $("#status").text(status.status + ": " + translateHttpError(status.statusText));
+                $("#status").addClass("alert-danger");
+            }
 		});
 	}
 }
 
 function handleNewImage()
 {
-	var formData = new FormData(document.getElementById("imageDataForm"));
+	var formData = new FormData(document.getElementById("imageForm"));
+
+    console.log(formData);
 
     $.ajax(
 	{
-		url: "addImage",
+		url: getBaseURL() + "shopproductapi/addimage",
         type: "POST",
         data: formData,
         async: true,
         contentType: false,
         processData: false,
-        success: function(result)
-        {
-	        // Check if it went alright.
-	        if (result == 0)
-	        {
-	        	alert("Success");
-	        }
-	        else
-	        {
-	        	alert("fail");
-	        }
-
-	     	// Reload the page.
-        	location.reload();
+        success: function () {
+            var successMessage = "De afbeelding is succesvol toegevoegd.";
+            localStorage.setItem("successMessage", successMessage);
+            location.reload();
+        },
+        error: function (status) {
+            $("#status").text(status.status + ": " + translateHttpError(status.statusText));
+            $("#status").addClass("alert-danger");
         }
 	});
 }
 
 function handleDeleteImage(imagePath)
 {
-	if (confirm("Weet u zeker dat u deze afbeelding wilt verwijderen?"))
-	{
-		imageName = imagePath.substring(imagePath.lastIndexOf("/") + 1);
-	
-		var data =
-		{
-			productId: $("#id").val(),
-	    	imageName: imageName
-		};
-	
-		$.ajax(
-		{
-			url: "deleteImage",
-	        type: "POST",
-	        data: data,
-	        async: true,
-	        success: function(result)
-	        {
-	        	// Check if it went alright.
-		        if (result == 0)
-		        {
-		        	alert("Success");
-		        }
-		        else
-		        {
-		        	alert("fail");
-		        }
-	
-		     	// Reload the page.
-	        	location.reload();
-	        }
-		});
-	}
+    if (confirm("Weet u zeker dat u deze afbeelding wilt verwijderen?"))
+    {
+        imageName = imagePath.substring(imagePath.lastIndexOf("/") + 1);
+
+        var data =
+        {
+            id: $('#id').val(),
+            imageName: imageName
+        };
+    };
+
+    $.ajax(
+        {
+            url: getBaseURL() + "shopproductapi/deleteimage",
+            type: "POST",
+            data: data,
+            async: true,
+            success: function () {
+                var successMessage = "De afbeelding is succesvol verwijderd.";
+                localStorage.setItem("successMessage", successMessage);
+                location.reload();
+            },
+            error: function (status) {
+                $("#status").text(status.status + ": " + translateHttpError(status.statusText));
+                $("#status").addClass("alert-danger");
+            }
+        });
+
 }
 
 $(document).ready(function()
 {
+    if(localStorage.getItem("successMessage")!=null){
+        $("#status").text(localStorage.getItem("successMessage"));
+        $("#status").addClass("alert-success");
+        localStorage.clear();
+    }
+
 	$("#addImageButton").click(function()
 	{
 		$("#fileInput").trigger("click");

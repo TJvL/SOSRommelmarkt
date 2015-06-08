@@ -78,7 +78,6 @@ function handleDeleteProduct()
 function handleNewImage()
 {
     var formData = new FormData(document.getElementById("imageForm"));
-    console.log(formData);
 
     $.ajax(
         {
