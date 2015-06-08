@@ -87,6 +87,8 @@ function deleteNews()
                 data: data,
                 async: true,
                 success: function () {
+                    var successMessage = "Nieuws is succesvol verwijderd.";
+                    localStorage.setItem("successMessage", successMessage);
                     document.location.href = getBaseURL() + 'manage/newsoverview';
                 },
                 error: function (status) {

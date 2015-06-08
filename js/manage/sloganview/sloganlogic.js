@@ -51,7 +51,7 @@ function updateSlogan()
                 data: data,
                 async: true,
                 success: function () {
-                    $("#status").text("Success");
+                    $("#status").text("Slogan successvol gewijzigd.");
                     $("#status").addClass("alert-success");
                 },
                 error: function (status) {
@@ -80,6 +80,8 @@ function deleteSlogan()
                 data: data,
                 async: true,
                 success: function () {
+                    var successMessage = "Slogan is succesvol verwijderd.";
+                    localStorage.setItem("successMessage", successMessage);
                     document.location.href = getBaseURL() + 'manage/sloganoverview';
                 },
                 error: function (status) {

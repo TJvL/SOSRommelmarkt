@@ -56,6 +56,8 @@ function addNews()
                 data: data,
                 async: true,
                 success: function () {
+                    var successMessage = "Nieuws is succesvol toegevoegd.";
+                    localStorage.setItem("successMessage", successMessage);
                     document.location.href = getBaseURL() + 'manage/newsoverview';
                 },
                 error: function (status) {

@@ -2,15 +2,15 @@
     <div class="white">
         <h1 class="manage-title">Beheer</h1>
         <div class="row margin-sm">
-            <div class="col-md-2">
-                <a href="<?php echo ROOT_PATH; ?>/manage/settings">
+            <div class="col-md-2 margin-ver-lg">
+                <a href="<?php echo ROOT_PATH; ?>/manage/pagecontentoverview">
                     <button class="btn btn-red">
-                        <i class="fa fa-cogs fa-5x fa-fw"></i>
-                        <br /><b>Instellingen</b>
+                        <i class="fa fa-file-text-o fa-5x fa-fw"></i>
+                        <br /><b>Pagina inhoud</b>
                     </button>
                 </a>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 margin-ver-lg">
                 <a href="<?php echo ROOT_PATH; ?>/manage/subventions">
                     <button class="btn btn-red">
                         <i class="fa fa-check-square fa-5x fa-fw"></i>
@@ -18,39 +18,39 @@
                     </button>
                 </a>
             </div>
-            <div class="col-md-2">
-                <a href="<?php echo ROOT_PATH; ?>/manage/shopproducts">
+            <div class="col-md-2 margin-ver-lg">
+                <a href="<?php echo ROOT_PATH; ?>/manage/shopproductoverview">
                     <button class="btn btn-red">
                         <i class="fa fa-shopping-cart fa-5x fa-fw"></i>
                         <br /><b>Webshop</b>
                     </button>
                 </a>
             </div>
-            <div class="col-md-2">
-                <a href="<?php echo ROOT_PATH; ?>/manage/auctions">
+            <div class="col-md-2 margin-ver-lg">
+                <a href="<?php echo ROOT_PATH; ?>/manage/auctionoverview">
                     <button class="btn btn-red">
                         <i class="fa fa-diamond fa-5x fa-fw"></i>
                         <br /><b>Vitrines</b>
                     </button>
                 </a>
             </div>
-            <div class="col-md-2">
-                <a href="<?php echo ROOT_PATH; ?>/manage/partners">
+            <div class="col-md-2 margin-ver-lg">
+                <a href="<?php echo ROOT_PATH; ?>/manage/partneroverview">
                     <button class="btn btn-red">
                         <i class="fa fa-users fa-5x fa-fw"></i>
                         <br /><b>Partners</b>
                     </button>
                 </a>
             </div>
-            <div class="col-md-2">
-                <a href="<?php echo ROOT_PATH; ?>/manage/projects">
+            <div class="col-md-2 margin-ver-lg">
+                <a href="<?php echo ROOT_PATH; ?>/manage/projectoverview">
                     <button class="btn btn-red">
                         <i class="fa fa-tasks fa-5x fa-fw"></i>
                         <br /><b>Projecten</b>
                     </button>
                 </a>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 margin-ver-lg">
                 <a href="<?php echo ROOT_PATH; ?>/manage/newsoverview">
                     <button class="btn btn-red">
                         <i class="fa fa-newspaper-o fa-5x fa-fw"></i>
@@ -58,7 +58,7 @@
                     </button>
                 </a>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 margin-ver-lg">
                 <a href="<?php echo ROOT_PATH; ?>/manage/sloganoverview">
                     <button class="btn btn-red">
                         <i class="fa fa-comment fa-5x fa-fw"></i>
@@ -66,7 +66,7 @@
                     </button>
                 </a>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 margin-ver-lg">
                 <a href="<?php echo ROOT_PATH; ?>/manage/accountoverview">
                     <button class="btn btn-red">
                         <i class="fa fa-key fa-5x fa-fw"></i>

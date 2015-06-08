@@ -32,6 +32,7 @@ class NewsAPIController extends APIController
     {
         if(isset($news->id))
         {
+            $news->expiration_date = date("Y-m-d H:i:s", strtotime($news->expiration_date));
             $this->newsRepository->update($news);
             $this->respondOK();
         }

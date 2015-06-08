@@ -40,7 +40,7 @@ class NewsRepository
 					SET heading = ?, content = ?, expiration_date = ?
 					WHERE id = ?";
         $parameters = array($news->heading, $news->content, $news->expiration_date, $news->id);
-        $paramTypes = "sssss";
+        $paramTypes = "sssi";
 		
 		$this->database->update($query, $paramTypes, $parameters);
 	}

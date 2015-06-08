@@ -20,29 +20,30 @@ class AuctionProductRepository extends ProductRepository
 	
 		return $auctionProduct;
 	}
-	
-	public function insert($name, $description, $addedBy, $colorCode)
+
+	public function insert($auctionproduct)
 	{
-		// Insert a normal product and get back the auto incremented key.
-		$id = $this->insertProduct($name, $description, $addedBy, $colorCode);
-	
-		$query = "INSERT INTO AuctionProduct (id)
-				VALUES (?)";
-		
+		 //Insert a normal product and get back the auto incremented key.
+		$id = $this->insertProduct($auctionproduct);
+
+		$query = "INSERT INTO AuctionProduct (id) VALUES (?)";
+        $parameters = array($id);
+        $paramTypes = "i";
+
 		// Insert the auction product.
-        $this->database->insert($query, "i", array($id));
-	
-		$auctionProduct = new AuctionProduct();
-		$auctionProduct->id = $id;
-		$auctionProduct->name = $name;
-		$auctionProduct->description = $description;
-		$auctionProduct->addedBy = $addedBy;
-		$auctionProduct->colorCode = $colorCode;
-		$auctionProduct->imagePath = $auctionProduct->getMainImagePath();
-		$auctionProduct->imagePaths = $auctionProduct->getImagePaths();
-	
+        $this->database->insert($query, $paramTypes, $parameters);
+
+		$newAuctionProduct = new AuctionProduct();
+		$newAuctionProduct->id = $id;
+		$newAuctionProduct->name = $auctionproduct->name;
+		$newAuctionProduct->description = $auctionproduct->description;
+		$newAuctionProduct->addedBy = $auctionproduct->addedBy;
+		$newAuctionProduct->colorCode = $auctionproduct->colorCode;
+		$newAuctionProduct->imagePath = $newAuctionProduct->getMainImagePath();
+		$newAuctionProduct->imagePaths = $newAuctionProduct->getImagePaths();
+
 		// Return an object of the newly inserted auction product.
-		return $auctionProduct;
+		return $newAuctionProduct;
 	}
 	
 	public function selectAll()
@@ -148,9 +149,9 @@ class AuctionProductRepository extends ProductRepository
 		return $auctionProducts;
 	}
 	
-	public function update($product)
+	public function update($auctionproduct)
 	{
-		$this->updateProduct($product);
+		$this->updateProduct($auctionproduct);
 	}
 	
 	public function deleteById($id)
@@ -159,7 +160,7 @@ class AuctionProductRepository extends ProductRepository
 		$query1 = "DELETE FROM AuctionProductList WHERE AuctionProduct_id = ?";
         $this->database->update($query1, "i", array($id));
 	
-		// Delete from auctionproduct table.
+		// Delete from auctionproductview table.
 		$query2 = "DELETE FROM AuctionProduct WHERE id = ?";
         $this->database->update($query2, "i", array($id));
 	

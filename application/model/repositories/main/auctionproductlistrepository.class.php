@@ -9,11 +9,12 @@ class AuctionProductListRepository
         $this->database = $database;
     }
 
-    public function addToAuction($auctionProductList)
+    public function addToAuction($auctionId, $auctionproductId)
     {
         $query = "INSERT INTO AuctionProductList (Auction_id, AuctionProduct_id) VALUES (?, ?)";
+        $parameters = array($auctionId, $auctionproductId);
+        $paramTypes = "ii";
 
-        // Execute query.
-        $this->database->insert($query, "ii", array($auctionProductList->auctionId, $this->productId));
+        $this->database->insert($query, $paramTypes, $parameters);
     }
 }

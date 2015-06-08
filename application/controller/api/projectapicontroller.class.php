@@ -9,35 +9,60 @@ class ProjectAPIController extends APIController
         Parent::__construct("projectapi");
     }
 
-    public function editproject_POST(){
+    public function update_POST($project){
 
-        // Check if everything needed is here.
-        if (isset($_POST["id"]) && isset($_POST["title"]) && isset($_POST["description"]))
+        if (isset($project->id)&&(isset($project->body)))
         {
-            $project = new Project();
-            $project->id = $_POST["id"];
-            $project->title = $_POST["title"];
-            $project->body = $_POST["description"];
             $this->projectRepository->update($project);
-
-            $this->respondWithJSON(0);
+            $this->respondOK();
         }
-
-        $this->respondWithJSON(1);
-
+        throw new Exception("Resource not found.", 404);
     }
 
-    public function deleteproject_POST(){
+    public function delete_POST($project){
 
-        if(isset($_POST["id"]))
+        if(isset($project->id))
         {
-            $this->projectRepository->deleteById($_POST["id"]);
-            $this->respondWithJSON(0);
+            $this->projectRepository->deleteById($project->id);
+
+            // Delete the project images recursively.
+            $dir = Project::IMAGES_DIRECTORY . "/" . $project->id;
+            if (is_dir($dir))
+            {
+                $objects = scandir($dir);
+                foreach ($objects as $object)
+                {
+                    if ($object != "." && $object != "..")
+                    {
+                        if (filetype($dir . "/" . $object) == "dir")
+                            rrmdir($dir . "/" . $object);
+                        else
+                            unlink($dir . "/" . $object);
+                    }
+                }
+                reset($objects);
+                rmdir($dir);
+            }
+
+            $this->respondOK();
         }
-        $this->respondWithJSON(1);
+        throw new Exception("Resource not found.", 404);
     }
 
-    public function addprojectimage_POST(){
+    public function add_POST($project)
+    {
+        if((isset($project->title))&&(isset($project->body)))
+        {
+            $this->projectRepository->insert($project);
+            $this->respondOK();
+        }
+        else
+        {
+            throw new Exception("Not all required data was provided", 400);
+        }
+    }
+
+    public function addimage_POST(){
 
         if (isset($_POST["projectId"]) && isset($_FILES["file"]))
         {
@@ -48,26 +73,20 @@ class ProjectAPIController extends APIController
             $imageTargetFilePath = Project::IMAGES_DIRECTORY . "/" . $_POST["projectId"] . "/" . $i . ".jpg";
             $manipulator->save($imageTargetFilePath, IMAGETYPE_JPEG);
 
-            header("content-Type: application/json");
-            $this->respondWithJSON(0);
+            $this->respondOK();
         }
-        // TODO: Error or some shit
-        $this->respondWithJSON(1);
+        throw new Exception("Resource not found.", 404);
     }
 
-    public function deleteprojectimage_POST(){
+    public function deleteimage_POST(){
 
         if (isset($_POST["projectId"]) && isset($_POST["imageName"]))
         {
             unlink(Project::IMAGES_DIRECTORY . "/" . $_POST["projectId"] . "/" . $_POST["imageName"]);
 
-            header("content-Type: application/json");
-            $this->respondWithJSON(0);
+            $this->respondOK();
         }
-        // TODO: Error or some shit
-        $this->respondWithJSON(1);
+        throw new Exception("Resource not found.", 404);
     }
-
 }
-
 ?>

@@ -2,7 +2,7 @@
 
 class CompanyInformation
 {
-	public $id; // seems unnecessary, but it's in the db...
+	public $id;
 	public $phone;
 	public $email;
 	public $address;

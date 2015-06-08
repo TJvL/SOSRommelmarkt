@@ -2,7 +2,7 @@
 
 class Partner
 {
-	// The directory the images for the partners are placed.
+	// The directory the images for the partneroverview are placed.
 	const IMAGES_DIRECTORY = "img/partners";
 	
 	public $id;

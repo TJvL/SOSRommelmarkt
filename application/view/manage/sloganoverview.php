@@ -31,5 +31,10 @@
                 </table>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12 padding-lg">
+                <p id="status" class="padding-lg"></p>
+            </div>
+        </div>
     </div>
 </div>

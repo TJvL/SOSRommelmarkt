@@ -23,21 +23,21 @@ class ModuleRepository
 		return $module;
 	}
 
-	public function insert($heading, $content, $category, $reference, $reference_label)
+	public function insert($module)
 	{
 		$query = "INSERT INTO Modules (heading, content, category, reference, reference_label)
 					VALUES(?, ?, ?, ?, ?)";
 		
-		return $this->database->insert($query, "sssss", array($heading, $content, $category, $reference, $reference_label));
+		return $this->database->insert($query, "sssss", array($module->heading, $module->content, $module->category, $module->reference, $module->reference_label));
 	}
 
 	public function update($module)
 	{
 		$query = "UPDATE Modules
-					SET heading = ?, content = ?, position = ?, category = ?, reference = ?, reference_label = ?
+					SET heading = ?, content = ?, category = ?, reference = ?, reference_label = ?
 					WHERE id = ?";
 
-        $this->database->update($query, "ssssssi", array($module->heading, $module->content, $module->position, $module->category, $module->reference, $module->reference_label, $module->id));
+        $this->database->update($query, "sssssi", array($module->heading, $module->content, $module->category, $module->reference, $module->reference_label, $module->id));
 	}
 
     public function selectById($id)

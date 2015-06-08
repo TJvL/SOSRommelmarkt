@@ -20,21 +20,17 @@ class PartnerRepository
 		return $partner;
 	}
 	
-	public function insert($name, $website, $category)
+	public function insert($partner)
 	{
 		$query = "INSERT INTO Partners (name, website, category)
 			VALUES (?, ?, ?)";
 		
 		// Check if the website is valid (with http(s):// prefix). Add it if not.
-		if (strpos($website, "http://") === false && strpos($website, "https://") === false)
-			$website = "http://" . $website;
-		
-		$partner = new Partner();
-		$partner->id = $this->database->insert($query, "sss", array($name, $website, $category));
-		$partner->name = $name;
-		$partner->website = $website;
-        $partner->category = $category;
-		
+		if (strpos($partner->website, "http://") === false && strpos($partner->website, "https://") === false)
+			$partner->website = "http://" . $partner->website;
+
+		$partner->id = $this->database->insert($query, "sss", array($partner->name, $partner->website, $partner->category));
+
 		return $partner;
 	}
 	

@@ -10,25 +10,23 @@ abstract class ProductRepository
     }
 
 
-    protected function insertProduct($name, $description, $addedBy, $colorCode)
+    protected function insertProduct($product)
     {
         $query = "INSERT INTO Product (name, description, addedBy, colorCode)
 			VALUES (?, ?, ?, ?)";
 
-        return $this->database->insert($query, "ssss", array($name, $description, $addedBy, $colorCode));
-    }
-    
-    protected function updateProductById($id, $name, $description, $colorCode)
-    {
-    	$query = "UPDATE Product
-        	SET name = ?, description = ?, colorCode = ? WHERE id = ?";
+        $parameters = array($product->name, $product->description, $product->addedBy, $product->colorCode);
+        $paramTypes = "ssss";
 
-        $this->database->update($query, "sssi", array($name, $description, $colorCode, $id));
+        return $this->database->insert($query, $paramTypes, $parameters);
     }
 
     protected function updateProduct($product)
     {
-        $this->updateById($product->id, $product->name, $product->description, $product->colorCode);
+        $query = "UPDATE Product
+        	SET name = ?, description = ?, colorCode = ? WHERE id = ?";
+
+        $this->database->update($query, "sssi", array($product->name, $product->description, $product->colorCode, $product->id));
     }
 
 	protected function deleteProductById($id)

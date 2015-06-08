@@ -45,7 +45,7 @@ class PreviewController extends Controller
             if($modules[$i]->id == $newMod->id)
             {
                 $idToRemove = $i;
-                break; //we can break, because there's only one module to be added.
+                break; //we can break, because there's only one moduleview to be added.
             }
         }
         if($idToRemove >= 0)
