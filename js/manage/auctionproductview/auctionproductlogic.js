@@ -1,3 +1,36 @@
+//Initialize ideal forms
+$('#updateForm').idealforms({
+
+    // Do not select the first input field and show error message.
+    silentLoad: true,
+
+    //Add rules for the input fields
+    rules: {
+        'name': 'required name',
+        'description': 'required minmax:20:500',
+        'colorCode': 'select:default'
+    },
+
+
+    //When submit is pressed catch the event.
+    onSubmit: function(invalid,event) {
+
+        // if the form is invalid (everything is not filled in correctly) then show an error and prevent submit.
+        if (invalid > 0) {
+            event.preventDefault();
+            $('#invalid').show().text(invalid +' ongeldige velden!');
+            // else submit the form in a POST request
+        } else {
+            $('#invalid').hide();
+        }
+    }
+});
+
+//Checks input fields and show message on bottom after every user input.
+$('#updateForm').find('input, select, textarea').on('change keyup', function() {
+    $('#invalid').hide();
+});
+
 $(window).load(function() {
 
     boxes = $('.thumbnail');
