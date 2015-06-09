@@ -33,16 +33,12 @@ switch ($model->category)
             <form class="idealforms" form="moduleForm" id="moduleForm" action="javascript:handleUpdateModule()">
                 <!-- some hidden values -->
                 <input type="hidden" id="module-category" name="category" value="<?php echo $model->category;?>">
+                <input type="hidden" form="moduleForm" id="module-id" value="<?php echo $model->id ?>">
 
                 <?php if ($model->category != "home") { ?>
                     <input type="hidden" form="moduleForm" id="module-reference" name="reference" value="<?php echo $model->reference; ?>">
                     <input type="hidden" form="moduleForm" id="module-reference-label" name="reference_label" value="<?php echo $model->reference_label; ?>">
                 <?php } ?>
-                <div class="field">
-                    <label class="main" for="module-id">ID</label>
-                    <input type="number" form="moduleForm" id="module-id" value="<?php echo $model->id ?>" disabled>
-                    <span class="error"></span>
-                </div>
                 <div class="field">
                     <label class="main" for="module-heading">Titel</label>
                     <input type="text" form="moduleForm" id="module-heading" name="heading" placeholder="Plaats hier uw titel..." value="<?php echo $model->heading; ?>">
@@ -50,7 +46,7 @@ switch ($model->category)
                 </div>
                 <div class="field">
                     <label class="main" for="module-content">Tekst</label>
-                    <textarea type="text" form="moduleForm" id="module-content" name="content" placeholder="Schrijf hier uw paragraaf..." cols="10" rows="5" class="nonresizeable"><?php echo $model->content; ?></textarea>
+                    <textarea type="text" form="moduleForm" id="module-content" name="content" placeholder="Schrijf hier uw paragraaf..." cols="10" rows="5"><?php echo $model->content; ?></textarea>
                     <span class="error"></span>
                 </div>
                 <?php if ($model->category == "home") { ?>

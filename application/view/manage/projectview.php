@@ -17,12 +17,7 @@
             </div>
 
             <form class="idealforms" id="projectform" action="javascript:UpdateProject()">
-
-                <div class="field">
-                    <label class="main" for="id">ID</label>
-                    <input form="projectform" id="id" name="id" type="number" value="<?php echo $model->id ?>" disabled>
-                    <span class="error"></span>
-                </div>
+                <input form="projectform" id="id" name="id" type="hidden" value="<?php echo $model->id ?>">
 
                 <div class="field">
                     <label class="main" for="name">Titel</label>

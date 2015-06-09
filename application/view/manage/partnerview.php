@@ -19,18 +19,17 @@
                 <input form="partnerform" id="id" type="hidden" value="<?php echo $model->id ?>">
 				<div class="field">
 					<label class="main" for="name">Naam</label>
-					<input form="partnerform" id="name" type="text" placeholder="Naam van de partner" value="<?php echo $model->name ?>" required>
+					<input form="partnerform" name="name" id="name" type="text" placeholder="Naam van de partner" value="<?php echo $model->name ?>">
                     <span class="error"></span>
 				</div>
 				<div class="field">
                     <label class="main" for="website">Website</label>
-                    <input form="partnerform" id="website" type="text" placeholder="Website van partner" value="<?php echo $model->website ?>" required>
+                    <input form="partnerform" name="website" id="website" type="text" placeholder="Website van partner" value="<?php echo $model->website ?>">
                     <span class="error"></span>
                 </div>
                 <div class="field">
                     <label class="main" for="category">Categorie</label>
-                    <select form="partnerform" name="options" id="category" required>
-                        <option value="default" disabled <?php if ($model->category != ("SOS" || "Dienstverleners" || "Projecten")) echo "selected"; ?>>Kies een partner categorie</option>
+                    <select form="partnerform" name="category" id="category">
                         <option value="SOS" <?php if ($model->category === "SOS") echo "selected"; ?>>SOS</option>
                         <option value="Dienstverleners" <?php if ($model->category === "Dienstverleners") echo "selected"; ?>>Dienstverleners</option>
                         <option value="Projecten" <?php if ($model->category === "Projecten") echo "selected"; ?>>Projecten</option>

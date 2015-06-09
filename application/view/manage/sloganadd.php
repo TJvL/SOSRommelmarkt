@@ -13,7 +13,7 @@
             <form action="javascript:addSlogan()" autocomplete="off" class="idealforms" id="sloganForm">
                 <div class="field">
                     <label class="main">Slogan:</label>
-                    <input form="sloganForm" id="slogan" name="slogan" type="text" placeholder="Plaats hier uw slogan...">
+                    <textarea form="sloganForm" id="slogan" name="slogan" type="text" placeholder="Plaats hier uw slogan..."></textarea>
                     <span class="error"></span>
                 </div>
                 <div class="field buttons">

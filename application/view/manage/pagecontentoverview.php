@@ -60,7 +60,7 @@
                     </div>
 				</div>
 				
-				<div role="tabpanel" class="tab-pane fade margin-ver-lg" id="visitinghours">
+				<div role="tabpanel" class="tab-pane margin-ver-lg" id="visitinghours">
 					<form class="idealforms" form="visitinghoursform" id="visitinghoursform" action="javascript:UpdateVisitinghours()">
                         <input type="hidden" form="visitinghoursform" id="visitinghoursId" name="visitinghoursId" value="<?php echo $model->visitingHours->id; ?>" />
 
@@ -103,7 +103,7 @@
                             <label class="main">&nbsp;</label>
                             <button form="visitinghoursform" type="submit" class="submit">Opslaan</button>
                         </div>
-                        <span id="invalid"></span>
+                        <span id="invalidvisitinghours"></span>
 					</form>
                     <div class="row">
                         <div class="col-md-12 padding-lg">

@@ -6,7 +6,7 @@ $('#updateForm').idealforms({
 
     //Add rules for the input fields
     rules: {
-        'name': 'required name',
+        'name': 'required name max:64',
         'description': 'required minmax:20:500',
         'colorCode': 'select:default'
     },

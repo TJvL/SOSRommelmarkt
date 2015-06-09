@@ -12,11 +12,10 @@ $('#moduleForm').idealforms({
 
     //Add rules for the input fields
     rules: {
-        'reference': 'required'
-        //'description': 'required minmax:20:500',
-        //'price': 'required price',
-        //'colorCode': 'select:default',
-        //'picture': 'extension:jpg'
+        'heading': 'required name',
+        'content': 'required',
+        'reference': 'required max:45',
+        'reference_label': 'required max:45'
     },
 
     //When submit is pressed catch the event.
@@ -36,15 +35,6 @@ $('#moduleForm').idealforms({
 //Checks input fields and show message on bottom after every user input.
 $('#product_add').find('input, select, textarea').on('change keyup', function() {
     $('#invalid').hide();
-});
-
-$('.prev').click(function(){
-    $('.prev').show();
-    $('form.idealforms').idealforms('prevStep');
-});
-$('.next').click(function(){
-    $('.next').show();
-    $('form.idealforms').idealforms('nextStep');
 });
 
 function addModule()

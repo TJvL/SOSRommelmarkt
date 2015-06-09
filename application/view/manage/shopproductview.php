@@ -14,29 +14,21 @@
 				<h1>Productinformatie</h1>
 			</div>
 			<form class="idealforms" form="shopproductform" id="shopproductform" action="javascript:UpdateShopProduct()">
-				<div class="field">
-					<label class="main" for="id">ID</label>
-					<input form="shopproductform" id="id" type="number" value="<?php echo $model->shopProduct->id ?>" disabled>
-					<span class="error"></span>
-				</div>
+                <input form="shopproductform" id="id" type="hidden" value="<?php echo $model->shopProduct->id ?>">
+
 				<div class="field">
 					<label class="main" for="name">Naam</label>
-					<input form="shopproductform" id="name" type="text" placeholder="Naam van het product" value="<?php echo $model->shopProduct->name ?>" required>
+					<input form="shopproductform" name="name" id="name" type="text" placeholder="Naam van het product" value="<?php echo $model->shopProduct->name ?>">
 					<span class="error"></span>
 				</div>
 				<div class="field">
 					<label class="main" for="description">Omschrijving</label>
-					<textarea form="shopproductform" id="description" style="resize: none" rows="3" placeholder="Omschrijving van het product" required><?php echo $model->shopProduct->description ?></textarea>
-					<span class="error"></span>
-				</div>
-				<div class="field">
-					<label class="main" for="addedBy">Toegevoegd door</label>
-					<input form="shopproductform" id="addedBy" type="text" value="<?php echo $model->shopProduct->addedBy ?>" disabled>
+					<textarea form="shopproductform" name="description" id="description" class="nonresizeable" rows="3" placeholder="Omschrijving van het product"><?php echo $model->shopProduct->description ?></textarea>
 					<span class="error"></span>
 				</div>
 				<div class="field">
 					<label class="main" for="colorCode">Kleurcode</label>
-                    <select id="colorCode" form="shopproductform">
+                    <select name="colorCode" id="colorCode" form="shopproductform">
                         <?php
                         foreach ($model->colorCodes as $colorCode)
                         {
@@ -59,7 +51,7 @@
 				</div>
 				<div class="field">
 					<label class="main" for="price">Prijs</label>
-                    <input form="shopproductform" id="price" type="number" step="any" value="<?php echo $model->shopProduct->price ?>" required>
+                    <input form="shopproductform" name="price" id="price" type="number" step="any" value="<?php echo $model->shopProduct->price ?>">
 					<span class="error"></span>
 				</div>
 				<div class="field">
@@ -83,6 +75,13 @@
                     }
                     ?>
 				</div>
+
+                <div class="field">
+                    <label class="main" for="addedBy">Toegevoegd door</label>
+                    <input form="shopproductform" id="addedBy" type="text" value="<?php echo $model->shopProduct->addedBy ?>" disabled>
+                    <span class="error"></span>
+                </div>
+
                 <div class="field buttons">
                     <label class="main">&nbsp;</label>
                     <button form="shopproductform" type="submit" class="submit">Opslaan</button>

@@ -1,3 +1,33 @@
+$('#createPartnerForm').idealforms({
+
+    silentLoad: true,
+
+    rules: {
+        'name': 'required name max:100',
+        'website': 'required url',
+        'category': 'select:default'
+    },
+
+
+    //When submit is pressed catch the event.
+    onSubmit: function(invalid,event) {
+
+        // if the form is invalid (everything is not filled in correctly) then show an error and prevent submit.
+        if (invalid > 0) {
+            event.preventDefault();
+            $('#invalid').show().text(invalid +' ongeldige velden!');
+            // else submit the form in a POST request
+        } else {
+            $('#invalid').hide();
+        }
+    }
+
+});
+
+$('#createPartnerForm').find('input, select, textarea').on('change keyup', function() {
+    $('#invalid').hide();
+});
+
 function ResetStatus()
 {
 	$("#status").text("");

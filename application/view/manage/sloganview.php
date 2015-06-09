@@ -16,7 +16,7 @@
             <form action="javascript:updateSlogan()" autocomplete="off" class="idealforms" id="sloganForm">
                 <div class="field">
                     <label class="main">Slogan:</label>
-                    <input form="sloganForm" id="slogan" name="slogan" type="text" value="<?php echo $model->slogan; ?>">
+                    <textarea form="sloganForm" id="slogan" name="slogan" type="text"><?php echo $model->slogan; ?></textarea>
                     <span class="error"></span>
                 </div>
                 <div class="field buttons">

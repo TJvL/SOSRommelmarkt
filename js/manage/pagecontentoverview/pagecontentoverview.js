@@ -1,3 +1,69 @@
+$('#companyinformationform').idealforms({
+
+    silentLoad: true,
+
+    rules: {
+        'address': 'required',
+        'city': 'required',
+        'postalcode': 'required',
+        'phone': 'required',
+        'email': 'required email'
+    },
+
+
+    //When submit is pressed catch the event.
+    onSubmit: function(invalid,event) {
+
+        // if the form is invalid (everything is not filled in correctly) then show an error and prevent submit.
+        if (invalid > 0) {
+            event.preventDefault();
+            $('#invalid').show().text(invalid +' ongeldige velden!');
+            // else submit the form in a POST request
+        } else {
+            $('#invalid').hide();
+        }
+    }
+
+});
+
+$('#companyinformationform').find('input, select, textarea').on('change keyup', function() {
+    $('#invalid').hide();
+});
+
+$('#visitinghoursform').idealforms({
+
+    silentLoad: true,
+
+    rules: {
+        'monday': 'required',
+        'tuesday': 'required',
+        'wednesday': 'required',
+        'thursday': 'required',
+        'friday': 'required',
+        'saturday': 'required',
+        'sunday': 'required'
+    },
+
+
+    //When submit is pressed catch the event.
+    onSubmit: function(invalid,event) {
+
+        // if the form is invalid (everything is not filled in correctly) then show an error and prevent submit.
+        if (invalid > 0) {
+            event.preventDefault();
+            $('#invalidvisitinghours').show().text(invalid +' ongeldige velden!');
+            // else submit the form in a POST request
+        } else {
+            $('#invalidvisitinghours').hide();
+        }
+    }
+
+});
+
+$('#visitinghoursform').find('input, select, textarea').on('change keyup', function() {
+    $('#invalidvisitinghours').hide();
+});
+
 $(document).ready(function() {
     if(localStorage.getItem("successMessage")!=null){
         if(localStorage.getItem("successMessage")== "Adresgegevens succesvol gewijzigd."){
@@ -23,12 +89,6 @@ $(document).ready(function() {
         localStorage.clear();
     }
 
-	$('#sloganTable').DataTable({
-		"columnDefs": [{
-			"width": "7em", "targets": 1
-		}],
-		"ordering": false
-	});
 	$('#homeTable').DataTable({
 		"columnDefs": [{
 			"width": "7em", "targets": 1
@@ -51,7 +111,10 @@ $(document).ready(function() {
     // Change hash for page-reload
     $('.nav-tabs a').on('shown.bs.tab', function (e) {
         window.location.hash = e.target.hash.replace("#", "#" + prefix);
+        $('.idealforms').resize();
     });
+
+
 
 });
 
@@ -135,3 +198,7 @@ function UpdateVisitinghours()
             });
     }
 }
+
+$(window).load(function() {
+    Resize();
+});

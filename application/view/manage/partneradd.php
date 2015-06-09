@@ -13,18 +13,17 @@
             <form class="idealforms" id="createPartnerForm" enctype="multipart/form-data" action="javascript:CreatePartner()">
                 <div class="field">
                     <label class="main" for="name">Naam</label>
-                    <input form="createPartnerForm" id="name" type="text" placeholder="Naam van de partner">
+                    <input form="createPartnerForm" name="name" id="name" type="text" placeholder="Naam van de partner">
                     <span class="error"></span>
                 </div>
                 <div class="field">
                     <label class="main" for="website">Website</label>
-                    <input form="createPartnerForm" id="website" type="text" placeholder="Website van de partner">
+                    <input form="createPartnerForm" name="website" id="website" type="text" placeholder="Website van de partner">
                     <span class="error"></span>
                 </div>
                 <div class="field">
                     <label class="main" for="categorie">Categorie</label>
                     <select form="createPartnerForm" name="category" id="category">
-                        <option value="disabled" disabled selected>Kies een partner categorie</option>
                         <option value="SOS">SOS</option>
                         <option value="Dienstverleners">Dienstverleners</option>
                         <option value="Projecten">Projecten</option>
