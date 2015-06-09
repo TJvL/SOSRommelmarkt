@@ -14,7 +14,7 @@ IncludeLocator::locateIncludes("js", $controller, $action);
 
 </head>
 <body>
-    <nav class= "navbar navbar-default navbar-static-top header_fixed">
+    <nav class= "navbar navbar-default navbar-static-top header_fixed" id="staticHeader">
         <div class="container">
             <div id="navbar" class=" navbar">
                 <ul class = "nav navbar-nav ">
