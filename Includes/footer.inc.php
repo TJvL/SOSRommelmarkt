@@ -9,7 +9,7 @@
                  {
                   ?>
                    <div class="row">
-            <div class="col-xs-4 col-md-4">
+            <div class=" col-md-4">
                 <h2>SOS</h2>
                 <?php
                     for ($i = 0; $i < $footerVM->partners->size(); $i++) {
@@ -20,7 +20,7 @@
                     }
                 ?>
             </div>
-            <div class="col-xs-4 col-md-4">
+            <div class=" col-md-4">
                 <h2>Dienstverleners</h2>
                 <?php
                 for ($i = 0; $i < $footerVM->partners->size(); $i++) {
@@ -31,7 +31,7 @@
                 }
                 ?>
             </div>
-            <div class="col-xs-4 col-md-4">
+            <div class=" col-md-4">
                 <h2>Projecten</h2>
                 <?php
                 for ($i = 0; $i < $footerVM->partners->size(); $i++) {
