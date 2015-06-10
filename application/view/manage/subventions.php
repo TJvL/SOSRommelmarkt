@@ -151,7 +151,7 @@
 
                                 <form class="idealforms" id="deletesubventionForm" type="hidden" action="javascript:void(0)">
                                     <div class="field">
-                                        <input name="subvention_id" value="<?php echo $m->id ?>">
+                                        <input name="id" type="hidden" value="<?php echo $m->id ?>">
                                         <button class="btn" type="submit">Verwijder</button>
 
                                     </div>
