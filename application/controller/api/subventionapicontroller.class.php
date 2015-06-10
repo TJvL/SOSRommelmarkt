@@ -9,6 +9,19 @@ class SubventionAPIController extends APIController
 		parent::__construct("subventionapi");
 	}
 
+
+    public function deletesubventionrequest_POST()
+    {
+        if (isset($_POST["id"])){
+            $this->subventionRequestRepository->deleteById($_POST["id"]);
+            $this->respondWithJSON(0);
+
+        }
+        else{
+            $this->respondWithJSON(1);
+        }
+    }
+
 	public function createsubventionrequest_POST()
 	{
 		// Check if all the needed info is here.

@@ -148,9 +148,11 @@
                         <div class="row">
                            <div class="col-md-10"></div>
                             <div class="col-md-2">
-                                <button id="<?php echo $m->id ?>" onClick="delete_sub(this.id)" type="button" title="Verwijder" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-trash  col-sm-1" aria-hidden="true"></span>
-                                </button>
+<!--Dit is hoe ik het eerst deed, mbv de javscript in subvention_overview-->
+<!--                                <button id="--><?php //echo $m->id ?><!--" onClick="delete_sub(this.id)" type="button" title="Verwijder" class="btn btn-default">-->
+<!--                                    <span class="glyphicon glyphicon-trash  col-sm-1" aria-hidden="true"></span>-->
+<!--                                </button>-->
+
                             </div>
                         </div>
                     </div>

@@ -344,17 +344,17 @@ class ManageController extends Controller
         $this->render("subventions", $subventionList);
     }
 
-    /**
-     *{{Permission=Formulier;}}
-     */
-    public function subventions_POST()
-    {
-        $this->subventionRequestRepository->deleteById($_POST["id"]);
-        
-        $subventionList = new ArrayList("SubventionRequest");
-        $subventionList->addAll($this->subventionRequestRepository->fetchAllSubventionRequests());
-        $this->render("subventions", $subventionList);
-    }
+//    /**
+//     *{{Permission=Formulier;}}
+//     */
+//    public function subventions_POST()
+//    {
+//        $this->subventionRequestRepository->deleteById($_POST["id"]);
+//
+//        $subventionList = new ArrayList("SubventionRequest");
+//        $subventionList->addAll($this->subventionRequestRepository->fetchAllSubventionRequests());
+//        $this->render("subventions", $subventionList);
+//    }
 
     /**
      *{{Permission=Onderdeel;}}
