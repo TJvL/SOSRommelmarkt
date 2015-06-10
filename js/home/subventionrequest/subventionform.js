@@ -10,9 +10,9 @@ $('#subventionForm').idealforms({
         'postalcode': 'required',
         'city': 'required',
         'phonenumber1': 'required',
-        'phonenumber2': 'required',
-        'fax': 'required',
-        'email': 'required',
+        'phonenumber2': '',
+        'fax': '',
+        'email': 'required email',
         'elucidation': 'required minmax:50:200',
         'activities': 'required minmax:50:200',
         'results': 'required minmax:50:200',
@@ -32,24 +32,6 @@ $('#subventionForm').idealforms({
         else
         {
             $('#invalid').hide();
-            
-            var data = new FormData($("#subventionForm")[0]);
-            
-            jQuery.ajax(
-            {
-                url: getBaseURL() + "subventionapi/createsubventionrequest",
-                data: data,
-                contentType: false,
-                processData: false,
-                type: "POST",
-                success: function(data)
-                {
-                	if (data === 0)
-                        document.location.href = getBaseURL() + 'home/subventionsuccess';
-                	else
-                		alert("Er is iets verkeerd gegaan.")
-                }
-            });
         }
     }
 });
@@ -67,6 +49,36 @@ $('.next').click(function(){
     $('.next').show();
     $('form.idealforms').idealforms('nextStep');
 });
+
+//Function to be called when form is submitted.
+function addSubvention()
+{
+    if(confirm("Weet u zeker dat u wilt opslaan?"))
+    {
+        // Reset status message.
+        $("#status").text("");
+        $("#status").removeClass("alert-success alert-danger");
+
+        var formData = new FormData($("#subventionForm")[0]);
+
+        $.ajax(
+            {
+                url: getBaseURL() + "subventionapi/add",
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                async: true,
+                success: function () {
+                    document.location.href = getBaseURL() + 'home/subventionsuccesspage';
+                },
+                error: function (status) {
+                    $("#status").text(status.status + ": " + translateHttpError(status.statusText));
+                    $("#status").addClass("alert-danger");
+                }
+            });
+    }
+}
 
 $("#addFileFieldButton").click(function()
 {

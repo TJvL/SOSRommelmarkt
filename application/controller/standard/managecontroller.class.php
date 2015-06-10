@@ -328,8 +328,6 @@ class ManageController extends Controller
     }
 
 
-    //------------TODO: subventions functionality ------------------
-
     //</editor-fold>
 
     //<editor-fold desc="Subvention Manage">
@@ -337,12 +335,29 @@ class ManageController extends Controller
     /**
      *{{Permission=Formulier;}}
      */
-    public function subventions_GET()
+    public function subventionoverview_GET()
     {
         $subventionList = new ArrayList("SubventionRequest");
-        $subventionList->addAll($this->subventionRequestRepository->fetchAllSubventionRequests());
-        $this->render("subventions", $subventionList);
+        $subventionList->addAll($this->subventionRequestRepository->selectAll());
+        $this->render("subventionoverview", $subventionList);
     }
+
+    public function subventionview_GET($id)
+    {
+        $subventionVM = new SubventionViewModel();
+        $subventionVM->subventionRequest = $this->subventionRequestRepository->selectById($id);
+        $subventionVM->subventionStatuses = $this->subventionRequestRepository->getAllStatuses();
+
+        if(isset($subventionVM->subventionRequest))
+        {
+            $this->render("subventionview", $subventionVM);
+        }
+        else
+        {
+            throw new Exception("The requested information was not found.", 404);
+        }
+    }
+
 
 
     /**

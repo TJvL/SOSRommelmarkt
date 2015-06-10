@@ -5,25 +5,18 @@
 
         <div class="row">
             <div class="col-md-1">
-                <a href="/SOSRommelmarkt/manage/index" class="btn btn-default">Terug</a>
+                <a href="<?php echo ROOT_PATH . '/manage/index'?>" class="btn btn-default">Terug</a>
             </div>
         </div>
-
-
-<!--            title-->
-
-                <h1>Subsidieaanvragen</h1>
-
-<!--            filter buttons-->
+        <div class="row margin-hor-sm">
+            <h1>Subsidieaanvragen</h1>
+            <hr>
+        </div>
 
             <button class="btn btn-red filterButton" id="alles">Alles</button>
             <button class="btn btn-red filterButton" id="nieuw">Nieuw</button>
             <button class="btn btn-red filterButton" id="geaccepteerd">Geaccepteerd</button>
             <button class="btn btn-red filterButton" id="afgewezen">Afgewezen</button>
-
-
-
-
 
         <div class="list-group collapse-group margin-ver-lg">
             <?php
@@ -149,11 +142,10 @@
                            <div class="col-md-10"></div>
                             <div class="col-md-2">
 
-                                <form class="idealforms" id="deletesubventionForm" type="hidden" action="javascript:void(0)">
+                                <form class="idealforms" id="deletesubventionForm" action="javascript:deleteSubvention()">
                                     <div class="field">
                                         <input name="id" type="hidden" value="<?php echo $m->id ?>">
                                         <button class="btn" type="submit">Verwijder</button>
-
                                     </div>
                                 </form>
 
