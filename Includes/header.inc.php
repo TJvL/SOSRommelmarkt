@@ -14,7 +14,7 @@ IncludeLocator::locateIncludes("js", $controller, $action);
 
 </head>
 <body>
-    <nav class= "navbar navbar-default navbar-static-top header_fixed" id="staticHeader">
+    <nav class= "navbar navbar-default navbar-static-top header_fixed" id="desktop_header">
         <div class="container">
             <div id="navbar" class=" navbar">
                 <ul class = "nav navbar-nav ">
@@ -37,6 +37,44 @@ IncludeLocator::locateIncludes("js", $controller, $action);
                     else
                     {
                     ?>
+                        <li><a href="<?php echo ROOT_PATH; ?>/home/contact"><i class="fa fa-envelope"></i> Contaaaact</a></li>
+                        <li><a href="<?php echo ROOT_PATH; ?>/account/login"><i class="fa fa-sign-in"></i> Inloggen</a></li>
+                        <li><a href="<?php echo ROOT_PATH; ?>/account/register"><i class="fa fa-user-plus"></i> Registreren</a></li>
+                    <?php
+                    }
+                    ?>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <nav class= "navbar navbar-default navbar-static-top header_fixed" id="mobile_header">
+        <div class="container">
+            <div id="navbar" class=" navbar">
+                <ul class = "nav navbar-nav ">
+                    <li>
+                        <div class="contact-info">
+                            <span class="icon"><i class="fa fa-phone"></i></span>
+                            <div class="contact-phone"><span><?php echo $headerVM->companyInformation->phone; ?></span></div>
+                            <span class="icon"><i class="fa fa-envelope"></i></span>
+                            <div class="contact-mail"><span><?php echo $headerVM->companyInformation->email ?> </span></div>
+                            <span class="icon"><i class="fa fa-map-marker"></i></span>
+                            <div class="contact-address"><span><?php echo $headerVM->companyInformation->address . ", " . $headerVM->companyInformation->postalcode . " " . $headerVM->companyInformation->city; ?></span></div>
+                        </div>
+                    </li>
+                    <?php
+                    if(isset($headerVM->username))
+                    {
+                        ?>
+                        <li><a href="<?php echo ROOT_PATH; ?>/home/contact"><i class="fa fa-envelope"></i> Contact</a></li>
+                        <li><a href="<?php echo ROOT_PATH; ?>/account/index"><i class="fa fa-male"></i> <?php echo $headerVM->username; ?></a></li>
+                        <li><a href="<?php echo ROOT_PATH; ?>/account/logout"><i class="fa fa-sign-out"></i> Uitloggen</a></li>
+                    <?php
+                    }
+                    else
+                    {
+                        ?>
                         <li><a href="<?php echo ROOT_PATH; ?>/home/contact"><i class="fa fa-envelope"></i> Contact</a></li>
                         <li><a href="<?php echo ROOT_PATH; ?>/account/login"><i class="fa fa-sign-in"></i> Inloggen</a></li>
                         <li><a href="<?php echo ROOT_PATH; ?>/account/register"><i class="fa fa-user-plus"></i> Registreren</a></li>

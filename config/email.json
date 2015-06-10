@@ -1,8 +1,8 @@
 {
   "MAIL_TO":
   {
-    "onError": "ca.boel@student.avans.nl",
-    "onNotify": "ca.boel@student.avans.nl"
+    "onError": "ca.boel@student.avans.nl, bbrouwer5@student.avans.nl",
+    "onNotify": "ca.boel@student.avans.nl, bbrouwer5@student.avans.nl"
   },
   "MAIL_FROM":
   {
