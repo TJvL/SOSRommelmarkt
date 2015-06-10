@@ -8,8 +8,11 @@
                 <a href="<?php echo ROOT_PATH . "/manage/sloganadd"; ?>" class="btn btn-success">Slogan Toevoegen</a>
             </div>
         </div>
-        <div class="row">
+        <div class="row margin-hor-sm">
+            <h1>Slogans</h1>
             <hr>
+        </div>
+        <div class="row">
             <div class="table-responsive padding-sm margin-lg">
                 <table id="sloganTable" class="display">
                     <thead>

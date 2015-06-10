@@ -156,6 +156,11 @@ class AuctionProductRepository extends ProductRepository
 	
 	public function deleteById($id)
 	{
+        $query = "SELECT Auction_id FROM AuctionProductList WHERE AuctionProduct_id = ?";
+        $result = $this->database->select($query, "i", array($id));
+        $row = $result->fetch_assoc();
+        $auctionid = $row['Auction_id'];
+
 		// Delete from auctionproductlist table.
 		$query1 = "DELETE FROM AuctionProductList WHERE AuctionProduct_id = ?";
         $this->database->update($query1, "i", array($id));
@@ -166,5 +171,7 @@ class AuctionProductRepository extends ProductRepository
 	
 		// Delete from product table.
         $this->deleteProductById($id);
+
+        return $auctionid;
 	}
 }

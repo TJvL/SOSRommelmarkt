@@ -35,19 +35,7 @@ class ShopProductRepository extends ProductRepository
 		// Insert the shop product.
         $this->database->insert($query, "idi", array($id, $shopproduct->price, $isReserved));
 
-		$shopProduct = new ShopProduct();
-		$shopProduct->id = $id;
-		$shopProduct->name = $shopproduct->name;
-		$shopProduct->description = $shopproduct->description;
-		$shopProduct->addedBy = $shopproduct->addedBy;
-		$shopProduct->colorCode = $shopproduct->colorCode;
-		$shopProduct->price = $shopproduct->price;
-		$shopProduct->isReserved = $isReserved;
-		$shopProduct->imagePath = $shopProduct->getMainImagePath();
-		$shopProduct->imagePaths = $shopProduct->getImagePaths();
-
-		// Return an object of the inserted product.
-		return $shopProduct;
+        return $id;
 	}
 	
 	public function selectAll()

@@ -68,8 +68,8 @@ function addAuctionProduct()
                 type: 'POST',
                 data: data,
                 async: true,
-                success: function () {
-                    document.location.href = getBaseURL() + 'manage/auctionoverview'; //TODO: redirect naar nieuwe product pagina om fotos toe te voegen + success message
+                success: function (id) {
+                    document.location.href = getBaseURL() + 'manage/auctionproductview/' + id; //TODO: redirect naar nieuwe product pagina om fotos toe te voegen + success message
                 },
                 error: function (status) {
                     $("#status").text(status.status + ": " + translateHttpError(status.statusText));

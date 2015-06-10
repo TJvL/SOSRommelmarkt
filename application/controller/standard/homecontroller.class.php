@@ -1,12 +1,16 @@
 <?php
 class HomeController extends Controller
 {
+    public $auctionRepository;
     public $auctionProductRepository;
     public $sloganRepository;
     public $projectRepository;
     public $visitingHoursRepository;
     public $moduleRepository;
     public $newsRepository;
+    public $shopProductRepository;
+    public $subventionRequestRepository;
+    public $subventionsContentRepository;
 
     public function __construct()
     {
@@ -103,4 +107,52 @@ class HomeController extends Controller
         $newsList->addAll($this->newsRepository->selectCurrent());
         $this->render("articles", $newsList);
     }
+
+    public function shop_GET()
+    {
+        $shopHomeVM = new ShopHomeViewModel();
+
+        $shopProducts = new ArrayList("Product");
+        $shopProducts->addAll($this->shopProductRepository->selectAll());
+
+        $prices = $this->shopProductRepository->getPriceRanges();
+
+        $shopHomeVM->shopProducts = $shopProducts;
+        $shopHomeVM->prices = $prices;
+
+        $this->render("shop", $shopHomeVM);
+    }
+
+    public function auction_GET()
+    {
+        $auctionHomeVM = new AuctionHomeViewModel();
+
+        $auctionProducts = new ArrayList("Product");
+        $auctionProducts->addAll($this->auctionProductRepository->selectByCurrentAuction());
+
+        $auctionDates = $this->auctionRepository->getCurrentAuctionDates();
+
+        $auctionHomeVM->auctionProducts = $auctionProducts;
+        $auctionHomeVM->auctionDates = $auctionDates;
+
+        $this->render("auction", $auctionHomeVM);
+    }
+
+    public function subvention_GET()
+    {
+        $subventionsContent = $this->subventionsContentRepository->selectCurrent();
+
+        $this->render("subvention", $subventionsContent);
+    }
+
+    public function subventionrequest_GET()
+    {
+        $this->render("subventionrequest");
+    }
+
+    public function subventionsuccesspage_GET()
+    {
+        $this->render("subventionsuccesspage");
+    }
+
 }

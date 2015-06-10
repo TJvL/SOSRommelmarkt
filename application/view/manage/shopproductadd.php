@@ -7,6 +7,7 @@
                 </div>
 
             </div>
+            <hr>
             <div class="row margin-hor-sm">
                 <h1>Winkel product toevoegen</h1>
             </div>

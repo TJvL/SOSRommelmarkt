@@ -5,6 +5,7 @@
                 <a href="<?php echo ROOT_PATH . '/manage/auctionoverview'?>" class="btn btn-default">Terug</a>
             </div>
         </div>
+        <hr>
         <div class="row margin-hor-sm">
             <h1>Vitrine periode toevoegen</h1>
         </div>

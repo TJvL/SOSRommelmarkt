@@ -37,7 +37,7 @@ $('#subventionForm').idealforms({
             
             jQuery.ajax(
             {
-                url: "../subventionapi/createsubventionrequest",
+                url: getBaseURL() + "subventionapi/createsubventionrequest",
                 data: data,
                 contentType: false,
                 processData: false,
@@ -45,7 +45,7 @@ $('#subventionForm').idealforms({
                 success: function(data)
                 {
                 	if (data === 0)
-                		window.location.href = "successpage";
+                        document.location.href = getBaseURL() + 'home/subventionsuccess';
                 	else
                 		alert("Er is iets verkeerd gegaan.")
                 }

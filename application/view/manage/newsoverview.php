@@ -8,8 +8,11 @@
                 <a href="<?php echo ROOT_PATH . "/manage/newsadd"; ?>" class="btn btn-success">Nieuws Toevoegen</a>
             </div>
         </div>
-        <div class="row">
+        <div class="row margin-hor-sm">
+            <h1>Nieuws</h1>
             <hr>
+        </div>
+        <div class="row">
             <div class="table-responsive padding-sm margin-lg">
                 <table id="newsTable" class="display">
                     <thead>
