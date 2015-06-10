@@ -89,15 +89,15 @@ $('#deletesubventionForm').idealforms({
 //    }
 
 
-    function delete_sub(clicked_id) {
-        var x;
-        if (confirm("Weet je zeker dat je deze aanvraag wilt verwijderen?") == true) {
-            post('../subventionapi/deletesubventionrequest', {id: clicked_id});
-        } else {
-            x = "You pressed Cancel!";
-        }
-
-    }
+    //function delete_sub(clicked_id) {
+    //    var x;
+    //    if (confirm("Weet je zeker dat je deze aanvraag wilt verwijderen?") == true) {
+    //        post('../subventionapi/deletesubventionrequest', {id: clicked_id});
+    //    } else {
+    //        x = "You pressed Cancel!";
+    //    }
+    //
+    //}
 
 function print_sub(clicked_id)
 {
