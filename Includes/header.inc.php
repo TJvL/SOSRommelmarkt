@@ -37,9 +37,10 @@ IncludeLocator::locateIncludes("js", $controller, $action);
                     else
                     {
                     ?>
-                        <li><a href="<?php echo ROOT_PATH; ?>/home/contact"><i class="fa fa-envelope"></i> Contaaaact</a></li>
+                        <li><a href="<?php echo ROOT_PATH; ?>/home/contact"><i class="fa fa-envelope"></i> Contact</a></li>
                         <li><a href="<?php echo ROOT_PATH; ?>/account/login"><i class="fa fa-sign-in"></i> Inloggen</a></li>
                         <li><a href="<?php echo ROOT_PATH; ?>/account/register"><i class="fa fa-user-plus"></i> Registreren</a></li>
+                        <li class=""><a class="shopping-cart-btn cd-cart-trigger"> <i class="fa fa-shopping-cart fa-fw"></i> (3)</a></li>
                     <?php
                     }
                     ?>
