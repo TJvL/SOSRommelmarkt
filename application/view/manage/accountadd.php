@@ -28,7 +28,7 @@
                 </div>
                 <div class="field">
                     <label class="main">Rol:</label>
-                    <select form="accountForm" name="roleName" id="colorCode">
+                    <select form="accountForm" name="roleName" id="roleName">
                         <option value="default">&ndash; Selecteer een rol &ndash;</option>
                         <?php
                         foreach($model as $role)
