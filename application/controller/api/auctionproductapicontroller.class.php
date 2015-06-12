@@ -26,6 +26,9 @@ class AuctionProductAPIController extends APIController
         }
     }
 
+    /**
+     *{{Permission=Product;}}
+     */
     public function update_POST($auctionproduct)
     {
         if(isset($auctionproduct->id))
@@ -39,7 +42,9 @@ class AuctionProductAPIController extends APIController
         }
     }
 
-
+    /**
+     *{{Permission=Product;}}
+     */
     public function add_POST($auctionproduct)
     {
         if((isset($auctionproduct->name))&&(isset($auctionproduct->description))&&(isset($auctionproduct->colorCode))&&(isset($_POST["auctionId"])))
@@ -57,6 +62,9 @@ class AuctionProductAPIController extends APIController
         }
     }
 
+    /**
+     *{{Permission=Product;}}
+     */
     public function addimage_POST(){
 
         if (isset($_POST["id"]) && isset($_POST["originalWidth"]) && isset($_POST["clientWidth"]) && isset($_POST["xCoord"]) && isset($_POST["width"]) &&
@@ -88,6 +96,9 @@ class AuctionProductAPIController extends APIController
         throw new Exception("Resource not found.", 404);
     }
 
+    /**
+     *{{Permission=Product;}}
+     */
     public function deleteimage_POST(){
 
         if (isset($_POST["id"]) && isset($_POST["imageName"]))

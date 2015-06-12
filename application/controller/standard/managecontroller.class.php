@@ -30,6 +30,11 @@ class ManageController extends Controller
         $this->render("index");
     }
 
+    //<editor-fold desc="Auction Manage">
+
+    /**
+     *{{Permission=Product;}}
+     */
     public function auctionoverview_GET()
     {
         $auctionList = new ArrayList("Auction");
@@ -37,6 +42,9 @@ class ManageController extends Controller
         $this->render("auctionoverview", $auctionList);
     }
 
+    /**
+     *{{Permission=Product;}}
+     */
     public function auctionview_GET($id)
     {
         if (isset($id))
@@ -50,11 +58,17 @@ class ManageController extends Controller
         }
     }
 
+    /**
+     *{{Permission=Product;}}
+     */
     public function auctionadd_GET()
     {
         $this->render("auctionadd");
     }
 
+    /**
+     *{{Permission=Product;}}
+     */
     public function auctionproductoverview_GET($id)
     {
         if (isset($id))
@@ -71,6 +85,9 @@ class ManageController extends Controller
         }
     }
 
+    /**
+     *{{Permission=Product;}}
+     */
     public function auctionproductview_GET($id)
     {
         if (isset($id))
@@ -91,6 +108,9 @@ class ManageController extends Controller
         }
     }
 
+    /**
+     *{{Permission=Product;}}
+     */
     public function auctionproductadd_GET()
     {
         $colorCodes = new ArrayList("ColorCode");
@@ -99,10 +119,12 @@ class ManageController extends Controller
         $this->render("auctionproductadd", $colorCodes);
     }
 
-    //<editor-fold desc="News Manage***">
+    //</editor-fold>
+
+    //<editor-fold desc="News Manage">
 
     /**
-     *{{Permission=Tekst;}}
+     *{{Permission=Nieuws;}}
      */
     public function newsoverview_GET()
     {
@@ -112,7 +134,7 @@ class ManageController extends Controller
     }
 
     /**
-     *{{Permission=Tekst;}}
+     *{{Permission=Nieuws;}}
      */
     public function newsview_GET($id)
     {
@@ -129,7 +151,7 @@ class ManageController extends Controller
     }
 
     /**
-     *{{Permission=Tekst;}}
+     *{{Permission=Nieuws;}}
      */
     public function newsadd_GET()
     {
@@ -141,7 +163,7 @@ class ManageController extends Controller
     //<editor-fold desc="Partner Manage">
 
     /**
-     *{{Permission=Onderdeel;}}
+     *{{Permission=Tekst;}}
      */
     public function partneroverview_GET()
     {
@@ -151,7 +173,7 @@ class ManageController extends Controller
     }
 
     /**
-     *{{Permission=Onderdeel;}}
+     *{{Permission=Tekst;}}
      */
     public function partnerview_GET($id)
     {
@@ -166,13 +188,16 @@ class ManageController extends Controller
     }
 
     /**
-     *{{Permission=Onderdeel;}}
+     *{{Permission=Tekst;}}
      */
     public function partneradd_GET()
     {
         $this->render("partneradd");
     }
 
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function projectoverview_get()
     {
         $projectList = new ArrayList("Project");
@@ -180,11 +205,17 @@ class ManageController extends Controller
         $this->render("projectoverview", $projectList);
     }
 
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function projectview_get($id)
     {
         $this->render("projectview", $this->projectRepository->selectById($id));
     }
 
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function projectadd_GET()
     {
         $this->render("projectadd");
@@ -246,7 +277,7 @@ class ManageController extends Controller
 
     //</editor-fold>
 
-    //<editor-fold desc="Slogan Manage***">
+    //<editor-fold desc="Slogan Manage">
 
     /**
      *{{Permission=Tekst;}}
@@ -303,26 +334,6 @@ class ManageController extends Controller
         $this->render("settings", $settingsVM);
     }
 
-    /**
-     *{{Permission=Onderdeel;}}
-     */
-    public function moduleadd_GET()
-    {
-        $this->render("moduleadd");
-    }
-
-    /**
-     *{{Permission=Onderdeel;}}
-     */
-    public function moduleview_GET()
-    {
-        if (isset($_GET["id"]))
-        {
-            $this->render("moduleview", $this->moduleRepository->selectById($_GET["id"]));
-        }
-    }
-
-
     //</editor-fold>
 
     //<editor-fold desc="Subvention Manage">
@@ -337,6 +348,9 @@ class ManageController extends Controller
         $this->render("subventionoverview", $subventionList);
     }
 
+    /**
+     *{{Permission=Formulier;}}
+     */
     public function subventionview_GET($id)
     {
         $subventionVM = new SubventionViewModel();
@@ -352,6 +366,10 @@ class ManageController extends Controller
             throw new Exception("The requested information was not found.", 404);
         }
     }
+
+    //</editor-fold>
+
+    //<editor-fold desc="Account Manage">
 
     /**
      *{{Permission=Account;}}
@@ -409,6 +427,9 @@ class ManageController extends Controller
         }
     }
 
+    /**
+     *{{Permission=Account;}}
+     */
     public function accountadd_GET()
     {
         $roles = $this->roleRepository->selectAll();
@@ -416,6 +437,13 @@ class ManageController extends Controller
         $this->render("accountadd", $roles);
     }
 
+    //</editor-fold>
+
+    //<editor-fold desc="Page Content Manage">
+
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function pagecontentmanage_GET()
     {
         $manageVM = new PageContentViewModel();
@@ -429,12 +457,24 @@ class ManageController extends Controller
         $this->render("pagecontentmanage", $manageVM);
     }
 
+    /**
+     *{{Permission=Tekst;}}
+     */
+    public function moduleadd_GET()
+    {
+        $this->render("moduleadd");
+    }
 
+    /**
+     *{{Permission=Tekst;}}
+     */
+    public function moduleview_GET()
+    {
+        if (isset($_GET["id"]))
+        {
+            $this->render("moduleview", $this->moduleRepository->selectById($_GET["id"]));
+        }
+    }
 
-
-
-
-
-
-
+    //</editor-fold>
 }

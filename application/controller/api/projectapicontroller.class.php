@@ -9,6 +9,9 @@ class ProjectAPIController extends APIController
         Parent::__construct("projectapi");
     }
 
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function update_POST($project){
 
         if (isset($project->id)&&(isset($project->body)))
@@ -19,6 +22,9 @@ class ProjectAPIController extends APIController
         throw new Exception("Resource not found.", 404);
     }
 
+    /**
+     *{{Role=Administrator;}}
+     */
     public function delete_POST($project){
 
         if(isset($project->id))
@@ -49,6 +55,9 @@ class ProjectAPIController extends APIController
         throw new Exception("Resource not found.", 404);
     }
 
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function add_POST($project)
     {
         if((isset($project->title))&&(isset($project->body)))
@@ -62,6 +71,9 @@ class ProjectAPIController extends APIController
         }
     }
 
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function addimage_POST(){
 
         if (isset($_POST["projectId"]) && isset($_FILES["file"]))
@@ -78,6 +90,9 @@ class ProjectAPIController extends APIController
         throw new Exception("Resource not found.", 404);
     }
 
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function deleteimage_POST(){
 
         if (isset($_POST["projectId"]) && isset($_POST["imageName"]))

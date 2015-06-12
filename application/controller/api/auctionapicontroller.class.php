@@ -25,6 +25,9 @@ class AuctionAPIController extends APIController
         }
     }
 
+    /**
+     *{{Permission=Product;}}
+     */
     public function update_POST($auction)
     {
         if(isset($auction->id))
@@ -40,7 +43,9 @@ class AuctionAPIController extends APIController
         }
     }
 
-
+    /**
+     *{{Permission=Product;}}
+     */
     public function add_POST($auction)
     {
         if((isset($auction->startDate))&&(isset($auction->endDate)))

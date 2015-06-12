@@ -142,7 +142,7 @@ function UpdateCompanyInformation()
 
         $.ajax(
             {
-                url: getBaseURL() + "pagecontentapi/updatecompanyinformation",
+                url: getBaseURL() + "settingsapi/updatecompanyinformation",
                 type: "POST",
                 data: data,
                 async: true,
@@ -180,7 +180,7 @@ function UpdateVisitinghours()
 
         $.ajax(
             {
-                url: getBaseURL() + "pagecontentapi/updatevisitinghours",
+                url: getBaseURL() + "settingsapi/updatevisitinghours",
                 type: "POST",
                 data: data,
                 async: true,

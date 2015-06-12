@@ -1,12 +1,15 @@
 <?php
+
 class SubventionController extends Controller
 {
-
     public function __construct()
     {
         parent::__construct("subvention");
     }
 
+    /**
+     *{{Permission=Formulier;}}
+     */
     public function downloadattachedfile_POST()
     {
         if (isset($_POST["id"]) && isset($_POST["filename"])) {
