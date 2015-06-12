@@ -5,8 +5,7 @@ $('#accountForm').idealforms({
     rules: {
         'username': 'required username ajax',
         'email': 'required email ajax',
-        'password': 'required strongpass',
-        'roleName': 'select:default'
+        'password': 'required strongpass'
     },
 
     errors: {
@@ -36,7 +35,7 @@ $('#accountForm').idealforms({
 });
 
 //Function to be called when form is submitted.
-function updateNews()
+function updateAccount()
 {
     if(confirm("Weet u zeker dat u wilt opslaan?"))
     {
@@ -46,16 +45,17 @@ function updateNews()
 
         var data =
         {
-            modelName: 'News',
+            modelName: 'AccountPostViewModel',
             id: $('#id').val(),
-            heading: $('#heading').val(),
-            content: $('#content').val(),
-            expiration_date: $('#expiration-date').val()
+            username: $('#username').val(),
+            email: $('#email').val(),
+            newPassword: $('#newPassword').val(),
+            roleName: $('#roleName').find('option:selected').val()
         };
 
         $.ajax(
             {
-                url: getBaseURL() + 'newsapi/update',
+                url: getBaseURL() + 'accountapi/update',
                 type: 'POST',
                 data: data,
                 async: true,
@@ -72,26 +72,26 @@ function updateNews()
 }
 
 //Function to be called when delete button is pressed.
-function deleteNews()
+function deleteAccount()
 {
     if(confirm("Weet u zeker dat u wilt verwijderen?"))
     {
         var data =
         {
-            modelName:  'News',
+            modelName:  'AccountPostViewModel',
             id:         $("#id").val()
         };
 
         $.ajax(
             {
-                url: getBaseURL() + 'newsapi/delete',
+                url: getBaseURL() + 'accountapi/delete',
                 type: 'POST',
                 data: data,
                 async: true,
                 success: function () {
-                    var successMessage = "Nieuws is succesvol verwijderd.";
+                    var successMessage = "Account is succesvol verwijderd.";
                     localStorage.setItem("successMessage", successMessage);
-                    document.location.href = getBaseURL() + 'manage/newsoverview';
+                    document.location.href = getBaseURL() + 'manage/accountoverview';
                 },
                 error: function (status) {
                     $("#status").text(status.status + ": " + translateHttpError(status.statusText));

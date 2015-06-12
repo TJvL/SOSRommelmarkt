@@ -361,6 +361,9 @@ class ManageController extends Controller
         }
     }
 
+    /**
+     *{{Permission=Account;}}
+     */
     public function accountoverview_GET()
     {
         $accounts = $this->accountRepository->selectAll();
@@ -380,24 +383,38 @@ class ManageController extends Controller
         $this->render("accountoverview", $accountVMs);
     }
 
+    /**
+     *{{Permission=Account;}}
+     */
     public function accountview_GET($id)
     {
-        $account = $this->accountRepository->selectById($id);
+        $user = AccountHelper::getUserInfo();
 
-        $accountVM = new AccountViewModel();
-        $accountVM->id = $account->id;
-        $accountVM->username = $account->username;
-        $accountVM->email = $account->email;
-        $accountVM->role = $account->roleName;
+        if($user->id == $id)
+        {
+            $this->redirectTo("/account/index");
+        }
+        else
+        {
+            $account = $this->accountRepository->selectById($id);
 
-        $roles = $this->roleRepository->selectAll();
+            $accountVM = new AccountViewModel();
+            $accountVM->id = $account->id;
+            $accountVM->username = $account->username;
+            $accountVM->email = $account->email;
+            $accountVM->role = $account->roleName;
+            $accountVM->lastLogin = $account->lastLogin;
 
-        $accountPageVM = new AccountEditViewModel();
+            $roles = $this->roleRepository->selectAll();
 
-        $accountPageVM->account = $accountVM;
-        $accountPageVM->possibleRoles = $roles;
+            $accountPageVM = new AccountEditViewModel();
+            $accountPageVM->account = $accountVM;
+            $accountPageVM->possibleRoles = $roles;
 
-        $this->render("accountview", $accountPageVM);
+            $_SESSION["edituserid"] = $id;
+
+            $this->render("accountview", $accountPageVM);
+        }
     }
 
     public function accountadd_GET()

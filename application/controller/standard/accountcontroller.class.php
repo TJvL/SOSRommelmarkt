@@ -9,6 +9,8 @@ class AccountController extends Controller
 
     public function index_GET()
     {
+        unset($_SESSION["edituserid"]);
+
         $user = AccountHelper::getUserInfo();
         if(isset($user))
         {

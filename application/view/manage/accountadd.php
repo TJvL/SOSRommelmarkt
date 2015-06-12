@@ -13,12 +13,12 @@
             <form action="javascript:addAccount()" autocomplete="off" class="idealforms" id="accountForm">
                 <div class="field">
                     <label class="main">Gebruikersnaam:</label>
-                    <input form="accountForm" id="username" name="username" type="text" data-idealforms-ajax="<?php echo ROOT_PATH . "/accountapi/checkusername"; ?>">
+                    <input form="accountForm" id="username" name="username" type="text" data-idealforms-ajax="<?php echo ROOT_PATH . "/accountapi/checkusernameadd"; ?>">
                     <span class="error"></span>
                 </div>
                 <div class="field">
                     <label class="main">Email:</label>
-                    <input form="accountForm" id="email" name="email" type="text" data-idealforms-ajax="<?php echo ROOT_PATH . "/accountapi/checkemail"; ?>">
+                    <input form="accountForm" id="email" name="email" type="text" data-idealforms-ajax="<?php echo ROOT_PATH . "/accountapi/checkemailadd"; ?>">
                     <span class="error"></span>
                 </div>
                 <div class="field">

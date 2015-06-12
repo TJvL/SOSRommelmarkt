@@ -40,6 +40,7 @@ class AccountAPIController extends APIController
                 $userToUpdate = $this->accountRepository->selectById($accountVM->id);
                 $userToUpdate->username = $accountVM->username;
                 $userToUpdate->email = $accountVM->email;
+                $userToUpdate->roleName = $accountVM->roleName;
 
                 if(isset($accountVM->newPassword))
                 {
@@ -208,14 +209,53 @@ class AccountAPIController extends APIController
         }
     }
 
+    /**
+     *{{Permission=Account;}}
+     */
+    public function checkusernameadd_POST($username)
+    {
+        $users = $this->accountRepository->selectAll();
+        foreach($users as $user)
+        {
+            if($user->username === $username)
+            {
+                $this->respondWithJSON(false);
+            }
+        }
+        $this->respondWithJSON(true);
+    }
+
+    /**
+     *{{Permission=Account;}}
+     */
+    public function checkemailadd_POST($email)
+    {
+        $users = $this->accountRepository->selectAll();
+        foreach($users as $user)
+        {
+            if($user->email === $email)
+            {
+                $this->respondWithJSON(false);
+            }
+        }
+        $this->respondWithJSON(true);
+    }
+
     public function checkusername_POST($username)
     {
         $id = -1;
         $user = AccountHelper::getUserInfo();
 
-        if(isset($user))
+        if(isset($_SESSION["edituserid"]))
         {
-            $id = $user->id;
+            $id = $_SESSION["edituserid"];
+        }
+        else
+        {
+            if(isset($user))
+            {
+                $id = $user->id;
+            }
         }
 
         $users = $this->accountRepository->selectAll();
@@ -234,9 +274,16 @@ class AccountAPIController extends APIController
         $id = -1;
         $user = AccountHelper::getUserInfo();
 
-        if(isset($user))
+        if(isset($_SESSION["edituserid"]))
         {
-            $id = $user->id;
+            $id = $_SESSION["edituserid"];
+        }
+        else
+        {
+            if(isset($user))
+            {
+                $id = $user->id;
+            }
         }
 
         $users = $this->accountRepository->selectAll();
