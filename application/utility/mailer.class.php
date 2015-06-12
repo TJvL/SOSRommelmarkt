@@ -23,8 +23,6 @@ class Mailer
 
     private function __construct()
     {
-        date_default_timezone_set("Europe/Amsterdam");
-
         $json = file_get_contents('config' . SEPARATOR . 'email.json');
         $decoded = json_decode($json, true);
         $this->mailto = $decoded["MAIL_TO"];

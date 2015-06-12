@@ -32,6 +32,9 @@ define("MAIN_DB", "main");
 //Constant that defines the user database. This must also be the name of the directory where all repositories that depend on this database are located. This is inside application/model/repositories
 define("USER_DB", "user");
 
+//Set the timezoe
+date_default_timezone_set("Europe/Amsterdam");
+
 //Database connections
 $dbCons = array(
     //Main database:

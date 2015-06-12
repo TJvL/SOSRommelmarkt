@@ -83,7 +83,6 @@ class HomeController extends Controller
 
         date_default_timezone_set("Europe/Amsterdam");
 
-
         if(Mailer::getInstance()->sendNotifMail($subject, $message))
         {
             $this->viewBag['message'] = "Uw bericht is verzonden, wij nemen spoedig contact met U op.";
