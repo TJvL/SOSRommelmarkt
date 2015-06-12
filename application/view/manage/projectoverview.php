@@ -13,8 +13,8 @@
         </div>
         <div class="row margin-hor-sm">
             <h1>Projecten</h1>
+            <hr>
         </div>
-
         <div class="table-responsive padding-sm">
             <table id="projectTable" class="display">
                 <thead>

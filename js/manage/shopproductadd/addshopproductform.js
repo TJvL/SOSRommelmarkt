@@ -69,8 +69,8 @@ function addShopProduct()
                 type: 'POST',
                 data: data,
                 async: true,
-                success: function () {
-                    document.location.href = getBaseURL() + 'manage/shopproductoverview'; //TODO: redirect naar nieuwe product pagina om fotos toe te voegen + success message
+                success: function (id) {
+                    document.location.href = getBaseURL() + 'manage/shopproductview/' + id;
                 },
                 error: function (status) {
                     $("#status").text(status.status + ": " + translateHttpError(status.statusText));

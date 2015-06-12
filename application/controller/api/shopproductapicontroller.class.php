@@ -66,8 +66,8 @@ class ShopProductAPIController extends APIController
             $user = $_SESSION["user"];
             $shopproduct->addedBy = $user->username;
 
-            $this->shopProductRepository->insert($shopproduct);
-            $this->respondOK();
+            $id = $this->shopProductRepository->insert($shopproduct);
+            $this->respondWithJSON($id);
         }
         else
         {
@@ -80,6 +80,9 @@ class ShopProductAPIController extends APIController
         if (isset($_POST["id"]) && isset($_POST["originalWidth"]) && isset($_POST["clientWidth"]) && isset($_POST["xCoord"]) && isset($_POST["width"]) &&
             isset($_POST["originalHeight"]) && isset($_POST["clientHeight"]) && isset($_POST["yCoord"]) && isset($_POST["height"]) && isset($_FILES["file"]))
         {
+            if($_POST['clientWidth']==0){
+                $this->respondWithJSON("U heeft de afbeelding niet geschaald.");
+            }
             $xScale = $_POST["originalWidth"] / $_POST["clientWidth"];
 
             $x1 = $_POST["xCoord"] * $xScale;

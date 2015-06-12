@@ -98,8 +98,10 @@ function handleDeleteProduct()
             type: "POST",
             data: data,
             async: true,
-            success: function () {
-                document.location.href = getBaseURL() + 'manage/auctionoverview'; //TODO link naar huidige veiling
+            success: function (auctionId) {
+                var successMessage = "Product is succesvol verwijderd.";
+                localStorage.setItem("successMessage", successMessage);
+                document.location.href = getBaseURL() + 'manage/auctionproductoverview/' + auctionId;
             },
             error: function (status) {
                 $("#status").text(status.status + ": " + translateHttpError(status.statusText));
@@ -120,10 +122,17 @@ function handleNewImage()
             async: true,
             contentType: false,
             processData: false,
-            success: function () {
-                var successMessage = "De afbeelding is succesvol toegevoegd.";
-                localStorage.setItem("successMessage", successMessage);
-                location.reload();
+            success: function (status) {
+                if(status !=""){
+                    $("#status").text(status);
+                    $("#status").addClass("alert-danger");
+                }
+                else{
+                    var successMessage = "De afbeelding is succesvol toegevoegd.";
+                    localStorage.setItem("successMessage", successMessage);
+                    location.reload();
+                }
+
             },
             error: function (status) {
                 $("#status").text(status.status + ": " + translateHttpError(status.statusText));

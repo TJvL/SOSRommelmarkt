@@ -1,29 +1,31 @@
 <?php
-
 class SubventionController extends Controller
 {
-    public $subventionRequestRepository;
-    public $subventionsContentRepository;
 
     public function __construct()
     {
         parent::__construct("subvention");
     }
 
-    public function index_GET()
+    public function downloadattachedfile_POST()
     {
-        $subventionsContent = $this->subventionsContentRepository->selectCurrent();
+        if (isset($_POST["id"]) && isset($_POST["filename"])) {
+            $filepath = "files/subventions/" . $_POST["id"] . "/" . $_POST["filename"];
 
-        $this->render("index", $subventionsContent);
-    }
+            if (file_exists($filepath)) {
+                header('Content-Description: File Transfer');
+                header('Content-Type: application/octet-stream');
+                header('Content-Disposition: attachment; filename='.basename($_POST["filename"]));
+                header('Expires: 0');
+                header('Cache-Control: must-revalidate');
+                header('Pragma: public');
+                header('Content-Length: ' . filesize($filepath));
+                readfile($filepath);
+                exit;
+            }
 
-    public function landing_GET()
-    {
-        $this->render("landing");
-    }
+        }
 
-    public function successpage_GET()
-    {
-        $this->render("successpage");
+        throw new Exception("Resource not found.", 404);
     }
 }

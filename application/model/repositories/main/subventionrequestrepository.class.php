@@ -9,6 +9,28 @@ class SubventionRequestRepository
         $this->database = $database;
     }
 
+    private function mapRowToModel($row)
+    {
+        $subventionRequest = new SubventionRequest();
+        $subventionRequest->id = $row["id"];
+        $subventionRequest->contactperson = $row["contactperson"];
+        $subventionRequest->firm = $row["firm"];
+        $subventionRequest->kvk = $row["kvk"];
+        $subventionRequest->address = $row["address"];
+        $subventionRequest->postalcode = $row["postalcode"];
+        $subventionRequest->city = $row["city"];
+        $subventionRequest->phonenumber1 = $row["phonenumber1"];
+        $subventionRequest->phonenumber2 = $row["phonenumber2"];
+        $subventionRequest->fax = $row["fax"];
+        $subventionRequest->email = $row["email"];
+        $subventionRequest->elucidation = $row["elucidation"];
+        $subventionRequest->activities = $row["activities"];
+        $subventionRequest->results = $row["results"];
+        $subventionRequest->status = $row["status"];
+
+        return $subventionRequest;
+    }
+
     public function insertSubventionRequest($contactperson, $firm, $kvk, $address, $postalcode, $city, $phonenumber1,
 		$phonenumber2, $fax, $email, $elucidation, $activities, $results)
     {
@@ -24,42 +46,40 @@ class SubventionRequestRepository
         return $id;
     }
 
-    public function fetchAllSubventionRequests()
+    public function selectAll()
     {
         $query = "SELECT * FROM SubventionRequest";
 
-        // Execute the query.
         $result = $this->database->select($query);
 
-        // Put the results of the query into an array of subvention request objects.
         $subventionRequests = array();
 
         for ($i = 0; $i < $result->num_rows; $i++)
         {
             $row = $result->fetch_assoc();
-
-            $subventionRequests[$i] = $this->createSubventionRequestObjectFromDatabaseRow($row);
+            $news = $this->mapRowToModel($row);
+            $subventionRequests[$news->id] = $news;
         }
 
-        // Free the result set.
         $result->close();
-
         return $subventionRequests;
     }
 
-    public function fetchSubventionRequestById($id)
+    public function selectById($id)
     {
         $query = "SELECT * FROM SubventionRequest WHERE id = ?";
+        $parameters = array($id);
+        $paramTypes = "s";
 
-        // Execute the query.
-        $result = $this->database->select($query, "i", array($id));
+        $result = $this->database->select($query, $paramTypes, $parameters);
 
-        // Put the results of the query into a subvention request object.
-        $row = $result->fetch_assoc();
+        $subventionRequest = null;
+        if($result->num_rows == 1)
+        {
+            $row = $result->fetch_assoc();
+            $subventionRequest = $this->mapRowToModel($row);
+        }
 
-        $subventionRequest = $this->createSubventionRequestObjectFromDatabaseRow($row);
-
-        // Free the result set.
         $result->close();
 
         return $subventionRequest;
@@ -93,33 +113,13 @@ class SubventionRequestRepository
         return $statuses;
     }
 
-    public function updateStatus($id, $status)
+    public function updateStatus($subventionrequest)
     {
         $query = "UPDATE SubventionRequest SET status = ? WHERE id = ?";
         // Execute the update query.
-        $this->database->update($query, "ss", array($status, $id));
+        $this->database->update($query, "ss", array($subventionrequest->status, $subventionrequest->id));
     }
 
-    private function createSubventionRequestObjectFromDatabaseRow($row)
-    {
-        $subventionRequest = new SubventionRequest();
-        $subventionRequest->id = $row["id"];
-        $subventionRequest->contactperson = $row["contactperson"];
-        $subventionRequest->firm = $row["firm"];
-        $subventionRequest->kvk = $row["kvk"];
-        $subventionRequest->address = $row["address"];
-        $subventionRequest->postalcode = $row["postalcode"];
-        $subventionRequest->city = $row["city"];
-        $subventionRequest->phonenumber1 = $row["phonenumber1"];
-        $subventionRequest->phonenumber2 = $row["phonenumber2"];
-        $subventionRequest->fax = $row["fax"];
-        $subventionRequest->email = $row["email"];
-        $subventionRequest->elucidation = $row["elucidation"];
-        $subventionRequest->activities = $row["activities"];
-        $subventionRequest->results = $row["results"];
-        $subventionRequest->status = $row["status"];
 
-        return $subventionRequest;
-    }
 }
 

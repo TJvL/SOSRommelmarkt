@@ -51,7 +51,7 @@ function addAuction()
                 data: data,
                 async: true,
                 success: function () {
-                    document.location.href = getBaseURL() + 'manage/auctionoverview'; //TODO: redirect naar nieuwe veiling pagina om producten toe te voegen + success message
+                    document.location.href = getBaseURL() + 'manage/auctionoverview';
                 },
                 error: function (status) {
                     $("#status").text(status.status + ": " + translateHttpError(status.statusText));

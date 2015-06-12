@@ -69,7 +69,7 @@
                 <div class="col-md-3 padding-hor-md equal-height">
                     <div class="white margin-ver-lg">
                         <p><b>In de vitrine:</b></p>
-                        <a href="<?php echo ROOT_PATH; ?>/auction/index">
+                        <a href="<?php echo ROOT_PATH; ?>/home/auction">
                             <img class="img-responsive" src="<?php echo $auctionProduct->imagePath ?>">
                         </a>
                         <h2><?php echo $auctionProduct->name ?></h2>

@@ -15,7 +15,6 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <h1>Projectinformatie</h1>
             </div>
-
             <form class="idealforms" id="projectform" action="javascript:UpdateProject()">
                 <input form="projectform" id="id" name="id" type="hidden" value="<?php echo $model->id ?>">
 

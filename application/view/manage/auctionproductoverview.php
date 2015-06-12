@@ -13,8 +13,8 @@
 		</div>
         <div class="row margin-hor-sm">
             <h1>Vitrine producten</h1>
+            <hr>
         </div>
-
 		<div class="table-responsive padding-sm">
 			<table id=auctionProductTable class="display">
 				<thead>
@@ -41,5 +41,10 @@
 				</tbody>
 			</table>
 		</div>
+        <div class="row">
+            <div class="col-md-12 padding-lg">
+                <p id="status" class="padding-lg"></p>
+            </div>
+        </div>
 	</div>
 </div>

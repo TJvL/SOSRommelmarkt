@@ -9,9 +9,10 @@
             </div>
         </div>
 		<div class="row">
-			<hr>
-			<div class="col-sm-1"></div>
-			<h1>Productinformatie</h1>
+            <hr>
+            <div class="col-sm-offset-2 col-sm-10">
+                <h1>Vitrineproductinformatie</h1>
+            </div>
 			<form class="idealforms" form="updateForm" id="updateForm" action="javascript:handleUpdateProduct()">
 
                 <input type="hidden" form="updateForm" name="id" id="id" value="<?php echo $model->auctionProduct->id ?>"/>

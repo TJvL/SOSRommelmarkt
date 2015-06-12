@@ -11,7 +11,7 @@
                 </a>
             </div>
             <div class="col-md-2 margin-ver-lg">
-                <a href="<?php echo ROOT_PATH; ?>/manage/subventions">
+                <a href="<?php echo ROOT_PATH; ?>/manage/subventionoverview">
                     <button class="btn btn-red">
                         <i class="fa fa-check-square fa-5x fa-fw"></i>
                         <br /><b>Subsidies</b>

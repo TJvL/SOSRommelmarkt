@@ -4,7 +4,7 @@
             <div class="idealsteps-container">
                 <nav class="idealsteps-nav"></nav>
 
-                <form class="idealforms" id="subventionForm" action="javascript:void(0)">
+                <form class="idealforms" id="subventionForm" action="javascript:addSubvention()">
                     <div class="idealsteps-wrap">
 
                         <!-- Step 1 -->
@@ -170,6 +170,11 @@
                     </div>
                     <span id="invalid"></span>
                 </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 padding-lg">
+                <p id="status" class="padding-lg"></p>
             </div>
         </div>
     </div>

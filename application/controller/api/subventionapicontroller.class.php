@@ -9,7 +9,30 @@ class SubventionAPIController extends APIController
 		parent::__construct("subventionapi");
 	}
 
-	public function createsubventionrequest_POST()
+
+    public function delete_POST($subventionrequest)
+    {
+        if (isset($subventionrequest->id)){
+            $this->subventionRequestRepository->deleteById($subventionrequest->id);
+            $this->respondOK();
+        }
+        else{
+            throw new Exception("Resource not found.", 404);
+        }
+    }
+
+    public function updatestatus_POST($subventionrequest){
+
+        if (isset($subventionrequest->id)){
+            $this->subventionRequestRepository->updateStatus($subventionrequest);
+            $this->respondOK();
+        }
+        else{
+            throw new Exception("Resource not found.", 404);
+        }
+    }
+
+	public function add_POST()
 	{
 		// Check if all the needed info is here.
 		if (isset($_POST["name"]) &&
@@ -70,34 +93,8 @@ class SubventionAPIController extends APIController
 			$content = $content . "\n\nToelichting: \n" . $_POST["elucidation"];
 			
 			Mailer::getInstance()->sendNotifMail($subject, $content);
-			
-			$this->respondWithJSON(0);
-		}
-		
-		$this->respondWithJSON(1);
-	}
-	
-	public function downloadsubventionrequestattachedfile_POST()
-	{
-		if (isset($_POST["id"]) && isset($_POST["filename"]))
-		{
-			$filepath = "files/subventions/" . $_POST["id"] . "/" . $_POST["filename"];
-			
-			if (file_exists($filepath))
-			{
-				header("Content-Description: File Transfer");
-				header("Content-Type: application/octet-stream");
-				header("Content-Disposition: attachment; filename='" . $_POST["filename"] . "'");
-				header("Content-Transfer-Encoding: binary");
-				header("Expires: 0");
-				header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-				header("Pragma: public");
-				header("Content-Length: " . filesize($filepath));
-				ob_clean();
-				readfile($filepath);
-				
-				$this->respondWithJSON(0);
-			}
+
+            $this->respondOK();
 		}
 		
 		$this->respondWithJSON(1);

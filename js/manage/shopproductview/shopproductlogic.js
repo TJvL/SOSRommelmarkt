@@ -106,7 +106,6 @@ function DeleteShopProduct()
 function handleNewImage()
 {
 	var formData = new FormData(document.getElementById("imageForm"));
-
     $.ajax(
 	{
 		url: getBaseURL() + "shopproductapi/addimage",
@@ -115,10 +114,16 @@ function handleNewImage()
         async: true,
         contentType: false,
         processData: false,
-        success: function () {
-            var successMessage = "De afbeelding is succesvol toegevoegd.";
-            localStorage.setItem("successMessage", successMessage);
-            location.reload();
+        success: function (status) {
+            if(status !=""){
+                $("#status").text(status);
+                $("#status").addClass("alert-danger");
+            }
+            else{
+                var successMessage = "De afbeelding is succesvol toegevoegd.";
+                localStorage.setItem("successMessage", successMessage);
+                location.reload();
+            }
         },
         error: function (status) {
             $("#status").text(status.status + ": " + translateHttpError(status.statusText));

@@ -11,7 +11,8 @@
             </div>
         </div>
         <div class="row margin-hor-sm">
-            <h1>Partner beheer</h1>
+            <h1>Partners</h1>
+            <hr>
         </div>
 		<div class="table-responsive padding-sm">
 			<table id="partnerTable" class="display">

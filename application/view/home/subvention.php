@@ -12,7 +12,7 @@
 
 
 
-        <a href="<?php echo ROOT_PATH; ?>/subvention/landing"> <button type="button" class="btn btn-red btn-lg">Aanvragen<i class="fa fa-chevron-right"></i></button></a>
+        <a href="<?php echo ROOT_PATH; ?>/home/subventionrequest"> <button type="button" class="btn btn-red btn-lg">Aanvragen<i class="fa fa-chevron-right"></i></button></a>
 
     </div>
 </div>
