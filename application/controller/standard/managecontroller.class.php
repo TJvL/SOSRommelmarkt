@@ -13,6 +13,9 @@ class ManageController extends Controller
     public $companyInformationRepository;
     public $visitingHoursRepository;
     public $newsRepository;
+    public $accountRepository;
+    public $roleRepository;
+    public $permissionRepository;
 
     public function __construct()
     {
@@ -358,40 +361,50 @@ class ManageController extends Controller
         }
     }
 
-
-
-    /**
-     *{{Permission=Onderdeel;}}
-     */
-    public function subventionsContent_POST()
+    public function accountoverview_GET()
     {
-        // Check if all the necessary data has been sent with the request.
-        if (isset($_POST["titel"]) && isset($_POST["content"]))
+        $accounts = $this->accountRepository->selectAll();
+        $accountVMs = new ArrayList("AccountViewModel");
+        foreach($accounts as $account)
         {
-            // set the data and update
-            $subventionsContent             = SubventionsContent::selectCurrent();
-            $subventionsContent->titel      = $_POST["titel"];
-            $subventionsContent->content     = $_POST["content"];
-            $subventionsContent->update();
+            $accountVM = new AccountViewModel();
+            $accountVM->id = $account->id;
+            $accountVM->email = $account->email;
+            $accountVM->username = $account->username;
+            $accountVM->role = $account->roleName;
+            $accountVM->lastLogin = $account->lastLogin;
+
+            $accountVMs->add($accountVM);
         }
-        $this->redirectTo("/manage/subventions");
+
+        $this->render("accountoverview", $accountVMs);
     }
 
-    /**
-     *{{Permission=Formulier;}}
-     */
-    public function changeSubventionStatus_POST()
+    public function accountview_GET($id)
     {
-        // Check if all the necessary data has been sent with the request.
-        if (isset($_POST["id"]) && isset($_POST["status"]))
-        {
-            // Get the product, set the data and update.
-            $this->subventionRequestRepository->updateStatus($_POST["id"], $_POST["status"]);
-            $this->subventions_GET();
-        }
-        else{
-            //TODO: error handling
-        }
+        $account = $this->accountRepository->selectById($id);
+
+        $accountVM = new AccountViewModel();
+        $accountVM->id = $account->id;
+        $accountVM->username = $account->username;
+        $accountVM->email = $account->email;
+        $accountVM->role = $account->roleName;
+
+        $roles = $this->roleRepository->selectAll();
+
+        $accountPageVM = new AccountEditViewModel();
+
+        $accountPageVM->account = $accountVM;
+        $accountPageVM->possibleRoles = $roles;
+
+        $this->render("accountview", $accountPageVM);
+    }
+
+    public function accountadd_GET()
+    {
+        $roles = $this->roleRepository->selectAll();
+
+        $this->render("accountadd", $roles);
     }
 
 
