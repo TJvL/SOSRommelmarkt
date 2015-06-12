@@ -30,9 +30,9 @@
                 <div class="field">
                     <label class="main" for="category">Categorie</label>
                     <select form="partnerform" name="category" id="category">
-                        <option value="SOS" <?php if ($model->category === "SOS") echo "selected"; ?>>SOS</option>
-                        <option value="Dienstverleners" <?php if ($model->category === "Dienstverleners") echo "selected"; ?>>Dienstverleners</option>
-                        <option value="Projecten" <?php if ($model->category === "Projecten") echo "selected"; ?>>Projecten</option>
+                        <option value="Spoor073" <?php if ($model->category === "Spoor073") echo "selected"; ?>>Spoor073</option>
+                        <option value="WOSA-Partners" <?php if ($model->category === "WOSA-Partners") echo "selected"; ?>>WOSA-Partners</option>
+                        <option value="Samenwerking" <?php if ($model->category === "Samenwerking") echo "selected"; ?>>Samenwerking</option>
                     </select>
                     <span class="error"></span>
                 </div>
