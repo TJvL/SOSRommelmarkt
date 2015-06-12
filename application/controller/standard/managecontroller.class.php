@@ -290,25 +290,17 @@ class ManageController extends Controller
     /**
      *{{Role=Administrator;}}
      */
-    public function pagecontentoverview_GET()
+    public function settings_GET()
     {
         $settingsVM = new SettingsViewModel();
 
         $companyInformation = $this->companyInformationRepository->selectCurrent();
         $visitingHours = $this->visitingHoursRepository->selectCurrent();
-        $slogans = $this->sloganRepository->selectAll();
-        $homeModules = $this->moduleRepository->selectByCategory("home");
-        $aboutUsModules = $this->moduleRepository->selectByCategory("aboutus");
-        $newsItems = $this->newsRepository->selectAll();
 
         $settingsVM->companyInformation = $companyInformation;
         $settingsVM->visitingHours = $visitingHours;
-        $settingsVM->slogans = $slogans;
-        $settingsVM->homeModules = $homeModules;
-        $settingsVM->aboutUsModules = $aboutUsModules;
-        $settingsVM->newsItems = $newsItems;
 
-        $this->render("pagecontentoverview", $settingsVM);
+        $this->render("settings", $settingsVM);
     }
 
     /**
@@ -422,6 +414,19 @@ class ManageController extends Controller
         $roles = $this->roleRepository->selectAll();
 
         $this->render("accountadd", $roles);
+    }
+
+    public function pagecontentmanage_GET()
+    {
+        $manageVM = new PageContentViewModel();
+
+        $homeModules = $this->moduleRepository->selectByCategory("home");
+        $aboutUsModules = $this->moduleRepository->selectByCategory("aboutus");
+
+        $manageVM->homeModules = $homeModules;
+        $manageVM->aboutUsModules = $aboutUsModules;
+
+        $this->render("pagecontentmanage", $manageVM);
     }
 
 

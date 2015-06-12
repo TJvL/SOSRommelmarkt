@@ -3,7 +3,7 @@
         <h1 class="manage-title">Beheer</h1>
         <div class="row margin-sm">
             <div class="col-md-2 margin-ver-lg">
-                <a href="<?php echo ROOT_PATH; ?>/manage/pagecontentoverview">
+                <a href="<?php echo ROOT_PATH; ?>/manage/settings">
                     <button class="btn btn-red">
                         <i class="fa fa-cogs fa-5x fa-fw"></i>
                         <br /><b>Instellingen</b>
@@ -75,7 +75,7 @@
                 </a>
             </div>
             <div class="col-md-2 margin-ver-lg">
-                <a href="<?php echo ROOT_PATH; ?>/manage/index">
+                <a href="<?php echo ROOT_PATH; ?>/manage/pagecontentmanage">
                     <button class="btn btn-red">
                         <i class="fa fa-file-text-o fa-5x fa-fw"></i>
                         <br /><b>Paginas</b>

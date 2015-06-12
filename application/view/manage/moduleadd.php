@@ -2,10 +2,10 @@
 	switch ($_GET["id"])
 	{
 		case "home":
-			$returnPath = "/manage/pagecontentoverview#tab_home-modules";
+			$returnPath = "/manage/pagecontentmanage#tab_home-modules";
 			break;
 		case "aboutus":
-			$returnPath = "/manage/pagecontentoverview#tab_aboutus-modules";
+			$returnPath = "/manage/pagecontentmanage#tab_aboutus-modules";
 			break;
 		default:
 			$returnPath = "/manage";

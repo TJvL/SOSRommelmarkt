@@ -113,9 +113,6 @@ $(document).ready(function() {
         window.location.hash = e.target.hash.replace("#", "#" + prefix);
         $('.idealforms').resize();
     });
-
-
-
 });
 
 function ResetStatus()
