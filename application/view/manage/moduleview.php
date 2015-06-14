@@ -14,34 +14,6 @@ switch ($model->category)
 }
 ?>
 
- <script type="text/javascript" src="<?php echo ROOT_PATH;?>/js/manage/tinymce/tinymce.min.js"> </script>
-
-
-<script>
-// tinymce.init({
-//     selector: "textarea#elm1",
-//     theme: "modern",
-//     width: 600,
-//     height: 300,
-//     plugins: [
-//          // "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
-//          // "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-//          // "save table contextmenu directionality emoticons template paste textcolor"
-//    ],
-//    // content_css: "css/content.css",
-//    toolbar: " styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | forecolor backcolor emoticons", 
-//    style_formats: [
-//         {title: 'Bold text', inline: 'b'},
-//         {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
-//         {title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
-//         {title: 'Example 1', inline: 'span', classes: 'example1'},
-//         {title: 'Example 2', inline: 'span', classes: 'example2'},
-//         {title: 'Table styles'},
-//         {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
-//     ]
-//  }); 
-
-</script>
 
 
 <div class="container">
@@ -55,10 +27,23 @@ switch ($model->category)
             </div>
         </div>
         <div class="row">
+
             <hr>
             <div class="col-sm-offset-2 col-sm-10">
                 <h1>Module bewerken</h1>
             </div>
+        </div>
+
+<div id="sample">
+
+
+
+
+
+
+
+
+
 
             <form class="idealforms" form="moduleForm" id="moduleForm" action="javascript:handleUpdateModule()">
                 <!-- some hidden values -->
@@ -76,11 +61,9 @@ switch ($model->category)
                 </div>
                 <div class="field">
                     <label class="main" for="module-content">Tekst</label>
-<<<<<<< Updated upstream
-                    <textarea type="text" form="moduleForm" id="module-content" name="content" placeholder="Schrijf hier uw paragraaf..." cols="10" rows="5"><?php echo $model->content; ?></textarea>
-=======
-                    <textarea type="text" form="moduleForm" id="elm1" name="content" placeholder="Schrijf hier uw paragraaf..." cols="10" rows="5" class="nonresizeable"><?php echo $model->content; ?></textarea>
->>>>>>> Stashed changes
+
+                    <textarea type="text" form="moduleForm" id="module-content" name="content" placeholder="Schrijf hier uw paragraaf..." cols="20" rows="5"><?php echo $model->content; ?></textarea>
+
                     <span class="error"></span>
                 </div>
                 <?php if ($model->category == "home") { ?>
