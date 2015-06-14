@@ -2,6 +2,8 @@
 
 class AccountController extends Controller
 {
+    public $addressRepository;
+
     public function __construct()
     {
         parent::__construct("account");
@@ -14,7 +16,8 @@ class AccountController extends Controller
         $user = AccountHelper::getUserInfo();
         if(isset($user))
         {
-            $this->render("index", $_SESSION["user"]);
+            $user = $_SESSION["user"];
+            $this->render("index", $user);
             return;
         }
         $this->redirectTo("/account/login");
