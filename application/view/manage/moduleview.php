@@ -15,7 +15,6 @@ switch ($model->category)
 ?>
 
 
-
 <div class="container">
     <div class="white">
         <div class="row">
@@ -35,13 +34,6 @@ switch ($model->category)
         </div>
 
 <div id="sample">
-
-
-
-
-
-
-
 
 
 

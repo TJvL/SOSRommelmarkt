@@ -8,6 +8,10 @@ CKEDITOR.editorConfig = function( config ) {
 	// For complete reference see:
 	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
 
+    config.bodyClass = 'content'; //class that body needs to refer to
+    config.contentsCss = '../../css/manage/content.css'; //your stylesheet
+
+
 	// The toolbar groups arrangement, optimized for two toolbar rows.
 	config.toolbarGroups = [
 		// { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
@@ -35,4 +39,6 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
+
+	config.allowedContent=true;
 };
