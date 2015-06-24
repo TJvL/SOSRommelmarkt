@@ -83,18 +83,10 @@
                 </a>
             </div>
             <div class="col-md-2 margin-ver-lg">
-                <a href="<?php echo ROOT_PATH; ?>/manage/index">
+                <a href="<?php echo ROOT_PATH; ?>/manage/orderoverview">
                     <button class="btn btn-red">
                         <i class="fa fa-reorder fa-5x fa-fw"></i>
                         <br /><b>Bestellingen</b>
-                    </button>
-                </a>
-            </div>
-            <div class="col-md-2 margin-ver-lg">
-                <a href="<?php echo ROOT_PATH; ?>/manage/index">
-                    <button class="btn btn-red">
-                        <i class="fa fa-check-square fa-5x fa-fw"></i>
-                        <br /><b>Redactie</b>
                     </button>
                 </a>
             </div>

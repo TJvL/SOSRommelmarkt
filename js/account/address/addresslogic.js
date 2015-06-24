@@ -20,9 +20,9 @@ AddressManager =
                 'lastName': 'required',
                 'streetName': 'required',
                 'streetNumber': 'required',
-                'postCode': 'required',
+                'postCode': 'required zip',
                 'city': 'required',
-                'phoneNumber': 'required'
+                'phoneNumber': 'required number'
             },
 
             //When submit is pressed catch the event.
