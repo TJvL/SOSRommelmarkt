@@ -28,7 +28,7 @@ class AddressRepository
     public function insert($address)
     {
         $query = "INSERT INTO Address (accountId, firstName, lastName, streetName, streetNumber, postCode, phoneNumber, city)
-			VALUES (?)";
+			VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         $address->id = $this->database->insert($query, "ssssssss", array($address->accountId, $address->firstName, $address->lastName, $address->streetName, $address->streetNumber, $address->postCode, $address->phoneNumber, $address->city));
 

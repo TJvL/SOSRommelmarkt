@@ -49,4 +49,17 @@ class AccountController extends Controller
         }
         $this->redirectTo("/account/login");
     }
+
+    public function address_GET()
+    {
+        $user = AccountHelper::getUserInfo();
+
+        if(isset($user))
+        {
+            $addresses = $this->addressRepository->selectAllByAccountId($user->id);
+            $this->render("address", $addresses);
+            return;
+        }
+        $this->redirectTo("/account/login");
+    }
 }

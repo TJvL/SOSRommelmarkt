@@ -1,6 +1,6 @@
 <?php
 
-class AddressAPIController
+class AddressAPIController extends APIController
 {
     public $addressRepository;
 
@@ -11,40 +11,30 @@ class AddressAPIController
 
     public function addself_POST($address)
     {
-
-    }
-
-    public function updateself_POST($address)
-    {
-
+        $user = AccountHelper::getUserInfo();
+        if(isset($user))
+        {
+            $address->accountId = $user->id;
+            $this->addressRepository->insert($address);
+            $this->respondOK();
+        }
+        else
+        {
+            throw new Exception("Not authorized for this action.", 401);
+        }
     }
 
     public function deleteself_POST($address)
     {
-
-    }
-
-    /**
-     *{{Permission=Account;}}
-     */
-    public function add_POST($address)
-    {
-
-    }
-
-    /**
-     *{{Permission=Account;}}
-     */
-    public function update_POST($address)
-    {
-
-    }
-
-    /**
-     *{{Permission=Account;}}
-     */
-    public function delete_POST($address)
-    {
-
+        $user = AccountHelper::getUserInfo();
+        if(isset($user))
+        {
+            $this->addressRepository->deleteById($address->id);
+            $this->respondOK();
+        }
+        else
+        {
+            throw new Exception("Not authorized for this action.", 401);
+        }
     }
 }
