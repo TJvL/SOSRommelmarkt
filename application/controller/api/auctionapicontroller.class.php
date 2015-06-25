@@ -33,7 +33,8 @@ class AuctionAPIController extends APIController
         if(isset($auction->id))
         {
             //TODO: Validate if this auction doesn't overlap with another auction
-
+            //Gebeurt in idealforms
+            
             $this->auctionRepository->update($auction);
             $this->respondOK();
         }
@@ -64,7 +65,7 @@ class AuctionAPIController extends APIController
 
     public function dateRanges_GET()
     {
-        $auctions = $this->auctionRepository->getAll();
+        $auctions = $this->auctionRepository->selectAll();
         $ranges = array();
         foreach($auctions as $auction)
         {
