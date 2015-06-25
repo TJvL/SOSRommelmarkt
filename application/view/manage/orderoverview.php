@@ -5,9 +5,6 @@
             <div class="col-md-1">
                 <a href="<?php echo ROOT_PATH . "/manage/index" ?>" class="btn btn-default">Terug</a>
             </div>
-            <div class="col-md-offset-9 col-md-1">
-                <a href="<?php echo ROOT_PATH . "/manage/orderadd"; ?>" class="btn btn-success">Nieuwe Order</a>
-            </div>
         </div>
         <div class="row margin-hor-sm">
             <h1>Bestellingen</h1>
@@ -22,6 +19,7 @@
                     <th>Status</th>
                     <th>Totaal prijs</th>
                     <th>Aantal items</th>
+                    <th>Betaald</th>
                     <th>Bewerken?</th>
                 </tr>
                 </thead>
@@ -35,6 +33,22 @@
                         <td><?php echo $order->status ?></td>
                         <td><?php echo $order->totalPrice ?></td>
                         <td><?php echo count($order->orderProducts) ?></td>
+                        <td>
+                            <?php
+                            if($order->isPayed == 1)
+                            {
+                                ?>
+                                Ja
+                            <?php
+                            }
+                            else
+                            {
+                                ?>
+                                Nee
+                            <?php
+                            }
+                            ?>
+                        </td>
                         <td>
                             <a href="<?php echo ROOT_PATH . "/manage/orderview/" . $order->id ?>"><button class="btn btn-default" title="Aanpassen"><i class="fa fa-pencil"></i></button></a>
                         </td>

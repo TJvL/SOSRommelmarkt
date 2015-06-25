@@ -10,6 +10,7 @@ class OrderOverviewViewModel
     public $payMethod;
     public $placedOn;
     public $statusChangedOn;
+    public $isPayed;
     public $userAccount;
     public $orderProducts;
     public $totalPrice;

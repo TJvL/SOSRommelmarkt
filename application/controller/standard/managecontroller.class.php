@@ -497,6 +497,9 @@ class ManageController extends Controller
 
     //<editor-fold desc="Order Manage">
 
+    /**
+     *{{Permission=Order;}}
+     */
     public function orderoverview_GET()
     {
         $orderVMs = array();
@@ -512,6 +515,7 @@ class ManageController extends Controller
             $orderVM->payMethod = $order->payMethod;
             $orderVM->statusChangedOn = $order->statusChangedOn;
             $orderVM->placedOn = $order->placedOn;
+            $orderVM->isPayed = $order->isPayed;
 
             if((isset($order->shippingAddressId))&&(!empty($order->shippingAddressId)))
             {
@@ -539,6 +543,9 @@ class ManageController extends Controller
         $this->render("orderoverview", $orderVMs);
     }
 
+    /**
+     *{{Permission=Order;}}
+     */
     public function orderadd_GET()
     {
         $orderVM = new OrderAddViewModel();
@@ -550,9 +557,18 @@ class ManageController extends Controller
         $this->render("orderadd", $orderVM);
     }
 
+    /**
+     *{{Permission=Order;}}
+     */
     public function orderview_GET($id)
     {
         $order = $this->orderRepository->selectById($id);
+
+        $orderEditVM = new OrderEditViewModel();
+
+        $orderEditVM->possibleDeliveryMethods = $this->deliveryMethodRepository->selectAll();
+        $orderEditVM->possiblePayMethods = $this->payMethodRepository->selectAll();
+        $orderEditVM->possibleOrderStatuses = $this->orderStatusRepository->selectAll();
 
         $orderVM = new OrderOverviewViewModel();
 
@@ -562,6 +578,7 @@ class ManageController extends Controller
         $orderVM->payMethod = $order->payMethod;
         $orderVM->statusChangedOn = $order->statusChangedOn;
         $orderVM->placedOn = $order->placedOn;
+        $orderVM->isPayed = $order->isPayed;
 
         if((isset($order->shippingAddressId))&&(!empty($order->shippingAddressId)))
         {
@@ -594,7 +611,9 @@ class ManageController extends Controller
         }
         $orderVM->totalPrice = $totalPrice;
 
-        $this->render("orderview", $orderVM);
+        $orderEditVM->order = $orderVM;
+
+        $this->render("orderview", $orderEditVM);
     }
 
     //</editor-fold>

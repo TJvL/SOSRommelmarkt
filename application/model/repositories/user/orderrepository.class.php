@@ -20,16 +20,19 @@ class OrderRepository
         $order->payMethod = $row["payMethod"];
         $order->placedOn = $row["placedOn"];
         $order->statusChangeOn = $row["statusChangeOn"];
+        $order->isPayed = $row["isPayed"];
 
         return $order;
     }
 
     public function insert($order)
     {
-        $query = "INSERT INTO `Order` (status, shippingAddressId, billingAddressId, deliveryMethod, payMethod, placedOn, statusChangeOn)
-			VALUES (?, ?, ?, ?, ?, NOW(), NOW())";
-        $parameters = array("Nieuw", $order->shippingAddressId, $order->billingAddressId, $order->deliveryMethod, $order->payMethod);
-        $paramTypes = "sssss";
+        $query = "INSERT INTO `Order` (status, shippingAddressId, billingAddressId, deliveryMethod, payMethod, placedOn, statusChangeOn, isPayed)
+			VALUES (?, ?, ?, ?, ?, NOW(), NOW(), ?)";
+
+        $isPayed = 0;
+        $parameters = array("Nieuw", $order->shippingAddressId, $order->billingAddressId, $order->deliveryMethod, $order->payMethod, $isPayed);
+        $paramTypes = "sssssi";
 
         $id = $this->database->insert($query, $paramTypes, $parameters);
 
@@ -119,6 +122,17 @@ class OrderRepository
 			WHERE id = ?";
         $parameters = array($order->deliveryMethod, $order->id);
         $paramTypes = "ss";
+
+        $this->database->update($query, $paramTypes, $parameters);
+    }
+
+    public function updateIsPayed($order)
+    {
+        $query = "UPDATE `Order`
+			SET isPayed = ?
+			WHERE id = ?";
+        $parameters = array($order->deliveryMethod, $order->isPayed);
+        $paramTypes = "si";
 
         $this->database->update($query, $paramTypes, $parameters);
     }
