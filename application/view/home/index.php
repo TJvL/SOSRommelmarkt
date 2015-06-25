@@ -148,7 +148,7 @@
 		<?php }	?>
 			<div class="white margin-ver-lg ">
 				<h2><?php echo $modules[$i]->heading; ?></h2>
-				<p class="equal-height"><?php echo $modules[$i]->content; ?></p>
+				<?php echo $modules[$i]->content; ?>
 				<div class="row">
 					<div class="col-md-12">
 						<a class="btn btn-red btn-lg btn-block" href="<?php echo ROOT_PATH . '/' . $modules[$i]->reference; ?>"><?php echo $modules[$i]->reference_label; ?> <i class="fa fa-chevron-right"></i></a>

@@ -45,6 +45,9 @@ class ShopProductAPIController extends APIController
         }
     }
 
+    /**
+     *{{Permission=Product;}}
+     */
     public function update_POST($shopproduct)
     {
         if(isset($shopproduct->id))
@@ -58,7 +61,9 @@ class ShopProductAPIController extends APIController
         }
     }
 
-
+    /**
+     *{{Permission=Product;}}
+     */
     public function add_POST($shopproduct)
     {
         if((isset($shopproduct->name))&&(isset($shopproduct->description))&&(isset($shopproduct->colorCode))&&(isset($shopproduct->price)))
@@ -75,6 +80,9 @@ class ShopProductAPIController extends APIController
         }
     }
 
+    /**
+     *{{Permission=Product;}}
+     */
     public function addimage_POST(){
 
         if (isset($_POST["id"]) && isset($_POST["originalWidth"]) && isset($_POST["clientWidth"]) && isset($_POST["xCoord"]) && isset($_POST["width"]) &&
@@ -106,6 +114,9 @@ class ShopProductAPIController extends APIController
         throw new Exception("Resource not found.", 404);
     }
 
+    /**
+     *{{Permission=Product;}}
+     */
     public function deleteimage_POST(){
 
         if (isset($_POST["id"]) && isset($_POST["imageName"]))

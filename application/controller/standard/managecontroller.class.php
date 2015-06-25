@@ -13,6 +13,9 @@ class ManageController extends Controller
     public $companyInformationRepository;
     public $visitingHoursRepository;
     public $newsRepository;
+    public $accountRepository;
+    public $roleRepository;
+    public $permissionRepository;
 
     public function __construct()
     {
@@ -27,6 +30,11 @@ class ManageController extends Controller
         $this->render("index");
     }
 
+    //<editor-fold desc="Auction Manage">
+
+    /**
+     *{{Permission=Product;}}
+     */
     public function auctionoverview_GET()
     {
         $auctionList = new ArrayList("Auction");
@@ -34,6 +42,9 @@ class ManageController extends Controller
         $this->render("auctionoverview", $auctionList);
     }
 
+    /**
+     *{{Permission=Product;}}
+     */
     public function auctionview_GET($id)
     {
         if (isset($id))
@@ -47,11 +58,17 @@ class ManageController extends Controller
         }
     }
 
+    /**
+     *{{Permission=Product;}}
+     */
     public function auctionadd_GET()
     {
         $this->render("auctionadd");
     }
 
+    /**
+     *{{Permission=Product;}}
+     */
     public function auctionproductoverview_GET($id)
     {
         if (isset($id))
@@ -68,6 +85,9 @@ class ManageController extends Controller
         }
     }
 
+    /**
+     *{{Permission=Product;}}
+     */
     public function auctionproductview_GET($id)
     {
         if (isset($id))
@@ -88,6 +108,9 @@ class ManageController extends Controller
         }
     }
 
+    /**
+     *{{Permission=Product;}}
+     */
     public function auctionproductadd_GET()
     {
         $colorCodes = new ArrayList("ColorCode");
@@ -96,10 +119,12 @@ class ManageController extends Controller
         $this->render("auctionproductadd", $colorCodes);
     }
 
-    //<editor-fold desc="News Manage***">
+    //</editor-fold>
+
+    //<editor-fold desc="News Manage">
 
     /**
-     *{{Permission=Tekst;}}
+     *{{Permission=Nieuws;}}
      */
     public function newsoverview_GET()
     {
@@ -109,7 +134,7 @@ class ManageController extends Controller
     }
 
     /**
-     *{{Permission=Tekst;}}
+     *{{Permission=Nieuws;}}
      */
     public function newsview_GET($id)
     {
@@ -126,7 +151,7 @@ class ManageController extends Controller
     }
 
     /**
-     *{{Permission=Tekst;}}
+     *{{Permission=Nieuws;}}
      */
     public function newsadd_GET()
     {
@@ -138,7 +163,7 @@ class ManageController extends Controller
     //<editor-fold desc="Partner Manage">
 
     /**
-     *{{Permission=Onderdeel;}}
+     *{{Permission=Tekst;}}
      */
     public function partneroverview_GET()
     {
@@ -148,7 +173,7 @@ class ManageController extends Controller
     }
 
     /**
-     *{{Permission=Onderdeel;}}
+     *{{Permission=Tekst;}}
      */
     public function partnerview_GET($id)
     {
@@ -163,13 +188,16 @@ class ManageController extends Controller
     }
 
     /**
-     *{{Permission=Onderdeel;}}
+     *{{Permission=Tekst;}}
      */
     public function partneradd_GET()
     {
         $this->render("partneradd");
     }
 
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function projectoverview_get()
     {
         $projectList = new ArrayList("Project");
@@ -177,11 +205,17 @@ class ManageController extends Controller
         $this->render("projectoverview", $projectList);
     }
 
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function projectview_get($id)
     {
         $this->render("projectview", $this->projectRepository->selectById($id));
     }
 
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function projectadd_GET()
     {
         $this->render("projectadd");
@@ -243,7 +277,7 @@ class ManageController extends Controller
 
     //</editor-fold>
 
-    //<editor-fold desc="Slogan Manage***">
+    //<editor-fold desc="Slogan Manage">
 
     /**
      *{{Permission=Tekst;}}
@@ -287,46 +321,18 @@ class ManageController extends Controller
     /**
      *{{Role=Administrator;}}
      */
-    public function pagecontentoverview_GET()
+    public function settings_GET()
     {
         $settingsVM = new SettingsViewModel();
 
         $companyInformation = $this->companyInformationRepository->selectCurrent();
         $visitingHours = $this->visitingHoursRepository->selectCurrent();
-        $slogans = $this->sloganRepository->selectAll();
-        $homeModules = $this->moduleRepository->selectByCategory("home");
-        $aboutUsModules = $this->moduleRepository->selectByCategory("aboutus");
-        $newsItems = $this->newsRepository->selectAll();
 
         $settingsVM->companyInformation = $companyInformation;
         $settingsVM->visitingHours = $visitingHours;
-        $settingsVM->slogans = $slogans;
-        $settingsVM->homeModules = $homeModules;
-        $settingsVM->aboutUsModules = $aboutUsModules;
-        $settingsVM->newsItems = $newsItems;
 
-        $this->render("pagecontentoverview", $settingsVM);
+        $this->render("settings", $settingsVM);
     }
-
-    /**
-     *{{Permission=Onderdeel;}}
-     */
-    public function moduleadd_GET()
-    {
-        $this->render("moduleadd");
-    }
-
-    /**
-     *{{Permission=Onderdeel;}}
-     */
-    public function moduleview_GET()
-    {
-        if (isset($_GET["id"]))
-        {
-            $this->render("moduleview", $this->moduleRepository->selectById($_GET["id"]));
-        }
-    }
-
 
     //</editor-fold>
 
@@ -342,6 +348,9 @@ class ManageController extends Controller
         $this->render("subventionoverview", $subventionList);
     }
 
+    /**
+     *{{Permission=Formulier;}}
+     */
     public function subventionview_GET($id)
     {
         $subventionVM = new SubventionViewModel();
@@ -358,39 +367,114 @@ class ManageController extends Controller
         }
     }
 
+    //</editor-fold>
 
+    //<editor-fold desc="Account Manage">
 
     /**
-     *{{Permission=Onderdeel;}}
+     *{{Permission=Account;}}
      */
-    public function subventionsContent_POST()
+    public function accountoverview_GET()
     {
-        // Check if all the necessary data has been sent with the request.
-        if (isset($_POST["titel"]) && isset($_POST["content"]))
+        $accounts = $this->accountRepository->selectAll();
+        $accountVMs = new ArrayList("AccountViewModel");
+        foreach($accounts as $account)
         {
-            // set the data and update
-            $subventionsContent             = SubventionsContent::selectCurrent();
-            $subventionsContent->titel      = $_POST["titel"];
-            $subventionsContent->content     = $_POST["content"];
-            $subventionsContent->update();
+            $accountVM = new AccountViewModel();
+            $accountVM->id = $account->id;
+            $accountVM->email = $account->email;
+            $accountVM->username = $account->username;
+            $accountVM->role = $account->roleName;
+            $accountVM->lastLogin = $account->lastLogin;
+
+            $accountVMs->add($accountVM);
         }
-        $this->redirectTo("/manage/subventions");
+
+        $this->render("accountoverview", $accountVMs);
     }
 
     /**
-     *{{Permission=Formulier;}}
+     *{{Permission=Account;}}
      */
-    public function changeSubventionStatus_POST()
+    public function accountview_GET($id)
     {
-        // Check if all the necessary data has been sent with the request.
-        if (isset($_POST["id"]) && isset($_POST["status"]))
+        $user = AccountHelper::getUserInfo();
+
+        if($user->id == $id)
         {
-            // Get the product, set the data and update.
-            $this->subventionRequestRepository->updateStatus($_POST["id"], $_POST["status"]);
-            $this->subventions_GET();
+            $this->redirectTo("/account/index");
         }
-        else{
-            //TODO: error handling
+        else
+        {
+            $account = $this->accountRepository->selectById($id);
+
+            $accountVM = new AccountViewModel();
+            $accountVM->id = $account->id;
+            $accountVM->username = $account->username;
+            $accountVM->email = $account->email;
+            $accountVM->role = $account->roleName;
+            $accountVM->lastLogin = $account->lastLogin;
+
+            $roles = $this->roleRepository->selectAll();
+
+            $accountPageVM = new AccountEditViewModel();
+            $accountPageVM->account = $accountVM;
+            $accountPageVM->possibleRoles = $roles;
+
+            $_SESSION["edituserid"] = $id;
+
+            $this->render("accountview", $accountPageVM);
         }
     }
+
+    /**
+     *{{Permission=Account;}}
+     */
+    public function accountadd_GET()
+    {
+        $roles = $this->roleRepository->selectAll();
+
+        $this->render("accountadd", $roles);
+    }
+
+    //</editor-fold>
+
+    //<editor-fold desc="Page Content Manage">
+
+    /**
+     *{{Permission=Tekst;}}
+     */
+    public function pagecontentmanage_GET()
+    {
+        $manageVM = new PageContentViewModel();
+
+        $homeModules = $this->moduleRepository->selectByCategory("home");
+        $aboutUsModules = $this->moduleRepository->selectByCategory("aboutus");
+
+        $manageVM->homeModules = $homeModules;
+        $manageVM->aboutUsModules = $aboutUsModules;
+
+        $this->render("pagecontentmanage", $manageVM);
+    }
+
+    /**
+     *{{Permission=Tekst;}}
+     */
+    public function moduleadd_GET()
+    {
+        $this->render("moduleadd");
+    }
+
+    /**
+     *{{Permission=Tekst;}}
+     */
+    public function moduleview_GET()
+    {
+        if (isset($_GET["id"]))
+        {
+            $this->render("moduleview", $this->moduleRepository->selectById($_GET["id"]));
+        }
+    }
+
+    //</editor-fold>
 }

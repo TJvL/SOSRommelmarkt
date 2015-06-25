@@ -9,6 +9,9 @@ class PartnerAPIController extends APIController
         Parent::__construct("partnerapi");
     }
 
+    /**
+     *{{Role=Administrator;}}
+     */
     public function delete_POST($partner)
     {
         if(isset($partner->id))
@@ -23,6 +26,9 @@ class PartnerAPIController extends APIController
         }
     }
 
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function update_POST($partner){
 
         if(isset($partner->id))
@@ -42,6 +48,9 @@ class PartnerAPIController extends APIController
 
     }
 
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function add_POST($partner)
     {
         if((isset($partner->name))&&(isset($partner->website))&&(isset($partner->category)))
@@ -56,6 +65,9 @@ class PartnerAPIController extends APIController
         }
     }
 
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function setimage_POST()
     {
         if (isset($_POST["id"]) && isset($_FILES["image"]))
@@ -68,5 +80,3 @@ class PartnerAPIController extends APIController
     }
 
 }
-
-?>

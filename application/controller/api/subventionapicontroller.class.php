@@ -9,7 +9,9 @@ class SubventionAPIController extends APIController
 		parent::__construct("subventionapi");
 	}
 
-
+    /**
+     *{{Role=Administrator;}}
+     */
     public function delete_POST($subventionrequest)
     {
         if (isset($subventionrequest->id)){
@@ -21,6 +23,9 @@ class SubventionAPIController extends APIController
         }
     }
 
+    /**
+     *{{Permission=Formulier;}}
+     */
     public function updatestatus_POST($subventionrequest){
 
         if (isset($subventionrequest->id)){

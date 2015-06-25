@@ -26,7 +26,7 @@ class NewsAPIController extends APIController
     }
 
     /**
-     *{{Permission=Tekst;}}
+     *{{Permission=Nieuws;}}
      */
     public function update_POST($news)
     {
@@ -43,7 +43,7 @@ class NewsAPIController extends APIController
     }
 
     /**
-     *{{Permission=Tekst;}}
+     *{{Permission=Nieuws;}}
      */
     public function add_POST($news)
     {

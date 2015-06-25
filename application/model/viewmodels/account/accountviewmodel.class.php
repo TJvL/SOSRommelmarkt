@@ -7,4 +7,5 @@ class AccountViewModel
     public $email;
     public $role;
     public $permissions;
+    public $lastLogin;
 }

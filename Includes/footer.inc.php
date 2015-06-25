@@ -10,10 +10,10 @@
                   ?>
                    <div class="row">
             <div class=" col-md-4">
-                <h2>SOS</h2>
+                <h2>Spoor073</h2>
                 <?php
                     for ($i = 0; $i < $footerVM->partners->size(); $i++) {
-                        if ($footerVM->partners->get($i)->category === "SOS") { ?>
+                        if ($footerVM->partners->get($i)->category === "Spoor073") { ?>
                             <a href="<?php echo $footerVM->partners->get($i)->website ?>" target="_blank"><img class="footer-partner-logo-image partner-image-fix padding-ver-sm" src="<?php echo $footerVM->partners->get($i)->getImagePath() ?>"></a>
                         <?php
                         }
@@ -21,10 +21,10 @@
                 ?>
             </div>
             <div class=" col-md-4">
-                <h2>Dienstverleners</h2>
+                <h2>WOSA-Partners</h2>
                 <?php
                 for ($i = 0; $i < $footerVM->partners->size(); $i++) {
-                    if ($footerVM->partners->get($i)->category === "Dienstverleners") { ?>
+                    if ($footerVM->partners->get($i)->category === "WOSA-Partners") { ?>
                         <a href="<?php echo $footerVM->partners->get($i)->website ?>" target="_blank"><img class="footer-partner-logo-image partner-image-fix padding-ver-sm" src="<?php echo $footerVM->partners->get($i)->getImagePath() ?>"></a>
                     <?php
                     }
@@ -32,10 +32,10 @@
                 ?>
             </div>
             <div class=" col-md-4">
-                <h2>Projecten</h2>
+                <h2>Samenwerking</h2>
                 <?php
                 for ($i = 0; $i < $footerVM->partners->size(); $i++) {
-                    if ($footerVM->partners->get($i)->category === "Projecten") { ?>
+                    if ($footerVM->partners->get($i)->category === "Samenwerking") { ?>
                         <a href="<?php echo $footerVM->partners->get($i)->website ?>" target="_blank"><img class="footer-partner-logo-image partner-image-fix padding-ver-sm" src="<?php echo $footerVM->partners->get($i)->getImagePath() ?>"></a>
                     <?php
                     }

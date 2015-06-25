@@ -24,9 +24,9 @@
                 <div class="field">
                     <label class="main" for="categorie">Categorie</label>
                     <select form="createPartnerForm" name="category" id="category">
-                        <option value="SOS">SOS</option>
-                        <option value="Dienstverleners">Dienstverleners</option>
-                        <option value="Projecten">Projecten</option>
+                        <option value="Spoor073">Spoor073</option>
+                        <option value="WOSA-Partners">WOSA-Partners</option>
+                        <option value="Samenwerking">Samenwerking</option>
                     </select>
                     <span class="error"></span>
                 </div>

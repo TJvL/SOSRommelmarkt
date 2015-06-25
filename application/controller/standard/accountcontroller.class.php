@@ -2,6 +2,8 @@
 
 class AccountController extends Controller
 {
+    public $addressRepository;
+
     public function __construct()
     {
         parent::__construct("account");
@@ -9,10 +11,13 @@ class AccountController extends Controller
 
     public function index_GET()
     {
+        unset($_SESSION["edituserid"]);
+
         $user = AccountHelper::getUserInfo();
         if(isset($user))
         {
-            $this->render("index", $_SESSION["user"]);
+            $user = $_SESSION["user"];
+            $this->render("index", $user);
             return;
         }
         $this->redirectTo("/account/login");
@@ -40,6 +45,19 @@ class AccountController extends Controller
         {
             unset($_SESSION["user"]);
             $this->render("logout");
+            return;
+        }
+        $this->redirectTo("/account/login");
+    }
+
+    public function address_GET()
+    {
+        $user = AccountHelper::getUserInfo();
+
+        if(isset($user))
+        {
+            $addresses = $this->addressRepository->selectAllByAccountId($user->id);
+            $this->render("address", $addresses);
             return;
         }
         $this->redirectTo("/account/login");

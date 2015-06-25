@@ -4,9 +4,12 @@
             <div class="col-md-1">
                 <a href="<?php echo ROOT_PATH . "/home/index" ?>" class="btn btn-default">Home</a>
             </div>
+            <div class="col-md-offset-4 col-md-1">
+                <a href="<?php echo ROOT_PATH . "/account/address" ?>" class="btn btn-default">Adressen</a>
+            </div>
             <?php if($model->role !== "Standaard")
             { ?>
-            <div class="col-md-offset-9 col-md-1">
+            <div class="col-md-offset-4 col-md-1">
                 <a href="<?php echo ROOT_PATH . "/manage/index" ?>" class="btn btn-default">Management</a>
             </div>
             <?php } ?>

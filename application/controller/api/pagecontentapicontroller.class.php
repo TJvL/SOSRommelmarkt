@@ -11,7 +11,9 @@ class PageContentAPIController extends APIController
         parent::__construct("pagecontentapi");
     }
 
-
+    /**
+     *{{Role=Administrator;}}
+     */
     public function deletemodule_POST($module)
     {
         if(isset($module->id))
@@ -25,7 +27,9 @@ class PageContentAPIController extends APIController
         }
     }
 
-
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function updatemodule_POST($module)
     {
         if(isset($module->id))
@@ -39,6 +43,9 @@ class PageContentAPIController extends APIController
         }
     }
 
+    /**
+     *{{Permission=Tekst;}}
+     */
     public function addmodule_POST($module)
     {
 
@@ -53,32 +60,6 @@ class PageContentAPIController extends APIController
                 }
             }
             $this->moduleRepository->insert($module);
-            $this->respondOK();
-        }
-        else
-        {
-            throw new Exception("Not all required data was provided", 400);
-        }
-    }
-
-    public function updatecompanyinformation_POST($companyinformation)
-    {
-        if (isset($companyinformation->id))
-        {
-            $this->companyInformationRepository->update($companyinformation);
-            $this->respondOK();
-        }
-        else
-        {
-            throw new Exception("Not all required data was provided", 400);
-        }
-    }
-
-    public function updatevisitinghours_POST($visitinghours)
-    {
-        if (isset($visitinghours->id))
-        {
-            $this->visitinghoursRepository->update($visitinghours);
             $this->respondOK();
         }
         else
