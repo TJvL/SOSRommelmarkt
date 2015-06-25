@@ -10,7 +10,7 @@ switch ($model->category)
         $returnPath = "/manage/pagecontentmanage#tab_aboutus-modules";
         break;
     case "project-info":
-    	$returnPath = "/manage/pagecontentmanage#tab_project-description";
+    	$returnPath = "/manage/projectoverview#tab_projects-description";
     	break;
     default:
         $returnPath = "/manage";
