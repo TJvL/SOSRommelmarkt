@@ -171,6 +171,15 @@
                                             </div>
 
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-9 padding-sm"></div>
+                                                <div class="col-md-3 padding-sm">
+                                                    <button class="btn btn-default" onClick='addProductToCart(<?php echo json_encode($product);?>)'>Voeg toe aan <i class="fa fa-shopping-cart"></i></button>
+                                                </div>
+                                            </div>
+
+                                        </div>
 
                                     </div>
 

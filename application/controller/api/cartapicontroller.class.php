@@ -68,9 +68,9 @@ class CartAPIController extends APIController
         $_SESSION["cart"] = new CartViewModel();
     }
 
-    public function deleteitem_POST($shopProduct)
+    public function deleteitem_POST()
     {
-        if(isset($shopProduct))
+        if(isset($_POST["id"]))
         {
             $cartExists = false;
             if(array_key_exists("cart", $_SESSION))
@@ -82,7 +82,7 @@ class CartAPIController extends APIController
             }
             if($cartExists)
             {
-                unset($_SESSION["cart"]->cartContent[$shopProduct->id]);
+                unset($_SESSION["cart"]->cartContent[$_POST["id"]]);
             }
             else
             {
