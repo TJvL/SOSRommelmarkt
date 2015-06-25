@@ -17,6 +17,7 @@ class ShopProductRepository extends ProductRepository
 		$shopProduct->colorCode = $array["colorCode"];
 		$shopProduct->price = $array["price"];
 		$shopProduct->isReserved = $array["isReserved"];
+        $shopProduct->isSold = $array["isSold"];
 		$shopProduct->imagePath = $shopProduct->getMainImagePath();
 		$shopProduct->imagePaths = $shopProduct->getImagePaths();
 
@@ -28,19 +29,20 @@ class ShopProductRepository extends ProductRepository
 		// Insert a normal product and get back the auto incremented key.
 		$id = $this->insertProduct($shopproduct);
 		
-		$query = "INSERT INTO ShopProduct (id, price, isReserved)
-				VALUES (?, ?, ?)";
+		$query = "INSERT INTO ShopProduct (id, price, isReserved, isSold)
+				VALUES (?, ?, ?, ?, ?)";
 
         $isReserved = 0;
+        $isSold = 0;
 		// Insert the shop product.
-        $this->database->insert($query, "idi", array($id, $shopproduct->price, $isReserved));
+        $this->database->insert($query, "idii", array($id, $shopproduct->price, $isReserved, $isSold));
 
         return $id;
 	}
 	
 	public function selectAll()
 	{
-		$query = "SELECT ShopProduct.id, name, description, addedBy, colorCode, price, isReserved
+		$query = "SELECT ShopProduct.id, name, description, addedBy, colorCode, price, isReserved, isSold
 			FROM ShopProduct
 			LEFT JOIN Product
 			ON ShopProduct.id = Product.id";
@@ -63,7 +65,7 @@ class ShopProductRepository extends ProductRepository
 	
 	public function selectById($id)
 	{
-		$query = "SELECT ShopProduct.id, name, description, addedBy, colorCode, price, isReserved
+		$query = "SELECT ShopProduct.id, name, description, addedBy, colorCode, price, isReserved, isSold
 			FROM ShopProduct
 			LEFT JOIN Product
 			ON ShopProduct.id = Product.id
@@ -87,9 +89,9 @@ class ShopProductRepository extends ProductRepository
 	{
 		$this->updateProduct($product);
 
-        $query = "UPDATE ShopProduct SET price = ?, isReserved = ? WHERE id = ?";
+        $query = "UPDATE ShopProduct SET price = ?, isReserved = ?, isSold = ? WHERE id = ?";
 
-        $this->database->update($query, "dii", array($product->price, $product->isReserved, $product->id));
+        $this->database->update($query, "diii", array($product->price, $product->isReserved, $product->isSold, $product->id));
 	}
 	
 	public function deleteById($id)

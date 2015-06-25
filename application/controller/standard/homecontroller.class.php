@@ -112,7 +112,13 @@ class HomeController extends Controller
         $shopHomeVM = new ShopHomeViewModel();
 
         $shopProducts = new ArrayList("Product");
-        $shopProducts->addAll($this->shopProductRepository->selectAll());
+        foreach($this->shopProductRepository->selectAll() as $shopProduct)
+        {
+            if($shopProduct->isSold == 0)
+            {
+                $shopProducts->add($shopProduct);
+            }
+        }
 
         $prices = $this->shopProductRepository->getPriceRanges();
 
