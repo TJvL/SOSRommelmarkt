@@ -1,11 +1,15 @@
 $.fn.dataTable.ext.search.push(
     function( settings, data, dataIndex ) {
         var when = $("#when_running").val();
-        var startDate = new Date(data[0]); // use data for the age column
+        var startDate = new Date(data[0]);
         var endDate = new Date(data[1]);
         var now = new Date();
 
-        if(when == "before")
+        if(when == "all")
+        {
+            return true;
+        }
+        else if(when == "before")
         {
             if(endDate < now)
             {
@@ -25,10 +29,6 @@ $.fn.dataTable.ext.search.push(
             {
                 return true;
             }
-        }
-        else if(when == "all")
-        {
-            return true;
         }
         return false;
     }
