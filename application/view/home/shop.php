@@ -76,7 +76,7 @@
                     </div>
 
                     <!-- modal start -->
-                    <div class="modal fade bs-<?php echo $product->id ?>-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div id="product<?php echo $product->id ?>Modal" class="modal fade bs-<?php echo $product->id ?>-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="padding-lg">
@@ -175,14 +175,12 @@
                                             <div class="col-md-12">
                                                 <div class="col-md-9 padding-sm"></div>
                                                 <div class="col-md-3 padding-sm">
-                                                    <button class="btn btn-default" onClick='addProductToCart(<?php echo json_encode($product);?>)'>Voeg toe aan <i class="fa fa-shopping-cart"></i></button>
-                                                </div>
+                                                	<div class="fb-share-button" data-href="<?php echo ROOT_PATH . "/home/shop?product=" . $product->id ?>" data-layout="button_count"></div>
+                                                	<button class="btn btn-default" onClick='addProductToCart(<?php echo json_encode($product);?>)'>Voeg toe aan <i class="fa fa-shopping-cart"></i></button>
+												</div>
                                             </div>
-
                                         </div>
-
                                     </div>
-
                                 </div>
                             </div>
                         </div>
