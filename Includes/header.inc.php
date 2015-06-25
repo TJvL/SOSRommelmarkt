@@ -22,7 +22,7 @@ IncludeLocator::locateIncludes("js", $controller, $action);
                         <div class="contact-info">
                             <div class="contact-phone padding-hor-md"><span><i class="fa fa-phone"></i> <?php echo $headerVM->companyInformation->phone; ?> </span></div>
                             <div class="contact-mail padding-hor-md"><span><i class="fa fa-envelope"></i> <?php echo $headerVM->companyInformation->email ?> </span></div>
-                            <div class="contact-address padding-hor-md"><span><i class="fa fa-map-marker"></i> <?php echo $headerVM->companyInformation->address . ", " . $headerVM->companyInformation->postalcode . " " . $headerVM->companyInformation->city; ?> </span></div>
+                            <div class="contact-address padding-hor-md"><span><i class="fa fa-map-marker"></i> <?php echo $headerVM->companyInformation->address . ", " . $headerVM->companyInformation->postalcode . ", " . $headerVM->companyInformation->city; ?> </span></div>
                         </div>
                     </li>
                     <?php
