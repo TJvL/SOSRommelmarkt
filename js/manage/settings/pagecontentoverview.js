@@ -60,6 +60,31 @@ $('#visitinghoursform').idealforms({
 
 });
 
+$("#backgroundForm").idealforms(
+{
+    silentLoad: true,
+
+    rules:
+    {
+    	'image': 'extension:jpg:jpeg:bmp:png:gif'
+    },
+
+    //When submit is pressed catch the event.
+    onSubmit: function(invalid,event)
+    {
+        // if the form is invalid (everything is not filled in correctly) then show an error and prevent submit.
+        if (invalid > 0)
+        {
+            event.preventDefault();
+            $('#invalidBackground').show().text(invalid +' ongeldige velden!');
+            // else submit the form in a POST request
+        } else
+        {
+            $('#invalidBackground').hide();
+        }
+    }
+});
+
 $('#visitinghoursform').find('input, select, textarea').on('change keyup', function() {
     $('#invalidvisitinghours').hide();
 });
@@ -121,6 +146,8 @@ function ResetStatus()
     $("#statuscompanyinformation").removeClass("alert-warning alert-danger alert-success");
     $("#statusvisitinghours").text("");
     $("#statusvisitinghours").removeClass("alert-warning alert-danger alert-success");
+    $("#statusBackground").text("");
+    $("#statusBackground").removeClass("alert-warning alert-danger alert-success");
 }
 
 function UpdateCompanyInformation()
@@ -147,9 +174,8 @@ function UpdateCompanyInformation()
                 data: data,
                 async: true,
                 success: function () {
-                    var successMessage = "Adresgegevens succesvol gewijzigd.";
-                    localStorage.setItem("successMessage", successMessage);
-                    location.reload();
+                	$("#statuscompanyinformation").text("Adresgegevens succesvol gewijzigd.");
+                    $("#statuscompanyinformation").addClass("alert-success");
                 },
                 error: function (status) {
                     $("#statuscompanyinformation").text(status.status + ": " + translateHttpError(status.statusText));
@@ -189,12 +215,86 @@ function UpdateVisitinghours()
                     $("#statusvisitinghours").addClass("alert-success");
                 },
                 error: function (status) {
-                    $("#status").text(status.status + ": " + translateHttpError(status.statusText));
-                    $("#status").addClass("alert-danger");
+                    $("#statusvisitinghours").text(status.status + ": " + translateHttpError(status.statusText));
+                    $("#statusvisitinghours").addClass("alert-danger");
                 }
             });
     }
 }
+
+function UpdateBackground()
+{
+	if (confirm("Weet u zeker dat de achtergrond wilt wijzigen?"))
+	{
+		ResetStatus()
+		
+		// Check if the image is set.
+		if ($("#image").val() === "")
+		{
+			$("#status").text("Er is geen afbeelding geselecteerd.");
+			$("#status").addClass("alert-warning");
+	        
+			return;
+		}
+		
+		var data = new FormData();
+		data.append("image", $("#image")[0].files[0]);
+		
+		$.ajax(
+		{
+			url: getBaseURL() + "settingsapi/updatebackground",
+			type: "POST",
+	        data: data,
+	        async: false,
+	        contentType: false,
+	        processData: false,
+            success: function()
+            {
+            	 $("#statusBackground").text("Achtergrond succesvol gewijzigd.");
+                 $("#statusBackground").addClass("alert-success");
+            },
+            error: function (status)
+            {
+                $("#statusBackground").text(status.status + ": " + translateHttpError(status.statusText));
+                $("#statusBackground").addClass("alert-danger");
+                console.log("fail");
+            }
+		});
+	}
+}
+
+//For previewing the image.
+$("#image").change(function()
+{
+	ResetStatus();
+	
+	// Check if the file has an image extension.
+	if (!IsImage($("#image").val()))
+	{
+		$("#statusBackground").text("Het bestand dat u probeert te gebruiken is geen afbeelding.");
+        $("#statusBackground").addClass("alert-warning");
+        
+     	// Hide the image.
+		$("#imagePreviewDiv").addClass("hidden");
+        
+		return;
+	}
+	
+	if (this.files && this.files[0])
+	{
+		var reader = new FileReader();
+
+		reader.onload = function(e)
+		{
+			$("#imagePreview").attr("src", e.target.result);
+		}
+
+		reader.readAsDataURL(this.files[0]);
+
+		// Show the image.
+		$("#imagePreviewDiv").removeClass("hidden");
+    }
+});
 
 $(window).load(function() {
     Resize();

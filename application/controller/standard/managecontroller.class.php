@@ -341,6 +341,12 @@ class ManageController extends Controller
 
         $companyInformation = $this->companyInformationRepository->selectCurrent();
         $visitingHours = $this->visitingHoursRepository->selectCurrent();
+        
+        $result = glob("img/content/" . "background." . "*");
+        if ($result)
+        	$settingsVM->backgroundPath = ROOT_PATH . "/" . $result[0];
+        else
+        	$settingsVM->backgroundPath = null;
 
         $settingsVM->companyInformation = $companyInformation;
         $settingsVM->visitingHours = $visitingHours;

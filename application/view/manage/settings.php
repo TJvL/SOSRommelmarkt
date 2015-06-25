@@ -11,13 +11,14 @@
 			<ul class="nav nav-tabs nav-justified" role="tablist">
 				<li role="presentation" class="active"><a href="#companyinformation" aria-controls="companyinformation" role="tab" data-toggle="tab">Adres</a></li>
 				<li role="presentation"><a href="#visitinghours" aria-controls="visitinghours" role="tab" data-toggle="tab">Openingstijden</a></li>
+				<li role="presentation"><a href="#background" aria-controls="background" role="tab" data-toggle="tab">Achtergrond</a></li>
 			</ul>
 			<!-- end nav tabs -->
 			
 			<!-- start tab panes -->
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane fade in active margin-ver-lg" id="companyinformation">
-					<form class="idealforms" form="companyinformationform" id="companyinformationform" action="javascript:UpdateCompanyInformation()">
+					<form class="idealforms" id="companyinformationform" action="javascript:UpdateCompanyInformation()">
                         <input type="hidden" form="companyinformationform" id="companyInformationId" name="companyInformationId" value="<?php echo $model->companyInformation->id; ?>" />
 
 						<div class="field">
@@ -59,7 +60,7 @@
 				</div>
 				
 				<div role="tabpanel" class="tab-pane margin-ver-lg" id="visitinghours">
-					<form class="idealforms" form="visitinghoursform" id="visitinghoursform" action="javascript:UpdateVisitinghours()">
+					<form class="idealforms" id="visitinghoursform" action="javascript:UpdateVisitinghours()">
                         <input type="hidden" form="visitinghoursform" id="visitinghoursId" name="visitinghoursId" value="<?php echo $model->visitingHours->id; ?>" />
 
 						<div class="field">
@@ -106,6 +107,31 @@
                     <div class="row">
                         <div class="col-md-12 padding-lg">
                             <p id="statusvisitinghours" class="padding-lg"></p>
+                        </div>
+                    </div>
+				</div>
+                    
+                <div role="tabpanel" class="tab-pane margin-ver-lg" id="background">
+					<form class="idealforms" id="backgroundForm" action="javascript:UpdateBackground()">
+						<div class="field">
+		                    <label class="main" for="image">Plaatje</label>
+		                    <input id="image" type="file">
+		                    <span class="error"></span>
+		                </div>
+		                <div class="field" id="imagePreviewDiv">
+		                	<label class="main" for="imagePreview">Plaatje preview</label>
+			                <img class="image-preview" id="imagePreview" src="<?php echo $model->backgroundPath ?>">
+		                    <span class="error"></span>
+						</div>
+		                <div class="field buttons">
+		                    <label class="main">&nbsp;</label>
+		                    <button type="submit" class="submit">Opslaan</button>
+		                </div>
+                        <span id="invalidBackground"></span>
+					</form>
+                    <div class="row">
+                        <div class="col-md-12 padding-lg">
+                            <p id="statusBackground" class="padding-lg"></p>
                         </div>
                     </div>
 				</div>
