@@ -12,6 +12,11 @@ class AccountAPIController extends APIController
         parent::__construct("accountapi");
     }
 
+    public function getCurrentUserInfo_GET()
+    {
+        $this->respondWithJSON(AccountHelper::getUserInfo());
+    }
+
     /**
      *{{Role=Administrator;}}
      */
