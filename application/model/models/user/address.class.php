@@ -9,6 +9,6 @@ class Address
     public $streetName;
     public $streetNumber;
     public $postCode;
+    public $city;
     public $phoneNumber;
-    public $country;
 }
