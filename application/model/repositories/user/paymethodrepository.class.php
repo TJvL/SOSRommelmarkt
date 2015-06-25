@@ -1,6 +1,6 @@
 <?php
 
-class OrderStatusRepository 
+class PayMethodRepository
 {
     private $database;
 
@@ -11,30 +11,31 @@ class OrderStatusRepository
 
     private function mapRowToModel($row)
     {
-        $orderStatus = new OrderStatus();
-        $orderStatus->name = $row["name"];
+        $payMethod = new DeliveryMethod();
+        $payMethod->name = $row["name"];
+        $payMethod->description = $row["description"];
 
-        return $orderStatus;
+        return $payMethod;
     }
 
     public function selectAll()
     {
         $query = "SELECT *
-			FROM OrderStatus";
+			FROM PayMethod";
 
         $result = $this->database->select($query);
 
-        $orderStatuses = array();
+        $payMethods = array();
 
         for ($i = 0; $i < $result->num_rows; $i++)
         {
             $row = $result->fetch_assoc();
-            $orderStatus = $this->mapRowToModel($row);
-            $orderStatuses[$orderStatus->name] = $orderStatus;
+            $payMethod = $this->mapRowToModel($row);
+            $payMethods[$payMethod->name] = $payMethod;
         }
 
         $result->close();
 
-        return $orderStatuses;
+        return $payMethods;
     }
 }

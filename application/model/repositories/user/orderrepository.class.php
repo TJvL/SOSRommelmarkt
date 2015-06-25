@@ -16,6 +16,8 @@ class OrderRepository
         $order->status = $row["status"];
         $order->shippingAddressId = $row["shippingAddressId"];
         $order->billingAddressId = $row["billingAddressId"];
+        $order->deliveryMethod = $row["deliveryMethod"];
+        $order->payMethod = $row["payMethod"];
         $order->placedOn = $row["placedOn"];
         $order->statusChangeOn = $row["statusChangeOn"];
 
@@ -24,10 +26,10 @@ class OrderRepository
 
     public function insert($order)
     {
-        $query = "INSERT INTO Order (status, shippingAddressId, billingAddressId, placedOn, statusChangeOn)
-			VALUES (?, ?, ?, NOW(), NOW())";
-        $parameters = array("Nieuw", $order->shippingAddressId, $order->billingAddressId);
-        $paramTypes = "sss";
+        $query = "INSERT INTO Order (status, shippingAddressId, billingAddressId, deliveryMethod, payMethod, placedOn, statusChangeOn)
+			VALUES (?, ?, ?, ?, ?, NOW(), NOW())";
+        $parameters = array("Nieuw", $order->shippingAddressId, $order->billingAddressId, $order->deliveryMethod, $order->payMethod);
+        $paramTypes = "sssss";
 
         $id = $this->database->insert($query, $paramTypes, $parameters);
 
@@ -95,6 +97,28 @@ class OrderRepository
 			WHERE id = ?";
         $parameters = array($order->shippingAddress, $order->billingAddress, $order->id);
         $paramTypes = "sss";
+
+        $this->database->update($query, $paramTypes, $parameters);
+    }
+
+    public function updatePayMethod($order)
+    {
+        $query = "UPDATE Order
+			SET payMethod = ?
+			WHERE id = ?";
+        $parameters = array($order->payMethod, $order->id);
+        $paramTypes = "ss";
+
+        $this->database->update($query, $paramTypes, $parameters);
+    }
+
+    public function updateDeliveryMethod($order)
+    {
+        $query = "UPDATE Order
+			SET deliveryMethod = ?
+			WHERE id = ?";
+        $parameters = array($order->deliveryMethod, $order->id);
+        $paramTypes = "ss";
 
         $this->database->update($query, $paramTypes, $parameters);
     }

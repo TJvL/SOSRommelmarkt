@@ -6,6 +6,8 @@ class OrderController extends Controller
     public $orderProductRepository;
     public $orderListRepository;
     public $addressRepository;
+    public $deliveryMethodRepository;
+    public $payMethodRepository;
 
     public function __construct()
     {
@@ -89,7 +91,12 @@ class OrderController extends Controller
 
         if($validated)
         {
-            $this->render("", $newOrderVM);
+            $orderConfirmVM  = new OrderConfirmViewModel();
+            $orderConfirmVM->deliveryMethods = $this->deliveryMethodRepository->selectAll();
+            $orderConfirmVM->payMethods = $this->payMethodRepository->selectAll();
+            $orderConfirmVM->newOrder = $newOrderVM;
+
+            $this->render("", $orderConfirmVM);
             return;
         }
         else
