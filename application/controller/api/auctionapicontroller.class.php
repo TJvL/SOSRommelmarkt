@@ -57,4 +57,19 @@ class AuctionAPIController extends APIController
         }
     }
 
+    public function dateRanges_GET()
+    {
+        $auctions = $this->auctionRepository->getAll();
+        $ranges = array();
+        foreach($auctions as $auction)
+        {
+            $range = array(
+                "start" => $auction->startDate,
+                "end" => $auction->endDate
+            );
+            $ranges[] = $range;
+        }
+        $this->respondWithJSON($ranges);
+    }
+
 }

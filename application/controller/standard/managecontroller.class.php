@@ -393,13 +393,4 @@ class ManageController extends Controller
             //TODO: error handling
         }
     }
-
-
-
-
-
-
-
-
-
 }
