@@ -32,7 +32,7 @@ class OrderPlacementAPIController extends APIController
 
     public function addaddresses_POST($newOrder)
     {
-        if((isset($newOrder->shippingAddress))&&($newOrder->billingAddress))
+        if(isset($newOrder->billingAddress))
         {
             $valid = false;
             if(array_key_exists("newOrder", $_SESSION))

@@ -16,6 +16,12 @@ class ManageController extends Controller
     public $accountRepository;
     public $roleRepository;
     public $permissionRepository;
+    public $orderRepository;
+    public $orderProductRepository;
+    public $orderListRepository;
+    public $payMethodRepository;
+    public $deliveryMethodRepository;
+    public $addressRepository;
 
     public function __construct()
     {
@@ -475,12 +481,28 @@ class ManageController extends Controller
     /**
      *{{Permission=Tekst;}}
      */
-    public function moduleview_GET()
+    public function moduleview_GET($id)
     {
-        if (isset($_GET["id"]))
-        {
-            $this->render("moduleview", $this->moduleRepository->selectById($_GET["id"]));
-        }
+        $this->render("moduleview", $this->moduleRepository->selectById($id));
+    }
+
+    //</editor-fold>
+
+    //<editor-fold desc="Order Manage">
+
+    public function orderoverview_GET()
+    {
+        $this->render("orderoverview");
+    }
+
+    public function orderadd_GET()
+    {
+        $this->render("orderadd");
+    }
+
+    public function orderview_GET($id)
+    {
+        $this->render("orderview");
     }
 
     //</editor-fold>
