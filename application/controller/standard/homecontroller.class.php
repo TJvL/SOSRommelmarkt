@@ -19,9 +19,33 @@ class HomeController extends Controller
 
     public function error_GET()
     {
-        $this->viewBag['msg'] = $_SESSION['msg'];
-        $this->viewBag['code'] = $_SESSION['code'];
-        $this->viewBag['prevLocation'] = $_SESSION['prevLocation'];
+        if(isset($_SESSION['msg']))
+        {
+            $this->viewBag['msg'] = $_SESSION['msg'];
+        }
+        else
+        {
+            $this->viewBag['msg'] = "Er is een onbekende fout opgetreden.";
+        }
+
+        if(isset($_SESSION['code']))
+        {
+            $this->viewBag['code'] = $_SESSION['code'];
+        }
+        else
+        {
+            $this->vieBag['code'] = "?";
+        }
+
+        if(isset($_SESSION['prevLocation']))
+        {
+            $this->viewBag['prevLocation'] = $_SESSION['prevLocation'];
+        }
+        else
+        {
+            $this->viewBag['prevLocation'] = "home/index";
+        }
+
         $this->render("error");
     }
 
