@@ -9,6 +9,9 @@ switch ($model->category)
     case "aboutus":
         $returnPath = "/manage/pagecontentmanage#tab_aboutus-modules";
         break;
+    case "project-info":
+    	$returnPath = "/manage/pagecontentmanage#tab_project-description";
+    	break;
     default:
         $returnPath = "/manage";
 }
@@ -21,9 +24,11 @@ switch ($model->category)
             <div class="col-md-1">
                 <a href="<?php echo ROOT_PATH . $returnPath ?>" class="btn btn-default">Terug</a>
             </div>
+            <?php if ($model->category != "project-info") { ?>
             <div class="col-sm-offset-9 col-sm-2">
                 <button type="button" class="btn btn-danger btn-block" onClick="handleDeleteModule()">Verwijderen</button>
             </div>
+            <?php } ?>
         </div>
         <div class="row">
 
@@ -41,16 +46,24 @@ switch ($model->category)
                 <!-- some hidden values -->
                 <input type="hidden" id="module-category" name="category" value="<?php echo $model->category;?>">
                 <input type="hidden" form="moduleForm" id="module-id" value="<?php echo $model->id ?>">
+                
+                <?php if ($model->category == "project-info") { ?>
+                	<input type="hidden" form="moduleForm" id="module-reference" name="heading" value="<?php echo $model->heading; ?>">
+                <?php } ?>
 
                 <?php if ($model->category != "home") { ?>
                     <input type="hidden" form="moduleForm" id="module-reference" name="reference" value="<?php echo $model->reference; ?>">
                     <input type="hidden" form="moduleForm" id="module-reference-label" name="reference_label" value="<?php echo $model->reference_label; ?>">
                 <?php } ?>
+                
+                <?php if ($model->category != "project-info") { ?>
                 <div class="field">
                     <label class="main" for="module-heading">Titel</label>
                     <input type="text" form="moduleForm" id="module-heading" name="heading" placeholder="Plaats hier uw titel..." value="<?php echo $model->heading; ?>">
                     <span class="error"></span>
                 </div>
+                <?php } ?>
+                
                 <div class="field">
                     <label class="main" for="module-content">Tekst</label>
 

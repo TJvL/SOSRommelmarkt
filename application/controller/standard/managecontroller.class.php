@@ -450,9 +450,11 @@ class ManageController extends Controller
 
         $homeModules = $this->moduleRepository->selectByCategory("home");
         $aboutUsModules = $this->moduleRepository->selectByCategory("aboutus");
+        $projectDescription = $this->moduleRepository->selectByCategory("project-info");
 
         $manageVM->homeModules = $homeModules;
         $manageVM->aboutUsModules = $aboutUsModules;
+        $manageVM->projectDescription = $projectDescription;
 
         $this->render("pagecontentmanage", $manageVM);
     }

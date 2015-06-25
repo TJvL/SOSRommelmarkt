@@ -1,12 +1,17 @@
-<?php Type::check("ArrayList:Project", $model) ?>
-
 <div class="container" >
+	<div class="white">
+		<div class="row">
+			<div class="col-sm-12">
+				<?php echo $model->projectDescription[0]->content; // always the first ?>
+			</div>
+		</div>
+	</div>
     <div class="white">
         <!--        title-->
         <h1>Projecten</h1>
 <!--            list-->
                 <div class="list-group collapse-group margin-ver-lg">
-                    <?php foreach ($model as $m) {?>
+                    <?php foreach ($model->projects as $m) {?>
                         <!--                        one list item-->
                     <a class="list-group-item collapse-group-item">
                         <!--                        collapsible part-->

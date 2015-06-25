@@ -11,6 +11,7 @@
             <ul class="nav nav-tabs nav-justified" role="tablist">
                 <li role="presentation" class="active"><a href="#home-modules" aria-controls="home-modules" role="tab" data-toggle="tab">Home pagina</a></li>
                 <li role="presentation"><a href="#aboutus-modules" aria-controls="aboutus-modules" role="tab" data-toggle="tab">Over ons pagina</a></li>
+                <li role="presentation"><a href="#project-description" aria-controls="project-description" role="tab" data-toggle="tab">Project pagina</a>
             </ul>
             <!-- end nav tabs -->
             <!-- start tab panes -->
@@ -88,6 +89,19 @@
 	                        <p id="statusaboutusmodules" class="padding-lg"></p>
 	                    </div>
 	                </div>
+	            </div>
+	            
+	            <div role="tabpabel" class="tab-pane fade in" id="project-description">
+	            	<?php $projectDescription = $model->projectDescription[0]; // always the first?>
+	            	<div class="row">
+	            		<div class="col-lg-offset-1 col-lg-9">
+			            	<h4>Huidige Projectpagina Beschrijving:</h2>
+			            	<hr />
+			            	<?php echo $projectDescription->content ?>
+			            	<hr />
+			            	<a href="<?php echo ROOT_PATH . '/manage/moduleview/' . $projectDescription->id; ?>" class="btn btn-default">Bewerken</a>
+	            		</div>
+	            	</div>
 	            </div>
             </div>
             <!-- end tab panes -->
