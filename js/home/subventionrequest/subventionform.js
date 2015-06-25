@@ -1,22 +1,31 @@
-$('#subventionForm').idealforms({
-
+$('#subventionForm').idealforms(
+{
     silentLoad: true,
+    
+    filters:
+    {
+        postalCode:
+        {
+            regex: /^[1-9][0-9]{3}[\s]?[A-Za-z]{2}$/i,
+            error: 'Ongeldige postcode. Voorbeeld: 0000AA'
+        }
+    },
 
     rules: {
         'name': 'required',
         'lastname': 'required',
         'firm': 'required',
         'address': 'required',
-        'postalcode': 'required',
+        'postalcode': 'required postalCode',
         'city': 'required',
-        'phonenumber1': 'required',
-        'phonenumber2': '',
-        'fax': '',
+        'phonenumber1': 'required digits',
+        'phonenumber2': 'digits',
+        'fax': 'digits',
         'email': 'required email',
-        'elucidation': 'required minmax:50:200',
-        'activities': 'required minmax:50:200',
-        'results': 'required minmax:50:200',
-        'files[]': 'extension:pdf:doc:docx:odt:html:htm'
+        'elucidation': 'required',
+        'activities': '',
+        'results': '',
+        'files[]': 'extension:doc:docx:xls:xlsx:ppt:pptx:odf:odt:ods:odp:odg:pdf:html:htm:'
     },
 
     //When submit is pressed catch the event.

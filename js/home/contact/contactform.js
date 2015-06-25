@@ -5,7 +5,7 @@ $('#contactform').idealforms({
     rules: {
         'name': 'required',
         'email': 'required email',
-        'phone': 'required digits min:8'
+        'phone': 'required digits'
     },
 
 
