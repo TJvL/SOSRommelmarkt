@@ -99,7 +99,7 @@ function handleDeleteModule()
                     var successMessage = "Over ons module succesvol verwijderd.";
                     localStorage.setItem("successMessage", successMessage);
                 }
-                document.location.href = getBaseURL() + 'manage/pagecontentoverview#tab_' + $('#module-category').val() + '-modules';
+                document.location.href = getBaseURL() + 'manage/pagecontentmanage#tab_' + $('#module-category').val() + '-modules';
             },
             error: function (status) {
                 $("#status").text(status.status + ": " + translateHttpError(status.statusText));
