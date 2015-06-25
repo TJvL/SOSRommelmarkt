@@ -76,9 +76,16 @@ class HomeController extends Controller
 
     public function projects_GET()
     {
+    	$projectsVM = new ProjectsViewModel();
+    	
         $projectList = new ArrayList("Project");
         $projectList->addAll($this->projectRepository->selectAll());
-        $this->render("projects", $projectList);
+        $projectDescription = $this->moduleRepository->selectByCategory("project-info");
+        
+        $projectsVM->projects = $projectList;
+        $projectsVM->projectDescription = $projectDescription;
+        
+        $this->render("projects", $projectsVM);
     }
 
     public function retrieval_GET()

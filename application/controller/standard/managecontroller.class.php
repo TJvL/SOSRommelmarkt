@@ -200,9 +200,16 @@ class ManageController extends Controller
      */
     public function projectoverview_get()
     {
+        $projectsVM = new ProjectsViewModel();
+        
         $projectList = new ArrayList("Project");
         $projectList->addAll($this->projectRepository->selectAll());
-        $this->render("projectoverview", $projectList);
+        $projectDescription = $this->moduleRepository->selectByCategory("project-info");
+        
+        $projectsVM->projects = $projectList;
+        $projectsVM->projectDescription = $projectDescription;
+        
+        $this->render("projectoverview", $projectsVM);
     }
 
     /**
