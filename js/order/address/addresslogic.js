@@ -1,4 +1,4 @@
-// There's a copy in order/address/addresslogic.js
+// This is based on account/address/addresslogic.js
 // Make sure changes are made to both files.
 
 var AddressManager;
@@ -51,9 +51,6 @@ AddressManager =
         {
             $('#invalid').hide();
         });
-
-        $('#addressTable').DataTable();
-        $('.deleteAddressButton').on('click', AddressManager.deleteAddress);
     },
 
     addAddress: function()
@@ -91,39 +88,12 @@ AddressManager =
                     }
                 });
         }
-    },
-
-    deleteAddress: function()
-    {
-        if(confirm("Weet u zeker dat u dit adres wilt verwijderen?"))
-        {
-
-            var data =
-            {
-                modelName: 'Address',
-                id: $(this).val()
-            };
-
-            $.ajax(
-                {
-                    url: getBaseURL() + 'addressapi/deleteself',
-                    type: 'POST',
-                    data: data,
-                    async: true,
-                    success: function ()
-                    {
-                        location.reload();
-                    },
-                    error: function (status)
-                    {
-                        var statusDiv = $("#status");
-                        statusDiv.text(status.status + ": " + translateHttpError(status.statusText));
-                        statusDiv.addClass("alert-danger");
-                    }
-                });
-        }
     }
 };
 
 $(document).ready(AddressManager.initialize);
 
+var ResizeForm = function() {
+	console.log("DASdas");
+	$('.idealforms').resize();
+};
