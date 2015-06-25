@@ -106,8 +106,10 @@ function deleteProductFromCart(id){
             async: true,
             success: function () {
                 refreshCart()
-                //$("#status").text("Productgegevens succesvol gewijzigd.");
-                //$("#status").addClass("alert-success");
+                if((getBaseURL() + "order/index#")== window.location.href || (getBaseURL() + "order/index")== window.location.href)
+                {
+                    window.location.reload();
+                }
             },
             error: function (status) {
                 $("#status").text(status.status + ": " + translateHttpError(status.statusText));
@@ -117,7 +119,6 @@ function deleteProductFromCart(id){
 }
 
 function refreshCart(){
-
     $.ajax(
         {
             url: getBaseURL() + "cartapi/get",

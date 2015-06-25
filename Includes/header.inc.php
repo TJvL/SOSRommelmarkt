@@ -79,7 +79,7 @@ IncludeLocator::locateIncludes("js", $controller, $action);
                         <li><a href="<?php echo ROOT_PATH; ?>/home/contact"><i class="fa fa-envelope"></i> Contact</a></li>
                         <li><a href="<?php echo ROOT_PATH; ?>/account/login"><i class="fa fa-sign-in"></i> Inloggen</a></li>
                         <li><a href="<?php echo ROOT_PATH; ?>/account/register"><i class="fa fa-user-plus"></i> Registreren</a></li>
-                        <li class=""><a class="shopping-cart-btn cd-cart-trigger"> <i class="fa fa-shopping-cart fa-fw"></i> (3)</a></li>
+                        <li class=""><a class="shopping-cart-btn cd-cart-trigger"> <i class="fa fa-shopping-cart fa-fw"></i><span id="cd-cart-amount"></span></a></li>
                     <?php
                     }
                     ?>
@@ -151,7 +151,7 @@ IncludeLocator::locateIncludes("js", $controller, $action);
             <ul class="cd-cart-items"></ul> <!-- cd-cart-items (Filled by refresh method -->
             <div class="cd-cart-total"></div> <!-- cd-cart-total -->
 
-            <a href="#" class="checkout-btn">Afrekenen</a>
+            <a href="<?php echo ROOT_PATH . '/order/index' ?>" class="checkout-btn">Afrekenen</a>
 
         </div>
 
