@@ -41,4 +41,28 @@ class SettingsAPIController extends APIController
             throw new Exception("Not all required data was provided", 400);
         }
     }
+    
+    /**
+     *{{Role=Administrator;}}
+     */
+    public function updatebackground_POST()
+    {
+    	if (isset($_FILES["image"]))
+    	{
+    		// Remove the current background image.
+    		$result = glob("img/content/" . "background." . "*");
+    		if ($result)
+    			unlink($result[0]);
+    		
+    		// Set the new one.
+    		$imageFileExtension = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+    		move_uploaded_file($_FILES["image"]["tmp_name"], "img/content/background." . $imageFileExtension);
+    		
+    		$this->respondOK();
+    	}
+    	else
+    	{
+    		throw new Exception("Not all required data was provided", 400);
+    	}
+    }
 }

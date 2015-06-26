@@ -10,4 +10,5 @@ class Order
     public $payMethod;
     public $placedOn;
     public $statusChangeOn;
+    public $isPayed;
 }

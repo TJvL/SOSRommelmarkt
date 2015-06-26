@@ -83,7 +83,7 @@ class OrderController extends Controller
                 {
                     if(!empty($newOrderVM->orderProducts))
                     {
-                        if((isset($newOrderVM->shippingAddress))&&(isset($newOrderVM->billingAddress)))
+                        if(isset($newOrderVM->billingAddress))
                         {
                             $validated = true;
                         }

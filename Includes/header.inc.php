@@ -22,7 +22,7 @@ IncludeLocator::locateIncludes("js", $controller, $action);
                         <div class="contact-info">
                             <div class="contact-phone padding-hor-md"><span><i class="fa fa-phone"></i> <?php echo $headerVM->companyInformation->phone; ?> </span></div>
                             <div class="contact-mail padding-hor-md"><span><i class="fa fa-envelope"></i> <?php echo $headerVM->companyInformation->email ?> </span></div>
-                            <div class="contact-address padding-hor-md"><span><i class="fa fa-map-marker"></i> <?php echo $headerVM->companyInformation->address . ", " . $headerVM->companyInformation->postalcode . " " . $headerVM->companyInformation->city; ?> </span></div>
+                            <div class="contact-address padding-hor-md"><span><i class="fa fa-map-marker"></i> <?php echo $headerVM->companyInformation->address . ", " . $headerVM->companyInformation->postalcode . ", " . $headerVM->companyInformation->city; ?> </span></div>
                         </div>
                     </li>
                     <?php
@@ -40,10 +40,10 @@ IncludeLocator::locateIncludes("js", $controller, $action);
                         <li><a href="<?php echo ROOT_PATH; ?>/home/contact"><i class="fa fa-envelope"></i> Contact</a></li>
                         <li><a href="<?php echo ROOT_PATH; ?>/account/login"><i class="fa fa-sign-in"></i> Inloggen</a></li>
                         <li><a href="<?php echo ROOT_PATH; ?>/account/register"><i class="fa fa-user-plus"></i> Registreren</a></li>
-                        <li class=""><a class="shopping-cart-btn cd-cart-trigger"> <i class="fa fa-shopping-cart fa-fw"></i> (3)</a></li>
                     <?php
                     }
                     ?>
+                    <li class=""><a class="shopping-cart-btn cd-cart-trigger"> <i class="fa fa-shopping-cart fa-fw"></i><span id="cd-cart-amount"></span></a></li>
                 </ul>
             </div>
         </div>
@@ -79,7 +79,7 @@ IncludeLocator::locateIncludes("js", $controller, $action);
                         <li><a href="<?php echo ROOT_PATH; ?>/home/contact"><i class="fa fa-envelope"></i> Contact</a></li>
                         <li><a href="<?php echo ROOT_PATH; ?>/account/login"><i class="fa fa-sign-in"></i> Inloggen</a></li>
                         <li><a href="<?php echo ROOT_PATH; ?>/account/register"><i class="fa fa-user-plus"></i> Registreren</a></li>
-                        <li class=""><a class="shopping-cart-btn cd-cart-trigger"> <i class="fa fa-shopping-cart fa-fw"></i> (3)</a></li>
+                        <li class=""><a class="shopping-cart-btn cd-cart-trigger"> <i class="fa fa-shopping-cart fa-fw"></i><span id="cd-cart-amount"></span></a></li>
                     <?php
                     }
                     ?>
@@ -148,56 +148,10 @@ IncludeLocator::locateIncludes("js", $controller, $action);
         <div id="cd-cart">
             <div class="close-btn cd-cart-trigger"><i class="fa fa-times fa-2x"></i></div>
             <h2>Winkelwagen</h2>
-            <ul class="cd-cart-items">
-                <li>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            Product Name
-                            <div class="cd-price">€9.99</div>
-                        </div>
-                        <div class="col-sm-4">
-                            <img class="cart-product-image" src="<?php echo ROOT_PATH . '/img/products/3/1.jpg'?>" >
-                        </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            Product Name
-                            <div class="cd-price">€9.99</div>
-                        </div>
-                        <div class="col-sm-4">
-                            <img class="cart-product-image" src="<?php echo ROOT_PATH . '/img/products/2/1.jpg'?>" >
-                        </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            Product Name
-                            <div class="cd-price">€9.99</div>
-                        </div>
-                        <div class="col-sm-4">
-                            <img class="cart-product-image" src="<?php echo ROOT_PATH . '/img/products/1/1.jpg'?>" >
-                        </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                        </div>
-                    </div>
-                </li>
-            </ul> <!-- cd-cart-items -->
+            <ul class="cd-cart-items"></ul> <!-- cd-cart-items (Filled by refresh method -->
+            <div class="cd-cart-total"></div> <!-- cd-cart-total -->
 
-            <div class="cd-cart-total">
-                <p>Totaal <span>€29.96</span></p>
-            </div> <!-- cd-cart-total -->
-
-            <a href="#" class="checkout-btn">Afrekenen</a>
+            <a href="<?php echo ROOT_PATH . '/order/index' ?>" class="checkout-btn">Afrekenen</a>
 
         </div>
 

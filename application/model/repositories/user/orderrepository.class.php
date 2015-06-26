@@ -20,16 +20,19 @@ class OrderRepository
         $order->payMethod = $row["payMethod"];
         $order->placedOn = $row["placedOn"];
         $order->statusChangeOn = $row["statusChangeOn"];
+        $order->isPayed = $row["isPayed"];
 
         return $order;
     }
 
     public function insert($order)
     {
-        $query = "INSERT INTO Order (status, shippingAddressId, billingAddressId, deliveryMethod, payMethod, placedOn, statusChangeOn)
-			VALUES (?, ?, ?, ?, ?, NOW(), NOW())";
-        $parameters = array("Nieuw", $order->shippingAddressId, $order->billingAddressId, $order->deliveryMethod, $order->payMethod);
-        $paramTypes = "sssss";
+        $query = "INSERT INTO `Order` (status, shippingAddressId, billingAddressId, deliveryMethod, payMethod, placedOn, statusChangeOn, isPayed)
+			VALUES (?, ?, ?, ?, ?, NOW(), NOW(), ?)";
+
+        $isPayed = 0;
+        $parameters = array("Nieuw", $order->shippingAddressId, $order->billingAddressId, $order->deliveryMethod, $order->payMethod, $isPayed);
+        $paramTypes = "sssssi";
 
         $id = $this->database->insert($query, $paramTypes, $parameters);
 
@@ -39,7 +42,7 @@ class OrderRepository
     public function selectAll()
     {
         $query = "SELECT *
-			FROM Order";
+			FROM `Order`";
 
         $result = $this->database->select($query);
 
@@ -60,7 +63,7 @@ class OrderRepository
     public function selectById($id)
     {
         $query = "SELECT *
-			FROM Order
+			FROM `Order`
 			WHERE id = ?";
         $parameters = array($id);
         $paramTypes = "s";
@@ -81,7 +84,7 @@ class OrderRepository
 
     public function updateStatus($order)
     {
-        $query = "UPDATE Order
+        $query = "UPDATE `Order`
 			SET status = ?, statusChangedOn = NOW()
 			WHERE id = ?";
         $parameters = array($order->status, $order->id);
@@ -92,7 +95,7 @@ class OrderRepository
 
     public function updateAddress($order)
     {
-        $query = "UPDATE Order
+        $query = "UPDATE `Order`
 			SET shippingAddress = ?, billingAddress = ?
 			WHERE id = ?";
         $parameters = array($order->shippingAddress, $order->billingAddress, $order->id);
@@ -103,7 +106,7 @@ class OrderRepository
 
     public function updatePayMethod($order)
     {
-        $query = "UPDATE Order
+        $query = "UPDATE `Order`
 			SET payMethod = ?
 			WHERE id = ?";
         $parameters = array($order->payMethod, $order->id);
@@ -114,7 +117,7 @@ class OrderRepository
 
     public function updateDeliveryMethod($order)
     {
-        $query = "UPDATE Order
+        $query = "UPDATE `Order`
 			SET deliveryMethod = ?
 			WHERE id = ?";
         $parameters = array($order->deliveryMethod, $order->id);
@@ -123,9 +126,20 @@ class OrderRepository
         $this->database->update($query, $paramTypes, $parameters);
     }
 
+    public function updateIsPayed($order)
+    {
+        $query = "UPDATE `Order`
+			SET isPayed = ?
+			WHERE id = ?";
+        $parameters = array($order->deliveryMethod, $order->isPayed);
+        $paramTypes = "si";
+
+        $this->database->update($query, $paramTypes, $parameters);
+    }
+
     public function deleteById($id)
     {
-        $query = "DELETE FROM Order WHERE id = ?";
+        $query = "DELETE FROM `Order` WHERE id = ?";
         $parameters = array($id);
         $paramTypes = "s";
 

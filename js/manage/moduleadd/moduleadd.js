@@ -60,15 +60,17 @@ function addModule()
                 data: data,
                 async: true,
                 success: function () {
-                    if($('#module-category').val() == "home"){
+                    if($('#module-category').val() == "home")
+                    {
                         var successMessage = "Home module succesvol toegevoegd.";
                         localStorage.setItem("successMessage", successMessage);
                     }
-                    else if($('#module-category').val() == "aboutus"){
+                    else if($('#module-category').val() == "aboutus")
+                    {
                         var successMessage = "Over ons module succesvol toegevoegd.";
                         localStorage.setItem("successMessage", successMessage);
                     }
-                    document.location.href = getBaseURL() + 'manage/pagecontentoverview#tab_' + $('#module-category').val() + '-modules';
+                    document.location.href = getBaseURL() + 'manage/pagecontentmanage#tab_' + $('#module-category').val() + '-modules';
                 },
                 error: function (status) {
                     $("#status").text(status.status + ": " + translateHttpError(status.statusText));

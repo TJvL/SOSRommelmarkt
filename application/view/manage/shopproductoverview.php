@@ -22,6 +22,7 @@
                     <th>Prijs</th>
                     <th>Toegevoegd Door</th>
                     <th>Gereserveerd</th>
+                    <th>Verkocht</th>
                     <th>Bewerken?</th>
                 </tr>
                 </thead>
@@ -46,6 +47,22 @@
                                 else
                                 {
                                 ?>
+                                    Nee
+                                <?php
+                                }
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                if($product->isSold == 1)
+                                {
+                                    ?>
+                                    Ja
+                                <?php
+                                }
+                                else
+                                {
+                                    ?>
                                     Nee
                                 <?php
                                 }

@@ -16,6 +16,13 @@ class ManageController extends Controller
     public $accountRepository;
     public $roleRepository;
     public $permissionRepository;
+    public $orderRepository;
+    public $orderProductRepository;
+    public $orderListRepository;
+    public $orderStatusRepository;
+    public $payMethodRepository;
+    public $deliveryMethodRepository;
+    public $addressRepository;
 
     public function __construct()
     {
@@ -200,9 +207,16 @@ class ManageController extends Controller
      */
     public function projectoverview_get()
     {
+        $projectsVM = new ProjectsViewModel();
+        
         $projectList = new ArrayList("Project");
         $projectList->addAll($this->projectRepository->selectAll());
-        $this->render("projectoverview", $projectList);
+        $projectDescription = $this->moduleRepository->selectByCategory("project-info");
+        
+        $projectsVM->projects = $projectList;
+        $projectsVM->projectDescription = $projectDescription;
+        
+        $this->render("projectoverview", $projectsVM);
     }
 
     /**
@@ -327,6 +341,12 @@ class ManageController extends Controller
 
         $companyInformation = $this->companyInformationRepository->selectCurrent();
         $visitingHours = $this->visitingHoursRepository->selectCurrent();
+        
+        $result = glob("img/content/" . "background." . "*");
+        if ($result)
+        	$settingsVM->backgroundPath = ROOT_PATH . "/" . $result[0];
+        else
+        	$settingsVM->backgroundPath = null;
 
         $settingsVM->companyInformation = $companyInformation;
         $settingsVM->visitingHours = $visitingHours;
@@ -468,12 +488,132 @@ class ManageController extends Controller
     /**
      *{{Permission=Tekst;}}
      */
-    public function moduleview_GET()
+    public function moduleview_GET($id)
     {
-        if (isset($_GET["id"]))
+        $this->render("moduleview", $this->moduleRepository->selectById($id));
+    }
+
+    //</editor-fold>
+
+    //<editor-fold desc="Order Manage">
+
+    /**
+     *{{Permission=Order;}}
+     */
+    public function orderoverview_GET()
+    {
+        $orderVMs = array();
+
+        $orders = $this->orderRepository->selectAll();
+        foreach($orders as $order)
         {
-            $this->render("moduleview", $this->moduleRepository->selectById($_GET["id"]));
+            $orderVM = new OrderOverviewViewModel();
+
+            $orderVM->id = $order->id;
+            $orderVM->status = $order->status;
+            $orderVM->deliveryMethod = $order->deliveryMethod;
+            $orderVM->payMethod = $order->payMethod;
+            $orderVM->statusChangedOn = $order->statusChangedOn;
+            $orderVM->placedOn = $order->placedOn;
+            $orderVM->isPayed = $order->isPayed;
+
+            if((isset($order->shippingAddressId))&&(!empty($order->shippingAddressId)))
+            {
+                $orderVM->shippingAddress = $this->addressRepository->selectById($order->shippingAddressId);
+            }
+
+            $orderVM->billingAddress = $this->addressRepository->selectById($order->billingAddressId);
+
+
+            $orderList = $this->orderListRepository->selectByOrderId($orderVM->id);
+
+            $totalPrice = 0.0;
+            $orderVM->orderProducts = array();
+            foreach($orderList as $item)
+            {
+                $orderProduct = $this->orderProductRepository->selectById($item->orderProduct_id);
+                $totalPrice = $totalPrice + $orderProduct->price;
+                $orderVM->orderProducts[] = $orderProduct;
+            }
+            $orderVM->totalPrice = $totalPrice;
+
+            $orderVMs[] = $orderVM;
         }
+
+        $this->render("orderoverview", $orderVMs);
+    }
+
+    /**
+     *{{Permission=Order;}}
+     */
+    public function orderadd_GET()
+    {
+        $orderVM = new OrderAddViewModel();
+
+        $orderVM->deliveryMethods = $this->deliveryMethodRepository->selectAll();
+        $orderVM->payMethods = $this->payMethodRepository->selectAll();
+        $orderVM->orderStatuses = $this->$orderStatusRepository->selectAll();
+
+        $this->render("orderadd", $orderVM);
+    }
+
+    /**
+     *{{Permission=Order;}}
+     */
+    public function orderview_GET($id)
+    {
+        $order = $this->orderRepository->selectById($id);
+
+        $orderEditVM = new OrderEditViewModel();
+
+        $orderEditVM->possibleDeliveryMethods = $this->deliveryMethodRepository->selectAll();
+        $orderEditVM->possiblePayMethods = $this->payMethodRepository->selectAll();
+        $orderEditVM->possibleOrderStatuses = $this->orderStatusRepository->selectAll();
+
+        $orderVM = new OrderOverviewViewModel();
+
+        $orderVM->id = $order->id;
+        $orderVM->status = $order->status;
+        $orderVM->deliveryMethod = $order->deliveryMethod;
+        $orderVM->payMethod = $order->payMethod;
+        $orderVM->statusChangedOn = $order->statusChangedOn;
+        $orderVM->placedOn = $order->placedOn;
+        $orderVM->isPayed = $order->isPayed;
+
+        if((isset($order->shippingAddressId))&&(!empty($order->shippingAddressId)))
+        {
+            $orderVM->shippingAddress = $this->addressRepository->selectById($order->shippingAddressId);
+        }
+
+        $orderVM->billingAddress = $this->addressRepository->selectById($order->billingAddressId);
+
+        if((isset($order->accountId))&&(!empty($order->accountId)))
+        {
+            $accountVM = new AccountViewModel();
+            $account = $this->accountRepository->selectById($orderVM->billingAddress->accountId);
+
+            $accountVM->id = $account->id;
+            $accountVM->username = $account->username;
+            $accountVM->email = $account->email;
+        }
+
+        $orderVM->userAccount =
+
+        $orderList = $this->orderListRepository->selectByOrderId($orderVM->id);
+
+        $totalPrice = 0.0;
+        $orderVM->orderProducts = array();
+        foreach($orderList as $item)
+        {
+            $orderProduct = $this->orderProductRepository->selectById($item->orderProduct_id);
+            $totalPrice = $totalPrice + $orderProduct->price;
+            $orderVM->orderProducts[] = $orderProduct;
+        }
+        $orderVM->totalPrice = $totalPrice;
+
+        $orderEditVM->order = $orderVM;
+
+        $this->render("orderview", $orderEditVM);
     }
 
     //</editor-fold>

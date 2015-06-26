@@ -21,11 +21,13 @@
 					<input form="shopproductform" name="name" id="name" type="text" placeholder="Naam van het product" value="<?php echo $model->shopProduct->name ?>">
 					<span class="error"></span>
 				</div>
+
 				<div class="field">
 					<label class="main" for="description">Omschrijving</label>
 					<textarea form="shopproductform" name="description" id="description" class="nonresizeable" rows="3" placeholder="Omschrijving van het product"><?php echo $model->shopProduct->description ?></textarea>
 					<span class="error"></span>
 				</div>
+
 				<div class="field">
 					<label class="main" for="colorCode">Kleurcode</label>
                     <select name="colorCode" id="colorCode" form="shopproductform">
@@ -49,11 +51,13 @@
                     </select>
                     <span class="error"></span>
 				</div>
+
 				<div class="field">
 					<label class="main" for="price">Prijs</label>
                     <input form="shopproductform" name="price" id="price" type="number" step="any" value="<?php echo $model->shopProduct->price ?>">
 					<span class="error"></span>
 				</div>
+
 				<div class="field">
 					<label class="main" for="isReserved">Is gereserveerd</label>
                     <?php
@@ -75,6 +79,28 @@
                     }
                     ?>
 				</div>
+
+                <div class="field">
+                    <label class="main" for="isSold">Is verkocht</label>
+                    <?php
+                    if ($model->shopProduct->isSold)
+                    {
+                        ?>
+                        <p class="group">
+                            <input form="shopproductform" id="isSold" type="checkbox" checked>
+                        </p>
+                    <?php
+                    }
+                    else
+                    {
+                        ?>
+                        <p class="group">
+                            <input form="shopproductform" id="isSold" type="checkbox">
+                        </p>
+                    <?php
+                    }
+                    ?>
+                </div>
 
                 <div class="field">
                     <label class="main" for="addedBy">Toegevoegd door</label>

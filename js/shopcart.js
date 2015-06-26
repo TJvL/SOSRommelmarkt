@@ -57,6 +57,8 @@ jQuery(document).ready(function($){
         }
 
     });
+
+    refreshCart();
 });
 
 function toggle_panel_visibility ($lateral_panel, $background_layer, $body) {
@@ -88,4 +90,74 @@ function move_navigation( $navigation, $MQ) {
 function showCart() {
     $('.cd-cart-trigger').click();
 }
+
+function deleteProductFromCart(id){
+
+    var data =
+    {
+        id:id
+    };
+
+    $.ajax(
+        {
+            url: getBaseURL() + "cartapi/deleteitem",
+            type: "POST",
+            data: data,
+            async: true,
+            success: function () {
+                refreshCart()
+                if((getBaseURL() + "order/index#")== window.location.href || (getBaseURL() + "order/index")== window.location.href)
+                {
+                    window.location.reload();
+                }
+            },
+            error: function (status) {
+                $("#status").text(status.status + ": " + translateHttpError(status.statusText));
+                $("#status").addClass("alert-danger");
+            }
+        });
+}
+
+function refreshCart(){
+    $.ajax(
+        {
+            url: getBaseURL() + "cartapi/get",
+            type: "GET",
+            async: true,
+            success: function (cartVM) {
+                var $cartVM = cartVM;
+                var list = $(".cd-cart-items");
+                var totalPrice =0.0;
+                var amount = 0;
+
+                list.empty();
+                for (i in $cartVM.cartContent) {
+
+                    var listItem = '<li>'+
+                        '            <div class="row">'+
+                        '                <div class="col-sm-6">'+
+                        $cartVM.cartContent[i].name +
+                        '                    <div class="cd-price">Prijs: €' + $cartVM.cartContent[i].price + '</div>'+
+                        '                </div>'+
+                        '                <div class="col-sm-4">'+
+                        '                    <img class="cart-product-image" src=' + $cartVM.cartContent[i].imagePath + ' />'+
+                        '                </div>'+
+                        '                <div class="col-sm-2">'+
+                        '                    <button class="btn btn-danger" onclick=' + "deleteProductFromCart(" + $cartVM.cartContent[i].id + ")" + '><i class="fa fa-trash"></i></button>'+
+                        '                </div>'+
+                        '             </div>'+
+                        ''+
+                        '        </li>';
+
+                    list.append(listItem);
+                    totalPrice += parseInt($cartVM.cartContent[i].price);
+                    amount++;
+                }
+                $(".cd-cart-total").html('<p>Totaal <span>€' + totalPrice + '</span></p>')
+                $('#cd-cart-amount').html("(" + amount + ")");
+            }
+        });
+}
+
+
 

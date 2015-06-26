@@ -53,7 +53,8 @@ function UpdateShopProduct()
 	    	description:	$("#description").val(),
 	    	colorCode:		$("#colorCode option:selected").val(),
 	    	price:			$("#price").val(),
-	    	isReserved:		($("#isReserved").is(":checked") == false ? 0 : 1)
+	    	isReserved:		($("#isReserved").is(":checked") == false ? 0 : 1),
+            isSold:		    ($("#isSold").is(":checked") == false ? 0 : 1)
 		};
 		
 	    $.ajax(
