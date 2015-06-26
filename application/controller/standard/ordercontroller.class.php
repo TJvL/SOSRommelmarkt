@@ -45,9 +45,6 @@ class OrderController extends Controller
                 }
             }
         }
-
-        // temp
-        $validated = true;
         
         if($validated)
         {
@@ -99,7 +96,7 @@ class OrderController extends Controller
             $orderConfirmVM->payMethods = $this->payMethodRepository->selectAll();
             $orderConfirmVM->newOrder = $newOrderVM;
 
-            $this->render("", $orderConfirmVM);
+            $this->render("confirm", $orderConfirmVM);
             return;
         }
         else

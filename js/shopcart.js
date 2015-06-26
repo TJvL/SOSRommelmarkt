@@ -159,5 +159,31 @@ function refreshCart(){
         });
 }
 
+function grabCartData() {
+	$.ajax({
+        url: getBaseURL() + "cartapi/get",
+        type: "GET",
+        success: function(cartVM) {
+        	createNewOrder(cartVM);
+        }
+	});
+}
 
-
+// create a new order in the backend.
+function createNewOrder(cartVM) {
+	
+	var data = {
+			modelName: 'NewOrderViewModel',
+			orderProducts: cartVM
+	};
+	
+	$.ajax({
+		url: getBaseURL() + "orderplacementapi/startnew",
+		type: "POST",
+		data: data,
+		async: true,
+		success: function() {
+			window.location.href = getBaseURL() + "order/index";
+		}
+	});
+}

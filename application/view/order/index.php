@@ -1,5 +1,4 @@
-<?php $cartExists = isset($_SESSION["cart"]);  ?>
-
+<?php $cartExists = isset($model); ?>
 
 <div class="container">
     <div class="white">
@@ -19,11 +18,11 @@
                         </tr>
                         <?php
                         $totalPrice = 0;
-                        foreach ($_SESSION["cart"]->cartContent as $product) { ?>
+                        foreach ($model->cartContent as $product) { ?>
                         <tr>
                             <td><?php echo $product->name ?></td>
                             <td>€<?php echo $product->price ?></td>
-                            <td><a href="#"><button class="btn btn-danger" title="Verwijder" onclick="deleteProductFromCart(<?php echo $product->id ?>)"><i class="fa fa-trash"></i></button></a></td><!-- add delete item onclick or whatever -->
+                            <td><a><button class="btn btn-red" title="Verwijder" onclick="deleteProductFromCart(<?php echo $product->id ?>)"><i class="fa fa-trash"></i></button></a></td>
                         </tr>
                         <?php
                             $totalPrice+= $product->price;
@@ -49,7 +48,7 @@
         <?php if ($cartExists) { ?>
             <div class="row">
                 <div class="col-lg-offset-10 col-lg-2">
-                    <a class="btn btn-red" onclick='addNewOrder()'>Bestellen <i class="fa fa-chevron-right"></i></a>
+                    <a class="btn btn-red btn-lg btn-block" onclick='addNewOrder()'>Bestellen <i class="fa fa-chevron-right"></i></a>
                 </div>
             </div>
         <?php } ?>

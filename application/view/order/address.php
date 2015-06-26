@@ -48,7 +48,7 @@
 							<div class="col-lg-11">
 								<select class="form-control" id="deliver-address" <?php if (empty($model)) echo "disabled"; ?>>
 									<?php foreach($model as $a) { ?>
-										<option value="<?php $a->id; ?>"><?php echo $a->streetName . $a->streetNumber . ", " . $a->city; ?></option>
+										<option value="<?php echo $a->id; ?>"><?php echo $a->streetName . $a->streetNumber . ", " . $a->city; ?></option>
 									<?php } ?>
 									<?php if (empty($model)) { ?>
 										<option>Geen adressen bekend...</option>
@@ -60,7 +60,8 @@
 							</div>
 						</div>
 						<!-- end delivery address -->
-						<br>
+					</div>
+					<div class="panel-body">
 						<!-- billing address -->
 						<div class="row">
 							<div class="col-lg-12">
@@ -69,7 +70,7 @@
 							<div class="col-lg-11">
 								<select class="form-control" id="billing-address" <?php if (empty($model)) echo "disabled"; ?>>
 									<?php foreach($model as $a) { ?>
-										<option value="<?php $a->id; ?>"><?php echo $a->streetName . $a->streetNumber . ", " . $a->city; ?></option>
+										<option value="<?php echo $a->id; ?>"><?php echo $a->streetName . $a->streetNumber . ", " . $a->city; ?></option>
 									<?php } ?>
 									<?php if (empty($model)) { ?>
 										<option>Geen adressen bekend...</option>
@@ -90,76 +91,72 @@
 								<p><strong>Afleveradres:</strong></p>
 							</div>
 							<div class="col-lg-12">
-					            <form action="javascript:AlternateAddress" id="addressForm-2" class="idealforms">
-					                <input form="addressForm" id="addressform-2-id" name="id" type="hidden">
+					            <form action="" id="addressForm-2" class="idealforms">
+					                <input form="addressForm" id="addressForm-2-id" name="id" type="hidden">
 					
 					                <div class="field">
 					                    <label class="main">Voornaam:</label>
-					                    <input form="addressForm-2" id="addressform-2-firstName" name="firstName" type="text" placeholder="Voornaam">
+					                    <input form="addressForm-2" id="addressForm-2-firstName" name="firstName" type="text" placeholder="Voornaam">
 					                    <span class="error"></span>
 					                </div>
 					
 					                <div class="field">
 					                    <label class="main">Achternaam:</label>
-					                    <input form="addressForm-2" id="addressform-2-lastName" name="lastName" type="text" placeholder="Achternaam">
+					                    <input form="addressForm-2" id="addressForm-2-lastName" name="lastName" type="text" placeholder="Achternaam">
 					                    <span class="error"></span>
 					                </div>
 					
 					                <div class="field">
 					                    <label class="main">Straat naam:</label>
-					                    <input form="addressForm-2" id="addressform-2-streetName" name="streetName" type="text" placeholder="Straat">
+					                    <input form="addressForm-2" id="addressForm-2-streetName" name="streetName" type="text" placeholder="Straat">
 					                    <span class="error"></span>
 					                </div>
 					
 					                <div class="field">
 					                    <label class="main">Straat nummer:</label>
-					                    <input form="addressForm-2" id="addressform-2-streetNumber" name="streetNumber" type="text" placeholder="Nummer">
+					                    <input form="addressForm-2" id="addressForm-2-streetNumber" name="streetNumber" type="text" placeholder="Nummer">
 					                    <span class="error"></span>
 					                </div>
 					
 					                <div class="field">
 					                    <label class="main">Postcode:</label>
-					                    <input form="addressForm-2" id="addressform-2-postCode" name="postCode" type="text" placeholder="Postcode">
+					                    <input form="addressForm-2" id="addressForm-2-postCode" name="postCode" type="text" placeholder="Postcode">
 					                    <span class="error"></span>
 					                </div>
 					
 					                <div class="field">
 					                    <label class="main">Stad:</label>
-					                    <input form="addressForm-2" id="addressform-2-city" name="city" type="text" placeholder="Stad">
+					                    <input form="addressForm-2" id="addressForm-2-city" name="city" type="text" placeholder="Stad">
 					                    <span class="error"></span>
 					                </div>
 					
 					                <div class="field">
 					                    <label class="main">Telefoon nr.:</label>
-					                    <input form="addressForm-2" id="addressform-2-phoneNumber" name="phoneNumber" type="text" placeholder="Telefoon">
+					                    <input form="addressForm-2" id="addressForm-2-phoneNumber" name="phoneNumber" type="text" placeholder="Telefoon">
 					                    <span class="error"></span>
 					                </div>
 					
-					                <div class="field buttons">
-					                    <label class="main">&nbsp;</label>
-					                    <button form="addressForm-2"  type="submit" class="submit">Opslaan</button>
-					                </div>
-					
-					                <span id="invalid"></span>
+					                <span class="form-invalid" id="addressForm-2-invalid"></span>
 					            </form>
 							</div>
 						</div>
 						<!-- end delivery address -->
-						<br>
+						<div class="col-lg-12">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" id="billing-address-checkbox">Factuuradres hetzelfde als afleveradres
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="panel-body">
 						<!-- billing address -->
-						<div class="row">
+						<div class="row" id="billing-address-form">
 							<div class="col-lg-12">
 								<p><strong>Factuuradres:</strong></p>
 							</div>
 							<div class="col-lg-12">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox" id="billing-address-checkbox" checked>Afleveradres gebruiken
-									</label>
-								</div>
-							</div>
-							<div class="col-lg-12" id="billing-address-form">
-					            <form action="javascript:AlternateAddress" id="addressForm-3" class="idealforms">
+					            <form action="" id="addressForm-3" class="idealforms">
 					                <input form="addressForm" id="addressForm-3-id" name="id" type="hidden">
 					
 					                <div class="field">
@@ -204,12 +201,7 @@
 					                    <span class="error"></span>
 					                </div>
 					
-					                <div class="field buttons">
-					                    <label class="main">&nbsp;</label>
-					                    <button form="addressForm-3"  type="submit" class="submit">Opslaan</button>
-					                </div>
-					
-					                <span id="invalid"></span>
+					                <span class="form-invalid" id="addressForm-3-invalid"></span>
 					            </form>
 							</div>
 						</div>
@@ -218,8 +210,11 @@
 				<?php } ?>
 				</div>
 				<div class="row">
+					<div class="col-lg-9">
+                		<p id="status" class="padding-lg"></p>
+					</div>
 					<div class="col-lg-offset-9 col-lg-3">
-						<a class="btn btn-red btn-lg btn-block" href="<?php echo ROOT_PATH . '/order/address'; ?>">Bestellen <i class="fa fa-chevron-right"></i></a>
+						<a class="btn btn-red btn-lg btn-block" onclick='javascript:addAddressesToOrder(<?php echo json_encode($model); ?>, <?php echo json_encode($isLoggedIn); ?>)'>Bestellen <i class="fa fa-chevron-right"></i></a>
 					</div>
 				</div>
 			</div>

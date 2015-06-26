@@ -3,7 +3,7 @@
     margin-right: .5em;
 }
 
-#invalid {
+#invalid, .form-invalid {
     display: none;
     float: left;
     width: 290px;
