@@ -13,7 +13,7 @@
         </div>
 		<div class="row">
 			<div class="col-lg-12">
-				<p><strong>Totaalbedrag: </strong>$totalValue</p>
+				<p><strong>Totaalbedrag: </strong>€100,00</p>
 				<p><strong>Afleveradres: </strong></p>
 				<?php if ($shipAd) { ?>
 				<p><?php echo $shipAd['firstName'] . " " . $shipAd['lastName']; ?><br />

@@ -7,4 +7,5 @@ class NewOrderViewModel
     public $billingAddress; //Address model class instance.
     public $deliveryMethod; //String.
     public $payMethod; //String.
+    public $totalPrice;
 }

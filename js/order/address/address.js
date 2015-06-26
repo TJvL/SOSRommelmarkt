@@ -64,6 +64,8 @@ function addAddressesToOrder(addresses, isLoggedIn) {
 					}
 				}
 			}
+            console.log(data);
+            debugger;
 		} else {
 			// attempt to submit shipping address form (validate with idealforms)
 			$('#addressForm-2').submit();
@@ -86,7 +88,9 @@ function addAddressesToOrder(addresses, isLoggedIn) {
 			
 			if ($('#billing-address-checkbox').is(':checked')) {
 				// same address for both
-				var billingAddress = shippingAddress;
+                console.log("checked");
+				data.billingAddress = shippingAddress;
+                data.shippingAddress = shippingAddress;
 			} else {
 				// attempt to submit billing address form (validate with idealforms)
 				$('#addressForm-3').submit();
@@ -96,9 +100,17 @@ function addAddressesToOrder(addresses, isLoggedIn) {
 					alert("3");
 					return;
 				}
-				
-				alert( "?");
-				
+                var shippingAddress = {
+                    modelName:		'Address',
+                    firstName:		$('#addressForm-2-firstName').val(),
+                    lastName:		$('#addressForm-2-lastName').val(),
+                    streetName:		$('#addressForm-2-streetName').val(),
+                    streetNumber:	$('#addressForm-2-streetNumber').val(),
+                    postCode:		$('#addressForm-2-postCode').val(),
+                    city:			$('#addressForm-2-city').val(),
+                    phoneNumber:	$('#addressForm-2-phoneNumber').val()
+                };
+
 				var billingAddress = {
 						modelName:		'Address',
 						id:				$('#addressForm-3-id').val(),
@@ -110,6 +122,8 @@ function addAddressesToOrder(addresses, isLoggedIn) {
 						city:			$('#addressForm-3-city').val(),
 		                phoneNumber:	$('#addressForm-3-phoneNumber').val()
 				};
+                data.billingAddress = billingAddress;
+                data.shippingAddress = shippingAddress;
 			}
 		}
 	} else {
