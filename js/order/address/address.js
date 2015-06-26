@@ -12,3 +12,21 @@ $('.deliver-method').click(function(){
 	}
 });
 //end
+
+// shows/hides billing address
+$('#billing-address-form').css('display', 'none');
+$('#billing-address-checkbox').click(function() {
+	if ($('#billing-address-checkbox').is(':checked')) {
+		console.log("checked");
+		$('#billing-address-form').slideUp();
+	} else {
+		console.log("not checked");
+		$('#billing-address-form').slideDown();
+	}
+});
+//end
+
+// resize idealforms on load
+$(document).load(function() {
+	$('#addressForm-2').resize();
+});

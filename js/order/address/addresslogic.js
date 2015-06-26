@@ -93,7 +93,7 @@ AddressManager =
 
 $(document).ready(AddressManager.initialize);
 
-var ResizeForm = function() {
-	console.log("DASdas");
+// fixes idealforms layout (modal issues)
+$('#address-modal').on('shown.bs.modal', function(e) {
 	$('.idealforms').resize();
-};
+});
