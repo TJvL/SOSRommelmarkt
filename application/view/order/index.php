@@ -1,4 +1,4 @@
-<?php $cartExists = isset($model); ?>
+<?php $cartExists = isset($model->cartContent); ?>
 
 <div class="container">
     <div class="white">

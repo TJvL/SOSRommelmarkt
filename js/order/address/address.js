@@ -113,6 +113,7 @@ function addAddressesToOrder(addresses, isLoggedIn) {
 			}
 		}
 	} else {
+        //Delivery is not selected, only billing address needs to be added
 		if (isLoggedIn) {
 			var billingAddressId = $('#billing-address').val();
 			
@@ -141,9 +142,11 @@ function addAddressesToOrder(addresses, isLoggedIn) {
 					city:			$('#addressForm-3-city').val(),
 	                phoneNumber:	$('#addressForm-3-phoneNumber').val()
 			};
+
+            data.billingAddress = billingAddress;
 		}
 	}
-	
+
 	$.ajax({
 		url: getBaseURL() + 'orderplacementapi/addaddresses',
 		type: 'POST',
